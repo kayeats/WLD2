@@ -1039,12 +1039,50 @@ Suppose we are following the Gra\ss mann necklace to Le diagram algorithm, and w
 
 \section{Poles of Wilson Loop Integrals}
 
-I'd like to end this paper with a proof of a conjecture (that I think I need for a subsequent paper, and this seems the natural place to put it. This is as follows:
+Put some exposition here about Theorem~\ref{thm denom}.
 
-\begin{conj}
-Given any admissibly Wilson loop diagram $W$, let $GN(W) = \{I_1, \ldots I_n\}$ be the associated Grasmann necklace. Then the denominator of the integral $I(W)$ is the \hlfix{find correct word for this} is the minimal polynomial of $\prod_{i=1}^n \Delta_{I_i}$, where $\Delta_{I_i}$ is the determinant of the $k \times k$ minor indicated by $I_i$.
-\end{conj}
+We can also use the ideas of the above constructions to understand the denominator of the integral $I(W)$.
+
+\begin{algorithm}\label{alg WLD to denom via GN}
+Let $W$ be a Wilson loop diagram with $n$ vertices.  Let $C(W)$ be the matrix \hlfix{which has some actual name and a ref to where you define it}.
+\begin{itemize}
+  \item For each $i \in \interval{1}{n}$, we construct a factor $r_i$ as follows
+    \begin{itemize}
+      \item Use Algorithm~\label{alg:put GN on WLD} to obtain a bijection between the propagators and the $i-1$st Grassmann necklace element, $I_{i-1}$.  Write $I_{i-1}(p)$ for the vertex associated to propagator $p$ under this bijection.
+      \item Use Algorithm~\label{alg:put GN on WLD} to obtain a bijection between the propagators and the $i$th Grassmann necklace element, $I_{i}$.  Write $I_{i}(p)$ for the vertex associated to propagator $p$ under this bijection.
+      \item Let $S_i$ be the set of propagators $p$ such that $I_{i-1}(p) \neq I_{i}(p)$.
+      \item $\Delta_{I_i}$ is the determinant of the $k \times k$ minor of $C(W)$ indicated by $I_i$.
+      \item Let $r_i$ be $\Delta_{I_i}$ with all variables from rows associated to $p\not\in S_i$ set to $1$.
+    \end{itemize}
+  \item $R = \prod_{i=1}^n r_i$.
+\end{itemize}
+\end{algorithm}
+
+\begin{prop}\label{prop alg gives rad}
+  With notation as in Algorithm~\ref{alg WLD to denom via GN} we have the following:
+  \begin{enumerate}
+    \item Each $\Delta_{I_i}$ is homogeneous and splits into linear and quadratic factors.  
+    \item All linear factors of  $\Delta_{I_i}$ are single variables and all quadratic factors are $2\times 2$ determinants of single variables.
+    \item Quadratic factors in $r_i$ arise precisely when propagators $p$ and $q$ are supported on a common edge $(a,b)$ and $I_i(p)=a$, $I_i(q)=b$.
+    \item $r_i$ divides $\Delta_{I_i}$.
+    \item $R$ is the radical of $\prod_{i=1}^{n}\Delta_{I_i}$.
+  \end{enumerate}
+\end{prop}
+
+\begin{proof}
+\note{This is the next thing I plan to work on.  If you could tell me how many of these things you already have proved elsewhere that would be helpful to me.}
+\end{proof}
 
 
+\begin{thm}\label{thm denom}
+Given any admissible Wilson loop diagram $W$, let $GN(W) = \{I_1, \ldots I_n\}$ be the associated Grasmann necklace. Then the denominator of the integral $I(W)$ is the \hlfix{find correct word for this} is the minimal polynomial of $\prod_{i=1}^n \Delta_{I_i}$, where $\Delta_{I_i}$ is the determinant of the $k \times k$ minor indicated by $I_i$.
+\end{thm}
+
+\begin{proof}
+In view of Proposition~\ref{prop alg gives rad} it remains to prove that the $R$ of Algorithm~\ref{alg WLD to denom via GN} is $R(W)$, the denominator of the integral $I(W)$.
+
+\note{I don't want to write the rest of this right now because we need to somewhere (probably much earlier in the document) define $R(W)$ and exactly how we do so makes a difference.  The definition I would most like is if we define it as the product of the prop together and prop to vertex limits, if we define it some other way I'll probably want a lemma to get to that formulation.}
+  
+\end{proof}
 
 \end{document}
