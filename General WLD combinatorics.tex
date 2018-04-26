@@ -291,35 +291,69 @@ The first conditions states that there are at least four more vertices than prop
 In what follows, we will talk about admissible Wilson Loop diagrams and subdiagrams thereof.
 
 \begin{dfn} \label{subdiagramdfn}
-Let $W = (\cP, n)$ be an admissible Wilson loop diagram. A subdiagram of $W$ is defined by a a subset of propagators of $W$. For $P \subset \cP$, write $W|_P = (P, V(P))$. 
+Let $W = (\cP, n)$ be an admissible Wilson loop diagram. A subdiagram of $W$ is defined by a a subset of propagators of $W$. For $P \subset \cP$, write $W|_P = (P, V(P))$.
 \end{dfn}
 
-Note that a subdiagram of an admissible diagram need not be admissible. In particular, the condition $|V(P)| > |P| +4$ need not hold. 
+Note that a subdiagram of an admissible diagram need not be admissible. In particular, the condition $|V(P)| > |P| +4$ need not hold.
 
-There is one particular type subdiagram that deserves special attention. 
+There is one particular type subdiagram that deserves special attention.
 
 \begin{dfn}
-For $W$ an admissible diagram, $(P, V(P))$ is exact if $|V(P)| = |P| + 3$. 
+For $W$ an admissible diagram, $(P, V(P))$ is exact if $|V(P)| = |P| + 3$.
 \end{dfn}
 
 The exact subdiagrams define an equivalence relation amongst Wilson loop diagrams.
 
 \begin{dfn}\label{equivdfn}
-Two admissible Wilson loops diagrams, $W = (\cP, n)$ and $W'= (\cP', n)$ are equivalent if
+There is an equivalence relationship on the set of admissible Wilson loops diagrams: $W = (\cP, n)$ and $W'= (\cP', n)$ are equivalent if
 \begin{enumerate}
 \item There exist two different exact subdiagrams, $(P, V(P))$ and $(P', V(P'))$ of $W$ and $W'$ respectively such that $V(P) =  V(P')$.
-\item The complementary subdiagrams are identical: $(\cP \setminus P, [n] \setminus V(P)) = (\cP' \setminus P', [n] \setminus V(P'))$.
+\item The complementary subdiagrams are identical: $(\cP \setminus P, V(P)^c) = (\cP' \setminus P', V(P')^c)$.
 \end{enumerate}
 \end{dfn}
 
+\begin{eg}
+Note that since this is an equivalence relation, we may find that two Wilson loop diagrams are equivalent, even if they do not have complements of (non-trivial) exact subdiagrams in common. Consider the following three Wilson loop diagrams,
+\bas
+W_1 = \begin{tikzpicture}[rotate=67.5,baseline=(current bounding box.east)]
+	\begin{scope}
+	\drawWLD{8}{1.5}
+	\drawnumbers
+	\drawprop{1}{0}{4}{0}
+	\drawprop{2}{0}{4}{-1}
+    \drawprop{5}{0}{8}{0}
+    \drawprop{5}{1}{7}{0}
+		\end{scope}
+	\end{tikzpicture} \quad
+W_2 = \begin{tikzpicture}[rotate=67.5,baseline=(current bounding box.east)]
+	\begin{scope}
+	\drawWLD{8}{1.5}
+	\drawnumbers
+	\drawprop{1}{0}{4}{0}
+	\drawprop{2}{0}{4}{-1}
+    \drawprop{5}{0}{8}{0}
+    \drawprop{6}{0}{8}{-1}
+		\end{scope}
+	\end{tikzpicture} \quad
+W_3 = \begin{tikzpicture}[rotate=67.5,baseline=(current bounding box.east)]
+	\begin{scope}
+	\drawWLD{8}{1.5}
+	\drawnumbers
+	\drawprop{1}{0}{4}{0}
+	\drawprop{1}{1}{3}{0}
+    \drawprop{5}{0}{8}{0}
+    \drawprop{6}{0}{8}{-1}
+		\end{scope}
+	\end{tikzpicture} .
+\eas
+
+The diagrams $W_1 \equiv W_2$ because $(\{(5,8), (5,7), \{5,6,7,8,1\})$ and $(\{(5,8), (7,8), \{5,6,7,8,1\})$ are the corresponding differing subdiagrams. Furthermore, there is the equivalence $W_2 \equiv W_3$ due to the exact subdiagrams $(\{(1,4), (3,4)\}, \{1,2,3,4,5\})$ and $(\{(1,4), (1,3)\}, \{1,2,3,4,5\})$. This forces an equivalence between $W_1$ and $W_3$, even though one cannot partition the propagators of each into a an exact subdiagram (that may vary between the diagrams) and a complement that is fixed.  \end{eg}
 
 \section{Wilson Loop diagrams as matroids}
 
 In \cite{wilsonloop}, Amat and Agarwala show that admissible Wilson loop diagrams with $k$ propagators corresponds to positroids of rank $k$ (a matroid that can be represented by an element of $\Gr(k, n)$. )
 
 \begin{thm}\cite{wilsonloop}An admissible Wilson loop diagram, $W =(\cP, n)$, defines a matroid with base set $[n]$. The independent sets are exactly those subsets $V \subseteq [n]$ such that $\not \exists U\subseteq V$ satisfying $|\Prop(U)|> |U|$. \label{thm:WLDmatroid}\end{thm}
-
-Recall the definition of the rank of a subset $C \subset [n]$.
 
 This does not, however, show that the matroids associated to each Wilson loop diagram is unique. In fact, in \cite{wilsonloop}, the authors show that if two diagrams are equivalent then they define the same matroid [cite theorem here].
 
@@ -331,7 +365,7 @@ Two Wilson loop diagrams define the same matroid if and only if the are equivale
 
 To this end, we recall some definitions and go through a series of new intermediary steps.
 
-First we recall a few facts about matroids.
+First we recall a few facts about matroids, with particulars about those defined by Wilson loop diagrams.
 
 \begin{dfn} For a Wilson Loop diagram $W = (\cP, [n])$, the associated matroid $M(W)$ can be defined by any of the following sets of subsets
 \begin{enumerate}
@@ -339,122 +373,125 @@ First we recall a few facts about matroids.
 \item The rank of a set $|V| \subset [n]$, is bounded above by $\rk(V) \leq \min\{ |V| , |\Prop(V)|\}$. If $V$ is an independent set, then $\rk(V) = |V|$. Furthermore, if $v \in [n]$, and $q \in \Prop(v)$, then for any $V \subset [n]$ such that $q \not \in \Prop(V)$, $\rk(V \cup v) = \rk(V) +1$. That is, adding a vertex that supports a new propagator to a set increases the rank of the set.
 \item A circuit of a matroid is any set $C \subset [n]$ such that every proper subset $U \subsetneq C$ is independent. That is, $\rk(C) = |C|-1$. The union of circuits is called a cycle. If $C$ is a circuit of an admissible Wilson loop diagram, and $e \in C$, \bas |\Prop(C\setminus e))| \leq |C\setminus e| = \rk(C) \leq \min\{|C|, |\Prop(C\setminus e)|\}\;.\eas
     In other words, if $C$ is a circuit of a Wilson loop diagram, then \bas \rk(C) = |C|-1 = |\Prop(C)| \;. \eas
-\item A flat, $F$, of a matroid is a maximally dependent set. That is, for all $e \not \in F$ $\rk(F \cup e) = \rk(F) +1$. If $W$ is an admissible Wilson loop diagram, any group of propagators defines a flat, $F(P) = = V(P^c)^c$, called a propagator flat. It consists of all vertices of $W$ that do not support any propagators outside of $P \subset \cP$. To see that this is flat, let $v \in V(P^c)$. We have that  This consists of the vertices that only support propagators in $P$. For example, if $W$ contains with no vertices of rank $0$, we may write $F(P) = V(P^c)^c$.
+\item A flat, $F$, of a matroid is a maximally dependent set. That is, for all $e \not \in F$ $\rk(F \cup e) = \rk(F) +1$. If $W$ is an admissible Wilson loop diagram, any group of propagators defines a flat, $F(P) = V(P^c)^c$, called a propagator flat. It consists of all vertices of $W$ that do not support any propagators outside of $P \subset \cP$. To see that this is flat, let $v \in V(P^c)$. We have that there is a $q \not \in P$ such that $q \in \Prop(v)$. Therefore, by the rank function, $\rk( F(P) \cup v))> \rk(F(P))$.
 \end{enumerate}
 \end{dfn}
 
-It is worth noting that it is not necessary to list all the flats in a matroid to defined it completely, only the cyclic flats, and those that are independent sets. Namely, if $F$ is a dependent flat, it contains a circuit. Let $C \subset F$ be the largest cycle contained in $F$. Then two things are true. \begin{enumerate}
-\item $C = F(\Prop (C))$
-\item $F \setminus C$ is an independent flat
+Furthermore, in \cite{wilsonloops}, the authors show that if $F$ is a cyclic flat, then there is a $P \subset \cP$ such that $F = F(P)$.
+
+It is worth noting that it is not necessary to list all the flats in a matroid to defined it completely, only the cyclic flats, and those that are independent sets. Namely, if $F$ is a dependent flat, it contains a circuit. Let $C \subset F$ be the largest cycle contained in $F$. Then two things are true.
+
+\begin{lem} Let $W$ be a Wilson loop diagram, and $F$ is a flat. Let $C \subset F$ be the largest cycle contained in $F$. Then the following is true:
+\begin{enumerate}
+\item $C = F(\Prop (C))$ is a cyclic flat.
+\item $F \setminus C$ is an independent set. If $W$ does not contain any vertices of rank $0$, that is, all vertices support at least $1$ propagator, then $F \setminus C$ is an independent flat.
 \end{enumerate}
+\end{lem}
 
-To see the first point, note that $\rk(C) = |\Prop(C)|= \rk (F(\Prop(C)))$. For any $v\in C$ such that $\Prop(v) \subset \Prop(C)$, then $v \in F(\Prop(C))$. Therefore $S \subset F(\Prop(C))$. Suppose there is a $v \in  F(\Prop(C)) \setminus C$. Let $B$ be an independent subset of $C$ of maximal rank. The set $B \cup v$ is dependent and therefore contains a circuit. Therefore, $C \cup b$ is a cycle, which is a contradiction to $C$ being the maximal cycle in $F$.
+\begin{proof}
+If $F$ is an independent flat, then $C = \emptyset$ and the statement is trivially true.
 
-To see the second point, note that $F \setminus C$ is independent (as it contains no circuits). Furthermore, it is a flat. For any $e \not \in F$, $\rk (F \setminus C \cup e) = \rk (F\setminus C) +1$, since $F$ is a flat. For any $e \in C$,  $\rk (F \setminus C \cup e) \neq \rk (F\setminus C)$. Otherwise $F\setminus C \cup e$ would be a dependent set and therefore would contain a circuit, which contradicts the hypothesis that $C$ is the largest cycle in $F$.
+If $F$ is a dependent set, $F$ contains a circuit.
+
+To see the first point, note that $\rk(C) = |\Prop(C)| \geq F(\Prop (C)|$.  For any $v\in C$ we have that $\Prop(v) \subset \Prop(C)$. This implies that $v \in F(\Prop(C))$. Therefore $C \subset F(\Prop(C))$. This implies that $|\Prop(C)| = F(\Prop (C)|$. Suppose there is a $v \in  F(\Prop(C)) \setminus C$. Let $B$ be an independent subset of $C$ of maximal rank. The set $B \cup v$ is dependent and therefore contains a circuit. Therefore, $C \cup b$ is a cycle, which is a contradiction to $C$ being the maximal cycle in $F$.
+
+To see the second point, note that $F \setminus C$ is independent (as it contains no circuits). Furthermore, it is a flat. For any $e \not \in F$, $\rk (F \setminus C \cup e) = \rk (F\setminus C) +1$, since $F$ is a flat. For any $e \in C$,  if $\rk (F \setminus C \cup e) = \rk (F\setminus C)$, the set $F \setminus C \cup e$ is a dependent set. This occures either if $\rk{e} = 0$, or $F\setminus C \cup e$ contains a circuit of at least $2$ elements, which contradicts the hypothesis that $C$ is the largest cycle in $F$.
+\end{proof}
 
 Therefore, in the sequel, one only needs worry about cyclic and independent flats.
 
-Finally, I recall a result from the previous paper about contracted diagrams and matroids.
+\begin{cor} \label{classifyflats}
+If $F$ is a flat of a Wilson loop diagram, it can be written as the union of a cyclic flat, and thus a propagator flat, and an independent flat.
+\end{cor}
+From this we see that any propagator flat can be written as a union of a cyclic propagator flat and an independent flat.
 
-\begin{lem}
-For $W = (\cP, [n])$, write the contracted diagram $W/P = (P^c, V(P)^c)$. If $\rk F(P) = |P|$, we may identify \bas M(W/P) = \left(M(W)/ F(P)\right)|V(P)^c \;. \eas
-\end{lem}
+Given any matroid, one may restrict it to a subset of the base set. The bases of the restricted matroid come from intersecting bases of the original with the subset. It is worth noting that a the matroid defined by a subdiagram is different from the restriction of the matroid of a Wilson loop diagram to a set of vertices.
+
+\begin{dfn} \label{restrictiondfn}
+For $W = (\cP, n)$, the restricted diagram, $W|_V$ is the matroid defined by only looking at the vertices $V \subset [n]$.
+\end{dfn}
+
+The key difference between a subdiagram and a restriction is that the propagator support function does not change in the case of restriction, while it may in the case of a subdiagram. In particular, for $v \in V$, $\Prop_W(v) = \Prop_{W|_V}(v)$, while $\Prop_{(P, V(P))} (v) = \Prop_W(v) \cap P$.
+
+In the sequel, I conflate a Wilson loop diagram with the matroid it defines.
+
+
 
 \subsection{Exact subdiagrams and matroids}
 
 It has been proved that if two Wilson loop diagrams are equivalent, then the define the same matroid in ``Matroids and Wilson Loop Diagrams''. In this section, we prove the converse. Therefore, we prove several results about exact subdiagrams.
 
 
-\begin{lem} \label{exactcircuitlem}
-Let $(P, V(P))$ be an exact subdiagram of $W= (\cP, [n])$. The set $V(P)$ contains no circuits, $C$ such that  $\rk C< |P|$.
-\end{lem}
+\begin{thm} \label{exactcircuitlem}
+Let $(P, V(P))$ be a subdiagram of $W= (\cP, [n])$. This is an exact subdiagram if and only if it defines a uniform matroid of rank $|P|$.
+\end{thm}
 
 \begin{proof}
-Recall that a circuit of rank $m$ is a set $C$ of rank $m$ and size $m+1$ such that every proper subset of $C$ is independent. I.e., \emph{a circuit is a minimal dependent set.}
+A uniform matroid of rank $r$ is one in which any set of size $ \leq r$ is independent. A circuit of rank $m$ is a set $C$ of rank $m$ and size $m+1$ such that every proper subset of $C$ is independent. I.e., \emph{a circuit is a minimal dependent set.} In other words, a matroid of rank $r$ is uniform if and only if all circuits have rank $r$. If $C$ is a circuit, then $|C| = r+1$.
 
-Consider a subdiagram $(P, V(P))$ of $W$. Suppose there is a circuit, $C \subset V(P)$ such that $\rk C = m < |P|$. Write $\Prop (C) = Q \subsetneq P$. Here, $|Q| = m$. The size of the complement of $C$ is $|V(P) \setminus C| = |V(P)| -(m+1)$. However, since $C$ does not contain any propagators outside of $Q$, the set $V(P \setminus Q) \subset V(P )\setminus C$. In otherwords, there are $|P| - m$ propagators (the number of propagators in $P \setminus Q$) supported on (at most) $|V(P)|-m -1$ vertices: \bas |V(P \setminus Q)| \leq |V(P)| - m-1\;. \eas Since $(P, V(P))$ is an exact subdiagram of an admissible Wilson loop, $W$, we know that $|P| + 3 = |V(P)|$, and for any subset, $R$, of propagators of $W$, $|R|+3 \leq |V(R)|$. On there otherhand, there is a subset of propagators, $P\setminus Q$ satisfying \bas |V(P \setminus Q)| \leq |P| + 3 - m-1 = |P\setminus Q| + 2\;. \eas But this violates admissibility of $W$.
+We prove the following claim: The set $V(P)$ contains no circuits, $C$, such that  $\rk C< |P|$ in $(P, V(P))$. Since the $V(P) = |P|+3$, $\rk V(P) \leq |P|$. This implies that all circuits $C$ of $(P, V(P))$ are of maximal rank, as desired.
+
+Consider a subdiagram $(P, V(P))$ of $W$. Suppose there is a circuit, $C \subset V(P)$ such that $\rk C = |\Prop (C) | = m < |P|$. The size of the complement of $C$ is $|V(P) \setminus C| = |V(P)| -(m+1)$. However, since $C$ does not contain any propagators outside of $\Prop (C)$, the set $V(P \setminus \Prop(C)) \subset V(P )\setminus C$. In otherwords, there are $|P| - m$ propagators supported on (at most) $|V(P)|-m -1$ vertices: \bas |V(P \setminus \Prop (C))| \leq |V(P)| - m-1\;. \eas Since $W$ is an admissible Wilson loop diagram, the subdiagram $(P, V(P))$ satisfies $|R| +3 \leq |V(R)|$ for all $R \subset P$.  This gives \bas |P| - m +3 \leq V(P \setminus \Prop(C))\;. \eas These two inequalities are compatible if and only if \bas |P| +3 < |V(P)| \;. \eas
+
+In other words, the matroid associated to thet subdiagram $(P, V(P))$ is not uniform if and only if $(P, V(P))$ is not exact.
 \end{proof}
 
+In \cite{wilsonloops}, the authors show that all exact Wislon loop diagrams correspond to positroids. That is, they correspond to matroids that can be represented by elements of the positive Grassmannians $\Gr(|\cP|, |V|)$.
 
-\begin{eg}
-The converse does not hold. Consider, for instance, the diagram
+\begin{dfn}
+Given a Wilson loop diagram $W$, define the positroid cell associated to a Wislon loop diagram, $\Sigma(W)$, to be the cell in the CW complex on $\Gr(|\cP|, |V|)$ defined by the realizations of $W$ that lie in $\Gr(|\cP|, |V|)$.
+\end{dfn}
 
+With this definition in mind, we have the following corrolary:
 
-\begin{tikzpicture}[rotate=68] % change rotation manually as needed
-\begin{scope}
-\drawWLD{8}{2} % vertices, radius
-\drawprop{1}{0}{4}{1} % this draws a prop from (4,5) to (6,7); {0} means *centre* of the edge 4--5, {n} bumps it n "steps" clockwise from centre (for use when you have several props on one edge)
-\drawprop{2}{0}{4}{-1}
-\drawprop{8}{0}{5}{-1}
-\drawprop{7}{0}{5}{1}
-\end{scope}
-\end{tikzpicture}
+\begin{cor}
+Let $(P, V(P))$ be an exact subdiagram of $W$. The matroid associated to this subdiagram corresponds to the top dimensional cell in $\Gr(|P|, |V(P)|)$.
+\end{cor}
 
-The subdiagram $( \{(1, 4), (5, 8)\}, \{1, 2, 4, 5, 6, 8\})$ is not exact, but it has no cycles of rank $2$.
-\end{eg}
+\begin{proof}
+The unique top dimensional cell of $\Gr(|P|, |V(P)|)$ is defined by all points in $\Gr(|P|, |V(P)|)$ such that all Plucker coordinates are strictly greater than $0$. Since $(P, V(P))$ is an exact subdiagram, this all $|P| \times |P|$ minors are non-zero. Intersecting these with the cases with the positive Grassmannians demands that all minors be strictly positive.
+\end{proof}
 
-However, all is not lost. To avoid the issue of exact diagrams being subdiagrams of other exact subdiagrams (for instance, any subdiagram $(q, V_q)$, for $q \in \cP$ is exact), I introduce a definition.
+To avoid the issue of exact diagrams being subdiagrams of other exact subdiagrams (for instance, any subdiagram $(q, V_q)$, for $q \in \cP$ is exact), I introduce a definition.
 
 \begin{dfn}
 We say $(P, V(P))$ is a maximal exact subdiagram of $W$ if there is not other exact subdiagram $(Q, V(Q))$ containing it.
 \end{dfn}
 
-Then we have the following statement about the structure of circuits and Wilson Loop diagram.
+Since the matroids defined by the subdiagram $(P , V(P)$ is not the same as the matroid associated to $W_{V(P)}$, one cannot say that the $W_{V(P)}$ is a uniform matroid. Infact, for any subset $U \subset V(P)$, $\rk_{W_{V(P)}}(U) \geq \rk_{(P , V(P)}(U)$. This is because adding propagators to vertices can only increase the rank. In particular this implies that, for any subset $U \subset V(P)$, if $|U| \leq |P|$, then $U$ is independent in both the restricted matroid $W_{V(P)}$, and the original, $W$.
 
-\begin{cor}
-Let $W$ be a Wilson Loop Diagram. No maximal exact subdiagram $(P, V(P))$ contains a circuit $C \subset V(P)$ of rank $\rk(C) \leq |P|$.
-\end{cor}
-
+In what follows, maximal exact subdiagrams play a significant role. First, we show that maximal exact subdiagrams of an admissible Wilson loop diagram are disjoint.
 
 \begin{lem}
-Let $W = (\cP, [n])$ be a Wilson loop diagram, and $(P, V(P))$ a maximal exact subdiagram with $P \subsetneq \cP$. Then the set $V(P)^c = F(P^c)$ is a propagator flat with rank  \bas \rk F(P^c) = |P^c| \;. \eas
+Let $W = (\cP, n)$ be an admissible Wilson loop diagram, and $(Q, V(Q))$, $(R, V(R))$ two maximal exact subdiagrams. Then $Q\cap R = \emptyset$.
 \end{lem}
 
 \begin{proof}
-To see that $V(P)^c$ is a propagators flat by construction. It remains to check that this this has maximal rank.
-
-Notice that $n= |V(P)| + |F(P^c)| \geq |P| + |P^c| +4$, and $|V(P)| = |P| +3$. Therefore \bas |F(P^c)| > |P^c| \;.\eas In other words, $F(P^c)$ is a dependent flat.
-
-We claim that if $C$ is the largest cycle in $F(P^c)$, then $\Prop(C) = P^c$. In other words, $\rk F(P^c) = |P^c|$. Otherwise, $F(P^c) = C \cup F$, where $F$ is an independent flat. In other words, $\rk (F) = i < |P^c| - \rk (C)$. Then $F \cup V(P) = V(Q)$ where $|Q| \geq |P| +i$ while $F \cup V(P) \leq |P| + 3 + i$. Therefore, either $W$ is not a Wilson loop diagram, or $(P, V(P))$ is not a maximal exact subdiagram.
+Consider an exact subset of a maximally exact subdiagram, $T \subset Q$. For $p \in Q \setminus T$, $|V(T \cup p)| = |T| +1 +3  = |V(T)| +1$. That is, by extending an exact subdiagram to a larger one, one extends the vertex set by exactly on vertex per proppagator. Therefore, if $T \neq \emptyset = Q \cap R$, \bas |V(Q \cup R)| = |T| +3 + |Q \setminus T| + |R \setminus T| = |Q \cup R| + 3\;.\eas Therefore, if $(Q, V(Q))$ and $(R, V(R))$ are two exact subdiagrams such that $Q\cap R \neq \emptyset$, then $(Q \cup R, V(Q \cup R))$ is exact.
 \end{proof}
 
 
-There are several corollaries of Lemma \ref{exactcircuitlem} that are useful. There are many more than I list here, we can find a corollary for each equivalent way of representing these positroids.
-
-\begin{cor} \label{exactindepcor}
-If the subdiagram $(P, V(P))$ is exact in $W= (\cP, [n])$, every subset $S \subset V(P)$ of size $|S| \leq |P|$ is independent.
-\end{cor}
-
-\begin{proof}
-Since $V(P)$ has no circuits of rank $< |P|$, no set of size $|S| \leq |P|$ contains a circuit, and is therefore, independent.
-\end{proof}
-
-\begin{cor} \label{exactposcor}
-If the subdiagram $(P, V(P))$ is exact in $W= (\cP, [n])$, it represents a totally positive $\Grtnn(|P|, |V(P)|)$ cell of the matroid represented by $W$.
-\end{cor}
-
-\begin{proof}
-Since there are no circuits of rank $m < |P|$, every subset of size $|P|$ is a basis. This defines the totally positive cell $\Grtnn(|P|, |V(P)|)$.
-\end{proof}
-
-%\begin{rmk}
-%Sian: Your observation that every Grassman Necklace sees the exact subdiagrams as "gapless strings" on $V(P)$ is also a corrollary of this. (The gaps in a Grassmann necklace come from the existance of circuits. No circuits $\Leftrightarrow$ no gaps in necklace.) However, I can't come up with a clean enough statement of your idea to write it as a corrollary. Feel free to feed me a statement and I will happily write it up.
-%\end{rmk}
-
-It is worth noting that all of these have converses if when we consider diagrams, and stop considering subdiagrams. Namely:
-
-\begin{lem}\label{exactequivs}
-Let $W = (\cP, [n])$ be a Wilson loop diagram. Then the following are equivalent. \begin{enumerate}
-\item $W$ is exact.
-\item All subsets $V$ of size $|V| = |\cP|$ are bases.
-\item The only cycles in $W$ have rank $|\cP|$.
-\item The only dependent flat of $W$ is $F(\cP)$. This is also a cyclic flat.
-\end{enumerate}
+\begin{lem} \label{maxexactcomplementrank}
+Let $W = (\cP, [n])$ be a Wilson loop diagram, and $(P, V(P))$ an exact subdiagram with $P \subsetneq \cP$. Then the set $V(P)^c = F(P^c)$ is a propagator flat of maximal rank  \bas \rk F(P^c) = |P^c| \;. \eas If $(P, V(P))$ is maximal, then $F(P^c)$ is cyclic.
 \end{lem}
 
 \begin{proof}
-Obvious?
+By construction, $V(P)^c$ is a propagator flat. Furthermore, it is not empty. In particular, since $(P, V(P))$ is an exact subdiagram, the vertices $V(P)$ cannot support a larger set of propagators (otherwise $W$ would no longer be admissible). Therefore, since $P \subsetneq \cP$, $V(P)^c = F(P^c)$ is not an empty set. 
+
+Notice that $n= |V(P)| + |F(P^c)| \geq |P| + |P^c| +4$, and $|V(P)| = |P| +3$. Therefore \bas |F(P^c)| > |P^c| \;.\eas In other words, $F(P^c)$ is a dependent flat. By corollary \ref{classifyflats} $F(P^c)$ is the union of a cyclic flat and an independent flat. 
+
+Let $(P, V(P))$ be maximal exact subdiagram. Suppose $F(P^c) = C \cup F$, where $C$ is the largest cyclic flat contained in $F(P^c)$ and $F$ is a non-empty independent set. Since $C = F(\Prop(C))$, we can write $V(Q)^c = F(\Prop(C))$, with \ba Q = (\Prop(C))^c \label{Qdef}\;. \ea Furthermore, \ba \rk(F) = |F| \leq \rk(F(P^c)) - \rk(C)  \leq |P^c| - \rk(C) \;. \label{increasingrank}\ea The first equality comes from the fact that $F$ is an independent set. Combining \eqref{Qdef} and \eqref{increasingrank} gives \ba |P| + |F| \leq |P| + |P^c| - \rk(C) = |Q| \;. \label{Qsizebound}\ea Furthermore, since $V(Q) = F \cup V(P)$, we may write  \ba |V(Q)| = |F| + |V(P)| = |F| + |P| +3 \label{VQsize} \;.\ea Combining this with \eqref{Qsizebound} gives $|V(Q)| - 3 \leq |Q|$. That is, either $W$ was not admissible, or $(P,V(P))$ was not a maximal exact subdiagram. In otherwords, $F$ cannot be non-empty, proving that $F(P^c)$ is a cyclic flat, and therefore of maximal rank.
+
+Let $(Q, V(Q))$ be an exact subdiagram that is not maximal, with $Q \subset P$ defining he maximal exact subdiagram above. Then by lemma \ref{??} $|V(P)| = |V(Q)| + |P \setminus Q|$. Let $F(P^c)$ be the cyclic set defined as the complement of $V(P)$. Then $V(Q)^c = F(P^c) \cup F$, where $F$ is an independent set of size $|P \setminus Q|$ and with $(P \setminus Q) \subset \Prop (F)$. Thereofore, $\rk (F) = |Q^c|$. 
 \end{proof}
+
+While one still cannot equate a subdiagram with a restriction, this lemma allows one to write a maximal exact subdiagram as a contraction. First, recall a result from \cite{wilsonloops} about contracted diagrams and matroids.
+
+\begin{lem}
+For $W = (\cP, [n])$, write the contracted diagram $W/P = (P^c, V(P)^c)$. If $\rk F(P) = |P|$, we may identify \bas M(W/P) = M(W)/ F(P) \;. \eas
+\end{lem}
+
+In other words, a maximally exact subdiagram $(P, V(P))$  can be written as a contraction by the complementary propagator flat: \bas (P, V(P)) = W/F(P^c) \;.\eas
 
 Now I am ready to prove the main theorem of this section.
 
@@ -465,20 +502,15 @@ Let $W= (\cP, [n])$ and $W'= (\cP', [n])$ be two Wilson Loop diagrams. They defi
 \begin{proof}
 One direction has been proved in previous work, but I give a different proof here to be consistent with the method of this document.
 
-Write $W = (P \cup R, [n])$ and $W' = (P \cup R', [n])$, where $P = \cP \cap \cP'$.
+Assume that $W$ and $W'$ are equivalent. Without loss of generality, write $W = (P \cup R, [n])$ and $W' = (P \cup R', [n])$, where $P \subset \cP \cap \cP'$ and $(R, V(R))$ and $(R', V(R'))$ are two maximally exact subdiagrams, with $R \neq R'$, but $V(R) = V(R')$. If this is not the case, one may always find a family of diagram, $\{W_i\}$ satisfying this condition and forming a transitive chain connecting $W$ to $W'$ in the equivalence class.
 
-Assume that $W$ and $W'$ are equivalent. Let $(\{Q_i, V(Q_i)\})$ and $(\{Q'_i, V(Q'_i)\})$ be the sets of maximal exact subdiagrams that intersect $V(R)$ and $V(R')$ respectively. By Lemma \ref{exactcircuitlem}, if there is a circuit in any $C_i \subset V(R_i)$, it is of rank $|R_i|$ and there is a corresponding circuit $C'_i \subset V(R'_i)$ such that $C_i = C'_i$. Any other circuits of $W$ and $W'$ lie entirely within the complementary set of vertices, \bas(\cup_i V(R_i))^c = \cap_i F(R_i^c) = \cap_i F(R^{' c}_i) \;.\eas As this depends wholely on the propagators in $P$, which is common to both diagrams, these circuits are also the same. Since all circuits are the same, $M(W) = M(W')$.
+Let $U \subset V(R)$ be any subset of size $|U| = |R|$. The set $U$ is independent in the subdiagram $(R, V(R))$, and thus in $W$. The complementary set $F(P)$ is a flat of maximal rank by lemma \ref{maxexactcomplementrank} ($\rk(F(P)) = |P|$). Let $B \subset F(P)$ be a maximal indpendent set ($\rk B = |P|$) in $F(P)$. Since $F(P)$ is a flat, adding any element of $V(R)$ to $B$ increases the rank. Therefore, any basis of $W$ can be written as $B \cup U$. However, since $F(P)$ is common to both $W$ and $W'$, and $V(R) = V(R')$, any any basis of $W'$ can also be written $B \cup U$. Thus both matroids have the same bases sets, proving that they are the same.
 
-For the converse, assume that $M(W) = M(W')$. Then the cyclic flats of $W$ correspond to the cyclic flats of $W'$. Let $Q \subset P$ be the largest subset of propagators such that $F(Q)$ is a cyclic flat. This may be an empty set. Let $Q^c$ and $Q^{c'}$ be the complementary set of propagators in $\cP$ and $\cP'$ respectively. They contain $R$ and $R'$ respectively. We see that $V(Q^c) = V(Q^{c'})$.
+For the converse, assume that the matroids associated to $W$ and $W'$ are the same: $M(W) = M(W')= M$. Let $\{(P_i, V(P_i)\}_{i=1}^k$ and $\{(P'_i, V(P'_i)\}_{i=1}^l$ be the sets of maximally exact subdiagrams of $W$ and $W'$. Write $F_i = F(P_i)$ and $F'_i = F(P^{'c}_i)$ to be the complementary cyclic flats. By Lemma \ref{??} $M/F_i$ is a uniform matroid. Thereofore, $k = l$, and we may write $V(P_i) = V(P'_i)$. 
 
-Since $F(Q)$ is a cyclic flat, it has maximal rank. Therefore, we can write \bas M(W)/F(Q) = M(Q^c, V(Q^c)) = M(W')/F(Q) = (Q^{c'}, V(Q^{c'})) \;. \eas Therefore, it is sufficient to compare the contracted Wilson loop diagrams $W/Q = M(Q^c, V(Q^c))$ and $ W'/Q = (Q^{c'}, V(Q^{c'}))$. We do so iteratively by quotienting by the cyclic flats.
+Reorganize the vertex sets as follows: \ba \cup_{P_i \neq P_i'} V(P_i) = V(\cup_{P_i \neq P'_i} P_i)  \label{vertexsets}\; .\ea Since maximal exact subdiagrams are disjoint, and single propapagators may define maximal subdiagrams, $\cup_{i = 1}^k P_i = \cup_{i = 1}^k P'_i = \cP$. Then equation \eqref{vertexsets} becomes \bas \cap_{P_i \neq P_i'} (F(P_i^c))^c = F(\cup_{P_j = P'_j} P_j)^c \;.\eas These flats may, of course, be empty.\todo{Is this paragraph necessary?}
 
-If there do not exist a $T \subsetneq Q^c$ and $T' \subsetneq Q^{c'}$ such that $F(T) = F(T')$ are cyclic, then, by \ref{exactequivs}, $W/Q$ and $W'/Q$ are exact. Therefore, they are equivalent, as are $W$ and $W'$.
-
-If there do exist $T \subsetneq Q^c$ and $T' \subsetneq Q^{c'}$, such that $F(T) = F(T')$ are cyclic, chose $T$ and $T'$ such that they do not contain any other proper subset of propagators that define cyclic flats. Then the Wilson loop diagram $(T, V(T))$ and $(T', V(T'))$ are both exact, and correspond to maximal exact subdiagrams of $(W/Q)$ and $(W'/Q')$. Furthermore, $V(T) = V(T')$. Otherwise, $F(Q^c \setminus T) \neq F(Q^{c'} \setminus T')$, with contradicts that the corresponding matroids are equal; $M(W/Q)=M(W'/Q')$. Therefore, and differences in the propagators structure between the subdiagrams $(T, V(T))$ and $(T', V(T'))$ correspond to different representations of equivalent subdiagrams.
-
-We next consider $(W/Q)/T$ and $(W'/Q')/T'$.
-
+Define a family of Wilson loop diagrams, $W_0$ to $W_k$ defined such that $W_0 = W$ and $W_i$ is derived from $W_{i-1}$ by replacing the propagator set $P_i$ with $P'_i$. In this manner, $W' = W_k$ and $W_i \sim W_{i+1}$, making $W \sim W'$. 
 \end{proof}
 
 
