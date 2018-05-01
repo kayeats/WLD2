@@ -1083,8 +1083,8 @@ Let $W$ be a Wilson loop diagram with $n$ vertices.  Let $C(W)$ be the matrix \h
 \begin{itemize}
   \item For each $i \in \interval{1}{n}$, we construct a factor $r_i$ as follows
     \begin{itemize}
-      \item Use Algorithm~\label{alg:put GN on WLD} to obtain a bijection between the propagators and the $i-1$st Grassmann necklace element, $I_{i-1}$.  Write $I_{i-1}(p)$ for the vertex associated to propagator $p$ under this bijection.
-      \item Use Algorithm~\label{alg:put GN on WLD} to obtain a bijection between the propagators and the $i$th Grassmann necklace element, $I_{i}$.  Write $I_{i}(p)$ for the vertex associated to propagator $p$ under this bijection.
+      \item Use Algorithm~\ref{alg:put GN on WLD} to obtain a bijection between the propagators and the $i-1$st Grassmann necklace element, $I_{i-1}$.  Write $I_{i-1}(p)$ for the vertex associated to propagator $p$ under this bijection.
+      \item Use Algorithm~\ref{alg:put GN on WLD} to obtain a bijection between the propagators and the $i$th Grassmann necklace element, $I_{i}$.  Write $I_{i}(p)$ for the vertex associated to propagator $p$ under this bijection.
       \item Let $S_i$ be the set of propagators $p$ such that $I_{i-1}(p) \neq I_{i}(p)$.
       \item $\Delta_{I_i}$ is the determinant of the $k \times k$ minor of $C(W)$ indicated by $I_i$.
       \item Let $r_i$ be $\Delta_{I_i}$ with all variables from rows associated to $p\not\in S_i$ set to $1$.
@@ -1096,16 +1096,31 @@ Let $W$ be a Wilson loop diagram with $n$ vertices.  Let $C(W)$ be the matrix \h
 \begin{prop}\label{prop alg gives rad}
   With notation as in Algorithm~\ref{alg WLD to denom via GN} we have the following:
   \begin{enumerate}
-    \item Each $\Delta_{I_i}$ is homogeneous and splits into linear and quadratic factors.  
-    \item All linear factors of  $\Delta_{I_i}$ are single variables and all quadratic factors are $2\times 2$ determinants of single variables.
+    \item Each $\Delta_{I_i}$ is homogeneous.
+    \item Each $\Delta_{I_i}$ splits into linear and quadratic factors.  All linear factors of  $\Delta_{I_i}$ are single variables and all quadratic factors are $2\times 2$ determinants of single variables.
     \item Quadratic factors in $r_i$ arise precisely when propagators $p$ and $q$ are supported on a common edge $(a,b)$ and $I_i(p)=a$, $I_i(q)=b$.
     \item $r_i$ divides $\Delta_{I_i}$.
     \item $R$ is the radical of $\prod_{i=1}^{n}\Delta_{I_i}$.
   \end{enumerate}
 \end{prop}
 
-\begin{proof}
-\note{This is the next thing I plan to work on.  If you could tell me how many of these things you already have proved elsewhere that would be helpful to me.}
+\begin{proof}  
+\begin{enumerate}
+    \item The nonzero entries of $C(W)$ are independent indeterminates and so every $i\times i$ minor of $C(W)$ is homogeneous of degree $i$ or is $0$.  Thus each $\Delta_{I_i}$ is homogeneous.  
+    \item Using the expression for the determinant as a sum over permutations we see that $\Delta_{I_i}$ is a sum over bijections between $I_i$ and $\mathcal{P}$.  The nonzero terms in this sum are precisely those bijections such that each propagator is associated to one of its supporting vertices in $I_i$, since only those locations in $C(W)$ are nonzero.  Since the nonzero entries of $C(W)$ are independent there can be no cancellation between terms in this expansion.
+
+Suppose $\Delta_{I_i}$ has an irreducible factor $f$.  Let $\mathcal{P}'$ be the set of propagators which contribute a variable to $f$ and let $J$ be the set of vertices which contribute a variable to $f$.  
+
+The first claim is that the minor of $C(W)$ associated to $\mathcal{P}'$ and $J$ is precisely $f$.  
+
+Proof of claim: By the structure of determinants $\Delta_{I_i} = fg$ where $g$ involves only variables associated to propagators not in $\mathcal{P}'$ and associated to vertices not in $J$.  Expanding out $fg$, then, we get a signed sum of monomials where in each monomial $f$ contributes those variables associated both to a propagator in $\mathcal{P}'$ and to a vertex in $J$ and $g$ contributes those variables associated both to a propagator not in $\mathcal{P}'$ and to a vertex not in $J$ and no other variables appear.  Since there is no cancellation between terms, this means that $\Delta_{I_i}$ contains no other variables.  Therefore $\Delta_{I_i}$ is the same as the determinant of the matrix obtained by taking the submatrix of $C(W)$ which gave $\Delta_{I_i}$ and setting all these other variables to $0$.  This new matrix is, up to permutations of rows and columns, a block matrix with one block for $\mathcal{P}'$ and $J$ and the other block for the complements.  Thus its determinant, and hence also $\Delta_{I_i}$, is the product of the minors for these two blocks.  By which variables appear, these two factors are also $f$ and $g$ and so in particular $f$ is the minor of $C(W)$ associated to $\mathcal{P}'$ and $J$.
+
+Now suppose for a contradiction that $f$ has degree $\geq 3$. \note{This is where I'm working next and maybe the result isn't true.  I will send you an example unless I figure it out myself.}
+
+    \item 
+    \item 
+    \item 
+  \end{enumerate}
 \end{proof}
 
 
