@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.10.15)  9 MAY 2018 20:11
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.10.15)  11 MAY 2018 12:33
 entering extended mode
 **"C:/Users/ganga/Dropbox/WLD2/General WLD combinatorics.tex"
 ("C:/Users/ganga/Dropbox/WLD2/General WLD combinatorics.tex"
@@ -802,6 +802,9 @@ Package xypdf Info: Line width: 0.43799pt on input line 259.
 
 {C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
 
+LaTeX Warning: Marginpar on page 2 moved.
+
+
 LaTeX Warning: Citation `wilsonloop' on page 2 undefined on input line 364.
 
 [2]
@@ -822,23 +825,25 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 439.
- [5]
+ [5] [6]
 
-LaTeX Warning: Citation `wilsonloops' on page 6 undefined on input line 485.
-
-[6]
-
-LaTeX Warning: Reference `' on page 7 undefined on input line 496.
+LaTeX Warning: Marginpar on page 7 moved.
 
 
-LaTeX Warning: Reference `decomplem' on page 7 undefined on input line 497.
+LaTeX Warning: Citation `wilsonloops' on page 7 undefined on input line 496.
+
+
+LaTeX Warning: Reference `' on page 7 undefined on input line 507.
+
+
+LaTeX Warning: Reference `decomplem' on page 7 undefined on input line 508.
 
 [7]
 
-LaTeX Warning: Citation `wilsonloops' on page 8 undefined on input line 529.
+LaTeX Warning: Citation `wilsonloops' on page 8 undefined on input line 540.
 
-
-Overfull \hbox (23.01668pt too wide) in paragraph at lines 542--543
+[8]
+Overfull \hbox (23.01668pt too wide) in paragraph at lines 553--554
 []\OT1/cmr/m/n/10.95 The unique top di-men-sional cell of $\U/msb/m/n/10.95 G[]
 \OT1/cmr/m/n/10.95 (\OMS/cmsy/m/n/10.95 j\OML/cmm/m/it/10.95 P\OMS/cmsy/m/n/10.
 95 j\OML/cmm/m/it/10.95 ; \OMS/cmsy/m/n/10.95 j\OML/cmm/m/it/10.95 V\OT1/cmr/m/
@@ -849,7 +854,7 @@ it/10.95 ; \OMS/cmsy/m/n/10.95 j\OML/cmm/m/it/10.95 V\OT1/cmr/m/n/10.95 (\OML/c
 mm/m/it/10.95 P\OT1/cmr/m/n/10.95 )\OMS/cmsy/m/n/10.95 j\OT1/cmr/m/n/10.95 )$
  []
 
-[8] [9]
+[9]
 
 LaTeX Warning: Reference `??' on page 10 undefined on input line 587.
 
@@ -868,45 +873,20 @@ LaTeX Warning: Citation `reversingOh' on page 16 undefined on input line 875.
 [16]
 LaTeX Font Info:    Font shape `OMS/cmr/m/it' in size <10.95> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 895.
- [17] [18] <specialp.pdf, id=81, 253.36256pt x 112.54045pt>
-File: specialp.pdf Graphic file (type pdf)
+ [17] [18] [19] [20] [21] [22] [23] [24]
 
-<use specialp.pdf>
-Package pdftex.def Info: specialp.pdf used on input line 961.
-(pdftex.def)             Requested size: 253.36194pt x 112.54016pt.
- [19 <./specialp.pdf>]
-<Le_diagrams.pdf, id=116, 281.95337pt x 80.7015pt>
-File: Le_diagrams.pdf Graphic file (type pdf)
- <use Le_diagrams.pdf>
-Package pdftex.def Info: Le_diagrams.pdf used on input line 993.
-(pdftex.def)             Requested size: 281.95267pt x 80.70131pt.
+LaTeX Warning: Marginpar on page 25 moved.
 
-[20] [21 <./Le_diagrams.pdf>] <messy.pdf, id=134, 286.7714pt x 199.12794pt>
-File: messy.pdf Graphic file (type pdf)
-
-<use messy.pdf>
-Package pdftex.def Info: messy.pdf used on input line 1048.
-(pdftex.def)             Requested size: 286.77069pt x 199.12744pt.
- [22 <./messy.pdf>]
-<messyD.pdf, id=198, 258.66638pt x 102.41261pt>
-File: messyD.pdf Graphic file (type pdf)
- <use messyD.pdf>
-Package pdftex.def Info: messyD.pdf used on input line 1057.
-(pdftex.def)             Requested size: 258.66574pt x 102.41234pt.
- [23 <./messyD.pdf>] [24] [25]
-
-LaTeX Warning: Marginpar on page 26 moved.
-
-[26] ("General WLD combinatorics.aux")
+[25] [26] ("General WLD combinatorics.aux")
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 18738 strings out of 493323
- 352434 string characters out of 3139065
- 507280 words of memory out of 3000000
- 21852 multiletter control sequences out of 15000+200000
+ 18686 strings out of 493323
+ 351402 string characters out of 3139065
+ 499611 words of memory out of 3000000
+ 21805 multiletter control sequences out of 15000+200000
  15164 words of font info for 60 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  61i,19n,76p,3281b,925s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -929,9 +909,9 @@ nts/cm/cmsy9.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
 ti10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msam1
 0.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.p
 fb>
-Output written on "General WLD combinatorics.pdf" (26 pages, 520047 bytes).
+Output written on "General WLD combinatorics.pdf" (26 pages, 368210 bytes).
 PDF statistics:
- 312 PDF objects out of 1000 (max. 8388607)
+ 169 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 33 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
