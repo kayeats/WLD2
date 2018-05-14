@@ -1153,7 +1153,23 @@ The first claim is that the minor of $C(W)$ associated to $\mathcal{P}'$ and $J$
 
 Proof of claim: By the structure of determinants $\Delta_{I_i} = fg$ where $g$ involves only variables associated to propagators not in $\mathcal{P}'$ and associated to vertices not in $J$.  Expanding out $fg$, then, we get a signed sum of monomials where in each monomial $f$ contributes those variables associated both to a propagator in $\mathcal{P}'$ and to a vertex in $J$ and $g$ contributes those variables associated both to a propagator not in $\mathcal{P}'$ and to a vertex not in $J$ and no other variables appear.  Since there is no cancellation between terms, this means that $\Delta_{I_i}$ contains no other variables.  Therefore $\Delta_{I_i}$ is the same as the determinant of the matrix obtained by taking the submatrix of $C(W)$ which gave $\Delta_{I_i}$ and setting all these other variables to $0$.  This new matrix is, up to permutations of rows and columns, a block matrix with one block for $\mathcal{P}'$ and $J$ and the other block for the complements.  Thus its determinant, and hence also $\Delta_{I_i}$, is the product of the minors for these two blocks.  By which variables appear, these two factors are also $f$ and $g$ and so in particular $f$ is the minor of $C(W)$ associated to $\mathcal{P}'$ and $J$.
 
-Now suppose for a contradiction that $f$ has degree $\geq 3$. \note{This is where I'm working next and maybe the result isn't true.  I will send you an example unless I figure it out myself.}
+A consequence of this claim is that every linear factor of $\Delta_{I_i}$ is a $1\times 1$ minor of $C(W)$, hence is a single variable, and every irreducible quadratic factor of $\Delta_{I_i}$ is a $2\times 2$ minor of $C(W)$, hence is a $2\times 2$ determinant of single variables.
+
+The final thing to prove for this item is that there are no irreducible factors $f$ of degree 3 or more.  Now suppose for a contradiction that $f$ has degree $\geq 3$. Note that by removing the propagators which do not contribute to $f$ and changing $i$ to be the first vertex which contributes to $f$ we obtain a different admissible diagram for which $f=\Delta_{I_i}$ and $i\in I_i$.  Showing that this different admissible diagram gives a contradiction is sufficient, and so we may assume that $W$ has $\Delta_{I_i}$ irreducible of degree 3 or more and $i\in I_i$.
+
+Let $p$ be the propagator such that $I_i(p) = i$. There are two cases to consider.  
+
+\textbf{Case I}: Suppose $p$ is supported on $(i-1, i, m, m+1)$ for some $m >_i i$.  Then $I_{i+1}(p) = m$ by Lemma~\ref{lem susama}.  Call the propagators which appear before $p$ is closed the propagators inside $p$. \note{It might be nice to have general language for this inside/outside idea.  What do you think.}  The construction of $I_{i+1}$ begins as for $I_i$ after the first step; they can only differ once $p$ contributes to $I_{i+1}$.  Thus if a propagator contributes $m$ in $I_i$ then it cannot be a propagator inside $p$ (nor $p$ itself).  Let $S$ be the set of propagators inside $p$ along with $p$ itself.  Two things can now happen; if neither $m$ nor $m+1$ appear in $I_i$ then the only vertex in the support of $p$ in $I_i$ is $i$, and so the row of $p$ in the matrix of $\Delta_{I_i}$ has only one nonzero entry; hence $\Delta_{I_i}$ has a linear factor which is a contradiction.  The other think which can happen is that at least one of $m$ and $m+1$ is in $I_i$.  However, all the propagators in $S$ are mapped by the bijection of $I_{i}$ to vertices strictly before $m$ so the matrix giving $\Delta_{I_i}$ has the form
+\[
+\begin{bmatrix} A & B \\ 0 & C\end{bmatrix}
+\]
+where $A$ is the matrix for the propagators in $S$ and the vertices in $I_i(S)$ which is square of size $|S|\times |S|$. No other propagators can be supported on these vertices since all other propagators are outside of $p$ and $p$ is the first propagator supported at $i$.  This explains the zero block.  Therefore $\Delta_{I_i} = \det A \det C$ and both factors are nontrivial since $m$ appears in $I_i$.  This contradicts the irreducibility of $\Delta_{I_i}$.
+
+\textbf{Case II}:
+
+\note{I am here}
+
+\note{Proving that there are no factors larger than quadratic has been much tougher than I anticipated.  Maybe you have a better idea of how to approach it.}
 
     \item
     \item
