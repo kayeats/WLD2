@@ -1135,7 +1135,7 @@ Let $W$ be a Wilson loop diagram with $n$ vertices.  Let $C(W)$ be the matrix \h
   With notation as in Algorithm~\ref{alg WLD to denom via GN} we have the following:
   \begin{enumerate}
     \item Each $\Delta_{I_i}$ is homogeneous.
-    \item Each $\Delta_{I_i}$ splits into linear and quadratic factors.  All linear factors of  $\Delta_{I_i}$ are single variables and all quadratic factors are $2\times 2$ determinants of single variables.
+    \item Each $\Delta_{I_i}$ splits into linear and quadratic factors.  All linear factors of  $\Delta_{I_i}$ are single variables and all irreducible quadratic factors are $2\times 2$ determinants of single variables.
     \item Quadratic factors in $r_i$ arise precisely when propagators $p$ and $q$ are supported on a common edge $(a,b)$ and $I_i(p)=a$, $I_i(q)=b$.
     \item $r_i$ divides $\Delta_{I_i}$.
     \item $R$ is the radical of $\prod_{i=1}^{n}\Delta_{I_i}$.
@@ -1157,19 +1157,30 @@ A consequence of this claim is that every linear factor of $\Delta_{I_i}$ is a $
 
 The final thing to prove for this item is that there are no irreducible factors $f$ of degree 3 or more.  Now suppose for a contradiction that $f$ has degree $\geq 3$. Note that by removing the propagators which do not contribute to $f$ and changing $i$ to be the first vertex which contributes to $f$ we obtain a different admissible diagram for which $f=\Delta_{I_i}$ and $i\in I_i$.  Showing that this different admissible diagram gives a contradiction is sufficient, and so we may assume that $W$ has $\Delta_{I_i}$ irreducible of degree 3 or more and $i\in I_i$.
 
-Let $p$ be the propagator such that $I_i(p) = i$. There are two cases to consider.  
+Let $p$ be the propagator such that $I_i(p) = i$. There are two cases to consider.  These are illustrated in Figure~\ref{fig no big factors}
 
-\textbf{Case I}: Suppose $p$ is supported on $(i-1, i, m, m+1)$ for some $m >_i i$.  Then $I_{i+1}(p) = m$ by Lemma~\ref{lem susama}.  Call the propagators which appear before $p$ is closed the propagators inside $p$. \note{It might be nice to have general language for this inside/outside idea.  What do you think.}  The construction of $I_{i+1}$ begins as for $I_i$ after the first step; they can only differ once $p$ contributes to $I_{i+1}$.  Thus if a propagator contributes $m$ in $I_i$ then it cannot be a propagator inside $p$ (nor $p$ itself).  Let $S$ be the set of propagators inside $p$ along with $p$ itself.  Two things can now happen; if neither $m$ nor $m+1$ appear in $I_i$ then the only vertex in the support of $p$ in $I_i$ is $i$, and so the row of $p$ in the matrix of $\Delta_{I_i}$ has only one nonzero entry; hence $\Delta_{I_i}$ has a linear factor which is a contradiction.  The other think which can happen is that at least one of $m$ and $m+1$ is in $I_i$.  However, all the propagators in $S$ are mapped by the bijection of $I_{i}$ to vertices strictly before $m$ so the matrix giving $\Delta_{I_i}$ has the form
+\begin{figure}
+  \includegraphics{no_big_factors}
+  \caption{The two cases in the proof that no factors of $\Delta_{I_i}$ have degree 3 or more.}\label{fig no big factors}
+\end{figure}
+
+\textbf{Case I}: Suppose $p$ has one end on the edge $(i-1, i)$.  Thus $p$ is supported on $(i-1, i, m, m+1)$ for some $m >_i i$.  Then $I_{i+1}(p) = m$ by Lemma~\ref{lem susama}.  Call the propagators which appear before $p$ is closed the propagators inside $p$. \note{It might be nice to have general language for this inside/outside idea.  What do you think.}  The construction of $I_{i+1}$ begins as for $I_i$ after the first step; they can only differ once $p$ contributes to $I_{i+1}$.  Thus if a propagator contributes $m$ in $I_i$ then it cannot be a propagator inside $p$ (nor $p$ itself).  Let $S$ be the set of propagators inside $p$ along with $p$ itself.  Two things can now happen; if neither $m$ nor $m+1$ appear in $I_i$ then the only vertex in the support of $p$ in $I_i$ is $i$, and so the row of $p$ in the matrix of $\Delta_{I_i}$ has only one nonzero entry; hence $\Delta_{I_i}$ has a linear factor which is a contradiction.  The other think which can happen is that at least one of $m$ and $m+1$ is in $I_i$.  However, all the propagators in $S$ are mapped by the bijection of $I_{i}$ to vertices strictly before $m$ so the matrix giving $\Delta_{I_i}$ has the form
 \[
 \begin{bmatrix} A & B \\ 0 & C\end{bmatrix}
 \]
 where $A$ is the matrix for the propagators in $S$ and the vertices in $I_i(S)$ which is square of size $|S|\times |S|$. No other propagators can be supported on these vertices since all other propagators are outside of $p$ and $p$ is the first propagator supported at $i$.  This explains the zero block.  Therefore $\Delta_{I_i} = \det A \det C$ and both factors are nontrivial since $m$ appears in $I_i$.  This contradicts the irreducibility of $\Delta_{I_i}$.
 
-\textbf{Case II}:
+\textbf{Case II}: Suppose $p$ has one end on the edge $(i, i+1)$.  If no other propagators are supported on $i$ then the column for vertex $i$ has only one nonzero entry in it and so $\Delta_{I_i}$ has a linear factor which is a contradiction.  Thus we can take $q$ to be the propagator such that $I_i(q)=i+1$ and we know that $q$ has one end on the edge $(i, i+1)$ and is adjacent to $p$ on that edge in the counterclockwise direction.  Write $(i, i+1, j, j+1)$ for the support of $q$.  The situation for $q$ is very similar to case I, in particular $I_{i+1}(q) = j$ by Lemma~\ref{lem susama} and so if $j\in I_i$ then the propagator which contributes it is outside of $q$.  Thus similarly to case I, if we let $S$ be the set of propagators inside $q$ along with $p$ and $q$ themselves then all propagators in $S$ are mapped by $I_i$ to vertices strictly before $j$ and no other propagators cover vertices strictly before $j$.  Thus the matrix giving $\Delta_{I_i}$ has the form
+\[
+\begin{bmatrix} A & B \\ 0 & C\end{bmatrix}
+\]
+where $A$ is the matrix for the propagators in $S$ and the vertices in $I_i(S)$. Again two things can now happen.  If some vertex $j$ or larger in $>_i$ appears in $I_i$ then $B$ and $C$ have at least one column and so the block form of the matrix gives a nontrivial factorization of $\Delta_{I_i}$ which is a contradiction.  If no vertex $j$ or larger is in $I_i$ then the matrix giving $\Delta_{I_i}$ is just $A$.  Looking in more detail into $A$, note that of supports of $p$ and $q$, only $i$ and $i+1$ are in $I_i$ and hence
+\[
+A = \begin{bmatrix} D & 0 \\ E & F\end{bmatrix}
+\]
+where $D$ is the $2\times 2$ matrix indexed by the propagators $p$ and $q$ and the vertices $i$ and $i+1$.  By assumption $\Delta_{I_i}$ had degree 3 or more and so this matrix decomposition gives that $\Delta_{I_i}$ factors into nontrivial factors contradicting our assumptions.
 
-\note{I am here}
-
-\note{Proving that there are no factors larger than quadratic has been much tougher than I anticipated.  Maybe you have a better idea of how to approach it.}
+All cases have now been covered and so $\Delta_{I_i}$ has only irreducible factors of degree $2$ or less.
 
     \item
     \item
