@@ -1134,7 +1134,7 @@ Let $W$ be a Wilson loop diagram with $n$ vertices.  Let $C(W)$ be the matrix \h
 \begin{prop}\label{prop alg gives rad}
   With notation as in Algorithm~\ref{alg WLD to denom via GN} we have the following:
   \begin{enumerate}
-    \item Each $\Delta_{I_i}$ is homogeneous.
+    \item Each $\Delta_{I_i}$ is homogeneous as is each $r_i$.
     \item Each $\Delta_{I_i}$ splits into linear and quadratic factors.  All linear factors of  $\Delta_{I_i}$ are single variables and all irreducible quadratic factors are $2\times 2$ determinants of single variables.
     \item Quadratic factors in $r_i$ arise precisely when propagators $p$ and $q$ are supported on a common edge $(a,b)$ and $I_i(p)=a$, $I_i(q)=b$.
     \item $r_i$ divides $\Delta_{I_i}$.
@@ -1144,7 +1144,7 @@ Let $W$ be a Wilson loop diagram with $n$ vertices.  Let $C(W)$ be the matrix \h
 
 \begin{proof}
 \begin{enumerate}
-    \item The nonzero entries of $C(W)$ are independent indeterminates and so every $i\times i$ minor of $C(W)$ is homogeneous of degree $i$ or is $0$.  Thus each $\Delta_{I_i}$ is homogeneous.
+    \item The nonzero entries of $C(W)$ are independent indeterminates and so every $i\times i$ minor of $C(W)$ is homogeneous of degree $i$ or is $0$.  Thus each $\Delta_{I_i}$ is homogeneous.  Furthermore, each row contributes one factor to each term in the expansion of $\Delta_{I_i}$ so the result of setting the variables from a subset of rows to $1$ is still homogeneous.  Thus each $r_i$ is homogeneous.
     \item Using the expression for the determinant as a sum over permutations we see that $\Delta_{I_i}$ is a sum over bijections between $I_i$ and $\mathcal{P}$.  The nonzero terms in this sum are precisely those bijections such that each propagator is associated to one of its supporting vertices in $I_i$, since only those locations in $C(W)$ are nonzero.  Since the nonzero entries of $C(W)$ are independent there can be no cancellation between terms in this expansion.
 
 Suppose $\Delta_{I_i}$ has an irreducible factor $f$.  Let $\mathcal{P}'$ be the set of propagators which contribute a variable to $f$ and let $J$ be the set of vertices which contribute a variable to $f$.
@@ -1164,7 +1164,7 @@ Let $p$ be the propagator such that $I_i(p) = i$. There are two cases to conside
   \caption{The two cases in the proof that no factors of $\Delta_{I_i}$ have degree 3 or more.}\label{fig no big factors}
 \end{figure}
 
-\textbf{Case I}: Suppose $p$ has one end on the edge $(i-1, i)$.  Thus $p$ is supported on $(i-1, i, m, m+1)$ for some $m >_i i$.  Then $I_{i+1}(p) = m$ by Lemma~\ref{lem susama}.  Call the propagators which appear before $p$ is closed the propagators inside $p$. \note{It might be nice to have general language for this inside/outside idea.  What do you think.}  The construction of $I_{i+1}$ begins as for $I_i$ after the first step; they can only differ once $p$ contributes to $I_{i+1}$.  Thus if a propagator contributes $m$ in $I_i$ then it cannot be a propagator inside $p$ (nor $p$ itself).  Let $S$ be the set of propagators inside $p$ along with $p$ itself.  Two things can now happen; if neither $m$ nor $m+1$ appear in $I_i$ then the only vertex in the support of $p$ in $I_i$ is $i$, and so the row of $p$ in the matrix of $\Delta_{I_i}$ has only one nonzero entry; hence $\Delta_{I_i}$ has a linear factor contributed by $p$ and $i$ which is a contradiction.  The other thin which can happen is that at least one of $m$ and $m+1$ is in $I_i$.  However, all the propagators in $S$ are mapped by the bijection of $I_{i}$ to vertices strictly before $m$ so the matrix giving $\Delta_{I_i}$ has the form
+\textbf{Case I}: Suppose $p$ has one end on the edge $(i-1, i)$.  Thus $p$ is supported on $(i-1, i, m, m+1)$ for some $m >_i i$.  Then $I_{i+1}(p) = m$ by Lemma~\ref{lem susama}.  Call the propagators which appear before $p$ is closed the propagators inside $p$. \note{It might be nice to have general language for this inside/outside idea.  What do you think.}  The construction of $I_{i+1}$ begins as for $I_i$ after the first step; they can only differ once $p$ contributes to $I_{i+1}$.  Thus if a propagator contributes $m$ in $I_i$ then it cannot be a propagator inside $p$ (nor $p$ itself).  Let $S$ be the set of propagators inside $p$ along with $p$ itself.  Two things can now happen; if neither $m$ nor $m+1$ appear in $I_i$ then the only vertex in the support of $p$ in $I_i$ is $i$, and so the row of $p$ in the matrix of $\Delta_{I_i}$ has only one nonzero entry; hence $\Delta_{I_i}$ has a linear factor contributed by $p$ and $i$ which is a contradiction.  The other thing which can happen is that at least one of $m$ and $m+1$ is in $I_i$.  However, all the propagators in $S$ are mapped by the bijection of $I_{i}$ to vertices strictly before $m$ so the matrix giving $\Delta_{I_i}$ has the form
 \[
 \begin{bmatrix} A & B \\ 0 & C\end{bmatrix}
 \]
@@ -1187,7 +1187,19 @@ All cases have now been covered and so $\Delta_{I_i}$ has only irreducible facto
 Now let $f$ be a quadratic factor of $\Delta_{I_i}$.  By the previous part we know that $f$ is a $2\times 2$ minor coming from two propagators, call them $p$ and $q$, and two vertices, call them $a <_i b$.  It remains to show that $a$ and $b$ are adjacent.  From this we can conclude that $p$ and $q$ each have one end on $(a,b)$, as any other way for both $p$ and $q$ to be supported on two consecutive vertices would contradict noncrossing or the density requirement of admissibility.
 
 As in the proof of the previous part, make a new admissible diagram by removing the propagators which come before $f$ and set $i=a$.  The cases in the proof of the previous part show how $\Delta_{I_i}$ factors; in particular the vertices covering the second end of $p$ either do not appear in $I_i$ or contribute to a different factor of $\Delta_{I_i}$ than $p$ and $a$ do.  By assumption $b$ contributes to the same factor as $a$.  Therefore $(a,b)$ is an edge.
-    \item
+    \item Consider $p\in S_i$.  $\Delta_{I_i}$ is homogeneous linear in the variables of the row corresponding to $p$.  By the second statement of the proposition, either exactly one variable in the row corresponding to $p$ appears in $\Delta_{I_i}$ and this variable is a factor of $\Delta_{I_i}$, or exactly two variables from the row corresponding to $p$ appear in $\Delta_{I_i}$ and they appear as part of a quadratic factor.  In the first case, let the variable be $x$, then $x$ is a factor of both $r_i$ and $\Delta_{I_i}$ and is the only variable from this row in either polynomial.  Now suppose two variables from the row $p$ appear in a quadratic factor.  By the previous part, there is another propagator $q$ and an edge $(a,b)$ such that the factor involving the variables of $p$ in $\Delta_{I_i}$ is the $2\times 2$ minor coming from $p, q$ and $a, b$, and $I_i(p)=a$, $I_i(q)=b$.  Let this minor be $x_1x_4-x_2x_3$ with $x_1, x_2$ from $p$ and $x_3,x_4$ from $q$.  There are two situations which can occur, both illustrated in Figure~\ref{fig quadratic}.
+
+\begin{figure}
+  \includegraphics{quadratic}
+  \caption{The situations giving a quadratic factor with variables appearing in $r_i$.}\label{fig quadratic}
+\end{figure}
+
+By Lemma~\ref{lem susama}, since $I_{i-1}(p)\neq a$, then $I_{i-1} <_{i-1} a$ and no other vertex covered by $p$ lies between them.  In the case that $b<_i a$ and $q$ is taken before $p$ in $I_i$, this means that $I_{i-1}(p)=b$ and so $I_{i-1}(q)\neq b$.  Thus $q\in S_i$ and so $x_1x_4-x_2x_3$ is a factor of $r_i$.  Now suppose $a<_i b$ and $p$ is taken before $q$ in $I_i$.  If $I_{i-1}(q)=a$ then $a\in S_i$ and so again $x_1x_4-x_2x_3$ is a factor of $r_i$.  If not, then $I_{i-1}(q) = b$ by Lemma~\ref{lem susama}.  This implies that some other propagator $s$ is associated to $a$ by $I_{i-1}$.  If $s$ also has one end on $(a,b)$ then by Lemma~\ref{lem susama}, immediately after $s$ contributes $a$ it must contribute $b$.  However we know $I_i(s) \neq a$ because $I_i(p)=a$, so $I_i(s)=b$ which is also impossible as $I_i(q)=b$.  Thus $s$ is supported on $a$ but does not have an edge on $(a,b)$ and so $s$ must have an end on $(a-1, a)$ and so be inside $p$ from the point of view of $i-1$.  Say $s$ is supported on $(j, j+1, a-1, a)$ and $p$ is supported on $(k, k+1, a, b)$ with $i-1 \leq_{i-1} k+1 \leq_{i-1} j+1$.  Again by Lemma~\ref{lem susama}, immediately after $s$ contributes $a$ it must contribute $j$ and so $I_i(a)=j$.  
+
+Finally, then we claim that $I_i(a)\neq j$.  If $i-1=k+1$ then $I_{i-1}(p) = i-1$ and so the construction $I_i$ proceeds as for $I_{i-1}$ without $p$ and cannot differ until $p$, thus the contribution of $a$ cannot change between $I_{i-1}$ and $I_i$.  Now suppose $i-1 \leq_{i-1} k$, then $i \leq_{i} j+1$ \note{I am here, sorry to leave it in the middle but I have things to do with other visitors now}
+
+
+
     \item
   \end{enumerate}
 \end{proof}
