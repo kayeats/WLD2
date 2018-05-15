@@ -357,7 +357,7 @@ W_3 = \begin{tikzpicture}[rotate=67.5,baseline=(current bounding box.east)]
 	\end{tikzpicture} .
 \eas
 
-The diagrams $W_1 \sim W_2$ because $(\{(5,8), (5,7), \{5,6,7,8,1\})$ and $(\{(5,8), (7,8), \{5,6,7,8,1\})$ are the corresponding differing subdiagrams. Furthermore, there is the equivalence $W_2 \sim W_3$ due to the exact subdiagrams $(\{(1,4), (3,4)\}, \{1,2,3,4,5\})$ and $(\{(1,4), (1,3)\}, \{1,2,3,4,5\})$. This forces an equivalence between $W_1$ and $W_3$, even though one cannot partition the propagators of each into a an exact subdiagram (that may vary between the diagrams) and a complement that is fixed.  \end{eg} 
+The diagrams $W_1 \sim W_2$ because $(\{(5,8), (5,7), \{5,6,7,8,1\})$ and $(\{(5,8), (7,8), \{5,6,7,8,1\})$ are the corresponding differing subdiagrams. Furthermore, there is the equivalence $W_2 \sim W_3$ due to the exact subdiagrams $(\{(1,4), (3,4)\}, \{1,2,3,4,5\})$ and $(\{(1,4), (1,3)\}, \{1,2,3,4,5\})$. This forces an equivalence between $W_1$ and $W_3$, even though one cannot partition the propagators of each into a an exact subdiagram (that may vary between the diagrams) and a complement that is fixed.  \end{eg}
 
 \section{Wilson Loop diagrams as matroids}
 
@@ -488,7 +488,7 @@ Given a maximal decomposition of $\tau(W)$, the maximal triangulated pieces are 
 \end{cor}
 
 \begin{proof}
-If two maximal triangulated pieces were not disjoint, then one could take the union of the edges involved to get a larger triangulated piece. \note{Is it this simple? This is a variant of the proof on propagators}
+Consider any two disctinct maximal triangulations of $\tau(W)$. These two triangulations correspond to subtrees of $T(W)$. These subtrees intersect, at most, at a vertex in an interior of $\tau(W)$. Since the subtrees corresponding to the maximal subtrees are edge disjoint, and the edges of $T(W)$ correspond to the edges of $\tau(W)$, this forces the maximal triangulations to be edge disjoint as well.
 \end{proof}
 
 \subsection{Exact subdiagrams}
@@ -658,8 +658,8 @@ Also talk about Le diagrams.
 
 Here, we give an algorithm for passing from Wilson loop diagrams to Grassmann Necklaces.
 
-Let $\interval{1}{n}$ denote the set of integers $\{1,2, \dots, n\}$, and $\binom{[n]}{k}$ the set of all $k$-subsets of $\interval{1}{n}$.  For each $j \in \interval{1}{n}$, we can define a total order $\leq_j$ on the interval $\interval{1}{n}$ by
-\[ j <_j j+1 <_j \dots <_j n <_j 1 \dots <_j j-1.\]
+Let $\binom{[n]}{k}$ be the set of all $k$-subsets of the cyclically ordered set $[n]$.  For each $j \in [n]$, we can define a total order $\leq_j$ on the interval $[n]$ by
+\bas j <_j j+1 <_j \dots <_j n <_j 1 \dots <_j j-1\;.\eas
 This in turn induces a total order on $\binom{[n]}{k}$, namely the lexicographic order with respect to $<_j$.  It also induces a separate partial order $\gale{j}$ on $\binom{[n]}{k}$ (the \textit{Gale order}), which is defined as follows: if $A = [a_1 <_j a_2 <_j \dots <_j a_k]$,  $B = [b_1 <_j b_2 <_j \dots <_j b_k] \in \binom{[n]}{k}$, then
 \[A \gale{j} B \text{ if and only if } a_r \leq_j b_r \text{ for all }1 \leq r \leq k.\]
 For example, in $\binom{[6]}{3}$ we have $[2,5,6]\gale{2} [2,6,1]$ but $[2,5,6]\not\gale{2}[3,4,6]$.
@@ -673,32 +673,51 @@ A Grassmann necklace of type $(k,n)$ is a sequence $\II = (I_1, \dots, I_n)$ of 
 \end{itemize}
 \end{dfn}
 
-By [ref], the Grassmann necklaces of type $(k,n)$ are in 1-1 correspondence with the positroid cells in $Gr(k,n)^{tnn}$.  Further, if $\II$ is the Grassmann necklace associated to a cell $\PP$, then the bases of $\PP$ can be computed using the Gale order $\gale{i}$ for each $i \in \interval{1}{n}$:
-\[\BB(\PP) = \left\{J \in \binom{[n]}{k}\ :\ I_i \gale{i} J \ \forall i \in \interval{1}{n}\right\}.\]
+By [ref], the Grassmann necklaces of type $(k,n)$ are in 1-1 correspondence with the positroid cells in $Gr(k,n)^{tnn}$.  Further, if $\II$ is the Grassmann necklace associated to a cell $\PP$, then the bases of $\PP$ can be computed using the Gale order $\gale{i}$ for each $i \in [n]$:
+\[\BB(\PP) = \left\{J \in \binom{[n]}{k}\ :\ I_i \gale{i} J \ \forall i \in [n]\right\}.\]
 We now describe an algorithm that, when applied to an admissible Wilson loop diagram, produces exactly the Grassmann necklace of the corresponding positroid.
 
 \begin{algorithm}\label{alg:put GN on WLD}
-Let $W$ be a Wilson loop diagram with $n$ vertices.  Note that whenever the algorithm below refers to the ``rightmost'' propagator supported on a vertex $i$, we mean the rightmost from the point of view of standing in the middle of the diagram and looking directly at $i$.
+Let $W = (\cP, n)$ be an admissible Wilson loop diagram. This gives an algorithm for calculating the set $I_a$, for $a \in [n]$.
 
 \begin{enumerate}
-\item Fix a vertex $s \in \interval{1}{n}$, and set $i:=s$.
+\item Fix a vertex $a \in [n]$. Set $i:=a$ and $I_a = \emptyset$.
+\item While $\cP \neq \emptyset$, perform the following steps.
 \begin{enumerate}
-\item \textbf{Step $i$ for vertex $s$}: If there is at least one propagator in the current diagram supported on $i$, add the label $i$ to the edge $(s,s+1)$ and delete the rightmost propagator supported on $i$; otherwise do nothing.
-\item If there are no propagators left in the diagram at this point, go to (2) below.
-\item Otherwise, increment $i$ by 1 and repeat from (a).
+\item \textbf{Step $i$ for vertex $s$}: If $\Prop(i) \neq \emptyset$ in $W$, write $I_a = I_a \cup i$. Let $p \in \Prop(p)$ be the clockwise most propagator supported on $i$. Write $W = (\cP \setminus p, n)$.
+\item If $Prop(i) = \emptyset$ do nothing.
+\item Increment $i$ by 1 and repeat from (a).
 \end{enumerate}
-\item Replace all propagators in the diagram, and repeat from (1) for a new vertex $s$.  Continue until the algorithm has been applied to all vertices.
 \end{enumerate}
-\end{algorithm}
+\end{algorithm} \note{I don't like how this is written. Any ideas?}
 
 
 \begin{prop}\label{res:alg k labels}
-If $W$ is an admissible Wilson loop diagram, then Algorithm~\ref{alg:put GN on WLD} puts exactly $k$ distinct labels on each edge.
-\end{prop}
+If $W = (\cP, n)$ is an admissible Wilson loop diagram with $|\cP| = k$, then Algorithm~\ref{alg:put GN on WLD} puts exactly $k$ distinct labels on each edge.
+\end{prop} \note{is there a way to do this theorem using the chords and polygons?}
 \begin{proof}
-It is enough to show that the algorithm terminates in at most $n$ steps for each vertex.  Suppose this doesn't happen, i.e. there is a propagator $P$ which survives the first $n$ steps of the algorithm for some starting vertex $s$.  We will show that this always gives a contradiction in an admissible diagram by constructing an inductive sequence of propagators on strictly decreasing regions of the diagram.
+It is enough to show that the algorithm terminates in at most $n$ steps for each $a \in [n]$. In other words, that all $k$ propagators of $W$ are removed by the time the algorithm has cycled through all the vertices, starting at $a$. Suppose this doesn't happen, i.e. there is a propagator $p_0 \in \cP$ which survives the first $n$ steps of the algorithm for some starting vertex $s$.  We will show that this always gives a contradiction in an admissible diagram by constructing an inductive sequence of propagators on strictly decreasing regions of the diagram.
 
-Rotating and cyclically renumbering if necessary, we can assume that $s=1$ and that $P$ is supported on $(a,a+1,b,b+1)$ with $1 \leq a < b$.  Since $P$ is not removed at step $b+1$, there is another propagator $p_1$ to its right which is also supported on $b+1$: see Figure~\ref{fig:base step of alg induction}.
+Fix an $a \in [n]$. Write $V_{p_0} = (i_{p_0},i_{p_0}+1,j_{p_0},j_{p_0}+1)$ with $a \leq_a i_{p_0} <_a j_{p_0}$.
+
+Since $p$ is not removed by step $j_{p_0}+1$, there are $4$ propagators $q_1, r_1, s_1, t_1$ that are removed at step $i_{p_0},i_{p_0}+1,j_{p_0}$ , or $j_{p_0}+1$ respectively, allowing $p_0$ to remain after $n$ steps. Let us consider the propagators $s_1$ and $t_1$, preventing $p_0$ from being eliminated at steps $b_0$ and $b_0+1$. Let $s_1 = (i_{s_1}, j_{s_1})$, and $t_1 = (i_{t_1}, j_{t_1})$, where \bas i_{p_0} <_a i_{t_1} <_a i_{s_1} < j_{s_1} \leq_a j_{t_1} = j_{p_0}\;.\eas Note that $j_{r_1}$ must either be $j_{p_0}-1$ or $j_{p_0}$. Otherwise, it would not be removed at the $j_{p_0}^{th}$ step. Admissibility prevents $i_{p_0} = i_{t_1}$ as this would imply that both $p_0 = (i_{p_0}, j_{p_0})$ and $t_1 = (i_{p_0}, j_{p_0})$.
+
+In order for $t_1$ and $s_1$ to be removed at step $j_{p_0}$ and $j_{p_0}+1$ respectively, they cannot be removed at steps $i_{t_1}$ and $i_{t_1} +1$ or $i_{s_1}$ and $i_{s_1}+1$ respectively. Therefore, there needs to be two pairs of propagators, $q_2$, $r_2$ which are removed at step $i_{s_1}$ and $i_{s_1}+1$, and $q_3$, $r_3$ which are removed at step $i_{t_1}$ and $i_{t_1}+1$. Note that this implies that $i_{p_0}+2 <_a i_{t_1}$. Otherwise, there is not room to place both the propagators $q_3$, $r_3$.
+
+For each $q_m$ and $r_m$ thus identified, there must be other pairs of propagators, $p_{m'}$ and $q_{m'}$ (with $m'> m$) that are removed at steps $i_{q_m}$ and $i_{q_m} +1$ or $i_{r_m}$ and $i_{r_m}+1$. Note that under this construction, $i_{r_m} <_a i_{q_m}$.
+
+There are now three cases to be considered. Let $p_k$ indicate a propagator identified at an earlier stage of this construction ($p_k \in \{q_k, r_k, s_k, t_k\}$, or $k=0$).
+
+ \begin{description}
+\item[$i_{r_m} = i_{p_k}+2$] Then there is not room to place both the propagators $q_{m'}$, and $r_{m'}$. Thus $r_m$ is removed at the step $i_{r_m} + 1$. Therefore, $p_0$ contributes at either $j_{p_0}$ or $j_{p_0}+1$.
+ \item[$i_{r_m} = i_{p_k}+1$] Then there is not room to place either the propagators $q_{m'}$, and $r_{m'}$. Thus $r_m$ is removed at the step $i_{r_m}$. Therefore, $p_0$ contributes at either $j_{p_0}$ or $j_{p_0}+1$.
+ \item[$i_{r_m} = i_{p_k}$] Since $k < m$, the propagator $p_k$ is not removed at step $i_{p_k}$ or $i_{p_k}+1$. Therefore consider the propagators that ensure that $q_m$ is not removed at $i_{q_m}$ or $i_{q_m}+1$. By the above argument, there exists an $r_{m'}$ such that $i_{r_m'} = i_{r_m}$. This requires the existence of propagators that that $q_m'$ is not removed at $i_{q_m'}$ or $i_{q_m'}+1$. This argument continues at infinitum, contradicting both the fact that there are only a finite number of propagators in $W$, and that at most $i_{q_m} - i_{r_m}-1$ propagators can be supported on the cyclic interval $\{i_{r_m}, i_{q_m}+1\}$.
+ \end{description}
+
+\todo{can this be simplified? Does it just need a picture?}
+
+\begin{comment}
+such that $b+1 \in V_{p_1}$, with an endpoint more clockwise on $W$ than the endpoint of $p$ supported by $b+1$: see Figure~\ref{fig:base step of alg induction}.
 
 \begin{figure}
 \begin{tikzpicture}[rotate=15]
@@ -769,10 +788,74 @@ Case I & & Case II
 \end{figure}
 
 By induction, we will eventually find a propagator on a region with 3 or fewer vertices, which is inadmissible.
+\end{comment}
+\end{proof}
+
+Infact, we have proved more than the fact that each propagator contributes to the $I_a$ by the $n^{th}$ step. We have shown the each vertex $v \in V_p$ is contributed to some $I_{a_{p,v}}$ by $p$ for some $a_{p,v} \in [n]$
+
+\begin{cor}\label{every vertex contributed cor}
+For each propagator $p \in \cP$, and vertex $v \in V_p$, there is an $a_{p,v}$ such that $p$ contributes $v$ to $I_{a_{p,v}}$.
+\end{cor}
+
+\begin{proof}
+Fix $p = (i, j)$. By symmetry, we need only consider the vertices $j$, $j+1$.
+
+Suppose $p$ never contributed $j$ via Algorithm \ref{alg:put GN on WLD}. There there would be at least one propagator $s_1 = (i_{s_1}, j_{s_1})$ that contributed $j$ for all vertices $a \in [n]$. The vertex $j_{s_1} \in \{j, j-1\}$. Then there would have to be propagators $q_2$, $r_2$ that contributed $i_{s_1}$ and $i_{s_2}$ for all $a \in [n]$. But this is would create the need for an infinite number of propagators in a finite Wilson Loop diagram, which is impossible.
+
+The same argument holds for $j+1$, except that one has to add the existence of a second propagator $t_1 = (i_{t_1}, j)$ to the construction above.
+
+By cyclic symmetry, this is sufficient to prove that $p$ must also contribute $i$ and $i+1$ at some point.
+
+\end{proof}
+
+For $W = (\cP, n)$, let $W' = (P, V_P)$ be a subdiagram. Write $\cI^{W'}$ be the set of $|P|$ tuples defined by \ref{alg:put GN on WLD} on $W'$. Furthermore, for any $p = (i, j) \in \cP$, write $\cP_{i,j} =  \{ q = (i_q, j_q)\in \cP | i \leq_i i_q <_i j_q \leq_i j\}$ to be the set of propagators supported on the cyclic interval $[i, j]$. Similarly, write $\cP_{j,i} =  \{ q = (i_q, j_q)\in \cP | j \leq_j i_q <_j j_q \leq_j i\}$ to be the set of propagators supported on the cyclic interval $[j,i]$. Note that $p = \cP_{i,j} \cap \cP_{j,i}$. 
+
+We then have the following corrollary:
+
+
+\begin{cor} \label{rightmost prop last cor}
+Given any Wilson loop diagram, $W = (\cP, n)$, and $p = (i,j) \in \cP$, consider the subdiagrams $W_L  = (\cP_{i,j}, n)$ and $W_R = (\cP_{j,i}, n)$. Then the propagator $p$ contributes last to the entries $I_{i+2}^{W_L}$ and $I_{j+2}^{W_R}$ respectively.
+\end{cor}
+
+\begin{proof}
+Consider $W_L$. Since every propagator in a Wilson loop diagram must contribute to $I_{i+2}^{W_L}$, it remains to check that no propagator can contribute after $p$. This could only happen if there were a different propagator, $q$ with an endpoint on edge $i$. If $q = (i , i+2)$, then it would be the first propagators to be removed, with contribution $i+2$. If it $q = (i, l)$, with $l > i+2$, then it would contribute either $l$ or $l+1$. Otherwise, one would need the existence of an infinite set of other propagators, as above.
+
+A similar argument works for $W_R$. 
 \end{proof}
 
 
-To prove that this algorithm gives the Grassmann necklace of the diagram we need two lemmas.
+
+
+\begin{lem} \label{vertex cyclic int lem}
+For every $v \in V_p$, there is a cyclic interval such that $p$ contributes $v$ to all $I_{a}$ for in said interval.
+\end{lem}
+
+\begin{proof}
+
+Fix $p \in \cP$, with $p = (i,j)$. Consider two subsets of propagators in $\cP$, $Q = \{q_m\}$, $R = \{r_n\}$. Let $Q \subseteq \cP_{i,j}$ be the set of propagators with one end point either on the edge $j-1$ or $j$. Label the other endpoint of $q_m$ as the edge $k_m$, with $i \leq_i k_1 <_i k_2 <_i \ldots \leq_i j$. In other words, they are ordered from closest to furthest away from $p$. 
+
+Similarly, define $R \subset \cP_{j,i}$ be the set of propagators with one end point either on the edge $i-1$ or $i$. I label the other endpoint of $r_n$ as the edge $l_n$, with $j \leq_j l_1 <_j l_2 <_j \ldots \leq_j i$. In other words, they are ordered from closest to furthest away from $p$.
+
+\todo{Insert picture here}
+
+For any $m >|Q|$ (resp. $m > |R|$), write $k_m= j$ (resp. $l_n = i$).
+
+We make the following four claims:
+
+\begin{enumerate}
+\item The propagator $p$ contributes $i$ for all $I_a$ for $a \in [a_{p,i} = k_2+2, b_{p,i} = l_1+1]$ 
+\item The propagator $p$ contributes $i+1$ for all $I_a$ for $a \in [b_{p,i} +1, a_{p, j} -1]$. 
+\item The propagator $p$ contributes $j$ for all $I_a$ for $a \in [a_{p,j} = l_2+2, b_{p,j} = k_1+1 ]$
+\item The propagator $p$ contributes $j+1$ for all $I_a$ for $a \in [k_1+2, k_2+1 ]$
+\end{enumerate}
+
+This proof follows from the argument in Corollary \ref{rightmost prop last cor}, and Corrollary \ref{every vertex contributed cor} that show that $p$ contributes last to $I_{i+2}^{W_L}$. In particular, $p$ contributes after all the propagators in $Q$ in $I_{i+2}$. Furthermore, it contributes either $j$ or $j+1$ to this entry. If $q_1 \neq (k_1 = i, j-1)$, then $p$ contributes $j$. This is because $i+2 \leq_i k_m+1$ for all $m > 0$, which forces the propagators $q_m$ to contribute at the $k_m$ or $k_m+1$ vertex.
+
+\note{there seems to be a problem with the proof as written, namely, it isn't consistent with itself if you change from $p$ to $q_1$.}
+
+\end{proof}
+
+
 
 \begin{lem}\label{lem susama}
   \note{this lemma should be rephrased to be more in your language, it was just copied from the rank section, also it needs a cite or a proof}
