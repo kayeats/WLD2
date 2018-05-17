@@ -357,7 +357,32 @@ W_3 = \begin{tikzpicture}[rotate=67.5,baseline=(current bounding box.east)]
 	\end{tikzpicture} .
 \eas
 
-The diagrams $W_1 \sim W_2$ because $(\{(5,8), (5,7), \{5,6,7,8,1\})$ and $(\{(5,8), (7,8), \{5,6,7,8,1\})$ are the corresponding differing subdiagrams. Furthermore, there is the equivalence $W_2 \sim W_3$ due to the exact subdiagrams $(\{(1,4), (3,4)\}, \{1,2,3,4,5\})$ and $(\{(1,4), (1,3)\}, \{1,2,3,4,5\})$. This forces an equivalence between $W_1$ and $W_3$, even though one cannot partition the propagators of each into a an exact subdiagram (that may vary between the diagrams) and a complement that is fixed.  \end{eg}
+The diagrams $W_1 \sim W_2$ because $(\{(5,8), (5,7)\}, \{5,6,7,8,1\})$ and $(\{(5,8), (7,8)\}, \{5,6,7,8,1\})$ are the corresponding differing subdiagrams. Furthermore, there is the equivalence $W_2 \sim W_3$ due to the exact subdiagrams $(\{(1,4), (3,4)\}, \{1,2,3,4,5\})$ and $(\{(1,4), (1,3)\}, \{1,2,3,4,5\})$. This forces an equivalence between $W_1$ and $W_3$, even though one cannot partition the propagators of each into a an exact subdiagram (that may vary between the diagrams) and a complement that is fixed.  \end{eg}
+
+Each Wilson loop diagram, $W = (\cP, n)$ with $|\cP| = k$ is associated to a $k \times n$ matrix with non-zero real variable entries, called $C(W)$:
+
+\ba C(W)_{p,q} = \begin{cases} c_{p,q} & \textrm{ if } q \in V(p) \\
+0  & \textrm{ if } q \not \in V(p)  \end{cases}
+\;. \label{C(W) dfn}\ea 
+
+\begin{eg}
+For example, ordering the propagators of $W_1$ above as follows: \bas (1,4), \, (2,4), \, (5,7), \, (5,8) \eas we may write 
+\bas C(W_1) = \left(
+\begin{array}{cccccccc}
+c_{1,1} & c_{1,2} & 0 & c_{1,4} & c_{1,5} & 0 & 0 & 0 \\
+0 & c_{2,2} & c_{2,3} & c_{2,4} & c_{2,5} & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & c_{3,5} & c_{3,6} & c_{3,7} & c_{3,8} \\
+c_{4,1} & 0 & 0 & 0 & c_{4,5} & c_{4,6} & 0 & c_{4,8}  \\
+\end{array}
+\right) \;.\eas
+
+\end{eg}
+
+These $C(W)$ parametrize a subspace of $\Gr(k, n)$ as shown in \cite{wilsonloops}, call it $\Sigma(W)$. The Wilson loop diagrams also define a volume form on $\Sigma(W)$: \bas \Omega(W) = \frac{\prod_{r=1}^{|\cP|} \prod_{v \in V_{p_r}} \textrm{d}c_{p_r}}{R(W)} \;. \eas The denominator $R(W)$ is a polynomial defined by $2 \times 2$ and $1 times 1$ minors of $C(W)$ as defined below.
+
+\begin{dfn}
+For $W = (\cP, n)$, $R(W) = \prod_{e=1}^n R_e$, with $R_e$ defined by the propagators ending on it. For any edge $e$ of $W$, order the propagators incident on $e$ as $\{p_1 \ldots p_r\}$, ordered such that $p_1$ is closest to the vertex $e$, $p_r$ closest to $e+1$, and $p_i$ is closer to $e$ than $p_{i+1}$. Then \bas R_e =  c_{p_1,e+1} \prod_{j= 1}{s-1} \left((c_{p_j,e} c_{p_{j+1},e+1} - c_{p_{j+1},e} c_{p_{j},e+1} ) \right) c_{p_s,e}\;.\eas Note that in this notation, if $s = 1$, $R_e = c_{p,e} c_{p,e+1}$.
+\end{dfn}
 
 \section{Wilson Loop diagrams as matroids}
 
@@ -384,6 +409,8 @@ First we recall a few facts about matroids, with particulars about those defined
 \end{enumerate}
 \end{dfn}
 
+Note that one may substitute values into $C(W)$ to realize the matroid assoicated to $W$ in this manner.
+
 It is worth noting that it is not necessary to list all the flats in a matroid to defined it completely, only the cyclic flats, and those that are independent sets. Namely, if $F$ is a dependent flat, it contains a circuit. Let $C \subset F$ be the largest cycle contained in $F$. Then two things are true.
 
 \begin{lem} Let $W$ be a Wilson loop diagram, and $F$ is a flat. Let $C \subset F$ be the largest cycle contained in $F$. Then the following is true:
@@ -406,12 +433,11 @@ To see the second point, note that $F \setminus C$ is independent (as it contain
 Therefore, in the sequel, one only needs worry about cyclic and independent flats.
 
 \begin{cor} \label{classifyflats}
-If $F$ is a flat of a Wilson loop diagram, it can be written as the union of a cyclic propagato flat and an independent flat. \end{cor}
+If $F$ is a flat of a Wilson loop diagram, it can be written as the union of a cyclic propagator flat and an independent flat. \end{cor}
 
 In particular, any propagator flat can be written as a union of a cyclic propagator flat and an independent flat.
 
-
-Finally, we note the differences between subdiagrams of Wilson loop diagrams, and restrictions or contractions of the associated matroids.
+Finally, we note the differences between subdiagrams of Wilson loop diagrams, and restrictions or cotractions of the associated matroids.
 
 Given any matroid, one may restrict it to a subset of the base set. The bases of the restricted matroid come from intersecting bases of the original with the subset. It is worth noting that a the matroid defined by a subdiagram is different from the restriction of the matroid of a Wilson loop diagram to a set of vertices.
 
@@ -426,6 +452,7 @@ A subdiagram is more closely related to a contracted matroid.
 \begin{lem} \label{contractsubdiaglem}
 For $W = (\cP, [n])$, consider a subdiagram $(P^c, V(P^c))$. The complementary set of vertices is a propagator flat: $F(P) = V(P^c)^c$. If this has maximal rank, $\rk F(P) = |P|$, then the subdiagram defines the same matroid as is formed by contracting the original matroid by $F(P)$: \bas M((P^c, V(P^c))) = M(W)/ F(P) \;. \eas
 \end{lem}
+
 
 In the sequel, where it doesn't cause confusion, I conflate a Wilson loop diagram with the matroid it defines.
 
@@ -808,7 +835,7 @@ By cyclic symmetry, this is sufficient to prove that $p$ must also contribute $i
 
 \end{proof}
 
-For $W = (\cP, n)$, let $W' = (P, V_P)$ be a subdiagram. Write $\cI^{W'}$ be the set of $|P|$ tuples defined by \ref{alg:put GN on WLD} on $W'$. Furthermore, for any $p = (i, j) \in \cP$, write $\cP_{i,j} =  \{ q = (i_q, j_q)\in \cP | i \leq_i i_q <_i j_q \leq_i j\}$ to be the set of propagators supported on the cyclic interval $[i, j]$. Similarly, write $\cP_{j,i} =  \{ q = (i_q, j_q)\in \cP | j \leq_j i_q <_j j_q \leq_j i\}$ to be the set of propagators supported on the cyclic interval $[j,i]$. Note that $p = \cP_{i,j} \cap \cP_{j,i}$. 
+For $W = (\cP, n)$, let $W' = (P, V_P)$ be a subdiagram. Write $\cI^{W'}$ be the set of $|P|$ tuples defined by \ref{alg:put GN on WLD} on $W'$. Furthermore, for any $p = (i, j) \in \cP$, write $\cP_{i,j} =  \{ q = (i_q, j_q)\in \cP | i \leq_i i_q <_i j_q \leq_i j\}$ to be the set of propagators supported on the cyclic interval $[i, j]$. Similarly, write $\cP_{j,i} =  \{ q = (i_q, j_q)\in \cP | j \leq_j i_q <_j j_q \leq_j i\}$ to be the set of propagators supported on the cyclic interval $[j,i]$. Note that $p = \cP_{i,j} \cap \cP_{j,i}$.
 
 We then have the following corrollary:
 
@@ -820,7 +847,7 @@ Given any Wilson loop diagram, $W = (\cP, n)$, and $p = (i,j) \in \cP$, consider
 \begin{proof}
 Consider $W_L$. Since every propagator in a Wilson loop diagram must contribute to $I_{i+2}^{W_L}$, it remains to check that no propagator can contribute after $p$. This could only happen if there were a different propagator, $q$ with an endpoint on edge $i$. If $q = (i , i+2)$, then it would be the first propagators to be removed, with contribution $i+2$. If it $q = (i, l)$, with $l > i+2$, then it would contribute either $l$ or $l+1$. Otherwise, one would need the existence of an infinite set of other propagators, as above.
 
-A similar argument works for $W_R$. 
+A similar argument works for $W_R$.
 \end{proof}
 
 
@@ -832,7 +859,7 @@ For every $v \in V_p$, there is a cyclic interval such that $p$ contributes $v$ 
 
 \begin{proof}
 
-Fix $p \in \cP$, with $p = (i,j)$. Consider two subsets of propagators in $\cP$, $Q = \{q_m\}$, $R = \{r_n\}$. Let $Q \subseteq \cP_{i,j}$ be the set of propagators with one end point either on the edge $j-1$ or $j$. Label the other endpoint of $q_m$ as the edge $k_m$, with $i \leq_i k_1 <_i k_2 <_i \ldots \leq_i j$. In other words, they are ordered from closest to furthest away from $p$. 
+Fix $p \in \cP$, with $p = (i,j)$. Consider two subsets of propagators in $\cP$, $Q = \{q_m\}$, $R = \{r_n\}$. Let $Q \subseteq \cP_{i,j}$ be the set of propagators with one end point either on the edge $j-1$ or $j$. Label the other endpoint of $q_m$ as the edge $k_m$, with $i \leq_i k_1 <_i k_2 <_i \ldots \leq_i j$. In other words, they are ordered from closest to furthest away from $p$.
 
 Similarly, define $R \subset \cP_{j,i}$ be the set of propagators with one end point either on the edge $i-1$ or $i$. I label the other endpoint of $r_n$ as the edge $l_n$, with $j \leq_j l_1 <_j l_2 <_j \ldots \leq_j i$. In other words, they are ordered from closest to furthest away from $p$.
 
@@ -843,8 +870,8 @@ For any $m >|Q|$ (resp. $m > |R|$), write $k_m= j$ (resp. $l_n = i$).
 We make the following four claims:
 
 \begin{enumerate}
-\item The propagator $p$ contributes $i$ for all $I_a$ for $a \in [a_{p,i} = k_2+2, b_{p,i} = l_1+1]$ 
-\item The propagator $p$ contributes $i+1$ for all $I_a$ for $a \in [b_{p,i} +1, a_{p, j} -1]$. 
+\item The propagator $p$ contributes $i$ for all $I_a$ for $a \in [a_{p,i} = k_2+2, b_{p,i} = l_1+1]$
+\item The propagator $p$ contributes $i+1$ for all $I_a$ for $a \in [b_{p,i} +1, a_{p, j} -1]$.
 \item The propagator $p$ contributes $j$ for all $I_a$ for $a \in [a_{p,j} = l_2+2, b_{p,j} = k_1+1 ]$
 \item The propagator $p$ contributes $j+1$ for all $I_a$ for $a \in [k_1+2, k_2+1 ]$
 \end{enumerate}
@@ -1041,7 +1068,7 @@ Given a WLD $D$, $I_i^{D}$ denotes the $i$th Gra\ss mann necklace element corres
 \end{lem}
 
 \begin{figure}
- % \includegraphics{specialp}
+ \includegraphics{specialp}
   \caption{The different possibilities for $D$ and $p$.  No other propagators can end in the fat red sections.  Other segments may have additional propagators ending in them.}\label{fig special p}
 \end{figure}
 
@@ -1073,7 +1100,7 @@ Given a WLD $D$, $I_i^{D}$ denotes the $i$th Gra\ss mann necklace element corres
 The shapes of the Le diagrams of $C$ and $D$ are illustrated in Figure~\ref{fig Le}.  The pieces of the Le diagrams will be called $\mathcal{A}$ and $\mathcal{B}$ in what follows, as in the figure.  Over the course of the next few lemmas we will prove that the plusses in the $\mathcal{B}$ parts of the Le diagrams of $C$ and $D$ are identical and the plusses in the $\mathcal{A}$ parts are very closely related.  When we speak of a plus in the Le diagram of $D$ being the same as in $D$ or vice versa, we mean that the plus' position in $\mathcal{A}$ or $\mathcal{B}$ is the same.  Because of the column insertion the absolute indices may differ.
 
 \begin{figure}
-%  \includegraphics{Le_diagrams}
+  \includegraphics{Le_diagrams}
   \caption{Le diagrams for $C$ (left) and $D$ (right).}\label{fig Le}
 \end{figure}
 
@@ -1128,7 +1155,7 @@ Suppose we are following the Gra\ss mann necklace to Le diagram algorithm, and w
   Using this information now determine the symmetric difference of $I_{n-2}^{C}$ and $I_1^{C}$: $n-1, n-2$ and possibly $n$ are in $I_{n-2}^{C}$ but not in $I_1^{C}$.  $n-5$ is in $I_1^{C}$ as are at least one and at most two other elements.  If there is one such element call it $a$.  If there are two call them $a$ and $b$ with $a>b$.  This means that the plusses in the Le diagram of $C$ coming from $I_{n-2}^{C}$ are as in the first part of Figure~\ref{fig messy}.  Stepping to $I_{n-1}^{C}$ simply removes the $n-5\rightarrow n-2$ path, see the second part of Figure~\ref{fig messy}.
 
   \begin{figure}
- %   \includegraphics{messy}
+    \includegraphics{messy}
     \caption{Plusses coming from $I_{n-2}^{C}$ (top left),  $I_{n-1}^{C}$ (top right) and $I_{n}^{C}$ bottom when $n-1, n-2\in I_{n-1}^{C}$.  The blue lines are the non-intersecting paths.  The dashed blue lines may or may not appear, but if one appears then they both do.}\label{fig messy}
   \end{figure}
 
@@ -1137,7 +1164,7 @@ Suppose we are following the Gra\ss mann necklace to Le diagram algorithm, and w
   Now we know that $I_{n-2}^{D}  = (I_{n}^{C} - \{n-5\})\cup \{n-1,n-2\}$ so the paths for building plusses from $I_{n-2}^{D}$ go from the set $\{n-5, n-3\}$ along with whichever of $a$ and $b$ is not in $I_{n}^{C}$ to $\{n-2, n-1, n\}$.  This means that we get plusses as in Figure~\ref{fig messyD} where the left and right cases correspond to the left and right cases in the bottom parts of Figure~\ref{fig messy}
 
   \begin{figure}
-    % \includegraphics{messyD}
+     \includegraphics{messyD}
     \caption{Plusses coming from $I_{n-2}^{D}$.}\label{fig messyD}
   \end{figure}
 
@@ -1277,7 +1304,7 @@ As in the proof of the previous part, make a new admissible diagram by removing 
   \caption{The situations giving a quadratic factor with variables appearing in $r_i$.}\label{fig quadratic}
 \end{figure}
 
-By Lemma~\ref{lem susama}, since $I_{i-1}(p)\neq a$, then $I_{i-1} <_{i-1} a$ and no other vertex covered by $p$ lies between them.  In the case that $b<_i a$ and $q$ is taken before $p$ in $I_i$, this means that $I_{i-1}(p)=b$ and so $I_{i-1}(q)\neq b$.  Thus $q\in S_i$ and so $x_1x_4-x_2x_3$ is a factor of $r_i$.  Now suppose $a<_i b$ and $p$ is taken before $q$ in $I_i$.  If $I_{i-1}(q)=a$ then $a\in S_i$ and so again $x_1x_4-x_2x_3$ is a factor of $r_i$.  If not, then $I_{i-1}(q) = b$ by Lemma~\ref{lem susama}.  This implies that some other propagator $s$ is associated to $a$ by $I_{i-1}$.  If $s$ also has one end on $(a,b)$ then by Lemma~\ref{lem susama}, immediately after $s$ contributes $a$ it must contribute $b$.  However we know $I_i(s) \neq a$ because $I_i(p)=a$, so $I_i(s)=b$ which is also impossible as $I_i(q)=b$.  Thus $s$ is supported on $a$ but does not have an edge on $(a,b)$ and so $s$ must have an end on $(a-1, a)$ and so be inside $p$ from the point of view of $i-1$.  Say $s$ is supported on $(j, j+1, a-1, a)$ and $p$ is supported on $(k, k+1, a, b)$ with $i-1 \leq_{i-1} k+1 \leq_{i-1} j+1$.  Again by Lemma~\ref{lem susama}, immediately after $s$ contributes $a$ it must contribute $j$ and so $I_i(s)=j$.  
+By Lemma~\ref{lem susama}, since $I_{i-1}(p)\neq a$, then $I_{i-1} <_{i-1} a$ and no other vertex covered by $p$ lies between them.  In the case that $b<_i a$ and $q$ is taken before $p$ in $I_i$, this means that $I_{i-1}(p)=b$ and so $I_{i-1}(q)\neq b$.  Thus $q\in S_i$ and so $x_1x_4-x_2x_3$ is a factor of $r_i$.  Now suppose $a<_i b$ and $p$ is taken before $q$ in $I_i$.  If $I_{i-1}(q)=a$ then $a\in S_i$ and so again $x_1x_4-x_2x_3$ is a factor of $r_i$.  If not, then $I_{i-1}(q) = b$ by Lemma~\ref{lem susama}.  This implies that some other propagator $s$ is associated to $a$ by $I_{i-1}$.  If $s$ also has one end on $(a,b)$ then by Lemma~\ref{lem susama}, immediately after $s$ contributes $a$ it must contribute $b$.  However we know $I_i(s) \neq a$ because $I_i(p)=a$, so $I_i(s)=b$ which is also impossible as $I_i(q)=b$.  Thus $s$ is supported on $a$ but does not have an edge on $(a,b)$ and so $s$ must have an end on $(a-1, a)$ and so be inside $p$ from the point of view of $i-1$.  Say $s$ is supported on $(j, j+1, a-1, a)$ and $p$ is supported on $(k, k+1, a, b)$ with $i-1 \leq_{i-1} k+1 \leq_{i-1} j+1$.  Again by Lemma~\ref{lem susama}, immediately after $s$ contributes $a$ it must contribute $j$ and so $I_i(s)=j$.
 
 Finally we want to show $I_i(s)=j$ gives a contradiction.  If $k=j$ then $I_{i}(s)= k$, but $p$ has not yet been taken as $I_i(p)=a$ and $p$ comes before $s$ around $k$, so this is a contradiction.  If $k+1=j$ then similarly $I_{i}(s)=k+1$ and yet $p$ comes before $s$ around $k$, a contradiction to $I_i(p)=a$.  Now suppose $k+1 <_{i-1} j$ then we have $i-1 \leq_{i-1} k+1 <_{i-1} I_i(s) = j$ so $i\leq_{i} I_i(s)$ which gives that
 \[
