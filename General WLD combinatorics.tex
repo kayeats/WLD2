@@ -386,10 +386,10 @@ c_{4,1} & 0 & 0 & 0 & c_{4,5} & c_{4,6} & 0 & c_{4,8}  \\
 
 \end{eg}
 
-These $C(W)$ parametrize a subspace of $\Gr(k, n)$ as shown in \cite{wilsonloops}, call it $\Sigma(W)$. The Wilson loop diagrams also define a volume form on $\Sigma(W)$: \bas \Omega(W) = \frac{\prod_{r=1}^{|\cP|} \prod_{v \in V_{p_r}} \textrm{d}c_{p_r}}{R(W)} \;. \eas The denominator $R(W)$ is a polynomial defined by $2 \times 2$ and $1 times 1$ minors of $C(W)$ as defined below.
+These $C(W)$ parametrize a subspace of $\Gr(k, n)$ as shown in \cite{wilsonloops}, call it $\Sigma(W)$. The Wilson loop diagrams also define a volume form on $\Sigma(W)$: \bas \Omega(W) = \frac{\prod_{r=1}^{|\cP|} \prod_{v \in V_{p_r}} \textrm{d}c_{p_r}}{R(W)} \;. \eas The denominator $R(W)$ is a polynomial defined by $2 \times 2$ and $1 \times 1$ minors of $C(W)$ as defined below.
 
-\begin{dfn}
-For $W = (\cP, n)$, $R(W) = \prod_{e=1}^n R_e$, with $R_e$ defined by the propagators ending on it. For any edge $e$ of $W$, order the propagators incident on $e$ as $\{p_1 \ldots p_r\}$, ordered such that $p_1$ is closest to the vertex $e$, $p_r$ closest to $e+1$, and $p_i$ is closer to $e$ than $p_{i+1}$. Then \bas R_e =  c_{p_1,e+1} \prod_{j= 1}{s-1} \left((c_{p_j,e} c_{p_{j+1},e+1} - c_{p_{j+1},e} c_{p_{j},e+1} ) \right) c_{p_s,e}\;.\eas Note that in this notation, if $s = 1$, $R_e = c_{p,e} c_{p,e+1}$.
+\begin{dfn}\label{def R(W)}
+For $W = (\cP, n)$, $R(W) = \prod_{e=1}^n R_e$, with $R_e$ defined by the propagators ending on it. For any edge $e$ of $W$, order the propagators incident on $e$ as $\{p_1 \ldots p_r\}$, ordered such that $p_1$ is closest to the vertex $e$, $p_r$ closest to $e+1$, and $p_i$ is closer to $e$ than $p_{i+1}$. Then \bas R_e =  c_{p_1,e+1} \prod_{j= 1}(r-1) \left((c_{p_j,e} c_{p_{j+1},e+1} - c_{p_{j+1},e} c_{p_{j},e+1} ) \right) c_{p_s,e}\;.\eas Note that in this notation, if $r = 1$, $R_e = c_{p,e} c_{p,e+1}$.
 \end{dfn}
 
 \section{Wilson Loop diagrams as matroids}
@@ -492,7 +492,7 @@ graph with no cut vertices, where all vertices lie on the infinite face, along w
 
 ***draw some examples***
 
-A planar embedding of a graph is a \emph{triangulation} if all faces, except possibly the infinite, face are triangles.
+A planar embedding of a graph is a \emph{triangulation} if all faces, except possibly the infinite face, are triangles.
 
 \begin{dfn}
   Let $W$ be an admissible Wilson loop diagram and $\tau(W)$ its polygon partition. A \emph{triangulated piece} of $\tau(W)$ is a 2-connected subgraph of $\tau(W)$ which is a triangulation. We will take the convention that a subgraph consisting of a single chord edge is called a \emph{trivial} triangulated piece.
@@ -650,7 +650,7 @@ Define a family of Wilson loop diagrams, $W_0$ to $W_k$ defined such that $W_0 =
 Since there is a unique way to decompose $W$ into maximal exact subdiagrams, it is logical to ask how many diagrams there are in an equivalence class. It is a classical fact the the number of triangulations of an $n$-gon is the $n-2$ Catalan number, namely $\frac{1}{n-1}\binom{2(n-2)}{n-2}$.  Thus we can count the number of equivalent diagrams.
 
 \begin{cor}
-  Let $W$ be an admissible Wilson loop diagram where the sizes of the supports of the maximal connected exact subdiagrams are $n_1, n_2, \ldots, n_j$.  Then the number of admissible Wilson loop diagrams equivalent to $W$ (including $W$ itself) is
+  Let $W$ be an admissible Wilson loop diagram where the sizes of the supports of the nontrivial maximal connected exact subdiagrams are $n_1, n_2, \ldots, n_j$.  Then the number of admissible Wilson loop diagrams equivalent to $W$ (including $W$ itself) is
   \[
   \prod_{i=1}^{j} \frac{1}{n_i-1}\binom{2(n_i-2)}{n_i-2}
   \]
@@ -887,7 +887,7 @@ Fix $p = (i, j)$. By symmetry, we need only consider the vertices $j$, $j+1$.
 
 Let $k_1 \ldots k_r$ be the set of propagators ending on edge $j$ or $j-1$, ordered such that $k_1$ is the first propagators clockwise from $p$, and $k_r$ is the clockwisemost propagator on edge $j-1$. For each $k_x$, write $P_{x} = \{k_x, s_x, t_x\}$, where $s_x$ and $t_x$, if they  exist, to be the two clockwise most propagators preventing $k_x$ from contributing $j$ to $I_{i+2}$. Similarly, let $l_1 \ldots l_m$ be the set of propagators ending on edge $i$ or $i-1$, ordered such that $l_1$ is the first propagators clockwise from $p$, and $l_m$ is the clockwisemost propagator on edge $i-1$. For each $l_y$, write $Q_{y} = \{l_x, s_y, t_y\}$, where $s_y$ and $t_y$, if they  exist, to be the two clockwise most propagators preventing $l_y$ from contributing $i$ to $I_{j+2}$.
 
-Define $b_1 = \min{k_1+1, s_1+1}$. We see that, if $r >0$, for all $a \in [i+2, b_1]$, $p$ contributes $j$ to $I_a$. (If $b_1 <_{j+1} i+2$ then this interval is empty.) This is because in this range, $j$ is the first vertex of $p$ encountered by Algorithm \ref{Alg: put GN on WLD}. Furthermore, by Lemma \ref{protect conv lem}, and definition \ref{protect dfn} if $b_1 \not <_{j+1} i+2$ $P_1$ does not protect $p$ at $j$ for $a$ in this range. If $r = 0$ then $p$ contributes $j$ for all $a \in [i+2, j]$. In this case, we say $b_1= j$.
+Define $b_1 = \min\{k_1+1, s_1+1\}$. We see that, if $r >0$, for all $a \in [i+2, b_1]$, $p$ contributes $j$ to $I_a$. (If $b_1 <_{j+1} i+2$ then this interval is empty.) This is because in this range, $j$ is the first vertex of $p$ encountered by Algorithm \ref{Alg: put GN on WLD}. Furthermore, by Lemma \ref{protect conv lem}, and definition \ref{protect dfn} if $b_1 \not <_{j+1} i+2$ $P_1$ does not protect $p$ at $j$ for $a$ in this range. If $r = 0$ then $p$ contributes $j$ for all $a \in [i+2, j]$. In this case, we say $b_1= j$.
 
 Define $b_2 = \min{k_2+1, s_2+1}$. If $r > 1$, and $j_{k_2}=j$, for all $a \in [b_1+1, b_2]$ $p$ contributes $j+1$ to $I_a$. In this range, $P_1$ is a protective set for $p$ at $j$, but $P_2$ is not a protective set for $j+1$ in this range. Therefore, in this range, $j+1$ is the first vertex of $p$ without a protective set. If the stated condidtions do not hold, then $p$ contributes $j+1$ for all $a \in [b_1 +1, j+1]$.
 
@@ -1245,7 +1245,7 @@ Put some exposition here about Theorem~\ref{thm denom}.
 We can also use the ideas of the above constructions to understand the denominator of the integral $I(W)$.
 
 \begin{algorithm}\label{alg WLD to denom via GN}
-Let $W$ be a Wilson loop diagram with $n$ vertices.  Let $C(W)$ be the matrix \hlfix{which has some actual name and a ref to where you define it}.
+Let $W$ be a Wilson loop diagram with $n$ vertices.  Let $C(W)$ be the matrix of $W$ as defined in \eqref{C(W) dfn}.
 \begin{itemize}
   \item For each $i \in \interval{1}{n}$, we construct a factor $r_i$ as follows
     \begin{itemize}
@@ -1266,7 +1266,7 @@ Let $W$ be a Wilson loop diagram with $n$ vertices.  Let $C(W)$ be the matrix \h
     \item Each $\Delta_{I_i}$ splits into linear and quadratic factors.  All linear factors of  $\Delta_{I_i}$ are single variables and all irreducible quadratic factors are $2\times 2$ determinants of single variables.
     \item Quadratic factors in $r_i$ arise precisely when propagators $p$ and $q$ are supported on a common edge $(a,b)$ and $I_i(p)=a$, $I_i(q)=b$.
     \item $r_i$ divides $\Delta_{I_i}$.
-    \item $R$ is the radical of $\prod_{i=1}^{n}\Delta_{I_i}$.
+    \item The ideal generated by $R$ is the radical of the ideal generated by $\prod_{i=1}^{n}\Delta_{I_i}$.
   \end{enumerate}
 \end{prop}
 
@@ -1336,13 +1336,13 @@ First we'll show that every factor of $\prod_{i=1}^n \Delta_{I_i}$ divides $R$. 
 
 Next we need to show that $R$ is squarefree.  Suppose $f^2|R$.  If $f$ is a linear factor, say from associating propagator $p$ to vertex $a$, then twice in the Grassmann necklace $p$ must change from not being associated to vertex $a$ to being associated to vertex $a$.  This contradicts Lemma~\ref{lem susama}.  Now suppose $f$ is a quadratic factor say from associating propagators $p$ and $q$ to vertices $a$ and $b$ respectively.  Since $p$ comes before $q$ on edge $(a,b)$ it is not possible for any $I_i$ to associate $p$ to $b$ and $q$ to $a$.  Furthermore, we know by the second direction of the previous part that $p$ changes from not being associated to $a$ to being associated to $a$ if and only if $q$ changes from not being associated to $b$ to being associate to $b$.  Thus $f^2|R$ implies that twice in the Grassmann necklace $p$ must change from not being associated to vertex $a$ to being associated to vertex $a$. This is again a contradiction, and so $R$ is squarefree.
 
-Taking everything together we have that $R|\prod_{i=1}^n \Delta_{I_i}$, $R$ contains all factors of $\prod_{i=1}^n \Delta_{I_i}$ and $R$ is squarefree.  Therefore $R$ is the radical of $\prod_{i=1}^n \Delta_{I_i}$.
+Taking everything together we have that $R|\prod_{i=1}^n \Delta_{I_i}$, $R$ contains all factors of $\prod_{i=1}^n \Delta_{I_i}$ and $R$ is squarefree.  Therefore the ideal generated by $R$ is the radical of the ideal generated by $\prod_{i=1}^n \Delta_{I_i}$.
   \end{enumerate}
 \end{proof}
 
 
 \begin{thm}\label{thm denom}
-Given any admissible Wilson loop diagram $W$, let $GN(W) = \{I_1, \ldots I_n\}$ be the associated Grasmann necklace. Then the denominator of the integral $I(W)$ is the \hlfix{find correct word for this} is the minimal polynomial of $\prod_{i=1}^n \Delta_{I_i}$, where $\Delta_{I_i}$ is the determinant of the $k \times k$ minor indicated by $I_i$.
+Given any admissible Wilson loop diagram $W$, let $GN(W) = \{I_1, \ldots I_n\}$ be the associated Grasmann necklace. Then the denominator of the integral, $R(W)$ (see Definition~\ref{def R(W)}), is an integer multiple of the radical of $\prod_{i=1}^n \Delta_{I_i}$, where $\Delta_{I_i}$ is the determinant of the $k \times k$ minor indicated by $I_i$.
 \end{thm}
 
 \begin{proof}
