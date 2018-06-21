@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2017.9.6)  21 JUN 2018 12:04
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2017.9.6)  21 JUN 2018 13:32
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -899,68 +899,101 @@ File: messyD.pdf Graphic file (type pdf)
  <use messyD.pdf>
 Package pdftex.def Info: messyD.pdf used on input line 1185.
 (pdftex.def)             Requested size: 258.66574pt x 102.41234pt.
- [26 <./messyD.pdf>] [27] [28] <no_big_factors.pdf, id=255, 455.23677pt x 199.1
-6608pt>
+ [26 <./messyD.pdf>] [27] <egWLD_forR.pdf, id=252, 569.04593pt x 113.80919pt>
+File: egWLD_forR.pdf Graphic file (type pdf)
+
+<use egWLD_forR.pdf>
+Package pdftex.def Info: egWLD_forR.pdf used on input line 1263.
+(pdftex.def)             Requested size: 569.04453pt x 113.8089pt.
+
+Overfull \hbox (99.2895pt too wide) in paragraph at lines 1263--1264
+[][] 
+ []
+
+
+Overfull \hbox (11.31439pt too wide) in paragraph at lines 1270--1272
+\OT1/cmr/m/n/10.95 The Grass-mann neck-lace is $\OML/cmm/m/it/10.95 I[] \OT1/cm
+r/m/n/10.95 = \OMS/cmsy/m/n/10.95 f\OT1/cmr/m/n/10.95 1\OML/cmm/m/it/10.95 ; \O
+T1/cmr/m/n/10.95 2\OML/cmm/m/it/10.95 ; \OT1/cmr/m/n/10.95 4\OMS/cmsy/m/n/10.95
+ g\OML/cmm/m/it/10.95 ; I[] \OT1/cmr/m/n/10.95 = \OMS/cmsy/m/n/10.95 f\OT1/cmr/
+m/n/10.95 2\OML/cmm/m/it/10.95 ; \OT1/cmr/m/n/10.95 4\OML/cmm/m/it/10.95 ; \OT1
+/cmr/m/n/10.95 5\OMS/cmsy/m/n/10.95 g\OML/cmm/m/it/10.95 ; I[] \OT1/cmr/m/n/10.
+95 = \OMS/cmsy/m/n/10.95 f\OT1/cmr/m/n/10.95 4\OML/cmm/m/it/10.95 ; \OT1/cmr/m/
+n/10.95 5\OML/cmm/m/it/10.95 ; \OT1/cmr/m/n/10.95 6\OMS/cmsy/m/n/10.95 g\OML/cm
+m/m/it/10.95 ; I[] \OT1/cmr/m/n/10.95 = \OMS/cmsy/m/n/10.95 f\OT1/cmr/m/n/10.95
+ 4\OML/cmm/m/it/10.95 ; \OT1/cmr/m/n/10.95 5\OML/cmm/m/it/10.95 ; \OT1/cmr/m/n/
+10.95 6\OMS/cmsy/m/n/10.95 g\OML/cmm/m/it/10.95 ; I[] \OT1/cmr/m/n/10.95 = \OMS
+/cmsy/m/n/10.95 f\OT1/cmr/m/n/10.95 5\OML/cmm/m/it/10.95 ; \OT1/cmr/m/n/10.95 6
+\OML/cmm/m/it/10.95 ; \OT1/cmr/m/n/10.95 7\OMS/cmsy/m/n/10.95 g\OML/cmm/m/it/10
+.95 ; I[] \OT1/cmr/m/n/10.95 =
+ []
+
+[28] [29 <./egWLD_forR.pdf>]
+<no_big_factors.pdf, id=262, 455.23677pt x 199.16608pt>
 File: no_big_factors.pdf Graphic file (type pdf)
 
 <use no_big_factors.pdf>
-Package pdftex.def Info: no_big_factors.pdf used on input line 1291.
+Package pdftex.def Info: no_big_factors.pdf used on input line 1310.
 (pdftex.def)             Requested size: 455.23564pt x 199.16559pt.
 
 
-LaTeX Warning: Reference `lem susama' on page 29 undefined on input line 1295.
+LaTeX Warning: Reference `lem susama' on page 30 undefined on input line 1314.
 
-[29]
+[30]
 
-LaTeX Warning: Reference `lem susama' on page 30 undefined on input line 1301.
+LaTeX Warning: Reference `lem susama' on page 31 undefined on input line 1320.
 
-[30 <./no_big_factors.pdf>] [31]
-<quadratic.pdf, id=269, 256.07068pt x 113.80919pt>
+[31 <./no_big_factors.pdf>] <quadratic.pdf, id=272, 256.07068pt x 113.80919pt>
 File: quadratic.pdf Graphic file (type pdf)
- <use quadratic.pdf>
-Package pdftex.def Info: quadratic.pdf used on input line 1321.
+
+<use quadratic.pdf>
+Package pdftex.def Info: quadratic.pdf used on input line 1340.
 (pdftex.def)             Requested size: 256.07004pt x 113.8089pt.
 
 
-LaTeX Warning: Reference `lem susama' on page 32 undefined on input line 1325.
+LaTeX Warning: Reference `lem susama' on page 32 undefined on input line 1344.
 
 
-LaTeX Warning: Reference `lem susama' on page 32 undefined on input line 1325.
+LaTeX Warning: Reference `lem susama' on page 32 undefined on input line 1344.
 
 
-LaTeX Warning: Reference `lem susama' on page 32 undefined on input line 1325.
+LaTeX Warning: Reference `lem susama' on page 32 undefined on input line 1344.
 
 
-LaTeX Warning: Reference `lem susama' on page 32 undefined on input line 1325.
+LaTeX Warning: Reference `lem susama' on page 32 undefined on input line 1344.
+
+[32]
+
+LaTeX Warning: Reference `lem susama' on page 33 undefined on input line 1350.
 
 
-LaTeX Warning: Reference `lem susama' on page 32 undefined on input line 1331.
+LaTeX Warning: Reference `lem susama' on page 33 undefined on input line 1350.
 
 
-LaTeX Warning: Reference `lem susama' on page 32 undefined on input line 1331.
+LaTeX Warning: Reference `lem susama' on page 33 undefined on input line 1350.
 
 
-LaTeX Warning: Reference `lem susama' on page 32 undefined on input line 1331.
+LaTeX Warning: Reference `lem susama' on page 33 undefined on input line 1350.
 
 
-LaTeX Warning: Reference `lem susama' on page 32 undefined on input line 1331.
+LaTeX Warning: Reference `lem susama' on page 33 undefined on input line 1354.
 
 
-LaTeX Warning: Reference `lem susama' on page 32 undefined on input line 1335.
+LaTeX Warning: Reference `lem susama' on page 33 undefined on input line 1356.
 
-[32 <./quadratic.pdf>]
+[33 <./quadratic.pdf>]
 
-LaTeX Warning: Reference `lem susama' on page 33 undefined on input line 1337.
+LaTeX Warning: Reference `lem susama' on page 34 undefined on input line 1370.
 
-[33] (./General WLD combinatorics.aux)
+[34] (./General WLD combinatorics.aux)
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 16433 strings out of 493304
- 288927 string characters out of 6139872
- 439980 words of memory out of 5000000
+ 16434 strings out of 493304
+ 288886 string characters out of 6139872
+ 439912 words of memory out of 5000000
  19484 multiletter control sequences out of 15000+600000
  15472 words of font info for 61 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
@@ -983,10 +1016,10 @@ texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive
 dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/f
 onts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/fo
 nts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on "General WLD combinatorics.pdf" (33 pages, 634092 bytes).
+Output written on "General WLD combinatorics.pdf" (34 pages, 780789 bytes).
 PDF statistics:
- 339 PDF objects out of 1000 (max. 8388607)
- 181 compressed objects within 2 object streams
+ 345 PDF objects out of 1000 (max. 8388607)
+ 185 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 43 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 48 words of extra memory for PDF output out of 10000 (max. 10000000)
 

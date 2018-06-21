@@ -1259,6 +1259,25 @@ Let $W$ be a Wilson loop diagram with $n$ vertices.  Let $C(W)$ be the matrix of
 \end{itemize}
 \end{algorithm}
 
+\begin{figure}
+\includegraphics{egWLD_forR}
+\caption{Example WLD for illustrating Algorithm~\ref{alg WLD to denom via GN} and bijections between propagators and vertices for each Grassmann necklace element.}\label{fig R eg}
+\end{figure}
+
+For example consider the Wilson loop diagram in Figure~\ref{fig R eg}.  
+\[
+C(W) = \begin{bmatrix} a & b & 0 & 0 & 0 & c & d \\ e & f & 0 & 0 & g & h & 0 \\ i & j & 0 & k & l & 0 & 0 \end{bmatrix}
+\]
+The Grassmann necklace is $I_1 = \{1,2,4\}, I_2 = \{2,4,5\}, I_3 = \{4,5,6\}, I_4=\{4,5,6\}, I_5=\{5,6,7\}, I_6 = \{6,7,1\}, I_7=\{7,1,2\}$.  The bijection between propagators and vertices for each necklace element is also in Figure~\ref{fig R eg}.  Between $I_1$ and $I_2$, two propagators change which vertex they are assigned to and these are the propagators associated to rows 1 and 2 of $C(W)$ as given above.  Then
+\[
+\Delta_{I_2}=\det\begin{bmatrix} b & 0 & 0 \\ f & 0 & g \\ j & k & l \end{bmatrix} = kgb
+\]
+and so $r_2 = gb$.  From $I_2$ to $I_3$ only one propagator changes its vertex association and we get $r_3 = c$.  $I_3=I_4$ and so $r_4=1$.  Continuing likewise we get $r_5 = lhd$ and $r_6 = i$.  From $I_6$ to $I_7$ the propagators associated to the second and third rows change, thus from $\Delta_{I_7} = d(ej-fi)$ we get $r_7 = ej-fi$.  Note that as proved in the next proposition, this quadratic factor arises when the two edges whose vertex association changed are associated with the two ends of the edge on which they are both supported.  Finally, $r_1 = (af-be)k$.  Together we obtain
+\[
+R = (af-be)kgbclhdi(ej-fi)
+\]
+which is squarefree and contains all factors of $\prod_{i=1}^{n}\Delta_{I_i}$.
+
 \begin{prop}\label{prop alg gives rad}
   With notation as in Algorithm~\ref{alg WLD to denom via GN} we have the following:
   \begin{enumerate}
@@ -1348,8 +1367,10 @@ Given any admissible Wilson loop diagram $W$, let $GN(W) = \{I_1, \ldots I_n\}$ 
 \begin{proof}
 In view of Proposition~\ref{prop alg gives rad} it remains to prove that the $R$ of Algorithm~\ref{alg WLD to denom via GN} is $R(W)$, the denominator of the integral $I(W)$.
 
-\note{I don't want to write the rest of this right now because we need to somewhere (probably much earlier in the document) define $R(W)$ and exactly how we do so makes a difference.  The definition I would most like is if we define it as the product of the prop together and prop to vertex limits, if we define it some other way I'll probably want a lemma to get to that formulation.}
-
+To this end, first note that $R(W)$ and $R$ both have total degree $4|\mathcal{P}|$; the degree of $R(W)$ is immediate from the definition while that of $R$ follows from Lemma~\ref{lem susama}.  By Proposition~\ref{prop alg gives rad} every factor of $R$ is either a single variable or a quadratic factor coming from two propagators supported on a common edge and hence every factor of $R$ divides $R(w)$.  Finally, since $R$ is squarefree and monic, this implies that $R(W)$ is an integer multiple of $R$.
 \end{proof}
+
+***explain why this result was interesting***
+
 
 \end{document}
