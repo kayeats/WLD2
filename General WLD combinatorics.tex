@@ -68,12 +68,27 @@
 \pgfmathsetmacro{\n}{#1}
 \pgfmathsetmacro{\radius}{#2}
 \pgfmathsetmacro{\angle}{360/\n}
+\draw (0,0) circle (\radius);
     \foreach \i in {1,2,...,\n} {
-      \pgfmathsetmacro{\x}{\angle*\i}
-        \draw[-,shorten >=-\radius*0.1 cm,shorten <=-\radius*0.1 cm]  (\x:\radius cm)-- (\x + \angle: \radius cm);
+      \draw (\angle*\i:\radius) node {$\bullet$};
+       %\pgfmathsetmacro{\x}{\angle*\i}
+       %\draw[-,shorten >=-\radius*0.1 cm,shorten <=-\radius*0.1 cm]  (\x:\radius cm)-- (\x + \angle: \radius cm);
     }
 
-\draw (\angle:\radius) node {$\bullet$};
+}
+
+\newcommand{\drawpolypart}[2]{
+\pgfmathsetmacro{\n}{#1}
+\pgfmathsetmacro{\radius}{#2}
+\pgfmathsetmacro{\angle}{360/\n}
+    \foreach \i in {1,2,...,\n} {
+      \draw (\angle*\i+ \angle/2:\radius) node {$\bullet$};
+      \pgfmathsetmacro{\x}{\angle*\i - \angle/2}
+      \pgfmathsetmacro{\concave}{((\n-1.5)/\n)}
+      \draw (\x:\radius cm) .. controls (\angle *\i: \concave* \radius cm) .. (\x + \angle:\radius cm);
+      %\draw (\angle *\i: .8* \radius cm) node {$\bullet$};
+    }
+
 }
 
 
@@ -86,10 +101,35 @@
 \pgfmathsetmacro{\perturbe}{\angle/\n}
 
 \begin{scope}
-\clip (\angle*\r:\radius) -- (\angle + \angle*\r:\radius) -- (\angle*\s:\radius) -- (\angle + \angle*\s:\radius) -- (\angle*\r:\radius);
+%\clip (\angle*\r:\radius) -- (\angle + \angle*\r:\radius) -- (\angle*\s:\radius) -- (\angle + \angle*\s:\radius) -- (\angle*\r:\radius);
 \draw[propagator] (\angle*\r + \angle/2 + \bumpr*\perturbe:\radius) -- (\angle*\s + \angle/2 + \bumps*\perturbe:\radius);
 \end{scope}
 }
+
+\newcommand{\drawlabeledprop}[5]{
+\pgfmathsetmacro{\r}{#1}
+\pgfmathsetmacro{\bumpr}{#2}
+\pgfmathsetmacro{\s}{#3}
+\pgfmathsetmacro{\bumps}{#4}
+\pgfmathsetmacro{\perturbe}{\angle/\n}
+
+\begin{scope}
+%\clip (\angle*\r:\radius) -- (\angle + \angle*\r:\radius) -- (\angle*\s:\radius) -- (\angle + \angle*\s:\radius) -- (\angle*\r:\radius);
+\draw[propagator] (\angle*\r + \angle/2 + \bumpr*\perturbe:\radius) -- (\angle*\s + \angle/2 + \bumps*\perturbe:\radius) node[midway, below] {#5};
+\end{scope}
+}
+
+
+\newcommand{\drawchord}[2]{
+\pgfmathsetmacro{\r}{#1}
+\pgfmathsetmacro{\s}{#2}
+
+\begin{scope}
+%\clip (\angle*\r:\radius) -- (\angle + \angle*\r:\radius) -- (\angle*\s:\radius) -- (\angle + \angle*\s:\radius) -- (\angle*\r:\radius);
+\draw (\angle*\r + \angle/2:\radius) -- (\angle*\s + \angle/2:\radius);
+\end{scope}
+}
+
 
 % for anything that requires modifying the propagator, e.g. colour, different amplitude,etc
 % 5th argument should be {propagator,<other stuff>} or {smallpropagator,<otherstuff>} otherwise you'll get a straight line
@@ -120,10 +160,6 @@
 	
 }
 
-
-
-
-
 \newcommand{\drawnumbers}{
   \foreach \i in {1,2,...,\n} {
   \pgfmathsetmacro{\x}{\angle*\i}
@@ -131,6 +167,12 @@
 }
 }
 
+\newcommand{\drawnumbersshift}{
+  \foreach \i in {1,2,...,\n} {
+  \pgfmathsetmacro{\x}{\angle*\i + \angle/2}
+  \draw (\x:\radius*1.15) node {\footnotesize \i};
+}
+}
 
 
 
@@ -158,8 +200,6 @@
 
 }
 
-
-
 \newcommand{\makediag}[8]{
 	\begin{tikzpicture}[rotate=60,baseline=(current bounding box.east)]
 	\begin{scope}
@@ -170,6 +210,8 @@
 	\end{scope}
 	\end{tikzpicture}
 }
+
+
 
 %*****************
 
@@ -330,7 +372,7 @@ There is an equivalence relationship on the set of admissible Wilson loops diagr
 \end{enumerate}
 \end{dfn}
 
-\begin{eg}
+\begin{eg} \label{eg:equivdiags}
 Note that since this is an equivalence relation, we may find that two Wilson loop diagrams are equivalent, even if they do not have complements of (non-trivial) exact subdiagrams in common. Consider the following three Wilson loop diagrams,
 \bas
 W_1 = \begin{tikzpicture}[rotate=67.5,baseline=(current bounding box.east)]
@@ -365,6 +407,7 @@ W_3 = \begin{tikzpicture}[rotate=67.5,baseline=(current bounding box.east)]
 	\end{tikzpicture} .
 \eas
 
+
 The diagrams $W_1 \sim W_2$ because $(\{(5,8), (5,7)\}, \{5,6,7,8,1\})$ and $(\{(5,8), (7,8)\}, \{5,6,7,8,1\})$ are the corresponding differing subdiagrams. Furthermore, there is the equivalence $W_2 \sim W_3$ due to the exact subdiagrams $(\{(1,4), (3,4)\}, \{1,2,3,4,5\})$ and $(\{(1,4), (1,3)\}, \{1,2,3,4,5\})$. This forces an equivalence between $W_1$ and $W_3$, even though one cannot partition the propagators of each into a an exact subdiagram (that may vary between the diagrams) and a complement that is fixed.  \end{eg}
 
 Each Wilson loop diagram, $W = (\cP, n)$ with $|\cP| = k$ is associated to a $k \times n$ matrix with non-zero real variable entries, called $C(W)$:
@@ -374,7 +417,7 @@ Each Wilson loop diagram, $W = (\cP, n)$ with $|\cP| = k$ is associated to a $k 
 \;. \label{C(W) dfn}\ea
 
 \begin{eg}
-For example, ordering the propagators of $W_1$ above as follows: \bas (1,4), \, (2,4), \, (5,7), \, (5,8) \eas we may write
+For example, ordering the propagators of $W_1$ from Example \ref{eg:equivdiags}: \bas (1,4), \, (2,4), \, (5,7), \, (5,8) \eas we may write
 \bas C(W_1) = \left(
 \begin{array}{cccccccc}
 c_{1,1} & c_{1,2} & 0 & c_{1,4} & c_{1,5} & 0 & 0 & 0 \\
@@ -490,7 +533,52 @@ Since the vertices of $\tau(W)$ are labeled by the edges of $W$, which are cycli
 graph with no cut vertices, where all vertices lie on the infinite face, along with a distinguished start vertex and direction around the infinite face.  From this viewpoint the polygon of $tau(W)$ is the boundary of the infinite face.}{I've smushed this together a bit in the prev. lem. Tell me if I've missed anything. Its a lemma for emphasis, not difficulty}
 \end{comment}
 
-***draw some examples***
+\begin{eg}\label{WLDtopolygonpartition}
+In this example we return to the Wilson loop diagrams in Example \ref{eg:equivdiags}. We can pair diagrams with their polygon partitions as follows:
+\bas W_1 = \begin{tikzpicture}[rotate=67.5,baseline=(current bounding box.east)]
+	\begin{scope}
+	\drawWLD{8}{1.5}
+	\drawnumbers
+	\drawprop{1}{0}{4}{0}
+	\drawprop{2}{0}{4}{-1}
+    \drawprop{5}{0}{8}{0}
+    \drawprop{5}{1}{7}{0}
+		\end{scope}
+	\end{tikzpicture} \quad; \quad
+\tau(W_1) = \begin{tikzpicture}[rotate=67.5,baseline=(current bounding box.east)]
+	\begin{scope}
+	\drawpolypart{8}{1.5}
+    \drawnumbersshift
+    \drawchord{1}{4}
+    \drawchord{2}{4}
+    \drawchord{5}{8}
+    \drawchord{5}{7}
+	\end{scope}
+	\end{tikzpicture}
+\eas and
+\bas W_3 = \begin{tikzpicture}[rotate=67.5,baseline=(current bounding box.east)]
+	\begin{scope}
+	\drawWLD{8}{1.5}
+	\drawnumbers
+    \drawprop{1}{0}{4}{0}
+	\drawprop{1}{1}{3}{0}
+    \drawprop{5}{0}{8}{0}
+    \drawprop{6}{0}{8}{-1}	
+		\end{scope}
+	\end{tikzpicture}\quad; \quad
+\tau(W_3) = \begin{tikzpicture}[rotate=67.5,baseline=(current bounding box.east)]
+	\begin{scope}
+	\drawpolypart{8}{1.5}
+    \drawnumbersshift
+    \drawchord{1}{4}
+    \drawchord{1}{3}
+    \drawchord{5}{8}
+    \drawchord{6}{8}
+	\end{scope}
+	\end{tikzpicture} .
+\eas
+
+\end{eg}
 
 A planar embedding of a graph is a \emph{triangulation} if all faces, except possibly the infinite face, are triangles.
 
@@ -504,7 +592,8 @@ A decomposition of a polygon partition $\tau(W)$ is a set of 2-connected induced
   For $W$ an admissible Wilson loop diagram, the polygon partition $\tau(W)$ has a unique decomposition into maximal triangulated pieces, and edges in the polygon of $\tau(W)$.
 \end{lem}
 
-***draw an example***
+\begin{eg} \label{eg: unique decomposition} For the Wilson loop diagrams and polygon partitions in example \ref{WLDtopolygonpartition}, the vertex sets $\{1, 2, 3,4\}$ and $\{5, 6, 7, 8\}$ are maximal triangulated pieces for both $\tau(W_1)$ and $\tau(W_3)$. The vertex set $\{4,5, 8, 1\}$ is not a triangulation in either polygon partition. \note{do we want a picture of a dual tree here? Being lazy}
+\end{eg}
 
 \begin{proof}
 We begin by giving an algorithm for the decomposition, then prove its uniqueness. Let $W = (\cP, n)$, with $|\cP| = k$.
@@ -544,7 +633,7 @@ We begin by relating triangulations and exact subdiagrams.
 
   Each of these $n-3-k$ internal edges correspond to propagators in $W$, call this set $P$.  Next we count the size of $V(P)$.  Each of the $n$ vertices in the outer face of $t$ corresponds to an edge of $W$. These $n$ edges define $k$ connected compnents of the outer polygon of $W$. Thus the set$V(P)$ has $n+k$ vertices.  In other words, \bas |V(P)| = n+k = |P| -3\;.\eas
 
-If $n=2$, then $t$ has two connected componenents. Therefore, $t$ corresponds to a propagator that connects two non-adjacent edges. Therefore, the trivial triangulation is a trivial exact subdiagram.
+If $n=2$, then $t$ has two connected components. Therefore, $t$ corresponds to a propagator that connects two non-adjacent edges. Therefore, the trivial triangulation is a trivial exact subdiagram.
 
   Conversely if we have an exact subdiagram $(P, V(P))$ of $W = (\cP, n)$ supported on $|V(P)| = |P|+3$ vertices. Let $|P| = k>1$ and $k+3 = m$. Suppose the set $V(P)$ defines $c$ disjoint cyclic intervals of $[n]$. Then the corresponding subgraph of $\tau(W)$ has $m-c$ vertices. Call it $t$. If $t$ were a triangulated component, $t$ would have $k -c$ internal edges.
 
@@ -724,70 +813,98 @@ Let $W = (\cP, n)$ be an admissible Wilson loop diagram. This gives an algorithm
 \item Increment $i$ by 1 and repeat from (a).
 \end{enumerate}
 \end{enumerate}
-\end{algorithm} \note{I don't like how this is written. Any ideas?}
+\end{algorithm}
 
 If the propagator $p$ is removed at vertex $i$ according to the algorithm for $I_a$, we say that $p$ \emph{contributes} $i$ to $I_a$.
 
 Next we prove that this algorithm actually gives a Grassmann Necklace as claimed. We begin with some useful definitions and lemmas
 
 \begin{dfn}\label{protect dfn}
-Let $W = (\cP,n)$ be an admissible diagram and $a \in[n]$ a vertex. For $p= (i,j) \in \cP$ an a propagator of $W$  and $v \in \{i, j\}$ (or $w \in \{i+1, j+1\}$)a vertex of $W$, let $P_{v}$ (or $P_w$) to be a \emph{protecting set of $p$ at $v$ (or $w$) at $a$} be a set of up to $3$ propagators defined as follows: \begin{enumerate}
-\item Work under the linear order on $[n]$, $<_{v+1}$ or $<_w$, every propagator is now written as $p = (i_p, j_p)$ such that $i_p <_{v+1} j_p$.
-\item There is a propagator $s_1 \in P_v$ and $s_4 \in P_w$ defined such that $s_4 = (i_{s_4}, v)$ and $s_1 = (i_{s_1}, v)$. One may also have $s_1 = (i_{s_1}, v-1)$. Furthermore, $s_m \in [i_p, v]$.
-\item For the given $a$, either $a-3 <_{v+1} i_{s_1}$ or there exist $2$ propagators $s_2$ and $s_3 \in P_v$ such that $s_3 = (i_{s_3}, i_{s_1})$ and $s_2 = (i_{s_2}, i_{s_1})$. One may also have $s_2 = (i_{s_2}, i_{s_1}-1)$. Furthermore, $a-3 <_{v+1} s_m$.\end{enumerate}
+Let $W = (\cP,n)$ be an admissible diagram and $a \in[n]$ a vertex. For $p= (i,j) \in \cP$ an a propagator of $W$  and $v \in \{i, j\}$ a vertex of $W$, let $P_{v}(p)$ or $P_{v+1}(p)$ to be two \emph{protecting sets of $p$ at $v$ and ${v+1}$} be a set of propagators defined as follows: \begin{enumerate}
+\item Work under the linear order on $[n]$, $<_{v+1}$, every propagator is now written as $p = (i_p, j_p)$ such that $i_p <_{v+1} j_p$.
+\item If there is a propagator $s_1 \in \cP$ such that $s_1 = (i_{s_1}, v)$ or $s_1 = (i_{s_1}, v-1)$, then $s_1 \in P_v(p)$.
+\item If $s_1$ as above does not exists, then $P_v(p) = \emptyset$. In this case, $P_w(p) = \emptyset$. When $P_v(p) \neq \emptyset$, if there exists a propagator $t_1 \in \cP$ defined such that $t_1 = (i_{t_1}, v)$ and $s_1 = (i_{s_1}, v)$ with $i_p <_{v+1} i_{t_1} <_{v+1} i_{s_1}$, $P_w(p) = t_1$.
+\item If $s_1 = (i_{s_1}, v)$ then \bas P_v(p)=  \begin{cases} \{s_1\} \cup P_{i_{s_1}}(s_1) \cup P_{i_{s_1}+1}(s_1) & \textrm{ if } P_{i_{s_1}+1}(s_1) \neq \emptyset \\ s_1 &  \textrm{ else } \end{cases}. \eas  If $s_1 = (i_{s_1}, v-1)$ then \bas P_v(p)=  \begin{cases}  \emptyset & \textrm{ if } P_{v-1}(s_1) = \emptyset \\ \{s_1\} \cup P_{v-1}(s_1) & \textrm{ else } \end{cases} \eas.
+\end{enumerate}
 \end{dfn}
+
+The protective sets $P_\cdot(p)$ are designed to prevent $p$ from contributing the vertex indicated in the subscript at certain points in the Grassmann Necklace, $I_a$. Write $P_v(p) = \{s_1, \ldots s_r, t_2,  \ldots t_r\}$ with the $t_x = P_{i_{s_{x-1}}+1}(s_{x-1})$ and $s_x \in P_{i_{s_{x-1}}}(s_{x-1})$ for $x \geq 2$. We place the restrictions on the vertex $a$ as follows: \begin{enumerate} \item $P_v$ prevents $p$ from contributing to $I_a$ if \bas i_{s_r}  <_{v+1} a-1 <_{v+1} v\eas \item $P_{v+1}(p)$ prevents $p$ from contributing to $I_a$ only if $P_v(p)$ prevents $p$ from contributing $v$ to $I_a$. \end{enumerate}
+
+
+\begin{eg} \label{eg: protective sets}
+Consider the admissible Wilson loop diagram
+\bas W=\begin{tikzpicture}[rotate=120,baseline=(current bounding box.east)]
+	\begin{scope}
+	\drawWLD{17}{3}
+	\drawnumbers
+	\drawprop{1}{0}{16}{0}
+	\drawlabeledprop{2}{0}{15}{1}{p}
+    \drawprop{6}{2}{15}{0}
+    \drawprop{3}{0}{6}{1}
+    \drawprop{4}{0}{6}{0}
+    \drawprop{7}{0}{11}{0}
+    \drawprop{8}{0}{10}{0}
+    \drawprop{11}{1}{14}{1}
+    \drawprop{12}{0}{14}{0}
+		\end{scope}
+	\end{tikzpicture}
+\eas Consider the two sets of propagators $Q = \{(3, 6), (4, 6), (6,15)\}$ and $R = \{ (7, 11), (8, 10), (11, 14), (12, 14)\}$. The propagator $p = (2, 15)$ is protected at $a = 5$ from contributing $15$ to $I_5$ by the set $P_{15} = Q$. There is no set preventing $p$ from contributing $16$ to $I_{15}$. At $a = 9$, the set $P_{15} = \{(6,15)\} \subset Q$. We may just as easily right $P_{15} = Q$, though the other two propagators in the set prove unnecessary to keep $p$ from contributing $15$ to $I_{9}$. At $a = 14$, both $P_{15}$ and $P_{16}$ exists, with $P_{15} = \{(11, 14), (12, 14)\} \subset R $ and $P_{16}= \{(6,15)\} \subset Q$. We may just as easily right $P_{15} = R$ and $P_{16} = R$, though the other two propagators in each set are unnecessary.
+
+Note that for $a=1$, the propagator $p$ contributes $2$ to $I_1$. However, in this case, we say that neither $P_{15}$ or $P_{16}$ exist.
+\end{eg}
 
 
 \begin{lem}\label{protecting lem}
-Let $W = (\cP, n)$ be an admissible Wilson loop diagram, and $p = (i,j) \in \cP$, and $a \in [n]$ be a vertex. If there exists a $P_v$, for $v \in \{i,j\}$, then $p$ does not contribute $v$ to $I_a$. If there are two sets $P_v$ and $P_w$, for $w \in \{i+1, j+1\}$, then $p$ does not contribute $w$ to $I_a$.
+Let $W = (\cP, n)$ be an admissible Wilson loop diagram, and $p = (i,j) \in \cP$, and $a \in [n]$ be a vertex. For $v \in \{i,j\}$, if $P_v(p) \neq \emptyset$, write $P_v(p) = \{s_1 \ldots s_r, t_2, \ldots t_r\}$ as above. Then $p$ does not contribute $v$ to $I_a$ if $i_{s_r} +1 <_{v+1} a <_{v+1} v+1 $. If both $P_v(p)$ and $P_{v+1}(p)$ are non empty, then $p$ also does not contribute $v+1$ to $I_a$.
 \end{lem}
 
 \begin{proof}
-We consider first the case of $p$ not contributing $v$ to $I_a$.
+Note that if $s_1 \in P_v(p)$ exists at step $v$ of Algorithm \ref{alg:put GN on WLD}, then $p$ cannot contribute $p$ to $I_a$. Further, if $P_{v+1}(p) \neq \emptyset$, $p$ cannot contribute $v+1$ to $I_a$ either.
 
-The set $P_v$ is constructed such that, $s_1$ if it exists at step $v$ of Algorithm \ref{alg:put GN on WLD}, prevents $p$ from contributing $v$ to $I_a$. By the positioning of $a$, either the algorithm does not encounter the propagators $s_1$ before vertex $v$ or $v-1$, or it encounters it at $i_{s_1}$.  In this case, the existence of $s_2$ and $s_3$ prevent $s_1$ from contributing at vertices $i_{s_1}$ or $i_{s_1}+1$. Therefore, $s_1$ remains in the diagram at step $v$.
+Next we show that if $P_v(p)$ is as above, with $i_{s_r}+1 <_{v+1} a$, then the propagator $s_1$ exists at step $v$ of Algorithm \ref{alg:put GN on WLD}. Let $x$ be the largest integer that such that $a <_{v_1} j_{x}+1$. Then $s_x$ cannot contribute to $I_a$ before vertex $v$. By construction $P_{i_{s_x}+1}(s_{x-1})\subset P_v(p)$. Therefore, $s_{x-1}$ does not contribute $i_{s_x}+1$ to $I_a$. Thus we conclude that $s_1$ does not contribute $i_{s_1}$ or $i_{s_1}+1$ to $I_a$. In other words, $s_1$ has not been removed from the diagram at vertex $v$.
 
-If both $P_v$ and $P_w$ exists, then if $s_1$ and $s_3$ exist at step $v$ of Algorithm \ref{alg:put GN on WLD}, prevents $p$ from contributing $v$ and $w$ to $I_a$. By the positioning of $a$, either the algorithm does not encounter the propagators $s_1$ and $s_4$ before vertex $v$ or $v-1$, or it encounters only $s_1$ before $v$ or $v-1$. By the above argument, $s_1$ remains in the diagram at step $v$. Finally, the algorithm may encounter $s_4$ at $i_{s_4}$. In this case, the existence of $s_5$ and $s_6$ prevent $s_4$ from contributing at vertices $i_{s_4}$ or $i_{s_4}+1$. Therefore, $s_4$ remains in the diagram at step $v$.   Thereofre, in this case, $p$ cannot contribute either $v$ or $v+1$ to $I_a$.
 \end{proof}
 
-There is an easy corrollary to this, describing when propagators cannot contribute certain vertices to elements of the Grassman necklace.
+Thus we say that $P_v(p)$ protects $p$ at $v$ from $a$, for $a \in [i_{s_r}+2, v]$. There is an easy corollary to this, describing when such a protecting set cannot exist.
 
 \begin{cor} \label{protecting cor}
-Let $W = (\cP, n)$ be an admissible Wilson loop diagram, and $p = (i,j) \in \cP$. Picking a $v \in \{i, j\}$ write $p = (i_p, j_p)$ with $i_p <_{v+1} j_p$. If $a \in [j_p+1, i_p+1]$ then no protecting set $P_v$ or $P_w$ can protect $p$ at $v$ or $v+1$ from $a$.
+Let $W = (\cP, n)$ be an admissible Wilson loop diagram, and $p = (i,j) \in \cP$. Picking a $v \in \{i, j\}$ write $p = (i_p, j_p)$ with $i_p <_{v+1} j_p$. If $a \in [j_p+1, i_p+1]$ then there can be no protecting set $P_v$ or $P_{v+1}$ protecting $p$ at $v$ or $v+1$ from $a$.
 \end{cor}
 
 \begin{proof}
-Since $W$ is admissible, it cannot have crossing propagators. Therefore niether $P_v$ cannot have the requisite propagator $s$ with $a-3 <_{v+1} i_s$.
+Since $W$ is admissible, it cannot have crossing propagators. Therefore neither $P_v$ cannot have the requisite propagator $s_r$ with $i_{s_r}+1  <_{v+1} a$.
 \end{proof}
 
-
-
-The converse, howevever requires an extra condition.
+The converse, however requires an extra condition.
 
 \begin{lem} \label{protect conv lem}
-For $W = (\cP, n)$, $p = (i,j)$, and $v \in \{i, j\}$, $w \in \{i+1, j+1\}$ and $ a \in [n]$ a vertex of $W$, if $v$ (resp. $w$) is the first vertex of $V_p$ in the $<_a$ order such that $P_v$ (resp. neither $P_v$ nor $P_w$) does not exsist, then $p$ contributes $v$ (resp. $w$) to $I_a$.
+For $W = (\cP, n)$, $p = (i,j)$, and $v \in \{i, j\}$ and $ a \in [n]$ a vertex of $W$, if $v$ (resp. $v+1$) is the first vertex of $V_p$ in the $<_a$ order such that $P_v$ (resp. neither $P_v$ nor $P_{v+1}$) does not exist, then $p$ contributes $v$ (resp. $v+1$) to $I_a$.
 \end{lem}
 
 \begin{proof}
-If $p$ doesn't contribute $v$ or $w$ $I_a$, then either $p$ contributes a different supporting vertex $u$ earlier in the $<_a$ order or there is a propagator at $s_1$ preventing $p$ from contributing $v$ (or $w$) to $I_a$, or there is a pair of propagators $s_1$ (resp. and $s_4$) preventing $p$ from contributing $w$, or $v$, at $I_a$.
+Write $p = (i_p, j_p)$ with $i_p <_{v+1} j_p$.
 
-If there is a propagator $s_1 \in \cP$ that are still in the diagram at step $v$, (write them $s_1 = (i_{s_1}, j_{s_1})$ with $j_{s_1} \in \{v, v-1\}$), then $s_1$ did not contribute $i_{s_1}$ or $i_{s_1} +1 $ to $I_a$. Therefore, $s_1$ cannot contribute $i_{s_1}$ $i_{s_1}+1$ to $I_a$. In other words, either $a-3 <_{v+1} i_{s_1}$ or there must be two other propagators $s_2 = (i_{s_2}, j_{s_2})$ and $s_3 = (i_{s_3}, j_{s_3})$, with $j_{s_2} \in \{i_{s_1}, i_{s_1}-1\}$ and $i_{s_3} <_{s_1} i_{s_2} <_{s_1} j_{s_2} \leq_{s_1} j_{s_3} = j_{s_1}$ that prevent this. We show that, if $a-3 \not <_{v+1} i_{s_1}$, then $a-3 <_{v+1} i_{s_2} <_{v+1} s_3$. That is, there is a set $P_v$ preventing $p$ from contributing $v$.
 
-The argument for showing that there must be two sets $P_v$ and $P_w$ is simlar, and is not made explicit here.
+If $p$ doesn't contribute $v$ (or $v+1$) to $I_a$, then either $p$ contributes a different supporting vertex $u$ earlier in the $<_a$ order or there is a propagator $s_1$ at step $v$ of the algorithm \ref{alg:put GN on WLD} preventing $p$ from contributing $v$ to $I_a$, (or there are a pair of propagators $s_1$ and $t_1$ at step $v$ preventing $p$ from contributing $v+1$ at $I_a$.)
 
-We proceed by contradiction. Suppose $a-3 \not <_{v+1} i_{s_2}$. Then, there exists two propagators $s_4$ and $s_5$ such that $s_4 = (i_{s_4}, j_{s_4})$ and $s_5 = (i_{s_5}, j_{s_5})$, with $j_{s_4} \in \{i_{s_2}, i_{s_2}-1\}$ and $i_{s_5} <_{s_2} i_{s_4} <_{s_2} j_{s_4} \leq_{s_2} j_{s_5} = j_{s_2}$. If $a-3 <_{v+1} i_{s_4} <_{v+1} s_5$, we may assume without loss of generality that there are no futher propagators of the form $t = (i_t, j_t)$ with $j_t \in \{i_{s_1}, j_{s_1}-1\}$ or $i_t \in [ i_{s_4}, i_{s_1}]$. Otherwise, one may replace $p$ with $s_1$ in this argument. Therefore, $s_1$ contributes $i_{s_1}$ to $I_a$, which is a contradiction. Therefore, we must again suppose that $a-3 \not <_{v+1} i_{s_4}$.
+If there are propagators $s_1, t_1 \in \cP$ that are still in the diagram at step $v$, (write them $s_1 = (i_{s_1}, j_{s_1})$, and $t_1 = (i_{t_1}, j_{t_1})$) with $j_{s_1} \in \{v, v-1\}$, and $i_p \leq_{v+1} i_{t_1} <_v i_{s_1} <_v j_{s_1} \leq_{v} j_{t_1} = v$) then $s_1$ or $t_1$ did not contribute $i_{s_1}$ or  $i_{s_1} +1 $ (resp. $i_{t_1}$ or $i_{t_1}+1$) to $I_a$. Then one of the following three situations hold: \begin{enumerate} \item $i_{s_1}+1 <_{v+1} a$ and $j_{s_1} = v$: In this case, $s_1$ cannot be removed until $v$. \item $i_{s_1}+1 <_{v+1} a$ and $j_{s_1} = v-1$: in this case there exists a propagator $s_2 = (i_{s_2}, j_{s_2})$ with $i_{s_1} \leq_{v+1} i_{s_2} <_{v+1} j_{s_2}$ and $j_{s_2} \in \{j_{s_1}-1, j_{s_1}\}$. \item $i_{s_1}+1 \not <_{v+1} a$ and $j_{s_1} = v$: and there must be two other propagators $s_2 = (i_{s_2}, j_{s_2})$ and $t_2 = (i_{t_2}, j_{t_2})$, with $j_{s_2} \in \{i_{s_1}, i_{s_1}-1\}$ and $i_{s_1} \leq_{v+1} i_{t_2} <_{v+1} i_{s_2} <_{v+1} j_{s_2} \leq_{v+1} j_{t_2} = j_{s_1}$   \end{enumerate}
 
-In order for $s_1$ to exists at step $v$ of algorithm \ref{Alg:put GN on WLD}, one must continue to find pairs of propagators $s_{m'}$, $s_{m'+1}$ in $\cP$ that sheild the initial endpoint of a previously defined propagator, $s_m$. There are three cases to consider. Let $s_k$ indicate a propagator identified at an earlier stage of this construction where $i_{p_0} = \min{i_p, a}$.
+However, now one must ensure that the newly identified propagators $s_2$ and $t_3$ do not contribute to $I_a$ before $i_{s_1}$. One does this by a similar construction to above. In this manner, we begin to build the sets $P_v(p)$ and $P_{v+1}(p)$.  By finiteness and admissiblity of the Wilson loop diagram, both these sets are finite; one cannot continue to add propagators $s_i$, $t_i$ ad infinitum.
 
+We claim that this implies that at some point there is a terminal propagator, $s_m \in P_v(p)$ such that $i_{s_m} + 1 <_{v+1} a$, and \bas  \textrm{ either }= \begin{cases} j_{s_m}=i_{s_{m-1}} & \textrm{ }\\ j_{s_m}=j_{s_{m-1}} & \textrm{ } \end{cases} .\eas We show that all other possibilities lead to a contradiction. For the remainder of this proof, indicate by $p_k$ some propagator identified at an earlier stage of this construction. That is, for $0 < k < m$, $p_k \in \{s_k, t_k\}$. Futher define $p_0 = p$.
+
+
+%\begin{cases} j_{s_{m}=i_{s_{m-1}} & \textrm{ } \\  j_{s_m}=j_{s_{m-1}} & \text{ }\end{cases}
+
+If $j_{s_m} \in \{i_{s_{m-1}}-1, j_{s_{m-1}}-1\}$, then, this cannot be the final propagator added to $P_v(p)$, as one would need a means of preventing $s_m$ from contributing $i_{s_{m-1}}-1$ or $j_{s_{m-1}}-1$ to $I_a$.
+
+If $i_{s_m} + 1 \not <_{v+1} a$, then there are two.
  \begin{description}
-\item[$i_{s_m} = i_{p_k}+2$] By admissibility, there is not room to place both the propagators $s_{m'}$, and $s_{m'+1}$. Thus $s_m$ is removed at the step $i_{s_m}$ or $i_{s_m} + 1$. Therefore, $s_1$ contributes at either $i_{s_1}$ or $i_{s_1}+1$.
- \item[$i_{s_m} = i_{p_k}+1$] By admissibility, there is not room to place either the propagators $s_{m'}$, or $s_{m'+1}$. Thus $s_m$ is removed at the step $i_{s_m}$. Therefore, $s_1$ contributes at either $i_{s_1}$ or $i_{s_1}+1$.
- \item[$i_{t_m} = i_{p_k}$] Since $k < m$, the propagator $p_k$ is not removed at step $i_{p_k}$ or $i_{p_k}+1$. Therefore neither is $s_{m'}$. Furthermore, there cannot be propagators that prevent $s_{m'}$ from being removed at $j_{s_m}$ or $j_{s_m}+1$. Otherwise, we could replace $p$ with $sm_{m'}$ and repeat this argument. Since $\cP$ is finite, this replacement process must terminate, forcing $s_{m'}$ to contribute $j_{s_m}$ or $j_{s_m}+1$, and thereby, $s_1$ contributes at either $i_{s_1}$ or $i_{s_1}+1$.
- \end{description}
+
+\item[$j_{s_m} = i_{s_{m-1}}$ and $i_{s_m} \in \{i_{p_k}+2, i_{p_k}+1\}$] for some $k<m$. By admissibility, there is not room to place both the propagators $s_{m+1}$, and $t_{m+1}$. Thus $s_m$ is removed at the step $i_{s_m}$ or $i_{s_m} + 1$. Therefore, $s_1$ contributes at either $i_{s_1}$ or $i_{s_1}+1$. This leads to a contradiction.
+\item[$j_{s_m} = i_{s_{m-1}}$ and $i_{s_m} = i_{p_k}+2$] for some $k<m$. This requires either crossing propagators or propagators starting and ending at the same edge, which violates admissibility.
+ \end{description} \note{correct but clear as mud? Help?}
 \end{proof}
-
-
-
 
 We use these results to prove some properties about the Algorithm \ref{alg:put GN on WLD}.
 \begin{prop}\label{res:alg k labels}
@@ -796,7 +913,7 @@ If $W = (\cP, n)$ is an admissible Wilson loop diagram with $|\cP| = k$, then Al
 \begin{proof}
 It is enough to show that the algorithm terminates in at most $n$ steps for each $a \in [n]$. In other words, that all $k$ propagators of $W$ are removed by the time the algorithm has cycled through all the vertices, starting at $a$. Suppose this doesn't happen, i.e. there is a propagator $p= (i,j)\in \cP$ which survives the first $n$ steps of the algorithm for some starting vertex $a$. Without loss of generality, assume $a \leq_a i <_a j$. Otherwise, change the roles of $i$ and $j$.
 
-Since $p$ is not removed by step $j+1$, by Lemma \ref{protect dfn lem} there are $4$ protecting sets, $P_i,P_{i+1}, P_{j}$ , and $P_{j+1}$ respectively, allowing $p$ to remain after $n$ steps.
+Since $p$ is not removed by step $j+1$, by Lemma \ref{protecting lem} there are $4$ protecting sets, $P_i,P_{i+1}, P_{j}$ , and $P_{j+1}$ respectively, allowing $p$ to remain after $n$ steps.
 
 However, since the cyclic interval $[i,j] \subseteq [a,j]$, $P_j$ and $P_{j+1}$ cannot be protecting sets by Corrollary \ref{protecting cor}.
 \end{proof}
@@ -878,39 +995,23 @@ By induction, we will eventually find a propagator on a region with 3 or fewer v
 
 
 \begin{lem} \label{vertex cyclic int lem}
-For every $v \in V_p$, there is a non-empty cyclic interval such that $p$ contributes $v$ to all $I_{a}$ for in said interval.
+For every $v \in V_p$, Let $A_v \subset [n]$ be the set of vertices where $p$ contributes $v$ to $I_a$. Then $A_v$ is a non-empty cyclic interval.
 \end{lem}
 
 
 \begin{proof}
 Fix $p = (i, j)$. By symmetry, we need only consider the vertices $j$, $j+1$.
 
-Let $k_1 \ldots k_r$ be the set of propagators ending on edge $j$ or $j-1$, ordered such that $k_1$ is the first propagators clockwise from $p$, and $k_r$ is the clockwisemost propagator on edge $j-1$. For each $k_x$, write $P_{x} = \{k_x, s_x, t_x\}$, where $s_x$ and $t_x$, if they  exist, to be the two clockwise most propagators preventing $k_x$ from contributing $j$ to $I_{i+2}$. Similarly, let $l_1 \ldots l_m$ be the set of propagators ending on edge $i$ or $i-1$, ordered such that $l_1$ is the first propagators clockwise from $p$, and $l_m$ is the clockwisemost propagator on edge $i-1$. For each $l_y$, write $Q_{y} = \{l_x, s_y, t_y\}$, where $s_y$ and $t_y$, if they  exist, to be the two clockwise most propagators preventing $l_y$ from contributing $i$ to $I_{j+2}$.
+Let $k_1 \ldots k_r$ be the set of propagators of the form $k_x = (i_{k_x}, j)$, with $i <_{j+1} k_1 <_{j+1} \ldots k_r <_{j+1} j$. Write $k_{r+1}$ to be the counterclockwise most propagator with an end on the edge $j-1$, if it exists. If $r \geq 2$ or $r+1 = 2$, then both $P_j(p)$ and $P_{j+1}(p)$ exists for some subset of $a \in [n]$. If $r=1$ or $r+1= 2$ then only $P_j(p)$ exists. Otherwise, $P_j(p) = \emptyset$. 
 
-Define $b_1 = \min\{k_1+1, s_1+1\}$. We see that, if $r >0$, for all $a \in [i+2, b_1]$, $p$ contributes $j$ to $I_a$. (If $b_1 <_{j+1} i+2$ then this interval is empty.) This is because in this range, $j$ is the first vertex of $p$ encountered by Algorithm \ref{Alg: put GN on WLD}. Furthermore, by Lemma \ref{protect conv lem}, and definition \ref{protect dfn} if $b_1 \not <_{j+1} i+2$ $P_1$ does not protect $p$ at $j$ for $a$ in this range. If $r = 0$ then $p$ contributes $j$ for all $a \in [i+2, j]$. In this case, we say $b_1= j$.
+Consider a protecting set $P_j(p) \subset \cP$ such that $k_1 \in P_j(p)$, if it exists. Write it \bas P_j(p) = \{s_1 \ldots s_r, t_2, \ldots t_r\} \;.\eas Define $b_1 = i_{s_r}+1$. By construction, $P_j(p)$ prevents $p$ from contributing $j$ to $I_a$ for all $a \in [b_1+1, j]$. We see that, if $r >0$, for all $a \in [i+2, b_1]$, $p$ contributes $j$ to $I_a$. (\hlfix{Note that by construction, one cannot have $i_{s_r}+1 <_{j+1} i+2$.}{verify}) This is because in this range, $j$ is the first vertex of $p$ encountered by Algorithm \ref{Alg: put GN on WLD}. Furthermore, by Lemma \ref{protect conv lem}, and definition \ref{protect dfn} if $i_{s_r}+1 \not <_{j+1} i+2$ $P_1$ does not protect $p$ at $j$ for $a$ in this range. If $r = 0$ then $p$ contributes $j$ for all $a \in [i+2, j]$. In this case, we say $b_1 = j$.
 
-Define $b_2 = \min{k_2+1, s_2+1}$. If $r > 1$, and $j_{k_2}=j$, for all $a \in [b_1+1, b_2]$ $p$ contributes $j+1$ to $I_a$. In this range, $P_1$ is a protective set for $p$ at $j$, but $P_2$ is not a protective set for $j+1$ in this range. Therefore, in this range, $j+1$ is the first vertex of $p$ without a protective set. If the stated condidtions do not hold, then $p$ contributes $j+1$ for all $a \in [b_1 +1, j+1]$.
+Now suppose $r$ is such that both $P_j(p)$ and $P_{j+1}(p)$ exists for some $a$. This time $k_2 \subset P_j(p)$. Define $b_2 = i_{s_r}+1$, where now we use $s_r$ to indicate the last propagator in this new protecting set. By construction, $P_{j+1}(p)$ prevents $p$ from contributing $j+1$ to $I_a$ for all $a \in [b_2+2, j+1]$. Therefore, if both protecting sets exist, for all $a \in [b_1+1, b_2]$ $p$ contributes $j+1$ to $I_a$. This is exactly the range in which there is exactly one valid protecting set. Therefore, in this range, $j+1$ is the first vertex of $p$ without a protective set. If there is no $a$ such that both $P_j(p)$ and $P_{j+1}(p)$ do not hold, then  $p$ contributes $j+1$ for all $a \in [b_1 +1, j+1]$.
 
-Finally, for $r > 1$, and $j_{k_2}=j$,$a \in [b2+1, j+1]$, $p$ contributes $i$ to $I_a$. Again, for all $a$ in this range, both $P_1$ and $P_2$ are protective sets of $p$ at $j$ and $j+1$. Furthermore, by Corrollary \ref{protect cor}, no set $Q_y$ can be a protective set for $p$ at $i$ or $i+1$ for $a$ in this range.
+Finally, for $r > 1$, and $j_{k_2}=j$,$a \in [b2+1, j+1]$, $p$ contributes $i$ to $I_a$. Again, for all $a$ in this range, both sets $P_j(p)$ and $P_{j+1}(p)$ protect $p$ at $j$ and $j+1$ from $a$. Furthermore, by Corrollary \ref{protect cor}, there can be no protective sets of $i$ or $i+1$ in this range. 
 
 By switching the roles of $i$ and $j$, we see that for every element of $V_p$, there is a non-empty cyclic interval such that $p$ contributes $v$ to all $I_{a}$ for in said interval.
 \end{proof}
-
-{\color{red}For $W = (\cP, n)$, let $W' = (P, V_P)$ be a subdiagram. Write $\cI^{W'}$ be the set of $|P|$ tuples defined by \ref{alg:put GN on WLD} on $W'$. Furthermore, for any $p = (i, j) \in \cP$, write $\cP_{i,j} =  \{ q = (i_q, j_q)\in \cP | i \leq_i i_q <_i j_q \leq_i j\}$ to be the set of propagators supported on the cyclic interval $[i, j]$. Similarly, write $\cP_{j,i} =  \{ q = (i_q, j_q)\in \cP | j \leq_j i_q <_j j_q \leq_j i\}$ to be the set of propagators supported on the cyclic interval $[j,i]$. Note that $p = \cP_{i,j} \cap \cP_{j,i}$.}
-
-We then have the following corrollary:
-
-
-\begin{cor} \label{rightmost prop last cor}
-Given any Wilson loop diagram, $W = (\cP, n)$, and $p = (i,j) \in \cP$, consider the subdiagrams $W_L  = (\cP_{i,j}, n)$ and $W_R = (\cP_{j,i}, n)$. Then the propagator $p$ contributes last to the entries $I_{i+2}^{W_L}$ and $I_{j+2}^{W_R}$ respectively.
-\end{cor} \todo{do you need this}
-
-{\color{red}\begin{proof}
-The support vertices of $p$, $V_p = \{i, i+1, j, j+1\}$ are the last four vertices supporting any propagators at all in the $<_{i+2}$ linear order on $[n]$. Since $p$ contributes to $I_{i+2}^{W_L}$, it must contribute at one of these $4$ vertices.
-
-The only possible configuration in which this result cannot hold is if $i$ or $i+1$ were in $I_{i+2}^{W_L}$ but not contributed by $p$.
-
-\end{proof}}\todo{currently rubbish}
 
 
 
@@ -1264,7 +1365,7 @@ Let $W$ be a Wilson loop diagram with $n$ vertices.  Let $C(W)$ be the matrix of
 \caption{Example WLD for illustrating Algorithm~\ref{alg WLD to denom via GN} and bijections between propagators and vertices for each Grassmann necklace element.}\label{fig R eg}
 \end{figure}
 
-For example consider the Wilson loop diagram in Figure~\ref{fig R eg}.  
+For example consider the Wilson loop diagram in Figure~\ref{fig R eg}.
 \[
 C(W) = \begin{bmatrix} a & b & 0 & 0 & 0 & c & d \\ e & f & 0 & 0 & g & h & 0 \\ i & j & 0 & k & l & 0 & 0 \end{bmatrix}
 \]
