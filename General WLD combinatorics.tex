@@ -502,7 +502,7 @@ The equivalence relation on Wilson loop diagrams is defined in terms of exact su
 \end{dfn}
 
 \begin{lem}\label{tausimpleplanarlem}
-If $W = (\cP, n)$ is an admissible Wilson loop diagram, then $\tau(W)$ is a simple planar graph whose outer face is a cycle. It is embedded such that the vertices all lie on this infinite face. These vertices are cyclically ordered, with a choice of first vertex giving it an additional compatible linear order.
+If $W = (\cP, n)$ is an admissible Wilson loop diagram, then $\tau(W)$ is a simple planar graph whose outer face is a cycle. It is embedded such that the vertices all lie on this infinite face\footnote{That is, it is an \emph{outerplanar} graph}. These vertices are cyclically ordered, with a choice of first vertex giving it an additional compatible linear order.
 \end{lem}
 
 \begin{proof}
@@ -584,13 +584,26 @@ A {\em maximal} triangulated piece is one which is not contained in any strictly
 \begin{proof}
 We begin by giving an algorithm for the decomposition, then prove its uniqueness. Let $W = (\cP, n)$, with $|\cP| = k$.
 
-Let $T(W)$ be the dual graph of $\tau(W)$ with the vertex corresponding to the infinite face split. In other words, place a vertex on each finite face of $\tau(W)$. These vertices are connected if there is a chord edge separating the edges. Furthermore, if the face is bounded by an edge of the polygonal cycle of $\tau(W)$, the corresponding vertex gets a leaf edge for each such boundary. Since $\tau(W)$ is a simple planar graph by Lemma \ref{tausimpleplanarlem}, $T(W)$ is an uniquely defined graph.
+By \emph{splitting} a vertex $v$ we will mean replacing $v$ by new vertice $v_1, v_2,\ldots, v_{\text{deg}(v)}$ such that each $v_i$ as exactly one neighbour and the union of the neighbourhoods of the $v_i$ is the neighbourhood of $v$.
 
-We claim that $T(W)$ is a tree. Since $\tau(W)$ is a planar graph with $k$ chord edges and no internal vertices, there are $k+1$ internal faces of $\tau(W)$. Each of these internal faces corresponds to a vertex of $T(W)$, and there are $n$ vertices of $T(W)$ from the splitting of the dual graph, so $T(W)$ has $n+k+1$ vertices in total. On the other hand, $T(W)$ has $n+k$ edges, corresponding to the $n +k$ edges of $\tau(W)$. Therefore, $T(W)$ is a tree.
+Let $T(W)$ be the dual graph of $\tau(W)$ with the vertex corresponding to the infinite face split.
+%In other words, place a vertex on each finite face of $\tau(W)$. These vertices are connected if there is a chord edge separating the edges. Furthermore, if the face is bounded by an edge of the polygonal cycle of $\tau(W)$, the corresponding vertex gets a leaf edge for each such boundary.
+Since $\tau(W)$ is an embedded graph (with a fixed distinguished embedding) by Lemma \ref{tausimpleplanarlem}, $T(W)$ is an uniquely defined graph.\note{The fixed embedding is important, because otherwise you only have a unique planar dual if the graph is 3-connected which this one isn't.  I'm just noting that here so that everyone knows why I added the part about the embedding and then we can take this comment out.}
 
-By construction, each face of $\tau(W)$ is a polygon. Therefore, each vertex of $T(W)$ is at least 3 valent (one for each edge of the polygon). \hlfix{If split each vertex of $T(W)$ if it is strictly greater than $3$ valent.}{???} (In other words, we fail to split exactly when the face is a triangle). The connected components of $T(W)$ correspond to the decomposition of $\tau(W)$ into maximal triangulated pieces and edges originally in the polygon of $\tau(W)$.  Let $f$ be the forest thus obtained. The vertices of $f$ either have valence 1, (if they correspond leaf vertices) or 3,  (if they correspond to triangulated faces). Subtrees with no trivalent vertices correspond to either edges in the polygon of $\tau(W)$, if they were originally leaves of $T(W)$, or to maximal trivial triangulations. Splitting at all the faces that are not triangles ensures maximality of the decomposition. If the splitting were not maximal, then one could add a triangle to a connected component of the splitting, but this would imply that that splitting happened at a valence $3$ vertex.
+Furthermore $T(W)$ is a tree because it is connected, has $n+k+1$ vertices ($k+1$ from the internal faces of $\tau(W)$ and $n$ from the outer face) and $n+k$ edges (since $\tau(W)$ has $n+k$ edges).  Additionally, since $\tau(W)$ is simple, $T(W)$ has no vertices of degree $2$.  
 
-To see uniqueness, consider a different maximal decomposition of $\tau(W)$. This induces a splitting on $T(W)$, where each connected component of the new decomposition corresponds to a subtree. Call this forest $f'$. Since $f' \neq f$, there are two trees, $t$ and $t'$ in $f$ and $f'$ that are distinct, but share at least one edge of $T(W)$. Since $f'$ is also maximal, $t'$ is not a subtree of $t$. Therefore, the edges of $t'$ can be found in at least two trees in the forest $f$. In particular, there is a vertex $v$ in $t'$ that corresponds to a split vertex of $T(W)$ in the original decomposition. This implies that $v$ has valence greater than $3$ in $T(W)$, and thus the corresponding face of $\tau(W)$ is not a triangle. In other words, the decomposition corresponding to $f'$ is not a triangulation. 
+%We claim that $T(W)$ is a tree. Since $\tau(W)$ is a planar graph with $k$ chord edges and no internal vertices, there are $k+1$ internal faces of $\tau(W)$. Each of these internal faces corresponds to a vertex of $T(W)$, and there are $n$ vertices of $T(W)$ from the splitting of the dual graph, so $T(W)$ has $n+k+1$ vertices in total. On the other hand, $T(W)$ has $n+k$ edges, corresponding to the $n +k$ edges of $\tau(W)$. Therefore, $T(W)$ is a tree.
+
+Split every vertex of $T(W)$ which has degree $>3$.
+%By construction, each face of $\tau(W)$ is a polygon. Therefore, each vertex of $T(W)$ is at least 3 valent (one for each edge of the polygon). \hlfix{If split each vertex of $T(W)$ if it is strictly greater than $3$ valent.}{???} (In other words, we fail to split exactly when the face is a triangle).
+The connected components of $T(W)$ correspond to the decomposition of $\tau(W)$ into maximal triangulated pieces and edges originally in the polygon of $\tau(W)$.  Let $f$ be the forest thus obtained.
+The vertices of $f$ either have degree 1 or 3.
+%, (if they correspond leaf vertices) or 3,  (if they correspond to triangular faces).
+Trees of $f$ with no trivalent vertices correspond to either edges in the polygon of $\tau(W)$, if they were originally leaves of $T(W)$, or to maximal trivial triangulated pieces.
+Splitting at all the faces that are not triangles ensures maximality of the decomposition. If the splitting were not maximal, then one could add a triangle to a connected component of the splitting, but this would imply that that splitting happened at a valence $3$ vertex.
+
+To see uniqueness, consider a different maximal decomposition of $\tau(W)$. This induces a splitting on $T(W)$, where each connected component of the new decomposition corresponds to a subtree. Call this forest $f'$. Since $f' \neq f$, there are two trees, $t$ and $t'$ in $f$ and $f'$ that are distinct, but share at least one edge of $T(W)$. Since $f'$ is also maximal, $t'$ is not a subtree of $t$. Therefore, the edges of $t'$ can be found in at least two trees in the forest $f$. In particular, there is a vertex $v$ in $t'$ that corresponds to a split vertex of $T(W)$ in the original decomposition.
+This implies that $v$ has valence greater than $3$ in $T(W)$, and thus the corresponding face of $\tau(W)$ is not a triangle. In other words, the decomposition corresponding to $f'$ is not a triangulation. 
 \end{proof}
 
 \begin{cor} \label{maxtriangdisjointcor}
