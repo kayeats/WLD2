@@ -724,9 +724,9 @@ Let $v \in C$. Clearly $\Prop(v) \subseteq \Prop(C)$, and so by Lemma \ref{lem p
 
 Now suppose there exists some $w \in  F(\Prop(C)) \setminus C$. Let $B$ be an independent subset of $C$ of maximal rank; we first show that $B \cup \{w\}$ is a dependent set in $M(W)$. Indeed, by \cite[Proposition 3.10]{wilsonloop}, there exists some $Q \subseteq \Prop(B)$ with $|Q| = |B|$ and such that $B$ is a basis in $M(Q,V(Q))$. We therefore have
 \[Q \subseteq \Prop(B) \subseteq \Prop(C),\]
-with $|\Prop(C)| = \rk(C)$ by Lemma \ref{lem facts about WLD matroids} and $|Q| = |B| = \rk(C)$ by the choice of $B$. Thus $Q = \Prop(C)$, and so $B$ is a basis in the matroid defined by $W' := (\Prop(C),V(\Prop(C)))$. All that remains is to note that $w \in F(\Prop(C)) \subseteq V(\Prop(C))$, i.e. $w$ is a vertex in $W'$; thus $B \cup\{w\}$ is dependent in $W'$, and hence also in $W$.
+with $|\Prop(C)| = \rk(C)$ by Lemma \ref{lem facts about WLD matroids} and $|Q| = |B| = \rk(C)$ by the choice of $B$. Thus $Q = \Prop(C)$, and so $B$ is a basis in the matroid defined by $W' := (\Prop(C),V(\Prop(C)))$. All that remains is to note that $w \in F(\Prop(C)) \subseteq V(\Prop(C))$, i.e. $w$ is a vertex in $W'$; thus $B \cup\{w\}$ is dependent in $W'$, and hence also in $W$.  This also implies that $\rk(F\cup w) = \rk(F)$ since $B\subseteq F$ and so since $F$ is a flat we must have $w\in F$.
 
-Returning our attention to $M(W)$, the dependent set $B \cup \{w\}$ must contain a circuit $C'$, with $w \in C'$ since $B$ was an independent set. Now $C \cup C' = C \cup \{w\} \supsetneq C$ is a cycle, \hlfix{which contradicts the maximality of $C$}{as long as $w \in F$. I can't figure out why this has to be true?}
+Returning our attention to $M(W)$, the dependent set $B \cup \{w\}$ must contain a circuit $C'$, with $w \in C'$ since $B$ was an independent set. Now $C \cup C' = C \cup \{w\} \supsetneq C$ is a cycle which, since $w\in F$, contradicts the maximality of $C$.
 
 
 For part (2), first note that $F \setminus C$ is automatically independent as it contains no circuits. Now suppose that all vertices in $W$ have rank $\geq 1$.
@@ -803,15 +803,16 @@ It follows directly from the definitions that a matroid of rank $r$ is uniform i
 
 We prove the following claim: $W'$ is exact if and only if $V(P)$ contains no circuits $C$ with $\rk C< |P|$ in $(P, V(P))$. Since $\rk(M(W')$ is bounded above by $|P|$, the result follows.
 
-Suppose $C \subseteq V(P)$ is a circuit of rank $m < |P|$; by Lemma \ref{lem facts about WLD matroids}, we know that $|\Prop(C)| = m$ as well, \hlfix{where we take $\Prop(C)$ in $W'$ rather than $W$}{I don't know if this caveat is necessary but we need $\Prop(C) \subseteq P$ later on}. The set $P \setminus \Prop(C)$ is thus nonempty, and we can consider the subdiagram $W'':= (P\setminus \Prop(C),V(P\setminus\Prop(C))$. By the density condition on subdiagrams of admissible diagrams, we have
-\[|V(P\setminus\Prop(C))| \geq |P\setminus\Prop(C)| + 3.\]
-It is easy to verify that $V(P\setminus\Prop(C)) \subseteq V(P)\setminus C$; since $C \subseteq V(P)$ and $\Prop(C) \subseteq P$, we can therefore rewrite the previous inequality as
+Suppose $C \subseteq V(P)$ is a circuit of rank $m < |P|$; by Lemma \ref{lem facts about WLD matroids}, we know that $|\Prop_{W'}(C)| = m$ as well, where the subscript to $\Prop$ specifies the diagram we are working in.  Observe that $\Prop_{W'}(C)\subseteq P$ by definition. The set $P \setminus \Prop_{W'}(C)$ is thus nonempty, and we can consider the subdiagram $W'':= (P\setminus \Prop_{W'}(C),V(P\setminus\Prop_{W'}(C))$. By the density condition on subdiagrams of admissible diagrams, we have
+\[|V(P\setminus\Prop_{W'}(C))| \geq |P\setminus\Prop_{W'}(C)| + 3.\]
+It is easy to verify that $V(P\setminus\Prop_{W'}(C)) \subseteq V(P)\setminus C$; since $C \subseteq V(P)$ and $\Prop_{W'}(C) \subseteq P$, we can therefore rewrite the previous inequality as
 \[|V(P)| - (m+1) \geq |V(P\setminus\Prop(C))| \geq |P| - m + 3.\]
 Simplifying, we obtain $|V(P)| \geq |P| + 4$, i.e. $(P,V(P))$ is not an exact diagram.
 
-Conversely, suppose that $(P,V(P))$ is not exact, i.e. $|V(P)| \geq |P| +4$. We have 
-\[|V(P)| - (m+1) \geq |P| - m + 3\]
-as above, but \hlfix{we need to know that $P\setminus\Prop(C)$ is non-empty before we can complete the argument.}{and if we knew this, it would be immediate that $\rk(C) < |P|$}
+Conversely, suppose that $W'$ is not exact and for a contradiction suppose also that $M(W')$ is uniform of rank $|P|$.  Take $p \in P$.  Then $|V(P)\setminus V(p)| = |V(P)| - 4 \geq |P|$ by non-exactness.  By uniformity there is an independent set of size $|P|$ in $V(P)\setminus V(p)$.  This is impossible because the submatrix corresponding to this independent set has $|P|$ rows but the one corresponding to $p$ is all $0$ one of them is all 0 so it cannot be full rank.
+%suppose that $(P,V(P))$ is not exact, i.e. $|V(P)| \geq |P| +4$. We have 
+%\[|V(P)| - (m+1) \geq |P| - m + 3\]
+%as above, but \hlfix{we need to know that $P\setminus\Prop(C)$ is non-empty before we can complete the argument.}{and if we knew this, it would be immediate that $\rk(C) < |P|$}
 \end{proof}
 
 Before proving the main theorems of this section, we make a few observations about the geometry of matroids defined by exact diagrams.
