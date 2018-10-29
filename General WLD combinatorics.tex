@@ -31,6 +31,7 @@
 \usepackage[colorinlistoftodos,textsize=footnotesize]{todonotes}
 \newcommand{\hlfix}[2]{\texthl{#1}\todo{#2}}
 \newcommand{\hlnew}[2]{\texthl{#1}\todo[color=green!40]{#2}}
+\newcommand{\sanote}{\todo[color=violet!30]}
 \newcommand{\note}{\todo[color=green!40]}
 \newcommand{\newstart}{\note{The inserted text starts here}}
 \newcommand{\newfinish}{\note{The inserted text finishes here}}
@@ -713,7 +714,7 @@ To prove (3), we need to show that $F(P)$ is maximally dependent. If $F(P) = [n]
 \begin{lem} \label{lem decompose flat}Let $F$ be a flat in $M(W)$, and let $C \subseteq F$ be the union of all circuits contained in $F$. Then the following are true:
 \begin{enumerate}
 \item $C = F(\Prop (C))$, i.e. $C$ is a propagator flat.
-\item $F \setminus C$ is an independent set. Further, if $W$ does not contain any vertices of rank $0$, i.e. all vertices support at least $1$ propagator, then $F \setminus C$ is an independent flat.
+\item $F \setminus C$ is an independent \st{set. Further, if $W$ does not contain any vertices of rank $0$, i.e. all vertices support at least $1$ propagator, then $F \setminus C$ is an independent} flat. \sanote{$F$ and $C$ both contain all vertices of rank $0$ by definition} 
 \end{enumerate}
 \end{lem}
 
@@ -729,7 +730,7 @@ with $|\Prop(C)| = \rk(C)$ by Lemma \ref{lem facts about WLD matroids} and $|Q| 
 Returning our attention to $M(W)$, the dependent set $B \cup \{w\}$ must contain a circuit $C'$, with $w \in C'$ since $B$ was an independent set. Now $C \cup C' = C \cup \{w\} \supsetneq C$ is a cycle which, since $w\in F$, contradicts the maximality of $C$.
 
 
-For part (2), first note that $F \setminus C$ is automatically independent as it contains no circuits. Now suppose that all vertices in $W$ have rank $\geq 1$.
+For part (2), first note that $F \setminus C$ is automatically independent as it contains no circuits. Now suppose that all vertices in $W$ have rank $\geq 1$. \sanote{can get rid of?}
 
 For any $e \not\in F$, we certainly have $\rk((F\setminus C)\cup\{e\}) = \rk(F\setminus C) +1$ since $F$ is a flat. Now let $e \in C$, and suppose that $\rk((F\setminus C)\cup\{e\}) = \rk(F\setminus C)$. This implies that $(F\setminus C)\cup \{e\}$ is dependent, and hence contains a circuit. This circuit must contain at least two elements (since all vertices support at least one propagator), but this contradicts the fact that $C$ was the union of all circuits in $F$. 
 
@@ -756,12 +757,14 @@ In particular, any propagator flat can be written as a union of a cyclic propaga
 
 
 \begin{lem} \label{maxexactcomplementrank}
-Let $W = (\cP, n)$ be a Wilson loop diagram, and $P \subsetneq \cP$. Then:
+Let $W = (\cP, n)$ be a Wilson loop diagram, and $P \subsetneq \cP$. Then: \note{should hold if $P = \cP$.}
 \begin{enumerate}
 \item If $(P,V(P))$ is an exact subdiagram in $W$, then $\rk(F(P^c)) = |P^c|$.
 \item If $(P,V(P))$ is a maximal exact subdiagram in $W$, then $F(P^c)$ is a cyclic flat.
 \end{enumerate}
 \end{lem}
+
+{\color{violet} Note that by definition, since $F(P^c)$ has at $|P^c|$ propagators in it, this is an upper bound on the rank. However, showing equality on the first part is harder.}
 
 \begin{proof}
 We first verify that $F(P^c) = V(P)^c$ is non-empty and dependent for any exact subdiagram $(P,V(P))$. The definition of exactness means that the vertices $V(P)$ cannot support a larger set of propagators (otherwise $W$ would no longer be admissible). Therefore, since $P \subsetneq \cP$, there must be at least one propagator supported on $V(P)^c$, i.e. it cannot be empty.
@@ -774,19 +777,25 @@ By Lemma \ref{lem properties of prop flats}, $F(P^c)$ is the set of vertices tha
 
 We address part (2) first. Suppose that $(P, V(P))$ is a maximal exact subdiagram; by Corollary \ref{classifyflats} we can decompose $F(P^c)$ as
 \begin{equation}\label{eq decompose F}F(P^c) = C \sqcup S,\end{equation}
-where $C$ is the largest cyclic flat contained in $F(P^c)$ and $S$ is an  independent set. Note that $C$ must be non-empty since $F(P^c)$ is dependent.
+where $C$ is the largest cyclic flat contained in $F(P^c)$ and $S$ is an  independent set. Note that $C$ must be non-empty since $F(P^c)$ is dependent. {\color{violet}We proceed by showing that $S$ must be empty, forcing $F(P^c)$ to be a cyclic flat.} \sanote{Does this fix confusion later?}
 
-Since $C = F(\Prop(C))$ by Lemma \ref{lem decompose flat}, define $Q := \Prop(C)^c$ so that we may write $C = F(Q^c) = V(Q)^c$. Furthermore, we have 
+Since $C = F(\Prop(C))$ by Lemma \ref{lem decompose flat}, define $Q := \Prop(C)^c$ so that we may write $C = F(Q^c) = V(Q)^c$. {\color{violet}Note that since $C \subseteq F(P^c)$, $P \subseteq Q$. }Furthermore, we have 
 \begin{equation}\rk(S) = |S| \leq \rk(F(P^c)) - \rk(C)  \leq |P^c| - \rk(C) \;, \label{increasingrank}\end{equation}
 where first equality comes from the fact that $S$ is an independent set, and the final inequality comes from Lemma \ref{lem facts about WLD matroids}(1). Since $\rk(C) = |\Prop(C)| = |Q^c|$ by Lemma \ref{lem facts about WLD matroids}(2), we can rearrange \eqref{increasingrank} to obtain the inequality
 \begin{equation} |P| + |S| \leq |P| + |P^c| - \rk(C) = |Q| \;. \label{Qsizebound}\end{equation}
 Furthermore, since $V(Q) = S \sqcup V(P)$ (by equation [ref] and the definition of $Q$) we may write  
 \begin{equation} |V(Q)| = |S| + |V(P)| = |S| + |P| +3 \label{VQsize} \;.\end{equation} 
-Combining this with \eqref{Qsizebound} gives $|V(Q)| - 3 \leq |Q|$. That is, either $W$ was not admissible, \hlfix{or $(P,V(P))$ was not a maximal exact subdiagram.}{This only follows if $P \subseteq Q$, which I can't see? We don't ever seem to use the fact that $S$ is empty/nonempty} In other words, $S$ cannot be non-empty, proving that $F(P^c)$ is a cyclic flat, and therefore of maximal rank.
+Combining this with \eqref{Qsizebound} gives $|V(Q)| - 3 \leq |Q|$. That is, either $W$ was not admissible, \hlfix{or $(P,V(P))$ was not a maximal exact subdiagram.}{This only follows if $P \subseteq Q$, which I can't see? We don't ever seem to use the fact that $S$ is empty/nonempty} In other words, $S$ cannot be non-empty, proving that $F(P^c)$ is a cyclic flat, and therefore of maximal rank. 
 
-Let $(Q, V(Q))$ be an exact subdiagram that is not maximal, with \hlfix{$Q \subset P$ defining the maximal exact subdiagram above}{If I've understood this right, we would need to show that any exact subdiagram appears as $\Prop(C)^c$ for some maximal exact $P$ first} . 
+{\color{violet}REPLACE BELOW WITH: Let $P$ be a maximal exact subdiagram as above, and let $(R, V(R))$ be an exact subdiagram that is not maximal. That is, $R \subsetneq P$. }
 
-Using the fact that $P$ and $Q$ are both exact diagrams, we have $|V(P)| = |V(Q)| + |P \setminus Q|$.  Then $V(Q)^c = F(P^c) \cup S$, where $S$ is an independent set of size $|P \setminus Q|$ and with $(P \setminus Q) \subset \Prop (S)$. Therefore, \hlfix{$\rk (S) = |Q^c|$.}{I'm lost here.}
+Let $(Q, V(Q))$ be an exact subdiagram that is not maximal, with \hlfix{$Q \subset P$ defining the maximal exact subdiagram above}{If I've understood this right, we would need to show that any exact subdiagram appears as $\Prop(C)^c$ for some maximal exact $P$ first} . \sanote{why? I don't understand your confusion}
+
+
+{\color{violet}POSSIBLY REPLACE BELOW WITH: Since $R \subset P$, $V(P) = V(R) \sqcup S$. Since $P$ and $R$ both define exact subdiagrams, we may write $|V(P)| = |V(R)| + |P \setminus R|$, where $S$ is a vertex set of size $|P \setminus R|$ with $(P \setminus R \subset \Prop(S)$. Since $\rk V(P) =  \rk V(R) + |P \setminus R|$, $S$ is independent. Taking the complements, we may write \bas F(R^c ) = F(P^c) \sqcup S \;.\eas Since $S$ is an independent set of vertices of the correct size supporting the appropriate propagators, this gives $ \rk F(R^c ) = |R^c|$.}
+
+
+Using the fact that $P$ and $Q$ are both exact diagrams, we have $|V(P)| = |V(Q)| + |P \setminus Q|$.  Then $V(Q)^c = F(P^c) \cup S$, where $S$ is an independent set of size $|P \setminus Q|$ and with $(P \setminus Q) \subset \Prop (S)$. Therefore, \hlfix{$\rk (F(Q^c)) = |Q^c|$.}{I'm lost here.} \sanote{better if I fix typo?}
 \end{proof}
 
 
