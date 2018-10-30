@@ -907,11 +907,333 @@ Again do I want matroid or positroid in this theorem?
 \end{comment}
 
 \section{Geometry of Wilson Loop diagram}\label{sec GN algorithm}
-Since Wilson loop diagrams correspond to positroids, it is natural to understand the subspace of $\Gr(|\cP|, n)$ they define.
+Since Wilson loop diagrams correspond to positroids, it is natural to study the subspace of $\Gr(|\cP|, n)$ they define.
 
 Talk about Grassmann Necklaces and how it defines a cell in a CW complex of $\Gr(k,n)$. Also talk about how this is exactly all the non-negative matrices that represent a particular positroid.
 
 Also talk about Le diagrams.
+
+Throughout this section, $W = (\cP,n)$ is an admissible Wilson loop diagram with $k$ propagators.
+
+\subsection{Some setup results about propagators}
+
+
+
+\note{rank probably isn't a good word; do we have a better one?}
+\begin{dfn}\label{vertex rank}
+Let $i$ be a vertex in $W$. We define the {\bf rank} of $i$ to be $|Prop(i)|$, i.e. the number of propagators supported on $i$.
+\end{dfn}
+
+
+
+
+\begin{dfn}\label{props inside p}
+Let $p$ be a propagator supported on $(i,j)$ in $W$. The region bounded by $p$ and the edge of the Wilson loop diagram from $i$ to $j+1$ is refered to as the region {\bf inside} $p$, and the complement is the region {\bf outside }$p$. The set of propagators inside (resp. outside) $p$ are those lying in the region inside (resp. outside) $p$, excluding $p$ itself.
+\end{dfn}
+Note that this depends on the order of $i$ and $j$: if we view $p$ as supported on $(j,i)$ (for example, if we are working with the $<_j$ order on vertices) then the regions inside and outside $p$ are swapped.
+
+
+\begin{dfn}\note{right now this doesn't depend on the order of $i$ and $j$, but that might matter later on?}
+Let $p$ be a propagator supported on the vertices $(i,i+1,j,j+1)$.  Define the \textit{length} of $p$ to be 
+\[\ell(p) = min\big\{|[i+1,j]|,|[j+1,i]|\big\}.\]
+\end{dfn}
+
+
+
+
+\begin{rmk}\label{rem:props of length 2 and 3}
+The following observations about propagators of short length in $W$ are easily verified:
+\begin{itemize}
+\item If every vertex in $W$ supports at least one propagator, then $W$ admits at least one propagator of length 2.
+\item If $p = (i,i+1,i+3,i+4)$ is a propagator of length 3, then the middle vertex $i+2$ supports at most one propagator.
+\end{itemize}
+\end{rmk}
+
+\begin{dfn}
+Define the restriction of $W$ to a region $[i,j]$ to be the subdiagram obtained by forgetting all propagators not wholly supported on vertices in the cyclic interval $[i,j]$.  Denote this diagram by $W_{[i,j]}$.
+\end{dfn}
+
+If $p$ is a propagator supported on $(i,i+1,j,j+1)$, then we can consider two obvious restrictions of $D$, namely $D_{[i,j+1]}$ and $D_{[j,i+1]}$.  Clearly all other propagators $q\neq p$ appear in exactly one of these subdiagrams, while $p$ appears in both.  In this case, we will say that $p$ \textit{bounds the regions} $[i,j+1]$ and $[j,i+1]$; the ordering of the start and end points allow us to identify one or the other region unambiguously.
+
+
+The following lemma establishes certain configurations of propagators that must exist in any admissible diagram with no unsupported vertices. We make use of this result in several induction proofs below.
+
+\begin{lem}\label{lem sian}
+  Let $W$ be an admissible WLD in which each vertex supports at least one propagator.  Then exactly one of the following things occurs.
+  \begin{enumerate}
+    \item $W$ has a propagator of length 3, say $p =  (i,i+3)$, with a propagator of length 2 inside it.
+    \item $W$ admits no propagators of length 3, and there exists a pair of propagators with the property that the first propagator is $(i, i+1, i+2, i+3)$, the second is $(i+2, i+3, i+4, i+5)$, and no other propagator ends on the edge $(i+2, i+3)$.
+  \end{enumerate}
+\end{lem}
+
+\note{This is the proof of the old result pasted without modification so we can identify where it needs editing. For some reason the WLD was named $D$ instead of $W$.}
+\begin{proof}
+We will prove the following stronger result: that $D$ admits a pair of propagators of length 2 in the following configuration:
+\begin{equation}\label{eq:2 prop config}
+\begin{tikzpicture}[baseline=(current bounding box.east)]
+\pgfmathsetmacro{\radius}{2}
+\pgfmathsetmacro{\angle}{20}
+
+\begin{scope}
+\clip (-\radius*1.1,\radius*0.25) rectangle (\radius*1.1,\radius*1.25);
+
+\begin{scope}
+\clip (-\radius*1.1,\radius*0.45) rectangle (\radius*1.1,\radius*1.1);
+\draw[-] (0,0) circle[radius=\radius cm];
+\end{scope}
+
+% vertices
+\foreach \i in {2,3,...,7}{
+	\draw (\angle*\i:\radius*0.98) --  (\angle*\i:\radius*1.02);
+}
+
+\begin{scope}
+\clip (0,0) circle[radius=\radius];
+\draw[propagator] (2.5*\angle:\radius*1.1 cm) to [bend left=90] (4.35*\angle:\radius*1.1 cm);
+\draw[propagator] (4.65*\angle:\radius*1.1 cm) to [bend left=90] (6.5*\angle:\radius*1.1 cm);
+
+\end{scope}
+
+\node at (80:\radius*1.1) {\tiny $j$};
+\node at (100:\radius*1.1) {\tiny $j+1$};
+\node at (90:\radius*0.5) {\small $s_j = s_{j+1} = 2$};
+
+\end{scope}
+\end{tikzpicture}
+\end{equation}
+
+We will inductively construct a sequence of pairs of propagators $(p_r,q_r)$ satisfying: $\ell(p_r) = 2$, and $p_r$ either forms part of a configuration \eqref{eq:2 prop config} in $D$ or there is a propagator $q_r$ satisfying
+\begin{itemize}
+\item $\ell(q_r) \geq 4$.
+\item $q_r$ bounds a region of $D$ which contains strictly fewer vertices than that bounded by $q_{r-1}$ and the restriction of $D$ to this region does not contain any of the propagators $p_1, \dots, p_r$.
+\end{itemize}
+Since $D$ contains finitely many vertices, this must eventually terminate in a configuration of the form \eqref{eq:2 prop config}.
+
+Start by choosing a propagator $p_1$ of length 2 in $D$ (which exists by Remark~\ref{rem:props of length 2 and 3}), and write $(j_1,j_1+1,j_1+2,j_1+3)$ for its support.  If it is part of a configuration \eqref{eq:2 prop config} we are done, so suppose otherwise: since $s_{j_1} \geq 2$, there must exist a second propagator $q_1$ of length $\geq 4$ which starts on edge $(j_1,j_1+1)$.  This bounds a region $[i_1,j_1+1]$ which does not contain $p_1$.
+
+Now suppose $q_{r}$ exists by the induction hypothesis and bounds a region $[i_r,j_r+1]$.  Consider the restricted diagram $D_r:=D_{[i_r,j_r+1]}$; clearly we must have $s_l \geq 2$ for all $l \in [i_r+2,j_r-1]$ (which is a non-empty interval since $\ell(q_r) \geq 4$), while $s_l\geq 1$ for $l \in \{i_r,i_r+1,j_r,j_r+1\}$.  
+
+By Remark~\ref{rem:props of length 2 and 3}, $D_r$ admits at least one propagator of length 2 and none of length 3.  Let $p_{r+1}$ be a propagator of length 2 in $D_r$; if it forms part of the configuration \eqref{eq:2 prop config} then we are done.  Otherwise, at least one endpoint of $p_{r+1}$ lies on an edge contained in the non-empty interval $[i_r+2,j_r-1]$, and so there is at least one other propagator connected to this edge.  Up to symmetry, there are three possibilities:
+
+
+
+% this was 100% a productive use of my time
+
+\[\begin{tabular}{ccc}
+% possibility 1
+\begin{tikzpicture}
+\pgfmathsetmacro{\radius}{2}
+\pgfmathsetmacro{\angle}{15}
+\begin{scope}
+\clip (-\radius*1.1,0) rectangle (\radius*1.1,\radius*1.1);
+
+% vertices 
+\foreach \i in {2,3,4,6,7,8,9,10}{
+	\draw (\angle*\i:\radius*0.98) --  (\angle*\i:\radius*1.02);
+}
+
+% \dots 
+\foreach \i in {1,2,3}{
+	\node at (65 + \i*5:\radius cm) {$\cdot$};
+}
+
+\begin{scope} % this scope contains the propagators
+\clip (0,0) circle[radius=\radius];
+
+\draw[propagator] (\angle*2.4:\radius*1.2 cm) to [bend left=30] (\angle*9.7:\radius*1.2 cm); % q_r
+\draw[propagator] (\angle*7.7:\radius*1.1 cm) to [bend left=90] (\angle*9.45:\radius*1.1 cm); % p_{r+1}
+
+% grey prop begins here
+
+\begin{scope}
+\clip (\angle*7.5:\radius cm) circle[radius=\radius*0.45cm];
+\draw[light-gray,propagator,seconddash] (\angle*6:\radius*1.02 cm) circle[x radius=\radius*0.4cm, y radius = \radius*0.3cm];
+\end{scope}
+
+\begin{scope}
+\clip (0,0) circle[radius=\radius];
+\clip (\angle*7.5:\radius cm) circle[radius=\radius*0.4cm];
+\draw[light-gray,propagator,firstdash] (\angle*6:\radius*1.02 cm) circle[x radius=\radius*0.4cm, y radius = \radius*0.3cm];
+\end{scope}
+
+\begin{scope}
+\clip (\angle*7.5:\radius cm) circle[radius=\radius*0.3cm];
+\clip (0,0) circle[radius=\radius];
+\draw[light-gray,propagator] (\angle*6:\radius*1.02 cm) circle[x radius=\radius*0.4cm, y radius = \radius*0.3cm];
+\end{scope}
+% end gray prop
+
+\end{scope}
+
+
+\node at (90:\radius*0.30 cm) {\tiny $q_r$};
+\node at (\angle*8:\radius*0.73) {\tiny $p_{r+1}$};
+\node[light-gray] at (\angle*4.9:\radius*0.77 cm) {\tiny $q_{r+1}$};
+\node at (2*\angle:\radius*1.1) {\tiny $i_r$};
+\node at (9*\angle:\radius*1.1) {\tiny $j_r$};
+
+
+% circle/edges; needs to happen last to overlap gray
+\begin{scope}
+\clip (-\radius*1.1,0.9) rectangle (\radius*1.1,\radius*1.1);
+\draw[-] (0,0) circle[radius=\radius cm];
+\end{scope}
+
+\end{scope} % ends the overall rectangle clipping
+\end{tikzpicture}
+
+&
+
+% possibility 2
+\begin{tikzpicture}
+\pgfmathsetmacro{\radius}{2}
+\pgfmathsetmacro{\angle}{15}
+\begin{scope}
+% overall clipping to make the size sensible
+\clip (-\radius*1.1,0) rectangle (\radius*1.1,\radius*1.1);
+
+
+% vertices
+\foreach \i in {2,3,4,6,7,8,9,10}{
+	\draw (\angle*\i:\radius*0.98) --  (\angle*\i:\radius*1.02);
+}
+
+% \dots
+\foreach \i in {1,2,3}{
+	\node at (65 + \i*5:\radius cm) {$\cdot$};
+}
+
+\begin{scope} % props
+\clip (0,0) circle[radius=\radius cm]; 
+\draw[propagator] (\angle*2.4:\radius*1.2 cm) to [bend left=30] (\angle*9.6:\radius*1.2 cm); % q_r
+\draw[propagator] (\angle*6.7:\radius*1.1 cm) to [bend left=90] (\angle*8.6:\radius*1.1 cm); % p_{r+1}
+
+%% grey prop starts here
+
+\clip (\angle*6.5:\radius cm) circle[radius=\radius*0.45cm];
+\draw[light-gray,propagator,seconddash] (\angle*4.5:\radius*1.3 cm) circle[y radius = 0.5*\radius cm,x radius=\radius*0.7cm];
+\end{scope}
+
+\begin{scope}
+\clip (0,0) circle[radius=\radius];
+\clip (\angle*6.5:\radius cm) circle[radius=\radius*0.4cm];
+\draw[light-gray,propagator,firstdash] (\angle*4.5:\radius*1.3 cm) circle[y radius = 0.5*\radius cm,x radius=\radius*0.7cm];
+\end{scope}
+
+\begin{scope}
+\clip (\angle*6.5:\radius cm) circle[radius=\radius*0.3cm];
+\clip (0,0) circle[radius=\radius];
+\draw[light-gray,propagator] (\angle*4.5:\radius*1.3 cm) circle[y radius = 0.5*\radius cm,x radius=\radius*0.7cm];
+\end{scope}
+% grey prop ends here
+
+
+\node at (90:\radius*0.32 cm) {\tiny $q_r$};
+\node at (\angle*7.75:\radius*0.75) {\tiny $p_{r+1}$};
+\node[light-gray] at (\angle*4.5:\radius*0.7 cm) {\tiny $q_{r+1}$};
+\node at (2*\angle:\radius*1.1) {\tiny $i_r$};
+\node at (9*\angle:\radius*1.1) {\tiny $j_r$};
+
+% circle/edges
+\begin{scope}
+\clip (-\radius*1.1,0.9) rectangle (\radius*1.1,\radius*1.1);
+\draw[-] (0,0) circle[radius=\radius cm];
+\end{scope}
+
+\end{scope} % ends overall clip
+\end{tikzpicture}
+
+&
+
+% possiblitiy 3
+\begin{tikzpicture}
+\pgfmathsetmacro{\radius}{2}
+\pgfmathsetmacro{\angle}{12}
+\begin{scope}
+\clip (-\radius*1.1,0) rectangle (\radius*1.1,\radius*1.1);
+
+% vertices
+\foreach \i in {2,3,6,7,8,9,12,13}{
+	\draw (\angle*\i:\radius*0.98) --  (\angle*\i:\radius*1.02);
+}
+
+% \dots
+\foreach \i in {1,2,3}{
+	\node at (44 + \i*5:\radius cm) {$\cdot$};
+	\node at (116 + \i*5:\radius cm) {$\cdot$};
+}
+
+\begin{scope} % props
+\clip (0,0) circle[radius=\radius cm];
+\draw[propagator] (\angle*2.4:\radius*1.2 cm) to [bend left=30] (\angle*12.6:\radius*1.2 cm); % q_r
+\draw[propagator] (\angle*6.5:\radius*1.1 cm) to [bend left=100] (\angle*8.5:\radius*1.05 cm); % p_{r+1}
+
+%  grey prop 1
+% not q_{r+1}
+\begin{scope}
+\clip (\angle*6.5:\radius cm) circle[radius=\radius*0.45cm];
+\draw[light-gray,propagator,seconddash] (\angle*6.5:\radius*1.1 cm) to [bend left=90] (\angle*12.5:\radius*1.1cm);
+\end{scope}
+
+\begin{scope}
+\clip (\angle*6.5:\radius cm) circle[radius=\radius*0.4cm];
+\draw[light-gray,propagator,firstdash] (\angle*6.5:\radius*1.1 cm) to [bend left=90] (\angle*12.5:\radius*1.1cm);
+\end{scope}
+\begin{scope}
+\clip (\angle*6.5:\radius cm) circle[radius=\radius*0.3cm];
+\draw[light-gray,propagator] (\angle*6.5:\radius*1.1 cm) to [bend left=90] (\angle*12.5:\radius*1.1cm);
+\end{scope}
+% grey prop 1 ends here
+
+% grey prop 2
+% this is q_{r+1}
+\begin{scope}
+\clip (\angle*8.5:\radius cm) circle[radius=\radius*0.45cm];
+\draw[propagator,seconddash,light-gray] (\angle*8.8:\radius*1.1 cm) to [bend left=90] (\angle*12:\radius*1.1cm);
+\end{scope}
+
+\begin{scope}
+\clip (\angle*8.5:\radius cm) circle[radius=\radius*0.4cm];
+\draw[propagator,firstdash,light-gray] (\angle*8.8:\radius*1.1 cm) to [bend left=90] (\angle*12:\radius*1.1cm);
+\end{scope}
+
+\begin{scope}
+\clip (\angle*8.5:\radius cm) circle[radius=\radius*0.3cm];
+\draw[light-gray,propagator] (\angle*8.8:\radius*1.1 cm) to [bend left=90] (\angle*12:\radius*1.1cm);
+\end{scope}
+
+% grey prop 2 ends here
+
+
+
+\end{scope}
+
+\node at (90:\radius*0.15 cm) {\tiny $q_r$};
+\node at (\angle*7.5:\radius*0.83) {\tiny $p_{r+1}$};
+\node[light-gray] at (\angle*11:\radius*0.75 cm) {\tiny $q_{r+1}$};
+
+\node at (2*\angle:\radius*1.1) {\tiny $i_r$};
+\node at (12*\angle:\radius*1.1) {\tiny $j_r$};
+
+
+
+% overall circle
+\begin{scope}
+\clip (-\radius*1.1,0.7) rectangle (\radius*1.1,\radius*1.1);
+\draw[-] (0,0) circle[radius=\radius cm];
+\end{scope}
+
+
+\end{scope} % ends overall clip
+\end{tikzpicture}
+
+\end{tabular}
+\]
+In each case, the diagram indicates how to choose $q_{r+1}$ satisfying the induction hypothesis.  In the third case, note that \textit{both} ends of $p_{r+1}$ must share their edge with a propagator of length $\geq 4$; the non-crossing hypothesis on propagators guarantees that at least one will bound a region not containing $p_{r+1}$.
+\end{proof}
+
+
+
 
 \subsection{From Wilson Loop diagrams to Grassmann Necklaces}
 
@@ -950,7 +1272,39 @@ Let $W = (\cP, n)$ be an admissible Wilson loop diagram. This gives an algorithm
 \end{enumerate}
 \end{algorithm}
 
-If the propagator $p$ is removed at vertex $i$ according to the algorithm for $I_a$, we say that $p$ \emph{contributes} $i$ to $I_a$.
+If the propagator $p$ is removed at vertex $i$ according to the algorithm for $I_a$, we say that $p$ \emph{contributes} $i$ to $I_a$. Notationally, we represent this by allowing the $I_i$ symbol to represent a function as well as a set, as follows:
+\begin{dfn}\label{def I_i as a function}
+Let $W = (\cP, n)$ be an admissible Wilson loop diagram. For each $a \in [n]$, define a function $I_a : \cP \longrightarrow [n]$ by
+\[I_a(p) := \text{the vertex label that $p$ contributes to $I_a$ in Algorithm~\ref{alg:put GN on WLD},}\]
+for each $p \in \cP$.
+\end{dfn}
+
+
+
+
+
+
+\begin{lem}\label{lem no fourth vertex}
+Let $W$ be an admissible Wilson loop diagram containing at least one propagator. For any $i \in [n]$ and for any $p=(a,b)$ with $i\leq_i a <_i b$, we have $I_i(p) \neq b+1$.
+\end{lem}
+\begin{proof}
+Suppose for contradiction that we have $p = (a,b)$ with $i\leq_i a <_i b$ and $I_{i}(p) = b+1$. We may choose $p$ such that $|\interval{a+1}{b}|$ is minimal amongst propagators with this property.
+
+Since $I_i(p) \neq b$, there must exist a propagator $q$ inside of $p$ with $I_i(q) = b$. The propagator $q$ cannot end on the edge $(b-1,b)$, as this would contradict the minimality of $p$, so $q = (c,c+1,b,b+1)$ with $a <_i c <_i b$, and $I_i(q) = b$. 
+
+In order for $q$ to remain unassigned until vertex $b$, there must be another propagator $r$ with an end on $(c,c+1)$ and $I_i(r) = c+1$; the only way this can occur is if $r$ is outside $q$ but inside $p$. Now $r$ contributes its fourth vertex to $I_i$, again contradicting the minimality of $p$.
+\end{proof}
+
+\begin{cor}\label{GN alg well defined}
+If $W$ is an admissible Wilson loop diagram with $k$ propagators, then Algorithm~\ref{alg:put GN on WLD} assigns exactly $k$ vertices to each $I_i$.
+\end{cor}
+\begin{proof}
+It follows from the proof of Lemma~\ref{lem no fourth vertex} that Algorithm~\ref{alg:put GN on WLD} can never reach the fourth vertex of a propagator's support (with respect to the starting vertex). Therefore if the algorithm starts at vertex $i$, it must have assigned vertices to all propagators by the time it reaches $i-1$, ensuring that $I_i$ contains exactly $k$ distinct vertices.
+\end{proof}
+
+
+
+
 
 Next we prove that this algorithm actually gives a Grassmann Necklace as claimed. We begin with some useful definitions and lemmas
 
@@ -1233,6 +1587,24 @@ So suppose $p$ has property $A$.  The same vertices in $\interval{i}{I_i(p)}$ ar
 
 \end{proof}
 
+
+
+
+
+In an arbitrary Grassmann necklace, it is possible for an index $i$ to appear in no terms of the Grassmann necklace (a {\em loop}) or in all terms of the necklace (a {\em coloop}). Clearly any vertex of $W$ that supports no propagators will yield a loop [ref][check: is this iff?], but with Theorem [ref][cyclic intervals thm] in hand we can now easily verify that admissible Wilson loop diagrams do not admit coloops.
+
+
+\begin{cor}\label{no coloops}
+Grassmann necklaces coming from admissible Wilson loop diagrams have no coloops, that is no indices $a$ such that $a \in I_i$ for all $i$.
+\end{cor}
+\begin{proof}
+For any $a \in [n]$, $a-1$ is maximal with respect to the $<_{a}$ order. Therefore there is no propagator $p$ with $I_{a}(p) = a-1$ by Lemma~\ref{lem no fourth vertex}, i.e. $a-1 \not\in I_{a}$.
+\end{proof}
+
+
+
+
+
 \subsection{Dimension of the Wilson Loop cells}
 
 In \cite{reversingOh}, Agarwala and Fryer give an algorithm for passing from a Grassmann Necklace to a Le diagram. We use this algorithm here to pass from a Wilson loop diagram to its associated Le diagram. In this manner, we show that the positroid cell defined by a Wilson loop diagram has dimension $3|\cP|$. Maybe say something about Amplituhedra having $4k$ dimension, but this is not quite what we have, since we are ignoring one column.
@@ -1476,54 +1848,7 @@ Suppose we are following the Gra\ss mann necklace to Le diagram algorithm, and w
 
 \section{Poles of Wilson Loop Integrals}
 
-\subsection{Some definitions and results that should probably be moved to section 3 but I don't know if anyone's editing that right now}
 
-It will often be useful to refer to the vertex label contributed by a propagator to a Grassmann necklace term. Notationally, we represent this by allowing the $I_i$ symbol to represent a function as well as a set, as follows:
-\begin{dfn}\label{def I_i as a function}
-Let $W = (\cP, n)$ be an admissible Wilson loop diagram. For each $i \in \interval{1}{n}$, define a function $I_i : \cP \longrightarrow \interval{1}{n}$ by
-\[I_i(p) := \text{the vertex label that $p$ contributes to $I_i$ in Algorithm~\ref{alg:put GN on WLD},}\]
-for each $p \in \cP$.
-\end{dfn}
-\todo{Depending where this ends up, possibly include an example here.}
-
-
-\begin{dfn}\label{props inside p}
-Let $p$ be a propagator supported on $(i,j)$. The region bounded by $p$ and the edge of the Wilson loop diagram from $i$ to $j+1$ is refered to as the region {\bf inside} $p$, and the complement is the region {\bf outside }$p$. The set of propagators inside (resp. outside) $p$ are those lying in the region inside (resp. outside) $p$, excluding $p$ itself.
-\end{dfn}
-Note that this depends on the order of $i$ and $j$: if we view $p$ as supported on $(j,i)$ then the regions inside and outside $p$ are swapped.
-
-
-
-\begin{lem}\label{lem no fourth vertex}
-Let $W$ be an admissible Wilson loop diagram containing at least one propagator. For any $i \in [n]$ and for any $p=(a,b)$ with $i\leq_i a <_i b$, we have $I_i(p) \neq b+1$.
-\end{lem}
-\begin{proof}
-Suppose for contradiction that we have $p = (a,b)$ with $i\leq_i a <_i b$ and $I_{i}(p) = b+1$. We may choose $p$ such that $|\interval{a+1}{b}|$ is minimal amongst propagators with this property.
-
-Since $I_i(p) \neq b$, there must exist a propagator $q$ inside of $p$ with $I_i(q) = b$. The propagator $q$ cannot end on the edge $(b-1,b)$, as this would contradict the minimality of $p$, so $q = (c,c+1,b,b+1)$ with $a <_i c <_i b$, and $I_i(q) = b$. 
-
-In order for $q$ to remain unassigned until vertex $b$, there must be another propagator $r$ with an end on $(c,c+1)$ and $I_i(r) = c+1$; the only way this can occur is if $r$ is outside $q$ but inside $p$. Now $r$ contributes its fourth vertex to $I_i$, again contradicting the minimality of $p$.
-\end{proof}
-
-\begin{cor}\label{GN alg well defined}
-If $W$ is an admissible Wilson loop diagram with $k$ propagators, then Algorithm~\ref{alg:put GN on WLD} assigns exactly $k$ vertices to each $I_i$.
-\end{cor}
-\begin{proof}
-It follows from the proof of Lemma~\ref{lem no fourth vertex} that Algorithm~\ref{alg:put GN on WLD} can never reach the fourth vertex of a propagator's support (with respect to the starting vertex). Therefore if the algorithm starts at vertex $i$, it must have assigned vertices to all propagators by the time it reaches $i-1$, ensuring that $I_i$ contains exactly $k$ distinct vertices.
-\end{proof}
-
-\begin{cor}\label{no coloops}
-Grassmann necklaces coming from admissible Wilson loop diagrams have no coloops, that is no indices $a$ such that $a \in I_i$ for all $i$.
-\end{cor}
-\begin{proof}
-For any $a \in [n]$, $a-1$ is maximal with respect to the $<_{a}$ order. Therefore there is no propagator $p$ with $I_{a}(p) = a-1$ by Lemma~\ref{lem no fourth vertex}, i.e. $a-1 \not\in I_{a}$.
-\end{proof}
-
-
-
-
-
-\subsection{actual beginning of section 4; this subsection header can go away once the results above have found their place}
 
 The results of Section~\ref{sec GN algorithm} allow us to relate the position of propagators in a Wilson loop diagram $W$ to minors of $C(W)$, which we use in this section to understand the denominator of the integral $I(W)$ associated to a Wilson loop diagram (see Definition~\ref{def R(W)}). 
 
