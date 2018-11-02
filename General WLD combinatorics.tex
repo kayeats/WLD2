@@ -918,11 +918,11 @@ Throughout this section, $W = (\cP,n)$ is an admissible Wilson loop diagram with
 \subsection{Some setup results about propagators}
 
 
-
-\note{rank probably isn't a good word; do we have a better one?}
-\begin{dfn}\label{vertex rank}
-Let $i$ be a vertex in $W$. We define the {\bf rank} of $i$ to be $|Prop(i)|$, i.e. the number of propagators supported on $i$.
-\end{dfn}
+\note{I don't think rank of a vertex (in the sense of number of propagators supported on it) was ever used, so I removed the definition}
+%\note{rank probably isn't a good word; do we have a better one?}
+%\begin{dfn}\label{vertex rank}
+%Let $i$ be a vertex in $W$. We define the {\bf rank} of $i$ to be $|Prop(i)|$, i.e. the number of propagators supported on $i$.
+%\end{dfn}
 
 
 
@@ -949,9 +949,11 @@ The following observations about propagators of short length in $W$ are easily v
 \end{itemize}
 \end{rmk}
 
+\note{Are the next few definitions used outside the proof of Lemma~\ref{lem sian}?  If not, then perhaps they could go inside the proof so as not to clutter the document with temporary definitions?}
 \begin{dfn}
 Define the restriction of $W$ to a region $[i,j]$ to be the subdiagram obtained by forgetting all propagators not wholly supported on vertices in the cyclic interval $[i,j]$.  Denote this diagram by $W_{[i,j]}$.
 \end{dfn}
+\note{I think there's an issue here about what we mean by subdiagram; in def 1.5 we say a subdiagram is of the form $(P, V(P))$ which is certainly not what we want here; in fact I think we want the subdiagram where the vertex set is unchanged and only the propagator set is restricted (the other possibility would be to restrict the vertex set to $[i, j]$, but then the lengths of propagators can change and in the way we want to use it (see paragraph below) $p$ will become very non-admissible).  I think def 1.5 should be removed and we should say that for a WLD $(P, V)$ subdiagrams are any $(P', V')$ with $P'\subseteq P$, $V'\subseteq V$ and all supporting vertices of elements of $P'$ in $V'$; this seems to me to be the natural notion of subobject.}
 
 If $p$ is a propagator supported on $(i,i+1,j,j+1)$, then we can consider two obvious restrictions of $D$, namely $D_{[i,j+1]}$ and $D_{[j,i+1]}$.  Clearly all other propagators $q\neq p$ appear in exactly one of these subdiagrams, while $p$ appears in both.  In this case, we will say that $p$ \textit{bounds the regions} $[i,j+1]$ and $[j,i+1]$; the ordering of the start and end points allow us to identify one or the other region unambiguously.
 
@@ -959,61 +961,73 @@ If $p$ is a propagator supported on $(i,i+1,j,j+1)$, then we can consider two ob
 The following lemma establishes certain configurations of propagators that must exist in any admissible diagram with no unsupported vertices. We make use of this result in several induction proofs below.
 
 \begin{lem}\label{lem sian}
-  Let $W$ be an admissible WLD in which each vertex supports at least one propagator.  Then exactly one of the following things occurs.
+  Let $W$ be an admissible WLD in which each vertex supports at least one propagator.  Then exactly one of the following two things occurs.
   \begin{enumerate}
-    \item $W$ has a propagator of length 3, say $p =  (i,i+3)$, with a propagator of length 2 inside it.
-    \item $W$ admits no propagators of length 3, and there exists a pair of propagators with the property that the first propagator is $(i, i+1, i+2, i+3)$, the second is $(i+2, i+3, i+4, i+5)$, and no other propagator ends on the edge $(i+2, i+3)$.
+    \item $W$ has a propagator of length 3 with a propagator of length 2 inside it.
+    \item $W$ admits no propagators of length 3, and one or both of the following two things occurs.
+      \begin{enumerate}
+        \item There is a propagator of length $2$, say $(i, i+1, i+2, i+3)$ such that no other propagators ends on either the edge $(i, i+1)$ or the edge $(i+2, i+3)$.\label{item lonely 2}
+        \item There exists a pair of propagators of length $2$ with the property that the first propagator is $(i, i+1, i+2, i+3)$, the second is $(i+2, i+3, i+4, i+5)$, and no other propagator ends on the edge $(i+2, i+3)$.\label{item pair of 2s}
+      \end{enumerate}
   \end{enumerate}
 \end{lem}
 
-\note{This is the proof of the old result pasted without modification so we can identify where it needs editing. For some reason the WLD was named $D$ instead of $W$.}
 \begin{proof}
-We will prove the following stronger result: that $D$ admits a pair of propagators of length 2 in the following configuration:
-\begin{equation}\label{eq:2 prop config}
-\begin{tikzpicture}[baseline=(current bounding box.east)]
-\pgfmathsetmacro{\radius}{2}
-\pgfmathsetmacro{\angle}{20}
+  Suppose first that $W$ has a propagator of length $3$, $p=(i, i+1, i+3, i+4)$.  By Remark~\ref{rm:props of length 2 and 3} along with the fact that every vertex of $W$ supports at least one propagator, we have that $i+1$ supports exactly one propagator and this propagator must have length 2 by noncrossingness.
 
-\begin{scope}
-\clip (-\radius*1.1,\radius*0.25) rectangle (\radius*1.1,\radius*1.25);
+  Now suppose $W$ has no propagators of length $3$.
+%  We will prove the following stronger result: that $D$ admits a pair of propagators of length 2 in the following configuration:
+%\begin{equation}\label{eq:2 prop config}
+%\begin{tikzpicture}[baseline=(current bounding box.east)]
+%\pgfmathsetmacro{\radius}{2}
+%\pgfmathsetmacro{\angle}{20}
+%
+%\begin{scope}
+%\clip (-\radius*1.1,\radius*0.25) rectangle (\radius*1.1,\radius*1.25);
+%
+%\begin{scope}
+%\clip (-\radius*1.1,\radius*0.45) rectangle (\radius*1.1,\radius*1.1);
+%\draw[-] (0,0) circle[radius=\radius cm];
+%\end{scope}
+%
+%% vertices
+%\foreach \i in {2,3,...,7}{
+%	\draw (\angle*\i:\radius*0.98) --  (\angle*\i:\radius*1.02);
+%}
+%
+%\begin{scope}
+%\clip (0,0) circle[radius=\radius];
+%\draw[propagator] (2.5*\angle:\radius*1.1 cm) to [bend left=90] (4.35*\angle:\radius*1.1 cm);
+%\draw[propagator] (4.65*\angle:\radius*1.1 cm) to [bend left=90] (6.5*\angle:\radius*1.1 cm);
+%
+%\end{scope}
+%
+%\node at (80:\radius*1.1) {\tiny $j$};
+%\node at (100:\radius*1.1) {\tiny $j+1$};
+%\node at (90:\radius*0.5) {\small $s_j = s_{j+1} = 2$};
+%
+%\end{scope}
+%\end{tikzpicture}
+%\end{equation}
 
-\begin{scope}
-\clip (-\radius*1.1,\radius*0.45) rectangle (\radius*1.1,\radius*1.1);
-\draw[-] (0,0) circle[radius=\radius cm];
-\end{scope}
-
-% vertices
-\foreach \i in {2,3,...,7}{
-	\draw (\angle*\i:\radius*0.98) --  (\angle*\i:\radius*1.02);
-}
-
-\begin{scope}
-\clip (0,0) circle[radius=\radius];
-\draw[propagator] (2.5*\angle:\radius*1.1 cm) to [bend left=90] (4.35*\angle:\radius*1.1 cm);
-\draw[propagator] (4.65*\angle:\radius*1.1 cm) to [bend left=90] (6.5*\angle:\radius*1.1 cm);
-
-\end{scope}
-
-\node at (80:\radius*1.1) {\tiny $j$};
-\node at (100:\radius*1.1) {\tiny $j+1$};
-\node at (90:\radius*0.5) {\small $s_j = s_{j+1} = 2$};
-
-\end{scope}
-\end{tikzpicture}
-\end{equation}
-
-We will inductively construct a sequence of pairs of propagators $(p_r,q_r)$ satisfying: $\ell(p_r) = 2$, and $p_r$ either forms part of a configuration \eqref{eq:2 prop config} in $D$ or there is a propagator $q_r$ satisfying
+  We will inductively construct a sequence of pairs of propagators $(p_r,q_r)$ satisfying: $\ell(p_r) = 2$, and $p_r$ either forms part of configuration \ref{item lonely 2} or \ref{item pair of 2s} from the statement
+  %a configuration \eqref{eq:2 prop config} in $D$
+  or there is a propagator $q_r$ satisfying
 \begin{itemize}
 \item $\ell(q_r) \geq 4$.
 \item $q_r$ bounds a region of $D$ which contains strictly fewer vertices than that bounded by $q_{r-1}$ and the restriction of $D$ to this region does not contain any of the propagators $p_1, \dots, p_r$.
 \end{itemize}
-Since $D$ contains finitely many vertices, this must eventually terminate in a configuration of the form \eqref{eq:2 prop config}.
+Since $D$ contains finitely many vertices, this must eventually terminate in one of the two desired configurations. %a configuration of the form \eqref{eq:2 prop config}.
 
-Start by choosing a propagator $p_1$ of length 2 in $D$ (which exists by Remark~\ref{rem:props of length 2 and 3}), and write $(j_1,j_1+1,j_1+2,j_1+3)$ for its support.  If it is part of a configuration \eqref{eq:2 prop config} we are done, so suppose otherwise: since $s_{j_1} \geq 2$, there must exist a second propagator $q_1$ of length $\geq 4$ which starts on edge $(j_1,j_1+1)$.  This bounds a region $[i_1,j_1+1]$ which does not contain $p_1$.
+Start by choosing a propagator $p_1$ of length 2 in $W$ (which exists by Remark~\ref{rem:props of length 2 and 3}), and write $(j_1,j_1+1,j_1+2,j_1+3)$ for its support.  If it is part of one of the two configurations we are looking for then we are done, 
+%a configuration \eqref{eq:2 prop config} we are done,
+so suppose otherwise: since $p_1$ is not in configuration \ref{item lonely 2} then there must be a second propagator starting either on edge $(j_1, j_1+1)$ or $(j_1+2, j_1+3)$.  Flipping the diagram if necessary, assume the former.  Since $p_1$ is not in configuration \ref{item pair of 2s} then there must exist a second propagator $q_1$ of length $\geq 4$ which starts on edge $(j_1,j_1+1)$.  This bounds a region $[i_1,j_1+1]$ which does not contain $p_1$.
 
-Now suppose $q_{r}$ exists by the induction hypothesis and bounds a region $[i_r,j_r+1]$.  Consider the restricted diagram $D_r:=D_{[i_r,j_r+1]}$; clearly we must have $s_l \geq 2$ for all $l \in [i_r+2,j_r-1]$ (which is a non-empty interval since $\ell(q_r) \geq 4$), while $s_l\geq 1$ for $l \in \{i_r,i_r+1,j_r,j_r+1\}$.  
+Now suppose $q_{r}$ exists by the induction hypothesis and bounds a region $[i_r,j_r+1]$.  Consider the restricted diagram $W_r:=W_{[i_r,j_r+1]}$; clearly we must have $s_l \geq 2$ for all $l \in [i_r+2,j_r-1]$ (which is a non-empty interval since $\ell(q_r) \geq 4$), while $s_l\geq 1$ for $l \in \{i_r,i_r+1,j_r,j_r+1\}$.  
 
-By Remark~\ref{rem:props of length 2 and 3}, $D_r$ admits at least one propagator of length 2 and none of length 3.  Let $p_{r+1}$ be a propagator of length 2 in $D_r$; if it forms part of the configuration \eqref{eq:2 prop config} then we are done.  Otherwise, at least one endpoint of $p_{r+1}$ lies on an edge contained in the non-empty interval $[i_r+2,j_r-1]$, and so there is at least one other propagator connected to this edge.  Up to symmetry, there are three possibilities:
+By Remark~\ref{rem:props of length 2 and 3}, $W_r$ admits at least one propagator of length 2 and none of length 3.  Let $p_{r+1}$ be a propagator of length 2 in $D_r$; if it forms part of either configuration \ref{item lonely 2} or \ref{item pair of 2s} 
+%the configuration \eqref{eq:2 prop config}
+then we are done.  Otherwise, at least one endpoint of $p_{r+1}$ lies on an edge contained in the non-empty interval $[i_r+2,j_r-1]$, and so there is at least one other propagator connected to this edge.  Up to symmetry, there are three possibilities:
 
 
 
