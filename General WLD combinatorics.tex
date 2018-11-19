@@ -949,7 +949,7 @@ The following observations about propagators of short length in $W$ are easily v
 \end{itemize}
 \end{rmk}
 
-\note{Are the next few definitions used outside the proof of Lemma~\ref{lem sian}?  If not, then perhaps they could go inside the proof so as not to clutter the document with temporary definitions?}
+\note{Are the next few definitions used outside the proof of Lemma~\ref{lem sian 1}?  If not, then perhaps they could go inside the proof so as not to clutter the document with temporary definitions?}
 \begin{dfn}
 Define the restriction of $W$ to a region $[i,j]$ to be the subdiagram obtained by forgetting all propagators not wholly supported on vertices in the cyclic interval $[i,j]$.  Denote this diagram by $W_{[i,j]}$.
 \end{dfn}
@@ -960,20 +960,21 @@ If $p$ is a propagator supported on $(i,i+1,j,j+1)$, then we can consider two ob
 
 The following lemma establishes certain configurations of propagators that must exist in any admissible diagram with no unsupported vertices. We make use of this result in several induction proofs below.
 
-\begin{lem}\label{lem sian}
+\begin{lem}\label{lem sian 1}
   Let $W$ be an admissible WLD in which each vertex supports at least one propagator.  Then exactly one of the following two things occurs.
   \begin{enumerate}
     \item $W$ has a propagator of length 3 with a propagator of length 2 inside it.
-    \item $W$ admits no propagators of length 3, and one or both of the following two things occurs.
+    \item $W$ admits no propagators of length 3, and one or more of the following things occurs.
       \begin{enumerate}
         \item There is a propagator of length $2$, say $(i, i+1, i+2, i+3)$ such that no other propagators ends on either the edge $(i, i+1)$ or the edge $(i+2, i+3)$.\label{item lonely 2}
-        \item There exists a pair of propagators of length $2$ with the property that the first propagator is $(i, i+1, i+2, i+3)$, the second is $(i+2, i+3, i+4, i+5)$, and no other propagator ends on the edge $(i+2, i+3)$.\label{item pair of 2s}
+        \item There exists a pair of propagators of length $2$ with the property that the first propagator is $(i, i+1, i+2, i+3)$, the second is $(j, j+1, j+2, j+3)$, no other propagator ends between $i+2$ and $j+1$, and $j\in\{i+2, i+3, i+4\}$.\label{item pair of 2s}
+        \item There exists a propagator of length exactly 4 with only a propagator of length 2 inside it.\label{item 4 and 2}
       \end{enumerate}
   \end{enumerate}
 \end{lem}
 
 \begin{proof}
-  Suppose first that $W$ has a propagator of length $3$, $p=(i, i+1, i+3, i+4)$.  By Remark~\ref{rm:props of length 2 and 3} along with the fact that every vertex of $W$ supports at least one propagator, we have that $i+1$ supports exactly one propagator and this propagator must have length 2 by noncrossingness.
+  Suppose first that $W$ has a propagator of length $3$, $p=(i, i+1, i+3, i+4)$.  By Remark~\ref{rem:props of length 2 and 3} along with the fact that every vertex of $W$ supports at least one propagator, we have that $i+2$ supports exactly one propagator and this propagator must have length 2 by noncrossingness.
 
   Now suppose $W$ has no propagators of length $3$.
 %  We will prove the following stronger result: that $D$ admits a pair of propagators of length 2 in the following configuration:
@@ -1010,243 +1011,254 @@ The following lemma establishes certain configurations of propagators that must 
 %\end{tikzpicture}
 %\end{equation}
 
-  We will inductively construct a sequence of pairs of propagators $(p_r,q_r)$ satisfying: $\ell(p_r) = 2$, and $p_r$ either forms part of configuration \ref{item lonely 2} or \ref{item pair of 2s} from the statement
+  We will inductively construct a sequence of pairs of propagators $(p_r,q_r)$ satisfying: $\ell(p_r) = 2$, and $p_r$ either forms part of configuration \ref{item lonely 2}, \ref{item pair of 2s}, or \ref{item 4 and 2} from the statement,
   %a configuration \eqref{eq:2 prop config} in $D$
   or there is a propagator $q_r$ satisfying
 \begin{itemize}
 \item $\ell(q_r) \geq 4$.
-\item $q_r$ bounds a region of $D$ which contains strictly fewer vertices than that bounded by $q_{r-1}$ and the restriction of $D$ to this region does not contain any of the propagators $p_1, \dots, p_r$.
+\item $q_r$ bounds a region of $W$ which contains strictly fewer vertices than that bounded by $q_{r-1}$ and the restriction of $W$ to this region does not contain any of the propagators $p_1, \dots, p_r$.
 \end{itemize}
-Since $D$ contains finitely many vertices, this must eventually terminate in one of the two desired configurations. %a configuration of the form \eqref{eq:2 prop config}.
+Since $W$ contains finitely many vertices, this must eventually terminate in one of the three desired configurations. %a configuration of the form \eqref{eq:2 prop config}.
 
-Start by choosing a propagator $p_1$ of length 2 in $W$ (which exists by Remark~\ref{rem:props of length 2 and 3}), and write $(j_1,j_1+1,j_1+2,j_1+3)$ for its support.  If it is part of one of the two configurations we are looking for then we are done, 
+Start by choosing a propagator $p_1$ of length 2 in $W$ (which exists by Remark~\ref{rem:props of length 2 and 3}), and write $(j_1,j_1+1,j_1+2,j_1+3)$ for its support.  If it is part of one of the configurations we are looking for then we are done, 
 %a configuration \eqref{eq:2 prop config} we are done,
-so suppose otherwise: since $p_1$ is not in configuration \ref{item lonely 2} then there must be a second propagator starting either on edge $(j_1, j_1+1)$ or $(j_1+2, j_1+3)$.  Flipping the diagram if necessary, assume the former.  Since $p_1$ is not in configuration \ref{item pair of 2s} then there must exist a second propagator $q_1$ of length $\geq 4$ which starts on edge $(j_1,j_1+1)$.  This bounds a region $[i_1,j_1+1]$ which does not contain $p_1$.
+so suppose otherwise: since $p_1$ is not in configuration \ref{item lonely 2} then there must be a second propagator starting either on edge $(j_1, j_1+1)$ or $(j_1+2, j_1+3)$.  Flipping the diagram if necessary, assume the former.  Since $p_1$ is not in configuration \ref{item pair of 2s} and every vertex is supported then there must exist a propagator $q_1$ of length $\geq 4$ with one end on edge $(j_1,j_1+1)$ or on edge $(j_1-1, j_1)$ or on edge $(j_1-2, j_1-1)$.  This bounds a region $[i_1,k_1]$ (where $k_1 \in \{j_1-1, j_1, j_1+1\}$) which does not contain $p_1$.
 
-Now suppose $q_{r}$ exists by the induction hypothesis and bounds a region $[i_r,j_r+1]$.  Consider the restricted diagram $W_r:=W_{[i_r,j_r+1]}$; clearly we must have $s_l \geq 2$ for all $l \in [i_r+2,j_r-1]$ (which is a non-empty interval since $\ell(q_r) \geq 4$), while $s_l\geq 1$ for $l \in \{i_r,i_r+1,j_r,j_r+1\}$.  
+Now suppose $q_{r}$ exists by the induction hypothesis and bounds a region $[i_r,k_r]$.  Consider the restricted diagram $W_r:=W_{[i_r,k_r]}$; by the original hypotheses on $W$ every vertex $l \in [i_r+2,k_r-2]$ (which is a non-empty interval since $\ell(q_r) \geq 4$) must have support $\geq 1$, while the same is true for $l \in \{i_r,i_r+1,k_r-1,k_r\}$ because of $q_r$.  
 
-By Remark~\ref{rem:props of length 2 and 3}, $W_r$ admits at least one propagator of length 2 and none of length 3.  Let $p_{r+1}$ be a propagator of length 2 in $D_r$; if it forms part of either configuration \ref{item lonely 2} or \ref{item pair of 2s} 
+By Remark~\ref{rem:props of length 2 and 3}, $W_r$ admits at least one propagator of length 2.  $W_r$ has no propagators of length $3$ since $W$ has none. \note{now the question really is important about what length means in the restricted diagram; as written the restricted diagram has the same vertex set so length is unchanged.}   Let $p_{r+1}$ be a propagator of length 2 in $W_r$; if it forms part of configuration \ref{item lonely 2}, \ref{item pair of 2s}, or \ref{item 4 and 2}
 %the configuration \eqref{eq:2 prop config}
-then we are done.  Otherwise, at least one endpoint of $p_{r+1}$ lies on an edge contained in the non-empty interval $[i_r+2,j_r-1]$, and so there is at least one other propagator connected to this edge.  Up to symmetry, there are three possibilities:
+then we are done, so assume otherwise.
 
+Note we may replace $q_r$ by any other propagator of length $\geq 4$ in $W_r$ which contains $p_{r+1}$ while still satisfying all the hypotheses, and so, without loss of generality we may assume that $q_r$ has minimal length among propagators of length $\geq 4$ which contain $p_{r+1}$.  
 
+There are two cases to consider.
+The first case is that neither end of $p_{r+1}$ lies on an edge contained in the possibly empty interval $[i_r+3,k_r-3]$, then since $p_{r+1}$ has length 2, it must be that $[i_r+3,k_r-3]$ is at most a single edge, and so $q_r$ has length $\leq 6$.  Since $p_{r+1}$ has one end before $i_r+3$ and the other after $k_r-3$, the only propagators inside $q_r$ that do not also contain $p_{r+1}$ must have both ends in $[i_r, i_r+3]$ or both ends in $[k_r-3, k_r]$ and hence be of length 2.  Therefore, if $q_r$ contains a propagator $t$ of length $\leq 4$, this propagator must also contain $p_{r+1}$ which is impossible my minimality.  Therefore, if $q_r$ contains another propagator of length $2$ we would have configuration \ref{item pair of 2s} which we have already assumed does not occur.  Consequently, $q_r$ contains only $p_{r+1}$; if $q_r$ is of length $4$ then we have \ref{item 4 and 2} and if $q_r$ is of length $5$ or $6$ then we have either \ref{item lonely 2} or an unsupported vertex, all of which are impossible.  Therefore the first case cannot occur.
 
-% this was 100% a productive use of my time
+The second case is that at least one endpoint of $p_{r+1}$ lies on an edge contained in the interval $[i_r+3,k_r-3]$.  Up to symmetry we can write $p_{r+1} = (j_{r+1}, j_{r+1}+1, j_{r+1}+2, j_{r+1}+3)$ where $(j_{r+1}+2, j_{r+1}+3)$ is contained in $[i_r+3, k_r-3]$.  Since $p_{r+1}$ is not part of configuration \ref{item pair of 2s} and vertex $j_{r+1}+4$ is supported (and not by $q_r$ since $j_{r+1}+4 \leq k_r-2$), there is some propagator $t$ with one end in $[j_{r+1}+2, j_{r+1}+4]$ and length $\geq 4$.  By noncrossingness $t$ is contained in $q_{r}$.  $t$ does not contain $p_{r+1}$ by minimality and so we may set $q_{r+1} = t$ to continue the induction.  
 
-\[\begin{tabular}{ccc}
-% possibility 1
-\begin{tikzpicture}
-\pgfmathsetmacro{\radius}{2}
-\pgfmathsetmacro{\angle}{15}
-\begin{scope}
-\clip (-\radius*1.1,0) rectangle (\radius*1.1,\radius*1.1);
+The overall result, then follows by induction.
 
-% vertices 
-\foreach \i in {2,3,4,6,7,8,9,10}{
-	\draw (\angle*\i:\radius*0.98) --  (\angle*\i:\radius*1.02);
-}
-
-% \dots 
-\foreach \i in {1,2,3}{
-	\node at (65 + \i*5:\radius cm) {$\cdot$};
-}
-
-\begin{scope} % this scope contains the propagators
-\clip (0,0) circle[radius=\radius];
-
-\draw[propagator] (\angle*2.4:\radius*1.2 cm) to [bend left=30] (\angle*9.7:\radius*1.2 cm); % q_r
-\draw[propagator] (\angle*7.7:\radius*1.1 cm) to [bend left=90] (\angle*9.45:\radius*1.1 cm); % p_{r+1}
-
-% grey prop begins here
-
-\begin{scope}
-\clip (\angle*7.5:\radius cm) circle[radius=\radius*0.45cm];
-\draw[light-gray,propagator,seconddash] (\angle*6:\radius*1.02 cm) circle[x radius=\radius*0.4cm, y radius = \radius*0.3cm];
-\end{scope}
-
-\begin{scope}
-\clip (0,0) circle[radius=\radius];
-\clip (\angle*7.5:\radius cm) circle[radius=\radius*0.4cm];
-\draw[light-gray,propagator,firstdash] (\angle*6:\radius*1.02 cm) circle[x radius=\radius*0.4cm, y radius = \radius*0.3cm];
-\end{scope}
-
-\begin{scope}
-\clip (\angle*7.5:\radius cm) circle[radius=\radius*0.3cm];
-\clip (0,0) circle[radius=\radius];
-\draw[light-gray,propagator] (\angle*6:\radius*1.02 cm) circle[x radius=\radius*0.4cm, y radius = \radius*0.3cm];
-\end{scope}
-% end gray prop
-
-\end{scope}
-
-
-\node at (90:\radius*0.30 cm) {\tiny $q_r$};
-\node at (\angle*8:\radius*0.73) {\tiny $p_{r+1}$};
-\node[light-gray] at (\angle*4.9:\radius*0.77 cm) {\tiny $q_{r+1}$};
-\node at (2*\angle:\radius*1.1) {\tiny $i_r$};
-\node at (9*\angle:\radius*1.1) {\tiny $j_r$};
-
-
-% circle/edges; needs to happen last to overlap gray
-\begin{scope}
-\clip (-\radius*1.1,0.9) rectangle (\radius*1.1,\radius*1.1);
-\draw[-] (0,0) circle[radius=\radius cm];
-\end{scope}
-
-\end{scope} % ends the overall rectangle clipping
-\end{tikzpicture}
-
-&
-
-% possibility 2
-\begin{tikzpicture}
-\pgfmathsetmacro{\radius}{2}
-\pgfmathsetmacro{\angle}{15}
-\begin{scope}
-% overall clipping to make the size sensible
-\clip (-\radius*1.1,0) rectangle (\radius*1.1,\radius*1.1);
-
-
-% vertices
-\foreach \i in {2,3,4,6,7,8,9,10}{
-	\draw (\angle*\i:\radius*0.98) --  (\angle*\i:\radius*1.02);
-}
-
-% \dots
-\foreach \i in {1,2,3}{
-	\node at (65 + \i*5:\radius cm) {$\cdot$};
-}
-
-\begin{scope} % props
-\clip (0,0) circle[radius=\radius cm]; 
-\draw[propagator] (\angle*2.4:\radius*1.2 cm) to [bend left=30] (\angle*9.6:\radius*1.2 cm); % q_r
-\draw[propagator] (\angle*6.7:\radius*1.1 cm) to [bend left=90] (\angle*8.6:\radius*1.1 cm); % p_{r+1}
-
-%% grey prop starts here
-
-\clip (\angle*6.5:\radius cm) circle[radius=\radius*0.45cm];
-\draw[light-gray,propagator,seconddash] (\angle*4.5:\radius*1.3 cm) circle[y radius = 0.5*\radius cm,x radius=\radius*0.7cm];
-\end{scope}
-
-\begin{scope}
-\clip (0,0) circle[radius=\radius];
-\clip (\angle*6.5:\radius cm) circle[radius=\radius*0.4cm];
-\draw[light-gray,propagator,firstdash] (\angle*4.5:\radius*1.3 cm) circle[y radius = 0.5*\radius cm,x radius=\radius*0.7cm];
-\end{scope}
-
-\begin{scope}
-\clip (\angle*6.5:\radius cm) circle[radius=\radius*0.3cm];
-\clip (0,0) circle[radius=\radius];
-\draw[light-gray,propagator] (\angle*4.5:\radius*1.3 cm) circle[y radius = 0.5*\radius cm,x radius=\radius*0.7cm];
-\end{scope}
-% grey prop ends here
-
-
-\node at (90:\radius*0.32 cm) {\tiny $q_r$};
-\node at (\angle*7.75:\radius*0.75) {\tiny $p_{r+1}$};
-\node[light-gray] at (\angle*4.5:\radius*0.7 cm) {\tiny $q_{r+1}$};
-\node at (2*\angle:\radius*1.1) {\tiny $i_r$};
-\node at (9*\angle:\radius*1.1) {\tiny $j_r$};
-
-% circle/edges
-\begin{scope}
-\clip (-\radius*1.1,0.9) rectangle (\radius*1.1,\radius*1.1);
-\draw[-] (0,0) circle[radius=\radius cm];
-\end{scope}
-
-\end{scope} % ends overall clip
-\end{tikzpicture}
-
-&
-
-% possiblitiy 3
-\begin{tikzpicture}
-\pgfmathsetmacro{\radius}{2}
-\pgfmathsetmacro{\angle}{12}
-\begin{scope}
-\clip (-\radius*1.1,0) rectangle (\radius*1.1,\radius*1.1);
-
-% vertices
-\foreach \i in {2,3,6,7,8,9,12,13}{
-	\draw (\angle*\i:\radius*0.98) --  (\angle*\i:\radius*1.02);
-}
-
-% \dots
-\foreach \i in {1,2,3}{
-	\node at (44 + \i*5:\radius cm) {$\cdot$};
-	\node at (116 + \i*5:\radius cm) {$\cdot$};
-}
-
-\begin{scope} % props
-\clip (0,0) circle[radius=\radius cm];
-\draw[propagator] (\angle*2.4:\radius*1.2 cm) to [bend left=30] (\angle*12.6:\radius*1.2 cm); % q_r
-\draw[propagator] (\angle*6.5:\radius*1.1 cm) to [bend left=100] (\angle*8.5:\radius*1.05 cm); % p_{r+1}
-
-%  grey prop 1
-% not q_{r+1}
-\begin{scope}
-\clip (\angle*6.5:\radius cm) circle[radius=\radius*0.45cm];
-\draw[light-gray,propagator,seconddash] (\angle*6.5:\radius*1.1 cm) to [bend left=90] (\angle*12.5:\radius*1.1cm);
-\end{scope}
-
-\begin{scope}
-\clip (\angle*6.5:\radius cm) circle[radius=\radius*0.4cm];
-\draw[light-gray,propagator,firstdash] (\angle*6.5:\radius*1.1 cm) to [bend left=90] (\angle*12.5:\radius*1.1cm);
-\end{scope}
-\begin{scope}
-\clip (\angle*6.5:\radius cm) circle[radius=\radius*0.3cm];
-\draw[light-gray,propagator] (\angle*6.5:\radius*1.1 cm) to [bend left=90] (\angle*12.5:\radius*1.1cm);
-\end{scope}
-% grey prop 1 ends here
-
-% grey prop 2
-% this is q_{r+1}
-\begin{scope}
-\clip (\angle*8.5:\radius cm) circle[radius=\radius*0.45cm];
-\draw[propagator,seconddash,light-gray] (\angle*8.8:\radius*1.1 cm) to [bend left=90] (\angle*12:\radius*1.1cm);
-\end{scope}
-
-\begin{scope}
-\clip (\angle*8.5:\radius cm) circle[radius=\radius*0.4cm];
-\draw[propagator,firstdash,light-gray] (\angle*8.8:\radius*1.1 cm) to [bend left=90] (\angle*12:\radius*1.1cm);
-\end{scope}
-
-\begin{scope}
-\clip (\angle*8.5:\radius cm) circle[radius=\radius*0.3cm];
-\draw[light-gray,propagator] (\angle*8.8:\radius*1.1 cm) to [bend left=90] (\angle*12:\radius*1.1cm);
-\end{scope}
-
-% grey prop 2 ends here
-
-
-
-\end{scope}
-
-\node at (90:\radius*0.15 cm) {\tiny $q_r$};
-\node at (\angle*7.5:\radius*0.83) {\tiny $p_{r+1}$};
-\node[light-gray] at (\angle*11:\radius*0.75 cm) {\tiny $q_{r+1}$};
-
-\node at (2*\angle:\radius*1.1) {\tiny $i_r$};
-\node at (12*\angle:\radius*1.1) {\tiny $j_r$};
-
-
-
-% overall circle
-\begin{scope}
-\clip (-\radius*1.1,0.7) rectangle (\radius*1.1,\radius*1.1);
-\draw[-] (0,0) circle[radius=\radius cm];
-\end{scope}
-
-
-\end{scope} % ends overall clip
-\end{tikzpicture}
-
-\end{tabular}
-\]
-In each case, the diagram indicates how to choose $q_{r+1}$ satisfying the induction hypothesis.  In the third case, note that \textit{both} ends of $p_{r+1}$ must share their edge with a propagator of length $\geq 4$; the non-crossing hypothesis on propagators guarantees that at least one will bound a region not containing $p_{r+1}$.
+\note{The picture didn't apply any longer, but perhaps a new one would be nice?}
+\note{Also, the way you had it set out, you never needed a minimality argument; this was essentially beacause in your third picture, you could choose the side which didn't contain $p_{r+1}$. The same argument could work here, but I was finding it was getting a bit heavy to explain it that way, and the minimality approach seemed like it was lighter.  See what you think}
+%% this was 100% a productive use of my time
+%
+%\[\begin{tabular}{ccc}
+%% possibility 1
+%\begin{tikzpicture}
+%\pgfmathsetmacro{\radius}{2}
+%\pgfmathsetmacro{\angle}{15}
+%\begin{scope}
+%\clip (-\radius*1.1,0) rectangle (\radius*1.1,\radius*1.1);
+%
+%% vertices 
+%\foreach \i in {2,3,4,6,7,8,9,10}{
+%	\draw (\angle*\i:\radius*0.98) --  (\angle*\i:\radius*1.02);
+%}
+%
+%% \dots 
+%\foreach \i in {1,2,3}{
+%	\node at (65 + \i*5:\radius cm) {$\cdot$};
+%}
+%
+%\begin{scope} % this scope contains the propagators
+%\clip (0,0) circle[radius=\radius];
+%
+%\draw[propagator] (\angle*2.4:\radius*1.2 cm) to [bend left=30] (\angle*9.7:\radius*1.2 cm); % q_r
+%\draw[propagator] (\angle*7.7:\radius*1.1 cm) to [bend left=90] (\angle*9.45:\radius*1.1 cm); % p_{r+1}
+%
+%% grey prop begins here
+%
+%\begin{scope}
+%\clip (\angle*7.5:\radius cm) circle[radius=\radius*0.45cm];
+%\draw[light-gray,propagator,seconddash] (\angle*6:\radius*1.02 cm) circle[x radius=\radius*0.4cm, y radius = \radius*0.3cm];
+%\end{scope}
+%
+%\begin{scope}
+%\clip (0,0) circle[radius=\radius];
+%\clip (\angle*7.5:\radius cm) circle[radius=\radius*0.4cm];
+%\draw[light-gray,propagator,firstdash] (\angle*6:\radius*1.02 cm) circle[x radius=\radius*0.4cm, y radius = \radius*0.3cm];
+%\end{scope}
+%
+%\begin{scope}
+%\clip (\angle*7.5:\radius cm) circle[radius=\radius*0.3cm];
+%\clip (0,0) circle[radius=\radius];
+%\draw[light-gray,propagator] (\angle*6:\radius*1.02 cm) circle[x radius=\radius*0.4cm, y radius = \radius*0.3cm];
+%\end{scope}
+%% end gray prop
+%
+%\end{scope}
+%
+%
+%\node at (90:\radius*0.30 cm) {\tiny $q_r$};
+%\node at (\angle*8:\radius*0.73) {\tiny $p_{r+1}$};
+%\node[light-gray] at (\angle*4.9:\radius*0.77 cm) {\tiny $q_{r+1}$};
+%\node at (2*\angle:\radius*1.1) {\tiny $i_r$};
+%\node at (9*\angle:\radius*1.1) {\tiny $j_r$};
+%
+%
+%% circle/edges; needs to happen last to overlap gray
+%\begin{scope}
+%\clip (-\radius*1.1,0.9) rectangle (\radius*1.1,\radius*1.1);
+%\draw[-] (0,0) circle[radius=\radius cm];
+%\end{scope}
+%
+%\end{scope} % ends the overall rectangle clipping
+%\end{tikzpicture}
+%
+%&
+%
+%% possibility 2
+%\begin{tikzpicture}
+%\pgfmathsetmacro{\radius}{2}
+%\pgfmathsetmacro{\angle}{15}
+%\begin{scope}
+%% overall clipping to make the size sensible
+%\clip (-\radius*1.1,0) rectangle (\radius*1.1,\radius*1.1);
+%
+%
+%% vertices
+%\foreach \i in {2,3,4,6,7,8,9,10}{
+%	\draw (\angle*\i:\radius*0.98) --  (\angle*\i:\radius*1.02);
+%}
+%
+%% \dots
+%\foreach \i in {1,2,3}{
+%	\node at (65 + \i*5:\radius cm) {$\cdot$};
+%}
+%
+%\begin{scope} % props
+%\clip (0,0) circle[radius=\radius cm]; 
+%\draw[propagator] (\angle*2.4:\radius*1.2 cm) to [bend left=30] (\angle*9.6:\radius*1.2 cm); % q_r
+%\draw[propagator] (\angle*6.7:\radius*1.1 cm) to [bend left=90] (\angle*8.6:\radius*1.1 cm); % p_{r+1}
+%
+%%% grey prop starts here
+%
+%\clip (\angle*6.5:\radius cm) circle[radius=\radius*0.45cm];
+%\draw[light-gray,propagator,seconddash] (\angle*4.5:\radius*1.3 cm) circle[y radius = 0.5*\radius cm,x radius=\radius*0.7cm];
+%\end{scope}
+%
+%\begin{scope}
+%\clip (0,0) circle[radius=\radius];
+%\clip (\angle*6.5:\radius cm) circle[radius=\radius*0.4cm];
+%\draw[light-gray,propagator,firstdash] (\angle*4.5:\radius*1.3 cm) circle[y radius = 0.5*\radius cm,x radius=\radius*0.7cm];
+%\end{scope}
+%
+%\begin{scope}
+%\clip (\angle*6.5:\radius cm) circle[radius=\radius*0.3cm];
+%\clip (0,0) circle[radius=\radius];
+%\draw[light-gray,propagator] (\angle*4.5:\radius*1.3 cm) circle[y radius = 0.5*\radius cm,x radius=\radius*0.7cm];
+%\end{scope}
+%% grey prop ends here
+%
+%
+%\node at (90:\radius*0.32 cm) {\tiny $q_r$};
+%\node at (\angle*7.75:\radius*0.75) {\tiny $p_{r+1}$};
+%\node[light-gray] at (\angle*4.5:\radius*0.7 cm) {\tiny $q_{r+1}$};
+%\node at (2*\angle:\radius*1.1) {\tiny $i_r$};
+%\node at (9*\angle:\radius*1.1) {\tiny $j_r$};
+%
+%% circle/edges
+%\begin{scope}
+%\clip (-\radius*1.1,0.9) rectangle (\radius*1.1,\radius*1.1);
+%\draw[-] (0,0) circle[radius=\radius cm];
+%\end{scope}
+%
+%\end{scope} % ends overall clip
+%\end{tikzpicture}
+%
+%&
+%
+%% possiblitiy 3
+%\begin{tikzpicture}
+%\pgfmathsetmacro{\radius}{2}
+%\pgfmathsetmacro{\angle}{12}
+%\begin{scope}
+%\clip (-\radius*1.1,0) rectangle (\radius*1.1,\radius*1.1);
+%
+%% vertices
+%\foreach \i in {2,3,6,7,8,9,12,13}{
+%	\draw (\angle*\i:\radius*0.98) --  (\angle*\i:\radius*1.02);
+%}
+%
+%% \dots
+%\foreach \i in {1,2,3}{
+%	\node at (44 + \i*5:\radius cm) {$\cdot$};
+%	\node at (116 + \i*5:\radius cm) {$\cdot$};
+%}
+%
+%\begin{scope} % props
+%\clip (0,0) circle[radius=\radius cm];
+%\draw[propagator] (\angle*2.4:\radius*1.2 cm) to [bend left=30] (\angle*12.6:\radius*1.2 cm); % q_r
+%\draw[propagator] (\angle*6.5:\radius*1.1 cm) to [bend left=100] (\angle*8.5:\radius*1.05 cm); % p_{r+1}
+%
+%%  grey prop 1
+%% not q_{r+1}
+%\begin{scope}
+%\clip (\angle*6.5:\radius cm) circle[radius=\radius*0.45cm];
+%\draw[light-gray,propagator,seconddash] (\angle*6.5:\radius*1.1 cm) to [bend left=90] (\angle*12.5:\radius*1.1cm);
+%\end{scope}
+%
+%\begin{scope}
+%\clip (\angle*6.5:\radius cm) circle[radius=\radius*0.4cm];
+%\draw[light-gray,propagator,firstdash] (\angle*6.5:\radius*1.1 cm) to [bend left=90] (\angle*12.5:\radius*1.1cm);
+%\end{scope}
+%\begin{scope}
+%\clip (\angle*6.5:\radius cm) circle[radius=\radius*0.3cm];
+%\draw[light-gray,propagator] (\angle*6.5:\radius*1.1 cm) to [bend left=90] (\angle*12.5:\radius*1.1cm);
+%\end{scope}
+%% grey prop 1 ends here
+%
+%% grey prop 2
+%% this is q_{r+1}
+%\begin{scope}
+%\clip (\angle*8.5:\radius cm) circle[radius=\radius*0.45cm];
+%\draw[propagator,seconddash,light-gray] (\angle*8.8:\radius*1.1 cm) to [bend left=90] (\angle*12:\radius*1.1cm);
+%\end{scope}
+%
+%\begin{scope}
+%\clip (\angle*8.5:\radius cm) circle[radius=\radius*0.4cm];
+%\draw[propagator,firstdash,light-gray] (\angle*8.8:\radius*1.1 cm) to [bend left=90] (\angle*12:\radius*1.1cm);
+%\end{scope}
+%
+%\begin{scope}
+%\clip (\angle*8.5:\radius cm) circle[radius=\radius*0.3cm];
+%\draw[light-gray,propagator] (\angle*8.8:\radius*1.1 cm) to [bend left=90] (\angle*12:\radius*1.1cm);
+%\end{scope}
+%
+%% grey prop 2 ends here
+%
+%
+%
+%\end{scope}
+%
+%\node at (90:\radius*0.15 cm) {\tiny $q_r$};
+%\node at (\angle*7.5:\radius*0.83) {\tiny $p_{r+1}$};
+%\node[light-gray] at (\angle*11:\radius*0.75 cm) {\tiny $q_{r+1}$};
+%
+%\node at (2*\angle:\radius*1.1) {\tiny $i_r$};
+%\node at (12*\angle:\radius*1.1) {\tiny $j_r$};
+%
+%
+%
+%% overall circle
+%\begin{scope}
+%\clip (-\radius*1.1,0.7) rectangle (\radius*1.1,\radius*1.1);
+%\draw[-] (0,0) circle[radius=\radius cm];
+%\end{scope}
+%
+%
+%\end{scope} % ends overall clip
+%\end{tikzpicture}
+%
+%\end{tabular}
+%\]
+%In each case, the diagram indicates how to choose $q_{r+1}$ satisfying the induction hypothesis.  In the third case, note that \textit{both} ends of $p_{r+1}$ must share their edge with a propagator of length $\geq 4$; the non-crossing hypothesis on propagators guarantees that at least one will bound a region not containing $p_{r+1}$.
 \end{proof}
 
-
+\begin{rmk}
+In the case that all vertices of an admissible WLD $W$ support at least two propagators, then Lemma~\ref{lem sian 1} substantially simplifies.  By Remark~\ref{rem:props of length 2 and 3}, $W$ has no propagators of length $3$, so the first item of Lemma~\ref{lem sian 1} cannot occur at all.  Configurations \ref{item lonely 2} and \ref{item 4 and 2} also necessarily entail vertices with support $1$ as does configuration \ref{item pair of 2s} unless $j=i+2$.  So in the case that $W$ has all vertices with support at least two then $W$ must contain a pair of propagators of length $2$  with the property that the first propagator is $(i, i+1, i+2, i+3)$, the second is $(i+2, i+3, i+4, i+5)$ and no other propagator ends on the edge $(i+2, i+3)$.
+\end{rmk}
 
 
 \subsection{From Wilson Loop diagrams to Grassmann Necklaces}
