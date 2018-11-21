@@ -918,7 +918,7 @@ Throughout this section, $W = (\cP,n)$ is an admissible Wilson loop diagram with
 \subsection{Some setup results about propagators}
 
 
-\note{I don't think rank of a vertex (in the sense of number of propagators supported on it) was ever used, so I removed the definition}
+%\note{I don't think rank of a vertex (in the sense of number of propagators supported on it) was ever used, so I removed the definition}
 %\note{rank probably isn't a good word; do we have a better one?}
 %\begin{dfn}\label{vertex rank}
 %Let $i$ be a vertex in $W$. We define the {\bf rank} of $i$ to be $|Prop(i)|$, i.e. the number of propagators supported on $i$.
@@ -934,7 +934,7 @@ Note that this depends on the order of $i$ and $j$: if we view $p$ as supported 
 
 
 \begin{dfn}\note{right now this doesn't depend on the order of $i$ and $j$, but that might matter later on?}
-Let $p$ be a propagator supported on the vertices $(i,i+1,j,j+1)$.  Define the \textit{length} of $p$ to be 
+Let $p$ be a propagator supported on $(i,j)$.  Define the \textit{length} of $p$ to be 
 \[\ell(p) = min\big\{|[i+1,j]|,|[j+1,i]|\big\}.\]
 \end{dfn}
 
@@ -945,17 +945,9 @@ Let $p$ be a propagator supported on the vertices $(i,i+1,j,j+1)$.  Define the \
 The following observations about propagators of short length in $W$ are easily verified:
 \begin{itemize}
 \item If every vertex in $W$ supports at least one propagator, then $W$ admits at least one propagator of length 2.
-\item If $p = (i,i+1,i+3,i+4)$ is a propagator of length 3, then the middle vertex $i+2$ supports at most one propagator.
+\item If $p = (i,i+3)$ is a propagator of length 3, then the middle vertex $i+2$ supports at most one propagator.
 \end{itemize}
 \end{rmk}
-
-\note{Are the next few definitions used outside the proof of Lemma~\ref{lem sian 1}?  If not, then perhaps they could go inside the proof so as not to clutter the document with temporary definitions?}
-\begin{dfn}
-Define the restriction of $W$ to a region $[i,j]$ to be the subdiagram obtained by forgetting all propagators not wholly supported on vertices in the cyclic interval $[i,j]$.  Denote this diagram by $W_{[i,j]}$.
-\end{dfn}
-\note{I think there's an issue here about what we mean by subdiagram; in def 1.5 we say a subdiagram is of the form $(P, V(P))$ which is certainly not what we want here; in fact I think we want the subdiagram where the vertex set is unchanged and only the propagator set is restricted (the other possibility would be to restrict the vertex set to $[i, j]$, but then the lengths of propagators can change and in the way we want to use it (see paragraph below) $p$ will become very non-admissible).  I think def 1.5 should be removed and we should say that for a WLD $(P, V)$ subdiagrams are any $(P', V')$ with $P'\subseteq P$, $V'\subseteq V$ and all supporting vertices of elements of $P'$ in $V'$; this seems to me to be the natural notion of subobject.}
-
-If $p$ is a propagator supported on $(i,i+1,j,j+1)$, then we can consider two obvious restrictions of $D$, namely $D_{[i,j+1]}$ and $D_{[j,i+1]}$.  Clearly all other propagators $q\neq p$ appear in exactly one of these subdiagrams, while $p$ appears in both.  In this case, we will say that $p$ \textit{bounds the regions} $[i,j+1]$ and $[j,i+1]$; the ordering of the start and end points allow us to identify one or the other region unambiguously.
 
 
 The following lemma establishes certain configurations of propagators that must exist in any admissible diagram with no unsupported vertices. We make use of this result in several induction proofs below.
@@ -966,15 +958,15 @@ The following lemma establishes certain configurations of propagators that must 
     \item $W$ has a propagator of length 3 with a propagator of length 2 inside it.
     \item $W$ admits no propagators of length 3, and one or more of the following things occurs.
       \begin{enumerate}
-        \item There is a propagator of length $2$, say $(i, i+1, i+2, i+3)$ such that no other propagators ends on either the edge $(i, i+1)$ or the edge $(i+2, i+3)$.\label{item lonely 2}
-        \item There exists a pair of propagators of length $2$ with the property that the first propagator is $(i, i+1, i+2, i+3)$, the second is $(j, j+1, j+2, j+3)$, no other propagator ends between $i+2$ and $j+1$, and $j\in\{i+2, i+3, i+4\}$.\label{item pair of 2s}
+        \item There is a propagator of length $2$, say $(i, i+2)$ such that no other propagators ends on either the edge $i$ or the edge $i+2)$.\label{item lonely 2}
+        \item There exists a pair of propagators of length $2$ with the property that the first propagator is $(i, i+2)$, the second is $(j, j+2)$, no other propagator ends between vertices $i+2$ and $j+1$, and $j\in\{i+2, i+3, i+4\}$.\label{item pair of 2s}
         \item There exists a propagator of length 4 with only a propagator of length 2 inside it.\label{item 4 and 2}
       \end{enumerate}
   \end{enumerate}
 \end{lem}
 
 \begin{proof}
-  Suppose first that $W$ has a propagator of length $3$, $p=(i, i+1, i+3, i+4)$.  By Remark~\ref{rem:props of length 2 and 3} along with the fact that every vertex of $W$ supports at least one propagator, we have that $i+2$ supports exactly one propagator and this propagator must have length 2 by noncrossingness.
+  Suppose first that $W$ has a propagator of length $3$, $p=(i, i+3)$.  By Remark~\ref{rem:props of length 2 and 3} along with the fact that every vertex of $W$ supports at least one propagator, we have that $i+2$ supports exactly one propagator and this propagator must have length 2 by noncrossingness.
 
   Now suppose $W$ has no propagators of length $3$.
 %  We will prove the following stronger result: that $D$ admits a pair of propagators of length 2 in the following configuration:
@@ -1011,6 +1003,13 @@ The following lemma establishes certain configurations of propagators that must 
 %\end{tikzpicture}
 %\end{equation}
 
+We need a bit of notation:
+Define the restriction of $W$ to a region $[i,j]$ to be the subdiagram obtained by forgetting all propagators not wholly supported on vertices in the cyclic interval $[i,j]$; the vertex set remains the same as in $W$.  Denote this diagram by $W_{[i,j]}$.
+
+Note that if $p$ is a propagator supported on $(i,j)$, then we can consider two obvious restrictions of $W$, namely $W_{[i,j+1]}$ and $W_{[j,i+1]}$.  Clearly all other propagators $q\neq p$ appear in exactly one of these subdiagrams, while $p$ appears in both.  In this case, we will say that $p$ \textit{bounds the regions} $[i,j+1]$ and $[j,i+1]$; the ordering of the start and end points allow us to identify one or the other region unambiguously.
+
+With these observations in mind we can return to the proof.
+  
   We will inductively construct a sequence of pairs of propagators $(p_r,q_r)$ satisfying: $\ell(p_r) = 2$, and $p_r$ either forms part of configuration \ref{item lonely 2}, \ref{item pair of 2s}, or \ref{item 4 and 2} from the statement,
   %a configuration \eqref{eq:2 prop config} in $D$
   or there is a propagator $q_r$ satisfying
@@ -1020,22 +1019,22 @@ The following lemma establishes certain configurations of propagators that must 
 \end{itemize}
 Since $W$ contains finitely many vertices, this must eventually terminate in one of the three desired configurations. %a configuration of the form \eqref{eq:2 prop config}.
 
-Start by choosing a propagator $p_1$ of length 2 in $W$ (which exists by Remark~\ref{rem:props of length 2 and 3}), and write $(j_1,j_1+1,j_1+2,j_1+3)$ for its support.  If it is part of one of the configurations we are looking for then we are done, 
+Start by choosing a propagator $p_1$ of length 2 in $W$ (which exists by Remark~\ref{rem:props of length 2 and 3}), and write $(j_1,j_1+2)$ for its support.  If it is part of one of the configurations we are looking for then we are done, 
 %a configuration \eqref{eq:2 prop config} we are done,
-so suppose otherwise: since $p_1$ is not in configuration \ref{item lonely 2} then there must be a second propagator starting either on edge $(j_1, j_1+1)$ or $(j_1+2, j_1+3)$.  Flipping the diagram if necessary, assume the former.  Since $p_1$ is not in configuration \ref{item pair of 2s} and every vertex is supported then there must exist a propagator $q_1$ of length $\geq 4$ with one end on edge $(j_1,j_1+1)$ or on edge $(j_1-1, j_1)$ or on edge $(j_1-2, j_1-1)$.  This bounds a region $[i_1,k_1]$ (where $k_1 \in \{j_1-1, j_1, j_1+1\}$) which does not contain $p_1$.
+so suppose otherwise: since $p_1$ is not in configuration \ref{item lonely 2} then there must be a second propagator starting either on edge $j_1)$ or $j_1+2$.  Flipping the diagram if necessary, assume the former.  Since $p_1$ is not in configuration \ref{item pair of 2s} and every vertex is supported then there must exist a propagator $q_1$ of length $\geq 4$ with one end on edge $j_1$ or on edge $j_1-1$ or on edge $j_1-2$.  This bounds a region $[i_1,k_1]$ (where $k_1 \in \{j_1-1, j_1, j_1+1\}$) which does not contain $p_1$.
 
-Now suppose $q_{r}$ exists by the induction hypothesis and bounds a region $[i_r,k_r]$.  Consider the restricted diagram $W_r:=W_{[i_r,k_r]}$; by the original hypotheses on $W$ every vertex $l \in [i_r+2,k_r-2]$ (which is a non-empty interval since $\ell(q_r) \geq 4$) must have support $\geq 1$, while the same is true for $l \in \{i_r,i_r+1,k_r-1,k_r\}$ because of $q_r$.  
+Now suppose $q_{r}$ exists by the induction hypothesis and bounds a region $[i_r,k_r]$ not containing any $p_i$ for $i\leq r$.  Consider the restricted diagram $W_r:=W_{[i_r,k_r]}$; by the original hypotheses on $W$ every vertex $l \in [i_r+2,k_r-2]$ (which is a non-empty interval since $\ell(q_r) \geq 4$) must have support $\geq 1$, while the same is true for $l \in \{i_r,i_r+1,k_r-1,k_r\}$ because of $q_r$.  
 
-By Remark~\ref{rem:props of length 2 and 3}, $W_r$ admits at least one propagator of length 2.  $W_r$ has no propagators of length $3$ since $W$ has none. \note{now the question really is important about what length means in the restricted diagram; as written the restricted diagram has the same vertex set so length is unchanged.}   Let $p_{r+1}$ be a propagator of length 2 in $W_r$; if it forms part of configuration \ref{item lonely 2}, \ref{item pair of 2s}, or \ref{item 4 and 2}
+By Remark~\ref{rem:props of length 2 and 3}, $W_r$ admits at least one propagator of length 2.  $W_r$ has no propagators of length $3$ since $W$ has none.  Let $p_{r+1}$ be a propagator of length 2 in $W_r$; if it forms part of configuration \ref{item lonely 2}, \ref{item pair of 2s}, or \ref{item 4 and 2}
 %the configuration \eqref{eq:2 prop config}
 then we are done, so assume otherwise.
 
-Note we may replace $q_r$ by any other propagator of length $\geq 4$ in $W_r$ which contains $p_{r+1}$ while still satisfying all the hypotheses, and so, without loss of generality we may assume that $q_r$ has minimal length among propagators of length $\geq 4$ which contain $p_{r+1}$.  
+Note we may replace $q_r$ by any other propagator of length $\geq 4$ in $W_r$ which contains $p_{r+1}$ and such a new $q_r$ still satisfies all the hypotheses, and so, without loss of generality we may assume that $q_r$ has minimal length among propagators of length $\geq 4$ which contain $p_{r+1}$.  
 
 There are two cases to consider.
-The first case is that neither end of $p_{r+1}$ lies on an edge contained in the possibly empty interval $[i_r+3,k_r-3]$, then since $p_{r+1}$ has length 2, it must be that $[i_r+3,k_r-3]$ is at most a single edge, and so $q_r$ has length $\leq 6$.  Since $p_{r+1}$ has one end before $i_r+3$ and the other after $k_r-3$, the only propagators inside $q_r$ that do not also contain $p_{r+1}$ must have both ends in $[i_r, i_r+3]$ or both ends in $[k_r-3, k_r]$ and hence be of length 2.  Therefore, if $q_r$ contains a propagator $t$ of length $\leq 4$, this propagator must also contain $p_{r+1}$ which is impossible my minimality.  Therefore, if $q_r$ contains another propagator of length $2$ we would have configuration \ref{item pair of 2s} which we have already assumed does not occur.  Consequently, $q_r$ contains only $p_{r+1}$; if $q_r$ is of length $4$ then we have \ref{item 4 and 2} and if $q_r$ is of length $5$ or $6$ then we have either \ref{item lonely 2} or an unsupported vertex, all of which are impossible.  Therefore the first case cannot occur.
+The first case is that $p_{r+1}$ has one end before $i_r+3$ and the other after $k_r-3$.  Then since $p_{r+1}$ has length 2, it must be that $[i_r+3,k_r-3]$ is at most a single edge, and so $q_r$ has length $\leq 6$.  The only propagators inside $q_r$ that do not also contain $p_{r+1}$ must have both ends in $[i_r, i_r+3]$ or both ends in $[k_r-3, k_r]$ and hence be of length 2.  Therefore, if $q_r$ contains a propagator $t$ of length $\leq 4$, this propagator must also contain $p_{r+1}$ which is impossible my minimality.  Therefore, if $q_r$ contains another propagator of length $2$ we would have configuration \ref{item pair of 2s} which we have already assumed does not occur.  Consequently, $q_r$ contains only $p_{r+1}$; if $q_r$ is of length $4$ then we have \ref{item 4 and 2} and if $q_r$ is of length $5$ or $6$ then we have either \ref{item lonely 2} or an unsupported vertex, all of which are impossible.  Therefore the first case cannot occur.
 
-The second case is that at least one endpoint of $p_{r+1}$ lies on an edge contained in the interval $[i_r+3,k_r-3]$.  Up to symmetry we can write $p_{r+1} = (j_{r+1}, j_{r+1}+1, j_{r+1}+2, j_{r+1}+3)$ where $(j_{r+1}+2, j_{r+1}+3)$ is contained in $[i_r+3, k_r-3]$.  Since $p_{r+1}$ is not part of configuration \ref{item pair of 2s} and vertex $j_{r+1}+4$ is supported (and not by $q_r$ since $j_{r+1}+4 \leq k_r-2$), there is some propagator $t$ with one end in $[j_{r+1}+2, j_{r+1}+4]$ and length $\geq 4$.  By noncrossingness $t$ is contained in $q_{r}$.  $t$ does not contain $p_{r+1}$ by minimality and so we may set $q_{r+1} = t$ to continue the induction.  
+The second case is that either at least one endpoint of $p_{r+1}$ lies on an edge contained in the interval $[i_r+3,k_r-3]$, or both ends lie in $[i_r, i_r+3]$ or $[k_r-3, k_r]$; these situations all behave similarly.  Up to symmetry we can write $p_{r+1} = (j_{r+1}, j_{r+1}+2)$ where either the edge $j_{r+1}+2$ is contained in $[i_r+3, k_r-3]$ or $j_{r+1}+2 = i_r+2$.  Since $p_{r+1}$ is not part of configuration \ref{item pair of 2s} and vertex $j_{r+1}+4$ is supported (and not by $q_r$ since $j_{r+1}+4 \leq k_r-2$ in both situations), there is some propagator $t$ with one end in $[j_{r+1}+3, j_{r+1}+5]$ and length $\geq 4$.  By noncrossingness $t$ is contained in $q_{r}$.  $t$ does not contain $p_{r+1}$ by minimality and so we may set $q_{r+1} = t$ to continue the induction.  
 
 The overall result, then follows by induction.
 
