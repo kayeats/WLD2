@@ -1459,80 +1459,78 @@ This procedure must be finite as either a contradiction is found or $S_i$ grows 
 
 
 
-\note{This was commented out in the file: some (old?) version of the inductive argument?}
-such that $b+1 \in V_{p_1}$, with an endpoint more clockwise on $W$ than the endpoint of $p$ supported by $b+1$: see Figure~\ref{fig:base step of alg induction}.
+%such that $b+1 \in V_{p_1}$, with an endpoint more clockwise on $W$ than the endpoint of $p$ supported by $b+1$: see Figure~\ref{fig:base step of alg induction}.
+%
+%\begin{figure}
+%\begin{tikzpicture}[rotate=15]
+%\begin{scope}
+%\drawWLD{12}{2}
+%\drawprop{3}{2}{10}{2} % P
+%% number vertices a,a+1,b,b+1 for prop P
+%
+%% clip these
+%\drawprop{3}{-2}{12}{-2}
+%\drawprop{2}{0}{12}{2}
+%\drawprop{6}{0}{10}{-2} % p1
+%
+%
+%\end{scope}
+%\end{tikzpicture}
+%\caption{Base step: if $P$ survives $n$ steps of the algorithm, there must be another propagator $p_1$ to its right on edge $(b,b+1)$.}
+%\label{fig:base step of alg induction}
+%\end{figure}
+%
+%The propagator $p_1$ forms the base step for the following induction:
+%
+%Suppose that $p_r$ is a propagator supported on $(i,i+1,m,m+1)$ and removed at step $m+1$ of the algorithm; we will show that there must also be a propagator $p_{r+1}$ supported on $(i',i'+1,m',m'+1)$ with $i \leq i'$ and $m \geq m'$, which is removed at step $m'+1$.  Since we can't have both $i' = i$ and $m'=m$, $p_{r+1}$ bounds a region containing strictly fewer vertices than $p_r$.
+%
+%Notice that if we restrict our attention to the region bounded by $p_r$ and the edges of the diagram from $i$ to $m+1$, then propagators outside of this region can affect the algorithm only at vertices $i$, $i+1$.  (The starting vertex 1 lies outside this region, by assumption.)
+%
+%Given a propagator $p_r$ supported on $(i,i+1,m,m+1)$ and removed at step $m+1$, we must also have a propagator $q$ to its right which is removed at step $m$ (``protecting'' $p_r$ at step $m$).  This splits into two cases:
+%
+%\textbf{Case I}: If $q$ is supported on $(k,k+1,m-1,m)$ for some $k \geq i$, then $p_{r+1}:=q$  satisfies the conditions of the induction step.
+%
+%\textbf{Case II}: Suppose $q$ is supported on $(k,k+1,m,m+1)$ for some $k$; since the diagram is admissible, we have $k > i$.  In particular, anything that happens at vertex $k+1$ is unaffected by propagators outside the region bounded by $p_r$, since $k+1 > i+1$.  But $q$ must survive until step $m$, so there must be another propagator $q'$ to the right of $q$, which protects $q$ at step $k+1$.  The admissibility of $W$ implies that $q'$ is supported on $(j,j+1,k,k+1)$ for some $j \geq i$, and we can take $p_{r+1}:=q'$.
+%
+%\begin{figure}
+%\begin{tabular}{ccc}
+%\begin{tikzpicture}[rotate=15]
+%\begin{scope}
+%\drawWLD{12}{2}
+%\drawprop{3}{0}{10}{0} % p_r
+%% number vertices i,i+1,m,m+1
+%
+%%clip these
+%\drawprop{6}{0}{9}{0} % q
+%\end{scope}
+%\end{tikzpicture}
+%
+%& \qquad \qquad &
+%\begin{tikzpicture}[rotate=15]
+%\begin{scope}
+%\drawWLD{12}{2}
+%\drawprop{3}{0}{10}{2} % p_r
+%% number vertices i, i+1, m, m+1
+%
+%\drawprop{7}{2}{10}{-2} %q
+%% vertices k,k+1, m,m+1
+%
+%% clip this one
+%\drawprop{4}{0}{7}{-2} % q'
+%% vertices j,j+1,k, k+1
+%
+%\end{scope}
+%\end{tikzpicture}
+%\\
+%Case I & & Case II
+%\end{tabular}
+%
+%\caption{Inductive step: if propagator $q$ is removed at step $m$, then it lies on either edge $(m-1,m)$ (Case I) or $(m,m+1)$ (Case II).}
+%\label{fig: cases for inductive step, algorithm}
+%\end{figure}
+%
+%By induction, we will eventually find a propagator on a region with 3 or fewer v%ertices, which is inadmissible.
 
-\begin{figure}
-\begin{tikzpicture}[rotate=15]
-\begin{scope}
-\drawWLD{12}{2}
-\drawprop{3}{2}{10}{2} % P
-% number vertices a,a+1,b,b+1 for prop P
-
-% clip these
-\drawprop{3}{-2}{12}{-2}
-\drawprop{2}{0}{12}{2}
-\drawprop{6}{0}{10}{-2} % p1
-
-
-\end{scope}
-\end{tikzpicture}
-\caption{Base step: if $P$ survives $n$ steps of the algorithm, there must be another propagator $p_1$ to its right on edge $(b,b+1)$.}
-\label{fig:base step of alg induction}
-\end{figure}
-
-The propagator $p_1$ forms the base step for the following induction:
-
-Suppose that $p_r$ is a propagator supported on $(i,i+1,m,m+1)$ and removed at step $m+1$ of the algorithm; we will show that there must also be a propagator $p_{r+1}$ supported on $(i',i'+1,m',m'+1)$ with $i \leq i'$ and $m \geq m'$, which is removed at step $m'+1$.  Since we can't have both $i' = i$ and $m'=m$, $p_{r+1}$ bounds a region containing strictly fewer vertices than $p_r$.
-
-Notice that if we restrict our attention to the region bounded by $p_r$ and the edges of the diagram from $i$ to $m+1$, then propagators outside of this region can affect the algorithm only at vertices $i$, $i+1$.  (The starting vertex 1 lies outside this region, by assumption.)
-
-Given a propagator $p_r$ supported on $(i,i+1,m,m+1)$ and removed at step $m+1$, we must also have a propagator $q$ to its right which is removed at step $m$ (``protecting'' $p_r$ at step $m$).  This splits into two cases:
-
-\textbf{Case I}: If $q$ is supported on $(k,k+1,m-1,m)$ for some $k \geq i$, then $p_{r+1}:=q$  satisfies the conditions of the induction step.
-
-\textbf{Case II}: Suppose $q$ is supported on $(k,k+1,m,m+1)$ for some $k$; since the diagram is admissible, we have $k > i$.  In particular, anything that happens at vertex $k+1$ is unaffected by propagators outside the region bounded by $p_r$, since $k+1 > i+1$.  But $q$ must survive until step $m$, so there must be another propagator $q'$ to the right of $q$, which protects $q$ at step $k+1$.  The admissibility of $W$ implies that $q'$ is supported on $(j,j+1,k,k+1)$ for some $j \geq i$, and we can take $p_{r+1}:=q'$.
-
-\begin{figure}
-\begin{tabular}{ccc}
-\begin{tikzpicture}[rotate=15]
-\begin{scope}
-\drawWLD{12}{2}
-\drawprop{3}{0}{10}{0} % p_r
-% number vertices i,i+1,m,m+1
-
-%clip these
-\drawprop{6}{0}{9}{0} % q
-\end{scope}
-\end{tikzpicture}
-
-& \qquad \qquad &
-\begin{tikzpicture}[rotate=15]
-\begin{scope}
-\drawWLD{12}{2}
-\drawprop{3}{0}{10}{2} % p_r
-% number vertices i, i+1, m, m+1
-
-\drawprop{7}{2}{10}{-2} %q
-% vertices k,k+1, m,m+1
-
-% clip this one
-\drawprop{4}{0}{7}{-2} % q'
-% vertices j,j+1,k, k+1
-
-\end{scope}
-\end{tikzpicture}
-\\
-Case I & & Case II
-\end{tabular}
-
-\caption{Inductive step: if propagator $q$ is removed at step $m$, then it lies on either edge $(m-1,m)$ (Case I) or $(m,m+1)$ (Case II).}
-\label{fig: cases for inductive step, algorithm}
-\end{figure}
-
-By induction, we will eventually find a propagator on a region with 3 or fewer vertices, which is inadmissible.
-
-\note{end of the piece that was commented out in the file}
 
 \begin{lem} \label{vertex cyclic int lem}
   For every $v \in V_p$, Let $A_v \subset [n]$ be the set of vertices where $p$ contributes $v$ to $I_a$. Then $A_v$ is a non-empty cyclic interval.

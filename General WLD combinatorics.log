@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.14)  21 NOV 2018 15:34
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.14)  21 NOV 2018 15:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -905,156 +905,151 @@ Overfull \hbox (14.72797pt too wide) in paragraph at lines 910--911
 
 LaTeX Warning: Marginpar on page 17 moved.
 
-[17] [18] [19] [20]
-
-LaTeX Warning: Marginpar on page 21 moved.
-
-<3cases.pdf, id=89, 492.1587pt x 99.7326pt>
+[17] [18] [19]
+<3cases.pdf, id=86, 492.1587pt x 99.7326pt>
 File: 3cases.pdf Graphic file (type pdf)
 <use 3cases.pdf>
-Package pdftex.def Info: 3cases.pdf  used on input line 1552.
+Package pdftex.def Info: 3cases.pdf  used on input line 1550.
 (pdftex.def)             Requested size: 393.7275pt x 79.78618pt.
-[21 <./3cases.pdf>]
-<Vdiagram.pdf, id=100, 221.14621pt x 128.64061pt>
+<Vdiagram.pdf, id=87, 221.14621pt x 128.64061pt>
 File: Vdiagram.pdf Graphic file (type pdf)
 <use Vdiagram.pdf>
-Package pdftex.def Info: Vdiagram.pdf  used on input line 1561.
+Package pdftex.def Info: Vdiagram.pdf  used on input line 1559.
 (pdftex.def)             Requested size: 176.91719pt x 102.91261pt.
- [22 <./Vdiagram.pdf>] [23]
+ [20 <./3cases.pdf>] [21 <./Vdiagram.pdf>] [22]
 
-LaTeX Warning: Reference `lem susama' on page 24 undefined on input line 1703.
+LaTeX Warning: Reference `lem susama' on page 23 undefined on input line 1701.
+
+[23]
+
+LaTeX Warning: Reference `lem basis as perm' on page 24 undefined on input line
+ 1749.
+
+
+LaTeX Warning: Reference `lem basis as perm' on page 24 undefined on input line
+ 1758.
 
 [24]
 
-LaTeX Warning: Reference `lem basis as perm' on page 25 undefined on input line
- 1751.
+LaTeX Warning: Citation `reversingOh' on page 25 undefined on input line 1790.
 
 
-LaTeX Warning: Reference `lem basis as perm' on page 25 undefined on input line
- 1760.
+LaTeX Warning: Reference `lem susama' on page 25 undefined on input line 1798.
 
 [25]
-
-LaTeX Warning: Citation `reversingOh' on page 26 undefined on input line 1792.
-
-[26]
-
-LaTeX Warning: Reference `lem susama' on page 27 undefined on input line 1800.
-
 LaTeX Font Info:    Font shape `OMS/cmr/m/it' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 1813.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 1811.
 
-[27] [28]
-<specialp.pdf, id=130, 253.36256pt x 112.54045pt>
+ [26] [27]
+<specialp.pdf, id=127, 253.36256pt x 112.54045pt>
 File: specialp.pdf Graphic file (type pdf)
 <use specialp.pdf>
-Package pdftex.def Info: specialp.pdf  used on input line 1879.
+Package pdftex.def Info: specialp.pdf  used on input line 1877.
 (pdftex.def)             Requested size: 253.36194pt x 112.54016pt.
 
 
-LaTeX Warning: Reference `lem susama' on page 29 undefined on input line 1886.
+LaTeX Warning: Reference `lem susama' on page 28 undefined on input line 1884.
 
-[29 <./specialp.pdf>]
+[28 <./specialp.pdf>]
 
-LaTeX Warning: Reference `lem susama' on page 30 undefined on input line 1892.
+LaTeX Warning: Reference `lem susama' on page 29 undefined on input line 1890.
 
-<Le_diagrams.pdf, id=164, 281.95337pt x 80.7015pt>
+<Le_diagrams.pdf, id=161, 281.95337pt x 80.7015pt>
 File: Le_diagrams.pdf Graphic file (type pdf)
 <use Le_diagrams.pdf>
-Package pdftex.def Info: Le_diagrams.pdf  used on input line 1911.
+Package pdftex.def Info: Le_diagrams.pdf  used on input line 1909.
 (pdftex.def)             Requested size: 281.95267pt x 80.70131pt.
+[29 <./Le_diagrams.pdf>]
+
+LaTeX Warning: Reference `lem susama' on page 30 undefined on input line 1923.
+
+
+LaTeX Warning: Reference `lem susama' on page 30 undefined on input line 1935.
+
 [30]
-
-LaTeX Warning: Reference `lem susama' on page 31 undefined on input line 1925.
-
-
-LaTeX Warning: Reference `lem susama' on page 31 undefined on input line 1937.
-
-[31 <./Le_diagrams.pdf>]
-<messy.pdf, id=183, 286.7714pt x 199.12794pt>
+<messy.pdf, id=179, 286.7714pt x 199.12794pt>
 File: messy.pdf Graphic file (type pdf)
 <use messy.pdf>
-Package pdftex.def Info: messy.pdf  used on input line 1966.
+Package pdftex.def Info: messy.pdf  used on input line 1964.
 (pdftex.def)             Requested size: 286.77069pt x 199.12744pt.
- [32 <./messy.pdf>]
-<messyD.pdf, id=248, 258.66638pt x 102.41261pt>
+<messyD.pdf, id=180, 258.66638pt x 102.41261pt>
 File: messyD.pdf Graphic file (type pdf)
 <use messyD.pdf>
-Package pdftex.def Info: messyD.pdf  used on input line 1975.
+Package pdftex.def Info: messyD.pdf  used on input line 1973.
 (pdftex.def)             Requested size: 258.66574pt x 102.41234pt.
- [33 <./messyD.pdf>] [34]
-<egWLD_forR.pdf, id=293, 569.04593pt x 113.80919pt>
+ [31 <./messy.pdf>] [32 <./messyD.pdf>] [33]
+<egWLD_forR.pdf, id=290, 569.04593pt x 113.80919pt>
 File: egWLD_forR.pdf Graphic file (type pdf)
 <use egWLD_forR.pdf>
-Package pdftex.def Info: egWLD_forR.pdf  used on input line 2059.
+Package pdftex.def Info: egWLD_forR.pdf  used on input line 2057.
 (pdftex.def)             Requested size: 569.04453pt x 113.8089pt.
 
-Overfull \hbox (99.2895pt too wide) in paragraph at lines 2059--2060
+Overfull \hbox (99.2895pt too wide) in paragraph at lines 2057--2058
 [][] 
  []
 
 
-LaTeX Warning: Marginpar on page 35 moved.
+LaTeX Warning: Marginpar on page 34 moved.
 
-[35] [36 <./egWLD_forR.pdf>]
-<no_big_factors.pdf, id=302, 455.23677pt x 199.16608pt>
+[34 <./egWLD_forR.pdf>] [35]
+<no_big_factors.pdf, id=299, 455.23677pt x 199.16608pt>
 File: no_big_factors.pdf Graphic file (type pdf)
 <use no_big_factors.pdf>
-Package pdftex.def Info: no_big_factors.pdf  used on input line 2123.
+Package pdftex.def Info: no_big_factors.pdf  used on input line 2121.
 (pdftex.def)             Requested size: 455.23564pt x 199.16559pt.
 
 
-LaTeX Warning: Reference `lem susama' on page 37 undefined on input line 2127.
+LaTeX Warning: Reference `lem susama' on page 36 undefined on input line 2125.
 
-[37]
+[36]
 
-LaTeX Warning: Reference `lem susama' on page 38 undefined on input line 2138.
+LaTeX Warning: Reference `lem susama' on page 37 undefined on input line 2136.
 
-[38 <./no_big_factors.pdf>] [39]
-<quadratic.pdf, id=315, 256.07068pt x 113.80919pt>
+[37 <./no_big_factors.pdf>] [38]
+<quadratic.pdf, id=312, 256.07068pt x 113.80919pt>
 File: quadratic.pdf Graphic file (type pdf)
 <use quadratic.pdf>
-Package pdftex.def Info: quadratic.pdf  used on input line 2165.
+Package pdftex.def Info: quadratic.pdf  used on input line 2163.
 (pdftex.def)             Requested size: 256.07004pt x 113.8089pt.
 
 
-LaTeX Warning: Reference `lem susama' on page 40 undefined on input line 2169.
+LaTeX Warning: Reference `lem susama' on page 39 undefined on input line 2167.
 
 
-LaTeX Warning: Reference `lem susama' on page 40 undefined on input line 2171.
+LaTeX Warning: Reference `lem susama' on page 39 undefined on input line 2169.
 
-<part4.pdf, id=316, 206.6922pt x 218.9781pt>
+<part4.pdf, id=313, 206.6922pt x 218.9781pt>
 File: part4.pdf Graphic file (type pdf)
 <use part4.pdf>
-Package pdftex.def Info: part4.pdf  used on input line 2176.
+Package pdftex.def Info: part4.pdf  used on input line 2174.
 (pdftex.def)             Requested size: 103.34584pt x 109.48877pt.
 
-LaTeX Warning: Reference `lem susama' on page 40 undefined on input line 2180.
+LaTeX Warning: Reference `lem susama' on page 39 undefined on input line 2178.
 
-[40 <./quadratic.pdf> <./part4.pdf
+[39 <./quadratic.pdf> <./part4.pdf
 
 pdfTeX warning: pdflatex (file ./part4.pdf): PDF inclusion: multiple pdfs with 
 page group included in a single page
 >]
 
-LaTeX Warning: Reference `lem susama' on page 41 undefined on input line 2196.
+LaTeX Warning: Reference `lem susama' on page 40 undefined on input line 2194.
 
 
-LaTeX Warning: Reference `lem susama' on page 41 undefined on input line 2198.
+LaTeX Warning: Reference `lem susama' on page 40 undefined on input line 2196.
 
 
-LaTeX Warning: Reference `lem susama' on page 41 undefined on input line 2212.
+LaTeX Warning: Reference `lem susama' on page 40 undefined on input line 2210.
 
-[41] [42] (./General WLD combinatorics.aux)
+[40] [41] (./General WLD combinatorics.aux)
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 18882 strings out of 492982
- 356748 string characters out of 6134895
- 545285 words of memory out of 5000000
- 22016 multiletter control sequences out of 15000+600000
+ 18798 strings out of 492982
+ 354700 string characters out of 6134895
+ 518307 words of memory out of 5000000
+ 21932 multiletter control sequences out of 15000+600000
  15509 words of font info for 61 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  61i,19n,76p,3253b,966s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1077,10 +1072,10 @@ dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/f
 onts/type1/public/amsfonts/cm/cmti9.pfb></usr/share/texlive/texmf-dist/fonts/ty
 pe1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/typ
 e1/public/amsfonts/symbols/msbm10.pfb>
-Output written on "General WLD combinatorics.pdf" (42 pages, 874658 bytes).
+Output written on "General WLD combinatorics.pdf" (41 pages, 860488 bytes).
 PDF statistics:
- 400 PDF objects out of 1000 (max. 8388607)
- 221 compressed objects within 3 object streams
+ 397 PDF objects out of 1000 (max. 8388607)
+ 219 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
  63 words of extra memory for PDF output out of 10000 (max. 10000000)
 
