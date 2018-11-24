@@ -910,7 +910,7 @@ Throughout this section, $W = (\cP,n)$ is an admissible Wilson loop diagram with
 \subsection{Some setup results about propagators}
 
 
-\note{I don't think rank of a vertex (in the sense of number of propagators supported on it) was ever used, so I removed the definition}
+%\note{I don't think rank of a vertex (in the sense of number of propagators supported on it) was ever used, so I removed the definition}
 %\note{rank probably isn't a good word; do we have a better one?}
 %\begin{dfn}\label{vertex rank}
 %Let $i$ be a vertex in $W$. We define the {\bf rank} of $i$ to be $|Prop(i)|$, i.e. the number of propagators supported on $i$.
@@ -926,7 +926,7 @@ Note that this depends on the order of $i$ and $j$: if we view $p$ as supported 
 
 
 \begin{dfn}\note{right now this doesn't depend on the order of $i$ and $j$, but that might matter later on?}
-Let $p$ be a propagator supported on the vertices $(i,i+1,j,j+1)$.  Define the \textit{length} of $p$ to be 
+Let $p$ be a propagator supported on $(i,j)$.  Define the \textit{length} of $p$ to be 
 \[\ell(p) = min\big\{|[i+1,j]|,|[j+1,i]|\big\}.\]
 \end{dfn}
 
@@ -937,17 +937,9 @@ Let $p$ be a propagator supported on the vertices $(i,i+1,j,j+1)$.  Define the \
 The following observations about propagators of short length in $W$ are easily verified:
 \begin{itemize}
 \item If every vertex in $W$ supports at least one propagator, then $W$ admits at least one propagator of length 2.
-\item If $p = (i,i+1,i+3,i+4)$ is a propagator of length 3, then the middle vertex $i+2$ supports at most one propagator.
+\item If $p = (i,i+3)$ is a propagator of length 3, then the middle vertex $i+2$ supports at most one propagator.
 \end{itemize}
 \end{rmk}
-
-\note{Are the next few definitions used outside the proof of Lemma~\ref{lem sian 1}?  If not, then perhaps they could go inside the proof so as not to clutter the document with temporary definitions?}
-\begin{dfn}
-Define the restriction of $W$ to a region $[i,j]$ to be the subdiagram obtained by forgetting all propagators not wholly supported on vertices in the cyclic interval $[i,j]$.  Denote this diagram by $W_{[i,j]}$.
-\end{dfn}
-\note{I think there's an issue here about what we mean by subdiagram; in def 1.5 we say a subdiagram is of the form $(P, V(P))$ which is certainly not what we want here; in fact I think we want the subdiagram where the vertex set is unchanged and only the propagator set is restricted (the other possibility would be to restrict the vertex set to $[i, j]$, but then the lengths of propagators can change and in the way we want to use it (see paragraph below) $p$ will become very non-admissible).  I think def 1.5 should be removed and we should say that for a WLD $(P, V)$ subdiagrams are any $(P', V')$ with $P'\subseteq P$, $V'\subseteq V$ and all supporting vertices of elements of $P'$ in $V'$; this seems to me to be the natural notion of subobject.}
-
-If $p$ is a propagator supported on $(i,i+1,j,j+1)$, then we can consider two obvious restrictions of $D$, namely $D_{[i,j+1]}$ and $D_{[j,i+1]}$.  Clearly all other propagators $q\neq p$ appear in exactly one of these subdiagrams, while $p$ appears in both.  In this case, we will say that $p$ \textit{bounds the regions} $[i,j+1]$ and $[j,i+1]$; the ordering of the start and end points allow us to identify one or the other region unambiguously.
 
 
 The following lemma establishes certain configurations of propagators that must exist in any admissible diagram with no unsupported vertices. We make use of this result in several induction proofs below.
@@ -958,15 +950,15 @@ The following lemma establishes certain configurations of propagators that must 
     \item $W$ has a propagator of length 3 with a propagator of length 2 inside it.
     \item $W$ admits no propagators of length 3, and one or more of the following things occurs.
       \begin{enumerate}
-        \item There is a propagator of length $2$, say $(i, i+1, i+2, i+3)$ such that no other propagators ends on either the edge $(i, i+1)$ or the edge $(i+2, i+3)$.\label{item lonely 2}
-        \item There exists a pair of propagators of length $2$ with the property that the first propagator is $(i, i+1, i+2, i+3)$, the second is $(j, j+1, j+2, j+3)$, no other propagator ends between $i+2$ and $j+1$, and $j\in\{i+2, i+3, i+4\}$.\label{item pair of 2s}
-        \item There exists a propagator of length exactly 4 with only a propagator of length 2 inside it.\label{item 4 and 2}
+        \item There is a propagator of length $2$, say $(i, i+2)$ such that no other propagators ends on either the edge $i$ or the edge $i+2$.\label{item lonely 2}
+        \item There exists a pair of propagators of length $2$ with the property that the first propagator is $(i, i+2)$, the second is $(j, j+2)$, no other propagator ends between vertices $i+2$ and $j+1$, and $j\in\{i+2, i+3, i+4\}$.\label{item pair of 2s}
+        \item There exists a propagator of length 4 with only a propagator of length 2 inside it.\label{item 4 and 2}
       \end{enumerate}
   \end{enumerate}
 \end{lem}
 
 \begin{proof}
-  Suppose first that $W$ has a propagator of length $3$, $p=(i, i+1, i+3, i+4)$.  By Remark~\ref{rem:props of length 2 and 3} along with the fact that every vertex of $W$ supports at least one propagator, we have that $i+2$ supports exactly one propagator and this propagator must have length 2 by noncrossingness.
+  Suppose first that $W$ has a propagator of length $3$, $p=(i, i+3)$.  By Remark~\ref{rem:props of length 2 and 3} along with the fact that every vertex of $W$ supports at least one propagator, we have that $i+2$ supports exactly one propagator and this propagator must have length 2 by noncrossingness.
 
   Now suppose $W$ has no propagators of length $3$.
 %  We will prove the following stronger result: that $D$ admits a pair of propagators of length 2 in the following configuration:
@@ -1003,6 +995,13 @@ The following lemma establishes certain configurations of propagators that must 
 %\end{tikzpicture}
 %\end{equation}
 
+We need a bit of notation:
+Define the restriction of $W$ to a region $[i,j]$ to be the subdiagram obtained by forgetting all propagators not wholly supported on vertices in the cyclic interval $[i,j]$; the vertex set remains the same as in $W$.  Denote this diagram by $W_{[i,j]}$.
+
+Note that if $p$ is a propagator supported on $(i,j)$, then we can consider two obvious restrictions of $W$, namely $W_{[i,j+1]}$ and $W_{[j,i+1]}$.  Clearly all other propagators $q\neq p$ appear in exactly one of these subdiagrams, while $p$ appears in both.  In this case, we will say that $p$ \textit{bounds the regions} $[i,j+1]$ and $[j,i+1]$; the ordering of the start and end points allow us to identify one or the other region unambiguously.
+
+With these observations in mind we can return to the proof.
+  
   We will inductively construct a sequence of pairs of propagators $(p_r,q_r)$ satisfying: $\ell(p_r) = 2$, and $p_r$ either forms part of configuration \ref{item lonely 2}, \ref{item pair of 2s}, or \ref{item 4 and 2} from the statement,
   %a configuration \eqref{eq:2 prop config} in $D$
   or there is a propagator $q_r$ satisfying
@@ -1012,22 +1011,22 @@ The following lemma establishes certain configurations of propagators that must 
 \end{itemize}
 Since $W$ contains finitely many vertices, this must eventually terminate in one of the three desired configurations. %a configuration of the form \eqref{eq:2 prop config}.
 
-Start by choosing a propagator $p_1$ of length 2 in $W$ (which exists by Remark~\ref{rem:props of length 2 and 3}), and write $(j_1,j_1+1,j_1+2,j_1+3)$ for its support.  If it is part of one of the configurations we are looking for then we are done, 
+Start by choosing a propagator $p_1$ of length 2 in $W$ (which exists by Remark~\ref{rem:props of length 2 and 3}), and write $(j_1,j_1+2)$ for its support.  If it is part of one of the configurations we are looking for then we are done, 
 %a configuration \eqref{eq:2 prop config} we are done,
-so suppose otherwise: since $p_1$ is not in configuration \ref{item lonely 2} then there must be a second propagator starting either on edge $(j_1, j_1+1)$ or $(j_1+2, j_1+3)$.  Flipping the diagram if necessary, assume the former.  Since $p_1$ is not in configuration \ref{item pair of 2s} and every vertex is supported then there must exist a propagator $q_1$ of length $\geq 4$ with one end on edge $(j_1,j_1+1)$ or on edge $(j_1-1, j_1)$ or on edge $(j_1-2, j_1-1)$.  This bounds a region $[i_1,k_1]$ (where $k_1 \in \{j_1-1, j_1, j_1+1\}$) which does not contain $p_1$.
+so suppose otherwise: since $p_1$ is not in configuration \ref{item lonely 2} then there must be a second propagator starting either on edge $j_1)$ or $j_1+2$.  Flipping the diagram if necessary, assume the former.  Since $p_1$ is not in configuration \ref{item pair of 2s} and every vertex is supported then there must exist a propagator $q_1$ of length $\geq 4$ with one end on edge $j_1$ or on edge $j_1-1$ or on edge $j_1-2$.  This bounds a region $[i_1,k_1]$ (where $k_1 \in \{j_1-1, j_1, j_1+1\}$) which does not contain $p_1$.
 
-Now suppose $q_{r}$ exists by the induction hypothesis and bounds a region $[i_r,k_r]$.  Consider the restricted diagram $W_r:=W_{[i_r,k_r]}$; by the original hypotheses on $W$ every vertex $l \in [i_r+2,k_r-2]$ (which is a non-empty interval since $\ell(q_r) \geq 4$) must have support $\geq 1$, while the same is true for $l \in \{i_r,i_r+1,k_r-1,k_r\}$ because of $q_r$.  
+Now suppose $q_{r}$ exists by the induction hypothesis and bounds a region $[i_r,k_r]$ not containing any $p_i$ for $i\leq r$.  Consider the restricted diagram $W_r:=W_{[i_r,k_r]}$; by the original hypotheses on $W$ every vertex $l \in [i_r+2,k_r-2]$ (which is a non-empty interval since $\ell(q_r) \geq 4$) must have support $\geq 1$, while the same is true for $l \in \{i_r,i_r+1,k_r-1,k_r\}$ because of $q_r$.  
 
-By Remark~\ref{rem:props of length 2 and 3}, $W_r$ admits at least one propagator of length 2.  $W_r$ has no propagators of length $3$ since $W$ has none. \note{now the question really is important about what length means in the restricted diagram; as written the restricted diagram has the same vertex set so length is unchanged.}   Let $p_{r+1}$ be a propagator of length 2 in $W_r$; if it forms part of configuration \ref{item lonely 2}, \ref{item pair of 2s}, or \ref{item 4 and 2}
+By Remark~\ref{rem:props of length 2 and 3}, $W_r$ admits at least one propagator of length 2.  $W_r$ has no propagators of length $3$ since $W$ has none.  Let $p_{r+1}$ be a propagator of length 2 in $W_r$; if it forms part of configuration \ref{item lonely 2}, \ref{item pair of 2s}, or \ref{item 4 and 2}
 %the configuration \eqref{eq:2 prop config}
 then we are done, so assume otherwise.
 
-Note we may replace $q_r$ by any other propagator of length $\geq 4$ in $W_r$ which contains $p_{r+1}$ while still satisfying all the hypotheses, and so, without loss of generality we may assume that $q_r$ has minimal length among propagators of length $\geq 4$ which contain $p_{r+1}$.  
+Note we may replace $q_r$ by any other propagator of length $\geq 4$ in $W_r$ which contains $p_{r+1}$ and such a new $q_r$ still satisfies all the hypotheses, and so, without loss of generality we may assume that $q_r$ has minimal length among propagators of length $\geq 4$ which contain $p_{r+1}$.  
 
 There are two cases to consider.
-The first case is that neither end of $p_{r+1}$ lies on an edge contained in the possibly empty interval $[i_r+3,k_r-3]$, then since $p_{r+1}$ has length 2, it must be that $[i_r+3,k_r-3]$ is at most a single edge, and so $q_r$ has length $\leq 6$.  Since $p_{r+1}$ has one end before $i_r+3$ and the other after $k_r-3$, the only propagators inside $q_r$ that do not also contain $p_{r+1}$ must have both ends in $[i_r, i_r+3]$ or both ends in $[k_r-3, k_r]$ and hence be of length 2.  Therefore, if $q_r$ contains a propagator $t$ of length $\leq 4$, this propagator must also contain $p_{r+1}$ which is impossible my minimality.  Therefore, if $q_r$ contains another propagator of length $2$ we would have configuration \ref{item pair of 2s} which we have already assumed does not occur.  Consequently, $q_r$ contains only $p_{r+1}$; if $q_r$ is of length $4$ then we have \ref{item 4 and 2} and if $q_r$ is of length $5$ or $6$ then we have either \ref{item lonely 2} or an unsupported vertex, all of which are impossible.  Therefore the first case cannot occur.
+The first case is that $p_{r+1}$ has one end before $i_r+3$ and the other after $k_r-3$.  Then since $p_{r+1}$ has length 2, it must be that $[i_r+3,k_r-3]$ is at most a single edge, and so $q_r$ has length $\leq 6$.  The only propagators inside $q_r$ that do not also contain $p_{r+1}$ must have both ends in $[i_r, i_r+3]$ or both ends in $[k_r-3, k_r]$ and hence be of length 2.  Therefore, if $q_r$ contains a propagator $t$ of length $\leq 4$, this propagator must also contain $p_{r+1}$ which is impossible my minimality.  Therefore, if $q_r$ contains another propagator of length $2$ we would have configuration \ref{item pair of 2s} which we have already assumed does not occur.  Consequently, $q_r$ contains only $p_{r+1}$; if $q_r$ is of length $4$ then we have \ref{item 4 and 2} and if $q_r$ is of length $5$ or $6$ then we have either \ref{item lonely 2} or an unsupported vertex, all of which are impossible.  Therefore the first case cannot occur.
 
-The second case is that at least one endpoint of $p_{r+1}$ lies on an edge contained in the interval $[i_r+3,k_r-3]$.  Up to symmetry we can write $p_{r+1} = (j_{r+1}, j_{r+1}+1, j_{r+1}+2, j_{r+1}+3)$ where $(j_{r+1}+2, j_{r+1}+3)$ is contained in $[i_r+3, k_r-3]$.  Since $p_{r+1}$ is not part of configuration \ref{item pair of 2s} and vertex $j_{r+1}+4$ is supported (and not by $q_r$ since $j_{r+1}+4 \leq k_r-2$), there is some propagator $t$ with one end in $[j_{r+1}+2, j_{r+1}+4]$ and length $\geq 4$.  By noncrossingness $t$ is contained in $q_{r}$.  $t$ does not contain $p_{r+1}$ by minimality and so we may set $q_{r+1} = t$ to continue the induction.  
+The second case is that either at least one endpoint of $p_{r+1}$ lies on an edge contained in the interval $[i_r+3,k_r-3]$, or both ends lie in $[i_r, i_r+3]$ or $[k_r-3, k_r]$; these situations all behave similarly.  Up to symmetry we can write $p_{r+1} = (j_{r+1}, j_{r+1}+2)$ where either the edge $j_{r+1}+2$ is contained in $[i_r+3, k_r-3]$ or $j_{r+1}+2 = i_r+2$.  Since $p_{r+1}$ is not part of configuration \ref{item pair of 2s} and vertex $j_{r+1}+4$ is supported (and not by $q_r$ since $j_{r+1}+4 \leq k_r-2$ in both situations), there is some propagator $t$ with one end in $[j_{r+1}+3, j_{r+1}+5]$ and length $\geq 4$.  By noncrossingness $t$ is contained in $q_{r}$.  $t$ does not contain $p_{r+1}$ by minimality and so we may set $q_{r+1} = t$ to continue the induction.  
 
 The overall result, then follows by induction.
 
@@ -1249,7 +1248,7 @@ The overall result, then follows by induction.
 \end{proof}
 
 \begin{rmk}
-In the case that all vertices of an admissible WLD $W$ support at least two propagators, then Lemma~\ref{lem sian 1} substantially simplifies.  By Remark~\ref{rem:props of length 2 and 3}, $W$ has no propagators of length $3$, so the first item of Lemma~\ref{lem sian 1} cannot occur at all.  Configurations \ref{item lonely 2} and \ref{item 4 and 2} also necessarily entail vertices with support $1$ as does configuration \ref{item pair of 2s} unless $j=i+2$.  So in the case that $W$ has all vertices with support at least two then $W$ must contain a pair of propagators of length $2$  with the property that the first propagator is $(i, i+1, i+2, i+3)$, the second is $(i+2, i+3, i+4, i+5)$ and no other propagator ends on the edge $(i+2, i+3)$.
+In the case that all vertices of an admissible WLD $W$ support at least two propagators, then Lemma~\ref{lem sian 1} substantially simplifies.  By Remark~\ref{rem:props of length 2 and 3}, $W$ has no propagators of length $3$, so the first item of Lemma~\ref{lem sian 1} cannot occur at all.  Configurations \ref{item lonely 2} and \ref{item 4 and 2} also necessarily entail vertices with support $1$ as does configuration \ref{item pair of 2s} unless $j=i+2$.  So in the case that $W$ has all vertices with support at least two then $W$ must contain a pair of propagators of length $2$  with the property that the first propagator is $(i, i+2)$, the second is $(i+2, i+4)$ and no other propagator ends on the edge $i+2$.
 \end{rmk}
 
 
@@ -1324,203 +1323,356 @@ It follows from the proof of Lemma~\ref{lem no fourth vertex} that Algorithm~\re
 
 
 
-Next we prove that this algorithm actually gives a Grassmann Necklace as claimed. We begin with some useful definitions and lemmas
+%Next we prove that this algorithm actually gives a Grassmann Necklace as claimed. We begin with some useful definitions and lemmas
+%
+%\begin{dfn}\label{protect dfn}
+%Let $W = (\cP,n)$ be an admissible diagram and $a \in[n]$ a vertex. For $p= (i,j) \in \cP$ an a propagator of $W$  and $v \in \{i, j\}$ a vertex of $W$, let $P_{v}(p)$ or $P_{v+1}(p)$ to be two \emph{protecting sets of $p$ at $v$ and ${v+1}$} be a set of propagators defined as follows: \begin{enumerate}
+%\item Work under the linear order on $[n]$, $<_{v+1}$, every propagator is now written as $p = (i_p, j_p)$ such that $i_p <_{v+1} j_p$.
+%\item If there is a propagator $s_1 \in \cP$ such that $s_1 = (i_{s_1}, v)$ or $s_1 = (i_{s_1}, v-1)$, then $s_1 \in P_v(p)$.
+%\item If $s_1$ as above does not exists, then $P_v(p) = \emptyset$. In this case, $P_w(p) = \emptyset$. When $P_v(p) \neq \emptyset$, if there exists a propagator $t_1 \in \cP$ defined such that $t_1 = (i_{t_1}, v)$ and $s_1 = (i_{s_1}, v)$ with $i_p <_{v+1} i_{t_1} <_{v+1} i_{s_1}$, $P_w(p) = t_1$.
+%\item If $s_1 = (i_{s_1}, v)$ then \bas P_v(p)=  \begin{cases} \{s_1\} \cup P_{i_{s_1}}(s_1) \cup P_{i_{s_1}+1}(s_1) & \textrm{ if } P_{i_{s_1}+1}(s_1) \neq \emptyset \\ s_1 &  \textrm{ else } \end{cases}. \eas  If $s_1 = (i_{s_1}, v-1)$ then \bas P_v(p)=  \begin{cases}  \emptyset & \textrm{ if } P_{v-1}(s_1) = \emptyset \\ \{s_1\} \cup P_{v-1}(s_1) & \textrm{ else } \end{cases} \eas.
+%\end{enumerate}
+%\end{dfn}
+%
+%The protective sets $P_\cdot(p)$ are designed to prevent $p$ from contributing the vertex indicated in the subscript at certain points in the Grassmann Necklace, $I_a$. Write $P_v(p) = \{s_1, \ldots s_r, t_2,  \ldots t_r\}$ with the $t_x = P_{i_{s_{x-1}}+1}(s_{x-1})$ and $s_x \in P_{i_{s_{x-1}}}(s_{x-1})$ for $x \geq 2$. We place the restrictions on the vertex $a$ as follows: \begin{enumerate} \item $P_v$ prevents $p$ from contributing to $I_a$ if \bas i_{s_r}  <_{v+1} a-1 <_{v+1} v\eas \item $P_{v+1}(p)$ prevents $p$ from contributing to $I_a$ only if $P_v(p)$ prevents $p$ from contributing $v$ to $I_a$. \end{enumerate}
+%
+%
+%\begin{eg} \label{eg: protective sets}
+%Consider the admissible Wilson loop diagram
+%\bas W=\begin{tikzpicture}[rotate=120,baseline=(current bounding box.east)]
+%	\begin{scope}
+%	\drawWLD{17}{3}
+%	\drawnumbers
+%	\drawprop{1}{0}{16}{0}
+%	\drawlabeledprop{2}{0}{15}{1}{p}
+%    \drawprop{6}{2}{15}{0}
+%    \drawprop{3}{0}{6}{1}
+%    \drawprop{4}{0}{6}{0}
+%    \drawprop{7}{0}{11}{0}
+%    \drawprop{8}{0}{10}{0}
+%    \drawprop{11}{1}{14}{1}
+%    \drawprop{12}{0}{14}{0}
+%		\end{scope}
+%	\end{tikzpicture}
+%\eas Consider the two sets of propagators $Q = \{(3, 6), (4, 6), (6,15)\}$ and $R = \{ (7, 11), (8, 10), (11, 14), (12, 14)\}$. The propagator $p = (2, 15)$ is protected at $a = 5$ from contributing $15$ to $I_5$ by the set $P_{15} = Q$. There is no set preventing $p$ from contributing $16$ to $I_{15}$. At $a = 9$, the set $P_{15} = \{(6,15)\} \subset Q$. We may just as easily right $P_{15} = Q$, though the other two propagators in the set prove unnecessary to keep $p$ from contributing $15$ to $I_{9}$. At $a = 14$, both $P_{15}$ and $P_{16}$ exists, with $P_{15} = \{(11, 14), (12, 14)\} \subset R $ and $P_{16}= \{(6,15)\} \subset Q$. We may just as easily right $P_{15} = R$ and $P_{16} = R$, though the other two propagators in each set are unnecessary.
+%
+%Note that for $a=1$, the propagator $p$ contributes $2$ to $I_1$. However, in this case, we say that neither $P_{15}$ or $P_{16}$ exist.
+%\end{eg}
+%
+%
+%\begin{lem}\label{protecting lem}
+%Let $W = (\cP, n)$ be an admissible Wilson loop diagram, and $p = (i,j) \in \cP$, and $a \in [n]$ be a vertex. For $v \in \{i,j\}$, if $P_v(p) \neq \emptyset$, write $P_v(p) = \{s_1 \ldots s_r, t_2, \ldots t_r\}$ as above. Then $p$ does not contribute $v$ to $I_a$ if $i_{s_r} +1 <_{v+1} a <_{v+1} v+1 $. If both $P_v(p)$ and $P_{v+1}(p)$ are non empty, then $p$ also does not contribute $v+1$ to $I_a$.
+%\end{lem}
+%
+%\begin{proof}
+%Note that if $s_1 \in P_v(p)$ exists at step $v$ of Algorithm \ref{alg:put GN on WLD}, then $p$ cannot contribute $p$ to $I_a$. Further, if $P_{v+1}(p) \neq \emptyset$, $p$ cannot contribute $v+1$ to $I_a$ either.
+%
+%Next we show that if $P_v(p)$ is as above, with $i_{s_r}+1 <_{v+1} a$, then the propagator $s_1$ exists at step $v$ of Algorithm \ref{alg:put GN on WLD}. Let $x$ be the largest integer that such that $a <_{v_1} j_{x}+1$. Then $s_x$ cannot contribute to $I_a$ before vertex $v$. By construction $P_{i_{s_x}+1}(s_{x-1})\subset P_v(p)$. Therefore, $s_{x-1}$ does not contribute $i_{s_x}+1$ to $I_a$. Thus we conclude that $s_1$ does not contribute $i_{s_1}$ or $i_{s_1}+1$ to $I_a$. In other words, $s_1$ has not been removed from the diagram at vertex $v$.
+%
+%\end{proof}
+%
+%Thus we say that $P_v(p)$ protects $p$ at $v$ from $a$, for $a \in [i_{s_r}+2, v]$. There is an easy corollary to this, describing when such a protecting set cannot exist.
+%
+%\begin{cor} \label{protecting cor}
+%Let $W = (\cP, n)$ be an admissible Wilson loop diagram, and $p = (i,j) \in \cP$. Picking a $v \in \{i, j\}$ write $p = (i_p, j_p)$ with $i_p <_{v+1} j_p$. If $a \in [j_p+1, i_p+1]$ then there can be no protecting set $P_v$ or $P_{v+1}$ protecting $p$ at $v$ or $v+1$ from $a$.
+%\end{cor}
+%
+%\begin{proof}
+%Since $W$ is admissible, it cannot have crossing propagators. Therefore neither $P_v$ cannot have the requisite propagator $s_r$ with $i_{s_r}+1  <_{v+1} a$.
+%\end{proof}
+%
+%The converse, however requires an extra condition.
+%
+%\begin{lem} \label{protect conv lem}
+%For $W = (\cP, n)$, $p = (i,j)$, and $v \in \{i, j\}$ and $ a \in [n]$ a vertex of $W$, if $v$ (resp. $v+1$) is the first vertex of $V_p$ in the $<_a$ order such that $P_v$ (resp. neither $P_v$ nor $P_{v+1}$) does not exist, then $p$ contributes $v$ (resp. $v+1$) to $I_a$.
+%\end{lem}
+%
+%\begin{proof}
+%Write $p = (i_p, j_p)$ with $i_p <_{v+1} j_p$.
+%
+%
+%If $p$ doesn't contribute $v$ (or $v+1$) to $I_a$, then either $p$ contributes a different supporting vertex $u$ earlier in the $<_a$ order or there is a propagator $s_1$ at step $v$ of the algorithm \ref{alg:put GN on WLD} preventing $p$ from contributing $v$ to $I_a$, (or there are a pair of propagators $s_1$ and $t_1$ at step $v$ preventing $p$ from contributing $v+1$ at $I_a$.)
+%
+%If there are propagators $s_1, t_1 \in \cP$ that are still in the diagram at step $v$, (write them $s_1 = (i_{s_1}, j_{s_1})$, and $t_1 = (i_{t_1}, j_{t_1})$) with $j_{s_1} \in \{v, v-1\}$, and $i_p \leq_{v+1} i_{t_1} <_v i_{s_1} <_v j_{s_1} \leq_{v} j_{t_1} = v$) then $s_1$ or $t_1$ did not contribute $i_{s_1}$ or  $i_{s_1} +1 $ (resp. $i_{t_1}$ or $i_{t_1}+1$) to $I_a$. Then one of the following three situations hold: \begin{enumerate} \item $i_{s_1}+1 <_{v+1} a$ and $j_{s_1} = v$: In this case, $s_1$ cannot be removed until $v$. \item $i_{s_1}+1 <_{v+1} a$ and $j_{s_1} = v-1$: in this case there exists a propagator $s_2 = (i_{s_2}, j_{s_2})$ with $i_{s_1} \leq_{v+1} i_{s_2} <_{v+1} j_{s_2}$ and $j_{s_2} \in \{j_{s_1}-1, j_{s_1}\}$. \item $i_{s_1}+1 \not <_{v+1} a$ and $j_{s_1} = v$: and there must be two other propagators $s_2 = (i_{s_2}, j_{s_2})$ and $t_2 = (i_{t_2}, j_{t_2})$, with $j_{s_2} \in \{i_{s_1}, i_{s_1}-1\}$ and $i_{s_1} \leq_{v+1} i_{t_2} <_{v+1} i_{s_2} <_{v+1} j_{s_2} \leq_{v+1} j_{t_2} = j_{s_1}$   \end{enumerate}
+%
+%However, now one must ensure that the newly identified propagators $s_2$ and $t_3$ do not contribute to $I_a$ before $i_{s_1}$. One does this by a similar construction to above. In this manner, we begin to build the sets $P_v(p)$ and $P_{v+1}(p)$.  By finiteness and admissiblity of the Wilson loop diagram, both these sets are finite; one cannot continue to add propagators $s_i$, $t_i$ ad infinitum.
+%
+%We claim that this implies that at some point there is a terminal propagator, $s_m \in P_v(p)$ such that $i_{s_m} + 1 <_{v+1} a$, and \bas  \textrm{ either }= \begin{cases} j_{s_m}=i_{s_{m-1}} & \textrm{ }\\ j_{s_m}=j_{s_{m-1}} & \textrm{ } \end{cases} .\eas We show that all other possibilities lead to a contradiction. For the remainder of this proof, indicate by $p_k$ some propagator identified at an earlier stage of this construction. That is, for $0 < k < m$, $p_k \in \{s_k, t_k\}$. Futher define $p_0 = p$.
+%
+%
+%%\begin{cases} j_{s_{m}=i_{s_{m-1}} & \textrm{ } \\  j_{s_m}=j_{s_{m-1}} & \text{ }\end{cases}
+%
+%If $j_{s_m} \in \{i_{s_{m-1}}-1, j_{s_{m-1}}-1\}$, then, this cannot be the final propagator added to $P_v(p)$, as one would need a means of preventing $s_m$ from contributing $i_{s_{m-1}}-1$ or $j_{s_{m-1}}-1$ to $I_a$.
+%
+%If $i_{s_m} + 1 \not <_{v+1} a$, then there are two.
+% \begin{description}
+%
+%\item[$j_{s_m} = i_{s_{m-1}}$ and $i_{s_m} \in \{i_{p_k}+2, i_{p_k}+1\}$] for some $k<m$. By admissibility, there is not room to place both the propagators $s_{m+1}$, and $t_{m+1}$. Thus $s_m$ is removed at the step $i_{s_m}$ or $i_{s_m} + 1$. Therefore, $s_1$ contributes at either $i_{s_1}$ or $i_{s_1}+1$. This leads to a contradiction.
+%\item[$j_{s_m} = i_{s_{m-1}}$ and $i_{s_m} = i_{p_k}+2$] for some $k<m$. This requires either crossing propagators or propagators starting and ending at the same edge, which violates admissibility.
+% \end{description} \note{correct but clear as mud? Help?}
+%\end{proof}
+%
+%We use these results to prove some properties about the Algorithm \ref{alg:put GN on WLD}.
+%\begin{prop}\label{res:alg k labels}
+%If $W = (\cP, n)$ is an admissible Wilson loop diagram with $|\cP| = k$, then Algorithm~\ref{alg:put GN on WLD} puts exactly $k$ distinct labels on each edge.
+%\end{prop}
+%\begin{proof}
+%It is enough to show that the algorithm terminates in at most $n$ steps for each $a \in [n]$. In other words, that all $k$ propagators of $W$ are removed by the time the algorithm has cycled through all the vertices, starting at $a$. Suppose this doesn't happen, i.e. there is a propagator $p= (i,j)\in \cP$ which survives the first $n$ steps of the algorithm for some starting vertex $a$. Without loss of generality, assume $a \leq_a i <_a j$. Otherwise, change the roles of $i$ and $j$.
+%
+%Since $p$ is not removed by step $j+1$, by Lemma \ref{protecting lem} there are $4$ protecting sets, $P_i,P_{i+1}, P_{j}$ , and $P_{j+1}$ respectively, allowing $p$ to remain after $n$ steps.
 
-\begin{dfn}\label{protect dfn}
-Let $W = (\cP,n)$ be an admissible diagram and $a \in[n]$ a vertex. For $p= (i,j) \in \cP$ an a propagator of $W$  and $v \in \{i, j\}$ a vertex of $W$, let $P_{v}(p)$ or $P_{v+1}(p)$ to be two \emph{protecting sets of $p$ at $v$ and ${v+1}$} be a set of propagators defined as follows: \begin{enumerate}
-\item Work under the linear order on $[n]$, $<_{v+1}$, every propagator is now written as $p = (i_p, j_p)$ such that $i_p <_{v+1} j_p$.
-\item If there is a propagator $s_1 \in \cP$ such that $s_1 = (i_{s_1}, v)$ or $s_1 = (i_{s_1}, v-1)$, then $s_1 \in P_v(p)$.
-\item If $s_1$ as above does not exists, then $P_v(p) = \emptyset$. In this case, $P_w(p) = \emptyset$. When $P_v(p) \neq \emptyset$, if there exists a propagator $t_1 \in \cP$ defined such that $t_1 = (i_{t_1}, v)$ and $s_1 = (i_{s_1}, v)$ with $i_p <_{v+1} i_{t_1} <_{v+1} i_{s_1}$, $P_w(p) = t_1$.
-\item If $s_1 = (i_{s_1}, v)$ then \bas P_v(p)=  \begin{cases} \{s_1\} \cup P_{i_{s_1}}(s_1) \cup P_{i_{s_1}+1}(s_1) & \textrm{ if } P_{i_{s_1}+1}(s_1) \neq \emptyset \\ s_1 &  \textrm{ else } \end{cases}. \eas  If $s_1 = (i_{s_1}, v-1)$ then \bas P_v(p)=  \begin{cases}  \emptyset & \textrm{ if } P_{v-1}(s_1) = \emptyset \\ \{s_1\} \cup P_{v-1}(s_1) & \textrm{ else } \end{cases} \eas.
+%However, since the cyclic interval $[i,j] \subseteq [a,j]$, $P_j$ and $P_{j+1}$ cannot be protecting sets by Corrollary \ref{protecting cor}.
+%\end{proof}
+
+\note{This is a mess for now; protecting sets commented out, and 1.5 versions of the induction copied in by not yet edited}
+
+This is the lemma from the email with the proof copied from the email.
+\begin{lem}\label{lem last vert}
+  Let W be an admissible WLD on $n$ vertices with Grassmann necklace $I_1, \ldots, I_n$.  Then for all $1\leq a \leq n$, $a-1 \not\in I_a$ interpreted cyclically (that is for $a=1$, $a-1$ is interpreted to be $n$.)
+\end{lem}
+
+\begin{proof}
+Without loss of generality we can suppose $a=1$, so it suffices to show that $C(W)$ with the $n$th column removed is full rank.  (This suffices because if $C(W)$ with the $n$th column removed had full rank but the lexicographically minimal basis of $C(W)$ included the $n$th column, then we'd obtain a contradiction by taking this minimal basis with the $n$th column removed and extending it to a basis using a column from the first $n-1$ columns of $C(W)$ which is possible by the full rank assumption.)
+
+Because the nonzero entries of $C(W)$ are independent indeterminants, it suffices to show that there is some choice of nonzero entries of $C(W)$, one in each row, each in different columns, and none of which are the $n$th column.  This is equivalent to an assignment of all propagators to supporting vertices so that no two are assigned to the same vertex and none are assigned to vertex $n$.  The lemma is proved if we show such an assignment exists.
+
+Consider an assignment $f$ of a subset of propagators to vertices not including vertex $n$ with the maximal number of propagators.  If $f$ assigns $n$ propagators then we are done.  Otherwise there is a propagator $p$ which is not assigned but, by maximality, all of $p$s supporting vertices (other than possibly $n$) are assigned.  Build a sequence of sets $S_i$ of propagators and $T_i$ of vertices as follows.
+
+\begin{enumerate}
+  \item $S_0={p}$ and $T_0$ is the support of $p$ except for $n$.  Set $i=0$.
+  \item Let $R$ be the set of propagators which are assigned to a vertex in $T_i$ by $f$. Let $S_{i+1}= S_i \cup R$.  Let $T_{i+1} = T_i \sup (\text{supp}(R) - \{n\})$.\label{item loop step}
+  \item If there is a vertex $v_{i+1}$ in $T_{i+1}$ which has not yet been assigned then by construction there is a propagator $q_{i+1} \in S_{i+1}-S_i$ which can be assigned to $v_{i+1}$.  Do so, removing $q_{i+1}$'s old assignment.  This frees up a vertex $v_{i}$ in $T_i$ and so there is a propagator $q_{i} \in S_{i}$ which can be assigned to this vertex freeing up an earlier vertex and so on until $p$ has been assigned.  This new assignment contradicts the maximality of $f$.
+  \item  If nothing changed in step \ref{item loop step} then all vertices of $T_{i+1}$ are assigned to propagators in $S_{i+1}-\{p\}$ and vice versa.  Thus $|S_{i+1}| = |T_{i+1}|+1$.  Also all the support of propagators in $S_{i+1}$ is in $T_{i+1} \cup \{n\}$, which is a set of size $|T_{i+1}|+1 = |S_{i+1}|$.  Thus we have $|S_{i+1}|$ propagators supported on $|S_{i+1}|$ vertices contradicting admissibility.
+  \item Increment $i$ and go to \ref{item loop step}
 \end{enumerate}
-\end{dfn}
 
-The protective sets $P_\cdot(p)$ are designed to prevent $p$ from contributing the vertex indicated in the subscript at certain points in the Grassmann Necklace, $I_a$. Write $P_v(p) = \{s_1, \ldots s_r, t_2,  \ldots t_r\}$ with the $t_x = P_{i_{s_{x-1}}+1}(s_{x-1})$ and $s_x \in P_{i_{s_{x-1}}}(s_{x-1})$ for $x \geq 2$. We place the restrictions on the vertex $a$ as follows: \begin{enumerate} \item $P_v$ prevents $p$ from contributing to $I_a$ if \bas i_{s_r}  <_{v+1} a-1 <_{v+1} v\eas \item $P_{v+1}(p)$ prevents $p$ from contributing to $I_a$ only if $P_v(p)$ prevents $p$ from contributing $v$ to $I_a$. \end{enumerate}
-
-
-\begin{eg} \label{eg: protective sets}
-Consider the admissible Wilson loop diagram
-\bas W=\begin{tikzpicture}[rotate=120,baseline=(current bounding box.east)]
-	\begin{scope}
-	\drawWLD{17}{3}
-	\drawnumbers
-	\drawprop{1}{0}{16}{0}
-	\drawlabeledprop{2}{0}{15}{1}{p}
-    \drawprop{6}{2}{15}{0}
-    \drawprop{3}{0}{6}{1}
-    \drawprop{4}{0}{6}{0}
-    \drawprop{7}{0}{11}{0}
-    \drawprop{8}{0}{10}{0}
-    \drawprop{11}{1}{14}{1}
-    \drawprop{12}{0}{14}{0}
-		\end{scope}
-	\end{tikzpicture}
-\eas Consider the two sets of propagators $Q = \{(3, 6), (4, 6), (6,15)\}$ and $R = \{ (7, 11), (8, 10), (11, 14), (12, 14)\}$. The propagator $p = (2, 15)$ is protected at $a = 5$ from contributing $15$ to $I_5$ by the set $P_{15} = Q$. There is no set preventing $p$ from contributing $16$ to $I_{15}$. At $a = 9$, the set $P_{15} = \{(6,15)\} \subset Q$. We may just as easily right $P_{15} = Q$, though the other two propagators in the set prove unnecessary to keep $p$ from contributing $15$ to $I_{9}$. At $a = 14$, both $P_{15}$ and $P_{16}$ exists, with $P_{15} = \{(11, 14), (12, 14)\} \subset R $ and $P_{16}= \{(6,15)\} \subset Q$. We may just as easily right $P_{15} = R$ and $P_{16} = R$, though the other two propagators in each set are unnecessary.
-
-Note that for $a=1$, the propagator $p$ contributes $2$ to $I_1$. However, in this case, we say that neither $P_{15}$ or $P_{16}$ exist.
-\end{eg}
-
-
-\begin{lem}\label{protecting lem}
-Let $W = (\cP, n)$ be an admissible Wilson loop diagram, and $p = (i,j) \in \cP$, and $a \in [n]$ be a vertex. For $v \in \{i,j\}$, if $P_v(p) \neq \emptyset$, write $P_v(p) = \{s_1 \ldots s_r, t_2, \ldots t_r\}$ as above. Then $p$ does not contribute $v$ to $I_a$ if $i_{s_r} +1 <_{v+1} a <_{v+1} v+1 $. If both $P_v(p)$ and $P_{v+1}(p)$ are non empty, then $p$ also does not contribute $v+1$ to $I_a$.
-\end{lem}
-
-\begin{proof}
-Note that if $s_1 \in P_v(p)$ exists at step $v$ of Algorithm \ref{alg:put GN on WLD}, then $p$ cannot contribute $p$ to $I_a$. Further, if $P_{v+1}(p) \neq \emptyset$, $p$ cannot contribute $v+1$ to $I_a$ either.
-
-Next we show that if $P_v(p)$ is as above, with $i_{s_r}+1 <_{v+1} a$, then the propagator $s_1$ exists at step $v$ of Algorithm \ref{alg:put GN on WLD}. Let $x$ be the largest integer that such that $a <_{v_1} j_{x}+1$. Then $s_x$ cannot contribute to $I_a$ before vertex $v$. By construction $P_{i_{s_x}+1}(s_{x-1})\subset P_v(p)$. Therefore, $s_{x-1}$ does not contribute $i_{s_x}+1$ to $I_a$. Thus we conclude that $s_1$ does not contribute $i_{s_1}$ or $i_{s_1}+1$ to $I_a$. In other words, $s_1$ has not been removed from the diagram at vertex $v$.
-
+This procedure must be finite as either a contradiction is found or $S_i$ grows at each step but $W$ has finitely many propagators.  However, the only way for the process to end is by reaching a contradiction.  Therefore any maximal assignment is a basis not including column $n$ which proves the lemma.
 \end{proof}
 
-Thus we say that $P_v(p)$ protects $p$ at $v$ from $a$, for $a \in [i_{s_r}+2, v]$. There is an easy corollary to this, describing when such a protecting set cannot exist.
-
-\begin{cor} \label{protecting cor}
-Let $W = (\cP, n)$ be an admissible Wilson loop diagram, and $p = (i,j) \in \cP$. Picking a $v \in \{i, j\}$ write $p = (i_p, j_p)$ with $i_p <_{v+1} j_p$. If $a \in [j_p+1, i_p+1]$ then there can be no protecting set $P_v$ or $P_{v+1}$ protecting $p$ at $v$ or $v+1$ from $a$.
-\end{cor}
-
-\begin{proof}
-Since $W$ is admissible, it cannot have crossing propagators. Therefore neither $P_v$ cannot have the requisite propagator $s_r$ with $i_{s_r}+1  <_{v+1} a$.
-\end{proof}
-
-The converse, however requires an extra condition.
-
-\begin{lem} \label{protect conv lem}
-For $W = (\cP, n)$, $p = (i,j)$, and $v \in \{i, j\}$ and $ a \in [n]$ a vertex of $W$, if $v$ (resp. $v+1$) is the first vertex of $V_p$ in the $<_a$ order such that $P_v$ (resp. neither $P_v$ nor $P_{v+1}$) does not exist, then $p$ contributes $v$ (resp. $v+1$) to $I_a$.
-\end{lem}
-
-\begin{proof}
-Write $p = (i_p, j_p)$ with $i_p <_{v+1} j_p$.
 
 
-If $p$ doesn't contribute $v$ (or $v+1$) to $I_a$, then either $p$ contributes a different supporting vertex $u$ earlier in the $<_a$ order or there is a propagator $s_1$ at step $v$ of the algorithm \ref{alg:put GN on WLD} preventing $p$ from contributing $v$ to $I_a$, (or there are a pair of propagators $s_1$ and $t_1$ at step $v$ preventing $p$ from contributing $v+1$ at $I_a$.)
-
-If there are propagators $s_1, t_1 \in \cP$ that are still in the diagram at step $v$, (write them $s_1 = (i_{s_1}, j_{s_1})$, and $t_1 = (i_{t_1}, j_{t_1})$) with $j_{s_1} \in \{v, v-1\}$, and $i_p \leq_{v+1} i_{t_1} <_v i_{s_1} <_v j_{s_1} \leq_{v} j_{t_1} = v$) then $s_1$ or $t_1$ did not contribute $i_{s_1}$ or  $i_{s_1} +1 $ (resp. $i_{t_1}$ or $i_{t_1}+1$) to $I_a$. Then one of the following three situations hold: \begin{enumerate} \item $i_{s_1}+1 <_{v+1} a$ and $j_{s_1} = v$: In this case, $s_1$ cannot be removed until $v$. \item $i_{s_1}+1 <_{v+1} a$ and $j_{s_1} = v-1$: in this case there exists a propagator $s_2 = (i_{s_2}, j_{s_2})$ with $i_{s_1} \leq_{v+1} i_{s_2} <_{v+1} j_{s_2}$ and $j_{s_2} \in \{j_{s_1}-1, j_{s_1}\}$. \item $i_{s_1}+1 \not <_{v+1} a$ and $j_{s_1} = v$: and there must be two other propagators $s_2 = (i_{s_2}, j_{s_2})$ and $t_2 = (i_{t_2}, j_{t_2})$, with $j_{s_2} \in \{i_{s_1}, i_{s_1}-1\}$ and $i_{s_1} \leq_{v+1} i_{t_2} <_{v+1} i_{s_2} <_{v+1} j_{s_2} \leq_{v+1} j_{t_2} = j_{s_1}$   \end{enumerate}
-
-However, now one must ensure that the newly identified propagators $s_2$ and $t_3$ do not contribute to $I_a$ before $i_{s_1}$. One does this by a similar construction to above. In this manner, we begin to build the sets $P_v(p)$ and $P_{v+1}(p)$.  By finiteness and admissiblity of the Wilson loop diagram, both these sets are finite; one cannot continue to add propagators $s_i$, $t_i$ ad infinitum.
-
-We claim that this implies that at some point there is a terminal propagator, $s_m \in P_v(p)$ such that $i_{s_m} + 1 <_{v+1} a$, and \bas  \textrm{ either }= \begin{cases} j_{s_m}=i_{s_{m-1}} & \textrm{ }\\ j_{s_m}=j_{s_{m-1}} & \textrm{ } \end{cases} .\eas We show that all other possibilities lead to a contradiction. For the remainder of this proof, indicate by $p_k$ some propagator identified at an earlier stage of this construction. That is, for $0 < k < m$, $p_k \in \{s_k, t_k\}$. Futher define $p_0 = p$.
-
-
-%\begin{cases} j_{s_{m}=i_{s_{m-1}} & \textrm{ } \\  j_{s_m}=j_{s_{m-1}} & \text{ }\end{cases}
-
-If $j_{s_m} \in \{i_{s_{m-1}}-1, j_{s_{m-1}}-1\}$, then, this cannot be the final propagator added to $P_v(p)$, as one would need a means of preventing $s_m$ from contributing $i_{s_{m-1}}-1$ or $j_{s_{m-1}}-1$ to $I_a$.
-
-If $i_{s_m} + 1 \not <_{v+1} a$, then there are two.
- \begin{description}
-
-\item[$j_{s_m} = i_{s_{m-1}}$ and $i_{s_m} \in \{i_{p_k}+2, i_{p_k}+1\}$] for some $k<m$. By admissibility, there is not room to place both the propagators $s_{m+1}$, and $t_{m+1}$. Thus $s_m$ is removed at the step $i_{s_m}$ or $i_{s_m} + 1$. Therefore, $s_1$ contributes at either $i_{s_1}$ or $i_{s_1}+1$. This leads to a contradiction.
-\item[$j_{s_m} = i_{s_{m-1}}$ and $i_{s_m} = i_{p_k}+2$] for some $k<m$. This requires either crossing propagators or propagators starting and ending at the same edge, which violates admissibility.
- \end{description} \note{correct but clear as mud? Help?}
-\end{proof}
-
-We use these results to prove some properties about the Algorithm \ref{alg:put GN on WLD}.
-\begin{prop}\label{res:alg k labels}
-If $W = (\cP, n)$ is an admissible Wilson loop diagram with $|\cP| = k$, then Algorithm~\ref{alg:put GN on WLD} puts exactly $k$ distinct labels on each edge.
-\end{prop}
-\begin{proof}
-It is enough to show that the algorithm terminates in at most $n$ steps for each $a \in [n]$. In other words, that all $k$ propagators of $W$ are removed by the time the algorithm has cycled through all the vertices, starting at $a$. Suppose this doesn't happen, i.e. there is a propagator $p= (i,j)\in \cP$ which survives the first $n$ steps of the algorithm for some starting vertex $a$. Without loss of generality, assume $a \leq_a i <_a j$. Otherwise, change the roles of $i$ and $j$.
-
-Since $p$ is not removed by step $j+1$, by Lemma \ref{protecting lem} there are $4$ protecting sets, $P_i,P_{i+1}, P_{j}$ , and $P_{j+1}$ respectively, allowing $p$ to remain after $n$ steps.
-
-However, since the cyclic interval $[i,j] \subseteq [a,j]$, $P_j$ and $P_{j+1}$ cannot be protecting sets by Corrollary \ref{protecting cor}.
-\end{proof}
-\begin{comment}
-such that $b+1 \in V_{p_1}$, with an endpoint more clockwise on $W$ than the endpoint of $p$ supported by $b+1$: see Figure~\ref{fig:base step of alg induction}.
-
-\begin{figure}
-\begin{tikzpicture}[rotate=15]
-\begin{scope}
-\drawWLD{12}{2}
-\drawprop{3}{2}{10}{2} % P
-% number vertices a,a+1,b,b+1 for prop P
-
-% clip these
-\drawprop{3}{-2}{12}{-2}
-\drawprop{2}{0}{12}{2}
-\drawprop{6}{0}{10}{-2} % p1
-
-
-\end{scope}
-\end{tikzpicture}
-\caption{Base step: if $P$ survives $n$ steps of the algorithm, there must be another propagator $p_1$ to its right on edge $(b,b+1)$.}
-\label{fig:base step of alg induction}
-\end{figure}
-
-The propagator $p_1$ forms the base step for the following induction:
-
-Suppose that $p_r$ is a propagator supported on $(i,i+1,m,m+1)$ and removed at step $m+1$ of the algorithm; we will show that there must also be a propagator $p_{r+1}$ supported on $(i',i'+1,m',m'+1)$ with $i \leq i'$ and $m \geq m'$, which is removed at step $m'+1$.  Since we can't have both $i' = i$ and $m'=m$, $p_{r+1}$ bounds a region containing strictly fewer vertices than $p_r$.
-
-Notice that if we restrict our attention to the region bounded by $p_r$ and the edges of the diagram from $i$ to $m+1$, then propagators outside of this region can affect the algorithm only at vertices $i$, $i+1$.  (The starting vertex 1 lies outside this region, by assumption.)
-
-Given a propagator $p_r$ supported on $(i,i+1,m,m+1)$ and removed at step $m+1$, we must also have a propagator $q$ to its right which is removed at step $m$ (``protecting'' $p_r$ at step $m$).  This splits into two cases:
-
-\textbf{Case I}: If $q$ is supported on $(k,k+1,m-1,m)$ for some $k \geq i$, then $p_{r+1}:=q$  satisfies the conditions of the induction step.
-
-\textbf{Case II}: Suppose $q$ is supported on $(k,k+1,m,m+1)$ for some $k$; since the diagram is admissible, we have $k > i$.  In particular, anything that happens at vertex $k+1$ is unaffected by propagators outside the region bounded by $p_r$, since $k+1 > i+1$.  But $q$ must survive until step $m$, so there must be another propagator $q'$ to the right of $q$, which protects $q$ at step $k+1$.  The admissibility of $W$ implies that $q'$ is supported on $(j,j+1,k,k+1)$ for some $j \geq i$, and we can take $p_{r+1}:=q'$.
-
-\begin{figure}
-\begin{tabular}{ccc}
-\begin{tikzpicture}[rotate=15]
-\begin{scope}
-\drawWLD{12}{2}
-\drawprop{3}{0}{10}{0} % p_r
-% number vertices i,i+1,m,m+1
-
-%clip these
-\drawprop{6}{0}{9}{0} % q
-\end{scope}
-\end{tikzpicture}
-
-& \qquad \qquad &
-\begin{tikzpicture}[rotate=15]
-\begin{scope}
-\drawWLD{12}{2}
-\drawprop{3}{0}{10}{2} % p_r
-% number vertices i, i+1, m, m+1
-
-\drawprop{7}{2}{10}{-2} %q
-% vertices k,k+1, m,m+1
-
-% clip this one
-\drawprop{4}{0}{7}{-2} % q'
-% vertices j,j+1,k, k+1
-
-\end{scope}
-\end{tikzpicture}
-\\
-Case I & & Case II
-\end{tabular}
-
-\caption{Inductive step: if propagator $q$ is removed at step $m$, then it lies on either edge $(m-1,m)$ (Case I) or $(m,m+1)$ (Case II).}
-\label{fig: cases for inductive step, algorithm}
-\end{figure}
-
-By induction, we will eventually find a propagator on a region with 3 or fewer vertices, which is inadmissible.
-
-\end{proof}
-\end{comment}
+%such that $b+1 \in V_{p_1}$, with an endpoint more clockwise on $W$ than the endpoint of $p$ supported by $b+1$: see Figure~\ref{fig:base step of alg induction}.
+%
+%\begin{figure}
+%\begin{tikzpicture}[rotate=15]
+%\begin{scope}
+%\drawWLD{12}{2}
+%\drawprop{3}{2}{10}{2} % P
+%% number vertices a,a+1,b,b+1 for prop P
+%
+%% clip these
+%\drawprop{3}{-2}{12}{-2}
+%\drawprop{2}{0}{12}{2}
+%\drawprop{6}{0}{10}{-2} % p1
+%
+%
+%\end{scope}
+%\end{tikzpicture}
+%\caption{Base step: if $P$ survives $n$ steps of the algorithm, there must be another propagator $p_1$ to its right on edge $(b,b+1)$.}
+%\label{fig:base step of alg induction}
+%\end{figure}
+%
+%The propagator $p_1$ forms the base step for the following induction:
+%
+%Suppose that $p_r$ is a propagator supported on $(i,i+1,m,m+1)$ and removed at step $m+1$ of the algorithm; we will show that there must also be a propagator $p_{r+1}$ supported on $(i',i'+1,m',m'+1)$ with $i \leq i'$ and $m \geq m'$, which is removed at step $m'+1$.  Since we can't have both $i' = i$ and $m'=m$, $p_{r+1}$ bounds a region containing strictly fewer vertices than $p_r$.
+%
+%Notice that if we restrict our attention to the region bounded by $p_r$ and the edges of the diagram from $i$ to $m+1$, then propagators outside of this region can affect the algorithm only at vertices $i$, $i+1$.  (The starting vertex 1 lies outside this region, by assumption.)
+%
+%Given a propagator $p_r$ supported on $(i,i+1,m,m+1)$ and removed at step $m+1$, we must also have a propagator $q$ to its right which is removed at step $m$ (``protecting'' $p_r$ at step $m$).  This splits into two cases:
+%
+%\textbf{Case I}: If $q$ is supported on $(k,k+1,m-1,m)$ for some $k \geq i$, then $p_{r+1}:=q$  satisfies the conditions of the induction step.
+%
+%\textbf{Case II}: Suppose $q$ is supported on $(k,k+1,m,m+1)$ for some $k$; since the diagram is admissible, we have $k > i$.  In particular, anything that happens at vertex $k+1$ is unaffected by propagators outside the region bounded by $p_r$, since $k+1 > i+1$.  But $q$ must survive until step $m$, so there must be another propagator $q'$ to the right of $q$, which protects $q$ at step $k+1$.  The admissibility of $W$ implies that $q'$ is supported on $(j,j+1,k,k+1)$ for some $j \geq i$, and we can take $p_{r+1}:=q'$.
+%
+%\begin{figure}
+%\begin{tabular}{ccc}
+%\begin{tikzpicture}[rotate=15]
+%\begin{scope}
+%\drawWLD{12}{2}
+%\drawprop{3}{0}{10}{0} % p_r
+%% number vertices i,i+1,m,m+1
+%
+%%clip these
+%\drawprop{6}{0}{9}{0} % q
+%\end{scope}
+%\end{tikzpicture}
+%
+%& \qquad \qquad &
+%\begin{tikzpicture}[rotate=15]
+%\begin{scope}
+%\drawWLD{12}{2}
+%\drawprop{3}{0}{10}{2} % p_r
+%% number vertices i, i+1, m, m+1
+%
+%\drawprop{7}{2}{10}{-2} %q
+%% vertices k,k+1, m,m+1
+%
+%% clip this one
+%\drawprop{4}{0}{7}{-2} % q'
+%% vertices j,j+1,k, k+1
+%
+%\end{scope}
+%\end{tikzpicture}
+%\\
+%Case I & & Case II
+%\end{tabular}
+%
+%\caption{Inductive step: if propagator $q$ is removed at step $m$, then it lies on either edge $(m-1,m)$ (Case I) or $(m,m+1)$ (Case II).}
+%\label{fig: cases for inductive step, algorithm}
+%\end{figure}
+%
+%By induction, we will eventually find a propagator on a region with 3 or fewer v%ertices, which is inadmissible.
 
 
 \begin{lem} \label{vertex cyclic int lem}
-For every $v \in V_p$, Let $A_v \subset [n]$ be the set of vertices where $p$ contributes $v$ to $I_a$. Then $A_v$ is a non-empty cyclic interval.
+  For every $v \in V_p$, Let $A_v \subset [n]$ be the set of vertices where $p$ contributes $v$ to $I_a$. Then $A_v$ is a non-empty cyclic interval.
+
+  \note{the above is the statement that was in this file, the below is the version of the statement from last july}
+  
+Let $p$ be a propagator of an admissible WLD $W$ on $n$ vertices.  Let $p = (i,j,k,l)$.  Let $J_p^{(W)}(i)$ be the indices $m$ where $I_m(p)=i$ and likewise for $J_p^{(W)}(j)$, $J_p^{(W)}(k)$, and $J_p^{(W)}(l)$.  Then $J_p^{(W)}(i)$, $J_p^{(W)}(j)$, $J_p^{(W)}(k)$, and $J_p^{(W)}(l)$ are each non-empty cyclic intervals of $\{1, \ldots, n\}$ which partition $\{1, \ldots, n\}$ and occur in the given cyclic order.
 \end{lem}
 
 
 \begin{proof}
-Fix $p = (i, j)$. By symmetry, we need only consider the vertices $j$, $j+1$.
+    We will prove the result by induction on the number of propagators.  If $W$ has one propagator then the result is immediate.  Now suppose $W$ has more than one propagator.  Since unsupported vertices have no effect on the Grassmann necklace algorithm, it suffices to prove the result for $W$ with no unsupported vertices.  Then by Lemma~\ref{lem sian} $W$ has at least one of the three situations illustrated in figure~\ref{fig 3 cases}
 
-Let $k_1 \ldots k_r$ be the set of propagators of the form $k_x = (i_{k_x}, j)$, with $i <_{j+1} k_1 <_{j+1} \ldots k_r <_{j+1} j$. Write $k_{r+1}$ to be the counterclockwise most propagator with an end on the edge $j-1$, if it exists. If $r \geq 2$ or $r+1 = 2$, then both $P_j(p)$ and $P_{j+1}(p)$ exists for some subset of $a \in [n]$. If $r=1$ or $r+1= 2$ then only $P_j(p)$ exists. Otherwise, $P_j(p) = \emptyset$. 
 
-Consider a protecting set $P_j(p) \subset \cP$ such that $k_1 \in P_j(p)$, if it exists. Write it \bas P_j(p) = \{s_1 \ldots s_r, t_2, \ldots t_r\} \;.\eas Define $b_1 = i_{s_r}+1$. By construction, $P_j(p)$ prevents $p$ from contributing $j$ to $I_a$ for all $a \in [b_1+1, j]$. We see that, if $r >0$, for all $a \in [i+2, b_1]$, $p$ contributes $j$ to $I_a$. (\hlfix{Note that by construction, one cannot have $i_{s_r}+1 <_{j+1} i+2$.}{verify}) This is because in this range, $j$ is the first vertex of $p$ encountered by Algorithm \ref{Alg: put GN on WLD}. Furthermore, by Lemma \ref{protect conv lem}, and definition \ref{protect dfn} if $i_{s_r}+1 \not <_{j+1} i+2$ $P_1$ does not protect $p$ at $j$ for $a$ in this range. If $r = 0$ then $p$ contributes $j$ for all $a \in [i+2, j]$. In this case, we say $b_1 = j$.
 
-Now suppose $r$ is such that both $P_j(p)$ and $P_{j+1}(p)$ exists for some $a$. This time $k_2 \subset P_j(p)$. Define $b_2 = i_{s_r}+1$, where now we use $s_r$ to indicate the last propagator in this new protecting set. By construction, $P_{j+1}(p)$ prevents $p$ from contributing $j+1$ to $I_a$ for all $a \in [b_2+2, j+1]$. Therefore, if both protecting sets exist, for all $a \in [b_1+1, b_2]$ $p$ contributes $j+1$ to $I_a$. This is exactly the range in which there is exactly one valid protecting set. Therefore, in this range, $j+1$ is the first vertex of $p$ without a protective set. If there is no $a$ such that both $P_j(p)$ and $P_{j+1}(p)$ do not hold, then  $p$ contributes $j+1$ for all $a \in [b_1 +1, j+1]$.
+  \begin{figure}
+    \includegraphics[scale=0.8]{3cases}
+    \caption{Three cases for admissible WLDs with no unsupported vertices.  The blue highlighted region cannot support other propagators.  The green half-propagators illustrate where propagators may occur, but are not required to exist.}\label{fig 3 cases}
+  \end{figure}
 
-Finally, for $r > 1$, and $j_{k_2}=j$,$a \in [b2+1, j+1]$, $p$ contributes $i$ to $I_a$. Again, for all $a$ in this range, both sets $P_j(p)$ and $P_{j+1}(p)$ protect $p$ at $j$ and $j+1$ from $a$. Furthermore, by Corrollary \ref{protect cor}, there can be no protective sets of $i$ or $i+1$ in this range. 
 
-By switching the roles of $i$ and $j$, we see that for every element of $V_p$, there is a non-empty cyclic interval such that $p$ contributes $v$ to all $I_{a}$ for in said interval.
+In each of the three cases, when we remove the propagator labelled $p$ we obtain a diagram which satisfies the statement of the theorem by the induction hypothesis, and contains a propagator $q$ with no other propagators inside it (although this region may or may not contain an unsupported vertex $b$). Call this diagram $V$ (figure \ref{fig V diagram}).
+
+
+\begin{figure}
+\includegraphics[scale=0.8]{Vdiagram}
+\caption{Diagram $V$ is $W$ with $p$ removed; there are no propagators inside $q$. Vertex $b$ is omitted if we are considering the right hand case.}
+\label{fig V diagram}
+\end{figure}
+
+We first describe $J_q^{(V)}(*)$: since there are no propagators inside $q$, we see from the diagram that
+\[b,c \in J^{(V)}_q(c) \text{ (if $b$ exists) and }  c+1 \in J^{(V)}_q(c+1).\]
+Note that $c+2 \not\in J^{(V)}_q(c+1)$ by Lemma~\ref{lem last vert}, so $J^{(V)}_q(c+1) = \{c+1\}$ and $c+2 \in J^{(V)}_q(a-1)$ by the induction hypothesis. Thus there exist vertices $d,e \in [c+2,a]$ with $d <e$, such that
+\[J^{(V)}_q(a-1) = [c+2,d-1], \quad J^{(V)}_q(a) = [d,e-1], \quad J^{(V)}_q(c) = [e,c], \quad J^{(V)}_q(c+1) = \{c+1\},\]
+and all intervals are non-empty.
+
+
+
+
+We now examine what happens in each of the three cases.
+
+
+
+
+%%%%%%%%%
+
+\textbf{Left and middle cases}: In both of these cases, $p$ has limited effect on the Grassmann necklace of $W$ due to the presence of the previously unsupported vertex $b$. We first calculate $I^{(W)}_w$ for a starting vertex ${w \in [n]\backslash \{b,c,c+1\}}$: if $w\in J_q^{(V)}(a-1)$ then
+    \[
+    I_w^{(W)}(r) =  \begin{cases}
+        a & \text{if } r=p \\
+        I_{w}^{(V)}(r) & \text{if } r\neq p
+      \end{cases} 
+    \]
+    while if $w\in J_q^{(V)}(a)$ or $w\in J_q^{(V)}(c)$ then
+    \[
+    I_w^{(W)}(r) =  \begin{cases}
+        b & \text{if } r=p \\
+        I_{w}^{(V)}(r) & \text{if } r\neq p
+      \end{cases} 
+      \]
+For the majority of the remaining vertices, we use the following observation: if $p$ is the first propagator to contribute to a Grassmann necklace term $I_w^{(W)}$, then the remainder of $I_w^{(W)}$ proceeds identically to the assignments of $I^{(V)}_{w+1}$.  Thus in both cases, we have
+    \begin{align*}
+       I_b^{(W)}(r) & = \begin{cases}
+        b & \text{if } r=p\\
+        I_b^{(V)}(r) & \text{if } r\neq p
+       \end{cases}\\
+       I_c^{(W)}(r) & = \begin{cases}
+         c & \text{if } r=p \\
+         I_{c+1}^{(V)}(r) & \text{if } r\neq p
+       \end{cases}
+    \end{align*}
+The left and middle cases differ only at the starting vertex $c+1$. In the left hand case, we obtain
+\[
+       I_{c+1}^{(W)}(r)  = \begin{cases}
+         c+1 & \text{if } r=p\\
+         I_{c+2}^{(V)}(r) & \text{if } r\neq p
+       \end{cases}
+\]
+by the same arguments as above; thus the intervals $J^{(W)}_r(*)$ are still cyclic for all $r \neq p$, and
+\[J^{(W)}_p(a) = [c+2,d-1], \quad J^{(W)}_p(b) = [d,b], \quad J^{(W)}_p(c) = \{c\}, \quad J^{(W)}_p(c+1) = \{c+1\}\]
+also satisfies the statement of the theorem.
+
+In the middle case, if we start at $c+1$ we need to know whether any other propagators remain on edge $(a-1,a)$ when we reach vertex $a-1$. We already know that $J_q^{(V)}(c+1) = \{c+1\}$; in particular this means that $q$ contributes $a-1$ in $I_{c+2}^{(V)}$.  However the construction of $I^{(V)}_{c+1}$ first associates $q$ to $c+1$ and then proceeds identically to $I^{(V)}_{c+2}$.  In particular if $a-1$ was assigned in $I^{(V)}_{c+1}$, then it would not be available to assign to $q$ in $I^{(V)}_{c+2}$ as all other propagators supported at $a-1$ in $V$ come before $q$. 
+    Therefore $p$ is the only unassigned propagator on edge $(a-1,a)$ when we reach $a-1$ in $W$, and
+    \[
+    I_{c+1}^{(W)}(r)  = \begin{cases}
+      a-1 & \text{if } r=p\\
+      I_{c+1}^{(V)}(r) & \text{if } r\neq p
+    \end{cases}
+    \]
+Assembling the intervals, we have
+\[J^{(W)}_p(a-1) = \{c+1\}, \quad J^{(W)}_p(a) = [c+2,d-1], \quad J^{(W)}_p(b) = [d,b], \quad J^{(W)}_p(c) = \{c\},\]
+as required.
+
+
+\textbf{Right hand case}: In this case there is no vertex $b$, and $p$ is supported on ${(c,c+1,c+2,c+3)}$ in $W$. For $w \in [n]\backslash\{c,c+1,c+2,c+3\}$: if $w\in J_q^{(V)}(a-1)$ or $w\in J_q^{(V)}(a)$ then
+    \[
+    I_w^{(W)}(r) =  \begin{cases}
+        c & \text{if } r=p \\
+        I_{w}^{(V)}(r) & \text{if } r\neq p
+      \end{cases} 
+    \]
+    while if $w\in J_q^{(V)}(c)$ then
+    \[
+    I_w^{(W)}(r) =  \begin{cases}
+        c+1 & \text{if } r=p \\
+        I_{w}^{(V)}(r) & \text{if } r\neq p
+      \end{cases} 
+    \]
+
+Finally, for the vertices in the support of $p$, we have
+
+            \begin{align*}
+      I_c^{(W)}(r) &= \begin{cases}
+        c & \text{if } r=q\\
+        c+1 & \text{if } r=p\\
+        I_c^{(V)}(r) & \text{if } r\neq p,q
+      \end{cases}\\
+      I_{c+1}^{(W)}(r) & = \begin{cases}
+        c+1 & \text{if } r=q \\
+        c+2 & \text{if } r=p \\
+        I_{c+3}^{(V)}(r) & \text{if } r\neq p,q
+      \end{cases}\\
+      I_{c+2}^{(W)}(r) & = \begin{cases}
+        c+2 & \text{if } r=p \\
+        I_{c+3}^{(V)}(r) & \text{if } r\neq p
+      \end{cases}\\
+      I_{c+3}^{(W)}(r) & = \begin{cases}
+        c+3 & \text{if } r=p \\
+        I_{c+4}^{(V)}(r) & \text{if } r\neq p
+      \end{cases}
+\end{align*}
+Note that $I_{c+2}^{(V)}(r) = I_{c+3}^{(V)}(r)$ for all propagators $r$ in $V$. Once again we can see that the $J_r^{(W)}(*)$ are cyclic for all $r$ in $V$, and
+\[J_p^{(W)}(c) = [c+4,e-1], \quad J_p^{(W)}(c+1) = [e,c], \quad J_p^{(W)}(c+2) = \{c+1,c+2\}, \quad J_p^{(W)}(c+3) = \{c+3\}.\]
+
+The result now follows by induction.
+
+%Fix $p = (i, j)$. By symmetry, we need only consider the vertices $j$, $j+1$.
+%
+%Let $k_1 \ldots k_r$ be the set of propagators of the form $k_x = (i_{k_x}, j)$, with $i <_{j+1} k_1 <_{j+1} \ldots k_r <_{j+1} j$. Write $k_{r+1}$ to be the counterclockwise most propagator with an end on the edge $j-1$, if it exists. If $r \geq 2$ or $r+1 = 2$, then both $P_j(p)$ and $P_{j+1}(p)$ exists for some subset of $a \in [n]$. If $r=1$ or $r+1= 2$ then only $P_j(p)$ exists. Otherwise, $P_j(p) = \emptyset$. 
+%
+%Consider a protecting set $P_j(p) \subset \cP$ such that $k_1 \in P_j(p)$, if it exists. Write it \bas P_j(p) = \{s_1 \ldots s_r, t_2, \ldots t_r\} \;.\eas Define $b_1 = i_{s_r}+1$. By construction, $P_j(p)$ prevents $p$ from contributing $j$ to $I_a$ for all $a \in [b_1+1, j]$. We see that, if $r >0$, for all $a \in [i+2, b_1]$, $p$ contributes $j$ to $I_a$. (\hlfix{Note that by construction, one cannot have $i_{s_r}+1 <_{j+1} i+2$.}{verify}) This is because in this range, $j$ is the first vertex of $p$ encountered by Algorithm \ref{Alg: put GN on WLD}. Furthermore, by Lemma \ref{protect conv lem}, and definition \ref{protect dfn} if $i_{s_r}+1 \not <_{j+1} i+2$ $P_1$ does not protect $p$ at $j$ for $a$ in this range. If $r = 0$ then $p$ contributes $j$ for all $a \in [i+2, j]$. In this case, we say $b_1 = j$.
+%
+%Now suppose $r$ is such that both $P_j(p)$ and $P_{j+1}(p)$ exists for some $a$. This time $k_2 \subset P_j(p)$. Define $b_2 = i_{s_r}+1$, where now we use $s_r$ to indicate the last propagator in this new protecting set. By construction, $P_{j+1}(p)$ prevents $p$ from contributing $j+1$ to $I_a$ for all $a \in [b_2+2, j+1]$. Therefore, if both protecting sets exist, for all $a \in [b_1+1, b_2]$ $p$ contributes $j+1$ to $I_a$. This is exactly the range in which there is exactly one valid protecting set. Therefore, in this range, $j+1$ is the first vertex of $p$ without a protective set. If there is no $a$ such that both $P_j(p)$ and $P_{j+1}(p)$ do not hold, then  $p$ contributes $j+1$ for all $a \in [b_1 +1, j+1]$.
+%
+%Finally, for $r > 1$, and $j_{k_2}=j$,$a \in [b2+1, j+1]$, $p$ contributes $i$ to $I_a$. Again, for all $a$ in this range, both sets $P_j(p)$ and $P_{j+1}(p)$ protect $p$ at $j$ and $j+1$ from $a$. Furthermore, by Corrollary \ref{protect cor}, there can be no protective sets of $i$ or $i+1$ in this range. 
+%
+%By switching the roles of $i$ and $j$, we see that for every element of $V_p$, there is a non-empty cyclic interval such that $p$ contributes $v$ to all $I_{a}$ for in said interval.
+
 \end{proof}
-
-
 
 \begin{prop}\label{res:alg gives GN}
 The sequence of $k$-subsets obtained by applying Algorithm~\ref{alg:put GN on WLD} to an admissible diagram $W$ is exactly the Grassmann necklace of the positroid associated to $W$; specifically if we let  $I_i$ be the set of labels on edge $(i,i+1)$ then the sequence $\II = (I_1, \dots, I_n)$ is the Grassmann necklace of the positroid associated to $W$.
