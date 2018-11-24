@@ -1529,34 +1529,39 @@ This procedure must be finite as either a contradiction is found or $S_i$ grows 
 
   \note{the above is the statement that was in this file, the below is the version of the statement from last july}
   
-Let $p$ be a propagator of an admissible WLD $W$ on $n$ vertices.  Let $p = (i,j,k,l)$.  Let $J_p^{(W)}(i)$ be the indices $m$ where $I_m(p)=i$ and likewise for $J_p^{(W)}(j)$, $J_p^{(W)}(k)$, and $J_p^{(W)}(l)$.  Then $J_p^{(W)}(i)$, $J_p^{(W)}(j)$, $J_p^{(W)}(k)$, and $J_p^{(W)}(l)$ are each non-empty cyclic intervals of $\{1, \ldots, n\}$ which partition $\{1, \ldots, n\}$ and occur in the given cyclic order.
+Let $p$ be a propagator of an admissible WLD $W$ on $n$ vertices.  Let $p = (i,j)$.  For $l\in \{i, i+1, j, j+1\}$, let $J_p^{(W)}(l)$ be the indices $m$ where $I_m(p)=l$.  Then $J_p^{(W)}(i)$, $J_p^{(W)}(i+1)$, $J_p^{(W)}(j)$, and $J_p^{(W)}(j+1)$ are each non-empty cyclic intervals of $\{1, \ldots, n\}$ which partition $\{1, \ldots, n\}$ and occur in the given cyclic order.
 \end{lem}
 
 
 \begin{proof}
-    We will prove the result by induction on the number of propagators.  If $W$ has one propagator then the result is immediate.  Now suppose $W$ has more than one propagator.  Since unsupported vertices have no effect on the Grassmann necklace algorithm, it suffices to prove the result for $W$ with no unsupported vertices.  Then by Lemma~\ref{lem sian} $W$ has at least one of the three situations illustrated in figure~\ref{fig 3 cases}
+    We will prove the result by induction on the number of propagators.  If $W$ has one propagator then the result is immediate.  Now suppose $W$ has more than one propagator.  Since unsupported vertices have no effect on the Grassmann necklace algorithm, it suffices to prove the result for $W$ with no unsupported vertices.  Then by Lemma~\ref{lem sian} $W$ has at least one of the four situations illustrated in figure~\ref{fig 3 cases}
 
 
 
   \begin{figure}
     \includegraphics[scale=0.8]{3cases}
-    \caption{Three cases for admissible WLDs with no unsupported vertices.  The blue highlighted region cannot support other propagators.  The green half-propagators illustrate where propagators may occur, but are not required to exist.}\label{fig 3 cases}
+    \caption{Four cases for admissible WLDs with no unsupported vertices. The green half-propagators illustrate where propagators may occur, but are not required to exist; no other regions illustrated may support additional propagators.}\label{fig 3 cases}
   \end{figure}
 
 
-In each of the three cases, when we remove the propagator labelled $p$ we obtain a diagram which satisfies the statement of the theorem by the induction hypothesis, and contains a propagator $q$ with no other propagators inside it (although this region may or may not contain an unsupported vertex $b$). Call this diagram $V$ (figure \ref{fig V diagram}).
+In each of the four cases, when we remove the propagator labelled $p$ we obtain a diagram which satisfies the statement of the theorem by the induction hypothesis, and contains a propagator $q = (i,j)$ with no other propagators inside it (although this region may or may not contain unsupported vertices which we will call $l, l+1, \ldots$ as necessary). Call this diagram $V$ (figure \ref{fig V diagram}). 
 
 
 \begin{figure}
 \includegraphics[scale=0.8]{Vdiagram}
-\caption{Diagram $V$ is $W$ with $p$ removed; there are no propagators inside $q$. Vertex $b$ is omitted if we are considering the right hand case.}
+\caption{Diagram $V$ is $W$ with $p$ removed; there are no propagators inside $q = (i,j)$, though there may be up to 4 unsupported vertices labelled $l, l+1, \ldots$.}
 \label{fig V diagram}
 \end{figure}
 
+
+Consider the fourth case of Figure~\ref{fig 3 cases} first, as it is the easiest.  In this case the support of $p$ is unsupported in $V$ so for every propagator $r$ in $V$ (including $q$) $J_r^{(V)} = J_r^{(W)}$.  Additionally, $J_p^{(W)}(l+t) = l+a$ for $a\in\{1,2,3\}$ and $J_p^{(W)}(l) = [n] \backslash \{l+1, l+2, l+3\}$ which proves the result in this case.
+
+
+Now we proceed to consider the first three cases of Figure~\ref{fig 3 cases}.
 We first describe $J_q^{(V)}(*)$: since there are no propagators inside $q$, we see from the diagram that
-\[b,c \in J^{(V)}_q(c) \text{ (if $b$ exists) and }  c+1 \in J^{(V)}_q(c+1).\]
-Note that $c+2 \not\in J^{(V)}_q(c+1)$ by Lemma~\ref{lem last vert}, so $J^{(V)}_q(c+1) = \{c+1\}$ and $c+2 \in J^{(V)}_q(a-1)$ by the induction hypothesis. Thus there exist vertices $d,e \in [c+2,a]$ with $d <e$, such that
-\[J^{(V)}_q(a-1) = [c+2,d-1], \quad J^{(V)}_q(a) = [d,e-1], \quad J^{(V)}_q(c) = [e,c], \quad J^{(V)}_q(c+1) = \{c+1\},\]
+\[l, l+1, \ldots ,j \in J^{(V)}_q(j) \text{ (if $l$ exists) and }  j+1 \in J^{(V)}_q(j+1).\]
+Note that $j+2 \not\in J^{(V)}_q(j+1)$ by Lemma~\ref{lem last vert}, so $J^{(V)}_q(j+1) = \{j+1\}$ and $j+2 \in J^{(V)}_q(i)$ by the induction hypothesis. Thus there exist vertices $d,e \in [j+2,i+1]$ with $d <e$, such that
+\[J^{(V)}_q(i) = [j+2,d-1], \quad J^{(V)}_q(i+1) = [d,e-1], \quad J^{(V)}_q(j) = [e,j], \quad J^{(V)}_q(j+1) = \{j+1\},\]
 and all intervals are non-empty.
 
 
@@ -1564,48 +1569,50 @@ and all intervals are non-empty.
 
 We now examine what happens in each of the three cases.
 
-
-
-
 %%%%%%%%%
 
-\textbf{Left and middle cases}: In both of these cases, $p$ has limited effect on the Grassmann necklace of $W$ due to the presence of the previously unsupported vertex $b$. We first calculate $I^{(W)}_w$ for a starting vertex ${w \in [n]\backslash \{b,c,c+1\}}$: if $w\in J_q^{(V)}(a-1)$ then
+\textbf{Left two cases}: In both of these cases, $p$ has limited effect on the Grassmann necklace of $W$ due to the presence of at least one previously unsupported vertex $l$.  Let $1\leq a\leq 3$ be the number of unsupported vertices inside $q$ in $V$; so these vertices are $l, \ldots, l+a-1$.  Write $p=(m,m+2)$ where $m\in \{i, i+1, l\}$.  Note that $l, \ldota, l+a-1$ are all in the support of $p$.  We first calculate $I^{(W)}_w$ for a starting vertex ${w \in [n]\backslash \{l, l+1, \ldots,j,j+1\}}$: if $w\in J_q^{(V)}(i)$ then
     \[
     I_w^{(W)}(r) =  \begin{cases}
-        a & \text{if } r=p \\
+        \max\{i+1, m\} & \text{if } r=p \\
         I_{w}^{(V)}(r) & \text{if } r\neq p
       \end{cases} 
     \]
-    while if $w\in J_q^{(V)}(a)$ or $w\in J_q^{(V)}(c)$ then
+    while if $w\in J_q^{(V)}(i+1)$ or $w\in J_q^{(V)}(j)$ then
     \[
     I_w^{(W)}(r) =  \begin{cases}
-        b & \text{if } r=p \\
+        l & \text{if } r=p \\
         I_{w}^{(V)}(r) & \text{if } r\neq p
       \end{cases} 
       \]
-For the majority of the remaining vertices, we use the following observation: if $p$ is the first propagator to contribute to a Grassmann necklace term $I_w^{(W)}$, then the remainder of $I_w^{(W)}$ proceeds identically to the assignments of $I^{(V)}_{w+1}$.  Thus in both cases, we have
-    \begin{align*}
-       I_b^{(W)}(r) & = \begin{cases}
-        b & \text{if } r=p\\
-        I_b^{(V)}(r) & \text{if } r\neq p
-       \end{cases}\\
-       I_c^{(W)}(r) & = \begin{cases}
-         c & \text{if } r=p \\
-         I_{c+1}^{(V)}(r) & \text{if } r\neq p
+For the majority of the remaining vertices, we use the following observation: if $p$ is the first propagator to contribute to a Grassmann necklace term $I_w^{(W)}$, then the remainder of $I_w^{(W)}$ proceeds identically to the assignments of $I^{(V)}_{w+1}$.  Thus in both cases, we have for any $0\leq b <a$
+    \[
+    I_{l+b}^{(W)}(r) & = \begin{cases}
+      l+b & \text{if } r=p\\
+      I_{l+b}^{(V)}(r) & \text{if } r\neq p
+    \end{cases}
+    \]
+    If $j$ is in the support of $p$ which occurs in all cases except the second case with two vertices in the right hand region then
+     \[
+       I_j^{(W)}(r) & = \begin{cases}
+         j & \text{if } r=p \text{ and $j$ is in the suport of $p$} \\
+         I_{j+1}^{(V)}(r) & \text{if } r\neq p
        \end{cases}
-    \end{align*}
-The left and middle cases differ only at the starting vertex $c+1$. In the left hand case, we obtain
+       \]
+       If $j$ is not in the support of $p$,  then we must be in the second case with two vertices in the right hand region.  Then if we start at $j$ we need to know whether propagators other than $p$ will remain around $i$ and $i+1$ when we reach vertex $i$ in the Grassmann necklace algorithm.  ****this part needs work, and it affects the rest potentially too, since $p$ is not taken first***
+       
+For these two cases, it remains to consider the starting vertex $j+1$. If $j+1$ is in the support of $p$ then we can argue as above to get
 \[
-       I_{c+1}^{(W)}(r)  = \begin{cases}
-         c+1 & \text{if } r=p\\
-         I_{c+2}^{(V)}(r) & \text{if } r\neq p
+       I_{j+1}^{(W)}(r)  = \begin{cases}
+         j+1 & \text{if } r=p \text{ and $j+1$ is in the support of $p$}\\
+         I_{j+2}^{(V)}(r) & \text{if } r\neq p
        \end{cases}
 \]
-by the same arguments as above; thus the intervals $J^{(W)}_r(*)$ are still cyclic for all $r \neq p$, and
+by the same arguments as above.  Thus the intervals $J^{(W)}_r(*)$ are still cyclic for all $r \neq p$, and
 \[J^{(W)}_p(a) = [c+2,d-1], \quad J^{(W)}_p(b) = [d,b], \quad J^{(W)}_p(c) = \{c\}, \quad J^{(W)}_p(c+1) = \{c+1\}\]
 also satisfies the statement of the theorem.
 
-In the middle case, if we start at $c+1$ we need to know whether any other propagators remain on edge $(a-1,a)$ when we reach vertex $a-1$. We already know that $J_q^{(V)}(c+1) = \{c+1\}$; in particular this means that $q$ contributes $a-1$ in $I_{c+2}^{(V)}$.  However the construction of $I^{(V)}_{c+1}$ first associates $q$ to $c+1$ and then proceeds identically to $I^{(V)}_{c+2}$.  In particular if $a-1$ was assigned in $I^{(V)}_{c+1}$, then it would not be available to assign to $q$ in $I^{(V)}_{c+2}$ as all other propagators supported at $a-1$ in $V$ come before $q$. 
+In the ***This also needs adjusting and I haven't started it yet, nor what comes after*** middle case, if we start at $c+1$ we need to know whether any other propagators remain on edge $(a-1,a)$ when we reach vertex $a-1$. We already know that $J_q^{(V)}(c+1) = \{c+1\}$; in particular this means that $q$ contributes $a-1$ in $I_{c+2}^{(V)}$.  However the construction of $I^{(V)}_{c+1}$ first associates $q$ to $c+1$ and then proceeds identically to $I^{(V)}_{c+2}$.  In particular if $a-1$ was assigned in $I^{(V)}_{c+1}$, then it would not be available to assign to $q$ in $I^{(V)}_{c+2}$ as all other propagators supported at $a-1$ in $V$ come before $q$. 
     Therefore $p$ is the only unassigned propagator on edge $(a-1,a)$ when we reach $a-1$ in $W$, and
     \[
     I_{c+1}^{(W)}(r)  = \begin{cases}
