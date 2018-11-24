@@ -1440,8 +1440,8 @@ Consider an assignment $f$ of a subset of propagators to vertices not including 
 
 \begin{enumerate}
   \item $S_0={p}$ and $T_0$ is the support of $p$ except for $n$.  Set $i=0$.
-  \item Let $R$ be the set of propagators which are assigned to a vertex in $T_i$ by $f$. Let $S_{i+1}= S_i \cup R$.  Let $T_{i+1} = T_i \sup (\text{supp}(R) - \{n\})$.\label{item loop step}
-  \item If there is a vertex $v_{i+1}$ in $T_{i+1}$ which has not yet been assigned then by construction there is a propagator $q_{i+1} \in S_{i+1}-S_i$ which can be assigned to $v_{i+1}$.  Do so, removing $q_{i+1}$'s old assignment.  This frees up a vertex $v_{i}$ in $T_i$ and so there is a propagator $q_{i} \in S_{i}$ which can be assigned to this vertex freeing up an earlier vertex and so on until $p$ has been assigned.  This new assignment contradicts the maximality of $f$.
+  \item Let $R$ be the set of propagators which are assigned to a vertex in $T_i$ by $f$. Let $S_{i+1}= S_i \cup R$.  Let $T_{i+1} = T_i \cup (\text{supp}(R) - \{n\})$.\label{item loop step}
+  \item If there is a vertex $v_{i+1}$ in $T_{i+1}$ which has not been assigned by $f$ then by construction there is a propagator $q_{i+1} \in S_{i+1}-S_i$ which can be assigned to $v_{i+1}$.  Do so, removing $q_{i+1}$'s old assignment.  This frees up a vertex $v_{i}$ in $T_i$ and so there is a propagator $q_{i} \in S_{i}$ which can be assigned to this vertex freeing up an earlier vertex and so on until $p$ has been assigned.  This new assignment contradicts the maximality of $f$.
   \item  If nothing changed in step \ref{item loop step} then all vertices of $T_{i+1}$ are assigned to propagators in $S_{i+1}-\{p\}$ and vice versa.  Thus $|S_{i+1}| = |T_{i+1}|+1$.  Also all the support of propagators in $S_{i+1}$ is in $T_{i+1} \cup \{n\}$, which is a set of size $|T_{i+1}|+1 = |S_{i+1}|$.  Thus we have $|S_{i+1}|$ propagators supported on $|S_{i+1}|$ vertices contradicting admissibility.
   \item Increment $i$ and go to \ref{item loop step}
 \end{enumerate}
