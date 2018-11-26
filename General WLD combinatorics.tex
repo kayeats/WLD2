@@ -1534,7 +1534,7 @@ Let $p$ be a propagator of an admissible WLD $W$ on $n$ vertices.  Let $p = (i,j
 
 
 \begin{proof}
-    We will prove the result by induction on the number of propagators.  If $W$ has one propagator then the result is immediate.  Now suppose $W$ has more than one propagator.  Since unsupported vertices have no effect on the Grassmann necklace algorithm, it suffices to prove the result for $W$ with no unsupported vertices.  Then by Lemma~\ref{lem sian} $W$ has at least one of the four situations illustrated in figure~\ref{fig 3 cases}
+    We will prove the result by induction on the number of propagators.  If $W$ has one propagator then the result is immediate.  Now suppose $W$ has more than one propagator.  Since unsupported vertices have no effect on the Grassmann necklace algorithm, it suffices to prove the result for $W$ with no unsupported vertices.  Then by Lemma~\ref{lem sian} $W$ has at least one of the four situations illustrated in figure~\ref{fig 3 cases}.
 
 
 
@@ -1554,7 +1554,7 @@ In each of the four cases, when we remove the propagator labelled $p$ we obtain 
 \end{figure}
 
 
-Consider the fourth case of Figure~\ref{fig 3 cases} first, as it is the easiest.  In this case the support of $p$ is unsupported in $V$ so for every propagator $r$ in $V$ (including $q$) $J_r^{(V)} = J_r^{(W)}$.  Additionally, $J_p^{(W)}(l+t) = l+a$ for $a\in\{1,2,3\}$ and $J_p^{(W)}(l) = [n] \backslash \{l+1, l+2, l+3\}$ which proves the result in this case.
+Consider the fourth case of Figure~\ref{fig 3 cases} first, as it is the easiest.  In this case the support of $p$ is unsupported in $V$ so for every propagator $r$ in $V$ (including $q$) $J_r^{(V)} = J_r^{(W)}$.  Additionally, $J_p^{(W)}(l+a) = \{l+a\}$ for $a\in\{1,2,3\}$ and $J_p^{(W)}(l) = [n] \backslash \{l+1, l+2, l+3\}$ which proves the result in this case.
 
 
 Now we proceed to consider the first three cases of Figure~\ref{fig 3 cases}.
@@ -1602,7 +1602,7 @@ For the majority of the remaining vertices, we use the following observation: if
        \]
        If $j$ is not in the support of $p$, then we must be in the second case with two vertices in the right hand region.  In this case if we start at $j$ we need to know whether propagators other than $p$ will remain around $i$ and $i+1$ when we reach vertex $i$ in the Grassmann necklace algorithm so as to know what $p$ contributes.  Consider the WLD $X$ formed from $V$ by moving the second end of $q$ to the edge $j-1$ instead of $j$.  $X$ is still admissible since we have not decreased the support of any set of propagators, so the induction hypothesis applies to it as well.  Note that $J_{j}^{(V)}(r) = J_{j}^{(X)}(r)$ for all $r\neq p$ and $J_{j}^{(X)}(r) = J_{j+1}^{(X)}(r)$ for $r\neq q,p$.  Additionally $I_{j+1}^{(X)}(q) = i$ by the induction hypothesis applied to $X$, and so starting at $j+1$ and assigning propagators to vertices according to the Grassmann necklace algorithm, when we get to the vertex $i$ in $X$ all propagators other than $q$ must have been assigned.  Starting then at $j$ in $W$ we first assign $q$ to $j$, then proceed to assign as in $X$ starting at $j+1$ and then when we get to $i$ the only propagator left to assign is $j$.  Therefore
        \[
-       I_j^{(W)}(p) = m \text{if $j$ is not in the support of $p$}
+       I_j^{(W)}(p) = m \text{ if $j$ is not in the support of $p$}
        \]
        
 For the left two cases of Figure~\ref{fig 3 cases} it remains to consider the starting vertex $j+1$. If $j+1$ is in the support of $p$ then we can argue as above to get
@@ -1611,16 +1611,17 @@ For the left two cases of Figure~\ref{fig 3 cases} it remains to consider the st
          j+1 & \text{if $r=p$ and $j+1$ is in the support of $p$}\\
          I_{j+2}^{(V)}(r) & \text{if $r\neq p$ and $j+1$ is in the support of $p$}.
        \end{cases}
-       \]  Thus if $j+1$ is in the support of $p$ then $m=j-2$, the intervals $J^{(W)}_r(*)$ are still cyclic for all $r \neq p$, and
-       ***these intervals need checking***
-\[J^{(W)}_p(j-2) = [j+2,c], \quad J^{(W)}_p(j-1) = [c+1,j-1], \quad J^{(W)}_p(j) = \{j\}, \quad J^{(W)}_p(j+1) = \{j+1\}\]
-  where
-  \[
-  c = \begin{cases} d-1 & \text{if } m=i+1 \\
-    j-2 & \text{otherwise}
-      \end{cases}
-  \]
-also satisfies the statement of the theorem.
+       \]
+%Thus if $j+1$ is in the support of $p$ then $m=j-2$, the intervals $J^{(W)}_r(*)$ are still cyclic for all $r \neq p$, and
+%       ***these intervals need checking***
+%\[J^{(W)}_p(j-2) = [j+2,c], \quad J^{(W)}_p(j-1) = [c+1,j-1], \quad J^{(W)}_p(j) = \{j\}, \quad J^{(W)}_p(j+1) = \{j+1\}\]
+%  where
+%  \[
+%  c = \begin{cases} d-1 & \text{if } m=i+1 \\
+%    j-2 & \text{otherwise}
+%      \end{cases}
+%  \]
+%also satisfies the statement of the theorem.
 
 Now suppose $j+1$ is not in the support of $p$. If we start at $j+1$ we need to know whether any other propagators remain on edge $i$ when we reach vertex $i$. We already know that $J_q^{(V)}(j+1) = \{j+1\}$; in particular this means that $q$ contributes $i$ in $I_{j+2}^{(V)}$.  However the construction of $I^{(V)}_{j+1}$ first associates $q$ to $j+1$ and then proceeds identically to $I^{(V)}_{j+2}$.  In particular if $i$ was assigned in $I^{(V)}_{j+1}$, then it would not be available to assign to $q$ in $I^{(V)}_{j+2}$ as all other propagators supported at $i$ in $V$ come before $q$. 
     Therefore $p$ is the only potentially unassigned propagator on edge $i$ when we reach vertex $i$ in $W$, and
@@ -1630,12 +1631,33 @@ Now suppose $j+1$ is not in the support of $p$. If we start at $j+1$ we need to 
       I_{j+1}^{(V)}(r) & \text{if  $r\neq p$ and $j+1$ is not in the support of $p$}
     \end{cases}
     \]
-    ***I have to redo assembling the intervals***
-    Assembling the intervals, we have
-\[J^{(W)}_p(m) = [m+4, ], \quad J^{(W)}_p(m+1) = [j+2,d-1], \quad J^{(W)}_p(m+2) = [d,m+2], \quad J^{(W)}_p(m+3) = \{m+3\},\]
-which are nonempty and otherwise as required.
+    
+    Taking all the possibilities for the left two cases of Figure~\ref{fig 3 cases}, the intervals $J^{(W)}_r(*)$ are still cyclic for all $r \neq p$, and we can assemble the intervals for the $J_p^{(W)}(*)$ as follows.
+    \begin{itemize}
+      \item 
+    If $m=l$ then either $a=2$ (so $l+1=m+1$, $j=m+2$, and $j+1=m+3$) or $a=3$ (so $l+1=m+1$, $l+2=m+2$, $j=m+3$, and $j+1$ is not in the support of $p$), and in both cases
+    \[
+    J^{(W)}_p(m) = [m+4, m], \quad J^{(W)}_p(m+1) = \{m+1\}, \quad J^{(W)}_p(m+2) = \{m+2\}, \quad J^{(W)}_p(m+3) = \{m+3\},
+    \]
+    which are nonempty and otherwise as required.
+  \item
+        If $m=i+1$ then checking each of the three different possibilities for $a$ we likewise get
+    \[
+    J^{(W)}_p(m) = [m+4, d-1], \quad J^{(W)}_p(m+1) = [d, m+1], \quad J^{(W)}_p(m+2) = \{m+2\}, \quad J^{(W)}_p(m+3) = \{m+3\},
+    \]
+    which are nonempty and otherwise as required.
+  \item If $m=i$ then $a=1$ or $a=2$, in the former case $l=m+2$, $j=m+3$ and $j+1$ is not in the support of $p$ so
+    \[
+    J^{(W)}_p(m) = \{m+3\}, \quad J^{(W)}_p(m+1) = [m+4, d-1], \quad J^{(W)}_p(m+2) = [d, m+1], \quad J^{(W)}_p(m+3) = \{m+2\},
+    \]
+    while in the latter $l=m+2$, $l+1=m+3$, and $j$ and $j+1$ are not in the support of $p$ so
+    \[
+    J^{(W)}_p(m) = [m+4, j+1], \quad J^{(W)}_p(m+1) = [j+2, d-1], \quad J^{(W)}_p(m+2) = [d, m+1], \quad J^{(W)}_p(m+3) = \{m+3\},
+    \]
+    which are again as required.
+    \end{itemize}
 
-\textbf{Right hand case}: In this case there are no unsupported vertices $l, \ldots$ inside $q$.  Again write $p=(m, m+2)$ where $m\in \{j, j+1, j+2\}$. For $w \in [n]\backslash\{j+1,m,m+1,m+2,m+3\}$: if $w\in J_q^{(V)}(i)$ or $w\in J_q^{(V)}(i+1)$ then
+\textbf{Third case}: In this case there are no unsupported vertices $l, \ldots$ inside $q$.  Again write $p=(m, m+2)$ where $m\in \{j, j+1, j+2\}$. For $w \in [n]\backslash\{j+1,m,m+1,m+2,m+3\}$: if $w\in J_q^{(V)}(i)$ or $w\in J_q^{(V)}(i+1)$ then
     \[
     I_w^{(W)}(r) =  \begin{cases}
         m & \text{if } r=p \\
@@ -1653,31 +1675,32 @@ which are nonempty and otherwise as required.
 Finally, for $j+1$ and the vertices in the support of $p$, we have
 
 \begin{align*}
-      I_{j+1}^{(W)}(r) &= \begin{cases}
-        \max\{j+2, m\} & \text{if } r=p\\
-        I_{j+1}^{(V)}(r) & \text{if } r\neq p
-      \end{cases}\\
-      I_m^{(W)}(r) &= \begin{cases}
-        m & \text{if $r=p$ and $q$ not supported on $m$}\\
-        m+1 & \text{if $r=p$ and $q$ supported on $m$}\\
-        I_{m}^{(V)}(r) & \text{if } r\neq p
-      \end{cases}\\
-      I_{m+1}^{(W)}(r) & = \begin{cases}
-        m+1 & \text{if $r=p$ and $q$ not supported on $m+1$} \\
-        m+2 & \text{if $r=p$ and $q$ supported on $m+1$} \\
-        I_{m+1}^{(V)}(r) & \text{if } r\neq p,q
-      \end{cases}\\
-      I_{m+2}^{(W)}(r) & = \begin{cases}
-        m+2 & \text{if } r=p \\
-        I_{m+3}^{(V)}(r) & \text{if } r\neq p
-      \end{cases}\\
-      I_{m+3}^{(W)}(r) & = \begin{cases}
-        m+3 & \text{if } r=p \\
-        I_{m+4}^{(V)}(r) & \text{if } r\neq p
-      \end{cases}
+  I_{j+1}^{(W)}(r) &= \begin{cases}
+    j+1 & \text{if } r=q\\
+    j+2 & \text{if } r=p\\
+    I_{j+3}^{(V)}(r) & \text{if } r\neq p,q
+  \end{cases}\\
+  I_m^{(W)}(r) &= \begin{cases}
+    m & \text{if $r=p$ and $q$ not supported on $m$}\\
+    m+1 & \text{if $r=p$ and $q$ supported on $m$}\\
+    I_{m}^{(V)}(r) & \text{if } r\neq p
+  \end{cases}\\
+  I_{m+1}^{(W)}(r) & = \begin{cases}
+    m+1 & \text{if $r=p$ and $q$ not supported on $m+1$} \\
+    m+2 & \text{if $r=p$ and $q$ supported on $m+1$} \\
+    I_{m+1}^{(V)}(r) & \text{if } r\neq p,q
+  \end{cases}\\
+  I_{m+2}^{(W)}(r) & = \begin{cases}
+    m+2 & \text{if } r=p \\
+    I_{m+3}^{(V)}(r) & \text{if } r\neq p
+  \end{cases}\\
+  I_{m+3}^{(W)}(r) & = \begin{cases}
+    m+3 & \text{if } r=p \\
+    I_{m+4}^{(V)}(r) & \text{if } r\neq p
+  \end{cases}
 \end{align*}
-Note that $I_{m+2}^{(V)}(r) = I_{m+3}^{(V)}(r)$ for all propagators $r$ in $V$. Once again we can see that the $J_r^{(W)}(*)$ are cyclic for all $r$ in $V$, and
-***Fix these intervals again***
+Note that $I_{m+2}^{(V)}(r) = I_{m+3}^{(V)}(r)$ for all propagators $r$ in $V$, and that if $j+1\not\in\{m, m+1, m+2, m+3\}$ then $j+2$ and $j+3$ are unsupported in $V$ so in that case $I_{j+2}^{(V)}(r) = I_{j+3}^{(V)}(r) = I_{j+4}^{(V)}(r)$ for $r$ in $V$. Therefore, once again we can see that the $J_r^{(W)}(*)$ are cyclic for all $r$ in $V$.  Assembling the intervals for $p$ we get, and
+***I still have to fix these intervals***
 \[J_p^{(W)}(c) = [c+4,e-1], \quad J_p^{(W)}(c+1) = [e,c], \quad J_p^{(W)}(c+2) = \{c+1,c+2\}, \quad J_p^{(W)}(c+3) = \{c+3\}.\]
 
 The result now follows by induction.
