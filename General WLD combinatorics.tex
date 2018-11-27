@@ -347,6 +347,8 @@ A Wilson loop diagram is weakly admissible if the second and third conditions ho
 
 The first conditions states that there are at least four more vertices than propagators in an admissible Wilson Loop Diagram. The second imposes an upper bound on how densely the propagators can be fitted in the diagram. The third ensures that ensures that no propagators cross in the interior of the diagram. In other words, a Wilson loop diagram, $(\cP, n)$ is admissible if and only if $n > \cP +4$, and has neither crossing propagators nor any pairs of propagators that start and end on the same pair of non-adjacent edges.
 
+Note that if we take any admissible Wilson loop diagram and remove the unsupported vertices then we will obtain a weakly admissible Wilson loop diagram that may or may not be admissible itself.
+
 In what follows, we will talk about admissible Wilson Loop diagrams and subdiagrams thereof.
 
 \begin{dfn} \label{subdiagramdfn}
@@ -945,7 +947,7 @@ The following observations about propagators of short length in $W$ are easily v
 
 The following lemma establishes certain configurations of propagators that must exist in any admissible diagram with no unsupported vertices. We make use of this result in several induction proofs below.
 
-\begin{lem}\label{lem sian 1}
+\begin{lem}\label{lem sian}
   Let $W$ be a weakly admissible WLD with at least 5 vertices and in which each vertex supports at least one propagator.  Then at least one of the following two things occurs.
   \begin{enumerate}
     \item $W$ has a propagator of length $\leq 6$ with a propagator of length 2 inside it and nothing else inside it.\label{item big and 2}
@@ -1256,7 +1258,7 @@ The overall result, then follows by induction.
 \end{proof}
 
 \begin{rmk}
-In the case that all vertices of an admissible WLD $W$ support at least two propagators, then Lemma~\ref{lem sian 1} substantially simplifies.  By Remark~\ref{rem:props of length 2 and 3}, $W$ has no propagators of length $3$, so the first item of Lemma~\ref{lem sian 1} cannot occur at all.  Configurations \ref{item lonely 2} and \ref{item 4 and 2} also necessarily entail vertices with support $1$ as does configuration \ref{item pair of 2s} unless $j=i+2$.  So in the case that $W$ has all vertices with support at least two then $W$ must contain a pair of propagators of length $2$  with the property that the first propagator is $(i, i+2)$, the second is $(i+2, i+4)$ and no other propagator ends on the edge $i+2$.
+In the case that all vertices of an admissible WLD $W$ support at least two propagators, then Lemma~\ref{lem sian} substantially simplifies.  By Remark~\ref{rem:props of length 2 and 3}, $W$ has no propagators of length $3$.  Configuration \ref{item big and 2} necessarily entails vertices with support $1$ as does configuration \ref{item pair of 2s} unless $j=i+2$.  So in the case that $W$ has all vertices with support at least two then $W$ must contain a pair of propagators of length $2$  with the property that the first propagator is $(i, i+2)$, the second is $(i+2, i+4)$ and no other propagator ends on the edge $i+2$.
 \end{rmk}
 
 
@@ -1432,9 +1434,9 @@ It follows from the proof of Lemma~\ref{lem no fourth vertex} that Algorithm~\re
 %However, since the cyclic interval $[i,j] \subseteq [a,j]$, $P_j$ and $P_{j+1}$ cannot be protecting sets by Corrollary \ref{protecting cor}.
 %\end{proof}
 
-\note{This is a mess for now; protecting sets commented out, and 1.5 versions of the induction copied in by not yet edited}
 
-This is the lemma from the email with the proof copied from the email.
+Given a propagator $p$ and a vertex $i$ in its support, it will be very useful in the following to understand on what set of vertices the Grassmann necklace algorithm assigns $i$ to $p$.  The answer is that the set is a non-empty cyclic interval.  Lemma~\ref{vertex cyclic int lem} establishes this, but first we need a preliminary lemma which is also useful in its own right.
+
 \begin{lem}\label{lem last vert}
   Let W be an admissible WLD on $n$ vertices with Grassmann necklace $I_1, \ldots, I_n$.  Then for all $1\leq a \leq n$, $a-1 \not\in I_a$ interpreted cyclically (that is for $a=1$, $a-1$ is interpreted to be $n$.)
 \end{lem}
@@ -1744,7 +1746,7 @@ If $i \not\in I_i$, then there are no propagators supported on $i$ at all.  In t
 
 Now suppose that $i \in I_i$.  Let $p$ be the propagator which contributes $i$ to $I_i$.  Either $p$ has one end on the edge $(i-1, i)$ or it has one end on the edge $(i, i+1)$.  In both cases let $(b, b+1)$ be the edge with the other end of $p$.
 
-\textbf{case I}:  Suppose $p$ has one end on $(i-1, i)$.  Then $p$ is not supported on $i+1$, so in building $I_{i+1}$ we will take the same propagators as in the construction of $I_i$ from vertices $i+1$ up to $b-1$, that is $I_{i+1} \cap \interval{i+1}{b-1} = I_{i} \cap \interval{i+1}{b-1}$.  Furthermore, by Lemma~\ref{lem susama}, in building $I_{i+1}$, it must be that $p$ is taken at vertex $b$, as otherwise $b$ would never be contributed by $p$.    Consequently, in building $I_{i+1}$, when at vertex $b$ no propagator still remaining is before $p$.  This is also true in building $I_i$ when at $b$ since the same propagators have been taken beforehand.  Additionally $k\geq_i b+1$.
+\textbf{case I}:  Suppose $p$ has one end on $(i-1, i)$.  Then $p$ is not supported on $i+1$, so in building $I_{i+1}$ we will take the same propagators as in the construction of $I_i$ from vertices $i+1$ up to $b-1$, that is $I_{i+1} \cap \interval{i+1}{b-1} = I_{i} \cap \interval{i+1}{b-1}$.  Furthermore, by Lemma~\ref{vertex cyclic int lem}, in building $I_{i+1}$, it must be that $p$ is taken at vertex $b$, as otherwise $b$ would never be contributed by $p$.    Consequently, in building $I_{i+1}$, when at vertex $b$ no propagator still remaining is before $p$.  This is also true in building $I_i$ when at $b$ since the same propagators have been taken beforehand.  Additionally $k\geq_i b+1$.
 
 Let $W'$ be the diagram obtained from $W$ by removing $p$ and all propagators under it in the sense of supported between $i+1$ and $b-1$.
 
@@ -1841,7 +1843,7 @@ When I speak of a \emph{WLD}, I mean one which satisfies your density hypothesis
 We need four lemmas from stuff you guys have already figured out.  The first one is a corollary of your lemma characterizing intervals contributed by each covered vertex of a
 propagator.
 
-The first lemma is Lemma~\ref{lem susama} and I moved it up to a previous section.
+The first lemma is Lemma~\ref{vertex cyclic int lem} and I moved it up to a previous section.
 
 The second lemma is the fact that we understand uncovered vertices.  You probably see many ways to prove this from things you already know.  One would be to say that from your algorithm the column of the uncovered vertex simply plays no role.
 
@@ -1849,18 +1851,9 @@ The second lemma is the fact that we understand uncovered vertices.  You probabl
   Let $D$ be a WLD with an uncovered vertex $i$.  Let $C$ be $D$ with $i$ removed.  Then the Le diagram of $D$ is the Le diagram of $C$ with an extra column of all $0$s inserted in the $|D|-i+1$th position from the left.
 \end{lem}
 
-The third lemma is Sian's result.
+The third lemma is now lemma~\ref{lem sian}.
 
-\begin{lem}\label{lem sian}
-  Let $D$ be a WLD with all vertices covered by at least two propagators.  Then There exist two propagators in $D$ with the following properties.
-  \begin{itemize}
-  \item The first propagator goes from the edge $i$, $i+1$ to the edge $i+2$, $i+3$.
-  \item The second propagator goes from the edge $i+2$, $i+3$ to the edge $i+4$, $i+5$
-  \item No other propagator is on the edge $i+2$, $i+3$.
-  \end{itemize}
-\end{lem}
-
-Actually the result I need is not exactly Sian's result and what I will actually use is her proof.  Thus I will use notation and definitions (including length of a propagator and the specific $p_i$ and $q_i$ construction from the proof) from her note without further discussion.  The result I will actually use will be that in place of the hypothesis that $D$ has all vertices covered by at least two propagators I have that all vertices are covered by at least 1 propagator and there are no propagators of length 3.
+Here is some old text: Actually the result I need is not exactly Sian's result and what I will actually use is her proof.  Thus I will use notation and definitions (including length of a propagator and the specific $p_i$ and $q_i$ construction from the proof) from her note without further discussion.  The result I will actually use will be that in place of the hypothesis that $D$ has all vertices covered by at least two propagators I have that all vertices are covered by at least 1 propagator and there are no propagators of length 3.
 
 The fourth lemma is that we can rotate or reflect without changing the number of plusses.  The best way to see this is probably geometrically so I leave that up to you.
 
@@ -1927,13 +1920,13 @@ Given a WLD $D$, $I_i^{D}$ denotes the $i$th Gra\ss mann necklace element corres
 \begin{proof}
   The two possible situations are illustrated in Figure~\ref{fig special p}.
 
-  If $n-3\in I_1^{C}$ then $n-3\not\in I_1^{D}$, but then $p$ never contributes $n-3$ contradicting Lemma~\ref{lem susama}.  Thus $n-3\not\in I_1^{C}$ and so in building the Gra\ss mann necklace when we get to vertex $n-3$ any other covering propagators of $C$ have already been taken and so we can now take $p$.  Therefore $I_1^{D}= I_1^{C}\cup \{n-3\}$.
+  If $n-3\in I_1^{C}$ then $n-3\not\in I_1^{D}$, but then $p$ never contributes $n-3$ contradicting Lemma~\ref{vertex cyclic int lem}.  Thus $n-3\not\in I_1^{C}$ and so in building the Gra\ss mann necklace when we get to vertex $n-3$ any other covering propagators of $C$ have already been taken and so we can now take $p$.  Therefore $I_1^{D}= I_1^{C}\cup \{n-3\}$.
 
   In constructing $I_n^{D}$, first for vertex $n$ we take propagator $p$.  Then we are at vertex $1$ and precisely the propagators of $C$ remain.  Thus the rest of the construction will give $I_1^{C}$.  Therefore $I_n^{D} = I_1^{C}\cup \{n\}$.  Essentially the same reasoning gives $I_{n-1}^{D} = I_n^{C}\cup \{n-1\}$.
 
   Now consider $I_{n-2}^{D}$.  If $n-2\not\in I_{n-2}^{C}$ then at vertex $n-2$ we take $p$ and this does not affect the rest of the construction of $I_{n-2}^{C}$, so $I_{n-2}^{D} = I_{n-2}^{C}\cup \{n-2\}$.  An analogous argument takes care of the first case for $I_k^{D}$.  Suppose $n-2\in I_{n-2}^{C}$ but $n-1\not\in I_{n-2}^{C}$.  Then at vertex $n-2$ we take the same propagator in $C$ as in $D$ (in particular not $p$) because $p$ is the counterclockwisemost propagator covering $n-2$ and so the last propagator the algorithm would choose at this vertex, and by hypothesis $n-2$ is covered in $C$.  Howver, $n-1$ is untaken in $I_{n-2}^{C}$ so at this vertex we will take $p$ in $I_{n-2}^{D}$.  Following this, now that $p$ is out of the way without bumping any other propagators, the construction continues as in $I_{n-2}^{C}$.  Therefore $I_{n-2}^{D} = I_{n-2}^{C}\cup \{n-1\}$.  An analogous argument takes care of the case when we have $1<k<n-2$ and $n-3\in I_k^{C}$ but $n-2\not\in I_{k}^{C}$.  Furthermore, either $n-2$ is uncovered in $C$ or only $q$ covers $n-2$ in $C$ and $q$ is also the only propagator covering $n-3$.  Thus it is not possible for $n-3$ and $n-2$ to both be in $I_{k}^{C}$.  This means that all the cases for $I_k^{D}$ are now proved.
 
-  The remaining case is when $n-1,n-2\in I_{n-2}^{C}$ for the construction of $I_{n-2}^{D}$.  We must then have a propagator $q$ as in the right hand side of Figure~\ref{fig special p}.  In the construction of $I_{n-2}^{D}$, at vertex $n-2$ we take propagator $q$, as in $I_{n-2}^{C}$.  Then at vertex $n-1$ we take propagator $p$ which is different from what occurs in $I_{n-2}^{C}$.  Next we are at vertex $n$ and propagators $p$ and $q$ have been taken.  Thus we are proceeding like $I_{n}^{C}$ but without propagator $q$.  Fortunately we can determine explicitely how propagator $q$ contributes to $I_{n}^{C}$.  By Lemma~\ref{lem susama} propagator $q$ contributes $n-5$ to $I_{n}^{C}$, and the only way this can occur is if all other propagators of $C$ were already taken by the time we got to vertex $n-5$.  Therefore $I_{n-2}^{D} = (I_{n}^{C} - \{n-5\}) \cup \{n-1, n-2\}$.  This covers all cases and hence completes the proof.
+  The remaining case is when $n-1,n-2\in I_{n-2}^{C}$ for the construction of $I_{n-2}^{D}$.  We must then have a propagator $q$ as in the right hand side of Figure~\ref{fig special p}.  In the construction of $I_{n-2}^{D}$, at vertex $n-2$ we take propagator $q$, as in $I_{n-2}^{C}$.  Then at vertex $n-1$ we take propagator $p$ which is different from what occurs in $I_{n-2}^{C}$.  Next we are at vertex $n$ and propagators $p$ and $q$ have been taken.  Thus we are proceeding like $I_{n}^{C}$ but without propagator $q$.  Fortunately we can determine explicitely how propagator $q$ contributes to $I_{n}^{C}$.  By Lemma~\ref{vertex cyclic int lem} propagator $q$ contributes $n-5$ to $I_{n}^{C}$, and the only way this can occur is if all other propagators of $C$ were already taken by the time we got to vertex $n-5$.  Therefore $I_{n-2}^{D} = (I_{n}^{C} - \{n-5\}) \cup \{n-1, n-2\}$.  This covers all cases and hence completes the proof.
 \end{proof}
 
 \subsubsection{The number of plusses from Gra\ss mann necklaces in nice configurations}
@@ -1966,7 +1959,7 @@ Suppose we are following the Gra\ss mann necklace to Le diagram algorithm, and w
 \begin{proof}
   By Lemma~\ref{lem I} $I_n^{D}= I_1^{C} \cup \{n\}$, so by the Gra\ss mann necklace to Le diagram algorithm the only plus this builds in the Le diagram of $D$ is  the one in the $n-3\rightarrow n$ position, that is in the leftmost box of the bottom row.
 
-  Also by Lemma~\ref{lem I} $I_{n-1}^{D} = I_n^{C} \cup \{n-1\}$.  Additionally $n-3\not\in I_{n}^{C}$ since if it were then $n-3$ would also be in $I_1^{C}$ and hence propagator $p$ could not contribute $n-3$ to $I_1^{D}$ in contradiction to Lemma~\ref{lem susama}.  Similarly $n-1, n-2\not\in I_n^{C}$.  Thus the paths putting the plusses in from $I_n^{C}$ lie completely in $\mathcal{B}$ or take some vertical boundary edge $>n-3$ to $n$.   Now view these paths in the Le diagram of $D$ and note that the path $n-3\rightarrow n-1$ is compatible, and so these paths together build the plusses that $I_{n-1}^{D}$ contributes.  That is, we get all the plusses from $I_{n}^{C}$ along with a $n-3\rightarrow n-1$ plus, that is a plus in the second to the right box of the bottom row.
+  Also by Lemma~\ref{lem I} $I_{n-1}^{D} = I_n^{C} \cup \{n-1\}$.  Additionally $n-3\not\in I_{n}^{C}$ since if it were then $n-3$ would also be in $I_1^{C}$ and hence propagator $p$ could not contribute $n-3$ to $I_1^{D}$ in contradiction to Lemma~\ref{vertex cyclic int lem}.  Similarly $n-1, n-2\not\in I_n^{C}$.  Thus the paths putting the plusses in from $I_n^{C}$ lie completely in $\mathcal{B}$ or take some vertical boundary edge $>n-3$ to $n$.   Now view these paths in the Le diagram of $D$ and note that the path $n-3\rightarrow n-1$ is compatible, and so these paths together build the plusses that $I_{n-1}^{D}$ contributes.  That is, we get all the plusses from $I_{n}^{C}$ along with a $n-3\rightarrow n-1$ plus, that is a plus in the second to the right box of the bottom row.
 \end{proof}
 
 \begin{lem}\label{lem n-2 good}
@@ -1978,7 +1971,7 @@ Suppose we are following the Gra\ss mann necklace to Le diagram algorithm, and w
 \end{lem}
 
 \begin{proof}
-  If $n-2\not\in I_{n-2}^{C}$ then $I_{n-1}^{C}=I_{n-2}^{C}$ and by Lemma~\ref{lem I} $I_{n-2}^{D} = I_{n-1}^{C} \cup \{n-2\}$.  Note that $n-3\not\in I_{n-2}^{C}$ by Lemma~\ref{lem susama}.  Therefore the paths for $I_{n-2}^{D}$ are the paths for $I_{n-1}^{C}$ along with the $n-3\rightarrow n-2$ path.  This gives the statement of the lemma.
+  If $n-2\not\in I_{n-2}^{C}$ then $I_{n-1}^{C}=I_{n-2}^{C}$ and by Lemma~\ref{lem I} $I_{n-2}^{D} = I_{n-1}^{C} \cup \{n-2\}$.  Note that $n-3\not\in I_{n-2}^{C}$ by Lemma~\ref{vertex cyclic int lem}.  Therefore the paths for $I_{n-2}^{D}$ are the paths for $I_{n-1}^{C}$ along with the $n-3\rightarrow n-2$ path.  This gives the statement of the lemma.
 
 \end{proof}
 
@@ -2168,7 +2161,7 @@ Let $p$ be the propagator such that $I_i(p) = i$. There are two cases to conside
   \caption{The two cases in the proof that no factors of $\Delta_{I_i}$ have degree 3 or more.}\label{fig no big factors}
 \end{figure}
 
-\textbf{Case 1}: Suppose $p$ has one end on the edge $(i-1, i)$.  Thus $p$ is supported on $(i-1, i, m, m+1)$ for some $m >_i i$, and $I_{i+1}(p) = m$ by Lemma~\ref{lem susama}.  
+\textbf{Case 1}: Suppose $p$ has one end on the edge $(i-1, i)$.  Thus $p$ is supported on $(i-1, i, m, m+1)$ for some $m >_i i$, and $I_{i+1}(p) = m$ by Lemma~\ref{vertex cyclic int lem}.  
 %Call the propagators which appear before $p$ is closed the propagators inside $p$. \note{It might be nice to have general language for this inside/outside idea.  What do you think.}  
 
 Let $S$ be the set of propagators inside $p$ along with $p$ itself. $I_i$ and $I_{i+1}$ can only differ once $p$ contributes to $I_{i+1}$, so $I_i(q) = I_{i+1}(q)$ for each $q \in S \backslash \{p\}$. Thus if a propagator contributes $m$ in $I_i$ then it must lie outside $p$.
@@ -2179,7 +2172,7 @@ If neither $m$ nor $m+1$ appear in $I_i$ then $V(p) \cap I_i = \{i\}$,\note{chec
 \]
 where $A$ is the $|S|\times |S|$ matrix indexed by the propagators in $S$ and the vertices in $I_i(S)$. No other propagators can be supported on these vertices since all other propagators are outside of $p$, and $p$ is the first propagator supported at $i$; this explains the zero block.  Therefore $\Delta_{I_i} = \det A \det C$, and both factors are nontrivial since at least one of $m$ and $m+1$ appear in $I_i$.  If we remove the propagator outside of $p$ that contributes $m$ or $m+1$, we get a smaller diagram for which $\Delta_{I_i} = \det A$. This contradicts the minimality of our choices unless $\det A$ is quadratic, which in turn contradicts our assumption that $i$ and $p$ contribute to an irreducible factor $f$ of degree at least 3.
 
-\textbf{Case 2}: Suppose $p$ has one end on the edge $(i, i+1)$.  If no other propagators are supported on $i$ then the column of $C(W)$ corresponding to vertex $i$ has only one nonzero entry in it, and so $\Delta_{I_i}$ has a linear factor contributed by $p$ and $i$; as above, this is a contradiction.  Thus we can take $q$ to be the propagator such that $I_i(q)=i+1$. We know that $q$ has one end on the edge $(i, i+1)$ and is adjacent to $p$ on that edge in the counterclockwise direction (see Figure \ref{fig no big factors}).  Write $(i, i+1, j, j+1)$ for the support of $q$.  The situation for $q$ is very similar to case 1: in particular, we have $I_{i+1}(q) = j$ by Lemma~\ref{lem susama} and so if $j\in I_i$ then the propagator which contributes $j$ is outside of $q$.  
+\textbf{Case 2}: Suppose $p$ has one end on the edge $(i, i+1)$.  If no other propagators are supported on $i$ then the column of $C(W)$ corresponding to vertex $i$ has only one nonzero entry in it, and so $\Delta_{I_i}$ has a linear factor contributed by $p$ and $i$; as above, this is a contradiction.  Thus we can take $q$ to be the propagator such that $I_i(q)=i+1$. We know that $q$ has one end on the edge $(i, i+1)$ and is adjacent to $p$ on that edge in the counterclockwise direction (see Figure \ref{fig no big factors}).  Write $(i, i+1, j, j+1)$ for the support of $q$.  The situation for $q$ is very similar to case 1: in particular, we have $I_{i+1}(q) = j$ by Lemma~\ref{vertex cyclic int lem} and so if $j\in I_i$ then the propagator which contributes $j$ is outside of $q$.  
 
 Similarly to Case 1, let $S$ be the set of propagators inside $q$ along with $p$ and $q$ themselves. Then all propagators in $S$ are mapped by $I_i(\cdot)$ to vertices strictly before $j$ and no other propagators are supported on vertices strictly before $j$.  Thus the matrix giving $\Delta_{I_i}$ has the form
 \[
@@ -2210,9 +2203,9 @@ Now suppose two variables from the row $p$ appear in a quadratic factor $f$.  By
   \caption{The situations giving a quadratic factor with variables appearing in $r_i$.}\label{fig quadratic}
 \end{figure}
 
-In both cases, since $I_{i-1}(p)\neq a$ by assumption it follows from Lemma~\ref{lem susama} that $I_{i-1}(p) <_{i-1} a$ and no other vertex supporting $p$ lies between $I_{i-1}(p)$ and $a$. In the case that $b<_i a$ and $q$ is taken before $p$ in $I_i$, this means that $I_{i-1}(p)=b$ and so $I_{i-1}(q)\neq b$.  Thus $q\in S_i$ and so $f$ is a factor of $r_i$.
+In both cases, since $I_{i-1}(p)\neq a$ by assumption it follows from Lemma~\ref{vertex cyclic int lem} that $I_{i-1}(p) <_{i-1} a$ and no other vertex supporting $p$ lies between $I_{i-1}(p)$ and $a$. In the case that $b<_i a$ and $q$ is taken before $p$ in $I_i$, this means that $I_{i-1}(p)=b$ and so $I_{i-1}(q)\neq b$.  Thus $q\in S_i$ and so $f$ is a factor of $r_i$.
 
-Now consider the case where $a<_i b$, and suppose for contradiction that $q \not\in S_i$, i.e. that $I_{i-1}(q) = b$. Since $I_{i-1}(p) \neq a$, there must be some other propagator $s$ with $I_{i-1}(s) = a$ (else $I_{i-1}$ assigns $q$ to $a$). This propagator cannot lie on edge $(a,b)$ since by Lemma~\ref{lem susama} we must have $I_i(s) = a$ or $b$, contradicting the fact that $I_i(p) = a$ and $I_i(q) = b$; thus $s$ has an end on $(a-1,a)$ and is inside $p$ from the point of view of $i-1$.
+Now consider the case where $a<_i b$, and suppose for contradiction that $q \not\in S_i$, i.e. that $I_{i-1}(q) = b$. Since $I_{i-1}(p) \neq a$, there must be some other propagator $s$ with $I_{i-1}(s) = a$ (else $I_{i-1}$ assigns $q$ to $a$). This propagator cannot lie on edge $(a,b)$ since by Lemma~\ref{vertex cyclic int lem} we must have $I_i(s) = a$ or $b$, contradicting the fact that $I_i(p) = a$ and $I_i(q) = b$; thus $s$ has an end on $(a-1,a)$ and is inside $p$ from the point of view of $i-1$.
 
 Say $s$ is supported on $(j, j+1, a-1, a)$ and $p$ is supported on $(k, k+1, a, b)$ with $i-1 \leq_{i-1} k+1 \leq_{i-1} j+1$. But by Lemma~\ref{lem no fourth vertex}, if $I_{i-1}(s) = a$ then $a$ cannot be maximal in the support of $s$ with respect to $<_{i-1}$; thus we must have $i-1 = j+1$, and we are in the situation in figure~\ref{fig part 4}.
 
@@ -2221,7 +2214,7 @@ Say $s$ is supported on $(j, j+1, a-1, a)$ and $p$ is supported on $(k, k+1, a, 
   \caption{In order to obtain $I_{i-1}(s) = a$, propagators $s$ and $p$ must each have an end on the edge $(i-2,i-1)$.}\label{fig part 4}
 \end{figure}
 
-Since $p$ changed its association from $I_{i-1}$ to $I_i$, we have $I_{i-1}(p) = i-1$ by Lemma~\ref{lem susama}. From figure~\ref{fig part 4} it follows that $I_{i-1}$ assigns $p$ to $i-1$ and then proceeds identically to $I_i$ for all vertices inside $p$, implying that $I_{i-1}(s) = I_i(s)$. Since $I_{i-1}(s) = a$ and $I_i(s) \neq a$, this is a contradiction. 
+Since $p$ changed its association from $I_{i-1}$ to $I_i$, we have $I_{i-1}(p) = i-1$ by Lemma~\ref{vertex cyclic int lem}. From figure~\ref{fig part 4} it follows that $I_{i-1}$ assigns $p$ to $i-1$ and then proceeds identically to $I_i$ for all vertices inside $p$, implying that $I_{i-1}(s) = I_i(s)$. Since $I_{i-1}(s) = a$ and $I_i(s) \neq a$, this is a contradiction. 
 
 Thus $q\in S_i$ after all, and so again $f$ is a factor of $r_i$ as required.
 
@@ -2237,9 +2230,9 @@ Thus $q\in S_i$ after all, and so again $f$ is a factor of $r_i$ as required.
 
 \item If $W$ has zero propagators then all $I_i=\emptyset$ and both $R$ and $\prod_{i=1}^n \Delta_{I_i}$ are equal to $1$, so the result holds in this case.  Now assume $W$ has at least one propagator.
 
-First we show that every factor of $\prod_{i=1}^n \Delta_{I_i}$ divides $R$.  Take an irreducible factor $f$ of $\prod_{i=1}^n \Delta_{I_i}$. There exists some $i$ such that $f|\Delta_{I_i}$ but $f\!\!\nmid\!\! \Delta_{I_{i-1}}$, since otherwise the variables corresponding to the propagators contributing to $f$ which do not themselves appear in $f$ could never appear, contradicting Lemma~\ref{lem susama}.  If $f$ is a linear factor, say from associating propagator $p$ to vertex $a$, then $I_{i}(p)=a$ and $I_{i-1}(p)\neq a$ so this factor appears in $r_i$.  If $f$ is a quadratic factor, say from associating propagators $p$ and $q$ to vertices $a$ and $b$ respectively, then again we cannot have both $I_{i-1}(p) = a$ and $I_{i-1}(q) = b$, else $f$ divides $\Delta_{i-1}$. However, by the proof of part (4), if one of $p,q$ belongs to $S_i$ then the other does as well.  Thus $f$ divides $r_i$.
+First we show that every factor of $\prod_{i=1}^n \Delta_{I_i}$ divides $R$.  Take an irreducible factor $f$ of $\prod_{i=1}^n \Delta_{I_i}$. There exists some $i$ such that $f|\Delta_{I_i}$ but $f\!\!\nmid\!\! \Delta_{I_{i-1}}$, since otherwise the variables corresponding to the propagators contributing to $f$ which do not themselves appear in $f$ could never appear, contradicting Lemma~\ref{vertex cyclic int lem}.  If $f$ is a linear factor, say from associating propagator $p$ to vertex $a$, then $I_{i}(p)=a$ and $I_{i-1}(p)\neq a$ so this factor appears in $r_i$.  If $f$ is a quadratic factor, say from associating propagators $p$ and $q$ to vertices $a$ and $b$ respectively, then again we cannot have both $I_{i-1}(p) = a$ and $I_{i-1}(q) = b$, else $f$ divides $\Delta_{i-1}$. However, by the proof of part (4), if one of $p,q$ belongs to $S_i$ then the other does as well.  Thus $f$ divides $r_i$.
 
-Next we need to show that $R$ is squarefree.  Suppose $f^2|R$.  If $f$ is a linear factor, say from associating propagator $p$ to vertex $a$, then there must be two distinct points in the Grassmann necklace algorithm where $p$ changes from not being associated to vertex $a$ to being associated to vertex $a$.  This contradicts Lemma~\ref{lem susama}.  Now suppose $f$ is a quadratic factor, say from associating propagators $p$ and $q$ to vertices $a$ and $b$ respectively.  \hlfix{Since $p$ comes before $q$ on edge $(a,b)$}{I can't figure out why this happens; what am I missing?} it is not possible for any $I_i$ to associate $p$ to $b$ and $q$ to $a$.  Furthermore, we know by part (4) that $p$ changes from not being associated to $a$ to being associated to $a$ if and only if $q$ changes from not being associated to $b$ to being associated to $b$.  Thus $f^2|R$ implies that twice in the Grassmann necklace $p$ must change from not being associated to vertex $a$ to being associated to vertex $a$. This is again a contradiction, and so $R$ is squarefree.
+Next we need to show that $R$ is squarefree.  Suppose $f^2|R$.  If $f$ is a linear factor, say from associating propagator $p$ to vertex $a$, then there must be two distinct points in the Grassmann necklace algorithm where $p$ changes from not being associated to vertex $a$ to being associated to vertex $a$.  This contradicts Lemma~\ref{vertex cyclic int lem}.  Now suppose $f$ is a quadratic factor, say from associating propagators $p$ and $q$ to vertices $a$ and $b$ respectively.  \hlfix{Since $p$ comes before $q$ on edge $(a,b)$}{I can't figure out why this happens; what am I missing?} it is not possible for any $I_i$ to associate $p$ to $b$ and $q$ to $a$.  Furthermore, we know by part (4) that $p$ changes from not being associated to $a$ to being associated to $a$ if and only if $q$ changes from not being associated to $b$ to being associated to $b$.  Thus $f^2|R$ implies that twice in the Grassmann necklace $p$ must change from not being associated to vertex $a$ to being associated to vertex $a$. This is again a contradiction, and so $R$ is squarefree.
 
 Taking everything together we have that $R|\prod_{i=1}^n \Delta_{I_i}$, $R$ contains all factors of $\prod_{i=1}^n \Delta_{I_i}$ and $R$ is squarefree.  Therefore the ideal generated by $R$ is the radical of the ideal generated by $\prod_{i=1}^n \Delta_{I_i}$.
   \end{enumerate}
@@ -2253,7 +2246,7 @@ Given any admissible Wilson loop diagram $W$, let $GN(W) = \{I_1, \ldots I_n\}$ 
 \begin{proof}
 In view of Proposition~\ref{prop alg gives rad} it remains to prove that the $R$ of Algorithm~\ref{alg WLD to denom via GN} is $R(W)$, the denominator of the integral $I(W)$.
 
-To this end, first note that $R(W)$ and $R$ both have total degree $4|\mathcal{P}|$; the degree of $R(W)$ is immediate from the definition while that of $R$ follows from Lemma~\ref{lem susama}.  By Proposition~\ref{prop alg gives rad} every factor of $R$ is either a single variable or a quadratic factor coming from two propagators supported on a common edge and \hlfix{hence every factor of $R$ divides $R(W)$}{Is this obvious? Or does it follow from a previous result?}.  Finally, since $R$ is squarefree and monic, this implies that $R(W)$ is an integer multiple of $R$.
+To this end, first note that $R(W)$ and $R$ both have total degree $4|\mathcal{P}|$; the degree of $R(W)$ is immediate from the definition while that of $R$ follows from Lemma~\ref{vertex cyclic int lem}.  By Proposition~\ref{prop alg gives rad} every factor of $R$ is either a single variable or a quadratic factor coming from two propagators supported on a common edge and \hlfix{hence every factor of $R$ divides $R(W)$}{Is this obvious? Or does it follow from a previous result?}.  Finally, since $R$ is squarefree and monic, this implies that $R(W)$ is an integer multiple of $R$.
 \end{proof}
 
 ***explain why this result was interesting***
