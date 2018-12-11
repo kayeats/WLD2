@@ -449,7 +449,7 @@ The main results of this section are the following: we show that two admissible 
 
 \subsection{Wilson loop diagrams as matroids}\label{sec matroid background}
 
-We first give a quick summary of the matroid terminology that we will need; it is not intended as a comprehensive introduction to matroids and the interested reader is referred to [ref].
+We first give a quick summary of the matroid terminology that we will need; it is not intended as a comprehensive introduction to matroids and the interested reader is referred to [ref][find a good matroid reference].
 
 A {\em matroid} $M = (E,\cB)$ consists of a finite ground set $E$ and a non-empty family $\cB \subseteq \cP(E)$ whose elements satisfy the {\em basis exchange property}: for any distinct $B_1,B_2 \in \cB$ and any $a \in B_1 \setminus B_2$, there exists some $b \in B_2 \setminus B_1$ such that $(B_1 \setminus \{a\})\cup \{b\} \in \cB$ as well. The elements of $\cB$ are called the {\em bases} of the matroid. Note that the basis exchange property immediately implies that all bases have the same size.
 
@@ -473,7 +473,7 @@ Throughout, we take the {\em matroid defined by $W$} to be the matroid $M(W)$ of
 
 Let $W = (\cP,n)$ be an admissible Wilson loop diagram, and $M(W)$ its associated matroid. Where it will not cause confusion we conflate the two objects, identifying vertices of $W$ with elements of the ground set $[n]$ in $M(W)$. 
 
-In particular, this allows us to prove results about $M(W)$ by considering the behavior of propagators in $W$. We record a few elementary facts about the rank and cycles of $M(W)$ here as an example of this.\note{It would be nice to have a few more; do we need any others, and/or are there any cool ones?}
+In particular, this allows us to prove results about $M(W)$ by considering the behavior of propagators in $W$. We record a few elementary facts about the rank and cycles of $M(W)$ here as an example of this.
 
 \begin{lem}\label{lem facts about WLD matroids}
 Let $W = (\cP,n)$ be an admissible Wilson loop diagram. Then:
@@ -481,7 +481,7 @@ Let $W = (\cP,n)$ be an admissible Wilson loop diagram. Then:
 \item The rank of a set $V \subseteq [n]$ is bounded above by $\min\{|V|,|\Prop(V)|\}$, with $\rk(V) = |V|$ if and only if $V$ is an independent set.
 %\item Let $v \in [n]$ and $q \in \Prop(v)$. Then for any $V \subset [n]$ such that $q \not \in \Prop(V)$, we have $\rk(V \cup \{v\}) = \rk(V) +1$, i.e. adding a vertex that supports a new propagator to a set increases the rank of the set.
 \item If $C \subseteq [n]$ is a cycle, then $\rk(C) = |Prop(C)|$.
-\item If $[n]$ can be partitioned into at least two non-empty sets, each of which support different sets of propagators, \bas [n] = \cup_i V(P_i) \quad \textrm{s.t.} \quad \cup P_i = \cP; \quad  P_i \cap P_j = \emptyset \;, \eas the the matroid $M(W)$ is seperable, \bas M(W) = \bigoplus_i M(P_i, V(P_i)) \;.\eas 
+\item If $[n]$ can be partitioned into at least two non-empty sets, each of which support different sets of propagators, \bas [n] = \cup_i V(P_i) \quad \textrm{s.t.} \quad \cup P_i = \cP; \quad  P_i \cap P_j = \emptyset \;, \eas the the matroid $M(W)$ is seperable, \bas M(W) = \bigoplus_i M(P_i, V(P_i)) \;.\eas \note{Closest reference I could find for this was Theorem 3.23 of Agarwala/Amit, which relates to $F(P_i)$ instead of $V(P_i)$; check if there's a better reference?}
 \end{enumerate}
 \end{lem}
 \begin{proof}
@@ -585,7 +585,7 @@ A {\em maximal} triangulated piece is one which is not contained in any strictly
 
 
 \begin{proof}
-We begin by giving an algorithm for the decomposition, then prove its uniqueness. Let $W = (\cP, n)$, with $|\cP| = k$.
+We begin by giving an algorithm for the decomposition, then prove its uniqueness. Let $W = (\cP, [n])$, with $|\cP| = k$.
 
 By \emph{splitting} a vertex $v$ we will mean replacing $v$ by new vertice $v_1, v_2,\ldots, v_{\text{deg}(v)}$ such that each $v_i$ as exactly one neighbour and the union of the neighbourhoods of the $v_i$ is the neighbourhood of $v$.
 
@@ -628,26 +628,23 @@ We are now in a position to relate the triangulated pieces of $\tau(W)$ to exact
 \begin{proof}
 Let us first record a few standard facts about polygon triangulations (that is, about triangulations with all vertices on the outer face).  If such a triangulation has $n$ vertices then it has $n$ edges on the polygon (that is, on the outer face) and $n-3$ edges which are not.  No planar graph with the same vertices and the same outer face can have more edges than the triangulation, and every such simple graph with $n-3$ edges off the outer face is a triangulation.
 
-Since $W$ is admissible, by Lemma \ref{tausimpleplanarlem} $\tau(W)$ is a simple graph. Furthermore, $t$ is not all of $\tau(W)$.
+Since $W$ is admissible, by Lemma \ref{tausimpleplanarlem} $\tau(W)$ is a simple graph. Let $t$ be a triangulated piece of the decomposition of $\tau(W)$ given in Lemma \ref{decompositionlem}; note that $t$ cannot be equal to $\tau(W)$ by the definition of admissible diagrams.
 
-Let $t$ be a triangulated piece of the decomposition of $\tau(W)$ given in Lemma \ref{decompositionlem}; note that $t$ cannot be equal to $\tau(W)$ by the definition of admissible diagrams.
+If $t$ has 2 vertices, \hlfix{then $t$ has two connected components.}{I'm not sure what this is meant to say?} Therefore, $t$ corresponds to a propagator that connects two non-adjacent edges. Therefore, the trivial triangulation is a trivial exact subdiagram.
 
-If $t$ has 2 vertices, then $t$ has two connected components. Therefore, $t$ corresponds to a propagator that connects two non-adjacent edges. Therefore, the trivial triangulation is a trivial exact subdiagram.
+Now suppose that $t$ has $m>2$ vertices; we count how many edges of $t$ are not on the outer face of $\tau(W)$.  Consider the intersection of $t$ with the outer face of $\tau(W)$: this is a possibly disconnected subgraph of the polygon of $\tau(W)$ with $m$ vertices. Call this new subgraph $S$, and let $j$ be the number of connected components of $S$.   To join the components \hlfix{$S$}{check: is this $S$ or $t$?} must have $j$ edges not in the outer face of $\tau(W)$.  Furthermore $t$ has $m-3$ edges not in its outer face and so also not in the outer face of $\tau(W)$.  Thus there are $m-3+j$ edges of $t$ not in the outer face of $\tau(W)$.
 
-Now suppose that $t$ has $m>2$ vertices; we count how many edges of $t$ are not on the outer face of $\tau(W)$.  Consider the intersection of $t$ with the outer face of $\tau(W)$: this is a possibly disconnected subgraph of the polygon of $\tau(W)$ with $m$ vertices, call it $S$.  Let $k$ be the number of connected components of $S$.   To join the components $S$ must have $k$ edges not in the outer face of $\tau(W)$.  Furthermore $t$ has $m-3$ edges not in its outer face and so also not in the outer face of $\tau(W)$.  Thus there are $m-3+k$ edges of $t$ not in the outer face of $\tau(W)$.
-
-Each of these $m-3+k$ internal edges correspond to propagators in $W$, call this set $P$.  Next we count the size of $V(P)$.  Each of the $m$ vertices in the outer face of $t$ corresponds to an edge of $W$. These $m$ edges define $k$ connected compnents of the outer polygon of $W$. Thus the set $V(P)$ has $m+k$ vertices.  In other words, 
-\[|V(P)| = m+k = |P| -3\;.\]
-
-
+Each of these $m-3+j$ internal edges correspond to a propagator in $W$; call this set of propagators $P$.  Next we count the size of $V(P)$.  Each of the $m$ vertices in the outer face of $t$ corresponds to an edge of $W$. These $m$ edges define $j$ connected components of the outer polygon of $W$. Thus the set $V(P)$ has $m+j$ vertices.  In other words, 
+\[|V(P)| = m+j = |P| +3\;.\]
+Thus the subdiagram $(P,V(P))$ defined by $t$ is exact.
 
 Conversely, suppose we have an exact subdiagram $(P, V(P))$ of $W = (\cP, n)$ supported on $|V(P)| = |P|+3$ vertices, and let $t$ be the subgraph of $\tau(W)$ corresponding to $(P,V(P))$. 
 
 If $|P|=1$, then $(P, V(P))$ is a trivially exact subdiagram. In this case $t$ is an edge internal to $\tau(W)$ connecting two boundary edges, which by definition is a triangulation. 
 
-Suppose the set $V(P)$ defines $c$ disjoint cyclic intervals of $[n]$. Then the corresponding subgraph of $\tau(W)$ has $m-c$ vertices. Call it $t$. If $t$ were a triangulated component, $t$ would have $k -c$ internal edges.
+Suppose the set $V(P)$ defines $c$ disjoint cyclic intervals of $[n]$. Then the corresponding subgraph of $\tau(W)$ has $m-c$ vertices. \hlfix{Call it $t$.}{$t$ is defined twice, and I'm not sure what $m$ and $j$ are for this direction of the proof.} If $t$ were a triangulated component, $t$ would have $j -c$ internal edges.
 
-The graph $t$ has $k$ edges that come from propagators, and $m - 2c$ edges that come from the boundary polygon of $\tau(W)$. Since $t$ has $m-c$ vertices, it has $m-c$ external edges, of which $c$ come from propagators. Therefore, of the $k$ edges of $t$ that come from propagators, $k-c$ are internal to the connected component. Therefore, this is triangulated.
+The graph $t$ has $j$ edges that come from propagators, and $m - 2c$ edges that come from the boundary polygon of $\tau(W)$. Since $t$ has $m-c$ vertices, it has $m-c$ external edges, of which $c$ come from propagators. Therefore, of the $j$ edges of $t$ that come from propagators, $j-c$ are internal to the connected component. Therefore, this is triangulated.
 
 
 
@@ -667,7 +664,7 @@ An exact subdiagram $(P, V(P))$ is a {\em maximal exact subdiagram} of $W$ if th
 
 
 \begin{cor} \label{uniqueproppartitioncor}
-Any admissible Wilson loop diagram $W = (\cP, n)$ can be uniquely decomposed into maximal exact subdiagrams. These maximal subdiagrams partition $\cP$.
+Any admissible Wilson loop diagram $W = (\cP, [n])$ can be uniquely decomposed into maximal exact subdiagrams. These maximal subdiagrams partition $\cP$.
 \end{cor}
 
 \begin{proof}
@@ -686,21 +683,21 @@ Let $M = (E,\cB)$ be a matroid, and $S \subseteq E$. The {\em contraction} of $M
 In \cite{wilsonloop}, Agarwala and Amat show that certain subdiagrams of $W$ can be realized as contractions of $M(W)$:
 
 \begin{lem} \label{contractsubdiaglem} \cite[Theorem 3.33]{wilsonloop} 
-Let $W = (\cP, n)$ be an admissible Wilson loop diagram and $P \subseteq \cP$. If the set $V(P)^c$ has rank $|P^c|$, then the matroid defined by the subdiagram $(P, V(P))$ is equal to the contraction $M(W)/V(P)^c$.
+Let $W = (\cP, [n])$ be an admissible Wilson loop diagram and $P \subseteq \cP$. If the set $V(P)^c$ has rank $|P^c|$, then the matroid defined by the subdiagram $(P, V(P))$ is equal to the contraction $M(W)/V(P)^c$.
 \end{lem}
 
 
 In Lemma \ref{maxexactcomplementrank} below we show that every exact subdiagram satisfies the rank condition of Lemma \ref{contractsubdiaglem}. In order to do this, we first examine the properties of the set by which we contract.
 
 \begin{dfn}\label{def prop flat}
-Let $W = (\cP,n)$ be an admissible Wilson loop diagram and $P \subseteq \cP$. The set $F(P) := V(P^c)^c$ is called the {\em propagator flat} of $P$.
+Let $W = (\cP,[n])$ be an admissible Wilson loop diagram and $P \subseteq \cP$. The set $F(P) := V(P^c)^c$ is called the {\em propagator flat} of $P$.
 \end{dfn}
-Thus in Lemma \ref{contractsubdiaglem} above we would contract $M(W)$ by the propagator flat $F(P^c)$ of the {\em complement} of $P$ in order to study $(P,V(P))$. The justification for this notation is given by (1) of the next lemma: the set $F(P)$ consists of exactly those vertices which {\em only} support propagators in $P$.
+Thus in Lemma \ref{contractsubdiaglem} above we would contract $M(W)$ by the propagator flat $F(P^c)$ of the {\em complement} of $P$ in order to study $(P,V(P))$. The justification for this notation is given by (1) of the next lemma: the set $F(P)$ consists of vertices which {\em only} support propagators in $P$ (or no propagators at all).
 
 \begin{lem}\label{lem properties of prop flats}
 Let $F(P)$ be a propagator flat as defined above. Then
 \begin{enumerate}
-\item $F(P) = V(P) \setminus V(P^c)$.
+\item $F(\emptyset)$ is exactly the set of vertices which support no propagators, while for $P \neq \emptyset$ we have \[F(P) = \big(V(P) \setminus V(P^c)\big) \cup F(\emptyset).\] \note{updated (1) to match new definition of $F(P)$; }
 \item If $Q\subseteq P$ then $F(Q) \subseteq F(P)$.
 \item $F(P)$ is a flat of $M(W)$, thus justifying the name ``propagator flat''.
 \end{enumerate}
@@ -723,7 +720,7 @@ To prove (3), we need to show that $F(P)$ is maximally dependent. If $F(P) = [n]
 \begin{proof}
 (1) If $F$ is an independent flat, then $C = \emptyset$ and the statement is trivially true. Now suppose that $F$ is a dependent set, so $C$ is non-empty.
 
-Let $v \in C$. Clearly $\Prop(v) \subseteq \Prop(C)$, and so by Lemma \ref{lem properties of prop flatfs} we have $F(\Prop(v)) \subseteq F(\Prop(C))$. Since $v \in F(\Prop(v))$ by the definition of propagator flat, we have $v \in F(\Prop(C))$ as required.
+Let $v \in C$. Clearly $\Prop(v) \subseteq \Prop(C)$, and so by Lemma \ref{lem properties of prop flats} we have $F(\Prop(v)) \subseteq F(\Prop(C))$. Since $v \in F(\Prop(v))$ by the definition of propagator flat, we have $v \in F(\Prop(C))$ as required.
 
 Now suppose there exists some $w \in  F(\Prop(C)) \setminus C$. Let $B$ be an independent subset of $C$ of maximal rank; we first show that $B \cup \{w\}$ is a dependent set in $M(W)$. Indeed, by \cite[Proposition 3.10]{wilsonloop}, there exists some $Q \subseteq \Prop(B)$ with $|Q| = |B|$ and such that $B$ is a basis in $M(Q,V(Q))$. We therefore have
 \[Q \subseteq \Prop(B) \subseteq \Prop(C),\]
@@ -733,7 +730,7 @@ Returning our attention to $M(W)$, the dependent set $B \cup \{w\}$ must contain
 
 For part (2), first note that $F \setminus C$ is automatically independent as it contains no circuits.
 
-For any $e \not\in F$, we certainly have $\rk((F\setminus C)\cup\{e\}) = \rk(F\setminus C) +1$ since $F$ is a flat. Now let $e \in C$, and suppose that $\rk((F\setminus C)\cup\{e\}) = \rk(F\setminus C)$. This implies that $(F\setminus C)\cup \{e\}$ is dependent, and hence contains a circuit. This circuit must contain at least two elements (since all vertices support at least one propagator), but this contradicts the fact that $C$ was the union of all circuits in $F$. 
+For any $e \not\in F$, we certainly have $\rk((F\setminus C)\cup\{e\}) = \rk(F\setminus C) +1$ since $F$ is a flat. Now let $e \in C$, and suppose that $\rk((F\setminus C)\cup\{e\}) = \rk(F\setminus C)$. This implies that $(F\setminus C)\cup \{e\}$ is dependent, and hence contains a circuit. This circuit must contain at least two elements \note{What if $e \in C$ supported no propagators? $\{e\}$ would then be a circuit on its own}(since all vertices support at least one propagator), but this contradicts the fact that $C$ was the union of all circuits in $F$. 
 
 Thus $\rk((F\setminus C)\cup \{e\}) = \rk(F\setminus C) + 1$ for any $e \not\in F\setminus C$, and hence $F\setminus C$ is a flat.
 \end{proof}
@@ -758,36 +755,37 @@ In particular, any propagator flat can be written as a union of a cyclic propaga
 
 
 \begin{lem} \label{maxexactcomplementrank}
-Let $W = (\cP, n)$ be a Wilson loop diagram, and $P \subseteq \cP$. Then: \begin{enumerate}
+Let $W = (\cP, [n])$ be a Wilson loop diagram, and $P \subseteq \cP$. Then: \begin{enumerate}
 \item If $(P,V(P))$ is an exact subdiagram in $W$, then $\rk(F(P^c)) = |P^c|$.
 \item If $(P,V(P))$ is a maximal exact subdiagram in $W$, then $F(P^c)$ is a cyclic flat.
 \end{enumerate}
 \end{lem}
 
-Note that by definition, since $F(P^c)$ has at $|P^c|$ propagators in it, this is an upper bound on the rank. However, showing equality on the first part is harder.
+Note that $|P^c|$ is always an upper bound on the rank of $F(P^c)$ for any $P \subseteq \cP$, since $F(P^c)$ supports at most $P^c$ propagators. However, showing equality is far harder.
 
 \begin{proof}
-We first verify that $F(P^c) = V(P)^c$ is non-empty and dependent for any exact subdiagram $(P,V(P))$. The definition of exactness means that the vertices $V(P)$ cannot support a larger set of propagators (otherwise $W$ would no longer be admissible). Therefore, since $P \subsetneq \cP$, there must be at least one propagator supported on $V(P)^c$, i.e. it cannot be empty.
+First note that if $(P,V(P))$ is exact then the admissiblity of $W$ guarantees that $F(P^c)$ is non-empty. 
 
 Since $W$ is admissible, we have $n \geq |\cP| + 4$. Rewriting this as
 \[|V(P)| + |F(P^c)|  \geq  |P| + |P^c| +4,\]
 and combining it with the fact that $|V(P)| = |P| + 3$ (from the exactness of $(P,V(P))$), we obtain
 \begin{equation}\label{eq F is dependent}|F(P^c)| > |P^c| \;.\end{equation}
-By Lemma \ref{lem properties of prop flats}, $F(P^c)$ is the set of vertices that {\em only} supports propagators in $P^c$, so in particular we have $\Prop(F(P^c)) = P^c$. Equation \eqref{eq F is dependent} is therefore saying that $F(P^c)$ supports fewer propagators than the number of vertices it contains, i.e. $F(P^c)$ is dependent. 
+By Lemma \ref{lem properties of prop flats}, $F(P^c)$ is a set of vertices that supports only propagators in $P^c$, so in particular we have $\Prop(F(P^c)) = P^c$. Equation \eqref{eq F is dependent} is therefore saying that $F(P^c)$ supports fewer propagators than the number of vertices it contains, i.e. $F(P^c)$ is dependent. 
 
 We address part (2) first. Suppose that $(P, V(P))$ is a maximal exact subdiagram; by Corollary \ref{classifyflats} we can decompose $F(P^c)$ as
 \begin{equation}\label{eq decompose F}F(P^c) = C \sqcup S,\end{equation}
-where $C$ is the largest cyclic flat contained in $F(P^c)$ and $S$ is an  independent set. Note that $C$ must be non-empty since $F(P^c)$ is dependent. We proceed by showing that $S$ must be empty, forcing $F(P^c)$ to be a cyclic flat.
+where $C$ is the largest cyclic flat contained in $F(P^c)$ and $S$ is an  independent set. Note that $C$ must be non-empty since $F(P^c)$ is non-empty and dependent. We proceed by showing that $S$ must be empty, forcing $F(P^c)$ to be a cyclic flat.
 
 Since $C = F(\Prop(C))$ by Lemma \ref{lem decompose flat}, define $Q := \Prop(C)^c$ so that we may write $C = F(Q^c) = V(Q)^c$. Note that since $C \subseteq F(P^c)$, $P \subseteq Q$. Furthermore, we have 
-\begin{equation}\rk(S) = |S| \leq \rk(F(P^c)) - \rk(C)  \leq |P^c| - \rk(C) \;, \label{increasingrank}\end{equation}
-where first equality comes from the fact that $S$ is an independent set, and the final inequality comes from Lemma \ref{lem facts about WLD matroids}(1). Since $\rk(C) = |\Prop(C)| = |Q^c|$ by Lemma \ref{lem facts about WLD matroids}(2), we can rearrange \eqref{increasingrank} to obtain the inequality
+\begin{equation}|S| = \rk(S) \leq \rk(F(P^c)) - \rk(C)  \leq |P^c| - \rk(C) \;, \label{increasingrank}\end{equation}
+where first equality comes from the fact that $S$ is an independent set,\note{Did we ever address the question of where the middle inequality comes from? Can we argue by number of propagators?} and the final inequality comes from Lemma \ref{lem facts about WLD matroids}(1). Since $\rk(C) = |\Prop(C)| = |Q^c|$ by Lemma \ref{lem facts about WLD matroids}(2), we can rearrange \eqref{increasingrank} to obtain the inequality
 \begin{equation} |P| + |S| \leq |P| + |P^c| - \rk(C) = |Q| \;. \label{Qsizebound}\end{equation}
-Furthermore, since $V(Q) = S \sqcup V(P)$ (by equation [ref] and the definition of $Q$) we may write  
+Furthermore, since $V(Q) = S \sqcup V(P)$ (by equation \eqref{eq decompose F} and the definition of $Q$) we may write  
 \begin{equation} |V(Q)| = |S| + |V(P)| = |S| + |P| +3 \label{VQsize} \;.\end{equation} 
-Combining this with \eqref{Qsizebound} gives $|V(Q)| - 3 \leq |Q|$. That is, either $W$ was not admissible, or $(P,V(P))$ was not a maximal exact subdiagram. In other words, $S$ cannot be non-empty, proving that $F(P^c)$ is a cyclic flat, and therefore of maximal rank. 
+Combining this with \eqref{Qsizebound} gives $|V(Q)| \leq |Q| + 3$. Since $W$ is admissible, we conclude that $(Q,V(Q))$ is exact; since $V(Q) = V(P) \sqcup S$ and $(P,V(P))$ is maximal exact, it follows that $S = \emptyset$. It now follows from \eqref{eq decompose F} that $F(P^c)$ is a cyclic flat, and hence from Lemma \ref{lem facts about WLD matroids} that
+\[\rk(F(P^c)) = |Prop(F(P^c))| = |P^c|.\]
 
-Let $P$ be a maximal exact subdiagram as above, and let $(R, V(R))$ be an exact subdiagram that is not maximal. That is, $R \subsetneq P$.
+Let $P$ be a maximal exact subdiagram as above, and let $(R,V(R))$ be an exact subdiagram that is not maximal. That is, $R \subsetneq P$.
 
 Since $R \subset P$, $V(P) = V(R) \sqcup S$. Since $P$ and $R$ both define exact subdiagrams, we may write $|V(P)| = |V(R)| + |P \setminus R|$, where $S$ is a vertex set of size $|P \setminus R|$ with $(P \setminus R \subset \Prop(S)$. Since $\rk V(P) =  \rk V(R) + |P \setminus R|$, $S$ is independent. Taking the complements, we may write \bas F(R^c ) = F(P^c) \sqcup S \;.\eas Since $S$ is an independent set of vertices of the correct size supporting the appropriate propagators, this gives $ \rk F(R^c ) = |R^c|$.
 
@@ -799,7 +797,7 @@ In particular, any exact subdiagram $(P,V(P))$ satisfies the conditions of Lemma
 Matroids coming from exact subdiagrams have an especially nice structure, as we now show. Recall from Section \ref{sec matroid background} that a uniform matroid of rank $r$ is one in which all sets of size $ \leq r$ are independent.
 
 \begin{thm} \label{exactcircuitlem}
-Let $W':= (P, V(P))$ be a subdiagram of an admissible Wilson loop diagram $W= (\cP, n)$. Then $W'$ is an exact subdiagram if and only if $M(W')$ is a uniform matroid of rank $|P|$.
+Let $W':= (P, V(P))$ be a subdiagram of an admissible Wilson loop diagram $W= (\cP, [n])$. Then $W'$ is an exact subdiagram if and only if $M(W')$ is a uniform matroid of rank $|P|$.
 \end{thm}
 
 \begin{proof}
