@@ -1019,7 +1019,7 @@ Since $W$ contains finitely many vertices, this must eventually terminate in one
 Start by choosing a propagator $p_1$ of length 2 in $W$ (which exists by Remark~\ref{rem:props of length 2 and 3}), and write $(j_1,j_1+2)$ for its support.  If it is part of one of the configurations we are looking for then we are done, 
 %a configuration \eqref{eq:2 prop config} we are done,
 so suppose otherwise: 
-Since $p_1$ is not in configuration \ref{item pair of 2s}, there are no propagators of length $3$, and every vertex is supported then there must exist a propagator $q_1$ of length $\geq 4$ with one end on edge $j_1$ or on edge $j_1-1$ or on edge $j_1-2$.  This bounds a region $[i_1,k_1]$ (where $k_1 \in \{j_1-1, j_1, j_1+1\}$) which does not contain $p_1$.
+By assumption $p_1$ is not in configuration \ref{item pair of 2s}, there are no propagators of length $3$, and every vertex is supported.  Therefore there must exist a propagator $q_1$ of length $\geq 4$ with one end on edge $j_1$ or on edge $j_1-1$ or on edge $j_1-2$.  This bounds a region $[i_1,k_1]$ (where $k_1 \in \{j_1-1, j_1, j_1+1\}$) which does not contain $p_1$.
 
 Now suppose $q_{r}$ exists by the induction hypothesis and bounds a region $[i_r,k_r]$ not containing any $p_i$ for $i\leq r$.  Consider the restricted diagram $W_r:=W_{[i_r,k_r]}$; by the original hypotheses on $W$ every vertex $l \in [i_r+2,k_r-2]$ (which is a non-empty interval since $\ell(q_r) \geq 4$) must have support $\geq 1$, while the same is true for $l \in \{i_r,i_r+1,k_r-1,k_r\}$ because of $q_r$.  
 
@@ -1304,10 +1304,6 @@ for each $p \in \cP$.
 \end{dfn}
 
 
-
-
-
-
 \begin{lem}\label{lem no fourth vertex}
 Let $W$ be an admissible Wilson loop diagram containing at least one propagator. For any $i \in [n]$ and for any $p=(a,b)$ with $i\leq_i a <_i b$, we have $I_i(p) \neq b+1$.
 \end{lem}
@@ -1434,109 +1430,34 @@ It follows from the proof of Lemma~\ref{lem no fourth vertex} that Algorithm~\re
 
 Given a propagator $p$ and a vertex $i$ in its support, it will be very useful in the following to understand on what set of vertices the Grassmann necklace algorithm assigns $i$ to $p$.  The answer is that the set is a non-empty cyclic interval.  Lemma~\ref{vertex cyclic int lem} establishes this, but first we need a preliminary lemma which is also useful in its own right.
 
-\begin{lem}\label{lem last vert}
-  Let W be an admissible WLD on $n$ vertices with Grassmann necklace $I_1, \ldots, I_n$.  Then for all $1\leq a \leq n$, $a-1 \not\in I_a$ interpreted cyclically (that is for $a=1$, $a-1$ is interpreted to be $n$.)
-\end{lem}
+%\begin{lem}\label{lem last vert}
+%  Let W be an admissible WLD on $n$ vertices with Grassmann necklace $I_1, \ldots, I_n$.  Then for all $1\leq a \leq n$, $a-1 \not\in I_a$ interpreted cyclically (that is for $a=1$, $a-1$ is interpreted to be $n$.)
+%\end{lem}
+%
+%\begin{proof}
+%Without loss of generality we can suppose $a=1$, so it suffices to show that $C(W)$ with the $n$th column removed is full rank.  (This suffices because if $C(W)$ with the $n$th column removed had full rank but the lexicographically minimal basis of $C(W)$ included the $n$th column, then we'd obtain a contradiction by taking this minimal basis with the $n$th column removed and extending it to a basis using a column from the first $n-1$ columns of $C(W)$ which is possible by the full rank assumption.)
+%
+%Because the nonzero entries of $C(W)$ are independent indeterminants, it suffices to show that there is some choice of nonzero entries of $C(W)$, one in each row, each in different columns, and none of which are the $n$th column.  This is equivalent to an assignment of all propagators to supporting vertices so that no two are assigned to the same vertex and none are assigned to vertex $n$.  The lemma is proved if we show such an assignment exists.
+%
+%Consider an assignment $f$ of a subset of propagators to vertices not including vertex $n$ with the maximal number of propagators.  If $f$ assigns $n$ propagators then we are done.  Otherwise there is a propagator $p$ which is not assigned but, by maximality, all of $p$s supporting vertices (other than possibly $n$) are assigned.  Build a sequence of sets $S_i$ of propagators and $T_i$ of vertices as follows.
+%
+%\begin{enumerate}
+%  \item $S_0={p}$ and $T_0$ is the support of $p$ except for $n$.  Set $i=0$.
+%  \item Let $R$ be the set of propagators which are assigned to a vertex in $T_i$ by $f$. Let $S_{i+1}= S_i \cup R$.  Let $T_{i+1} = T_i \cup (\text{supp}(R) - \{n\})$.\label{item loop step}
+%  \item If there is a vertex $v_{i+1}$ in $T_{i+1}$ which has not been assigned by $f$ then by construction there is a propagator $q_{i+1} \in S_{i+1}-S_i$ which can be assigned to $v_{i+1}$.  Do so, removing $q_{i+1}$'s old assignment.  This frees up a vertex $v_{i}$ in $T_i$ and so there is a propagator $q_{i} \in S_{i}$ which can be assigned to this vertex freeing up an earlier vertex and so on until $p$ has been assigned.  This new assignment contradicts the maximality of $f$.
+%  \item  If nothing changed in step \ref{item loop step} then all vertices of $T_{i+1}$ are assigned to propagators in $S_{i+1}-\{p\}$ and vice versa.  Thus $|S_{i+1}| = |T_{i+1}|+1$.  Also all the support of propagators in $S_{i+1}$ is in $T_{i+1} \cup \{n\}$, which is a set of size $|T_{i+1}|+1 = |S_{i+1}|$.  Thus we have $|S_{i+1}|$ propagators supported on $|S_{i+1}|$ vertices contradicting admissibility.
+%  \item Increment $i$ and go to \ref{item loop step}
+%\end{enumerate}
+%
+%This procedure must be finite as either a contradiction is found or $S_i$ grows at each step but $W$ has finitely many propagators.  However, the only way for the process to end is by reaching a contradiction.  Therefore any maximal assignment is a basis not including column $n$ which proves the lemma.
+%\end{proof}
 
-\begin{proof}
-Without loss of generality we can suppose $a=1$, so it suffices to show that $C(W)$ with the $n$th column removed is full rank.  (This suffices because if $C(W)$ with the $n$th column removed had full rank but the lexicographically minimal basis of $C(W)$ included the $n$th column, then we'd obtain a contradiction by taking this minimal basis with the $n$th column removed and extending it to a basis using a column from the first $n-1$ columns of $C(W)$ which is possible by the full rank assumption.)
 
-Because the nonzero entries of $C(W)$ are independent indeterminants, it suffices to show that there is some choice of nonzero entries of $C(W)$, one in each row, each in different columns, and none of which are the $n$th column.  This is equivalent to an assignment of all propagators to supporting vertices so that no two are assigned to the same vertex and none are assigned to vertex $n$.  The lemma is proved if we show such an assignment exists.
-
-Consider an assignment $f$ of a subset of propagators to vertices not including vertex $n$ with the maximal number of propagators.  If $f$ assigns $n$ propagators then we are done.  Otherwise there is a propagator $p$ which is not assigned but, by maximality, all of $p$s supporting vertices (other than possibly $n$) are assigned.  Build a sequence of sets $S_i$ of propagators and $T_i$ of vertices as follows.
-
-\begin{enumerate}
-  \item $S_0={p}$ and $T_0$ is the support of $p$ except for $n$.  Set $i=0$.
-  \item Let $R$ be the set of propagators which are assigned to a vertex in $T_i$ by $f$. Let $S_{i+1}= S_i \cup R$.  Let $T_{i+1} = T_i \cup (\text{supp}(R) - \{n\})$.\label{item loop step}
-  \item If there is a vertex $v_{i+1}$ in $T_{i+1}$ which has not been assigned by $f$ then by construction there is a propagator $q_{i+1} \in S_{i+1}-S_i$ which can be assigned to $v_{i+1}$.  Do so, removing $q_{i+1}$'s old assignment.  This frees up a vertex $v_{i}$ in $T_i$ and so there is a propagator $q_{i} \in S_{i}$ which can be assigned to this vertex freeing up an earlier vertex and so on until $p$ has been assigned.  This new assignment contradicts the maximality of $f$.
-  \item  If nothing changed in step \ref{item loop step} then all vertices of $T_{i+1}$ are assigned to propagators in $S_{i+1}-\{p\}$ and vice versa.  Thus $|S_{i+1}| = |T_{i+1}|+1$.  Also all the support of propagators in $S_{i+1}$ is in $T_{i+1} \cup \{n\}$, which is a set of size $|T_{i+1}|+1 = |S_{i+1}|$.  Thus we have $|S_{i+1}|$ propagators supported on $|S_{i+1}|$ vertices contradicting admissibility.
-  \item Increment $i$ and go to \ref{item loop step}
-\end{enumerate}
-
-This procedure must be finite as either a contradiction is found or $S_i$ grows at each step but $W$ has finitely many propagators.  However, the only way for the process to end is by reaching a contradiction.  Therefore any maximal assignment is a basis not including column $n$ which proves the lemma.
-\end{proof}
-
-
-
-%such that $b+1 \in V_{p_1}$, with an endpoint more clockwise on $W$ than the endpoint of $p$ supported by $b+1$: see Figure~\ref{fig:base step of alg induction}.
-%
-%\begin{figure}
-%\begin{tikzpicture}[rotate=15]
-%\begin{scope}
-%\drawWLD{12}{2}
-%\drawprop{3}{2}{10}{2} % P
-%% number vertices a,a+1,b,b+1 for prop P
-%
-%% clip these
-%\drawprop{3}{-2}{12}{-2}
-%\drawprop{2}{0}{12}{2}
-%\drawprop{6}{0}{10}{-2} % p1
-%
-%
-%\end{scope}
-%\end{tikzpicture}
-%\caption{Base step: if $P$ survives $n$ steps of the algorithm, there must be another propagator $p_1$ to its right on edge $(b,b+1)$.}
-%\label{fig:base step of alg induction}
-%\end{figure}
-%
-%The propagator $p_1$ forms the base step for the following induction:
-%
-%Suppose that $p_r$ is a propagator supported on $(i,i+1,m,m+1)$ and removed at step $m+1$ of the algorithm; we will show that there must also be a propagator $p_{r+1}$ supported on $(i',i'+1,m',m'+1)$ with $i \leq i'$ and $m \geq m'$, which is removed at step $m'+1$.  Since we can't have both $i' = i$ and $m'=m$, $p_{r+1}$ bounds a region containing strictly fewer vertices than $p_r$.
-%
-%Notice that if we restrict our attention to the region bounded by $p_r$ and the edges of the diagram from $i$ to $m+1$, then propagators outside of this region can affect the algorithm only at vertices $i$, $i+1$.  (The starting vertex 1 lies outside this region, by assumption.)
-%
-%Given a propagator $p_r$ supported on $(i,i+1,m,m+1)$ and removed at step $m+1$, we must also have a propagator $q$ to its right which is removed at step $m$ (``protecting'' $p_r$ at step $m$).  This splits into two cases:
-%
-%\textbf{Case I}: If $q$ is supported on $(k,k+1,m-1,m)$ for some $k \geq i$, then $p_{r+1}:=q$  satisfies the conditions of the induction step.
-%
-%\textbf{Case II}: Suppose $q$ is supported on $(k,k+1,m,m+1)$ for some $k$; since the diagram is admissible, we have $k > i$.  In particular, anything that happens at vertex $k+1$ is unaffected by propagators outside the region bounded by $p_r$, since $k+1 > i+1$.  But $q$ must survive until step $m$, so there must be another propagator $q'$ to the right of $q$, which protects $q$ at step $k+1$.  The admissibility of $W$ implies that $q'$ is supported on $(j,j+1,k,k+1)$ for some $j \geq i$, and we can take $p_{r+1}:=q'$.
-%
-%\begin{figure}
-%\begin{tabular}{ccc}
-%\begin{tikzpicture}[rotate=15]
-%\begin{scope}
-%\drawWLD{12}{2}
-%\drawprop{3}{0}{10}{0} % p_r
-%% number vertices i,i+1,m,m+1
-%
-%%clip these
-%\drawprop{6}{0}{9}{0} % q
-%\end{scope}
-%\end{tikzpicture}
-%
-%& \qquad \qquad &
-%\begin{tikzpicture}[rotate=15]
-%\begin{scope}
-%\drawWLD{12}{2}
-%\drawprop{3}{0}{10}{2} % p_r
-%% number vertices i, i+1, m, m+1
-%
-%\drawprop{7}{2}{10}{-2} %q
-%% vertices k,k+1, m,m+1
-%
-%% clip this one
-%\drawprop{4}{0}{7}{-2} % q'
-%% vertices j,j+1,k, k+1
-%
-%\end{scope}
-%\end{tikzpicture}
-%\\
-%Case I & & Case II
-%\end{tabular}
-%
-%\caption{Inductive step: if propagator $q$ is removed at step $m$, then it lies on either edge $(m-1,m)$ (Case I) or $(m,m+1)$ (Case II).}
-%\label{fig: cases for inductive step, algorithm}
-%\end{figure}
-%
-%By induction, we will eventually find a propagator on a region with 3 or fewer v%ertices, which is inadmissible.
-
+Given a propagator $p$ of an admissible WLD $W$ and a vertex $i$ in the support of $p$ we will use the notation $J_p^{(W)}(i)$ for the set of indices $m$ where $I_m(p) = l$ where the $I_m$ are the sets calculated by Algorithm~\ref{alg:put GN on WLD}, and using the notation of Definition~\ref{def I_i as a function}. 
 
 \begin{lem} \label{vertex cyclic int lem}
-  For every $v \in V_p$, Let $A_v \subset [n]$ be the set of vertices where $p$ contributes $v$ to $I_a$. Then $A_v$ is a non-empty cyclic interval.
-
-  \note{the above is the statement that was in this file, the below is the version of the statement from last july}
   
-Let $p$ be a propagator of an admissible WLD $W$ on $n$ vertices.  Let $p = (i,j)$.  For $l\in \{i, i+1, j, j+1\}$, let $J_p^{(W)}(l)$ be the indices $m$ where $I_m(p)=l$.  Then $J_p^{(W)}(i)$, $J_p^{(W)}(i+1)$, $J_p^{(W)}(j)$, and $J_p^{(W)}(j+1)$ are each non-empty cyclic intervals of $\{1, \ldots, n\}$ which partition $\{1, \ldots, n\}$ and occur in the given cyclic order.
+Let $p=(i,j)$ be a propagator of an admissible WLD $W$ on $n$ vertices.  Then $J_p^{(W)}(i)$, $J_p^{(W)}(i+1)$, $J_p^{(W)}(j)$, and $J_p^{(W)}(j+1)$ are each non-empty cyclic intervals of $\{1, \ldots, n\}$ which partition $\{1, \ldots, n\}$ and occur in the given cyclic order.
 \end{lem}
 
 
@@ -1567,7 +1488,7 @@ Consider the fourth case of Figure~\ref{fig 3 cases} first, as it is the easiest
 Now we proceed to consider the first three cases of Figure~\ref{fig 3 cases}.
 We first describe $J_q^{(V)}(*)$: since there are no propagators inside $q$, we see from the diagram that
 \[l, l+1, \ldots ,j \in J^{(V)}_q(j) \text{ (if $l$ exists) and }  j+1 \in J^{(V)}_q(j+1).\]
-Note that $j+2 \not\in J^{(V)}_q(j+1)$ by Lemma~\ref{lem last vert}, so $J^{(V)}_q(j+1) = \{j+1\}$ and $j+2 \in J^{(V)}_q(i)$ by the induction hypothesis. Thus there exist vertices $d,e \in [j+2,i+1]$ with $d <e$, such that
+Note that $j+2 \not\in J^{(V)}_q(j+1)$ by Lemma~\ref{lem no fourth vertex}, so $J^{(V)}_q(j+1) = \{j+1\}$ and $j+2 \in J^{(V)}_q(i)$ by the induction hypothesis. Thus there exist vertices $d,e \in [j+2,i+1]$ with $d <e$, such that
 \[J^{(V)}_q(i) = [j+2,d-1], \quad J^{(V)}_q(i+1) = [d,e-1], \quad J^{(V)}_q(j) = [e,j], \quad J^{(V)}_q(j+1) = \{j+1\},\]
 and all intervals are non-empty.
 
@@ -1727,6 +1648,24 @@ The result now follows by induction.
 %
 %By switching the roles of $i$ and $j$, we see that for every element of $V_p$, there is a non-empty cyclic interval such that $p$ contributes $v$ to all $I_{a}$ for in said interval.
 
+\end{proof}
+
+
+We need one more lemma before we can prove that Algorithm~\ref{alg:put GN on WLD} does in fact give the Grassmann necklace of the positroid associated to $W$.
+
+\begin{lem}\label{lem basis as perm}
+Let $W = (\cP,[n])$ be an admissible Wilson loop diagram and let $M(W)$ be its associated matroid. A subset $J \subseteq [n]$ is an independent set of $M(W)$ if and only if there exists an injective set map $f : J \rightarrow \cP$ with the property that for each $s\in S$ we have $s \in V(f(s))$.
+\end{lem}
+
+One of the most important uses of this lemma is for bases.  The lemma says that a subset $J$ of $[n]$ is a basis of $M(W)$ if and only if there is a set bijection between $J$ and $\cP$ with the property that for each $j\in J$ the propagator associated to $j$ under the bijection is supported on vertex $j$.
+
+\begin{proof}
+  Because the nonzero entries of $C(W)$ are independent indeterminants,
+  $J$ is an independent set is if and only if there is some choice of $|J|$ nonzero entries of $C(W)$ one in each row associated to an element of $J$ and each in different columns.
+
+  Each entry in $C(W)$ identifies a propagator by the row of the entry and a vertex by the column of the entry.  The entry is nonzero if and only if the propagator is supported on that vertex.
+  
+  Consequently, a choice of $|J|$ nonzero entries of $C(W)$ one in each row associated to an element of $J$ and each in different columns is equivalent to an assignment of the propagators of $J$ to supporting vertices so that no two are assigned to the same vertex.  Such an assignment of the propagators of $J$ to supporting vertices is exactly a map $f$ as described in the statment, hence proving the result.
 \end{proof}
 
 \begin{prop}\label{res:alg gives GN}
