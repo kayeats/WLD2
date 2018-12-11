@@ -315,7 +315,7 @@ What are Wilson loop diagrams and their integrals.
 \begin{dfn}\label{WLdfn}
 A Wilson loop diagram is given by the following data: a cyclicly ordered set $V$, along with a choice of first vertex, and $k$ pairs $\{p_r = (i_r, j_r)\}_{r=1}^k$ ordered such that $i_r +1 < j_r$. \end{dfn}
 
-We depict this data as a convex polygon, with vertices labeled by $V$ (preserving the cyclic ordering), and $k$ wavy lines in the interior of the diagrams. We depict the choice of first vertex on $V$ by a $\bullet$. Note that the polygon gives the verices of $W$ a cyclic ordering, which the choice of first vertex gives it a compatible linear order. Both the cyclic and the linear order become the correct perspective at various points in this paper. The pair $p_r$ defines a wavy line from the $i_r^{th}$ edge (between $i_r$ and $i_r+1$) and the $j_r^{th}$ edge. These are called propagators.  The condition on $i_r$ and $j_r$ means that the propagator does not go between adjacent edges. Let $\cP = \{p_r\}_{r=1}^k$ be the set of propagators. Then we write \bas W = (\cP, V) \;.\eas
+We depict this data as a convex polygon, with vertices labeled by $V$ (preserving the cyclic ordering), and $k$ wavy lines in the interior of the diagrams. We depict the choice of first vertex on $V$ by a $\bullet$. \note{If we look at the pictures we have later (at least some of them), we don't do that.  Instead all the vertices are $\bullet$.} Note that the polygon gives the verices of $W$ a cyclic ordering, which the choice of first vertex gives it a compatible linear order. Both the cyclic and the linear order become the correct perspective at various points in this paper. The pair $p_r$ defines a wavy line from the $i_r^{th}$ edge (between $i_r$ and $i_r+1$) and the $j_r^{th}$ edge. These are called propagators.  The condition on $i_r$ and $j_r$ means that the propagator does not go between adjacent edges. Let $\cP = \{p_r\}_{r=1}^k$ be the set of propagators. Then we write \bas W = (\cP, V) \;.\eas
 
 Often we take $V$ to be $[n]$, the cyclically ordered set of integers, $1 \ldots n$. In this case, we write $W = (\cP, n)$. We introduce some notation to speak of vertices supporting a propagator, and the set of propagators supported on a vertex set.
 
@@ -630,23 +630,22 @@ Let us first record a few standard facts about polygon triangulations (that is, 
 
 Since $W$ is admissible, by Lemma \ref{tausimpleplanarlem} $\tau(W)$ is a simple graph. Let $t$ be a triangulated piece of the decomposition of $\tau(W)$ given in Lemma \ref{decompositionlem}; note that $t$ cannot be equal to $\tau(W)$ by the definition of admissible diagrams.
 
-If $t$ has 2 vertices, \hlfix{then $t$ has two connected components.}{I'm not sure what this is meant to say?} Therefore, $t$ corresponds to a propagator that connects two non-adjacent edges. Therefore, the trivial triangulation is a trivial exact subdiagram.
+If $t$ has 2 vertices then $t$ corresponds to a propagator that connects two non-adjacent edges. Therefore, the trivial triangulation is a trivial exact subdiagram.
 
-Now suppose that $t$ has $m>2$ vertices; we count how many edges of $t$ are not on the outer face of $\tau(W)$.  Consider the intersection of $t$ with the outer face of $\tau(W)$: this is a possibly disconnected subgraph of the polygon of $\tau(W)$ with $m$ vertices. Call this new subgraph $S$, and let $j$ be the number of connected components of $S$.   To join the components \hlfix{$S$}{check: is this $S$ or $t$?} must have $j$ edges not in the outer face of $\tau(W)$.  Furthermore $t$ has $m-3$ edges not in its outer face and so also not in the outer face of $\tau(W)$.  Thus there are $m-3+j$ edges of $t$ not in the outer face of $\tau(W)$.
+Now suppose that $t$ has $m>2$ vertices.  We count how many edges of $t$ are not on the outer face of $\tau(W)$.  Consider the intersection of $t$ with the outer face of $\tau(W)$: this is a possibly disconnected subgraph of the polygon of $\tau(W)$ and this subgraph has $m$ vertices. Call this new subgraph $S$, and let $j$ be the number of connected components of $S$.   To join the components of $S$ into the outer face of $t$, $t$ must have $j$ edges in its outer face which are not in the outer face of $\tau(W)$.  Furthermore $t$ has $m-3$ edges not in its outer face and so also not in the outer face of $\tau(W)$.  Thus there are $m-3+j$ edges of $t$ not in the outer face of $\tau(W)$.
 
-Each of these $m-3+j$ internal edges correspond to a propagator in $W$; call this set of propagators $P$.  Next we count the size of $V(P)$.  Each of the $m$ vertices in the outer face of $t$ corresponds to an edge of $W$. These $m$ edges define $j$ connected components of the outer polygon of $W$. Thus the set $V(P)$ has $m+j$ vertices.  In other words, 
+Each of these $m-3+j$ internal edges corresponds to a propagator in $W$; call this set of propagators $P$.  Next we count the size of $V(P)$.  Each of the $m$ vertices in the outer face of $t$ corresponds to an edge of $W$. These $m$ edges define $j$ connected components of the outer polygon of $W$. Thus the set $V(P)$ has $m+j$ vertices.  In other words, 
 \[|V(P)| = m+j = |P| +3\;.\]
 Thus the subdiagram $(P,V(P))$ defined by $t$ is exact.
 
 Conversely, suppose we have an exact subdiagram $(P, V(P))$ of $W = (\cP, n)$ supported on $|V(P)| = |P|+3$ vertices, and let $t$ be the subgraph of $\tau(W)$ corresponding to $(P,V(P))$. 
 
-If $|P|=1$, then $(P, V(P))$ is a trivially exact subdiagram. In this case $t$ is an edge internal to $\tau(W)$ connecting two boundary edges, which by definition is a triangulation. 
+Suppose $|P|=1$.  Then $(P, V(P))$ is a trivially exact subdiagram. In this case $t$ is an edge internal to $\tau(W)$.  The exactness condition on $(P, V(P))$ says that the four supporting vertices of the element of $P$ are distinct and no other propagators are supported on those vertices.  Translating this to $\tau(W)$ gives that the vertices which are the ends of $t$ are separated by at least two vertices along the cycle and no other internal edges connect to the ends of $t$.  This implies that $t$ is a trivial triangulation.
 
-Suppose the set $V(P)$ defines $c$ disjoint cyclic intervals of $[n]$. Then the corresponding subgraph of $\tau(W)$ has $m-c$ vertices. \hlfix{Call it $t$.}{$t$ is defined twice, and I'm not sure what $m$ and $j$ are for this direction of the proof.} If $t$ were a triangulated component, $t$ would have $j -c$ internal edges.
+Now suppose $|P|>1$.  Let $j=|P|$, $m=|V(P)|$, and 
+suppose that the set $V(P)$ defines $c$ disjoint cyclic intervals of $[n]$. Then $t$ has $m-c$ vertices.  If $t$ were a triangulated component, $t$ would have $j -c$ internal edges.
 
-The graph $t$ has $j$ edges that come from propagators, and $m - 2c$ edges that come from the boundary polygon of $\tau(W)$. Since $t$ has $m-c$ vertices, it has $m-c$ external edges, of which $c$ come from propagators. Therefore, of the $j$ edges of $t$ that come from propagators, $j-c$ are internal to the connected component. Therefore, this is triangulated.
-
-
+The graph $t$ has $j$ edges that come from propagators, and $m - 2c$ edges that come from the boundary polygon of $\tau(W)$. Since $t$ has $m-c$ vertices, it has $m-c$ external edges, of which $c$ come from propagators. Therefore, of the $j$ edges of $t$ that come from propagators, $j-c$ are internal to the connected component. Therefore, $t$ is a triangulation.
 
 
 %  The statement of the lemma then follows form the fact that inclusion is preserved under $\tau$ and so maximality also corresponds under $\tau$.
