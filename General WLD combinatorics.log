@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6730 64-bit) (preloaded format=pdflatex 2018.8.30)  12 DEC 2018 13:38
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6730 64-bit) (preloaded format=pdflatex 2018.8.30)  12 DEC 2018 14:00
 entering extended mode
 **"./General WLD combinatorics.tex"
 ("General WLD combinatorics.tex"
@@ -785,8 +785,11 @@ pgflibraryfpu.code.tex")
 \pgf@intersect@solutions=\count146
 ))
 \c@thm=\count147
+ ("General WLD combinatorics.aux"
 
-No file "General WLD combinatorics".aux.
+LaTeX Warning: Label `lem basis as perm' multiply defined.
+
+)
 \openout1 = `"General WLD combinatorics.aux"'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 307.
@@ -893,196 +896,52 @@ Package xypdf Info: Line width: 0.43799pt on input line 307.
 {C:/Users/agarws1/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
 [2]
 
-LaTeX Warning: Reference `eg:equivdiags' on page 3 undefined on input line 423.
+LaTeX Warning: Citation `wilsonloops' on page 3 undefined on input line 436.
 
 
-
-LaTeX Warning: Citation `wilsonloops' on page 3 undefined on input line 435.
-
-
-LaTeX Warning: Citation `wilsonloop' on page 3 undefined on input line 444.
-
-
-LaTeX Warning: Reference `thm WLD defines matroid' on page 3 undefined on input
- line 444.
-
-
-LaTeX Warning: Reference `same matroid iff equiv' on page 3 undefined on input 
-line 448.
-
-
-LaTeX Warning: Reference `number of equiv diagrams' on page 3 undefined on inpu
-t line 448.
+LaTeX Warning: Citation `wilsonloop' on page 3 undefined on input line 445.
 
 [3]
 
-LaTeX Warning: Citation `wilsonloop' on page 4 undefined on input line 464.
+LaTeX Warning: Citation `wilsonloop' on page 4 undefined on input line 465.
 
 
-LaTeX Warning: Citation `wilsonloop' on page 4 undefined on input line 466.
-
-
-LaTeX Warning: Reference `thm WLD defines matroid' on page 4 undefined on input
- line 469.
+LaTeX Warning: Citation `wilsonloop' on page 4 undefined on input line 467.
 
 [4]
 
-LaTeX Warning: Citation `wilsonloop' on page 5 undefined on input line 489.
+LaTeX Warning: Citation `wilsonloop' on page 5 undefined on input line 490.
 
 
-LaTeX Warning: Citation `wilsonloop' on page 5 undefined on input line 489.
+LaTeX Warning: Citation `wilsonloop' on page 5 undefined on input line 490.
 
 
-LaTeX Warning: Citation `wilsonloop' on page 5 undefined on input line 489.
+LaTeX Warning: Citation `wilsonloop' on page 5 undefined on input line 490.
 
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 502.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 503.
 
 ("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 502.
-[5]
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 503.
+[5] [6] [7] [8] [9]
 
-LaTeX Warning: Reference `eg:equivdiags' on page 6 undefined on input line 522.
-
-
-
-LaTeX Warning: Reference `WLDtopolygonpartition' on page 6 undefined on input l
-ine 579.
-
-[6]
-
-LaTeX Warning: Reference `tausimpleplanarlem' on page 7 undefined on input line
- 595.
-
-[7]
-
-LaTeX Warning: Reference `tausimpleplanarlem' on page 8 undefined on input line
- 647.
+LaTeX Warning: Citation `wilsonloop' on page 10 undefined on input line 709.
 
 
-LaTeX Warning: Reference `decompositionlem' on page 8 undefined on input line 6
-47.
-
-[8]
-Overfull \hbox (39.6006pt too wide) in paragraph at lines 660--663
-\OT1/cmr/m/n/10.95 Thus the sub-di-a-gram $(\OML/cmm/m/it/10.95 P; V\OT1/cmr/m/
-n/10.95 (\OML/cmm/m/it/10.95 P\OT1/cmr/m/n/10.95 ))$ de-fined by $\OML/cmm/m/it
-/10.95 t$ \OT1/cmr/m/n/10.95 is ex-act. >>>>>>> c17bd3a390160bb225ceebaa74317a2
-884222613 
- []
-
-[9]
-
-LaTeX Warning: Reference `decompositionlem' on page 10 undefined on input line 
-700.
-
-
-LaTeX Warning: Reference `lem triang to exact' on page 10 undefined on input li
-ne 700.
-
-
-LaTeX Warning: Reference `maxtriangdisjointcor' on page 10 undefined on input l
-ine 700.
-
-
-LaTeX Warning: Reference `uniqueproppartitioncor' on page 10 undefined on input
- line 705.
-
-
-LaTeX Warning: Citation `wilsonloop' on page 10 undefined on input line 712.
-
-
-LaTeX Warning: Citation `wilsonloop' on page 10 undefined on input line 714.
-
-
-LaTeX Warning: Reference `maxexactcomplementrank' on page 10 undefined on input
- line 719.
-
-
-LaTeX Warning: Reference `contractsubdiaglem' on page 10 undefined on input lin
-e 719.
-
-
-LaTeX Warning: Reference `contractsubdiaglem' on page 10 undefined on input lin
-e 724.
+LaTeX Warning: Citation `wilsonloop' on page 10 undefined on input line 711.
 
 [10]
 
-LaTeX Warning: Reference `lem properties of prop flats' on page 11 undefined on
- input line 752.
+LaTeX Warning: Citation `wilsonloop' on page 11 undefined on input line 751.
+
+[11] [12] [13]
+
+LaTeX Warning: Citation `wilsonloops' on page 14 undefined on input line 848.
 
 
-LaTeX Warning: Citation `wilsonloop' on page 11 undefined on input line 754.
-
-
-LaTeX Warning: Reference `lem facts about WLD matroids' on page 11 undefined on
- input line 756.
-
-[11]
-
-LaTeX Warning: Reference `lem properties of prop flats' on page 12 undefined on
- input line 802.
-
-
-LaTeX Warning: Reference `eq F is dependent' on page 12 undefined on input line
- 802.
-
-
-LaTeX Warning: Reference `classifyflats' on page 12 undefined on input line 804
-.
-
-
-LaTeX Warning: Reference `lem decompose flat' on page 12 undefined on input lin
-e 808.
-
-
-LaTeX Warning: Reference `lem facts about WLD matroids' on page 12 undefined on
- input line 810.
-
-
-LaTeX Warning: Reference `lem facts about WLD matroids' on page 12 undefined on
- input line 810.
-
-
-LaTeX Warning: Reference `increasingrank' on page 12 undefined on input line 81
-0.
-
-
-LaTeX Warning: Reference `eq decompose F' on page 12 undefined on input line 81
-2.
-
-
-LaTeX Warning: Reference `Qsizebound' on page 12 undefined on input line 814.
-
-
-LaTeX Warning: Reference `eq decompose F' on page 12 undefined on input line 81
-4.
-
-
-LaTeX Warning: Reference `lem facts about WLD matroids' on page 12 undefined on
- input line 814.
-
-[12]
-
-LaTeX Warning: Reference `contractsubdiaglem' on page 13 undefined on input lin
-e 824.
-
-
-LaTeX Warning: Reference `sec matroid background' on page 13 undefined on input
- line 826.
-
-
-LaTeX Warning: Reference `lem facts about WLD matroids' on page 13 undefined on
- input line 837.
-
-[13]
-
-LaTeX Warning: Citation `wilsonloops' on page 14 undefined on input line 851.
-
-
-Overfull \hbox (23.01668pt too wide) in paragraph at lines 864--865
+Overfull \hbox (23.01668pt too wide) in paragraph at lines 861--862
 []\OT1/cmr/m/n/10.95 The unique top di-men-sional cell of $\U/msb/m/n/10.95 G[]
 \OT1/cmr/m/n/10.95 (\OMS/cmsy/m/n/10.95 j\OML/cmm/m/it/10.95 P\OMS/cmsy/m/n/10.
 95 j\OML/cmm/m/it/10.95 ; \OMS/cmsy/m/n/10.95 j\OML/cmm/m/it/10.95 V\OT1/cmr/m/
@@ -1093,173 +952,30 @@ it/10.95 ; \OMS/cmsy/m/n/10.95 j\OML/cmm/m/it/10.95 V\OT1/cmr/m/n/10.95 (\OML/c
 mm/m/it/10.95 P\OT1/cmr/m/n/10.95 )\OMS/cmsy/m/n/10.95 j\OT1/cmr/m/n/10.95 )$
  []
 
-
-LaTeX Warning: Reference `maxexactcomplementrank' on page 14 undefined on input
- line 884.
-
 [14]
-
-LaTeX Warning: Reference `exactcircuitlem' on page 15 undefined on input line 8
-86.
-
-
-LaTeX Warning: Reference `uniqueproppartitioncor' on page 15 undefined on input
- line 888.
-
-
-LaTeX Warning: Reference `vertexsets' on page 15 undefined on input line 888.
-
-
-Overfull \hbox (14.72797pt too wide) in paragraph at lines 932--933
+Overfull \hbox (14.72797pt too wide) in paragraph at lines 929--930
 \OT1/cmr/m/n/10.95 Since Wil-son loop di-a-grams cor-re-spond to positroids, it
  is nat-u-ral to study the sub-space of $\U/msb/m/n/10.95 G[]\OT1/cmr/m/n/10.95
  (\OMS/cmsy/m/n/10.95 jPj\OML/cmm/m/it/10.95 ; n\OT1/cmr/m/n/10.95 )$
  []
 
-[15]
-
-LaTeX Warning: Reference `rem:props of length 2 and 3' on page 16 undefined on 
-input line 996.
-
-
-LaTeX Warning: Reference `item big and 2' on page 16 undefined on input line 99
-6.
-
-[16]
-
-LaTeX Warning: Reference `item big and 2' on page 17 undefined on input line 10
-40.
-
-
-LaTeX Warning: Reference `item pair of 2s' on page 17 undefined on input line 1
-040.
-
-
-LaTeX Warning: Reference `rem:props of length 2 and 3' on page 17 undefined on 
-input line 1049.
-
-
-LaTeX Warning: Reference `item pair of 2s' on page 17 undefined on input line 1
-052.
-
-
-LaTeX Warning: Reference `rem:props of length 2 and 3' on page 17 undefined on 
-input line 1056.
-
-
-LaTeX Warning: Reference `item big and 2' on page 17 undefined on input line 10
-56.
-
-
-LaTeX Warning: Reference `item pair of 2s' on page 17 undefined on input line 1
-056.
-
-
-LaTeX Warning: Reference `item pair of 2s' on page 17 undefined on input line 1
-063.
-
-
-LaTeX Warning: Reference `item big and 2' on page 17 undefined on input line 10
-63.
-
-[17]
-
-LaTeX Warning: Reference `item pair of 2s' on page 18 undefined on input line 1
-066.
-
+[15] [16] [17]
 
 LaTeX Warning: Marginpar on page 18 moved.
 
-
-LaTeX Warning: Reference `lem sian' on page 18 undefined on input line 1288.
-
-
-LaTeX Warning: Reference `rem:props of length 2 and 3' on page 18 undefined on 
-input line 1288.
-
-
-LaTeX Warning: Reference `item big and 2' on page 18 undefined on input line 12
-88.
-
-
-LaTeX Warning: Reference `item pair of 2s' on page 18 undefined on input line 1
-288.
-
-[18]
-
-LaTeX Warning: Reference `alg:put GN on WLD' on page 19 undefined on input line
- 1332.
-
-
-LaTeX Warning: Reference `alg:put GN on WLD' on page 19 undefined on input line
- 1349.
-
-
-LaTeX Warning: Reference `lem no fourth vertex' on page 19 undefined on input l
-ine 1352.
-
-
-LaTeX Warning: Reference `alg:put GN on WLD' on page 19 undefined on input line
- 1352.
-
-[19]
-
-LaTeX Warning: Reference `vertex cyclic int lem' on page 20 undefined on input 
-line 1461.
-
-
-LaTeX Warning: Reference `alg:put GN on WLD' on page 20 undefined on input line
- 1486.
-
-
-LaTeX Warning: Reference `def I_i as a function' on page 20 undefined on input 
-line 1486.
-
-
-LaTeX Warning: Reference `lem sian' on page 20 undefined on input line 1495.
-
-
-LaTeX Warning: Reference `fig 3 cases' on page 20 undefined on input line 1495.
-
-
+[18] [19]
 <3cases.pdf, id=85, 569.04593pt x 128.03534pt>
 File: 3cases.pdf Graphic file (type pdf)
 <use 3cases.pdf>
-Package pdftex.def Info: 3cases.pdf  used on input line 1500.
+Package pdftex.def Info: 3cases.pdf  used on input line 1497.
 (pdftex.def)             Requested size: 455.23735pt x 102.4284pt.
-
-LaTeX Warning: Reference `fig V diagram' on page 20 undefined on input line 150
-5.
-
 <Vdiagram_modified.pdf, id=86, 221.14621pt x 128.64061pt>
 File: Vdiagram_modified.pdf Graphic file (type pdf)
 <use Vdiagram_modified.pdf>
-Package pdftex.def Info: Vdiagram_modified.pdf  used on input line 1509.
+Package pdftex.def Info: Vdiagram_modified.pdf  used on input line 1506.
 (pdftex.def)             Requested size: 176.91719pt x 102.91261pt.
-
-LaTeX Warning: Reference `fig 3 cases' on page 20 undefined on input line 1515.
-
-
-
-LaTeX Warning: Reference `fig 3 cases' on page 20 undefined on input line 1518.
-
-
-[20 <./3cases.pdf>]
-
-LaTeX Warning: Reference `lem no fourth vertex' on page 21 undefined on input l
-ine 1521.
-
-[21 <./Vdiagram_modified.pdf>]
-
-LaTeX Warning: Reference `fig 3 cases' on page 22 undefined on input line 1566.
-
-
-
-LaTeX Warning: Reference `fig 3 cases' on page 22 undefined on input line 1593.
-
-
-
-Overfull \hbox (12.81996pt too wide) detected at line 1605
+ [20 <./3cases.pdf>] [21 <./Vdiagram_modified.pdf>]
+Overfull \hbox (12.81996pt too wide) detected at line 1602
 \OML/cmm/m/it/10.95 J[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 m\OT1/cmr/m/n/10
 .95 ) = [\OML/cmm/m/it/10.95 m \OT1/cmr/m/n/10.95 + 4\OML/cmm/m/it/10.95 ; d \O
 MS/cmsy/m/n/10.95   \OT1/cmr/m/n/10.95 1]\OML/cmm/m/it/10.95 ;  J[]\OT1/cmr/m/n
@@ -1273,7 +989,7 @@ m/it/10.95 ;
  []
 
 [22]
-Overfull \hbox (12.81996pt too wide) detected at line 1610
+Overfull \hbox (12.81996pt too wide) detected at line 1607
 \OML/cmm/m/it/10.95 J[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 m\OT1/cmr/m/n/10
 .95 ) = \OMS/cmsy/m/n/10.95 f\OML/cmm/m/it/10.95 m \OT1/cmr/m/n/10.95 + 3\OMS/c
 msy/m/n/10.95 g\OML/cmm/m/it/10.95 ;  J[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.9
@@ -1287,7 +1003,7 @@ m/it/10.95 ;
  []
 
 
-Overfull \hbox (27.46954pt too wide) detected at line 1614
+Overfull \hbox (27.46954pt too wide) detected at line 1611
 \OML/cmm/m/it/10.95 J[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 m\OT1/cmr/m/n/10
 .95 ) = [\OML/cmm/m/it/10.95 m \OT1/cmr/m/n/10.95 + 4\OML/cmm/m/it/10.95 ; j \O
 T1/cmr/m/n/10.95 + 1]\OML/cmm/m/it/10.95 ;  J[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/i
@@ -1300,412 +1016,88 @@ m/n/10.95 f\OML/cmm/m/it/10.95 m \OT1/cmr/m/n/10.95 + 3\OMS/cmsy/m/n/10.95 g\OM
 L/cmm/m/it/10.95 ;
  []
 
-[23]
+[23] [24] [25] [26]
 
-LaTeX Warning: Reference `alg:put GN on WLD' on page 24 undefined on input line
- 1684.
-
-
-LaTeX Warning: Reference `alg:put GN on WLD' on page 24 undefined on input line
- 1702.
-
-[24]
-
-LaTeX Warning: Reference `alg:put GN on WLD' on page 25 undefined on input line
- 1720.
-
-
-LaTeX Warning: Reference `alg:put GN on WLD' on page 25 undefined on input line
- 1729.
-
-
-LaTeX Warning: Reference `vertex cyclic int lem' on page 25 undefined on input 
-line 1733.
-
-[25]
-
-LaTeX Warning: Reference `lem basis as perm' on page 26 undefined on input line
- 1781.
-
-
-LaTeX Warning: Reference `lem basis as perm' on page 26 undefined on input line
- 1790.
-
-[26]
-
-LaTeX Warning: Reference `lem no fourth vertex' on page 27 undefined on input l
-ine 1813.
-
-
-LaTeX Warning: Citation `reversingOh' on page 27 undefined on input line 1822.
-
-
-LaTeX Warning: Reference `vertex cyclic int lem' on page 27 undefined on input 
-line 1830.
+LaTeX Warning: Citation `reversingOh' on page 27 undefined on input line 1819.
 
 [27]
-
-LaTeX Warning: Reference `lem sian' on page 28 undefined on input line 1838.
-
 LaTeX Font Info:    Font shape `OMS/cmr/m/it' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 1857.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 1854.
 
-[28]
-
-LaTeX Warning: Reference `lem sian' on page 29 undefined on input line 1871.
-
-
-LaTeX Warning: Reference `lem sian' on page 29 undefined on input line 1871.
-
-
-LaTeX Warning: Reference `lem sian' on page 29 undefined on input line 1873.
-
-
-LaTeX Warning: Reference `lem good p' on page 29 undefined on input line 1879.
-
-
-LaTeX Warning: Reference `lem good p' on page 29 undefined on input line 1879.
-
-[29]
+ [28] [29]
 <specialp.pdf, id=124, 253.36256pt x 112.54045pt>
 File: specialp.pdf Graphic file (type pdf)
 <use specialp.pdf>
-Package pdftex.def Info: specialp.pdf  used on input line 1900.
+Package pdftex.def Info: specialp.pdf  used on input line 1897.
 (pdftex.def)             Requested size: 253.36194pt x 112.54016pt.
-
-
-LaTeX Warning: Reference `fig special p' on page 30 undefined on input line 190
-5.
-
-
-LaTeX Warning: Reference `vertex cyclic int lem' on page 30 undefined on input 
-line 1907.
-
-[30 <./specialp.pdf>]
-
-LaTeX Warning: Reference `fig special p' on page 31 undefined on input line 191
-3.
-
-
-LaTeX Warning: Reference `vertex cyclic int lem' on page 31 undefined on input 
-line 1913.
-
-
-LaTeX Warning: Reference `lem I' on page 31 undefined on input line 1919.
-
-
-LaTeX Warning: Reference `lem I' on page 31 undefined on input line 1926.
-
-
-LaTeX Warning: Reference `fig Le' on page 31 undefined on input line 1929.
-
+ [30 <./specialp.pdf>]
 <Le_diagrams.pdf, id=158, 281.95337pt x 80.7015pt>
 File: Le_diagrams.pdf Graphic file (type pdf)
 <use Le_diagrams.pdf>
-Package pdftex.def Info: Le_diagrams.pdf  used on input line 1932.
+Package pdftex.def Info: Le_diagrams.pdf  used on input line 1929.
 (pdftex.def)             Requested size: 281.95267pt x 80.70131pt.
-
-LaTeX Warning: Reference `lem I' on page 31 undefined on input line 1939.
-
-[31 <./Le_diagrams.pdf>]
-
-LaTeX Warning: Reference `lem I' on page 32 undefined on input line 1944.
-
-
-LaTeX Warning: Reference `lem I' on page 32 undefined on input line 1946.
-
-
-LaTeX Warning: Reference `vertex cyclic int lem' on page 32 undefined on input 
-line 1946.
-
-
-LaTeX Warning: Reference `lem I' on page 32 undefined on input line 1950.
-
-
-LaTeX Warning: Reference `lem I' on page 32 undefined on input line 1958.
-
-
-LaTeX Warning: Reference `vertex cyclic int lem' on page 32 undefined on input 
-line 1958.
-
-
-LaTeX Warning: Reference `lem I' on page 32 undefined on input line 1963.
-
-
-LaTeX Warning: Reference `lem I' on page 32 undefined on input line 1978.
-
-[32]
-
-LaTeX Warning: Reference `fig messy' on page 33 undefined on input line 1984.
-
-
-LaTeX Warning: Reference `fig messy' on page 33 undefined on input line 1984.
-
+ [31 <./Le_diagrams.pdf>] [32]
 <messy.pdf, id=177, 286.7714pt x 199.12794pt>
 File: messy.pdf Graphic file (type pdf)
 <use messy.pdf>
-Package pdftex.def Info: messy.pdf  used on input line 1987.
+Package pdftex.def Info: messy.pdf  used on input line 1984.
 (pdftex.def)             Requested size: 286.77069pt x 199.12744pt.
-
-LaTeX Warning: Reference `fig messy' on page 33 undefined on input line 1991.
-
-
-LaTeX Warning: Reference `fig messyD' on page 33 undefined on input line 1993.
-
-
-LaTeX Warning: Reference `fig messy' on page 33 undefined on input line 1993.
-
 <messyD.pdf, id=178, 258.66638pt x 102.41261pt>
 File: messyD.pdf Graphic file (type pdf)
 <use messyD.pdf>
-Package pdftex.def Info: messyD.pdf  used on input line 1996.
+Package pdftex.def Info: messyD.pdf  used on input line 1993.
 (pdftex.def)             Requested size: 258.66574pt x 102.41234pt.
-
-LaTeX Warning: Reference `eq necklace' on page 33 undefined on input line 2002.
-
-
-
-LaTeX Warning: Reference `eq necklace' on page 33 undefined on input line 2002.
-
-
-[33 <./messy.pdf>]
-
-LaTeX Warning: Reference `eq necklace' on page 34 undefined on input line 2006.
-
-
-
-LaTeX Warning: Reference `lem I' on page 34 undefined on input line 2012.
-
-
-LaTeX Warning: Reference `lem I' on page 34 undefined on input line 2017.
-
-
-LaTeX Warning: Reference `lem I' on page 34 undefined on input line 2019.
-
-
-LaTeX Warning: Reference `lem n-2 bad' on page 34 undefined on input line 2019.
-
-
-[34 <./messyD.pdf>]
-
-LaTeX Warning: Reference `lem uncovered' on page 35 undefined on input line 203
-3.
-
-
-LaTeX Warning: Reference `lem dihedral' on page 35 undefined on input line 2033
-.
-
-
-LaTeX Warning: Reference `lem good p' on page 35 undefined on input line 2033.
-
-
-LaTeX Warning: Reference `lem n-2 bad' on page 35 undefined on input line 2035.
-
-
-
-LaTeX Warning: Reference `lem shape' on page 35 undefined on input line 2037.
-
-
-LaTeX Warning: Reference `lem n and n-1' on page 35 undefined on input line 203
-7.
-
-
-LaTeX Warning: Reference `lem n-2 good' on page 35 undefined on input line 2037
-.
-
-
-LaTeX Warning: Reference `lem n-2 bad' on page 35 undefined on input line 2037.
-
-
-
-LaTeX Warning: Reference `lem n and n-1' on page 35 undefined on input line 203
-7.
-
-
-LaTeX Warning: Reference `lem n-2 good' on page 35 undefined on input line 2037
-.
-
-
-LaTeX Warning: Reference `lem n-2 bad' on page 35 undefined on input line 2037.
-
-
-
-LaTeX Warning: Reference `lem other k' on page 35 undefined on input line 2037.
-
-
-
-LaTeX Warning: Reference `lem n-2 bad' on page 35 undefined on input line 2041.
-
-
-
-LaTeX Warning: Reference `lem n-2 bad' on page 35 undefined on input line 2044.
-
-
-[35]
-
-LaTeX Warning: Reference `sec GN algorithm' on page 36 undefined on input line 
-2056.
-
-
-LaTeX Warning: Reference `def R(W)' on page 36 undefined on input line 2056.
-
-
-LaTeX Warning: Reference `thm denom' on page 36 undefined on input line 2058.
-
-
-LaTeX Warning: Reference `C(W) dfn' on page 36 undefined on input line 2064.
-
-
-LaTeX Warning: Reference `section background' on page 36 undefined on input lin
-e 2064.
-
+ [33 <./messy.pdf>] [34 <./messyD.pdf>] [35]
 <egWLD_forR.pdf, id=286, 569.04593pt x 113.80919pt>
 File: egWLD_forR.pdf Graphic file (type pdf)
 <use egWLD_forR.pdf>
-Package pdftex.def Info: egWLD_forR.pdf  used on input line 2080.
+Package pdftex.def Info: egWLD_forR.pdf  used on input line 2077.
 (pdftex.def)             Requested size: 569.04453pt x 113.8089pt.
 
-Overfull \hbox (99.2895pt too wide) in paragraph at lines 2080--2081
+Overfull \hbox (99.2895pt too wide) in paragraph at lines 2077--2078
 [][] 
  []
 
 
-LaTeX Warning: Reference `alg WLD to denom via GN' on page 36 undefined on inpu
-t line 2081.
-
-
-LaTeX Warning: Reference `alg WLD to denom via GN' on page 36 undefined on inpu
-t line 2081.
-
-
 LaTeX Warning: Marginpar on page 36 moved.
 
-
-LaTeX Warning: Reference `fig R eg' on page 36 undefined on input line 2086.
-
-[36 <./egWLD_forR.pdf>]
-
-LaTeX Warning: Reference `fig R eg' on page 37 undefined on input line 2092.
-
-
-LaTeX Warning: Reference `prop alg gives rad' on page 37 undefined on input lin
-e 2100.
-
-
-LaTeX Warning: Reference `def R(W)' on page 37 undefined on input line 2106.
-
-
-LaTeX Warning: Reference `alg WLD to denom via GN' on page 37 undefined on inpu
-t line 2111.
-
-[37]
-
-LaTeX Warning: Reference `fig no big factors' on page 38 undefined on input lin
-e 2141.
-
+[36 <./egWLD_forR.pdf>] [37]
 <no_big_factors.pdf, id=296, 455.23677pt x 199.16608pt>
 File: no_big_factors.pdf Graphic file (type pdf)
 <use no_big_factors.pdf>
-Package pdftex.def Info: no_big_factors.pdf  used on input line 2144.
+Package pdftex.def Info: no_big_factors.pdf  used on input line 2141.
 (pdftex.def)             Requested size: 455.23564pt x 199.16559pt.
-
-LaTeX Warning: Reference `vertex cyclic int lem' on page 38 undefined on input 
-line 2148.
-
-[38]
-
-LaTeX Warning: Reference `fig no big factors' on page 39 undefined on input lin
-e 2159.
-
-
-LaTeX Warning: Reference `vertex cyclic int lem' on page 39 undefined on input 
-line 2159.
-
-[39 <./no_big_factors.pdf>] [40]
-
-LaTeX Warning: Reference `fig quadratic' on page 41 undefined on input line 218
-3.
-
+ [38] [39 <./no_big_factors.pdf>] [40]
 <quadratic.pdf, id=308, 256.07068pt x 113.80919pt>
 File: quadratic.pdf Graphic file (type pdf)
 <use quadratic.pdf>
-Package pdftex.def Info: quadratic.pdf  used on input line 2186.
+Package pdftex.def Info: quadratic.pdf  used on input line 2183.
 (pdftex.def)             Requested size: 256.07004pt x 113.8089pt.
-
-LaTeX Warning: Reference `vertex cyclic int lem' on page 41 undefined on input 
-line 2190.
-
-
-LaTeX Warning: Reference `vertex cyclic int lem' on page 41 undefined on input 
-line 2192.
-
-
-LaTeX Warning: Reference `lem no fourth vertex' on page 41 undefined on input l
-ine 2194.
-
-
-LaTeX Warning: Reference `fig part 4' on page 41 undefined on input line 2194.
-
 <part4.pdf, id=309, 206.6922pt x 218.9781pt>
 File: part4.pdf Graphic file (type pdf)
 <use part4.pdf>
-Package pdftex.def Info: part4.pdf  used on input line 2197.
+Package pdftex.def Info: part4.pdf  used on input line 2194.
 (pdftex.def)             Requested size: 103.34584pt x 109.48877pt.
-
-LaTeX Warning: Reference `vertex cyclic int lem' on page 41 undefined on input 
-line 2201.
-
-
-LaTeX Warning: Reference `fig part 4' on page 41 undefined on input line 2201.
-
-[41 <./quadratic.pdf> <./part4.pdf
+ [41 <./quadratic.pdf> <./part4.pdf
 
 pdfTeX warning: pdflatex.exe (file ./part4.pdf): PDF inclusion: multiple pdfs w
 ith page group included in a single page
->]
-
-LaTeX Warning: Reference `vertex cyclic int lem' on page 42 undefined on input 
-line 2217.
-
-
-LaTeX Warning: Reference `vertex cyclic int lem' on page 42 undefined on input 
-line 2219.
-
-
-LaTeX Warning: Reference `def R(W)' on page 42 undefined on input line 2227.
-
-
-LaTeX Warning: Reference `prop alg gives rad' on page 42 undefined on input lin
-e 2231.
-
-
-LaTeX Warning: Reference `alg WLD to denom via GN' on page 42 undefined on inpu
-t line 2231.
-
-
-LaTeX Warning: Reference `vertex cyclic int lem' on page 42 undefined on input 
-line 2233.
-
-
-LaTeX Warning: Reference `prop alg gives rad' on page 42 undefined on input lin
-e 2233.
-
-[42] [43] ("General WLD combinatorics.aux")
+>] [42] [43] ("General WLD combinatorics.aux")
 
 LaTeX Warning: There were undefined references.
 
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 18711 strings out of 492973
- 359764 string characters out of 3125806
- 490887 words of memory out of 3000000
- 22152 multiletter control sequences out of 15000+200000
- 16130 words of font info for 63 fonts, out of 3000000 for 9000
+ 18725 strings out of 492973
+ 360193 string characters out of 3125806
+ 495870 words of memory out of 3000000
+ 22166 multiletter control sequences out of 15000+200000
+ 15509 words of font info for 61 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 61i,19n,76p,3255b,978s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 61i,19n,76p,3255b,974s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Users/agarws1/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfon
 ts/cm/cmbx10.pfb><C:/Users/agarws1/AppData/Local/Programs/MiKTeX 2.9/fonts/type
 1/public/amsfonts/cm/cmbx12.pfb><C:/Users/agarws1/AppData/Local/Programs/MiKTeX
@@ -1730,7 +1122,7 @@ ti10.pfb><C:/Users/agarws1/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public
 /amsfonts/cm/cmti9.pfb><C:/Users/agarws1/AppData/Local/Programs/MiKTeX 2.9/font
 s/type1/public/amsfonts/symbols/msam10.pfb><C:/Users/agarws1/AppData/Local/Prog
 rams/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on "General WLD combinatorics.pdf" (43 pages, 1097133 bytes).
+Output written on "General WLD combinatorics.pdf" (43 pages, 1097014 bytes).
 PDF statistics:
  392 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
