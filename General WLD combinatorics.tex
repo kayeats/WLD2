@@ -575,7 +575,7 @@ A {\em maximal} triangulated piece is one which is not contained in any strictly
  A {\em decomposition} of a polygon partition $\tau(W)$ is a set of 2-connected induced subgraphs of $\tau(W)$ which partition the edges of $\tau(W)$.  
 \end{dfn}
 
-\begin{eg} \label{eg: unique decomposition} For the Wilson loop diagrams and polygon partitions in Example \ref{WLDtopolygonpartition}, the vertex sets $\{1, 2, 3,4\}$ and $\{5, 6, 7, 8\}$ are maximal triangulated pieces for both $\tau(W_1)$ and $\tau(W_3)$. The vertex set $\{4,5, 8, 1\}$ is not a triangulation in either polygon partition. \note{Put a picture of a dual tree.  Make a comment that the embedding is required to obtain uniqueness of the dual}
+\begin{eg} \label{eg: unique decomposition} For the Wilson loop diagrams and polygon partitions in Example \ref{WLDtopolygonpartition}, the vertex sets $\{1, 2, 3,4\}$ and $\{5, 6, 7, 8\}$ give maximal triangulated pieces for both $\tau(W_1)$ and $\tau(W_3)$. The vertex set $\{4,5, 8, 1\}$ is not a triangulation in either polygon partition. \note{Put a picture of a dual tree.  Make a comment that the embedding is required to obtain uniqueness of the dual}
 \end{eg}
 
 \begin{lem} \label{decompositionlem}
@@ -620,9 +620,24 @@ Consider any two distinct maximal triangulated pieces of $\tau(W)$. These two pi
 
 We are now in a position to relate the triangulated pieces of $\tau(W)$ to exact subdiagrams of $W$.
 
+Every triangulated piece $t$ of an admissible Wilson loop diagram $W$ corresponds to a subdiagram of $W$ by taking the set of propagators $P$ corresponding to edges of $t$ and then taking the subdiagram $(P, V(P))$.  Conversely, given a subdiagram $(P, V(P))$ of $W$ we can obtain a subgraph of $\tau(W)$ as follows:
+\begin{itemize}
+\item The vertex set of the subgraph is
+  \begin{itemize}
+  \item the vertices of $\tau(W)$ corresponding to edges on which propagators of $P$ are supported
+  \item along with any other vertices of $\tau(W)$ for which both neighbours are as described in the previous point.
+  \end{itemize}
+\item The edge set of the subgraph is
+  \begin{itemize}
+  \item the edges of $\tau(W)$ corresponding to propagators of $P$
+  \item along with the outer edges of $\tau(W)$ for which both their end points are in the vertex set
+  \end{itemize}
+\end{itemize}
+Note that the subgraph only depends on $P$, not the vertex set of the subdiagram, but it is not the subgraph of $\tau(W)$ consisting only of edges corresponding to propagators of $P$.
+
 
 \begin{lem}\label{lem triang to exact}
-  Let $W$ be an admissible Wilson loop diagram and $\tau(W)$ its polygon partition.  The triangulated pieces of $\tau(W)$ correspond to the exact subdiagrams of $W$.
+  Let $W$ be an admissible Wilson loop diagram and $\tau(W)$ its polygon partition.  The triangulated pieces of $\tau(W)$ correspond to the exact subdiagrams of $W$ using the correspondence described above.
 \end{lem}
 
 \begin{proof}
@@ -640,12 +655,12 @@ Thus the subdiagram $(P,V(P))$ defined by $t$ is exact.
 
 Conversely, suppose we have an exact subdiagram $(P, V(P))$ of $W = (\cP, n)$ supported on $|V(P)| = |P|+3$ vertices, and let $t$ be the subgraph of $\tau(W)$ corresponding to $(P,V(P))$. 
 
-Suppose $|P|=1$.  Then $(P, V(P))$ is a trivially exact subdiagram. In this case $t$ is an edge internal to $\tau(W)$.  The exactness condition on $(P, V(P))$ says that the four supporting vertices of the element of $P$ are distinct and no other propagators are supported on those vertices.  Translating this to $\tau(W)$ gives that the vertices which are the ends of $t$ are separated by at least two vertices along the cycle and no other internal edges connect to the ends of $t$.  This implies that $t$ is a trivial triangulation.
+Suppose $|P|=1$. Let $p$ be the element of $P$. The exactness condition on $(P, V(P))$ says that the four supporting vertices of $p$ are distinct.  If the support of $p$ is four consecutive vertices, then the ends of the edge corresponding to $p$ in $\tau(W)$ have a common neighbour and so $t$ is a single triangle, hence a triangulated piece.  If the support of $p$ is not four consecutive vertices, then the vertices which are the ends of $t$ are separated by at least two vertices along the cycle.  This implies that $t$ is a trivial triangulated piece.
 
 Now suppose $|P|>1$.  Let $j=|P|$, $m=|V(P)|$, and 
-suppose that the set $V(P)$ defines $c$ disjoint cyclic intervals of $[n]$. Then $t$ has $m-c$ vertices.  If $t$ were a triangulated component, $t$ would have $j -c$ internal edges.
+suppose that the set $V(P)$ defines $c$ disjoint cyclic intervals of $[n]$. Then $t$ has $m-c$ vertices.  If $t$ were a triangulation, $t$ would have $j -c$ internal edges.
 
-The graph $t$ has $j$ edges that come from propagators, and $m - 2c$ edges that come from the boundary polygon of $\tau(W)$. Since $t$ has $m-c$ vertices, it has $m-c$ external edges, of which $c$ come from propagators. Therefore, of the $j$ edges of $t$ that come from propagators, $j-c$ are internal to the connected component. Therefore, $t$ is a triangulation.
+The graph $t$ has $j$ edges that come from propagators, and $m - 2c$ edges that come from the boundary polygon of $\tau(W)$. Since $t$ has $m-c$ vertices, it has $m-c$ external edges, of which $c$ come from propagators. Therefore, of the $j$ edges of $t$ that come from propagators, $j-c$ are internal to the connected component. Therefore, $t$ is a triangulated piece.
 
 
 %  The statement of the lemma then follows form the fact that inclusion is preserved under $\tau$ and so maximality also corresponds under $\tau$.
