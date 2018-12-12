@@ -266,7 +266,7 @@
 \newcommand{\cZ}{\mathcal{Z}}
 \newcommand{\cY}{\mathcal{Y}}
 \newcommand{\Dom}{\textrm{Dom}}
-\newcommand{\detzr}[1] {\langle (\cZ_*^\mu|V_p)^{#1} \rangle}
+\newcommand{\detzr}[1] {\langle (\cZ_*^\mu|V(p))^{#1} \rangle}
 \newcommand{\II}{\mathcal{I}}
 \newcommand{\PP}{\mathcal{P}}
 \newcommand{\BB}{\mathcal{B}}
@@ -313,20 +313,24 @@ This paper studies the combinatorics of Wilson Loop Diagrams.
 What are Wilson loop diagrams and their integrals.
 
 \begin{dfn}\label{WLdfn}
-A Wilson loop diagram is given by the following data: a cyclicly ordered set $V$, along with a choice of first vertex, and $k$ pairs $\{p_r = (i_r, j_r)\}_{r=1}^k$ ordered such that $i_r +1 < j_r$. \end{dfn}
+A Wilson loop diagram is given by the following data: a cyclicly ordered set $V$, along with a choice of first vertex (labeled $1$), and $k$ pairs, called propagators, written $\{p_r = (i_r, j_r)\}_{r=1}^k$ with labels ordered such that $i_r +1 < j_r$ relative to the fisrt vertex. \end{dfn}
 
-We depict this data as a convex polygon, with vertices labeled by $V$ (preserving the cyclic ordering), and $k$ wavy lines in the interior of the diagrams. We depict the choice of first vertex on $V$ by a $\bullet$. Note that the polygon gives the verices of $W$ a cyclic ordering, which the choice of first vertex gives it a compatible linear order. Both the cyclic and the linear order become the correct perspective at various points in this paper. The pair $p_r$ defines a wavy line from the $i_r^{th}$ edge (between $i_r$ and $i_r+1$) and the $j_r^{th}$ edge. These are called propagators.  The condition on $i_r$ and $j_r$ means that the propagator does not go between adjacent edges. Let $\cP = \{p_r\}_{r=1}^k$ be the set of propagators. Then we write \bas W = (\cP, V) \;.\eas
+We depict this data as a circle with marked points, called vertices. The vertices are labeled by $V$ (preserving the cyclic ordering). The arc between consecutive vertices are called edges. There are $k$ wavy lines in the interior of the diagram, depicting the proagators, with endpoints on the edges. A propagator, $p =(i,j)$ has one endpoint on the edge between the vertex labeled $i$ and $i+1$ and another endpoint on the edge defined by $j$ and $j+1$. The condition on $i_r$ and $j_r$ means that the propagator does not go between adjacent edges. Let $\cP = \{p_r\}_{r=1}^k$ be the set of propagators. Then we write \bas W = (\cP, V) \;.\eas
 
-Often we take $V$ to be $[n]$, the cyclically ordered set of integers, $1 \ldots n$. In this case, we write $W = (\cP, n)$. We introduce some notation to speak of vertices supporting a propagator, and the set of propagators supported on a vertex set.
+Note that the marked circle gives the vertices of $W$ a cyclic ordering. The choice of first vertex gives it a compatible linear order. Both the cyclic and the linear order become the correct perspective at various points in this paper. 
+
+Often we take $V$ to be $[n]$, the cyclically ordered set of integers, $1 \ldots n$. In this case, we write $W = (\cP, [n])$. We introduce some notation to speak of vertices supporting a propagator, and the set of propagators supported on a vertex set.
 
 \begin{dfn} \label{VPropdfn}
-Let $W = (\cP, n)$.
+Let $W = (\cP, [n])$.
 \begin{enumerate}
-\item For $p \in \cP$, let $V_p = \{i_p, i_p+1, j_p, j_p+1\}$ be the set of vertices supporting $p$. Then, for $P \subseteq \cP$, the set $V_P = \cup_{p \in P} V_p$ is the vertex support of $P$.
-\item For $V \subseteq [n]$, write $\Prop(V) = \{ p \in \cP | V_p \cap V \neq \emptyset \} $.
+\item For $p \in \cP$, let $V(p) = \{i_p, i_p+1, j_p, j_p+1\}$ be the set of vertices supporting $p$. Then, for $P \subseteq \cP$, the set $V(P) = \cup_{p \in P} V(p)$ is the vertex support of $P$.
+\item For $V \subseteq [n]$, write $\Prop(V) = \{ p \in \cP | V(p) \cap V \neq \emptyset \} $.
 \item For $P \subseteq \cP$, define $F(P) = V(P^c)^c$ to be the set of vertices in $[n]$ that only support propagators in the set $P$.
 \end{enumerate}
 \end{dfn}
+
+Note that $F(\emptyset)$ is the set of vertices that are not in the support of any propagators. \sanote{did we settle on a term here? I'd like to make this a definition}
 
 It is sometimes useful to discuss propagators in terms of the edges supporting them, rather than the vertices.
 
@@ -339,24 +343,21 @@ In this manner, the propagator $p = (i, j)$ is supported by the $i^{th}$ and $j^
 \begin{dfn}\label{admisdfn}
 A Wilson loop diagram is admissible if \begin{enumerate}
 \item $|V| \geq |\cP| + 4$
-\item There does not exists a set of propagators, $P \subset \cP$ such that $|V(P)| < |P| + 3$.
-\item There does not exist a pair of propagators, $p, q \subset \cP$ such that $i_p < i_q < j_p <j_q$.
+\item There does not exists a set of propagators, $P \subseteq \cP$ such that $|V(P)| < |P| + 3$.
+\item There does not exist a pair of propagators, $p, q \subseteq \cP$ such that $i_p < i_q < j_p <j_q$.
 \end{enumerate}
 A Wilson loop diagram is weakly admissible if the second and third conditions hold.
  \end{dfn}
 
-The first conditions states that there are at least four more vertices than propagators in an admissible Wilson Loop Diagram. The second imposes an upper bound on how densely the propagators can be fitted in the diagram. The third ensures that ensures that no propagators cross in the interior of the diagram. In other words, a Wilson loop diagram, $(\cP, n)$ is admissible if and only if $n > \cP +4$, and has neither crossing propagators nor any pairs of propagators that start and end on the same pair of non-adjacent edges.
+The first conditions states that there are at least four more vertices than propagators in an admissible Wilson Loop Diagram. The second imposes an upper bound on how densely the propagators can be fitted in the diagram. The third ensures that ensures that no propagators cross in the interior of the diagram. In other words, a Wilson loop diagram, $(\cP, [n])$ is admissible if and only if $n > \cP +4$, and has neither crossing propagators nor any pairs of propagators that start and end on the same pair of non-adjacent edges.
 
 Note that if we take any admissible Wilson loop diagram and remove the unsupported vertices then we will obtain a weakly admissible Wilson loop diagram that may or may not be admissible itself.
 
 In what follows, we will talk about admissible Wilson Loop diagrams and subdiagrams thereof.
 
 \begin{dfn} \label{subdiagramdfn}
-Let $W = (\cP, n)$ be an admissible Wilson loop diagram. A subdiagram of $W$ is defined by a a subset of propagators of $W$. For $P \subset \cP$, write $W|_P = (P, V(P))$.
+Let $W = (\cP, [n])$ be an admissible Wilson loop diagram. The weakly admissible diagram, $W'$ is a subdiagram of $W$, written $W' \subseteq W$, if \bas W' = (P, V); \quad P \subseteq \cP ; \quad V(P) \subseteq V \subseteq [n]\;.\eas
 \end{dfn}
-\note{Later I will also want a different kind of subobject, one with a subset of the propagators but where the vertex set contains $V(P)$ but may be larger (the most important instance being when it is $[n]$.)  This kind of subobject doesn't need a particular name, nor does it need to be defined up here, but I wanted to mention it so we have it in mind.}
-
-Note that a subdiagram of an admissible diagram need not be admissible. In particular, the condition $|V(P)| > |P| +4$ need not hold.
 
 There is one particular type subdiagram that deserves special attention.
 
@@ -367,7 +368,7 @@ For $W$ an admissible diagram, $(P, V(P))$ is exact if $|V(P)| = |P| + 3$.
 The exact subdiagrams define an equivalence relation amongst Wilson loop diagrams.
 
 \begin{dfn}\label{equivdfn} 
-There is an equivalence relationship on the set of admissible Wilson loops diagrams given by the transititve closure the following binary relation: $W = (\cP, n) \sim W'= (\cP', n)$ if
+There is an equivalence relationship on the set of admissible Wilson loops diagrams given by the transititve closure the following binary relation: $W = (\cP, [n]) \sim W'= (\cP', n)$ if
 \begin{enumerate}
 \item There exist two different exact subdiagrams, $(P, V(P))$ and $(P', V(P'))$ of $W$ and $W'$ respectively such that $V(P) =  V(P')$.
 \item The complementary subdiagrams are identical: $(\cP \setminus P, V(P)^c) = (\cP' \setminus P', V(P')^c)$.
@@ -412,7 +413,7 @@ W_3 = \begin{tikzpicture}[rotate=67.5,baseline=(current bounding box.east)]
 
 The diagrams $W_1 \sim W_2$ because $(\{(5,8), (5,7)\}, \{5,6,7,8,1\})$ and $(\{(5,8), (7,8)\}, \{5,6,7,8,1\})$ are the corresponding differing subdiagrams. Furthermore, there is the equivalence $W_2 \sim W_3$ due to the exact subdiagrams $(\{(1,4), (3,4)\}, \{1,2,3,4,5\})$ and $(\{(1,4), (1,3)\}, \{1,2,3,4,5\})$. This forces an equivalence between $W_1$ and $W_3$, even though one cannot partition the propagators of each into a an exact subdiagram (that may vary between the diagrams) and a complement that is fixed.  \end{eg}
 
-Each Wilson loop diagram, $W = (\cP, n)$ with $|\cP| = k$ is associated to a $k \times n$ matrix with non-zero real variable entries, called $C(W)$:
+Each Wilson loop diagram, $W = (\cP, [n])$ with $|\cP| = k$ is associated to a $k \times n$ matrix with non-zero real variable entries, called $C(W)$:
 
 \ba C(W)_{p,q} = \begin{cases} c_{p,q} & \textrm{ if } q \in V(p) \\
 0  & \textrm{ if } q \not \in V(p)  \end{cases}
@@ -434,7 +435,7 @@ c_{4,1} & 0 & 0 & 0 & c_{4,5} & c_{4,6} & 0 & c_{4,8}  \\
 These $C(W)$ parametrize a subspace of $\Gr(k, n)$ as shown in \cite{wilsonloops}, call it $\Sigma(W)$. The Wilson loop diagrams also define a volume form on $\Sigma(W)$: \bas \Omega(W) = \frac{\prod_{r=1}^{|\cP|} \prod_{v \in V_{p_r}} \textrm{d}c_{p_r}}{R(W)} \;. \eas The denominator $R(W)$ is a polynomial defined by $2 \times 2$ and $1 \times 1$ minors of $C(W)$ as defined below.
 
 \begin{dfn}\label{def R(W)}
-For $W = (\cP, n)$, $R(W) = \prod_{e=1}^n R_e$, with $R_e$ defined by the propagators ending on it. For any edge $e$ of $W$, order the propagators incident on $e$ as $\{p_1 \ldots p_r\}$, ordered such that $p_1$ is closest to the vertex $e$, $p_r$ closest to $e+1$, and $p_i$ is closer to $e$ than $p_{i+1}$. Then \bas R_e =  c_{p_1,e+1} \prod_{j= 1}(r-1) \left((c_{p_j,e} c_{p_{j+1},e+1} - c_{p_{j+1},e} c_{p_{j},e+1} ) \right) c_{p_s,e}\;.\eas Note that in this notation, if $r = 1$, $R_e = c_{p,e} c_{p,e+1}$.
+For $W = (\cP, [n])$, $R(W) = \prod_{e=1}^n R_e$, with $R_e$ defined by the propagators ending on it. For any edge $e$ of $W$, order the propagators incident on $e$ as $\{p_1 \ldots p_r\}$, ordered such that $p_1$ is closest to the vertex $e$, $p_r$ closest to $e+1$, and $p_i$ is closer to $e$ than $p_{i+1}$. Then \bas R_e =  c_{p_1,e+1} \prod_{j= 1}(r-1) \left((c_{p_j,e} c_{p_{j+1},e+1} - c_{p_{j+1},e} c_{p_{j},e+1} ) \right) c_{p_s,e}\;.\eas Note that in this notation, if $r = 1$, $R_e = c_{p,e} c_{p,e+1}$.
 \end{dfn}
 
 
@@ -449,7 +450,7 @@ The main results of this section are the following: we show that two admissible 
 
 \subsection{Wilson loop diagrams as matroids}\label{sec matroid background}
 
-We first give a quick summary of the matroid terminology that we will need; it is not intended as a comprehensive introduction to matroids and the interested reader is referred to [ref].
+We first give a quick summary of the matroid terminology that we will need; it is not intended as a comprehensive introduction to matroids and the interested reader is referred to [ref][find a good matroid reference].
 
 A {\em matroid} $M = (E,\cB)$ consists of a finite ground set $E$ and a non-empty family $\cB \subseteq \cP(E)$ whose elements satisfy the {\em basis exchange property}: for any distinct $B_1,B_2 \in \cB$ and any $a \in B_1 \setminus B_2$, there exists some $b \in B_2 \setminus B_1$ such that $(B_1 \setminus \{a\})\cup \{b\} \in \cB$ as well. The elements of $\cB$ are called the {\em bases} of the matroid. Note that the basis exchange property immediately implies that all bases have the same size.
 
@@ -457,12 +458,12 @@ A subset $A \subseteq E$ is called {\em independent} in $M$ if $A \subseteq B$ f
 
 A {\em circuit} in $M$ is a minimally dependent set. That is, it is a set $C \subseteq E$ such that $C$ is dependent but $C \setminus \{e\}$ is independent for any $e \in C$. A union of circuits is called a {\em cycle}. On the other hand, a {\em flat} is a maximally dependent set, i.e. a set $F \subseteq E$ such that $\rk(F \cup \{e\}) = \rk(F) + 1$ for any $e \in E \setminus F$. Unsurprisingly, a {\em cyclic flat} is a set which is both a flat and a cycle. The set of circuits in a matroid uniquely defines that matroid, as does the set of flats; thus one could specify a matroid by listing its independent sets, bases, circuits, or flats. [ref]
 
-Finally, we describe several important types of matroid. A matroid of rank $k$ with a ground set of size $n$ is called {\em realizable} if there exists some $A \in Gr(k,n)$ whose non-zero $k\times k$ minors are exactly those with columns indexed by elements of $\cB$. A {\em positroid} is a matroid which can be realized by an element of the totally nonnegative Grassmannian $\Gr(k,n)$. Finally, a {\em uniform matroid} of rank $r$ is a matroid in which any set of size $\leq r$ is independent.
+Finally, we describe several important types of matroids. A matroid of rank $k$ with a ground set of size $n$ is called {\em realizable} if there exists some $A \in Gr(k,n)$ whose non-zero $k\times k$ minors are exactly those with columns indexed by elements of $\cB$. A {\em positroid} is a matroid which can be realized by an element of the totally nonnegative Grassmannian $\Gr(k,n)$. Finally, a {\em uniform matroid} of rank $r$ is a matroid in which any set of size $\leq r$ is independent.
 
 
 Matroid theory relates to the study of Wilson loop diagrams as follows. In \cite{wilsonloop}, Agarwala and Amat show that every admissible Wilson loop diagram with $k$ propagators defines a positroid of rank $k$, and that the independent sets can be read directly from the diagram:
 
-\begin{thm} \label{thm WLD defines matroid} \cite[Theorem 3.6]{wilsonloop} Any admissible Wilson loop diagram $W =(\cP, n)$ defines a matroid $M(W)$ with ground set $[n]$. The independent sets are exactly those subsets $V \subseteq [n]$ such that $\nexists U\subseteq V$ satisfying $|\Prop(U)| < |U|$. \label{thm:WLDmatroid}\end{thm}
+\begin{thm} \label{thm WLD defines matroid} \cite[Theorem 3.6]{wilsonloop} Any admissible Wilson loop diagram $W =(\cP, [n])$ defines a matroid $M(W)$ with ground set $[n]$. The independent sets are exactly those subsets $V \subseteq [n]$ such that $\nexists U\subseteq V$ satisfying $|\Prop(U)| < |U|$. \label{thm:WLDmatroid}\end{thm}
 In other words, the independent sets of $M(W)$ correspond to the sets of vertices in $W$ such that no subset supports fewer propagators than the vertices it contains.
 
 Throughout, we take the {\em matroid defined by $W$} to be the matroid $M(W)$ of Theorem \ref{thm WLD defines matroid}. Note that since vertices of the diagram $W$ correspond to columns of the associated matrix $C(W)$, $M(W)$ can also be thought of as the matroid realized by $C(W)$. 
@@ -473,7 +474,7 @@ Throughout, we take the {\em matroid defined by $W$} to be the matroid $M(W)$ of
 
 Let $W = (\cP,n)$ be an admissible Wilson loop diagram, and $M(W)$ its associated matroid. Where it will not cause confusion we conflate the two objects, identifying vertices of $W$ with elements of the ground set $[n]$ in $M(W)$. 
 
-In particular, this allows us to prove results about $M(W)$ by considering the behavior of propagators in $W$. We record a few elementary facts about the rank and cycles of $M(W)$ here as an example of this.\note{It would be nice to have a few more; do we need any others, and/or are there any cool ones?}
+In particular, this allows us to prove results about $M(W)$ by considering the behavior of propagators in $W$. We record a few elementary facts about the rank and cycles of $M(W)$ here as an example of this.
 
 \begin{lem}\label{lem facts about WLD matroids}
 Let $W = (\cP,n)$ be an admissible Wilson loop diagram. Then:
@@ -481,11 +482,11 @@ Let $W = (\cP,n)$ be an admissible Wilson loop diagram. Then:
 \item The rank of a set $V \subseteq [n]$ is bounded above by $\min\{|V|,|\Prop(V)|\}$, with $\rk(V) = |V|$ if and only if $V$ is an independent set.
 %\item Let $v \in [n]$ and $q \in \Prop(v)$. Then for any $V \subset [n]$ such that $q \not \in \Prop(V)$, we have $\rk(V \cup \{v\}) = \rk(V) +1$, i.e. adding a vertex that supports a new propagator to a set increases the rank of the set.
 \item If $C \subseteq [n]$ is a cycle, then $\rk(C) = |Prop(C)|$.
-\item If $[n]$ can be partitioned into at least two non-empty sets, each of which support different sets of propagators, \bas [n] = \cup_i V(P_i) \quad \textrm{s.t.} \quad \cup P_i = \cP; \quad  P_i \cap P_j = \emptyset \;, \eas the the matroid $M(W)$ is seperable, \bas M(W) = \bigoplus_i M(P_i, V(P_i)) \;.\eas 
+\item If $[n]$ can be partitioned into at least two non-empty sets, each of which support different sets of propagators that form a partition of the propagotor set, \bas [n] = \sqcup_i V(P_i) \quad \textrm{s.t.} \quad \sqcup P_i = \cP; \quad V(P_i) \cap V(P_j) = \emptyset; \quad  P_i \cap P_j = \emptyset \;, \eas then the matroid $M(W)$ is seperable, \bas M(W) = \bigoplus_i M(P_i, V(P_i)) \;.\eas 
 \end{enumerate}
 \end{lem}
 \begin{proof}
-The first part of (1) is \cite[Equation (9)]{wilsonloop} and surrounding discussion, and the second part is standard matroid theory. (2) is \cite[Lemma 3.27]{wilsonloop}. (3) is also in \cite[Lemma FIND]{wilsonloop}.
+The first part of (1) is \cite[Equation (9)]{wilsonloop} and surrounding discussion, and the second part is standard matroid theory. (2) is \cite[Lemma 3.27]{wilsonloop}. (3) is a direct consequence of \cite[Lemma 3.20]{wilsonloop} and the fact that $F(P_1)^c = V(P_1^c)$
 \end{proof}
 
 
@@ -496,7 +497,7 @@ The first part of (1) is \cite[Equation (9)]{wilsonloop} and surrounding discuss
 The equivalence relation on Wilson loop diagrams is defined in terms of exact subdiagrams; thus in order to understand the equivalence, we need a way to extract and compare exact subdiagrams. We do this via the notion of a polygon partition of $W$.
 
 \begin{dfn}
-  Let $W = (\cP, n)$ be an admissible Wilson loop diagram.  The \emph{polygon partition} associated to $W$, denoted $\tau(W)$, is defined as follows.
+  Let $W = (\cP, [n])$ be an admissible Wilson loop diagram.  The \emph{polygon partition} associated to $W$, denoted $\tau(W)$, is defined as follows.
   \begin{itemize}
   \item The vertices of $\tau(W)$ correspond to the edges of $W$.
   \item Labeling the vertices of $\tau(W)$ with the edge number of $W$gives a cyclic order to the vertices. Connecting consecutive vertices gives a graph theoretic cycle called the polygon of $\tau(W)$.
@@ -505,7 +506,7 @@ The equivalence relation on Wilson loop diagrams is defined in terms of exact su
 \end{dfn}
 
 \begin{lem}\label{tausimpleplanarlem}
-If $W = (\cP, n)$ is an admissible Wilson loop diagram, then $\tau(W)$ is a simple planar graph whose outer face is a cycle. It is embedded such that the vertices all lie on this infinite face\footnote{That is, it is an \emph{outerplanar} graph}. These vertices are cyclically ordered, with a choice of first vertex giving it an additional compatible linear order.
+If $W = (\cP, [n])$ is an admissible Wilson loop diagram, then $\tau(W)$ is a simple planar graph whose outer face is a cycle. It is embedded such that the vertices all lie on this infinite face\footnote{That is, it is an \emph{outerplanar} graph}. These vertices are cyclically ordered, with a choice of first vertex giving it an additional compatible linear order.
 \end{lem}
 
 \begin{proof}
@@ -575,7 +576,7 @@ A {\em maximal} triangulated piece is one which is not contained in any strictly
  A {\em decomposition} of a polygon partition $\tau(W)$ is a set of 2-connected induced subgraphs of $\tau(W)$ which partition the edges of $\tau(W)$.  
 \end{dfn}
 
-\begin{eg} \label{eg: unique decomposition} For the Wilson loop diagrams and polygon partitions in Example \ref{WLDtopolygonpartition}, the vertex sets $\{1, 2, 3,4\}$ and $\{5, 6, 7, 8\}$ are maximal triangulated pieces for both $\tau(W_1)$ and $\tau(W_3)$. The vertex set $\{4,5, 8, 1\}$ is not a triangulation in either polygon partition. \note{Put a picture of a dual tree.  Make a comment that the embedding is required to obtain uniqueness of the dual}
+\begin{eg} \label{eg: unique decomposition} For the Wilson loop diagrams and polygon partitions in Example \ref{WLDtopolygonpartition}, the vertex sets $\{1, 2, 3,4\}$ and $\{5, 6, 7, 8\}$ give maximal triangulated pieces for both $\tau(W_1)$ and $\tau(W_3)$. The vertex set $\{4,5, 8, 1\}$ is not a triangulation in either polygon partition. \note{Put a picture of a dual tree.  Make a comment that the embedding is required to obtain uniqueness of the dual}
 \end{eg}
 
 \begin{lem} \label{decompositionlem}
@@ -585,7 +586,7 @@ A {\em maximal} triangulated piece is one which is not contained in any strictly
 
 
 \begin{proof}
-We begin by giving an algorithm for the decomposition, then prove its uniqueness. Let $W = (\cP, n)$, with $|\cP| = k$.
+We begin by giving an algorithm for the decomposition, then prove its uniqueness. Let $W = (\cP, [n])$, with $|\cP| = k$.
 
 By \emph{splitting} a vertex $v$ we will mean replacing $v$ by new vertice $v_1, v_2,\ldots, v_{\text{deg}(v)}$ such that each $v_i$ as exactly one neighbour and the union of the neighbourhoods of the $v_i$ is the neighbourhood of $v$.
 
@@ -620,36 +621,47 @@ Consider any two distinct maximal triangulated pieces of $\tau(W)$. These two pi
 
 We are now in a position to relate the triangulated pieces of $\tau(W)$ to exact subdiagrams of $W$.
 
+Every triangulated piece $t$ of an admissible Wilson loop diagram $W$ corresponds to a subdiagram of $W$ by taking the set of propagators $P$ corresponding to edges of $t$ and then taking the subdiagram $(P, V(P))$.  Conversely, given a subdiagram $(P, V(P))$ of $W$ we can obtain a subgraph of $\tau(W)$ as follows:
+\begin{itemize}
+\item The vertex set of the subgraph is
+  \begin{itemize}
+  \item the vertices of $\tau(W)$ corresponding to edges on which propagators of $P$ are supported
+  \item along with any other vertices of $\tau(W)$ for which both neighbours are as described in the previous point.
+  \end{itemize}
+\item The edge set of the subgraph is
+  \begin{itemize}
+  \item the edges of $\tau(W)$ corresponding to propagators of $P$
+  \item along with the outer edges of $\tau(W)$ for which both their end points are in the vertex set
+  \end{itemize}
+\end{itemize}
+Note that the subgraph only depends on $P$, not the vertex set of the subdiagram, but it is not the subgraph of $\tau(W)$ consisting only of edges corresponding to propagators of $P$.
+
 
 \begin{lem}\label{lem triang to exact}
-  Let $W$ be an admissible Wilson loop diagram and $\tau(W)$ its polygon partition.  The triangulated pieces of $\tau(W)$ correspond to the exact subdiagrams of $W$.
+  Let $W$ be an admissible Wilson loop diagram and $\tau(W)$ its polygon partition.  The triangulated pieces of $\tau(W)$ correspond to the exact subdiagrams of $W$ using the correspondence described above.
 \end{lem}
 
 \begin{proof}
 Let us first record a few standard facts about polygon triangulations (that is, about triangulations with all vertices on the outer face).  If such a triangulation has $n$ vertices then it has $n$ edges on the polygon (that is, on the outer face) and $n-3$ edges which are not.  No planar graph with the same vertices and the same outer face can have more edges than the triangulation, and every such simple graph with $n-3$ edges off the outer face is a triangulation.
 
-Since $W$ is admissible, by Lemma \ref{tausimpleplanarlem} $\tau(W)$ is a simple graph. Furthermore, $t$ is not all of $\tau(W)$.
+Since $W$ is admissible, by Lemma \ref{tausimpleplanarlem} $\tau(W)$ is a simple graph. Let $t$ be a triangulated piece of the decomposition of $\tau(W)$ given in Lemma \ref{decompositionlem}; note that $t$ cannot be equal to $\tau(W)$ by the definition of admissible diagrams.
 
-Let $t$ be a triangulated piece of the decomposition of $\tau(W)$ given in Lemma \ref{decompositionlem}; note that $t$ cannot be equal to $\tau(W)$ by the definition of admissible diagrams.
+If $t$ has 2 vertices then $t$ corresponds to a propagator that connects two non-adjacent edges. Therefore, the trivial triangulation is a trivial exact subdiagram.
 
-If $t$ has 2 vertices, then $t$ has two connected components. Therefore, $t$ corresponds to a propagator that connects two non-adjacent edges. Therefore, the trivial triangulation is a trivial exact subdiagram.
+Now suppose that $t$ has $m>2$ vertices.  We count how many edges of $t$ are not on the outer face of $\tau(W)$.  Consider the intersection of $t$ with the outer face of $\tau(W)$: this is a possibly disconnected subgraph of the polygon of $\tau(W)$ and this subgraph has $m$ vertices. Call this new subgraph $S$, and let $j$ be the number of connected components of $S$.   To join the components of $S$ into the outer face of $t$, $t$ must have $j$ edges in its outer face which are not in the outer face of $\tau(W)$.  Furthermore $t$ has $m-3$ edges not in its outer face and so also not in the outer face of $\tau(W)$.  Thus there are $m-3+j$ edges of $t$ not in the outer face of $\tau(W)$.
 
-Now suppose that $t$ has $m>2$ vertices; we count how many edges of $t$ are not on the outer face of $\tau(W)$.  Consider the intersection of $t$ with the outer face of $\tau(W)$: this is a possibly disconnected subgraph of the polygon of $\tau(W)$ with $m$ vertices, call it $S$.  Let $k$ be the number of connected components of $S$.   To join the components $S$ must have $k$ edges not in the outer face of $\tau(W)$.  Furthermore $t$ has $m-3$ edges not in its outer face and so also not in the outer face of $\tau(W)$.  Thus there are $m-3+k$ edges of $t$ not in the outer face of $\tau(W)$.
+Each of these $m-3+j$ internal edges corresponds to a propagator in $W$; call this set of propagators $P$.  Next we count the size of $V(P)$.  Each of the $m$ vertices in the outer face of $t$ corresponds to an edge of $W$. These $m$ edges define $j$ connected components of the outer polygon of $W$. Thus the set $V(P)$ has $m+j$ vertices.  In other words, 
+\[|V(P)| = m+j = |P| +3\;.\]
+Thus the subdiagram $(P,V(P))$ defined by $t$ is exact.
 
-Each of these $m-3+k$ internal edges correspond to propagators in $W$, call this set $P$.  Next we count the size of $V(P)$.  Each of the $m$ vertices in the outer face of $t$ corresponds to an edge of $W$. These $m$ edges define $k$ connected compnents of the outer polygon of $W$. Thus the set $V(P)$ has $m+k$ vertices.  In other words, 
-\[|V(P)| = m+k = |P| -3\;.\]
+Conversely, suppose we have an exact subdiagram $(P, V(P))$ of $W = (\cP, [n])$ supported on $|V(P)| = |P|+3$ vertices, and let $t$ be the subgraph of $\tau(W)$ corresponding to $(P,V(P))$. 
 
+Suppose $|P|=1$. Let $p$ be the element of $P$. The exactness condition on $(P, V(P))$ says that the four supporting vertices of $p$ are distinct.  If the support of $p$ is four consecutive vertices, then the ends of the edge corresponding to $p$ in $\tau(W)$ have a common neighbour and so $t$ is a single triangle, hence a triangulated piece.  If the support of $p$ is not four consecutive vertices, then the vertices which are the ends of $t$ are separated by at least two vertices along the cycle.  This implies that $t$ is a trivial triangulated piece.
 
+Now suppose $|P|>1$.  Let $j=|P|$, $m=|V(P)|$, and 
+suppose that the set $V(P)$ defines $c$ disjoint cyclic intervals of $[n]$. Then $t$ has $m-c$ vertices.  If $t$ were a triangulation, $t$ would have $j -c$ internal edges.
 
-Conversely, suppose we have an exact subdiagram $(P, V(P))$ of $W = (\cP, n)$ supported on $|V(P)| = |P|+3$ vertices, and let $t$ be the subgraph of $\tau(W)$ corresponding to $(P,V(P))$. 
-
-If $|P|=1$, then $(P, V(P))$ is a trivially exact subdiagram. In this case $t$ is an edge internal to $\tau(W)$ connecting two boundary edges, which by definition is a triangulation. 
-
-Suppose the set $V(P)$ defines $c$ disjoint cyclic intervals of $[n]$. Then the corresponding subgraph of $\tau(W)$ has $m-c$ vertices. Call it $t$. If $t$ were a triangulated component, $t$ would have $k -c$ internal edges.
-
-The graph $t$ has $k$ edges that come from propagators, and $m - 2c$ edges that come from the boundary polygon of $\tau(W)$. Since $t$ has $m-c$ vertices, it has $m-c$ external edges, of which $c$ come from propagators. Therefore, of the $k$ edges of $t$ that come from propagators, $k-c$ are internal to the connected component. Therefore, this is triangulated.
-
-
+The graph $t$ has $j$ edges that come from propagators, and $m - 2c$ edges that come from the boundary polygon of $\tau(W)$. Since $t$ has $m-c$ vertices, it has $m-c$ external edges, of which $c$ come from propagators. Therefore, of the $j$ edges of $t$ that come from propagators, $j-c$ are internal to the connected component. Therefore, $t$ is a triangulated piece.
 
 
 %  The statement of the lemma then follows form the fact that inclusion is preserved under $\tau$ and so maximality also corresponds under $\tau$.
@@ -667,7 +679,7 @@ An exact subdiagram $(P, V(P))$ is a {\em maximal exact subdiagram} of $W$ if th
 
 
 \begin{cor} \label{uniqueproppartitioncor}
-Any admissible Wilson loop diagram $W = (\cP, n)$ can be uniquely decomposed into maximal exact subdiagrams. These maximal subdiagrams partition $\cP$.
+Any admissible Wilson loop diagram $W = (\cP, [n])$ can be uniquely decomposed into maximal exact subdiagrams. These maximal subdiagrams partition $\cP$.
 \end{cor}
 
 \begin{proof}
@@ -686,21 +698,21 @@ Let $M = (E,\cB)$ be a matroid, and $S \subseteq E$. The {\em contraction} of $M
 In \cite{wilsonloop}, Agarwala and Amat show that certain subdiagrams of $W$ can be realized as contractions of $M(W)$:
 
 \begin{lem} \label{contractsubdiaglem} \cite[Theorem 3.33]{wilsonloop} 
-Let $W = (\cP, n)$ be an admissible Wilson loop diagram and $P \subseteq \cP$. If the set $V(P)^c$ has rank $|P^c|$, then the matroid defined by the subdiagram $(P, V(P))$ is equal to the contraction $M(W)/V(P)^c$.
+Let $W = (\cP, [n])$ be an admissible Wilson loop diagram and $P \subseteq \cP$. If the set $V(P)^c$ has rank $|P^c|$, then the matroid defined by the subdiagram $(P, V(P))$ is equal to the contraction $M(W)/V(P)^c$.
 \end{lem}
 
 
 In Lemma \ref{maxexactcomplementrank} below we show that every exact subdiagram satisfies the rank condition of Lemma \ref{contractsubdiaglem}. In order to do this, we first examine the properties of the set by which we contract.
 
 \begin{dfn}\label{def prop flat}
-Let $W = (\cP,n)$ be an admissible Wilson loop diagram and $P \subseteq \cP$. The set $F(P) := V(P^c)^c$ is called the {\em propagator flat} of $P$.
+Let $W = (\cP,[n])$ be an admissible Wilson loop diagram and $P \subseteq \cP$. The set $F(P) := V(P^c)^c$ is called the {\em propagator flat} of $P$.
 \end{dfn}
-Thus in Lemma \ref{contractsubdiaglem} above we would contract $M(W)$ by the propagator flat $F(P^c)$ of the {\em complement} of $P$ in order to study $(P,V(P))$. The justification for this notation is given by (1) of the next lemma: the set $F(P)$ consists of exactly those vertices which {\em only} support propagators in $P$.
+Thus in Lemma \ref{contractsubdiaglem} above we would contract $M(W)$ by the propagator flat $F(P^c)$ of the {\em complement} of $P$ in order to study $(P,V(P))$. The justification for this notation is given by (1) of the next lemma: the set $F(P)$ consists of vertices which {\em only} support propagators in $P$ (or no propagators at all).
 
 \begin{lem}\label{lem properties of prop flats}
 Let $F(P)$ be a propagator flat as defined above. Then
 \begin{enumerate}
-\item $F(P) = V(P) \setminus V(P^c)$.
+\item $F(\emptyset)$ is exactly the set of vertices which support no propagators, while for $P \neq \emptyset$ we have \[F(P) = \big(V(P) \setminus V(P^c)\big) \cup F(\emptyset).\] \note{updated (1) to match new definition of $F(P)$; }
 \item If $Q\subseteq P$ then $F(Q) \subseteq F(P)$.
 \item $F(P)$ is a flat of $M(W)$, thus justifying the name ``propagator flat''.
 \end{enumerate}
@@ -723,7 +735,7 @@ To prove (3), we need to show that $F(P)$ is maximally dependent. If $F(P) = [n]
 \begin{proof}
 (1) If $F$ is an independent flat, then $C = \emptyset$ and the statement is trivially true. Now suppose that $F$ is a dependent set, so $C$ is non-empty.
 
-Let $v \in C$. Clearly $\Prop(v) \subseteq \Prop(C)$, and so by Lemma \ref{lem properties of prop flatfs} we have $F(\Prop(v)) \subseteq F(\Prop(C))$. Since $v \in F(\Prop(v))$ by the definition of propagator flat, we have $v \in F(\Prop(C))$ as required.
+Let $v \in C$. Clearly $\Prop(v) \subseteq \Prop(C)$, and so by Lemma \ref{lem properties of prop flats} we have $F(\Prop(v)) \subseteq F(\Prop(C))$. Since $v \in F(\Prop(v))$ by the definition of propagator flat, we have $v \in F(\Prop(C))$ as required.
 
 Now suppose there exists some $w \in  F(\Prop(C)) \setminus C$. Let $B$ be an independent subset of $C$ of maximal rank; we first show that $B \cup \{w\}$ is a dependent set in $M(W)$. Indeed, by \cite[Proposition 3.10]{wilsonloop}, there exists some $Q \subseteq \Prop(B)$ with $|Q| = |B|$ and such that $B$ is a basis in $M(Q,V(Q))$. We therefore have
 \[Q \subseteq \Prop(B) \subseteq \Prop(C),\]
@@ -733,7 +745,7 @@ Returning our attention to $M(W)$, the dependent set $B \cup \{w\}$ must contain
 
 For part (2), first note that $F \setminus C$ is automatically independent as it contains no circuits.
 
-For any $e \not\in F$, we certainly have $\rk((F\setminus C)\cup\{e\}) = \rk(F\setminus C) +1$ since $F$ is a flat. Now let $e \in C$, and suppose that $\rk((F\setminus C)\cup\{e\}) = \rk(F\setminus C)$. This implies that $(F\setminus C)\cup \{e\}$ is dependent, and hence contains a circuit. This circuit must contain at least two elements (since all vertices support at least one propagator), but this contradicts the fact that $C$ was the union of all circuits in $F$. 
+For any $e \not\in F$, we certainly have $\rk((F\setminus C)\cup\{e\}) = \rk(F\setminus C) +1$ since $F$ is a flat. Now let $e \in C$, and suppose that $\rk((F\setminus C)\cup\{e\}) = \rk(F\setminus C)$. This implies that $(F\setminus C)\cup \{e\}$ is dependent, and hence contains a circuit. This circuit must contain at least two elements \note{What if $e \in C$ supported no propagators? $\{e\}$ would then be a circuit on its own}(since all vertices support at least one propagator), but this contradicts the fact that $C$ was the union of all circuits in $F$. 
 
 Thus $\rk((F\setminus C)\cup \{e\}) = \rk(F\setminus C) + 1$ for any $e \not\in F\setminus C$, and hence $F\setminus C$ is a flat.
 \end{proof}
@@ -748,7 +760,7 @@ In particular, any propagator flat can be written as a union of a cyclic propaga
 %Given any matroid, one may restrict it to a subset of the base set. The bases of the restricted matroid come from intersecting bases of the original with the subset. It is worth noting that a the matroid defined by a subdiagram is different from the restriction of the matroid of a Wilson loop diagram to a set of vertices.
 
 % \begin{dfn} \label{restrictiondfn}
-% For $W = (\cP, n)$, the restricted diagram, $W|_V$ is the matroid defined by only looking at the vertices $V \subset [n]$.
+% For $W = (\cP, [n])$, the restricted diagram, $W|_V$ is the matroid defined by only looking at the vertices $V \subset [n]$.
 % \end{dfn}
 
 % The key difference between a subdiagram and a restriction is that the propagator support function does not change in the case of restriction, while it may in the case of a subdiagram. In particular, for $v \in V$, $\Prop_W(v) = \Prop_{W|_V}(v)$, while $\Prop_{(P, V(P))} (v) = \Prop_W(v) \cap P$.
@@ -758,36 +770,37 @@ In particular, any propagator flat can be written as a union of a cyclic propaga
 
 
 \begin{lem} \label{maxexactcomplementrank}
-Let $W = (\cP, n)$ be a Wilson loop diagram, and $P \subseteq \cP$. Then: \begin{enumerate}
+Let $W = (\cP, [n])$ be a Wilson loop diagram, and $P \subseteq \cP$. Then: \begin{enumerate}
 \item If $(P,V(P))$ is an exact subdiagram in $W$, then $\rk(F(P^c)) = |P^c|$.
 \item If $(P,V(P))$ is a maximal exact subdiagram in $W$, then $F(P^c)$ is a cyclic flat.
 \end{enumerate}
 \end{lem}
 
-Note that by definition, since $F(P^c)$ has at $|P^c|$ propagators in it, this is an upper bound on the rank. However, showing equality on the first part is harder.
+Note that $|P^c|$ is always an upper bound on the rank of $F(P^c)$ for any $P \subseteq \cP$, since $F(P^c)$ supports at most $P^c$ propagators. However, showing equality is far harder.
 
 \begin{proof}
-We first verify that $F(P^c) = V(P)^c$ is non-empty and dependent for any exact subdiagram $(P,V(P))$. The definition of exactness means that the vertices $V(P)$ cannot support a larger set of propagators (otherwise $W$ would no longer be admissible). Therefore, since $P \subsetneq \cP$, there must be at least one propagator supported on $V(P)^c$, i.e. it cannot be empty.
+First note that if $(P,V(P))$ is exact then the admissiblity of $W$ guarantees that $F(P^c)$ is non-empty. 
 
 Since $W$ is admissible, we have $n \geq |\cP| + 4$. Rewriting this as
 \[|V(P)| + |F(P^c)|  \geq  |P| + |P^c| +4,\]
 and combining it with the fact that $|V(P)| = |P| + 3$ (from the exactness of $(P,V(P))$), we obtain
 \begin{equation}\label{eq F is dependent}|F(P^c)| > |P^c| \;.\end{equation}
-By Lemma \ref{lem properties of prop flats}, $F(P^c)$ is the set of vertices that {\em only} supports propagators in $P^c$, so in particular we have $\Prop(F(P^c)) = P^c$. Equation \eqref{eq F is dependent} is therefore saying that $F(P^c)$ supports fewer propagators than the number of vertices it contains, i.e. $F(P^c)$ is dependent. 
+By Lemma \ref{lem properties of prop flats}, $F(P^c)$ is a set of vertices that supports only propagators in $P^c$, so in particular we have $\Prop(F(P^c)) = P^c$. Equation \eqref{eq F is dependent} is therefore saying that $F(P^c)$ supports fewer propagators than the number of vertices it contains, i.e. $F(P^c)$ is dependent. 
 
 We address part (2) first. Suppose that $(P, V(P))$ is a maximal exact subdiagram; by Corollary \ref{classifyflats} we can decompose $F(P^c)$ as
 \begin{equation}\label{eq decompose F}F(P^c) = C \sqcup S,\end{equation}
-where $C$ is the largest cyclic flat contained in $F(P^c)$ and $S$ is an  independent set. Note that $C$ must be non-empty since $F(P^c)$ is dependent. We proceed by showing that $S$ must be empty, forcing $F(P^c)$ to be a cyclic flat.
+where $C$ is the largest cyclic flat contained in $F(P^c)$ and $S$ is an  independent set. Note that $C$ must be non-empty since $F(P^c)$ is non-empty and dependent. We proceed by showing that $S$ must be empty, forcing $F(P^c)$ to be a cyclic flat.
 
 Since $C = F(\Prop(C))$ by Lemma \ref{lem decompose flat}, define $Q := \Prop(C)^c$ so that we may write $C = F(Q^c) = V(Q)^c$. Note that since $C \subseteq F(P^c)$, $P \subseteq Q$. Furthermore, we have 
-\begin{equation}\rk(S) = |S| \leq \rk(F(P^c)) - \rk(C)  \leq |P^c| - \rk(C) \;, \label{increasingrank}\end{equation}
-where first equality comes from the fact that $S$ is an independent set, and the final inequality comes from Lemma \ref{lem facts about WLD matroids}(1). Since $\rk(C) = |\Prop(C)| = |Q^c|$ by Lemma \ref{lem facts about WLD matroids}(2), we can rearrange \eqref{increasingrank} to obtain the inequality
+\begin{equation}|S| = \rk(S) \leq \rk(F(P^c)) - \rk(C)  \leq |P^c| - \rk(C) \;, \label{increasingrank}\end{equation}
+where first equality comes from the fact that $S$ is an independent set,\note{Did we ever address the question of where the middle inequality comes from? Can we argue by number of propagators?} and the final inequality comes from Lemma \ref{lem facts about WLD matroids}(1). Since $\rk(C) = |\Prop(C)| = |Q^c|$ by Lemma \ref{lem facts about WLD matroids}(2), we can rearrange \eqref{increasingrank} to obtain the inequality
 \begin{equation} |P| + |S| \leq |P| + |P^c| - \rk(C) = |Q| \;. \label{Qsizebound}\end{equation}
-Furthermore, since $V(Q) = S \sqcup V(P)$ (by equation [ref] and the definition of $Q$) we may write  
+Furthermore, since $V(Q) = S \sqcup V(P)$ (by equation \eqref{eq decompose F} and the definition of $Q$) we may write  
 \begin{equation} |V(Q)| = |S| + |V(P)| = |S| + |P| +3 \label{VQsize} \;.\end{equation} 
-Combining this with \eqref{Qsizebound} gives $|V(Q)| - 3 \leq |Q|$. That is, either $W$ was not admissible, or $(P,V(P))$ was not a maximal exact subdiagram. In other words, $S$ cannot be non-empty, proving that $F(P^c)$ is a cyclic flat, and therefore of maximal rank. 
+Combining this with \eqref{Qsizebound} gives $|V(Q)| \leq |Q| + 3$. Since $W$ is admissible, we conclude that $(Q,V(Q))$ is exact; since $V(Q) = V(P) \sqcup S$ and $(P,V(P))$ is maximal exact, it follows that $S = \emptyset$. It now follows from \eqref{eq decompose F} that $F(P^c)$ is a cyclic flat, and hence from Lemma \ref{lem facts about WLD matroids} that
+\[\rk(F(P^c)) = |Prop(F(P^c))| = |P^c|.\]
 
-Let $P$ be a maximal exact subdiagram as above, and let $(R, V(R))$ be an exact subdiagram that is not maximal. That is, $R \subsetneq P$.
+Let $P$ be a maximal exact subdiagram as above, and let $(R,V(R))$ be an exact subdiagram that is not maximal. That is, $R \subsetneq P$.
 
 Since $R \subset P$, $V(P) = V(R) \sqcup S$. Since $P$ and $R$ both define exact subdiagrams, we may write $|V(P)| = |V(R)| + |P \setminus R|$, where $S$ is a vertex set of size $|P \setminus R|$ with $(P \setminus R \subset \Prop(S)$. Since $\rk V(P) =  \rk V(R) + |P \setminus R|$, $S$ is independent. Taking the complements, we may write \bas F(R^c ) = F(P^c) \sqcup S \;.\eas Since $S$ is an independent set of vertices of the correct size supporting the appropriate propagators, this gives $ \rk F(R^c ) = |R^c|$.
 
@@ -799,7 +812,7 @@ In particular, any exact subdiagram $(P,V(P))$ satisfies the conditions of Lemma
 Matroids coming from exact subdiagrams have an especially nice structure, as we now show. Recall from Section \ref{sec matroid background} that a uniform matroid of rank $r$ is one in which all sets of size $ \leq r$ are independent.
 
 \begin{thm} \label{exactcircuitlem}
-Let $W':= (P, V(P))$ be a subdiagram of an admissible Wilson loop diagram $W= (\cP, n)$. Then $W'$ is an exact subdiagram if and only if $M(W')$ is a uniform matroid of rank $|P|$.
+Let $W':= (P, V(P))$ be a subdiagram of an admissible Wilson loop diagram $W= (\cP, [n])$. Then $W'$ is an exact subdiagram if and only if $M(W')$ is a uniform matroid of rank $|P|$.
 \end{thm}
 
 \begin{proof}
@@ -1022,7 +1035,7 @@ Since $W$ contains finitely many vertices, this must eventually terminate in one
 Start by choosing a propagator $p_1$ of length 2 in $W$ (which exists by Remark~\ref{rem:props of length 2 and 3}), and write $(j_1,j_1+2)$ for its support.  If it is part of one of the configurations we are looking for then we are done, 
 %a configuration \eqref{eq:2 prop config} we are done,
 so suppose otherwise: 
-Since $p_1$ is not in configuration \ref{item pair of 2s}, there are no propagators of length $3$, and every vertex is supported then there must exist a propagator $q_1$ of length $\geq 4$ with one end on edge $j_1$ or on edge $j_1-1$ or on edge $j_1-2$.  This bounds a region $[i_1,k_1]$ (where $k_1 \in \{j_1-1, j_1, j_1+1\}$) which does not contain $p_1$.
+By assumption $p_1$ is not in configuration \ref{item pair of 2s}, there are no propagators of length $3$, and every vertex is supported.  Therefore there must exist a propagator $q_1$ of length $\geq 4$ with one end on edge $j_1$ or on edge $j_1-1$ or on edge $j_1-2$.  This bounds a region $[i_1,k_1]$ (where $k_1 \in \{j_1-1, j_1, j_1+1\}$) which does not contain $p_1$.
 
 Now suppose $q_{r}$ exists by the induction hypothesis and bounds a region $[i_r,k_r]$ not containing any $p_i$ for $i\leq r$.  Consider the restricted diagram $W_r:=W_{[i_r,k_r]}$; by the original hypotheses on $W$ every vertex $l \in [i_r+2,k_r-2]$ (which is a non-empty interval since $\ell(q_r) \geq 4$) must have support $\geq 1$, while the same is true for $l \in \{i_r,i_r+1,k_r-1,k_r\}$ because of $q_r$.  
 
@@ -1286,7 +1299,7 @@ By [ref], the Grassmann necklaces of type $(k,n)$ are in 1-1 correspondence with
 We now describe an algorithm that, when applied to an admissible Wilson loop diagram, produces exactly the Grassmann necklace of the corresponding positroid.
 
 \begin{algorithm}\label{alg:put GN on WLD}
-Let $W = (\cP, n)$ be an admissible Wilson loop diagram. This gives an algorithm for calculating the set $I_a$, for $a \in [n]$.
+Let $W = (\cP, [n])$ be an admissible Wilson loop diagram. This gives an algorithm for calculating the set $I_a$, for $a \in [n]$.
 
 \begin{enumerate}
 \item Fix a vertex $a \in [n]$. Set $i:=a$ and $I_a = \emptyset$.
@@ -1301,14 +1314,10 @@ Let $W = (\cP, n)$ be an admissible Wilson loop diagram. This gives an algorithm
 
 If the propagator $p$ is removed at vertex $i$ according to the algorithm for $I_a$, we say that $p$ \emph{contributes} $i$ to $I_a$. Notationally, we represent this by allowing the $I_i$ symbol to represent a function as well as a set, as follows:
 \begin{dfn}\label{def I_i as a function}
-Let $W = (\cP, n)$ be an admissible Wilson loop diagram. For each $a \in [n]$, define a function $I_a : \cP \longrightarrow [n]$ by
+Let $W = (\cP, [n])$ be an admissible Wilson loop diagram. For each $a \in [n]$, define a function $I_a : \cP \longrightarrow [n]$ by
 \[I_a(p) := \text{the vertex label that $p$ contributes to $I_a$ in Algorithm~\ref{alg:put GN on WLD},}\]
 for each $p \in \cP$.
 \end{dfn}
-
-
-
-
 
 
 \begin{lem}\label{lem no fourth vertex}
@@ -1371,7 +1380,7 @@ It follows from the proof of Lemma~\ref{lem no fourth vertex} that Algorithm~\re
 %
 %
 %\begin{lem}\label{protecting lem}
-%Let $W = (\cP, n)$ be an admissible Wilson loop diagram, and $p = (i,j) \in \cP$, and $a \in [n]$ be a vertex. For $v \in \{i,j\}$, if $P_v(p) \neq \emptyset$, write $P_v(p) = \{s_1 \ldots s_r, t_2, \ldots t_r\}$ as above. Then $p$ does not contribute $v$ to $I_a$ if $i_{s_r} +1 <_{v+1} a <_{v+1} v+1 $. If both $P_v(p)$ and $P_{v+1}(p)$ are non empty, then $p$ also does not contribute $v+1$ to $I_a$.
+%Let $W = (\cP, [n])$ be an admissible Wilson loop diagram, and $p = (i,j) \in \cP$, and $a \in [n]$ be a vertex. For $v \in \{i,j\}$, if $P_v(p) \neq \emptyset$, write $P_v(p) = \{s_1 \ldots s_r, t_2, \ldots t_r\}$ as above. Then $p$ does not contribute $v$ to $I_a$ if $i_{s_r} +1 <_{v+1} a <_{v+1} v+1 $. If both $P_v(p)$ and $P_{v+1}(p)$ are non empty, then $p$ also does not contribute $v+1$ to $I_a$.
 %\end{lem}
 %
 %\begin{proof}
@@ -1384,7 +1393,7 @@ It follows from the proof of Lemma~\ref{lem no fourth vertex} that Algorithm~\re
 %Thus we say that $P_v(p)$ protects $p$ at $v$ from $a$, for $a \in [i_{s_r}+2, v]$. There is an easy corollary to this, describing when such a protecting set cannot exist.
 %
 %\begin{cor} \label{protecting cor}
-%Let $W = (\cP, n)$ be an admissible Wilson loop diagram, and $p = (i,j) \in \cP$. Picking a $v \in \{i, j\}$ write $p = (i_p, j_p)$ with $i_p <_{v+1} j_p$. If $a \in [j_p+1, i_p+1]$ then there can be no protecting set $P_v$ or $P_{v+1}$ protecting $p$ at $v$ or $v+1$ from $a$.
+%Let $W = (\cP, [n])$ be an admissible Wilson loop diagram, and $p = (i,j) \in \cP$. Picking a $v \in \{i, j\}$ write $p = (i_p, j_p)$ with $i_p <_{v+1} j_p$. If $a \in [j_p+1, i_p+1]$ then there can be no protecting set $P_v$ or $P_{v+1}$ protecting $p$ at $v$ or $v+1$ from $a$.
 %\end{cor}
 %
 %\begin{proof}
@@ -1394,7 +1403,7 @@ It follows from the proof of Lemma~\ref{lem no fourth vertex} that Algorithm~\re
 %The converse, however requires an extra condition.
 %
 %\begin{lem} \label{protect conv lem}
-%For $W = (\cP, n)$, $p = (i,j)$, and $v \in \{i, j\}$ and $ a \in [n]$ a vertex of $W$, if $v$ (resp. $v+1$) is the first vertex of $V_p$ in the $<_a$ order such that $P_v$ (resp. neither $P_v$ nor $P_{v+1}$) does not exist, then $p$ contributes $v$ (resp. $v+1$) to $I_a$.
+%For $W = (\cP, [n])$, $p = (i,j)$, and $v \in \{i, j\}$ and $ a \in [n]$ a vertex of $W$, if $v$ (resp. $v+1$) is the first vertex of $V(p)$ in the $<_a$ order such that $P_v$ (resp. neither $P_v$ nor $P_{v+1}$) does not exist, then $p$ contributes $v$ (resp. $v+1$) to $I_a$.
 %\end{lem}
 %
 %\begin{proof}
@@ -1424,7 +1433,7 @@ It follows from the proof of Lemma~\ref{lem no fourth vertex} that Algorithm~\re
 %
 %We use these results to prove some properties about the Algorithm \ref{alg:put GN on WLD}.
 %\begin{prop}\label{res:alg k labels}
-%If $W = (\cP, n)$ is an admissible Wilson loop diagram with $|\cP| = k$, then Algorithm~\ref{alg:put GN on WLD} puts exactly $k$ distinct labels on each edge.
+%If $W = (\cP, [n])$ is an admissible Wilson loop diagram with $|\cP| = k$, then Algorithm~\ref{alg:put GN on WLD} puts exactly $k$ distinct labels on each edge.
 %\end{prop}
 %\begin{proof}
 %It is enough to show that the algorithm terminates in at most $n$ steps for each $a \in [n]$. In other words, that all $k$ propagators of $W$ are removed by the time the algorithm has cycled through all the vertices, starting at $a$. Suppose this doesn't happen, i.e. there is a propagator $p= (i,j)\in \cP$ which survives the first $n$ steps of the algorithm for some starting vertex $a$. Without loss of generality, assume $a \leq_a i <_a j$. Otherwise, change the roles of $i$ and $j$.
@@ -1437,109 +1446,34 @@ It follows from the proof of Lemma~\ref{lem no fourth vertex} that Algorithm~\re
 
 Given a propagator $p$ and a vertex $i$ in its support, it will be very useful in the following to understand on what set of vertices the Grassmann necklace algorithm assigns $i$ to $p$.  The answer is that the set is a non-empty cyclic interval.  Lemma~\ref{vertex cyclic int lem} establishes this, but first we need a preliminary lemma which is also useful in its own right.
 
-\begin{lem}\label{lem last vert}
-  Let W be an admissible WLD on $n$ vertices with Grassmann necklace $I_1, \ldots, I_n$.  Then for all $1\leq a \leq n$, $a-1 \not\in I_a$ interpreted cyclically (that is for $a=1$, $a-1$ is interpreted to be $n$.)
-\end{lem}
+%\begin{lem}\label{lem last vert}
+%  Let W be an admissible WLD on $n$ vertices with Grassmann necklace $I_1, \ldots, I_n$.  Then for all $1\leq a \leq n$, $a-1 \not\in I_a$ interpreted cyclically (that is for $a=1$, $a-1$ is interpreted to be $n$.)
+%\end{lem}
+%
+%\begin{proof}
+%Without loss of generality we can suppose $a=1$, so it suffices to show that $C(W)$ with the $n$th column removed is full rank.  (This suffices because if $C(W)$ with the $n$th column removed had full rank but the lexicographically minimal basis of $C(W)$ included the $n$th column, then we'd obtain a contradiction by taking this minimal basis with the $n$th column removed and extending it to a basis using a column from the first $n-1$ columns of $C(W)$ which is possible by the full rank assumption.)
+%
+%Because the nonzero entries of $C(W)$ are independent indeterminants, it suffices to show that there is some choice of nonzero entries of $C(W)$, one in each row, each in different columns, and none of which are the $n$th column.  This is equivalent to an assignment of all propagators to supporting vertices so that no two are assigned to the same vertex and none are assigned to vertex $n$.  The lemma is proved if we show such an assignment exists.
+%
+%Consider an assignment $f$ of a subset of propagators to vertices not including vertex $n$ with the maximal number of propagators.  If $f$ assigns $n$ propagators then we are done.  Otherwise there is a propagator $p$ which is not assigned but, by maximality, all of $p$s supporting vertices (other than possibly $n$) are assigned.  Build a sequence of sets $S_i$ of propagators and $T_i$ of vertices as follows.
+%
+%\begin{enumerate}
+%  \item $S_0={p}$ and $T_0$ is the support of $p$ except for $n$.  Set $i=0$.
+%  \item Let $R$ be the set of propagators which are assigned to a vertex in $T_i$ by $f$. Let $S_{i+1}= S_i \cup R$.  Let $T_{i+1} = T_i \cup (\text{supp}(R) - \{n\})$.\label{item loop step}
+%  \item If there is a vertex $v_{i+1}$ in $T_{i+1}$ which has not been assigned by $f$ then by construction there is a propagator $q_{i+1} \in S_{i+1}-S_i$ which can be assigned to $v_{i+1}$.  Do so, removing $q_{i+1}$'s old assignment.  This frees up a vertex $v_{i}$ in $T_i$ and so there is a propagator $q_{i} \in S_{i}$ which can be assigned to this vertex freeing up an earlier vertex and so on until $p$ has been assigned.  This new assignment contradicts the maximality of $f$.
+%  \item  If nothing changed in step \ref{item loop step} then all vertices of $T_{i+1}$ are assigned to propagators in $S_{i+1}-\{p\}$ and vice versa.  Thus $|S_{i+1}| = |T_{i+1}|+1$.  Also all the support of propagators in $S_{i+1}$ is in $T_{i+1} \cup \{n\}$, which is a set of size $|T_{i+1}|+1 = |S_{i+1}|$.  Thus we have $|S_{i+1}|$ propagators supported on $|S_{i+1}|$ vertices contradicting admissibility.
+%  \item Increment $i$ and go to \ref{item loop step}
+%\end{enumerate}
+%
+%This procedure must be finite as either a contradiction is found or $S_i$ grows at each step but $W$ has finitely many propagators.  However, the only way for the process to end is by reaching a contradiction.  Therefore any maximal assignment is a basis not including column $n$ which proves the lemma.
+%\end{proof}
 
-\begin{proof}
-Without loss of generality we can suppose $a=1$, so it suffices to show that $C(W)$ with the $n$th column removed is full rank.  (This suffices because if $C(W)$ with the $n$th column removed had full rank but the lexicographically minimal basis of $C(W)$ included the $n$th column, then we'd obtain a contradiction by taking this minimal basis with the $n$th column removed and extending it to a basis using a column from the first $n-1$ columns of $C(W)$ which is possible by the full rank assumption.)
 
-Because the nonzero entries of $C(W)$ are independent indeterminants, it suffices to show that there is some choice of nonzero entries of $C(W)$, one in each row, each in different columns, and none of which are the $n$th column.  This is equivalent to an assignment of all propagators to supporting vertices so that no two are assigned to the same vertex and none are assigned to vertex $n$.  The lemma is proved if we show such an assignment exists.
-
-Consider an assignment $f$ of a subset of propagators to vertices not including vertex $n$ with the maximal number of propagators.  If $f$ assigns $n$ propagators then we are done.  Otherwise there is a propagator $p$ which is not assigned but, by maximality, all of $p$s supporting vertices (other than possibly $n$) are assigned.  Build a sequence of sets $S_i$ of propagators and $T_i$ of vertices as follows.
-
-\begin{enumerate}
-  \item $S_0={p}$ and $T_0$ is the support of $p$ except for $n$.  Set $i=0$.
-  \item Let $R$ be the set of propagators which are assigned to a vertex in $T_i$ by $f$. Let $S_{i+1}= S_i \cup R$.  Let $T_{i+1} = T_i \cup (\text{supp}(R) - \{n\})$.\label{item loop step}
-  \item If there is a vertex $v_{i+1}$ in $T_{i+1}$ which has not been assigned by $f$ then by construction there is a propagator $q_{i+1} \in S_{i+1}-S_i$ which can be assigned to $v_{i+1}$.  Do so, removing $q_{i+1}$'s old assignment.  This frees up a vertex $v_{i}$ in $T_i$ and so there is a propagator $q_{i} \in S_{i}$ which can be assigned to this vertex freeing up an earlier vertex and so on until $p$ has been assigned.  This new assignment contradicts the maximality of $f$.
-  \item  If nothing changed in step \ref{item loop step} then all vertices of $T_{i+1}$ are assigned to propagators in $S_{i+1}-\{p\}$ and vice versa.  Thus $|S_{i+1}| = |T_{i+1}|+1$.  Also all the support of propagators in $S_{i+1}$ is in $T_{i+1} \cup \{n\}$, which is a set of size $|T_{i+1}|+1 = |S_{i+1}|$.  Thus we have $|S_{i+1}|$ propagators supported on $|S_{i+1}|$ vertices contradicting admissibility.
-  \item Increment $i$ and go to \ref{item loop step}
-\end{enumerate}
-
-This procedure must be finite as either a contradiction is found or $S_i$ grows at each step but $W$ has finitely many propagators.  However, the only way for the process to end is by reaching a contradiction.  Therefore any maximal assignment is a basis not including column $n$ which proves the lemma.
-\end{proof}
-
-
-
-%such that $b+1 \in V_{p_1}$, with an endpoint more clockwise on $W$ than the endpoint of $p$ supported by $b+1$: see Figure~\ref{fig:base step of alg induction}.
-%
-%\begin{figure}
-%\begin{tikzpicture}[rotate=15]
-%\begin{scope}
-%\drawWLD{12}{2}
-%\drawprop{3}{2}{10}{2} % P
-%% number vertices a,a+1,b,b+1 for prop P
-%
-%% clip these
-%\drawprop{3}{-2}{12}{-2}
-%\drawprop{2}{0}{12}{2}
-%\drawprop{6}{0}{10}{-2} % p1
-%
-%
-%\end{scope}
-%\end{tikzpicture}
-%\caption{Base step: if $P$ survives $n$ steps of the algorithm, there must be another propagator $p_1$ to its right on edge $(b,b+1)$.}
-%\label{fig:base step of alg induction}
-%\end{figure}
-%
-%The propagator $p_1$ forms the base step for the following induction:
-%
-%Suppose that $p_r$ is a propagator supported on $(i,i+1,m,m+1)$ and removed at step $m+1$ of the algorithm; we will show that there must also be a propagator $p_{r+1}$ supported on $(i',i'+1,m',m'+1)$ with $i \leq i'$ and $m \geq m'$, which is removed at step $m'+1$.  Since we can't have both $i' = i$ and $m'=m$, $p_{r+1}$ bounds a region containing strictly fewer vertices than $p_r$.
-%
-%Notice that if we restrict our attention to the region bounded by $p_r$ and the edges of the diagram from $i$ to $m+1$, then propagators outside of this region can affect the algorithm only at vertices $i$, $i+1$.  (The starting vertex 1 lies outside this region, by assumption.)
-%
-%Given a propagator $p_r$ supported on $(i,i+1,m,m+1)$ and removed at step $m+1$, we must also have a propagator $q$ to its right which is removed at step $m$ (``protecting'' $p_r$ at step $m$).  This splits into two cases:
-%
-%\textbf{Case I}: If $q$ is supported on $(k,k+1,m-1,m)$ for some $k \geq i$, then $p_{r+1}:=q$  satisfies the conditions of the induction step.
-%
-%\textbf{Case II}: Suppose $q$ is supported on $(k,k+1,m,m+1)$ for some $k$; since the diagram is admissible, we have $k > i$.  In particular, anything that happens at vertex $k+1$ is unaffected by propagators outside the region bounded by $p_r$, since $k+1 > i+1$.  But $q$ must survive until step $m$, so there must be another propagator $q'$ to the right of $q$, which protects $q$ at step $k+1$.  The admissibility of $W$ implies that $q'$ is supported on $(j,j+1,k,k+1)$ for some $j \geq i$, and we can take $p_{r+1}:=q'$.
-%
-%\begin{figure}
-%\begin{tabular}{ccc}
-%\begin{tikzpicture}[rotate=15]
-%\begin{scope}
-%\drawWLD{12}{2}
-%\drawprop{3}{0}{10}{0} % p_r
-%% number vertices i,i+1,m,m+1
-%
-%%clip these
-%\drawprop{6}{0}{9}{0} % q
-%\end{scope}
-%\end{tikzpicture}
-%
-%& \qquad \qquad &
-%\begin{tikzpicture}[rotate=15]
-%\begin{scope}
-%\drawWLD{12}{2}
-%\drawprop{3}{0}{10}{2} % p_r
-%% number vertices i, i+1, m, m+1
-%
-%\drawprop{7}{2}{10}{-2} %q
-%% vertices k,k+1, m,m+1
-%
-%% clip this one
-%\drawprop{4}{0}{7}{-2} % q'
-%% vertices j,j+1,k, k+1
-%
-%\end{scope}
-%\end{tikzpicture}
-%\\
-%Case I & & Case II
-%\end{tabular}
-%
-%\caption{Inductive step: if propagator $q$ is removed at step $m$, then it lies on either edge $(m-1,m)$ (Case I) or $(m,m+1)$ (Case II).}
-%\label{fig: cases for inductive step, algorithm}
-%\end{figure}
-%
-%By induction, we will eventually find a propagator on a region with 3 or fewer v%ertices, which is inadmissible.
-
+Given a propagator $p$ of an admissible WLD $W$ and a vertex $i$ in the support of $p$ we will use the notation $J_p^{(W)}(i)$ for the set of indices $m$ where $I_m(p) = l$ where the $I_m$ are the sets calculated by Algorithm~\ref{alg:put GN on WLD}, and using the notation of Definition~\ref{def I_i as a function}. 
 
 \begin{lem} \label{vertex cyclic int lem}
-  For every $v \in V_p$, Let $A_v \subset [n]$ be the set of vertices where $p$ contributes $v$ to $I_a$. Then $A_v$ is a non-empty cyclic interval.
-
-  \note{the above is the statement that was in this file, the below is the version of the statement from last july}
   
-Let $p$ be a propagator of an admissible WLD $W$ on $n$ vertices.  Let $p = (i,j)$.  For $l\in \{i, i+1, j, j+1\}$, let $J_p^{(W)}(l)$ be the indices $m$ where $I_m(p)=l$.  Then $J_p^{(W)}(i)$, $J_p^{(W)}(i+1)$, $J_p^{(W)}(j)$, and $J_p^{(W)}(j+1)$ are each non-empty cyclic intervals of $\{1, \ldots, n\}$ which partition $\{1, \ldots, n\}$ and occur in the given cyclic order.
+Let $p=(i,j)$ be a propagator of an admissible WLD $W$ on $n$ vertices.  Then $J_p^{(W)}(i)$, $J_p^{(W)}(i+1)$, $J_p^{(W)}(j)$, and $J_p^{(W)}(j+1)$ are each non-empty cyclic intervals of $\{1, \ldots, n\}$ which partition $\{1, \ldots, n\}$ and occur in the given cyclic order.
 \end{lem}
 
 
@@ -1570,7 +1504,7 @@ Consider the fourth case of Figure~\ref{fig 3 cases} first, as it is the easiest
 Now we proceed to consider the first three cases of Figure~\ref{fig 3 cases}.
 We first describe $J_q^{(V)}(*)$: since there are no propagators inside $q$, we see from the diagram that
 \[l, l+1, \ldots ,j \in J^{(V)}_q(j) \text{ (if $l$ exists) and }  j+1 \in J^{(V)}_q(j+1).\]
-Note that $j+2 \not\in J^{(V)}_q(j+1)$ by Lemma~\ref{lem last vert}, so $J^{(V)}_q(j+1) = \{j+1\}$ and $j+2 \in J^{(V)}_q(i)$ by the induction hypothesis. Thus there exist vertices $d,e \in [j+2,i+1]$ with $d <e$, such that
+Note that $j+2 \not\in J^{(V)}_q(j+1)$ by Lemma~\ref{lem no fourth vertex}, so $J^{(V)}_q(j+1) = \{j+1\}$ and $j+2 \in J^{(V)}_q(i)$ by the induction hypothesis. Thus there exist vertices $d,e \in [j+2,i+1]$ with $d <e$, such that
 \[J^{(V)}_q(i) = [j+2,d-1], \quad J^{(V)}_q(i+1) = [d,e-1], \quad J^{(V)}_q(j) = [e,j], \quad J^{(V)}_q(j+1) = \{j+1\},\]
 and all intervals are non-empty.
 
@@ -1728,8 +1662,26 @@ The result now follows by induction.
 %
 %Finally, for $r > 1$, and $j_{k_2}=j$,$a \in [b2+1, j+1]$, $p$ contributes $i$ to $I_a$. Again, for all $a$ in this range, both sets $P_j(p)$ and $P_{j+1}(p)$ protect $p$ at $j$ and $j+1$ from $a$. Furthermore, by Corrollary \ref{protect cor}, there can be no protective sets of $i$ or $i+1$ in this range. 
 %
-%By switching the roles of $i$ and $j$, we see that for every element of $V_p$, there is a non-empty cyclic interval such that $p$ contributes $v$ to all $I_{a}$ for in said interval.
+%By switching the roles of $i$ and $j$, we see that for every element of $V(p)$, there is a non-empty cyclic interval such that $p$ contributes $v$ to all $I_{a}$ for in said interval.
 
+\end{proof}
+
+
+We need one more lemma before we can prove that Algorithm~\ref{alg:put GN on WLD} does in fact give the Grassmann necklace of the positroid associated to $W$.
+
+\begin{lem}\label{lem basis as perm}
+Let $W = (\cP,[n])$ be an admissible Wilson loop diagram and let $M(W)$ be its associated matroid. A subset $J \subseteq [n]$ is an independent set of $M(W)$ if and only if there exists an injective set map $f : J \rightarrow \cP$ with the property that for each $j\in J$ we have $j \in V(f(j))$.
+\end{lem}
+
+One of the most important uses of this lemma is for bases.  The lemma says that a subset $J$ of $[n]$ is a basis of $M(W)$ if and only if there is a set bijection between $J$ and $\cP$ with the property that for each $j\in J$ the propagator associated to $j$ under the bijection is supported on vertex $j$.
+
+\begin{proof}
+  Because the nonzero entries of $C(W)$ are independent indeterminants,
+  $J$ is an independent set is if and only if there is some choice of $|J|$ nonzero entries of $C(W)$ one in each row associated to an element of $J$ and each in different columns.
+
+  Each entry in $C(W)$ identifies a propagator by the row of the entry and a vertex by the column of the entry.  The entry is nonzero if and only if the propagator is supported on that vertex.
+  
+  Consequently, a choice of $|J|$ nonzero entries of $C(W)$ one in each row associated to an element of $J$ and each in different columns is equivalent to an assignment of the propagators of $J$ to supporting vertices so that no two are assigned to the same vertex.  Such an assignment of the propagators of $J$ to supporting vertices is exactly a map $f$ as described in the statment, hence proving the result.
 \end{proof}
 
 \begin{prop}\label{res:alg gives GN}
