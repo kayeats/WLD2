@@ -1743,24 +1743,6 @@ One of the most important uses of this lemma is for bases.  The lemma says that 
   Consequently, a choice of $|J|$ nonzero entries of $C(W)$ one in each row associated to an element of $J$ and each in different columns is equivalent to an assignment of the propagators of $J$ to supporting vertices so that no two are assigned to the same vertex.  Such an assignment of the propagators of $J$ to supporting vertices is exactly a map $f$ as described in the statment, hence proving the result.
 \end{proof}
 
-
-We need one more lemma before we can prove that Algorithm~\ref{alg:put GN on WLD} does in fact give the Grassmann necklace of the positroid associated to $W$.
-
-\begin{lem}\label{lem basis as perm}
-Let $W = (\cP,[n])$ be an admissible Wilson loop diagram and let $M(W)$ be its associated matroid. A subset $J \subseteq [n]$ is an independent set of $M(W)$ if and only if there exists an injective set map $f : J \rightarrow \cP$ with the property that for each $j\in J$ we have $j \in V(f(j))$.
-\end{lem}
-
-One of the most important uses of this lemma is for bases.  The lemma says that a subset $J$ of $[n]$ is a basis of $M(W)$ if and only if there is a set bijection between $J$ and $\cP$ with the property that for each $j\in J$ the propagator associated to $j$ under the bijection is supported on vertex $j$.
-
-\begin{proof}
-  Because the nonzero entries of $C(W)$ are independent indeterminants,
-  $J$ is an independent set is if and only if there is some choice of $|J|$ nonzero entries of $C(W)$ one in each row associated to an element of $J$ and each in different columns.
-
-  Each entry in $C(W)$ identifies a propagator by the row of the entry and a vertex by the column of the entry.  The entry is nonzero if and only if the propagator is supported on that vertex.
-  
-  Consequently, a choice of $|J|$ nonzero entries of $C(W)$ one in each row associated to an element of $J$ and each in different columns is equivalent to an assignment of the propagators of $J$ to supporting vertices so that no two are assigned to the same vertex.  Such an assignment of the propagators of $J$ to supporting vertices is exactly a map $f$ as described in the statment, hence proving the result.
-\end{proof}
-
 \begin{prop}\label{res:alg gives GN}
 The sequence of $k$-subsets obtained by applying Algorithm~\ref{alg:put GN on WLD} to an admissible diagram $W$ is exactly the Grassmann necklace of the positroid associated to $W$; specifically if we let  $I_i$ be the set of labels on edge $(i,i+1)$ then the sequence $\II = (I_1, \dots, I_n)$ is the Grassmann necklace of the positroid associated to $W$.
 \end{prop}
@@ -1864,35 +1846,58 @@ For any $a \in [n]$, $a-1$ is maximal with respect to the $<_{a}$ order. Therefo
 
 \subsection{Dimension of the Wilson Loop cells}
 
-In \cite{reversingOh}, Agarwala and Fryer give an algorithm for passing from a Grassmann Necklace to a Le diagram. We use this algorithm here to pass from a Wilson loop diagram to its associated Le diagram. In this manner, we show that the positroid cell defined by a Wilson loop diagram has dimension $3|\cP|$. Maybe say something about Amplituhedra having $4k$ dimension, but this is not quite what we have, since we are ignoring one column.
+Agarwala and Marcott show that the dimension of the positroid cell defined by a Wilson loop diagram $(\cP, [n])$ has dimension $3|\cP|$. Their proof is geometric and elegant, but it is not easy to track the effect of a particular propagator.
 
-When I speak of a \emph{WLD}, I mean one which satisfies your density hypothesis and other standard hypotheses.  When I speak of a propagator \emph{contributing} a vertex to an element of the Gra\ss mann\footnote{I suppose it is a bit of an affectation to use an eszett when writing in English, and actually the eszett is kind of ugly in this font, but since I've started to I'll stick with it for now but you certainly shouldn't feel obliged to do it too.} necklace I mean that according to the rule you guys have to build the Gra\ss mann necklace from the diagram by starting at a vertex and taking the clockwise-most covering propagator which hasn't already been taken, when a propagator is taken then it is contributing that vertex.  Also, I will be using your algorithm to convert the Gra\ss mann necklace into a Le diagram by non-intersecting paths.
+The dimension of a positroid cell is the same as the number of plusses in the associated Le diagram ***cite something***, and so with Algorithm~\ref{alg:put GN on WLD} along with the algorithm for passing from a Grassmann necklace to a Le diagram (reversing Oh's algorithm) described by some of us in \cite{reversingOh}, we can, at the cost of a bit of messy grunt work, give a different recursive proof of the $3|\cP|$-dimensionality that explicitly describes the changes in the positions of the plusses in the Le diagram.
 
+%In \cite{reversingOh}, Agarwala and Fryer give an algorithm for passing from a Grassmann Necklace to a Le diagram. We use this algorithm here to pass from a Wilson loop diagram to its associated Le diagram. In this manner, we show that the positroid cell defined by a Wilson loop diagram has dimension $3|\cP|$. Maybe say something about Amplituhedra having $4k$ dimension, but this is not quite what we have, since we are ignoring one column.
+%
+%When I speak of a \emph{WLD}, I mean one which satisfies your density hypothesis and other standard hypotheses.  When I speak of a propagator \emph{contributing} a vertex to an element of the Gra\ss mann\footnote{I suppose it is a bit of an affectation to use an eszett when writing in English, and actually the eszett is kind of ugly in this font, but since I've started to I'll stick with it for now but you certainly shouldn't feel obliged to do it too.} necklace I mean that according to the rule you guys have to build the Gra\ss mann necklace from the diagram by starting at a vertex and taking the clockwise-most covering propagator which hasn't already been taken, when a propagator is taken then it is contributing that vertex.  Also, I will be using your algorithm to convert the Gra\ss mann necklace into a Le diagram by non-intersecting paths.
+%
+%
+%We need four lemmas from stuff you guys have already figured out.  The first one is a corollary of your lemma characterizing intervals contributed by each covered vertex of a
+%propagator.
+%
+%The first lemma is Lemma~\ref{vertex cyclic int lem} and I moved it up to a previous section.
+%
+%The second lemma is the fact that we understand uncovered vertices.  You probably see many ways to prove this from things you already know.  One would be to say that from your algorithm the column of the uncovered vertex simply plays no role.
 
-We need four lemmas from stuff you guys have already figured out.  The first one is a corollary of your lemma characterizing intervals contributed by each covered vertex of a
-propagator.
-
-The first lemma is Lemma~\ref{vertex cyclic int lem} and I moved it up to a previous section.
-
-The second lemma is the fact that we understand uncovered vertices.  You probably see many ways to prove this from things you already know.  One would be to say that from your algorithm the column of the uncovered vertex simply plays no role.
+We need a number of lemmas, of roughly increasing degree of technicality.
 
 \begin{lem}\label{lem uncovered}
-  Let $D$ be a WLD with an uncovered vertex $i$.  Let $C$ be $D$ with $i$ removed.  Then the Le diagram of $D$ is the Le diagram of $C$ with an extra column of all $0$s inserted in the $|D|-i+1$th position from the left.
+  Let $W$ be an admissible Wilson loop diagram with $k$ propagators and with a vertex $i$ which supports no propagators.  Let $V$ be $W$ with $i$ removed.  Then the Le diagram of $W$ is the Le diagram of $V$ with an extra column of all $0$s inserted so as to be labelled $i$ on its bottom in the Oh labelling of the border of the shape of the Le diagram
 \end{lem}
 
-The third lemma is now lemma~\ref{lem sian}.
+\note{I'm not sure how much I should assume here in terms of what the reader already knows}
 
-Here is some old text: Actually the result I need is not exactly Sian's result and what I will actually use is her proof.  Thus I will use notation and definitions (including length of a propagator and the specific $p_i$ and $q_i$ construction from the proof) from her note without further discussion.  The result I will actually use will be that in place of the hypothesis that $D$ has all vertices covered by at least two propagators I have that all vertices are covered by at least 1 propagator and there are no propagators of length 3.
+\begin{proof}
+  By Algorithm~\ref{alg:put GN on WLD} the Grassmann necklace of $W$ is obtained from the Grassmann necklace of $V$ by duplicating the $i$th element of the Grassmann necklace of $V$ (shifting indices as appropriate), and incrementing all indices greater than $i$ in each Grassmann necklace element.  Formally, if $I_1^{(V)}, \ldots, I_{n-1}^{(V)}$ and $I_1^{(W)}, \ldots, I_n^{(W)}$ are the Grassmann necklaces of $V$ and $W$ respectively then
+  \[
+  I_j^{(W)} =
+  \begin{cases}
+    \{\ell \in I_j^{(V)} : \ell < i\} \cup \{\ell+1 \in I_j^{(V)} : \ell \geq i\} & \text{if $j\leq i$} \\
+    \{\ell \in I_{j-1}^{(V)} : \ell < i\} \cup \{\ell+1 \in I_{j-1}^{(V)} : \ell \geq i\} & \text{if $j > i$.}
+  \end{cases}
+  \]
 
-The fourth lemma is that we can rotate or reflect without changing the number of plusses.  The best way to see this is probably geometrically so I leave that up to you.
+  Since $i$ does not appear in the Grassmann necklace of $W$, in particular it is not in the first element of the necklace, and so in the Oh labelling of the boundary of the partition shape for the Le diagram (inside the rectangle $(k, n-k)$), $i$ labels a horizontal edge or equivalently the bottom of a column of boxes.  The shapes of the Le diagrams of $V$ and $W$ are the same except for the insertion of this column since the first Grassmann necklace elements are the same except for the incrementation of the indices $\geq i$ in the transition from the neccklace for $V$ to the necklace for $W$.
+
+  By the algorithm of \cite{reversingOh}, since $i$ never appears in the Grassmann necklace of $W$, the column labelled $i$ is filled with all $0$s.  Otherwise the algorithm of \cite{reversingOh} behaves identically on $V$ and $W$ with the plusses for the incremented indices shifted one column to the left, thus skipping over column $i$ in the Le diagram for $W$.
+\end{proof}
+
+%The third lemma is now lemma~\ref{lem sian}.
+
+%The fourth lemma is that we can rotate or reflect without changing the number of plusses.  The best way to see this is probably geometrically so I leave that up to you.
 
 \begin{lem}\label{lem dihedral}
-  If two WLDs differ by a dihedral transformation then their Le diagrams have same number of plusses.
+  If two Wilson loop diagrams differ by a dihedral transformation then their Le diagrams have same number of plusses.
 \end{lem}
 
-Now we're ready to go.
+\note{Can I just cite something for this, or can one of you provide a quick geometric proof.  It would be a horrible mess to do by hand combinatorially}
 
-\subsubsection{Changes in Gra\ss mann necklaces for nice configurations}
+%\subsubsection{Changes in Gra\ss mann necklaces for nice configurations}
+
+\note{Karen got to here}
 
 Given a propagator $p$ in a WLD $D$, note that $p$ divides remaining propagators of $D$ into two sets depending on which side of $p$ they live.
 
