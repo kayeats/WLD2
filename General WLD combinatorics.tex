@@ -82,7 +82,7 @@
 \pgfmathsetmacro{\angle}{360/\n}
     \foreach \i in {1,2,...,\n} {
       \draw (\angle*\i+ \angle/2:\radius) node {$\bullet$};
-      \pgfmathsetmacro{\x}{\angle*\i - \angle/2}
+     \pgfmathsetmacro{\x}{\angle*\i - \angle/2}
       \pgfmathsetmacro{\concave}{((\n-1.5)/\n)}
       \draw (\x:\radius cm) .. controls (\angle *\i: \concave* \radius cm) .. (\x + \angle:\radius cm);
       %\draw (\angle *\i: .8* \radius cm) node {$\bullet$};
@@ -315,7 +315,6 @@ What are Wilson loop diagrams and their integrals.
 \begin{dfn}\label{WLdfn}
 A Wilson loop diagram is given by the following data: a cyclicly ordered set $V$, along with a choice of first vertex (labeled $1$), and $k$ pairs, called propagators, written $\{p_r = (i_r, j_r)\}_{r=1}^k$ with labels ordered such that $i_r +1 < j_r$ relative to the fisrt vertex. \end{dfn}
 
-<<<<<<< HEAD
 We depict this data as a circle with marked points, called vertices. The vertices are labeled by $V$ (preserving the cyclic ordering). The arc between consecutive vertices are called edges. There are $k$ wavy lines in the interior of the diagram, depicting the proagators, with endpoints on the edges. A propagator, $p =(i,j)$ has one endpoint on the edge between the vertex labeled $i$ and $i+1$ and another endpoint on the edge defined by $j$ and $j+1$. The condition on $i_r$ and $j_r$ means that the propagator does not go between adjacent edges. Let $\cP = \{p_r\}_{r=1}^k$ be the set of propagators. Then we write \bas W = (\cP, V) \;.\eas
 
 Note that the marked circle gives the vertices of $W$ a cyclic ordering. The choice of first vertex gives it a compatible linear order. Both the cyclic and the linear order become the correct perspective at various points in this paper. 
@@ -490,7 +489,7 @@ Let $W = (\cP,n)$ be an admissible Wilson loop diagram. Then:
 The first part of (1) is \cite[Equation (9)]{wilsonloop} and surrounding discussion, and the second part is standard matroid theory. (2) is \cite[Lemma 3.27]{wilsonloop}. (3) is a direct consequence of \cite[Lemma 3.20]{wilsonloop} and the fact that $F(P_1)^c = V(P_1^c)$
 \end{proof}
 
-
+Note that this means that the set $F(\emptyset)$ is the maximal subset of vertices of $W$ of rank $0$. That is, it is the unique flat of rank $0$ in $M(W)$. \sanote{I'm sprinkling comments about $F(\emptyset)$ throughout until we can come up with a better name than unsupportive vertices.}
 
 \subsection{Polygon partitions of Wilson loop diagrams}
 
@@ -511,7 +510,7 @@ If $W = (\cP, [n])$ is an admissible Wilson loop diagram, then $\tau(W)$ is a si
 \end{lem}
 
 \begin{proof}
-Since the vertices of $\tau(W)$ are labeled by the edges of $W$, which are cyclically ordered, this gives an ordering to the vertices. Furthermore, since the outer polygon of $W$ is a cycle, the outer face of $\tau(W)$ is also a cycle. Since $W$ is admissible, no pairs of propagators cross. Therefore, it is a planar embedding. Similarly, $W$ does not admit any propagators of the form $p = (i, i+1)$; therefore there is exactly one edge connecting any two adjacent edges of $\tau(W)$. Finally, there does not exist two propagators $p,q$ such that both $p$ and $q$ start at edge $i$ and end at edge $j$. Therefore, no other two vertices of $\tau(W)$ can be connected by more than one edge. Finally, the embedding of $\tau(W)$ is induced from the embedding of the graph $W$.
+Since the vertices of $\tau(W)$ are labeled by the edges of $W$, which are cyclically ordered, this gives an ordering to the vertices. Furthermore, since the outer \hlfix{circle of $W$ is a cycle}{sounds awkward in the new notation}, the outer face of $\tau(W)$ is also a cycle. Since $W$ is admissible, no pairs of propagators cross. Therefore, it is a planar embedding. Similarly, $W$ does not admit any propagators of the form $p = (i, i+1)$; therefore there is exactly one edge connecting any two adjacent edges of $\tau(W)$. Finally, there does not exist two propagators $p,q$ such that both $p$ and $q$ start at edge $i$ and end at edge $j$. Therefore, no other two vertices of $\tau(W)$ can be connected by more than one edge. Finally, the embedding of $\tau(W)$ is induced from the embedding of the graph $W$.
  \end{proof}
 
 \begin{comment}
@@ -577,7 +576,7 @@ A {\em maximal} triangulated piece is one which is not contained in any strictly
  A {\em decomposition} of a polygon partition $\tau(W)$ is a set of 2-connected induced subgraphs of $\tau(W)$ which partition the edges of $\tau(W)$.  
 \end{dfn}
 
-\begin{eg} \label{eg: unique decomposition} For the Wilson loop diagrams and polygon partitions in Example \ref{WLDtopolygonpartition}, the vertex sets $\{1, 2, 3,4\}$ and $\{5, 6, 7, 8\}$ give maximal triangulated pieces for both $\tau(W_1)$ and $\tau(W_3)$. The vertex set $\{4,5, 8, 1\}$ is not a triangulation in either polygon partition. \note{Put a picture of a dual tree.  Make a comment that the embedding is required to obtain uniqueness of the dual}
+\begin{eg} \label{eg: unique decomposition} For the Wilson loop diagrams and polygon partitions in Example \ref{WLDtopolygonpartition}, the vertex sets $\{1, 2, 3,4\}$ and $\{5, 6, 7, 8\}$ give maximal triangulated pieces for both $\tau(W_1)$ and $\tau(W_3)$. The vertex set $\{4,5, 8, 1\}$ is not a triangulation in either polygon partition. 
 \end{eg}
 
 \begin{lem} \label{decompositionlem}
@@ -589,7 +588,7 @@ A {\em maximal} triangulated piece is one which is not contained in any strictly
 \begin{proof}
 We begin by giving an algorithm for the decomposition, then prove its uniqueness. Let $W = (\cP, [n])$, with $|\cP| = k$.
 
-By \emph{splitting} a vertex $v$ we will mean replacing $v$ by new vertice $v_1, v_2,\ldots, v_{\text{deg}(v)}$ such that each $v_i$ as exactly one neighbour and the union of the neighbourhoods of the $v_i$ is the neighbourhood of $v$.
+By \emph{splitting} a vertex $v$ we will mean replacing $v$ by new vertice $v_1, v_2,\ldots, v_{\text{deg}(v)}$ such that each $v_i$ has exactly one neighbour and the union of the \hlfix{neighbourhoods}{neigbors? Or a separate definition of neigborhood?} of the $v_i$ is the neighbourhood of $v$.
 
 Let $T(W)$ be the dual graph of $\tau(W)$ with the vertex corresponding to the infinite face split.
 %In other words, place a vertex on each finite face of $\tau(W)$. These vertices are connected if there is a chord edge separating the edges. Furthermore, if the face is bounded by an edge of the polygonal cycle of $\tau(W)$, the corresponding vertex gets a leaf edge for each such boundary.
@@ -606,6 +605,64 @@ The vertices of $f$ either have degree 1 or 3.
 %, (if they correspond leaf vertices) or 3,  (if they correspond to triangular faces).
 Trees of $f$ with no trivalent vertices correspond to either edges in the polygon of $\tau(W)$, if they were originally leaves of $T(W)$, or to maximal trivial triangulated pieces.
 Splitting at all the faces that are not triangles ensures maximality of the decomposition. If the splitting were not maximal, then one could add a triangle to a connected component of the splitting, but this would imply that that splitting happened at a valence $3$ vertex.
+
+\bas 
+\begin{tikzpicture}[rotate=67.5,baseline=(current bounding box.east)]
+	\begin{scope}
+	\drawpolypart{8}{1.5}
+    \drawnumbersshift
+    \drawchord{1}{4}
+    \drawchord{1}{3}
+    \drawchord{5}{8}
+    \drawchord{6}{8}
+ \draw (0,0) node {$\bullet$};
+\draw (-1,.2) node {$\bullet$};	
+\draw (-.5,1.1) node {$\bullet$};
+\draw (.8,-.3) node {$\bullet$};	
+\draw (1.1,-.5) node {$\bullet$};
+\draw(1.1,-.5) -- (.8,-.3) --(0,0)--(-1,.2) -- (-.5,1.1);
+\foreach \i in {1,2,...,8} {
+      \draw (45*\i:2) node {$\bullet$};
+    }
+\draw (45*1:2) --(0,0) -- (45*5:2);
+\draw (45*6:2) -- (.8,-.3);
+\draw (45*8:2) -- (1.1,-.5) -- (45*7:2);
+\draw (45*2:2) -- (-.5,1.1) -- (45*3:2);
+\draw (45*4:2) -- (-1,.2);
+	\end{scope}
+	\end{tikzpicture} \rightarrow 
+\begin{tikzpicture}[rotate=67.5,baseline=(current bounding box.east)]
+	\begin{scope}
+	\drawpolypart{8}{1.5}
+    \drawnumbersshift
+    \drawchord{1}{4}
+    \drawchord{1}{3}
+    \drawchord{5}{8}
+    \drawchord{6}{8}
+ \draw (.1,.1) node {$\bullet$};
+\draw (.1,-.1) node {$\bullet$};
+\draw (-.1,-.1) node {$\bullet$};
+\draw (-.1,.1) node {$\bullet$};
+\draw (-1,.2) node {$\bullet$};	
+\draw (-.5,1.1) node {$\bullet$};
+\draw (.8,-.3) node {$\bullet$};	
+\draw (1.1,-.5) node {$\bullet$};
+\draw(1.1,-.5) -- (.8,-.3) --(.1,-.1); 
+\draw (-.1, .1) --(-1,.2) -- (-.5,1.1);
+\foreach \i in {1,2,...,8} {
+      \draw (45*\i:2) node {$\bullet$};
+    }
+\draw (45*1:2) --(.1,.1);
+\draw (-.1, -.1) -- (45*5:2);
+\draw (45*6:2) -- (.8,-.3);
+\draw (45*8:2) -- (1.1,-.5) -- (45*7:2);
+\draw (45*2:2) -- (-.5,1.1) -- (45*3:2);
+\draw (45*4:2) -- (-1,.2);
+	\end{scope}
+	\end{tikzpicture}
+\eas
+
+
 
 To see uniqueness, consider a different maximal decomposition of $\tau(W)$. This induces a splitting on $T(W)$, where each connected component of the new decomposition corresponds to a subtree. Call this forest $f'$. Since $f' \neq f$, there are two trees, $t$ and $t'$ in $f$ and $f'$ that are distinct, but share at least one edge of $T(W)$. Since $f'$ is also maximal, $t'$ is not a subtree of $t$. Therefore, the edges of $t'$ can be found in at least two trees in the forest $f$. In particular, there is a vertex $v$ in $t'$ that corresponds to a split vertex of $T(W)$ in the original decomposition.
 This implies that $v$ has valence greater than $3$ in $T(W)$, and thus the corresponding face of $\tau(W)$ is not a triangle. In other words, the decomposition corresponding to $f'$ is not a triangulation. 
