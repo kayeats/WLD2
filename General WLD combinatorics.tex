@@ -1897,33 +1897,25 @@ We need a number of lemmas, of roughly increasing degree of technicality.
 
 %\subsubsection{Changes in Gra\ss mann necklaces for nice configurations}
 
-\note{Karen got to here}
-
-Given a propagator $p$ in a WLD $D$, note that $p$ divides remaining propagators of $D$ into two sets depending on which side of $p$ they live.
+%Given a propagator $p$ in a WLD $D$, note that $p$ divides remaining propagators of $D$ into two sets depending on which side of $p$ they live.
 
 \begin{lem}\label{lem good p}
-  Let $D$ be a WLD with $n\geq 1$ propagators.  Then there is some dihedral transformation $D'$ of $D$ such that there is a propagator $p$ with the following properties.
+  Let $W$ be an admissible Wilson loop diagram with $n\geq 1$ propagators.  Then there is some dihedral transformation $W'$ of $W$ such that there is a propagator $p$ of $W'$ with the following properties.
   \begin{itemize}
-  \item $p$ goes between the edge $i$, $i+1$ and the edge $n-1$, $n$ in $D'$.
-  \item $i+2, \ldots, n-2$ are not covered by any propagators in $D'$ (which is trivially true if $\{i+1, \ldots, n-2\}=\varnothing$).
-  \item Either $i+1$ in $D'$ is only covered by $p$, or $i+1$ is covered by exactly one other propagator $q$.
-  \item If we are in the second case above then $q$ goes between the edge $j$, $j+1$ and the edge $i$, $i+1$ and $j+2, \ldots, i-1$ are not covered by any propagators.
+  \item $p = (i, n-1)$ with no propagators inside it (that is $i+2, \ldots, n-2$ do not support any propagators in $W'$).
+  \item Either the edges $i$ in $W'$ only supports $p$ or the edge $i$ in $W'$ supports exactly one other propagator $q = (j ,i)$ with no other propagators inside $q$.
   \end{itemize}
 \end{lem}
 
 \begin{proof}
-  Since $n\geq 1$ the dual tree of $D$ has at least two vertices and so has at least two leaves.  Each edge going to a leaf of the dual tree corresponds to a propagator which has no other propagators on one side of it, so there is at least one such propagator in $D$.  There are two cases to consider.
+  Remove all vertices of $W$ which do not support any propagators to get a weakly admissible Wilson loop diagram $V$.  Lemma~\ref{lem sian} applied to $V$ gives a length 2 propagator $p$ in $V$ for which either no other propagator is supported on one of the supporting edges of $p$ or there is a second length 2 propagator which is the only other propagator supported on one of the supporting edges of $p$.  Figure~\ref{fig 3 cases} shows the possible cases, and the reader can easily check that in each case $p$ must be in one of the two situations described above.
 
-  First suppose there is a propagator which has no other propagators on one side of it and for which one of its ends is on an edge with no other propagators.  Let this propagator be $p$.  Rotate and reflect $D$ as necessary so that the end of $p$ which does not share its edge comes first, then the side of $p$ with no other propagators, and then the other end of $p$ which is on edge $n-1$, $n$.  Call this WLD $D'$.  It is a straightforward check that the properties in the statement are satisfied with $i+1$ only covered by $p$.
-
-  Next suppose there is no propagator which has no other propagators on one side of it and for which one of its ends is on an edge with no other propagators.  Let $C$ be $D$ with all uncovered vertices removed.  Suppose $C$ contains two propagators one of length 2 and one of length 3 with the length 2 propagator on the small side of the length 3 propagator.  Then we are in the case already considered because we can rotate and reflect $C$ so that these two propagators both have one end on the edge $|C|-1$,$|C|$, and have their other ends on the edge $|C|-2$, $|C|-3$ and the edge $|C|-3$, $|C|-4$, so taking the length 2 edge as $p$ we satisfy the properties of the statement, and this remains true in $D$.  Thus we now assume this does not occur, so in particular every propagator of length 3 in $C$ has no other propagators on its small side.  But then the middle vertex on this small side is uncovered contradicting the construction of $C$.  Thus $C$ has no propagators of size 3.
-
-  The claim then is that in $C$ there must exist two propagators as in Lemma~\ref{lem sian}.  The proof of the claim follows by Sian's proof.  We do not have the hypothesis that all vertices are covered by at least two propagators, but this is only used in the proof of Lemma~\ref{lem sian} to force certain propagators (the $q_i$) to have length at least 4, so our this case we instead use that $C$ has no propagators of size $3$.
-
-  Now rotate and flip $C$ so that the two propagators as in Lemma~\ref{lem sian} cover $\{|C|-5, \ldots, |C|\}$ and let $p$ be the propagator covering $\{|C|-3, \ldots, |C|\}$ and let $q$ be the other one.  Return to $D$ with a corresponding rotation and flip so that vertex $n$ in $D$ corresponds to vertex $|C|$ in $C$ and direction in the polygon is preserved.  Let this dihedral transformation of $D$ be $D'$.  Then the propagator $p$ satisfies the conditions of the statement with propagator $q$.
+  By Lemma~\ref{lem dihedral} there is a dihedral transformation of $V$ satisfying the statement of the lemma with $p$ and $q$ both length 2.  Restoring the vertices which do not support any propagators, we obtain a dihedral transformation $W'$ of $W$ as desired (with potentially longer lengths for $p$ and $q$). 
 \end{proof}
 
-Given a WLD $D$, $I_i^{D}$ denotes the $i$th Gra\ss mann necklace element corresponding to $D$.
+%Given an admissible Wilson loop diagram $W$, $I_i^{D}$ denotes the $i$th Grass mann necklace element corresponding to $W$.
+
+\note{Karen got to here, but there are no other uses of Lemma~\ref{lem sian}, so the rest just needs notational/style updates (unless we find problems)}
 
 \begin{lem}\label{lem I}
   Let $D$ be a WLD with $n\geq 1$ propagators and let $p$ be a propagator of $D$ so that the properties of Lemma~\ref{lem good p} are satisfied for $p$ in $D$ (that is $D$ is already appropriately transformed).  Furthermore suppose that that $p$ has length $2$, as does $q$ if we are in the case of Lemma~\ref{lem good p} involving $q$.  Let $C$ be $D$ with $p$ removed but no change in the vertices.  Then
