@@ -443,12 +443,10 @@ For $W = (\cP, [n])$, $R(W) = \prod_{e=1}^n R_e$, with $R_e$ defined by the prop
 
 In \cite{wilsonloop}, Agarwala and Amat show that Wilson loop diagrams can be interpreted as positroids, a certain well behaved class of realizable matroids (this correspondence is stated precisely in Theorem \ref{thm WLD defines matroid} below). This opens up the study of Wilson loop diagrams to techniques from geometry and combinatorics.
 
-[outline of section, postponed until section structure is finalised]
-
-The main results of this section are the following: we show that two admissible Wilson loop diagrams define the same matroid if and only if they are equivalent (Theorem \ref{same matroid iff equiv}), and we obtain a formula for the number of admissible Wilson loop diagrams in each equivalence class (Corollary \ref{number of equiv diagrams}).  [sentence about why this matters]
+In subsection 2.1, we discuss a few matroidal facts about Wilson loop diagrams. In section 2.2, we show that there is a one to one correspondence between exact subdiagrams of Wilson loop diagrams and triangulated pieces of the corresponding polygon partion. In section 2.3, we return to some matroidal facts about Wilson loop diagrams, and exact subdiagrams in partuclar. We show that a subdiagram of $W$ defines a uniform matroid if and only if the subdiagram is exact. This is then used to prove the main result of section 2.3, which is that that two admissible Wilson loop diagrams define the same matroid if and only if they are equivalent (Theorem \ref{same matroid iff equiv}), and we obtain a formula for the number of admissible Wilson loop diagrams in each equivalence class (Corollary \ref{number of equiv diagrams}).  [sentence about why this matters] \todo{much of the above is just text. PUT REFERENCES IN}
 
 
-\subsection{Wilson loop diagrams as matroids}\label{sec matroid background}
+\subsection{Wilson loop diagrams as matroids\label{sec matroid background}}
 
 We first give a quick summary of the matroid terminology that we will need; it is not intended as a comprehensive introduction to matroids and the interested reader is referred to [ref][find a good matroid reference].
 
@@ -483,15 +481,18 @@ Let $W = (\cP,n)$ be an admissible Wilson loop diagram. Then:
 %\item Let $v \in [n]$ and $q \in \Prop(v)$. Then for any $V \subset [n]$ such that $q \not \in \Prop(V)$, we have $\rk(V \cup \{v\}) = \rk(V) +1$, i.e. adding a vertex that supports a new propagator to a set increases the rank of the set.
 \item If $C \subseteq [n]$ is a cycle, then $\rk(C) = |Prop(C)|$.
 \item If $[n]$ can be partitioned into at least two non-empty sets, each of which support different sets of propagators that form a partition of the propagotor set, \bas [n] = \sqcup_i V(P_i) \quad \textrm{s.t.} \quad \sqcup P_i = \cP; \quad V(P_i) \cap V(P_j) = \emptyset; \quad  P_i \cap P_j = \emptyset \;, \eas then the matroid $M(W)$ is seperable, \bas M(W) = \bigoplus_i M(P_i, V(P_i)) \;.\eas 
+\item $F(P)$ is a flat of $M(W)$, thus justifying the name ``propagator flat''.
 \end{enumerate}
 \end{lem}
 \begin{proof}
 The first part of (1) is \cite[Equation (9)]{wilsonloop} and surrounding discussion, and the second part is standard matroid theory. (2) is \cite[Lemma 3.27]{wilsonloop}. (3) is a direct consequence of \cite[Lemma 3.20]{wilsonloop} and the fact that $F(P_1)^c = V(P_1^c)$
+
+To prove (4), we need to show that $F(P)$ is maximally dependent. If $F(P) = [n]$ then this is automatic, so suppose not and let $v \in [n] \setminus F(P)$. In other words, $v \in V(P^c)$ and so $v$ supports some propagator $q \not\in P$.  Let $S \subseteq F(P)$ be an independent set of maximal size. Then $\Prop(S) \subseteq P$ by (1), and no subset of $S$ supports fewer propagators than the number of vertices it contains (this is the definition of an independent set in $M(W)$). Since $v$ supports a new propagator $q \not\in P$, the set $S \cup \{v\} \subseteq F(P) \cup\{v\}$ also satisfies this independence condition. Thus $\rk(F(P) \cup\{v\}) = \rk(F(P)) + 1$, as required.
 \end{proof}
 
 Note that this means that the set $F(\emptyset)$ is the maximal subset of vertices of $W$ of rank $0$. That is, it is the unique flat of rank $0$ in $M(W)$. \sanote{I'm sprinkling comments about $F(\emptyset)$ throughout until we can come up with a better name than unsupportive vertices.}
 
-\subsection{Polygon partitions of Wilson loop diagrams}
+\subsection{Polygon partitions of Wilson loop diagrams\label{sec: polygon partitions}}
 
 
 The equivalence relation on Wilson loop diagrams is defined in terms of exact subdiagrams; thus in order to understand the equivalence, we need a way to extract and compare exact subdiagrams. We do this via the notion of a polygon partition of $W$.
@@ -744,14 +745,20 @@ Any admissible Wilson loop diagram $W = (\cP, [n])$ can be uniquely decomposed i
 Combining Lemmas \ref{decompositionlem} and \ref{lem triang to exact} yields the unique decomposition into maximal exact subdiagrams, and Corollary \ref{maxtriangdisjointcor} ensures that no propagator appears in more than one subdiagram in this decomposition. Since the chord edges of $\tau(W)$ correspond to the propagators of $W$, the decomposition of $\tau(W)$ induces a partition of $\cP$.
 \end{proof}
 
-\subsection{Matroid properties of exact subdiagrams}
+\subsection{Matroidal properties of exact subdiagrams \label{sec: exact diagram matroidal props}}
 
-Since Corollary \ref{uniqueproppartitioncor} allows us to decompose any admissible Wilson loop diagram into a collection of maximal exact subdiagrams, in this section we examine the matroid properties of exact subdiagrams more closely. In particular, we show that the matroids associated to exact subdiagrams are uniform (Theorem \ref{??}) and that 
+Since Corollary \ref{uniqueproppartitioncor} allows us to decompose any admissible Wilson loop diagram into a collection of maximal exact subdiagrams, in this section we examine the matroid properties of exact subdiagrams more closely. In particular, we show that given an exact subdiagram $(P, V(P))$, it can be written as the contraction of the matroid $M(W)$ by the complementary propagator flat, $F(P^c)$. Furthermore, if $(P, V(P))$ is a maximal exact subdiagrams, its complementary propagator flat is a cyclic flat. Finally, we show that matroids associated to exact subdiagrams are uniform (Theorem \ref{exactuniformthm}). 
+
+We begin by proving some useful facts about flats of matroids associated to admissible Wilson loop diagrams.
+
+\begin{comment}
 
 \begin{dfn}\label{matroid contraction}
 Let $M = (E,\cB)$ be a matroid, and $S \subseteq E$. The {\em contraction} of $M$ by $S$ is the matroid $M/S = (E \setminus S, \cB / S)$, where
 \[\cB / S = \{B \setminus S \ \big| \ |B\cap S | \text{ is maximal amonst all }B \in \cB\}.\]
 \end{dfn}
+
+
 
 In \cite{wilsonloop}, Agarwala and Amat show that certain subdiagrams of $W$ can be realized as contractions of $M(W)$:
 
@@ -774,7 +781,7 @@ Let $F(P)$ be a propagator flat as defined above. Then
 \item If $Q\subseteq P$ then $F(Q) \subseteq F(P)$.
 \item $F(P)$ is a flat of $M(W)$, thus justifying the name ``propagator flat''.
 \end{enumerate}
-\end{lem}
+\end{lem} \sanote{I'd like to attach this to the "generic facts about matroids" in lemma 2.2?}
 \begin{proof}
 The proof of (1) and (2) are routine applications of the definition and are omitted.
 
@@ -782,6 +789,7 @@ To prove (3), we need to show that $F(P)$ is maximally dependent. If $F(P) = [n]
 \end{proof}
 
 
+\end{comment}
 
 \begin{lem} \label{lem decompose flat}Let $F$ be a flat in $M(W)$, and let $C \subseteq F$ be the union of all circuits contained in $F$. Then the following are true:
 \begin{enumerate}
@@ -793,17 +801,14 @@ To prove (3), we need to show that $F(P)$ is maximally dependent. If $F(P) = [n]
 \begin{proof}
 (1) If $F$ is an independent flat, then $C = \emptyset$ and the statement is trivially true. Now suppose that $F$ is a dependent set, so $C$ is non-empty.
 
-Let $v \in C$. Clearly $\Prop(v) \subseteq \Prop(C)$, and so by Lemma \ref{lem properties of prop flats} we have $F(\Prop(v)) \subseteq F(\Prop(C))$. Since $v \in F(\Prop(v))$ by the definition of propagator flat, we have $v \in F(\Prop(C))$ as required.
+Let $v \in C$. Clearly $\Prop(v) \subseteq \Prop(C)$. Since $F(P)  = V(P^c)^c$, we have $F(\Prop(v)) \subseteq F(\Prop(C))$. Since $v \in F(\Prop(v))$ by the definition of propagator flat, we have $v \in F(\Prop(C))$ as required, and $C \subseteq F(\Prop(C))$. 
 
-Now suppose there exists some $w \in  F(\Prop(C)) \setminus C$. Let $B$ be an independent subset of $C$ of maximal rank; we first show that $B \cup \{w\}$ is a dependent set in $M(W)$. Indeed, by \cite[Proposition 3.10]{wilsonloop}, there exists some $Q \subseteq \Prop(B)$ with $|Q| = |B|$ and such that $B$ is a basis in $M(Q,V(Q))$. We therefore have
-\[Q \subseteq \Prop(B) \subseteq \Prop(C),\]
-with $|\Prop(C)| = \rk(C)$ by Lemma \ref{lem facts about WLD matroids} and $|Q| = |B| = \rk(C)$ by the choice of $B$. Thus $Q = \Prop(C)$, and so $B$ is a basis in the matroid defined by $W' := (\Prop(C),V(\Prop(C)))$. All that remains is to note that $w \in F(\Prop(C)) \subseteq V(\Prop(C))$, i.e. $w$ is a vertex in $W'$; thus $B \cup\{w\}$ is dependent in $W'$, and hence also in $W$.  This also implies that $\rk(F\cup w) = \rk(F)$ since $B\subseteq F$ and so since $F$ is a flat we must have $w\in F$.
+Now suppose there exists some $w \in  F(\Prop(C)) \setminus C$. Let $B$ be an independent subset of $C$ of maximal rank; we first show that $B \cup \{w\}$ is a dependent set in $M(W)$. By Lemma \ref{lem facts about WLD matroids}, \bas |\Prop(C)| = \rk(C) = |B| = \rk(B) .\eas Since $B \subseteq C$ implies that  $\Prop(B) \subseteq \Prop(C)$, this implies that $\Prop(B) = \Prop(C)$. Furthermore, since $w \in F(Prop(C)$, $\Prop(B\cup w) \subseteq \Prop(B)$. By Lemma \ref{lem facts about WLD matroids} $\rk (B \cup w) \leq \min\{|B\cup w|, |\Prop(B\cup w)|\}$, and therefore $\rk (B \cup w) < |B\cup w|$. That is, $B\cup w$ is a circuit in $F(\Prop(C))$. Therefore, $B \cup w \subset C$, leading to a contradiction.
 
-Returning our attention to $M(W)$, the dependent set $B \cup \{w\}$ must contain a circuit $C'$, with $w \in C'$ since $B$ was an independent set. Now $C \cup C' = C \cup \{w\} \supsetneq C$ is a cycle which, since $w\in F$, contradicts the maximality of $C$.
 
 For part (2), first note that $F \setminus C$ is automatically independent as it contains no circuits.
 
-For any $e \not\in F$, we certainly have $\rk((F\setminus C)\cup\{e\}) = \rk(F\setminus C) +1$ since $F$ is a flat. Now let $e \in C$, and suppose that $\rk((F\setminus C)\cup\{e\}) = \rk(F\setminus C)$. This implies that $(F\setminus C)\cup \{e\}$ is dependent, and hence contains a circuit. This circuit must contain at least two elements \note{What if $e \in C$ supported no propagators? $\{e\}$ would then be a circuit on its own}(since all vertices support at least one propagator), but this contradicts the fact that $C$ was the union of all circuits in $F$. 
+For any $e \not\in F$, we certainly have $\rk((F\setminus C)\cup\{e\}) = \rk(F\setminus C) +1$ since $F$ is a flat. Now let $e \in C$, and suppose that $\rk((F\setminus C)\cup\{e\}) = \rk(F\setminus C)$. This implies that $(F\setminus C)\cup \{e\}$ is dependent, and hence contains a circuit, $S$. This circuit must contain at least one element but this contradicts the fact that $C$ was the union of all circuits in $F$. 
 
 Thus $\rk((F\setminus C)\cup \{e\}) = \rk(F\setminus C) + 1$ for any $e \not\in F\setminus C$, and hence $F\setminus C$ is a flat.
 \end{proof}
@@ -869,7 +874,7 @@ In particular, any exact subdiagram $(P,V(P))$ satisfies the conditions of Lemma
 
 Matroids coming from exact subdiagrams have an especially nice structure, as we now show. Recall from Section \ref{sec matroid background} that a uniform matroid of rank $r$ is one in which all sets of size $ \leq r$ are independent.
 
-\begin{thm} \label{exactcircuitlem}
+\begin{thm} \label{exactuniformthm}
 Let $W':= (P, V(P))$ be a subdiagram of an admissible Wilson loop diagram $W= (\cP, [n])$. Then $W'$ is an exact subdiagram if and only if $M(W')$ is a uniform matroid of rank $|P|$.
 \end{thm}
 
