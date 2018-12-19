@@ -679,12 +679,11 @@ Consider any two distinct maximal triangulated pieces of $\tau(W)$. These two pi
 
 We are now in a position to relate the triangulated pieces of $\tau(W)$ to exact subdiagrams of $W$.
 
-Every triangulated piece $t$ of an admissible Wilson loop diagram $W$ corresponds to a subdiagram of $W$ by taking the set of propagators $P$ corresponding to edges of $t$ and then taking the subdiagram $(P, V(P))$.  Conversely, given a subdiagram $(P, V(P))$ of $W$ we can obtain a subgraph of $\tau(W)$ as follows:
+Every triangulated piece $t$ of an admissible Wilson loop diagram $W$ corresponds to a subdiagram of $W$ by taking the set of propagators $P$ corresponding to edges of $t$ and then taking the subdiagram $W_P = (P, V(P))$.  Conversely, given a subdiagram $W_P = (P, V(P))$ of $W$ we can obtain a subgraph of $\tau(W)$, called $t$, as follows:
 \begin{itemize}
-\item The vertex set of the subgraph is
+\item The vertex set of the subgraph $t$ is
   \begin{itemize}
-  \item the vertices of $\tau(W)$ corresponding to edges on which propagators of $P$ are supported
-  \item along with any other vertices of $\tau(W)$ for which both neighbours are as described in the previous point.
+  \item \hlfix{the vertices of $\tau(W)$ corresponding to edges of $W$ defined by cyclically consecutive elements of $V(P)$ as a subset of $[n]$}{changed to simplify with existing notation, but now it contradicts below}
   \end{itemize}
 \item The edge set of the subgraph is
   \begin{itemize}
@@ -692,7 +691,7 @@ Every triangulated piece $t$ of an admissible Wilson loop diagram $W$ correspond
   \item along with the outer edges of $\tau(W)$ for which both their end points are in the vertex set
   \end{itemize}
 \end{itemize}
-Note that the subgraph only depends on $P$, not the vertex set of the subdiagram, but it is not the subgraph of $\tau(W)$ consisting only of edges corresponding to propagators of $P$.
+Note that the subgraph $t$ only depends on $P$, \hlfix{not the vertex set of the subdiagram $W_P$}{really? why?}, but it is not the subgraph of $\tau(W)$ consisting only of edges corresponding to propagators of $P$. 
 
 
 \begin{lem}\label{lem triang to exact}
@@ -706,7 +705,7 @@ Since $W$ is admissible, by Lemma \ref{tausimpleplanarlem} $\tau(W)$ is a simple
 
 If $t$ has 2 vertices then $t$ corresponds to a propagator that connects two non-adjacent edges. Therefore, the trivial triangulation is a trivial exact subdiagram.
 
-Now suppose that $t$ has $m>2$ vertices.  We count how many edges of $t$ are not on the outer face of $\tau(W)$.  Consider the intersection of $t$ with the outer face of $\tau(W)$: this is a possibly disconnected subgraph of the polygon of $\tau(W)$ and this subgraph has $m$ vertices. Call this new subgraph $S$, and let $j$ be the number of connected components of $S$.   To join the components of $S$ into the outer face of $t$, $t$ must have $j$ edges in its outer face which are not in the outer face of $\tau(W)$.  Furthermore $t$ has $m-3$ edges not in its outer face and so also not in the outer face of $\tau(W)$.  Thus there are $m-3+j$ edges of $t$ not in the outer face of $\tau(W)$.
+Now suppose that $t$ has $m>2$ vertices.  We count how many edges of $t$ are not on the outer face of $\tau(W)$.  These are exactly the edges of $t$ defined by propagators of $W$. Consider the intersection of $t$ with the outer face of $\tau(W)$: this is a possibly disconnected subgraph of the polygon of $\tau(W)$ and this subgraph has $m$ vertices. Call this new subgraph $S$, and let $j$ be the number of connected components of $S$.   To join the components of $S$ into the outer face of $t$, $t$ must have $j$ edges in its outer face which are not in the outer face of $\tau(W)$.  Furthermore $t$ has $m-3$ edges not in its outer face and so also not in the outer face of $\tau(W)$.  Thus there are $m-3+j$ edges of $t$ not in the outer face of $\tau(W)$.
 
 Each of these $m-3+j$ internal edges corresponds to a propagator in $W$; call this set of propagators $P$.  Next we count the size of $V(P)$.  Each of the $m$ vertices in the outer face of $t$ corresponds to an edge of $W$. These $m$ edges define $j$ connected components of the outer polygon of $W$. Thus the set $V(P)$ has $m+j$ vertices.  In other words, 
 \[|V(P)| = m+j = |P| +3\;.\]
@@ -715,7 +714,7 @@ Thus the subdiagram $(P,V(P))$ defined by $t$ is exact.
 
 Conversely, suppose we have an exact subdiagram $(P, V(P))$ of $W = (\cP, [n])$ supported on $|V(P)| = |P|+3$ vertices, and let $t$ be the subgraph of $\tau(W)$ corresponding to $(P,V(P))$.
 
-Suppose $|P|=1$. Let $p$ be the element of $P$. The exactness condition on $(P, V(P))$ says that the four supporting vertices of $p$ are distinct.  If the support of $p$ is four consecutive vertices, then the ends of the edge corresponding to $p$ in $\tau(W)$ have a common neighbour and so $t$ is a single triangle, hence a triangulated piece.  If the support of $p$ is not four consecutive vertices, then the vertices which are the ends of $t$ are separated by at least two vertices along the cycle.  This implies that $t$ is a trivial triangulated piece.
+Suppose $|P|=1$. Let $p$ be the element of $P$. The exactness condition on $(P, V(P))$ says that the four supporting vertices of $p$ are distinct.  If the support of $p$ is four consecutive vertices, then $V(p)$ defines three consecutive boundary edges of $W$, so $t$ is a single triangle, hence a triangulated piece.  If the support of $p$ is not four consecutive vertices, then the vertices which are the ends of $t$ are separated by at least two vertices along the cycle.  This implies that $t$ is a trivial triangulated piece.
 
 Now suppose $|P|>1$.  Let $j=|P|$, $m=|V(P)|$, and 
 suppose that the set $V(P)$ defines $c$ disjoint cyclic intervals of $[n]$. Then $t$ has $m-c$ vertices.  If $t$ were a triangulation, $t$ would have $j -c$ internal edges.
@@ -730,7 +729,7 @@ The graph $t$ has $j$ edges that come from propagators, and $m - 2c$ edges that 
 
 
 
-To avoid the issue of exact diagrams being subdiagrams of other exact subdiagrams (for instance, any subdiagram $(q, V_q)$, for $q \in \cP$ is exact), we introduce the notion of maximal exact subdiagrams.
+To avoid the issue of exact diagrams being subdiagrams of other exact subdiagrams (for instance, any subdiagram $(q, V(q))$, for $q \in \cP$ is exact), we introduce the notion of maximal exact subdiagrams.
 
 \begin{dfn}
 An exact subdiagram $(P, V(P))$ is a {\em maximal exact subdiagram} of $W$ if there is no other exact subdiagram $(Q, V(Q))$ in $W$ that contains $(P,V(P))$ as a strict subdiagram.
@@ -747,7 +746,7 @@ Combining Lemmas \ref{decompositionlem} and \ref{lem triang to exact} yields the
 
 \subsection{Matroid properties of exact subdiagrams}
 
-Since Corollary \ref{uniqueproppartitioncor} allows us to decompose any admissible Wilson loop diagram into a collection of maximal exact subdiagrams, in this section we examine the matroid properties of exact subdiagrams more closely.
+Since Corollary \ref{uniqueproppartitioncor} allows us to decompose any admissible Wilson loop diagram into a collection of maximal exact subdiagrams, in this section we examine the matroid properties of exact subdiagrams more closely. In particular, we show that the matroids associated to exact subdiagrams are uniform (Theorem \ref{??}) and that 
 
 \begin{dfn}\label{matroid contraction}
 Let $M = (E,\cB)$ be a matroid, and $S \subseteq E$. The {\em contraction} of $M$ by $S$ is the matroid $M/S = (E \setminus S, \cB / S)$, where
@@ -763,12 +762,12 @@ Let $W = (\cP, [n])$ be an admissible Wilson loop diagram and $P \subseteq \cP$.
 
 In Lemma \ref{maxexactcomplementrank} below we show that every exact subdiagram satisfies the rank condition of Lemma \ref{contractsubdiaglem}. In order to do this, we first examine the properties of the set by which we contract.
 
-\begin{dfn}\label{def prop flat}
+\begin{dfn}\label{def prop flat} 
 Let $W = (\cP,[n])$ be an admissible Wilson loop diagram and $P \subseteq \cP$. The set $F(P) := V(P^c)^c$ is called the {\em propagator flat} of $P$.
 \end{dfn}
 Thus in Lemma \ref{contractsubdiaglem} above we would contract $M(W)$ by the propagator flat $F(P^c)$ of the {\em complement} of $P$ in order to study $(P,V(P))$. The justification for this notation is given by (1) of the next lemma: the set $F(P)$ consists of vertices which {\em only} support propagators in $P$ (or no propagators at all).
 
-\begin{lem}\label{lem properties of prop flats}
+\begin{lem}\label{lem properties of prop flats} \sanote{do we need the first 2? They follow directly from the definition 1.2. Do we use them later?}
 Let $F(P)$ be a propagator flat as defined above. Then
 \begin{enumerate}
 \item $F(\emptyset)$ is exactly the set of vertices which support no propagators, while for $P \neq \emptyset$ we have \[F(P) = \big(V(P) \setminus V(P^c)\big) \cup F(\emptyset).\] \note{updated (1) to match new definition of $F(P)$; }
