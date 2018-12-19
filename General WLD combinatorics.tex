@@ -300,12 +300,12 @@
 
 
 
-\title{Put Title here}
-%\author{}
+\title{Combinatorics of the geometry of Wilson loop diagrams}
+\author{Susama Agarwala, Si\^an Fryer, and Karen Yeats}
 %\date{}
 
 \begin{document}
-
+\maketitle
 
 This paper studies the combinatorics of Wilson Loop Diagrams.
 \section{Wilson Loop diagrams}\label{section background}
@@ -326,11 +326,11 @@ Let $W = (\cP, [n])$.
 \begin{enumerate}
 \item For $p \in \cP$, let $V(p) = \{i_p, i_p+1, j_p, j_p+1\}$ be the set of vertices supporting $p$. Then, for $P \subseteq \cP$, the set $V(P) = \cup_{p \in P} V(p)$ is the vertex support of $P$.
 \item For $V \subseteq [n]$, write $\Prop(V) = \{ p \in \cP | V(p) \cap V \neq \emptyset \} $.
-\item For $P \subseteq \cP$, define $F(P) = V(P^c)^c$ to be the set of vertices in $[n]$ that only support propagators in the set $P$.
+\item For $P \subseteq \cP$, define $F(P) = V(P^c)^c$ to be the set of vertices in $[n]$ that do not support any propagators outside the set $P$.
 \end{enumerate}
 \end{dfn}
 
-Note that $F(\emptyset)$ is the set of vertices that are not in the support of any propagators. \sanote{did we settle on a term here? I'd like to make this a definition}
+Note that $F(\emptyset)$ is the set of vertices that are not in the support of any propagators. \note{mention that $F(\emptyset)$ is also called nonsupporting and also phrase as a note that old lemma about $F(P) = stuff - stuff$.}
 
 It is sometimes useful to discuss propagators in terms of the edges supporting them, rather than the vertices.
 
@@ -510,7 +510,7 @@ If $W = (\cP, [n])$ is an admissible Wilson loop diagram, then $\tau(W)$ is a si
 \end{lem}
 
 \begin{proof}
-Since the vertices of $\tau(W)$ are labeled by the edges of $W$, which are cyclically ordered, this gives an ordering to the vertices. Furthermore, since the outer \hlfix{circle of $W$ is a cycle}{sounds awkward in the new notation}, the outer face of $\tau(W)$ is also a cycle. Since $W$ is admissible, no pairs of propagators cross. Therefore, it is a planar embedding. Similarly, $W$ does not admit any propagators of the form $p = (i, i+1)$; therefore there is exactly one edge connecting any two adjacent edges of $\tau(W)$. Finally, there does not exist two propagators $p,q$ such that both $p$ and $q$ start at edge $i$ and end at edge $j$. Therefore, no other two vertices of $\tau(W)$ can be connected by more than one edge. Finally, the embedding of $\tau(W)$ is induced from the embedding of the graph $W$.
+Since the vertices of $\tau(W)$ are labeled by the edges of $W$, which are cyclically ordered, this gives an ordering to the vertices and the outer face of $\tau(W)$ is a cycle. Since $W$ is admissible, no pairs of propagators cross. Therefore, it is a planar embedding. Similarly, $W$ does not admit any propagators of the form $p = (i, i+1)$; therefore there is exactly one edge connecting any two adjacent edges of $\tau(W)$. Finally, there does not exist two propagators $p,q$ such that both $p$ and $q$ start at edge $i$ and end at edge $j$. Therefore, no other two vertices of $\tau(W)$ can be connected by more than one edge. Finally, the embedding of $\tau(W)$ is induced from the embedding of the graph $W$.
  \end{proof}
 
 \begin{comment}
@@ -683,7 +683,7 @@ Every triangulated piece $t$ of an admissible Wilson loop diagram $W$ correspond
 \begin{itemize}
 \item The vertex set of the subgraph $t$ is
   \begin{itemize}
-  \item \hlfix{the vertices of $\tau(W)$ corresponding to edges of $W$ defined by cyclically consecutive elements of $V(P)$ as a subset of $[n]$}{changed to simplify with existing notation, but now it contradicts below}
+  \item the vertices of $\tau(W)$ corresponding to edges of $W$ defined by cyclically consecutive elements of $V(P)$ as a subset of $[n]$
   \end{itemize}
 \item The edge set of the subgraph is
   \begin{itemize}
@@ -691,7 +691,7 @@ Every triangulated piece $t$ of an admissible Wilson loop diagram $W$ correspond
   \item along with the outer edges of $\tau(W)$ for which both their end points are in the vertex set
   \end{itemize}
 \end{itemize}
-Note that the subgraph $t$ only depends on $P$, \hlfix{not the vertex set of the subdiagram $W_P$}{really? why?}, but it is not the subgraph of $\tau(W)$ consisting only of edges corresponding to propagators of $P$. 
+Note that the subgraph $t$ depends on how the propagators of $P$ sit inside $[n]$, not on how they sit in $W_P$ itself.  In particular $t$ is not the subgraph of $\tau(W)$ consisting only of edges corresponding to propagators of $P$. 
 
 
 \begin{lem}\label{lem triang to exact}
@@ -1845,9 +1845,10 @@ For any $a \in [n]$, $a-1$ is maximal with respect to the $<_{a}$ order. Therefo
 
 \subsection{Dimension of the Wilson Loop cells}
 
-Agarwala and Marcott show ***cite this*** that the dimension of the positroid cell defined by a Wilson loop diagram $(\cP, [n])$ has dimension $3|\cP|$. Their proof is geometric and elegant, but it is not easy to track the effect of a particular propagator.
+Our next goal is to show that the dimension of the positroid cell defined by a Wilson loop diagram $(\cP, [n])$ has dimension $3|\cP|$.  Marcott in ***cite this*** has a different proof which is geometric and more elegant, bit it is not easy to track the effect of a particular propagator.  Our approach is much more explicit.
 
-The dimension of a positroid cell is the same as the number of plusses in the associated Le diagram ***cite something***, and so with Algorithm~\ref{alg:put GN on WLD} along with the algorithm for passing from a Grassmann necklace to a Le diagram (reversing Oh's algorithm) described by some of us in \cite{reversingOh}, we can, at the cost of a bit of messy grunt work, give a different recursive proof of the $3|\cP|$-dimensionality that explicitly describes the changes in the positions of the plusses in the Le diagram.
+
+The dimension of a positroid cell is the same as the number of plusses in the associated Le diagram ***cite something***, and so with Algorithm~\ref{alg:put GN on WLD} along with the algorithm for passing from a Grassmann necklace to a Le diagram (reversing Oh's algorithm) described by some of us in \cite{reversingOh}, we can, at the cost of a bit of messy grunt work, give a recursive proof of the $3|\cP|$-dimensionality that explicitly describes the changes in the positions of the plusses in the Le diagram.
 
 %In \cite{reversingOh}, Agarwala and Fryer give an algorithm for passing from a Grassmann Necklace to a Le diagram. We use this algorithm here to pass from a Wilson loop diagram to its associated Le diagram. In this manner, we show that the positroid cell defined by a Wilson loop diagram has dimension $3|\cP|$. Maybe say something about Amplituhedra having $4k$ dimension, but this is not quite what we have, since we are ignoring one column.
 %
@@ -2084,8 +2085,6 @@ Suppose we are following the Grassmann necklace to Le diagram algorithm, and we 
   From all of this we get that the number of plusses in the Le diagram for $W$ is three more than the number of plusses in the Le diagram for $V$.  Applying induction completes the proof.
 \end{proof}
 
-
-{\color{red}Maybe proved that inadmissible diagrams, while they correspond to matroids, can't be mapped to the positroids of the correct dimension? }
 
 \section{Poles of Wilson Loop Integrals}
 
