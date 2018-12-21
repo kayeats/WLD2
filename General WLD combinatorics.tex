@@ -2106,7 +2106,7 @@ We first give an algorithm which extracts the required minors from the Grassmann
 \begin{algorithm}\label{alg WLD to denom via GN}
 Let $W = (\cP,n)$ be a Wilson loop diagram, and let $C(W)$ be the matrix of $W$ as defined in \eqref{C(W) dfn} (see Section~\ref{section background}).
 \begin{itemize}
-  \item For each $i \in \interval{1}{n}$, we construct a factor $r_i$ as follows:
+  \item For each $i \in [n]$, we construct a factor $r_i$ as follows:
     \begin{itemize}
       %\item Use Algorithm~\ref{alg:put GN on WLD} to obtain a bijection between the propagators and the $i-1$st Grassmann necklace element, $I_{i-1}$.  (By convention set $I_{-1}=I_n$.)  Write $I_{i-1}(p)$ for the vertex associated to propagator $p$ under this bijection.
       %\item Use Algorithm~\ref{alg:put GN on WLD} to obtain a bijection between the propagators and the $i$th Grassmann necklace element, $I_{i}$.  Write $I_{i}(p)$ for the vertex associated to propagator $p$ under this bijection.
@@ -2117,13 +2117,12 @@ Let $W = (\cP,n)$ be a Wilson loop diagram, and let $C(W)$ be the matrix of $W$ 
   \item Define $R = \prod_{i=1}^n r_i$.
 \end{itemize}
 \end{algorithm}
-\note{What are we doing about the sign of the determinants?}
+\note{What are we doing about the sign of the determinants?  --- in the end we are making a denominator, so an object that probably makes the most sense as being defined up to sign; I would suggest having all this be up to an overall sign, but perhaps we can discuss in our next meeting.}
 
 \begin{figure}
 \includegraphics{egWLD_forR}
 \caption{Example WLD for illustrating Algorithm~\ref{alg WLD to denom via GN} and bijections between propagators and vertices for each Grassmann necklace element.}\label{fig R eg}
 \end{figure}
-\todo{I've named the propagators $p$, $q$, $s$; could whoever codes up the figure please add that?}
 
 \begin{eg}
 Consider the Wilson loop diagram in Figure~\ref{fig R eg}. Assigning propagators $p$, $q$, $s$ to rows $1,2,3$ respectively, we obtain the matrix
@@ -2132,7 +2131,7 @@ C(W) = \begin{bmatrix} a & b & 0 & 0 & 0 & c & d \\ e & f & 0 & 0 & g & h & 0 \\
 \]
 The Grassmann necklace of this diagram is 
 \begin{gather*}I_1 = \{1,2,4\}, I_2 = \{2,4,5\}, I_3 = \{4,5,6\}, I_4=\{4,5,6\},\\ I_5=\{5,6,7\}, I_6 = \{6,7,1\}, I_7=\{7,1,2\}. \end{gather*}  
-Figure~\ref{fig R eg} also indicates the pairings between propagators and vertices for each $i \in \interval{1}{7}$.  
+Figure~\ref{fig R eg} indicates the pairings between propagators and vertices for each $i \in [1,7]$.  
 
 From $I_1$ to $I_2$, the propagators $p$ and $q$ change which vertex they are assigned to but $r$ is assigned to vertex 4 in both, so $S_2 = \{p,q\}$.  Then
 \[
