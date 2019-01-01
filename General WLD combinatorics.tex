@@ -327,10 +327,13 @@ Let $W = (\cP, [n])$.
 \item For $p \in \cP$, let $V(p) = \{i_p, i_p+1, j_p, j_p+1\}$ be the set of vertices supporting $p$. Then, for $P \subseteq \cP$, the set $V(P) = \cup_{p \in P} V(p)$ is the vertex support of $P$.
 \item For $V \subseteq [n]$, write $\Prop(V) = \{ p \in \cP | V(p) \cap V \neq \emptyset \} $.
 \item For $P \subseteq \cP$, define $F(P) = V(P^c)^c$ to be the set of vertices in $[n]$ that do not support any propagators outside the set $P$.
+\item The set of vertices that are not in the support of any propagotors is denoted  $F(\emptyset)$. Vertices in this set are called non-supporting.  
 \end{enumerate}
 \end{dfn}
 
-Note that $F(\emptyset)$ is the set of vertices that are not in the support of any propagators. \note{mention that $F(\emptyset)$ is also called nonsupporting and also phrase as a note that old lemma about $F(P) = stuff - stuff$.}
+\begin{rmk}\label{alt F(P) rmk}
+Note that a more explicit definition of $F(P)$ is \bas F(P)  = \big(V(P) \setminus V(P^c) \big) \cup F(\emptyset) \eas
+\end{rmk}
 
 It is sometimes useful to discuss propagators in terms of the edges supporting them, rather than the vertices.
 
@@ -490,7 +493,7 @@ The first part of (1) is \cite[Equation (9)]{wilsonloop} and surrounding discuss
 To prove (4), we need to show that $F(P)$ is maximally dependent. If $F(P) = [n]$ then this is automatic, so suppose not and let $v \in [n] \setminus F(P)$. In other words, $v \in V(P^c)$ and so $v$ supports some propagator $q \not\in P$.  Let $S \subseteq F(P)$ be an independent set of maximal size. Then $\Prop(S) \subseteq P$ by (1), and no subset of $S$ supports fewer propagators than the number of vertices it contains (this is the definition of an independent set in $M(W)$). Since $v$ supports a new propagator $q \not\in P$, the set $S \cup \{v\} \subseteq F(P) \cup\{v\}$ also satisfies this independence condition. Thus $\rk(F(P) \cup\{v\}) = \rk(F(P)) + 1$, as required.
 \end{proof}
 
-Note that this means that the set $F(\emptyset)$ is the maximal subset of vertices of $W$ of rank $0$. That is, it is the unique flat of rank $0$ in $M(W)$. \sanote{I'm sprinkling comments about $F(\emptyset)$ throughout until we can come up with a better name than unsupportive vertices.}
+Note that this means that the set, $F(\emptyset)$, of non-supporting vertices is the maximal subset of vertices of $W$ of rank $0$. That is, it is the unique flat of rank $0$ in $M(W)$. 
 
 \subsection{Polygon partitions of Wilson loop diagrams\label{sec: polygon partitions}}
 
@@ -794,7 +797,7 @@ To prove (3), we need to show that $F(P)$ is maximally dependent. If $F(P) = [n]
 \begin{lem} \label{lem decompose flat}Let $F$ be a flat in $M(W)$, and let $C \subseteq F$ be the union of all circuits contained in $F$. Then the following are true:
 \begin{enumerate}
 \item $C = F(\Prop (C))$, i.e. $C$ is a propagator flat.
-\item $F \setminus C$ is an independent  flat.  
+\item $F \setminus C$ is an independent set. Furthermore, If $F\setminus C$ is an independent flat if and only if $F(\emptyset) = \emptyset$, that is $W$ has no non-supporting vertices.  
 \end{enumerate}
 \end{lem}
 
@@ -808,8 +811,9 @@ Now suppose there exists some $w \in  F(\Prop(C)) \setminus C$. Let $B$ be an in
 
 For part (2), first note that $F \setminus C$ is automatically independent as it contains no circuits.
 
-\note{the one element could be e so this doesn't work}
-For any $e \not\in F$, we certainly have $\rk((F\setminus C)\cup\{e\}) = \rk(F\setminus C) +1$ since $F$ is a flat. Now let $e \in C$, and suppose that $\rk((F\setminus C)\cup\{e\}) = \rk(F\setminus C)$. This implies that $(F\setminus C)\cup \{e\}$ is dependent, and hence contains a circuit, $S$. This circuit must contain at least one element but this contradicts the fact that $C$ was the union of all circuits in $F$. 
+Note that since $F(\emptyset)$ has rank $0$, $F(\emptyset)$ is contained in every flat of $W$. Therefore, if $F(\emptyset) \neq \emptyset$, then $F\setminus C$ cannot be a flat. 
+
+If $F(\emptyset) = \emptyset$, for any $e \not\in F$, we certainly have $\rk((F\setminus C)\cup\{e\}) = \rk(F\setminus C) +1$ since $F$ is a flat. Now let $e \in C$, and suppose that $\rk((F\setminus C)\cup\{e\}) = \rk(F\setminus C)$. This implies that $(F\setminus C)\cup \{e\}$ is dependent, and hence contains a circuit, $S$. Since $F(\emptyset) = \emptyset$, this circuit must contain at least two elements but this contradicts the fact that $C$ was the union of all circuits in $F$. 
 
 Thus $\rk((F\setminus C)\cup \{e\}) = \rk(F\setminus C) + 1$ for any $e \not\in F\setminus C$, and hence $F\setminus C$ is a flat.
 \end{proof}
