@@ -1,32 +1,32 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6730 64-bit) (preloaded format=pdflatex 2018.8.30)  12 DEC 2018 14:00
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2018.3.16)  4 JAN 2019 11:30
 entering extended mode
-**"./General WLD combinatorics.tex"
-("General WLD combinatorics.tex"
-LaTeX2e <2018-04-01> patch level 5
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\article.cls
-"
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**"General WLD combinatorics"
+(./General WLD combinatorics.tex
+LaTeX2e <2017-04-15>
+Babel <3.18> and hyphenation patterns for 84 language(s) loaded.
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\size11.clo"
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/size11.clo
 File: size11.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 )
-\c@part=\count80
-\c@section=\count81
-\c@subsection=\count82
-\c@subsubsection=\count83
-\c@paragraph=\count84
-\c@subparagraph=\count85
-\c@figure=\count86
-\c@table=\count87
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
 \abovecaptionskip=\skip41
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
 )
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\amssymb
-.sty"
+(/usr/local/texlive/2017/texmf-dist/tex/latex/amsfonts/amssymb.sty
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
 
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\amsfont
-s.sty"
+(/usr/local/texlive/2017/texmf-dist/tex/latex/amsfonts/amsfonts.sty
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \@emptytoks=\toks14
 \symAMSa=\mathgroup4
@@ -34,39 +34,33 @@ Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 ))
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amsmath.
-sty"
+(/usr/local/texlive/2017/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2017/09/02 v2.17a AMS math features
 \@mathmargin=\skip43
 
 For additional information on amsmath, use the `?' option.
-
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amstext.
-sty"
+(/usr/local/texlive/2017/texmf-dist/tex/latex/amsmath/amstext.sty
 Package: amstext 2000/06/29 v2.01 AMS text
 
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amsgen.s
-ty"
+(/usr/local/texlive/2017/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
 \@emptytoks=\toks15
 \ex@=\dimen103
 ))
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amsbsy.s
-ty"
+(/usr/local/texlive/2017/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 \pmbraise@=\dimen104
 )
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amsopn.s
-ty"
+(/usr/local/texlive/2017/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 2016/03/08 v2.02 operator names
 )
-\inf@bad=\count88
+\inf@bad=\count87
 LaTeX Info: Redefining \frac on input line 213.
-\uproot@=\count89
-\leftroot@=\count90
+\uproot@=\count88
+\leftroot@=\count89
 LaTeX Info: Redefining \overline on input line 375.
-\classnum@=\count91
-\DOTSCASE@=\count92
+\classnum@=\count90
+\DOTSCASE@=\count91
 LaTeX Info: Redefining \ldots on input line 472.
 LaTeX Info: Redefining \dots on input line 475.
 LaTeX Info: Redefining \cdots on input line 596.
@@ -75,15 +69,15 @@ LaTeX Info: Redefining \cdots on input line 596.
 \big@size=\dimen105
 LaTeX Font Info:    Redeclaring font encoding OML on input line 712.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
-\macc@depth=\count93
-\c@MaxMatrixCols=\count94
+\macc@depth=\count92
+\c@MaxMatrixCols=\count93
 \dotsspace@=\muskip10
-\c@parentequation=\count95
-\dspbrk@lvl=\count96
+\c@parentequation=\count94
+\dspbrk@lvl=\count95
 \tag@help=\toks16
-\row@=\count97
-\column@=\count98
-\maxfields@=\count99
+\row@=\count96
+\column@=\count97
+\maxfields@=\count98
 \andhelp@=\toks17
 \eqnshift@=\dimen106
 \alignsep@=\dimen107
@@ -98,15 +92,13 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
 LaTeX Info: Redefining \[ on input line 2817.
 LaTeX Info: Redefining \] on input line 2818.
 )
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\latex\tools\verbatim.s
-ty"
+(/usr/local/texlive/2017/texmf-dist/tex/latex/tools/verbatim.sty
 Package: verbatim 2014/10/28 v1.5q LaTeX2e package for verbatim enhancements
 \every@verbatim=\toks20
 \verbatim@line=\toks21
 \verbatim@in@stream=\read1
 )
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amscls\amsthm.st
-y"
+(/usr/local/texlive/2017/texmf-dist/tex/latex/amscls/amsthm.sty
 Package: amsthm 2017/10/31 v2.20.4
 \thm@style=\toks22
 \thm@bodyfont=\toks23
@@ -117,54 +109,50 @@ Package: amsthm 2017/10/31 v2.20.4
 \thm@postskip=\skip47
 \thm@headsep=\skip48
 \dth@everypar=\toks27
-) ("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\latex\url\url.sty"
+)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip11
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\latex\multirow\multiro
-w.sty"
+(/usr/local/texlive/2017/texmf-dist/tex/latex/multirow/multirow.sty
 Package: multirow 2016/11/25 v2.2 Span multiple rows of a table
 \multirow@colwidth=\skip49
-\multirow@cntb=\count100
+\multirow@cntb=\count99
 \multirow@dima=\skip50
 \bigstrutjot=\dimen112
 )
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\latex\preprint\fullpag
-e.sty"
+(/usr/local/texlive/2017/texmf-dist/tex/latex/preprint/fullpage.sty
 Package: fullpage 1999/02/23 1.1 (PWD)
 \FP@margin=\skip51
 )
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\latex\mathtools\mathto
-ols.sty"
+(/usr/local/texlive/2017/texmf-dist/tex/latex/mathtools/mathtools.sty
 Package: mathtools 2018/01/08 v1.21 mathematical typesetting tools
 
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\keyval.
-sty"
+(/usr/local/texlive/2017/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks28
 )
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\latex\tools\calc.sty"
-Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count101
-\calc@Bcount=\count102
+(/usr/local/texlive/2017/texmf-dist/tex/latex/tools/calc.sty
+Package: calc 2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count100
+\calc@Bcount=\count101
 \calc@Adimen=\dimen113
 \calc@Bdimen=\dimen114
 \calc@Askip=\skip52
 \calc@Bskip=\skip53
 LaTeX Info: Redefining \setlength on input line 80.
 LaTeX Info: Redefining \addtolength on input line 81.
-\calc@Ccount=\count103
+\calc@Ccount=\count102
 \calc@Cskip=\skip54
 )
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\latex\mathtools\mhsetu
-p.sty"
+(/usr/local/texlive/2017/texmf-dist/tex/latex/mathtools/mhsetup.sty
 Package: mhsetup 2017/03/31 v1.3 programming setup (MH)
 )
 LaTeX Info: Thecontrolsequence`\('isalreadyrobust on input line 129.
 LaTeX Info: Thecontrolsequence`\)'isalreadyrobust on input line 129.
 LaTeX Info: Thecontrolsequence`\['isalreadyrobust on input line 129.
 LaTeX Info: Thecontrolsequence`\]'isalreadyrobust on input line 129.
-\g_MT_multlinerow_int=\count104
+\g_MT_multlinerow_int=\count103
 \l_MT_multwidth_dim=\dimen115
 \origjot=\skip55
 \l_MT_shortvdotswithinadjustabove_dim=\dimen116
@@ -174,118 +162,101 @@ LaTeX Info: Thecontrolsequence`\]'isalreadyrobust on input line 129.
 \l_MT_above_shortintertext_sep=\dimen120
 \l_MT_below_shortintertext_sep=\dimen121
 )
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\latex\tools\longtable.
-sty"
+(/usr/local/texlive/2017/texmf-dist/tex/latex/tools/longtable.sty
 Package: longtable 2014/10/28 v4.11 Multi-page Table package (DPC)
 \LTleft=\skip56
 \LTright=\skip57
 \LTpre=\skip58
 \LTpost=\skip59
-\LTchunksize=\count105
+\LTchunksize=\count104
 \LTcapwidth=\dimen122
 \LT@head=\box28
 \LT@firsthead=\box29
 \LT@foot=\box30
 \LT@lastfoot=\box31
-\LT@cols=\count106
-\LT@rows=\count107
-\c@LT@tables=\count108
-\c@LT@chunks=\count109
+\LT@cols=\count105
+\LT@rows=\count106
+\c@LT@tables=\count107
+\c@LT@chunks=\count108
 \LT@p@ftn=\toks29
 )
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\rotatin
-g.sty"
+(/usr/local/texlive/2017/texmf-dist/tex/latex/graphics/rotating.sty
 Package: rotating 2016/08/11 v2.16d rotated objects in LaTeX
 
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\graphic
-x.sty"
+(/usr/local/texlive/2017/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
 
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\graphic
-s.sty"
+(/usr/local/texlive/2017/texmf-dist/tex/latex/graphics/graphics.sty
 Package: graphics 2017/06/25 v1.2c Standard LaTeX Graphics (DPC,SPQR)
 
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\trig.st
-y"
+(/usr/local/texlive/2017/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
 )
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics-cfg\gra
-phics.cfg"
+(/usr/local/texlive/2017/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 99.
 
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics-def\pdf
-tex.def"
+(/usr/local/texlive/2017/texmf-dist/tex/latex/graphics-def/pdftex.def
 File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 ))
 \Gin@req@height=\dimen123
 \Gin@req@width=\dimen124
 )
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\ifthen.sty"
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 )
-\c@r@tfl@t=\count110
+\c@r@tfl@t=\count109
 \rotFPtop=\skip60
 \rotFPbot=\skip61
 \rot@float@box=\box32
 \rot@mess@toks=\toks30
 )
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\latex\makecell\makecel
-l.sty"
+(/usr/local/texlive/2017/texmf-dist/tex/latex/makecell/makecell.sty
 Package: makecell 2009/08/03 V0.1e Managing of Tab Column Heads and Cells
 
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\latex\tools\array.sty"
-Package: array 2018/04/30 v2.4h Tabular extension package (FMi)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/tools/array.sty
+Package: array 2016/10/06 v2.4d Tabular extension package (FMi)
 \col@sep=\dimen125
-\ar@mcellbox=\box33
 \extrarowheight=\dimen126
 \NC@list=\toks31
 \extratabsurround=\skip62
 \backup@length=\skip63
-\ar@cellbox=\box34
 )
 \rotheadsize=\dimen127
-\c@nlinenum=\count111
+\c@nlinenum=\count110
 \TeXr@lab=\toks32
 )
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\latex\ytableau\ytablea
-u.sty"
+(/usr/local/texlive/2017/texmf-dist/tex/latex/ytableau/ytableau.sty
 Package: ytableau 2012/08/14 v1.3 Many-featured Young tableaux and Young diagra
 ms
-\tableaux@YT=\box35
-\thistableau@YT=\box36
-\refhtdp@YT=\box37
+\tableaux@YT=\box33
+\thistableau@YT=\box34
+\refhtdp@YT=\box35
 \toks@YT=\toks33
 \opttoksa@YT=\toks34
 \opttoksb@YT=\toks35
 \boxdim@YT=\dimen128
 \tableauwd@YT=\dimen129
-\count@YT=\count112
+\count@YT=\count111
 
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pgf\utilities\pg
-fkeys.sty"
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\utilities\
-pgfkeys.code.tex"
+(/usr/local/texlive/2017/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
 \pgfkeys@pathtoks=\toks36
 \pgfkeys@temptoks=\toks37
 
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\utilities\
-pgfkeysfiltered.code.tex"
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.c
+ode.tex
 \pgfkeys@tmptoks=\toks38
-)))
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pgfopts\pgfopts.
-sty"
+))) (/usr/local/texlive/2017/texmf-dist/tex/latex/pgfopts/pgfopts.sty
 Package: pgfopts 2014/07/10 v2.1a LaTeX package options with pgfkeys
 \pgfopts@list@add@a@toks=\toks39
 \pgfopts@list@add@b@toks=\toks40
 )
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\latex\xcolor\xcolor.st
-y"
+(/usr/local/texlive/2017/texmf-dist/tex/latex/xcolor/xcolor.sty
 Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
 
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics-cfg\col
-or.cfg"
+(/usr/local/texlive/2017/texmf-dist/tex/latex/graphics-cfg/color.cfg
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package xcolor Info: Driver file: pdftex.def on input line 225.
@@ -299,7 +270,7 @@ Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
 ))
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\latex\soul\soul.sty"
+(/usr/local/texlive/2017/texmf-dist/tex/latex/soul/soul.sty
 Package: soul 2003/11/17 v2.4 letterspacing/underlining (mf)
 \SOUL@word=\toks41
 \SOUL@lasttoken=\toks42
@@ -311,62 +282,46 @@ Package: soul 2003/11/17 v2.4 letterspacing/underlining (mf)
 \SOUL@uldp=\dimen131
 \SOUL@ulht=\dimen132
 )
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\latex\todonotes\todono
-tes.sty"
+(/usr/local/texlive/2017/texmf-dist/tex/latex/todonotes/todonotes.sty
 Package: todonotes 2015/07/09 .dtx Todonotes source and documentation.
 Package: todonotes 2012/07/25
 
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\latex\xkeyval\xkeyval.
-sty"
+(/usr/local/texlive/2017/texmf-dist/tex/latex/xkeyval/xkeyval.sty
 Package: xkeyval 2014/12/03 v2.7a package option processing (HA)
 
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\xkeyval\xkeyva
-l.tex"
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\xkeyval\xkvuti
-ls.tex"
+(/usr/local/texlive/2017/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+(/usr/local/texlive/2017/texmf-dist/tex/generic/xkeyval/xkvutils.tex
 \XKV@toks=\toks46
 \XKV@tempa@toks=\toks47
 )
-\XKV@depth=\count113
+\XKV@depth=\count112
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
 ))
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pgf\frontendlaye
-r\tikz.sty"
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pgf\basiclayer\p
-gf.sty"
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pgf\utilities\pg
-frcs.sty"
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\utilities\
-pgfutil-common.tex"
+(/usr/local/texlive/2017/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.te
+x
 \pgfutil@everybye=\toks48
 \pgfutil@tempdima=\dimen133
 \pgfutil@tempdimb=\dimen134
 
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\utilities\
-pgfutil-common-lists.tex"))
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\utilities\
-pgfutil-latex.def"
-\pgfutil@abb=\box38
-
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\latex\ms\everyshi.sty"
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-li
+sts.tex))
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
+\pgfutil@abb=\box36
+(/usr/local/texlive/2017/texmf-dist/tex/latex/ms/everyshi.sty
 Package: everyshi 2001/05/15 v3.00 EveryShipout Package (MS)
 ))
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\utilities\
-pgfrcs.code.tex"
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex
 Package: pgfrcs 2015/08/07 v3.0.1a (rcs-revision 1.31)
 ))
 Package: pgf 2015/08/07 v3.0.1a (rcs-revision 1.15)
-
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pgf\basiclayer\p
-gfcore.sty"
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pgf\systemlayer\
-pgfsys.sty"
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\systemlaye
-r\pgfsys.code.tex"
+(/usr/local/texlive/2017/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
 Package: pgfsys 2014/07/09 v3.0.1a (rcs-revision 1.48)
-
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\utilities\
-pgfkeys.code.tex")
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex)
 \pgf@x=\dimen135
 \pgf@y=\dimen136
 \pgf@xa=\dimen137
@@ -377,81 +332,72 @@ pgfkeys.code.tex")
 \pgf@yc=\dimen142
 \w@pgf@writea=\write3
 \r@pgf@reada=\read2
-\c@pgf@counta=\count114
-\c@pgf@countb=\count115
-\c@pgf@countc=\count116
-\c@pgf@countd=\count117
+\c@pgf@counta=\count113
+\c@pgf@countb=\count114
+\c@pgf@countc=\count115
+\c@pgf@countd=\count116
 \t@pgf@toka=\toks49
 \t@pgf@tokb=\toks50
 \t@pgf@tokc=\toks51
-
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\systemlaye
-r\pgf.cfg"
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
 File: pgf.cfg 2008/05/14  (rcs-revision 1.7)
 )
 Driver file for pgf: pgfsys-pdftex.def
 
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\systemlaye
-r\pgfsys-pdftex.def"
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.d
+ef
 File: pgfsys-pdftex.def 2014/10/11  (rcs-revision 1.35)
 
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\systemlaye
-r\pgfsys-common-pdf.def"
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-p
+df.def
 File: pgfsys-common-pdf.def 2013/10/10  (rcs-revision 1.13)
 )))
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\systemlaye
-r\pgfsyssoftpath.code.tex"
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.
+code.tex
 File: pgfsyssoftpath.code.tex 2013/09/09  (rcs-revision 1.9)
-\pgfsyssoftpath@smallbuffer@items=\count118
-\pgfsyssoftpath@bigbuffer@items=\count119
+\pgfsyssoftpath@smallbuffer@items=\count117
+\pgfsyssoftpath@bigbuffer@items=\count118
 )
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\systemlaye
-r\pgfsysprotocol.code.tex"
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.
+code.tex
 File: pgfsysprotocol.code.tex 2006/10/16  (rcs-revision 1.4)
 ))
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclayer
-\pgfcore.code.tex"
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
 Package: pgfcore 2010/04/11 v3.0.1a (rcs-revision 1.7)
-
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfma
-th.code.tex"
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfma
-thcalc.code.tex"
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfma
-thutil.code.tex")
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfma
-thparser.code.tex"
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex)
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
 \pgfmath@dimen=\dimen143
-\pgfmath@count=\count120
-\pgfmath@box=\box39
+\pgfmath@count=\count119
+\pgfmath@box=\box37
 \pgfmath@toks=\toks52
 \pgfmath@stack@operand=\toks53
 \pgfmath@stack@operation=\toks54
 )
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfma
-thfunctions.code.tex"
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfma
-thfunctions.basic.code.tex")
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfma
-thfunctions.trigonometric.code.tex")
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfma
-thfunctions.random.code.tex")
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfma
-thfunctions.comparison.code.tex")
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfma
-thfunctions.base.code.tex")
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfma
-thfunctions.round.code.tex")
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfma
-thfunctions.misc.code.tex")
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfma
-thfunctions.integerarithmetics.code.tex")))
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfma
-thfloat.code.tex"
-\c@pgfmathroundto@lastzeros=\count121
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.
+tex
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic
+.code.tex)
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigo
+nometric.code.tex)
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.rando
+m.code.tex)
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.compa
+rison.code.tex)
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.
+code.tex)
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round
+.code.tex)
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.
+code.tex)
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integ
+erarithmetics.code.tex)))
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
+\c@pgfmathroundto@lastzeros=\count120
 ))
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclayer
-\pgfcorepoints.code.tex"
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.co
+de.tex
 File: pgfcorepoints.code.tex 2013/10/07  (rcs-revision 1.27)
 \pgf@picminx=\dimen144
 \pgf@picmaxx=\dimen145
@@ -468,126 +414,121 @@ File: pgfcorepoints.code.tex 2013/10/07  (rcs-revision 1.27)
 \pgf@zx=\dimen156
 \pgf@zy=\dimen157
 )
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclayer
-\pgfcorepathconstruct.code.tex"
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconst
+ruct.code.tex
 File: pgfcorepathconstruct.code.tex 2013/10/07  (rcs-revision 1.29)
 \pgf@path@lastx=\dimen158
 \pgf@path@lasty=\dimen159
 )
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclayer
-\pgfcorepathusage.code.tex"
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage
+.code.tex
 File: pgfcorepathusage.code.tex 2014/11/02  (rcs-revision 1.24)
 \pgf@shorten@end@additional=\dimen160
 \pgf@shorten@start@additional=\dimen161
 )
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclayer
-\pgfcorescopes.code.tex"
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.co
+de.tex
 File: pgfcorescopes.code.tex 2015/05/08  (rcs-revision 1.46)
-\pgfpic=\box40
-\pgf@hbox=\box41
-\pgf@layerbox@main=\box42
-\pgf@picture@serial@count=\count122
+\pgfpic=\box38
+\pgf@hbox=\box39
+\pgf@layerbox@main=\box40
+\pgf@picture@serial@count=\count121
 )
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclayer
-\pgfcoregraphicstate.code.tex"
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicst
+ate.code.tex
 File: pgfcoregraphicstate.code.tex 2014/11/02  (rcs-revision 1.12)
 \pgflinewidth=\dimen162
 )
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclayer
-\pgfcoretransformations.code.tex"
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransform
+ations.code.tex
 File: pgfcoretransformations.code.tex 2015/08/07  (rcs-revision 1.20)
 \pgf@pt@x=\dimen163
 \pgf@pt@y=\dimen164
 \pgf@pt@temp=\dimen165
 )
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclayer
-\pgfcorequick.code.tex"
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.cod
+e.tex
 File: pgfcorequick.code.tex 2008/10/09  (rcs-revision 1.3)
 )
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclayer
-\pgfcoreobjects.code.tex"
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.c
+ode.tex
 File: pgfcoreobjects.code.tex 2006/10/11  (rcs-revision 1.2)
 )
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclayer
-\pgfcorepathprocessing.code.tex"
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathproce
+ssing.code.tex
 File: pgfcorepathprocessing.code.tex 2013/09/09  (rcs-revision 1.9)
 )
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclayer
-\pgfcorearrows.code.tex"
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.co
+de.tex
 File: pgfcorearrows.code.tex 2015/05/14  (rcs-revision 1.43)
 \pgfarrowsep=\dimen166
 )
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclayer
-\pgfcoreshade.code.tex"
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.cod
+e.tex
 File: pgfcoreshade.code.tex 2013/07/15  (rcs-revision 1.15)
 \pgf@max=\dimen167
-\pgf@sys@shading@range@num=\count123
+\pgf@sys@shading@range@num=\count122
 )
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclayer
-\pgfcoreimage.code.tex"
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.cod
+e.tex
 File: pgfcoreimage.code.tex 2013/07/15  (rcs-revision 1.18)
 
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclayer
-\pgfcoreexternal.code.tex"
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.
+code.tex
 File: pgfcoreexternal.code.tex 2014/07/09  (rcs-revision 1.21)
-\pgfexternal@startupbox=\box43
+\pgfexternal@startupbox=\box41
 ))
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclayer
-\pgfcorelayers.code.tex"
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.co
+de.tex
 File: pgfcorelayers.code.tex 2013/07/18  (rcs-revision 1.7)
 )
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclayer
-\pgfcoretransparency.code.tex"
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretranspare
+ncy.code.tex
 File: pgfcoretransparency.code.tex 2013/09/30  (rcs-revision 1.5)
 )
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclayer
-\pgfcorepatterns.code.tex"
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.
+code.tex
 File: pgfcorepatterns.code.tex 2013/11/07  (rcs-revision 1.5)
 )))
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\modules\pg
-fmoduleshapes.code.tex"
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.cod
+e.tex
 File: pgfmoduleshapes.code.tex 2014/03/21  (rcs-revision 1.35)
-\pgfnodeparttextbox=\box44
+\pgfnodeparttextbox=\box42
 )
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\modules\pg
-fmoduleplot.code.tex"
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.
+tex
 File: pgfmoduleplot.code.tex 2015/08/03  (rcs-revision 1.13)
 )
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pgf\compatibilit
-y\pgfcomp-version-0-65.sty"
+(/usr/local/texlive/2017/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version
+-0-65.sty
 Package: pgfcomp-version-0-65 2007/07/03 v3.0.1a (rcs-revision 1.7)
 \pgf@nodesepstart=\dimen168
 \pgf@nodesepend=\dimen169
 )
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pgf\compatibilit
-y\pgfcomp-version-1-18.sty"
+(/usr/local/texlive/2017/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version
+-1-18.sty
 Package: pgfcomp-version-1-18 2007/07/23 v3.0.1a (rcs-revision 1.1)
 ))
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pgf\utilities\pg
-ffor.sty"
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pgf\math\pgfmath
-.sty"
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfma
-th.code.tex"))
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\utilities\
-pgffor.code.tex"
+(/usr/local/texlive/2017/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/pgf/math/pgfmath.sty
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex))
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
 Package: pgffor 2013/12/13 v3.0.1a (rcs-revision 1.25)
 
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfma
-th.code.tex")
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)
 \pgffor@iter=\dimen170
 \pgffor@skip=\dimen171
 \pgffor@stack=\toks55
 \pgffor@toks=\toks56
 ))
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\frontendla
-yer\tikz\tikz.code.tex"
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.cod
+e.tex
 Package: tikz 2015/08/07 v3.0.1a (rcs-revision 1.151)
 
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\libraries\
-pgflibraryplothandlers.code.tex"
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothan
+dlers.code.tex
 File: pgflibraryplothandlers.code.tex 2013/08/31 v3.0.1a (rcs-revision 1.20)
-\pgf@plot@mark@count=\count124
+\pgf@plot@mark@count=\count123
 \pgfplotmarksize=\dimen172
 )
 \tikz@lastx=\dimen173
@@ -596,41 +537,39 @@ File: pgflibraryplothandlers.code.tex 2013/08/31 v3.0.1a (rcs-revision 1.20)
 \tikz@lastysaved=\dimen176
 \tikzleveldistance=\dimen177
 \tikzsiblingdistance=\dimen178
-\tikz@figbox=\box45
-\tikz@figbox@bg=\box46
-\tikz@tempbox=\box47
-\tikz@tempbox@bg=\box48
-\tikztreelevel=\count125
-\tikznumberofchildren=\count126
-\tikznumberofcurrentchild=\count127
-\tikz@fig@count=\count128
+\tikz@figbox=\box43
+\tikz@figbox@bg=\box44
+\tikz@tempbox=\box45
+\tikz@tempbox@bg=\box46
+\tikztreelevel=\count124
+\tikznumberofchildren=\count125
+\tikznumberofcurrentchild=\count126
+\tikz@fig@count=\count127
 
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\modules\pg
-fmodulematrix.code.tex"
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.cod
+e.tex
 File: pgfmodulematrix.code.tex 2013/09/17  (rcs-revision 1.8)
-\pgfmatrixcurrentrow=\count129
-\pgfmatrixcurrentcolumn=\count130
-\pgf@matrix@numberofcolumns=\count131
+\pgfmatrixcurrentrow=\count128
+\pgfmatrixcurrentcolumn=\count129
+\pgf@matrix@numberofcolumns=\count130
 )
-\tikz@expandcount=\count132
+\tikz@expandcount=\count131
 
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\frontendla
-yer\tikz\libraries\tikzlibrarytopaths.code.tex"
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibrarytopaths.code.tex
 File: tikzlibrarytopaths.code.tex 2008/06/17 v3.0.1a (rcs-revision 1.2)
 )))
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\frontendla
-yer\tikz\libraries\tikzlibrarypositioning.code.tex"
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibrarypositioning.code.tex
 File: tikzlibrarypositioning.code.tex 2008/10/06 v3.0.1a (rcs-revision 1.7)
 )
-\c@@todonotes@numberoftodonotes=\count133
+\c@@todonotes@numberoftodonotes=\count132
 )
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\xypic\xy.sty"
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\xypic\xy.tex"
-Bootstrap'ing: catcodes, docmode,
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\xypic\xyrecat.
-tex")
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\xypic\xyidioms
-.tex")
+(/usr/local/texlive/2017/texmf-dist/tex/generic/xypic/xy.sty
+(/usr/local/texlive/2017/texmf-dist/tex/generic/xypic/xy.tex Bootstrap'ing:
+catcodes, docmode,
+(/usr/local/texlive/2017/texmf-dist/tex/generic/xypic/xyrecat.tex)
+(/usr/local/texlive/2017/texmf-dist/tex/generic/xypic/xyidioms.tex)
 
  Xy-pic version 3.8.9 <2013/10/06>
  Copyright (c) 1991-2013 by Kristoffer H. Rose <krisrose@tug.org> and others
@@ -661,43 +600,42 @@ Loading kernel: messages; fonts; allocations: state,
 \Y@min=\dimen198
 \X@max=\dimen199
 \Y@max=\dimen256
-\lastobjectbox@=\box49
-\zerodotbox@=\box50
+\lastobjectbox@=\box47
+\zerodotbox@=\box48
 \almostz@=\dimen257
  direction,
 \d@X=\dimen258
 \d@Y=\dimen259
-\K@=\count134
-\KK@=\count135
-\Direction=\count136
+\K@=\count133
+\KK@=\count134
+\Direction=\count135
 \K@dXdY=\dimen260
 \K@dYdX=\dimen261
 \xyread@=\read3
 \xywrite@=\write4
-\csp@=\count137
+\csp@=\count136
 \quotPTK@=\dimen262
 
 utility macros; pictures: \xy, positions,
 \swaptoks@@=\toks59
-\connectobjectbox@@=\box51
+\connectobjectbox@@=\box49
  objects,
 \styletoks@=\toks60
  decorations;
 kernel objects: directionals, circles, text; options; algorithms: directions,
 edges, connections;  Xy-pic loaded)
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\ifpdf
-.sty"
+(/usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/ifpdf.sty
 Package: ifpdf 2017/03/15 v3.2 Provides the ifpdf switch
 )
 Package: xy 2013/10/06 Xy-pic version 3.8.9
 
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\xypic\xyall.te
-x"  Xy-pic option: All features v.3.8
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\xypic\xycurve.
-tex"  Xy-pic option: Curve and Spline extension v.3.12 curve,
-\crv@cnt@=\count138
+(/usr/local/texlive/2017/texmf-dist/tex/generic/xypic/xyall.tex
+ Xy-pic option: All features v.3.8
+(/usr/local/texlive/2017/texmf-dist/tex/generic/xypic/xycurve.tex
+ Xy-pic option: Curve and Spline extension v.3.12 curve,
+\crv@cnt@=\count137
 \crvpts@=\toks61
-\splinebox@=\box52
+\splinebox@=\box50
 \splineval@=\dimen263
 \splinedepth@=\dimen264
 \splinetol@=\dimen265
@@ -705,91 +643,85 @@ tex"  Xy-pic option: Curve and Spline extension v.3.12 curve,
  circles,
 \L@=\dimen267
  loaded)
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\xypic\xyframe.
-tex"  Xy-pic option: Frame and Bracket extension v.3.14 loaded)
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\xypic\xycmtip.
-tex"  Xy-pic option: Computer Modern tip extension v.3.7
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\xypic\xytips.t
-ex"  Xy-pic option: More Tips extension v.3.11 loaded) loaded)
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\xypic\xyline.t
-ex"  Xy-pic option: Line styles extension v.3.10
+(/usr/local/texlive/2017/texmf-dist/tex/generic/xypic/xyframe.tex
+ Xy-pic option: Frame and Bracket extension v.3.14 loaded)
+(/usr/local/texlive/2017/texmf-dist/tex/generic/xypic/xycmtip.tex
+ Xy-pic option: Computer Modern tip extension v.3.7
+(/usr/local/texlive/2017/texmf-dist/tex/generic/xypic/xytips.tex
+ Xy-pic option: More Tips extension v.3.11 loaded) loaded)
+(/usr/local/texlive/2017/texmf-dist/tex/generic/xypic/xyline.tex
+ Xy-pic option: Line styles extension v.3.10
 \xylinethick@=\dimen268
  loaded)
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\xypic\xyrotate
-.tex"  Xy-pic option: Rotate and Scale extension v.3.8 loaded)
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\xypic\xycolor.
-tex"  Xy-pic option: Colour extension v.3.11 loaded)
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\xypic\xymatrix
-.tex"  Xy-pic option: Matrix feature v.3.14
-\Row=\count139
-\Col=\count140
+(/usr/local/texlive/2017/texmf-dist/tex/generic/xypic/xyrotate.tex
+ Xy-pic option: Rotate and Scale extension v.3.8 loaded)
+(/usr/local/texlive/2017/texmf-dist/tex/generic/xypic/xycolor.tex
+ Xy-pic option: Colour extension v.3.11 loaded)
+(/usr/local/texlive/2017/texmf-dist/tex/generic/xypic/xymatrix.tex
+ Xy-pic option: Matrix feature v.3.14
+\Row=\count138
+\Col=\count139
 \queue@=\toks62
 \queue@@=\toks63
-\qcount@=\count141
-\qcount@@=\count142
-\matrixsize@=\count143
+\qcount@=\count140
+\qcount@@=\count141
+\matrixsize@=\count142
  loaded)
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\xypic\xyarrow.
-tex"  Xy-pic option: Arrow and Path feature v.3.9 path, \ar, loaded)
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\xypic\xygraph.
-tex"  Xy-pic option: Graph feature v.3.11 loaded) loaded)
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\xypic\xypdf.te
-x"  Xy-pic option: PDF driver v.1.7
-Xy-pic pdf driver: `color' extension support
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\xypic\xypdf-co
-.tex" loaded) Xy-pic pdf driver: `curve' extension support
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\xypic\xypdf-cu
-.tex" loaded) Xy-pic pdf driver: `frame' extension support
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\xypic\xypdf-fr
-.tex" loaded) Xy-pic pdf driver: `line' extension support
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\xypic\xypdf-li
-.tex" loaded) Xy-pic pdf driver: `rotate' extension support
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\xypic\xypdf-ro
-.tex" loaded) loaded))
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\xypic\xypoly.t
-ex"  Xy-pic option: Polygon feature v.3.11 polygons,
-\xypolynode@=\count144
+(/usr/local/texlive/2017/texmf-dist/tex/generic/xypic/xyarrow.tex
+ Xy-pic option: Arrow and Path feature v.3.9 path, \ar, loaded)
+(/usr/local/texlive/2017/texmf-dist/tex/generic/xypic/xygraph.tex
+ Xy-pic option: Graph feature v.3.11 loaded) loaded)
+(/usr/local/texlive/2017/texmf-dist/tex/generic/xypic/xypdf.tex
+ Xy-pic option: PDF driver v.1.7 Xy-pic pdf driver: `color' extension support
+(/usr/local/texlive/2017/texmf-dist/tex/generic/xypic/xypdf-co.tex loaded)
+Xy-pic pdf driver: `curve' extension support
+(/usr/local/texlive/2017/texmf-dist/tex/generic/xypic/xypdf-cu.tex loaded)
+Xy-pic pdf driver: `frame' extension support
+(/usr/local/texlive/2017/texmf-dist/tex/generic/xypic/xypdf-fr.tex loaded)
+Xy-pic pdf driver: `line' extension support
+(/usr/local/texlive/2017/texmf-dist/tex/generic/xypic/xypdf-li.tex loaded)
+Xy-pic pdf driver: `rotate' extension support
+(/usr/local/texlive/2017/texmf-dist/tex/generic/xypic/xypdf-ro.tex loaded)
+loaded)) (/usr/local/texlive/2017/texmf-dist/tex/generic/xypic/xypoly.tex
+ Xy-pic option: Polygon feature v.3.11 polygons,
+\xypolynode@=\count143
  loaded)
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\xypic\xyarc.te
-x"  Xy-pic option: Circle, Ellipse, Arc feature v.3.8 circles, ellipses,
+(/usr/local/texlive/2017/texmf-dist/tex/generic/xypic/xyarc.tex
+ Xy-pic option: Circle, Ellipse, Arc feature v.3.8 circles, ellipses,
 elliptical arcs, loaded)
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\frontendla
-yer\tikz\libraries\tikzlibrarydecorations.pathmorphing.code.tex"
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\frontendla
-yer\tikz\libraries\tikzlibrarydecorations.code.tex"
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\modules\pg
-fmoduledecorations.code.tex"
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibrarydecorations.pathmorphing.code.tex
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibrarydecorations.code.tex
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/modules/pgfmoduledecoration
+s.code.tex
 \pgfdecoratedcompleteddistance=\dimen269
 \pgfdecoratedremainingdistance=\dimen270
 \pgfdecoratedinputsegmentcompleteddistance=\dimen271
 \pgfdecoratedinputsegmentremainingdistance=\dimen272
 \pgf@decorate@distancetomove=\dimen273
-\pgf@decorate@repeatstate=\count145
+\pgf@decorate@repeatstate=\count144
 \pgfdecorationsegmentamplitude=\dimen274
 \pgfdecorationsegmentlength=\dimen275
 )
-\tikz@lib@dec@box=\box53
+\tikz@lib@dec@box=\box51
 )
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\libraries\
-decorations\pgflibrarydecorations.pathmorphing.code.tex"))
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\frontendla
-yer\tikz\libraries\tikzlibrarycalc.code.tex"
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/libraries/decorations/pgfli
+brarydecorations.pathmorphing.code.tex))
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibrarycalc.code.tex
 File: tikzlibrarycalc.code.tex 2013/07/15 v3.0.1a (rcs-revision 1.9)
 )
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\frontendla
-yer\tikz\libraries\tikzlibraryintersections.code.tex"
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\libraries\
-pgflibraryintersections.code.tex"
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\libraries\
-pgflibraryfpu.code.tex")
-\pgf@intersect@solutions=\count146
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibraryintersections.code.tex
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/libraries/pgflibraryinterse
+ctions.code.tex
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/libraries/pgflibraryfpu.cod
+e.tex)
+\pgf@intersect@solutions=\count145
 ))
-\c@thm=\count147
- ("General WLD combinatorics.aux"
-
-LaTeX Warning: Label `lem basis as perm' multiply defined.
-
-)
+\c@thm=\count146
+ (./General WLD combinatorics.aux)
 \openout1 = `"General WLD combinatorics.aux"'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 307.
@@ -805,55 +737,44 @@ LaTeX Font Info:    ... okay on input line 307.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 307.
 LaTeX Font Info:    ... okay on input line 307.
 
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\context\base\supp-pdf.
-mkii"
+(/usr/local/texlive/2017/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count148
+\scratchcounter=\count147
 \scratchdimen=\dimen276
-\scratchbox=\box54
-\nofMPsegments=\count149
-\nofMParguments=\count150
+\scratchbox=\box52
+\nofMPsegments=\count148
+\nofMParguments=\count149
 \everyMPshowfont=\toks64
-\MPscratchCnt=\count151
+\MPscratchCnt=\count150
 \MPscratchDim=\dimen277
-\MPnumerator=\count152
-\makeMPintoPDFobject=\count153
+\MPnumerator=\count151
+\makeMPintoPDFobject=\count152
 \everyMPtoPDFconversion=\toks65
-)
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\epstopd
-f-base.sty"
+) (/usr/local/texlive/2017/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\infwa
-rerr.sty"
+(/usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/infwarerr.sty
 Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
 )
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\grfext.
-sty"
+(/usr/local/texlive/2017/texmf-dist/tex/latex/oberdiek/grfext.sty
 Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
 
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\kvdef
-inekeys.sty"
+(/usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
 Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
 
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\ltxcm
-ds.sty"
+(/usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
 Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
 )))
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\kvoptio
-ns.sty"
+(/usr/local/texlive/2017/texmf-dist/tex/latex/oberdiek/kvoptions.sty
 Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
 
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\kvset
-keys.sty"
+(/usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
 Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
 
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\etexc
-mds.sty"
+(/usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/etexcmds.sty
 Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
 
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\iflua
-tex.sty"
+(/usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/ifluatex.sty
 Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
 Package ifluatex Info: LuaTeX not detected.
 )
@@ -862,9 +783,8 @@ Package etexcmds Info: Could not find \expanded.
 (etexcmds)             that some package has redefined \expanded.
 (etexcmds)             In the latter case, load this package earlier.
 )))
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\pdfte
-xcmds.sty"
-Package: pdftexcmds 2018/01/30 v0.27 Utility functions of pdfTeX for LuaTeX (HO
+(/usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2018/01/21 v0.26 Utility functions of pdfTeX for LuaTeX (HO
 )
 Package pdftexcmds Info: LuaTeX not detected.
 Package pdftexcmds Info: \pdf@primitive is available.
@@ -877,71 +797,74 @@ Package grfext Info: Graphics extension search list:
 (grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPE
 G,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 456.
-) ABD: EveryShipout initializing macros
+
+(/usr/local/texlive/2017/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+ABD: EveryShipout initializing macros
 LaTeX Font Info:    Try loading font information for U+msa on input line 307.
 
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd
-"
+(/usr/local/texlive/2017/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
 LaTeX Font Info:    Try loading font information for U+msb on input line 307.
 
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd
-"
+(/usr/local/texlive/2017/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 Package xypdf Info: Line width: 0.43799pt on input line 307.
  [1
 
-{C:/Users/agarws1/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
-[2]
+{/usr/local/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2]
 
-LaTeX Warning: Citation `wilsonloops' on page 3 undefined on input line 436.
-
-
-LaTeX Warning: Citation `wilsonloop' on page 3 undefined on input line 445.
+LaTeX Warning: Citation `wilsonloops' on page 3 undefined on input line 438.
 
 [3]
 
-LaTeX Warning: Citation `wilsonloop' on page 4 undefined on input line 465.
-
-
-LaTeX Warning: Citation `wilsonloop' on page 4 undefined on input line 467.
+LaTeX Warning: Citation `wilsonloop' on page 4 undefined on input line 447.
 
 [4]
 
-LaTeX Warning: Citation `wilsonloop' on page 5 undefined on input line 490.
+LaTeX Warning: Citation `wilsonloop' on page 5 undefined on input line 465.
 
 
-LaTeX Warning: Citation `wilsonloop' on page 5 undefined on input line 490.
+LaTeX Warning: Citation `wilsonloop' on page 5 undefined on input line 467.
+
+[5]
+
+LaTeX Warning: Citation `wilsonloop' on page 6 undefined on input line 491.
 
 
-LaTeX Warning: Citation `wilsonloop' on page 5 undefined on input line 490.
+LaTeX Warning: Citation `wilsonloop' on page 6 undefined on input line 491.
 
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 503.
 
-("C:\Users\agarws1\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\omscmr.fd"
+LaTeX Warning: Citation `wilsonloop' on page 6 undefined on input line 491.
+
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 506.
+
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 503.
-[5] [6] [7] [8] [9]
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 506.
+ [6] [7] [8]
+[9] [10] [11]
 
-LaTeX Warning: Citation `wilsonloop' on page 10 undefined on input line 709.
+LaTeX Warning: Reference `lem properties of prop flats' on page 12 undefined on
+ input line 856.
+
+[12]
+
+LaTeX Warning: Reference `contractsubdiaglem' on page 13 undefined on input lin
+e 878.
+
+[13]
+
+LaTeX Warning: Citation `wilsonloops' on page 14 undefined on input line 905.
 
 
-LaTeX Warning: Citation `wilsonloop' on page 10 undefined on input line 711.
-
-[10]
-
-LaTeX Warning: Citation `wilsonloop' on page 11 undefined on input line 751.
-
-[11] [12] [13]
-
-LaTeX Warning: Citation `wilsonloops' on page 14 undefined on input line 848.
-
-
-Overfull \hbox (23.01668pt too wide) in paragraph at lines 861--862
+Overfull \hbox (23.01668pt too wide) in paragraph at lines 918--919
 []\OT1/cmr/m/n/10.95 The unique top di-men-sional cell of $\U/msb/m/n/10.95 G[]
 \OT1/cmr/m/n/10.95 (\OMS/cmsy/m/n/10.95 j\OML/cmm/m/it/10.95 P\OMS/cmsy/m/n/10.
 95 j\OML/cmm/m/it/10.95 ; \OMS/cmsy/m/n/10.95 j\OML/cmm/m/it/10.95 V\OT1/cmr/m/
@@ -953,7 +876,12 @@ mm/m/it/10.95 P\OT1/cmr/m/n/10.95 )\OMS/cmsy/m/n/10.95 j\OT1/cmr/m/n/10.95 )$
  []
 
 [14]
-Overfull \hbox (14.72797pt too wide) in paragraph at lines 929--930
+
+LaTeX Warning: Reference `exactcircuitlem' on page 15 undefined on input line 9
+40.
+
+
+Overfull \hbox (14.72797pt too wide) in paragraph at lines 986--987
 \OT1/cmr/m/n/10.95 Since Wil-son loop di-a-grams cor-re-spond to positroids, it
  is nat-u-ral to study the sub-space of $\U/msb/m/n/10.95 G[]\OT1/cmr/m/n/10.95
  (\OMS/cmsy/m/n/10.95 jPj\OML/cmm/m/it/10.95 ; n\OT1/cmr/m/n/10.95 )$
@@ -964,167 +892,124 @@ Overfull \hbox (14.72797pt too wide) in paragraph at lines 929--930
 LaTeX Warning: Marginpar on page 18 moved.
 
 [18] [19]
-<3cases.pdf, id=85, 569.04593pt x 128.03534pt>
+<3cases.pdf, id=87, 569.04593pt x 128.03534pt>
 File: 3cases.pdf Graphic file (type pdf)
 <use 3cases.pdf>
-Package pdftex.def Info: 3cases.pdf  used on input line 1497.
+Package pdftex.def Info: 3cases.pdf  used on input line 1559.
 (pdftex.def)             Requested size: 455.23735pt x 102.4284pt.
-<Vdiagram_modified.pdf, id=86, 221.14621pt x 128.64061pt>
+<Vdiagram_modified.pdf, id=88, 221.14621pt x 128.64061pt>
 File: Vdiagram_modified.pdf Graphic file (type pdf)
 <use Vdiagram_modified.pdf>
-Package pdftex.def Info: Vdiagram_modified.pdf  used on input line 1506.
+Package pdftex.def Info: Vdiagram_modified.pdf  used on input line 1568.
 (pdftex.def)             Requested size: 176.91719pt x 102.91261pt.
- [20 <./3cases.pdf>] [21 <./Vdiagram_modified.pdf>]
-Overfull \hbox (12.81996pt too wide) detected at line 1602
-\OML/cmm/m/it/10.95 J[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 m\OT1/cmr/m/n/10
-.95 ) = [\OML/cmm/m/it/10.95 m \OT1/cmr/m/n/10.95 + 4\OML/cmm/m/it/10.95 ; d \O
-MS/cmsy/m/n/10.95   \OT1/cmr/m/n/10.95 1]\OML/cmm/m/it/10.95 ;  J[]\OT1/cmr/m/n
-/10.95 (\OML/cmm/m/it/10.95 m \OT1/cmr/m/n/10.95 + 1) = [\OML/cmm/m/it/10.95 d;
- m \OT1/cmr/m/n/10.95 + 1]\OML/cmm/m/it/10.95 ;  J[]\OT1/cmr/m/n/10.95 (\OML/cm
-m/m/it/10.95 m \OT1/cmr/m/n/10.95 + 2) = \OMS/cmsy/m/n/10.95 f\OML/cmm/m/it/10.
-95 m \OT1/cmr/m/n/10.95 + 2\OMS/cmsy/m/n/10.95 g\OML/cmm/m/it/10.95 ;  J[]\OT1/
-cmr/m/n/10.95 (\OML/cmm/m/it/10.95 m \OT1/cmr/m/n/10.95 + 3) = \OMS/cmsy/m/n/10
-.95 f\OML/cmm/m/it/10.95 m \OT1/cmr/m/n/10.95 + 3\OMS/cmsy/m/n/10.95 g\OML/cmm/
-m/it/10.95 ;
- []
+ [20 <./3cases.pdf>] [21 <./Vdiagram_modified.pdf>] [22] [23] [24]
+[25] [26]
 
-[22]
-Overfull \hbox (12.81996pt too wide) detected at line 1607
-\OML/cmm/m/it/10.95 J[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 m\OT1/cmr/m/n/10
-.95 ) = \OMS/cmsy/m/n/10.95 f\OML/cmm/m/it/10.95 m \OT1/cmr/m/n/10.95 + 3\OMS/c
-msy/m/n/10.95 g\OML/cmm/m/it/10.95 ;  J[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.9
-5 m \OT1/cmr/m/n/10.95 + 1) = [\OML/cmm/m/it/10.95 m \OT1/cmr/m/n/10.95 + 4\OML
-/cmm/m/it/10.95 ; d \OMS/cmsy/m/n/10.95   \OT1/cmr/m/n/10.95 1]\OML/cmm/m/it/10
-.95 ;  J[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 m \OT1/cmr/m/n/10.95 + 2) = [
-\OML/cmm/m/it/10.95 d; m \OT1/cmr/m/n/10.95 + 1]\OML/cmm/m/it/10.95 ;  J[]\OT1/
-cmr/m/n/10.95 (\OML/cmm/m/it/10.95 m \OT1/cmr/m/n/10.95 + 3) = \OMS/cmsy/m/n/10
-.95 f\OML/cmm/m/it/10.95 m \OT1/cmr/m/n/10.95 + 2\OMS/cmsy/m/n/10.95 g\OML/cmm/
-m/it/10.95 ;
- []
-
-
-Overfull \hbox (27.46954pt too wide) detected at line 1611
-\OML/cmm/m/it/10.95 J[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 m\OT1/cmr/m/n/10
-.95 ) = [\OML/cmm/m/it/10.95 m \OT1/cmr/m/n/10.95 + 4\OML/cmm/m/it/10.95 ; j \O
-T1/cmr/m/n/10.95 + 1]\OML/cmm/m/it/10.95 ;  J[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/i
-t/10.95 m \OT1/cmr/m/n/10.95 + 1) = [\OML/cmm/m/it/10.95 j \OT1/cmr/m/n/10.95 +
- 2\OML/cmm/m/it/10.95 ; d \OMS/cmsy/m/n/10.95   \OT1/cmr/m/n/10.95 1]\OML/cmm/m
-/it/10.95 ;  J[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 m \OT1/cmr/m/n/10.95 + 
-2) = [\OML/cmm/m/it/10.95 d; m \OT1/cmr/m/n/10.95 + 1]\OML/cmm/m/it/10.95 ;  J[
-]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 m \OT1/cmr/m/n/10.95 + 3) = \OMS/cmsy/
-m/n/10.95 f\OML/cmm/m/it/10.95 m \OT1/cmr/m/n/10.95 + 3\OMS/cmsy/m/n/10.95 g\OM
-L/cmm/m/it/10.95 ;
- []
-
-[23] [24] [25] [26]
-
-LaTeX Warning: Citation `reversingOh' on page 27 undefined on input line 1819.
+LaTeX Warning: Citation `reversingOh' on page 27 undefined on input line 1868.
 
 [27]
-LaTeX Font Info:    Font shape `OMS/cmr/m/it' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 1854.
 
- [28] [29]
-<specialp.pdf, id=124, 253.36256pt x 112.54045pt>
+LaTeX Warning: Citation `reversingOh' on page 28 undefined on input line 1902.
+
+
+LaTeX Warning: Citation `reversingOh' on page 28 undefined on input line 1902.
+
+LaTeX Font Info:    Font shape `OMS/cmr/m/it' in size <10.95> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 1922.
+
+[28]
+<specialp.pdf, id=123, 253.36256pt x 112.54045pt>
 File: specialp.pdf Graphic file (type pdf)
 <use specialp.pdf>
-Package pdftex.def Info: specialp.pdf  used on input line 1897.
+Package pdftex.def Info: specialp.pdf  used on input line 1957.
 (pdftex.def)             Requested size: 253.36194pt x 112.54016pt.
- [30 <./specialp.pdf>]
-<Le_diagrams.pdf, id=158, 281.95337pt x 80.7015pt>
+ [29 <./specialp.pdf>]
+<Le_diagrams.pdf, id=157, 281.95337pt x 80.7015pt>
 File: Le_diagrams.pdf Graphic file (type pdf)
 <use Le_diagrams.pdf>
-Package pdftex.def Info: Le_diagrams.pdf  used on input line 1929.
+Package pdftex.def Info: Le_diagrams.pdf  used on input line 1988.
 (pdftex.def)             Requested size: 281.95267pt x 80.70131pt.
- [31 <./Le_diagrams.pdf>] [32]
-<messy.pdf, id=177, 286.7714pt x 199.12794pt>
+ [30] [31 <./Le_diagrams.pdf>]
+<messy.pdf, id=176, 282.7564pt x 195.11295pt>
 File: messy.pdf Graphic file (type pdf)
 <use messy.pdf>
-Package pdftex.def Info: messy.pdf  used on input line 1984.
-(pdftex.def)             Requested size: 286.77069pt x 199.12744pt.
-<messyD.pdf, id=178, 258.66638pt x 102.41261pt>
+Package pdftex.def Info: messy.pdf  used on input line 2043.
+(pdftex.def)             Requested size: 282.75569pt x 195.11246pt.
+ [32 <./messy.pdf>]
+<messyD.pdf, id=241, 258.66638pt x 102.41261pt>
 File: messyD.pdf Graphic file (type pdf)
 <use messyD.pdf>
-Package pdftex.def Info: messyD.pdf  used on input line 1993.
+Package pdftex.def Info: messyD.pdf  used on input line 2052.
 (pdftex.def)             Requested size: 258.66574pt x 102.41234pt.
- [33 <./messy.pdf>] [34 <./messyD.pdf>] [35]
+
+[33 <./messyD.pdf>] [34]
 <egWLD_forR.pdf, id=286, 569.04593pt x 113.80919pt>
 File: egWLD_forR.pdf Graphic file (type pdf)
 <use egWLD_forR.pdf>
-Package pdftex.def Info: egWLD_forR.pdf  used on input line 2077.
+Package pdftex.def Info: egWLD_forR.pdf  used on input line 2135.
 (pdftex.def)             Requested size: 569.04453pt x 113.8089pt.
 
-Overfull \hbox (99.2895pt too wide) in paragraph at lines 2077--2078
+Overfull \hbox (99.2895pt too wide) in paragraph at lines 2135--2136
 [][] 
  []
 
-
-LaTeX Warning: Marginpar on page 36 moved.
-
-[36 <./egWLD_forR.pdf>] [37]
-<no_big_factors.pdf, id=296, 455.23677pt x 199.16608pt>
+[35] [36 <./egWLD_forR.pdf>]
+<no_big_factors.pdf, id=295, 455.23677pt x 199.16608pt>
 File: no_big_factors.pdf Graphic file (type pdf)
 <use no_big_factors.pdf>
-Package pdftex.def Info: no_big_factors.pdf  used on input line 2141.
+Package pdftex.def Info: no_big_factors.pdf  used on input line 2198.
 (pdftex.def)             Requested size: 455.23564pt x 199.16559pt.
- [38] [39 <./no_big_factors.pdf>] [40]
-<quadratic.pdf, id=308, 256.07068pt x 113.80919pt>
+ [37] [38 <./no_big_factors.pdf>] [39]
+<quadratic.pdf, id=309, 256.07068pt x 113.80919pt>
 File: quadratic.pdf Graphic file (type pdf)
 <use quadratic.pdf>
-Package pdftex.def Info: quadratic.pdf  used on input line 2183.
+Package pdftex.def Info: quadratic.pdf  used on input line 2239.
 (pdftex.def)             Requested size: 256.07004pt x 113.8089pt.
-<part4.pdf, id=309, 206.6922pt x 218.9781pt>
+<part4.pdf, id=310, 206.6922pt x 218.9781pt>
 File: part4.pdf Graphic file (type pdf)
 <use part4.pdf>
-Package pdftex.def Info: part4.pdf  used on input line 2194.
+Package pdftex.def Info: part4.pdf  used on input line 2250.
 (pdftex.def)             Requested size: 103.34584pt x 109.48877pt.
- [41 <./quadratic.pdf> <./part4.pdf
-
-pdfTeX warning: pdflatex.exe (file ./part4.pdf): PDF inclusion: multiple pdfs w
-ith page group included in a single page
->] [42] [43] ("General WLD combinatorics.aux")
+ [40 <./quadratic.pdf>] [41 <./part4.pdf>] [42] (./General WLD combinatorics.au
+x)
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: There were multiply-defined labels.
-
  ) 
 Here is how much of TeX's memory you used:
- 18725 strings out of 492973
- 360193 string characters out of 3125806
- 495870 words of memory out of 3000000
- 22166 multiletter control sequences out of 15000+200000
- 15509 words of font info for 61 fonts, out of 3000000 for 9000
+ 18690 strings out of 492982
+ 353789 string characters out of 6132527
+ 484663 words of memory out of 5000000
+ 21822 multiletter control sequences out of 15000+600000
+ 17055 words of font info for 67 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 61i,19n,76p,3255b,974s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Users/agarws1/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfon
-ts/cm/cmbx10.pfb><C:/Users/agarws1/AppData/Local/Programs/MiKTeX 2.9/fonts/type
-1/public/amsfonts/cm/cmbx12.pfb><C:/Users/agarws1/AppData/Local/Programs/MiKTeX
- 2.9/fonts/type1/public/amsfonts/cm/cmbxti10.pfb><C:/Users/agarws1/AppData/Loca
-l/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/agarw
-s1/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb>
-<C:/Users/agarws1/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts
-/cm/cmmi6.pfb><C:/Users/agarws1/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/p
-ublic/amsfonts/cm/cmmi8.pfb><C:/Users/agarws1/AppData/Local/Programs/MiKTeX 2.9
-/fonts/type1/public/amsfonts/cm/cmmi9.pfb><C:/Users/agarws1/AppData/Local/Progr
-ams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/agarws1/AppDa
-ta/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/
-agarws1/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.p
-fb><C:/Users/agarws1/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfo
-nts/cm/cmr9.pfb><C:/Users/agarws1/AppData/Local/Programs/MiKTeX 2.9/fonts/type1
-/public/amsfonts/cm/cmsy10.pfb><C:/Users/agarws1/AppData/Local/Programs/MiKTeX 
-2.9/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/agarws1/AppData/Local/Pr
-ograms/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/agarws1/Ap
-pData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy9.pfb><C:/Us
-ers/agarws1/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
-ti10.pfb><C:/Users/agarws1/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public
-/amsfonts/cm/cmti9.pfb><C:/Users/agarws1/AppData/Local/Programs/MiKTeX 2.9/font
-s/type1/public/amsfonts/symbols/msam10.pfb><C:/Users/agarws1/AppData/Local/Prog
-rams/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on "General WLD combinatorics.pdf" (43 pages, 1097014 bytes).
+ 61i,19n,76p,3249b,923s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
+></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
+</usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb
+></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb>
+</usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><
+/usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></u
+sr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr
+/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/l
+ocal/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/loc
+al/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local
+/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/t
+exlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texl
+ive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive
+/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/20
+17/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/201
+7/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2017/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2017/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2017/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2017/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2017/texmf-d
+ist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2017/tex
+mf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on "General WLD combinatorics.pdf" (42 pages, 1052804 bytes).
 PDF statistics:
- 392 PDF objects out of 1000 (max. 8388607)
+ 401 PDF objects out of 1000 (max. 8388607)
+ 223 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
  63 words of extra memory for PDF output out of 10000 (max. 10000000)
 
