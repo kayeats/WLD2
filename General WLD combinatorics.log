@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2018.3.16)  4 JAN 2019 11:30
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2018.3.16)  4 JAN 2019 15:26
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -852,19 +852,19 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
 [9] [10] [11]
 
 LaTeX Warning: Reference `lem properties of prop flats' on page 12 undefined on
- input line 856.
+ input line 857.
 
 [12]
 
 LaTeX Warning: Reference `contractsubdiaglem' on page 13 undefined on input lin
-e 878.
+e 879.
 
 [13]
 
-LaTeX Warning: Citation `wilsonloops' on page 14 undefined on input line 905.
+LaTeX Warning: Citation `wilsonloops' on page 14 undefined on input line 906.
 
 
-Overfull \hbox (23.01668pt too wide) in paragraph at lines 918--919
+Overfull \hbox (23.01668pt too wide) in paragraph at lines 919--920
 []\OT1/cmr/m/n/10.95 The unique top di-men-sional cell of $\U/msb/m/n/10.95 G[]
 \OT1/cmr/m/n/10.95 (\OMS/cmsy/m/n/10.95 j\OML/cmm/m/it/10.95 P\OMS/cmsy/m/n/10.
 95 j\OML/cmm/m/it/10.95 ; \OMS/cmsy/m/n/10.95 j\OML/cmm/m/it/10.95 V\OT1/cmr/m/
@@ -878,97 +878,139 @@ mm/m/it/10.95 P\OT1/cmr/m/n/10.95 )\OMS/cmsy/m/n/10.95 j\OT1/cmr/m/n/10.95 )$
 [14]
 
 LaTeX Warning: Reference `exactcircuitlem' on page 15 undefined on input line 9
-40.
+41.
 
-
-Overfull \hbox (14.72797pt too wide) in paragraph at lines 986--987
+[15]
+Overfull \hbox (14.72797pt too wide) in paragraph at lines 987--988
 \OT1/cmr/m/n/10.95 Since Wil-son loop di-a-grams cor-re-spond to positroids, it
  is nat-u-ral to study the sub-space of $\U/msb/m/n/10.95 G[]\OT1/cmr/m/n/10.95
  (\OMS/cmsy/m/n/10.95 jPj\OML/cmm/m/it/10.95 ; n\OT1/cmr/m/n/10.95 )$
  []
 
-[15] [16] [17]
-
-LaTeX Warning: Marginpar on page 18 moved.
-
-[18] [19]
+[16] [17] [18] [19]
 <3cases.pdf, id=87, 569.04593pt x 128.03534pt>
 File: 3cases.pdf Graphic file (type pdf)
 <use 3cases.pdf>
-Package pdftex.def Info: 3cases.pdf  used on input line 1559.
+Package pdftex.def Info: 3cases.pdf  used on input line 1544.
 (pdftex.def)             Requested size: 455.23735pt x 102.4284pt.
-<Vdiagram_modified.pdf, id=88, 221.14621pt x 128.64061pt>
+ [20]
+<Vdiagram_modified.pdf, id=91, 221.14621pt x 128.64061pt>
 File: Vdiagram_modified.pdf Graphic file (type pdf)
 <use Vdiagram_modified.pdf>
-Package pdftex.def Info: Vdiagram_modified.pdf  used on input line 1568.
+Package pdftex.def Info: Vdiagram_modified.pdf  used on input line 1553.
 (pdftex.def)             Requested size: 176.91719pt x 102.91261pt.
- [20 <./3cases.pdf>] [21 <./Vdiagram_modified.pdf>] [22] [23] [24]
-[25] [26]
+ [21 <./3cases.pdf> <./Vdiagram_modified.pdf
 
-LaTeX Warning: Citation `reversingOh' on page 27 undefined on input line 1868.
+pdfTeX warning: pdflatex (file ./Vdiagram_modified.pdf): PDF inclusion: multipl
+e pdfs with page group included in a single page
+>] [22]
+Overfull \hbox (12.81996pt too wide) detected at line 1649
+\OML/cmm/m/it/10.95 J[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 m\OT1/cmr/m/n/10
+.95 ) = [\OML/cmm/m/it/10.95 m \OT1/cmr/m/n/10.95 + 4\OML/cmm/m/it/10.95 ; d \O
+MS/cmsy/m/n/10.95 ^^@ \OT1/cmr/m/n/10.95 1]\OML/cmm/m/it/10.95 ;  J[]\OT1/cmr/m
+/n/10.95 (\OML/cmm/m/it/10.95 m \OT1/cmr/m/n/10.95 + 1) = [\OML/cmm/m/it/10.95 
+d; m \OT1/cmr/m/n/10.95 + 1]\OML/cmm/m/it/10.95 ;  J[]\OT1/cmr/m/n/10.95 (\OML/
+cmm/m/it/10.95 m \OT1/cmr/m/n/10.95 + 2) = \OMS/cmsy/m/n/10.95 f\OML/cmm/m/it/1
+0.95 m \OT1/cmr/m/n/10.95 + 2\OMS/cmsy/m/n/10.95 g\OML/cmm/m/it/10.95 ;  J[]\OT
+1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 m \OT1/cmr/m/n/10.95 + 3) = \OMS/cmsy/m/n/
+10.95 f\OML/cmm/m/it/10.95 m \OT1/cmr/m/n/10.95 + 3\OMS/cmsy/m/n/10.95 g\OML/cm
+m/m/it/10.95 ;
+ []
+
+
+Overfull \hbox (12.81996pt too wide) detected at line 1654
+\OML/cmm/m/it/10.95 J[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 m\OT1/cmr/m/n/10
+.95 ) = \OMS/cmsy/m/n/10.95 f\OML/cmm/m/it/10.95 m \OT1/cmr/m/n/10.95 + 4\OMS/c
+msy/m/n/10.95 g\OML/cmm/m/it/10.95 ;  J[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.9
+5 m \OT1/cmr/m/n/10.95 + 1) = [\OML/cmm/m/it/10.95 m \OT1/cmr/m/n/10.95 + 5\OML
+/cmm/m/it/10.95 ; d \OMS/cmsy/m/n/10.95 ^^@ \OT1/cmr/m/n/10.95 1]\OML/cmm/m/it/
+10.95 ;  J[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 m \OT1/cmr/m/n/10.95 + 2) =
+ [\OML/cmm/m/it/10.95 d; m \OT1/cmr/m/n/10.95 + 2]\OML/cmm/m/it/10.95 ;  J[]\OT
+1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 m \OT1/cmr/m/n/10.95 + 3) = \OMS/cmsy/m/n/
+10.95 f\OML/cmm/m/it/10.95 m \OT1/cmr/m/n/10.95 + 3\OMS/cmsy/m/n/10.95 g\OML/cm
+m/m/it/10.95 ;
+ []
+
+
+Overfull \hbox (27.46954pt too wide) detected at line 1658
+\OML/cmm/m/it/10.95 J[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 m\OT1/cmr/m/n/10
+.95 ) = [\OML/cmm/m/it/10.95 m \OT1/cmr/m/n/10.95 + 4\OML/cmm/m/it/10.95 ; j \O
+T1/cmr/m/n/10.95 + 1]\OML/cmm/m/it/10.95 ;  J[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/i
+t/10.95 m \OT1/cmr/m/n/10.95 + 1) = [\OML/cmm/m/it/10.95 j \OT1/cmr/m/n/10.95 +
+ 2\OML/cmm/m/it/10.95 ; d \OMS/cmsy/m/n/10.95 ^^@ \OT1/cmr/m/n/10.95 1]\OML/cmm
+/m/it/10.95 ;  J[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 m \OT1/cmr/m/n/10.95 
++ 2) = [\OML/cmm/m/it/10.95 d; m \OT1/cmr/m/n/10.95 + 2]\OML/cmm/m/it/10.95 ;  
+J[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 m \OT1/cmr/m/n/10.95 + 3) = \OMS/cms
+y/m/n/10.95 f\OML/cmm/m/it/10.95 m \OT1/cmr/m/n/10.95 + 3\OMS/cmsy/m/n/10.95 g\
+OML/cmm/m/it/10.95 ;
+ []
+
+[23] [24] [25] [26]
+
+LaTeX Warning: Citation `reversingOh' on page 27 undefined on input line 1841.
 
 [27]
 
-LaTeX Warning: Citation `reversingOh' on page 28 undefined on input line 1902.
+LaTeX Warning: Citation `reversingOh' on page 28 undefined on input line 1875.
 
 
-LaTeX Warning: Citation `reversingOh' on page 28 undefined on input line 1902.
+LaTeX Warning: Citation `reversingOh' on page 28 undefined on input line 1875.
 
 LaTeX Font Info:    Font shape `OMS/cmr/m/it' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 1922.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 1895.
 
 [28]
-<specialp.pdf, id=123, 253.36256pt x 112.54045pt>
+<specialp.pdf, id=122, 253.36256pt x 112.54045pt>
 File: specialp.pdf Graphic file (type pdf)
 <use specialp.pdf>
-Package pdftex.def Info: specialp.pdf  used on input line 1957.
+Package pdftex.def Info: specialp.pdf  used on input line 1930.
 (pdftex.def)             Requested size: 253.36194pt x 112.54016pt.
  [29 <./specialp.pdf>]
-<Le_diagrams.pdf, id=157, 281.95337pt x 80.7015pt>
+<Le_diagrams.pdf, id=156, 281.95337pt x 80.7015pt>
 File: Le_diagrams.pdf Graphic file (type pdf)
 <use Le_diagrams.pdf>
-Package pdftex.def Info: Le_diagrams.pdf  used on input line 1988.
+Package pdftex.def Info: Le_diagrams.pdf  used on input line 1961.
 (pdftex.def)             Requested size: 281.95267pt x 80.70131pt.
  [30] [31 <./Le_diagrams.pdf>]
-<messy.pdf, id=176, 282.7564pt x 195.11295pt>
+<messy.pdf, id=175, 282.7564pt x 195.11295pt>
 File: messy.pdf Graphic file (type pdf)
 <use messy.pdf>
-Package pdftex.def Info: messy.pdf  used on input line 2043.
+Package pdftex.def Info: messy.pdf  used on input line 2016.
 (pdftex.def)             Requested size: 282.75569pt x 195.11246pt.
  [32 <./messy.pdf>]
-<messyD.pdf, id=241, 258.66638pt x 102.41261pt>
+<messyD.pdf, id=240, 258.66638pt x 102.41261pt>
 File: messyD.pdf Graphic file (type pdf)
 <use messyD.pdf>
-Package pdftex.def Info: messyD.pdf  used on input line 2052.
+Package pdftex.def Info: messyD.pdf  used on input line 2025.
 (pdftex.def)             Requested size: 258.66574pt x 102.41234pt.
 
 [33 <./messyD.pdf>] [34]
-<egWLD_forR.pdf, id=286, 569.04593pt x 113.80919pt>
+<egWLD_forR.pdf, id=285, 569.04593pt x 113.80919pt>
 File: egWLD_forR.pdf Graphic file (type pdf)
 <use egWLD_forR.pdf>
-Package pdftex.def Info: egWLD_forR.pdf  used on input line 2135.
+Package pdftex.def Info: egWLD_forR.pdf  used on input line 2108.
 (pdftex.def)             Requested size: 569.04453pt x 113.8089pt.
 
-Overfull \hbox (99.2895pt too wide) in paragraph at lines 2135--2136
+Overfull \hbox (99.2895pt too wide) in paragraph at lines 2108--2109
 [][] 
  []
 
 [35] [36 <./egWLD_forR.pdf>]
-<no_big_factors.pdf, id=295, 455.23677pt x 199.16608pt>
+<no_big_factors.pdf, id=294, 455.23677pt x 199.16608pt>
 File: no_big_factors.pdf Graphic file (type pdf)
 <use no_big_factors.pdf>
-Package pdftex.def Info: no_big_factors.pdf  used on input line 2198.
+Package pdftex.def Info: no_big_factors.pdf  used on input line 2171.
 (pdftex.def)             Requested size: 455.23564pt x 199.16559pt.
  [37] [38 <./no_big_factors.pdf>] [39]
-<quadratic.pdf, id=309, 256.07068pt x 113.80919pt>
+<quadratic.pdf, id=308, 256.07068pt x 113.80919pt>
 File: quadratic.pdf Graphic file (type pdf)
 <use quadratic.pdf>
-Package pdftex.def Info: quadratic.pdf  used on input line 2239.
+Package pdftex.def Info: quadratic.pdf  used on input line 2212.
 (pdftex.def)             Requested size: 256.07004pt x 113.8089pt.
-<part4.pdf, id=310, 206.6922pt x 218.9781pt>
+<part4.pdf, id=309, 206.6922pt x 218.9781pt>
 File: part4.pdf Graphic file (type pdf)
 <use part4.pdf>
-Package pdftex.def Info: part4.pdf  used on input line 2250.
+Package pdftex.def Info: part4.pdf  used on input line 2223.
 (pdftex.def)             Requested size: 103.34584pt x 109.48877pt.
  [40 <./quadratic.pdf>] [41 <./part4.pdf>] [42] (./General WLD combinatorics.au
 x)
@@ -977,10 +1019,10 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 18690 strings out of 492982
- 353789 string characters out of 6132527
- 484663 words of memory out of 5000000
- 21822 multiletter control sequences out of 15000+600000
+ 18699 strings out of 492982
+ 353985 string characters out of 6132527
+ 483815 words of memory out of 5000000
+ 21831 multiletter control sequences out of 15000+600000
  17055 words of font info for 67 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  61i,19n,76p,3249b,923s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1006,10 +1048,10 @@ f-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2017/texmf
 -dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2017/texmf-d
 ist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2017/tex
 mf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on "General WLD combinatorics.pdf" (42 pages, 1052804 bytes).
+Output written on "General WLD combinatorics.pdf" (42 pages, 1054276 bytes).
 PDF statistics:
- 401 PDF objects out of 1000 (max. 8388607)
- 223 compressed objects within 3 object streams
+ 400 PDF objects out of 1000 (max. 8388607)
+ 222 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
  63 words of extra memory for PDF output out of 10000 (max. 10000000)
 
