@@ -998,17 +998,9 @@ Throughout this section, $W = (\cP,n)$ is an admissible Wilson loop diagram with
 \subsection{Some setup results about propagators}
 
 
-%\note{I don't think rank of a vertex (in the sense of number of propagators supported on it) was ever used, so I removed the definition}
-%\note{rank probably isn't a good word; do we have a better one?}
-%\begin{dfn}\label{vertex rank}
-%Let $i$ be a vertex in $W$. We define the {\bf rank} of $i$ to be $|Prop(i)|$, i.e. the number of propagators supported on $i$.
-%\end{dfn}
-
-
-
 
 \begin{dfn}\label{props inside p}
-Let $p$ be a propagator supported on $(i,j)$ in $W$. The region bounded by $p$ and the edge of the Wilson loop diagram from $i$ to $j+1$ is refered to as the region {\bf inside} $p$, and the complement is the region {\bf outside }$p$. The set of propagators inside (resp. outside) $p$ are those lying in the region inside (resp. outside) $p$, excluding $p$ itself.
+Let $p$ be a propagator supported on $(i,j)$ in $W$. The region of $W$ bounded by $p$ and the edge of the Wilson loop diagram from $i$ to $j+1$ is refered to as the region {\bf inside} $p$, and the complement is the region {\bf outside }$p$. The set of propagators inside (resp. outside) $p$ are those lying in the region inside (resp. outside) $p$, excluding $p$ itself.
 \end{dfn}
 Note that this depends on the order of $i$ and $j$: if we view $p$ as supported on $(j,i)$ (for example, if we are working with the $<_j$ order on vertices) then the regions inside and outside $p$ are swapped.
 
@@ -1017,20 +1009,20 @@ Note that this depends on the order of $i$ and $j$: if we view $p$ as supported 
 Let $p$ be a propagator supported on $(i,j)$.  Define the \textit{length} of $p$ to be 
 \[\ell(p) = min\big\{|[i+1,j]|,|[j+1,i]|\big\}.\]
 \end{dfn}
-
+In other words, the length of $p$ is the number of vertices inside $p$.
 
 
 
 \begin{rmk}\label{rem:props of length 2 and 3}
 The following observations about propagators of short length in $W$ are easily verified:
-\begin{itemize}
-\item If every vertex in $W$ supports at least one propagator, then $W$ admits at least one propagator of length 2.
+\begin{enumerate}
 \item If $p = (i,i+3)$ is a propagator of length 3, then the middle vertex $i+2$ supports at most one propagator.
-\end{itemize}
+\item If every vertex in $W$ supports at least one propagator, then $W$ admits at least one propagator of length 2.
+\end{enumerate}
 \end{rmk}
 
 
-The following lemma establishes certain configurations of propagators that must exist in any admissible diagram with no unsupported vertices. We make use of this result in several induction proofs below.
+The following lemma establishes certain configurations of propagators that must exist in any admissible diagram with no non-supporting vertices (i.e. with $F(\emptyset) = \emptyset$). We make use of this result in several induction proofs below. Recall from Definition~\ref{admisdfn} that a {\em weakly admissible} diagram is one that satisfies the density and non-crossing conditions but does not require that $|V(\cP)| \geq |\cP| + 4$.
 
 \begin{lem}\label{lem sian}
   Let $W$ be a weakly admissible WLD with at least 5 vertices and in which each vertex supports at least one propagator.  Then at least one of the following two things occurs.
@@ -1038,22 +1030,12 @@ The following lemma establishes certain configurations of propagators that must 
     \item $W$ has a propagator of length $\leq 6$ with a propagator of length 2 inside it and nothing else inside it.\label{item big and 2}
     \item There exists a pair of propagators of length $2$ with the property that the first propagator is $(i, i+2)$, the second is $(j, j+2)$, no other propagator ends between vertices $i+2$ and $j+1$, and $j\in\{i+2, i+3, i+4\}$.\label{item pair of 2s}
   \end{enumerate}
-  %Then exactly one of the following two things occurs.
-  %\begin{enumerate}
-  %  \item $W$ has a propagator of length 3 with a propagator of length 2 inside it.
-  %  \item $W$ admits no propagators of length 3, and one or more of the following things occurs.
-  %    \begin{enumerate}
-  %      \item There is a propagator of length $2$, say $(i, i+2)$ such that no other propagators ends on either the edge $i$ or the edge $i+2$.\label{item lonely 2}
-  %      \item There exists a pair of propagators of length $2$ with the property that the first propagator is $(i, i+2)$, the second is $(j, j+2)$, no other propagator ends between vertices $i+2$ and $j+1$, and $j\in\{i+2, i+3, i+4\}$.\label{item pair of 2s}
-  %      \item There exists a propagator of length 4 with only a propagator of length 2 inside it.\label{item 4 and 2}
-  %    \end{enumerate}
-  %\end{enumerate}
 \end{lem}
 
 \begin{proof}
-  Suppose first that $W$ has a propagator of length $3$, $p=(i, i+3)$.  By Remark~\ref{rem:props of length 2 and 3} along with the fact that every vertex of $W$ supports at least one propagator, we have that $i+2$ supports exactly one propagator and this propagator must have length 2 by noncrossingness.  This gives us an instance of configuration~\ref{item big and 2} from the statement.
+Suppose first that $W$ has a propagator of length $3$, say $p=(i, i+3)$.  By Remark~\ref{rem:props of length 2 and 3} and the fact that every vertex of $W$ supports at least one propagator, we have that $i+2$ supports exactly one propagator and this propagator must have length 2 by noncrossingness.  This gives us an instance of configuration~\ref{item big and 2} from the statement.
 
-  Now suppose $W$ has no propagators of length $3$.
+Now suppose $W$ has no propagators of length $3$.
 %  We will prove the following stronger result: that $D$ admits a pair of propagators of length 2 in the following configuration:
 %\begin{equation}\label{eq:2 prop config}
 %\begin{tikzpicture}[baseline=(current bounding box.east)]
@@ -1095,9 +1077,9 @@ Note that if $p$ is a propagator supported on $(i,j)$, then we can consider two 
 
 With these observations in mind we can return to the proof.
   
-  We will inductively construct a sequence of pairs of propagators $(p_r,q_r)$ satisfying: $\ell(p_r) = 2$, and $p_r$ either forms part of configuration \ref{item big and 2} or \ref{item pair of 2s} from the statement,
+We will inductively construct a sequence of pairs of propagators $(p_r,q_r)$ satisfying: $\ell(p_r) = 2$, and $p_r$ either forms part of configuration \ref{item big and 2} or \ref{item pair of 2s} from the statement,
   %a configuration \eqref{eq:2 prop config} in $D$
-  or there is a propagator $q_r$ satisfying
+or there is a propagator $q_r$ satisfying
 \begin{itemize}
 \item $\ell(q_r) \geq 4$.
 \item $q_r$ bounds a region of $W$ which contains strictly fewer vertices than that bounded by $q_{r-1}$ and the restriction of $W$ to this region does not contain any of the propagators $p_1, \dots, p_r$.
@@ -1106,10 +1088,10 @@ Since $W$ contains finitely many vertices, this must eventually terminate in one
 
 Start by choosing a propagator $p_1$ of length 2 in $W$ (which exists by Remark~\ref{rem:props of length 2 and 3}), and write $(j_1,j_1+2)$ for its support.  If it is part of one of the configurations we are looking for then we are done, 
 %a configuration \eqref{eq:2 prop config} we are done,
-so suppose otherwise: 
-By assumption $p_1$ is not in configuration \ref{item pair of 2s}, there are no propagators of length $3$, and every vertex is supported.  Therefore there must exist a propagator $q_1$ of length $\geq 4$ with one end on edge $j_1$ or on edge $j_1-1$ or on edge $j_1-2$.  This bounds a region $[i_1,k_1]$ (where $k_1 \in \{j_1-1, j_1, j_1+1\}$) which does not contain $p_1$.
+so suppose otherwise. 
+By assumption: $p_1$ is not in configuration \ref{item pair of 2s}, there are no propagators of length $3$, and every vertex is supported.  Therefore there must exist a propagator $q_1$ of length $\geq 4$ with one end on edge $j_1$ or on edge $j_1-1$ or on edge $j_1-2$.  This bounds a region $[i_1,k_1]$ (where $k_1 \in \{j_1-1, j_1, j_1+1\}$) which does not contain $p_1$.
 
-Now suppose $q_{r}$ exists by the induction hypothesis and bounds a region $[i_r,k_r]$ not containing any $p_i$ for $i\leq r$.  Consider the restricted diagram $W_r:=W_{[i_r,k_r]}$; by the original hypotheses on $W$ every vertex $l \in [i_r+2,k_r-2]$ (which is a non-empty interval since $\ell(q_r) \geq 4$) must have support $\geq 1$, while the same is true for $l \in \{i_r,i_r+1,k_r-1,k_r\}$ because of $q_r$.  
+Now suppose $q_{r}$ exists by the induction hypothesis and bounds a region $[i_r,k_r]$ not containing any $p_i$ for $i\leq r$.  Consider the restricted diagram $W_r:=W_{[i_r,k_r]}$; by the original hypotheses on $W$ every vertex $l \in [i_r+2,k_r-2]$ (which is a non-empty interval since $\ell(q_r) \geq 4$) must have support $\geq 1$, while the same is true for $l \in \{i_r,i_r+1,k_r-1,k_r\}$ because these vertices support $q_r$.  
 
 By Remark~\ref{rem:props of length 2 and 3}, $W_r$ admits at least one propagator of length 2.  $W_r$ has no propagators of length $3$ since $W$ has none.  Let $p_{r+1}$ be a propagator of length 2 in $W_r$; if it forms part of configuration \ref{item big and 2} or \ref{item pair of 2s}
 %the configuration \eqref{eq:2 prop config}
@@ -1123,10 +1105,11 @@ Therefore the first case cannot occur.
 
 The second case is that either at least one endpoint of $p_{r+1}$ lies on an edge contained in the interval $[i_r+3,k_r-3]$, or both ends lie in $[i_r, i_r+3]$ or $[k_r-3, k_r]$; these situations all behave similarly.  Up to symmetry we can write $p_{r+1} = (j_{r+1}, j_{r+1}+2)$ where either the edge $j_{r+1}+2$ is contained in $[i_r+3, k_r-3]$ or $j_{r+1}+2 = i_r+2$.  Since $p_{r+1}$ is not part of configuration \ref{item pair of 2s} and vertex $j_{r+1}+4$ is supported (and not by $q_r$ since $j_{r+1}+4 \leq k_r-2$ in both situations), there is some propagator $t$ with one end in $[j_{r+1}+3, j_{r+1}+5]$ and length $\geq 4$.  By noncrossingness $t$ is contained in $q_{r}$.  $t$ does not contain $p_{r+1}$ by minimality and so we may set $q_{r+1} = t$ to continue the induction.  
 
-The overall result, then follows by induction.
+The overall result then follows by induction.
 
 \note{The picture didn't apply any longer, but perhaps a new one would be nice?}
-\note{Also, the way you had it set out, you never needed a minimality argument; this was essentially beacause in your third picture, you could choose the side which didn't contain $p_{r+1}$. The same argument could work here, but I was finding it was getting a bit heavy to explain it that way, and the minimality approach seemed like it was lighter.  See what you think}
+\end{proof}
+
 %% this was 100% a productive use of my time
 %
 %\[\begin{tabular}{ccc}
@@ -1340,7 +1323,7 @@ The overall result, then follows by induction.
 %\end{tabular}
 %\]
 %In each case, the diagram indicates how to choose $q_{r+1}$ satisfying the induction hypothesis.  In the third case, note that \textit{both} ends of $p_{r+1}$ must share their edge with a propagator of length $\geq 4$; the non-crossing hypothesis on propagators guarantees that at least one will bound a region not containing $p_{r+1}$.
-\end{proof}
+
 
 \begin{rmk}
 In the case that all vertices of an admissible WLD $W$ support at least two propagators, then Lemma~\ref{lem sian} substantially simplifies.  By Remark~\ref{rem:props of length 2 and 3}, $W$ has no propagators of length $3$.  Configuration \ref{item big and 2} necessarily entails vertices with support $1$ as does configuration \ref{item pair of 2s} unless $j=i+2$.  So in the case that $W$ has all vertices with support at least two then $W$ must contain a pair of propagators of length $2$  with the property that the first propagator is $(i, i+2)$, the second is $(i+2, i+4)$ and no other propagator ends on the edge $i+2$.
@@ -1349,26 +1332,30 @@ In the case that all vertices of an admissible WLD $W$ support at least two prop
 
 \subsection{From Wilson Loop diagrams to Grassmann Necklaces}
 
-Here, we give an algorithm for passing from Wilson loop diagrams to Grassmann Necklaces.
+Until now, the positroid associated to a Wilson loop diagram $W$ could only be obtained by computing the matrix $C(W)$ associated to $W$, listing all bases of the induced matroid $M(W)$, and constructing the Le diagram or Grassmann necklace of the positroid ``by eye'' from this list. 
+
+In this section, we give an algorithm for passing directly from the Wilson loop diagrams to its Grassmann necklace. This not only greatly simplifies the process above, but will also allow us to relate the behavior of the positroid $M(W)$ directly to the configuration of progators in $W$.
 
 Let $\binom{[n]}{k}$ be the set of all $k$-subsets of the cyclically ordered set $[n]$.  For each $j \in [n]$, we can define a total order $\leq_j$ on the interval $[n]$ by
 \bas j <_j j+1 <_j \dots <_j n <_j 1 \dots <_j j-1\;.\eas
-This in turn induces a total order on $\binom{[n]}{k}$, namely the lexicographic order with respect to $<_j$.  It also induces a separate partial order $\gale{j}$ on $\binom{[n]}{k}$ (the \textit{Gale order}), which is defined as follows: if $A = [a_1 <_j a_2 <_j \dots <_j a_k]$,  $B = [b_1 <_j b_2 <_j \dots <_j b_k] \in \binom{[n]}{k}$, then
+This in turn induces a total order on $\binom{[n]}{k}$, namely the lexicographic order with respect to $<_j$.  It also induces a separate partial order $\gale{j}$ on $\binom{[n]}{k}$ (the \textit{Gale order} [ref]), which is defined as follows: for 
+\[A = \{a_1 <_j a_2 <_j \dots <_j a_k\} \text{ and } B = \{b_1 <_j b_2 <_j \dots <_j b_k\} \in \binom{[n]}{k},\] we say that
 \[A \gale{j} B \text{ if and only if } a_r \leq_j b_r \text{ for all }1 \leq r \leq k.\]
-For example, in $\binom{[6]}{3}$ we have $[2,5,6]\gale{2} [2,6,1]$ but $[2,5,6]\not\gale{2}[3,4,6]$.
+For example, in $\binom{[6]}{3}$ we have $\{2,5,6\}\gale{2} \{2,6,1\}$ but $\{2,5,6\}\not\gale{2}\{3,4,6\}$.
 
 
 \begin{dfn}\label{def:grassmann necklace}
-A Grassmann necklace of type $(k,n)$ is a sequence $\II = (I_1, \dots, I_n)$ of $n$ elements $I_i \in \binom{[n]}{k}$, such that
+A Grassmann necklace of type $(k,n)$ is a sequence $(I_1, \dots, I_n)$ of $n$ sets $I_i \in \binom{[n]}{k}$ such that for each $i \in [n]$:
 \begin{itemize}
-\item if $i \in I_i$, then $I_{i+1} = \big(I_i \backslash \{i\}\big) \cup \{j\}$ for some $j \in \interval{1}{n}$.
+\item if $i \in I_i$, then $I_{i+1} = \big(I_i \backslash \{i\}\big) \cup \{j\}$ for some $j \in[n]$.
 \item if $i \not\in I_i$, then $I_{i+1} = I_i$.
 \end{itemize}
+By convention, we set $I_{n+1} = I_1$.
 \end{dfn}
 
-By [ref], the Grassmann necklaces of type $(k,n)$ are in 1-1 correspondence with the positroid cells in $Gr(k,n)^{tnn}$.  Further, if $\II$ is the Grassmann necklace associated to a cell $\PP$, then the bases of $\PP$ can be computed using the Gale order $\gale{i}$ for each $i \in [n]$:
-\[\BB(\PP) = \left\{J \in \binom{[n]}{k}\ :\ I_i \gale{i} J \ \forall i \in [n]\right\}.\]
-We now describe an algorithm that, when applied to an admissible Wilson loop diagram, produces exactly the Grassmann necklace of the corresponding positroid.
+By [ref][Oh or Postnikov?], the Grassmann necklaces of type $(k,n)$ are in 1-1 correspondence with the positroid cells in $\Gr(k,n)$.  Further, if $(I_1, \dots, I_n)$ is the Grassmann necklace associated to a positroid $M = ([n],\cB)$, then by [ref][Oh] the bases of $M$ can be computed using the Gale order $\gale{i}$ for each $i \in [n]$:
+\[\cB = \left\{J \in \binom{[n]}{k}\ :\ I_i \gale{i} J \ \forall i \in [n]\right\}.\]
+We now describe an algorithm that constructs the Grassmann necklace of an admissible Wilson loop diagram from the diagram. The fact that Algorithm~\ref{alg:put GN on WLD} does construct the required Grassmann necklace is proved in Theorem~\ref{res:alg gives GN}.
 
 \begin{algorithm}\label{alg:put GN on WLD}
 Let $W = (\cP, [n])$ be an admissible Wilson loop diagram. This gives an algorithm for calculating the set $I_a$, for $a \in [n]$.
@@ -1384,10 +1371,10 @@ Let $W = (\cP, [n])$ be an admissible Wilson loop diagram. This gives an algorit
 \end{enumerate}
 \end{algorithm}
 
-If the propagator $p$ is removed at vertex $i$ according to the algorithm for $I_a$, we say that $p$ \emph{contributes} $i$ to $I_a$. Notationally, we represent this by allowing the $I_i$ symbol to represent a function as well as a set, as follows:
+If the algorithm assigns vertex $j$ to propagator $p$ from starting vertex $i$, we say that $p$ \emph{contributes} $j$ to $I_i$. Notationally, we represent this by allowing the $I_i$ symbol to represent a function as well as a set, as follows:
 \begin{dfn}\label{def I_i as a function}
-Let $W = (\cP, [n])$ be an admissible Wilson loop diagram. For each $a \in [n]$, define a function $I_a : \cP \longrightarrow [n]$ by
-\[I_a(p) := \text{the vertex label that $p$ contributes to $I_a$ in Algorithm~\ref{alg:put GN on WLD},}\]
+Let $W = (\cP, [n])$ be an admissible Wilson loop diagram. For each $i \in [n]$, define a function $I_i : \cP \longrightarrow [n]$ by
+\[I_i(p) := \text{the vertex label that $p$ contributes to $I_i$ in Algorithm~\ref{alg:put GN on WLD},}\]
 for each $p \in \cP$.
 \end{dfn}
 
@@ -1398,7 +1385,7 @@ Given a propagator $p$ and a vertex $i$ in its support, it will be very useful i
 Let $W$ be an admissible Wilson loop diagram containing at least one propagator. For any $i \in [n]$ and for any $p=(a,b)$ with $i\leq_i a <_i b$, we have $I_i(p) \neq b+1$.
 \end{lem}
 \begin{proof}
-Suppose for contradiction that we have $p = (a,b)$ with $i\leq_i a <_i b$ and $I_{i}(p) = b+1$. We may choose $p$ such that $|\interval{a+1}{b}|$ is minimal amongst propagators with this property.
+Suppose for contradiction that we have $p = (a,b)$ with $i\leq_i a <_i b$ and $I_{i}(p) = b+1$. We may choose $p$ such that $|[a+1,b]|$ is minimal amongst propagators with this property.
 
 Since $I_i(p) \neq b$, there must exist a propagator $q$ inside of $p$ with $I_i(q) = b$. The propagator $q$ cannot end on the edge $(b-1,b)$, as this would contradict the minimality of $p$, so $q = (c,c+1,b,b+1)$ with $a <_i c <_i b$, and $I_i(q) = b$. 
 
@@ -1553,7 +1540,7 @@ Let $p=(i,j)$ be a propagator of an admissible WLD $W$ on $n$ vertices.  Then $J
 
 
 \begin{proof}
-We will prove the result by induction on the number of propagators.  If $W$ has one propagator then the result is immediate.  Now suppose $W$ has more than one propagator.  Since non-supporting vertices have no effect on the Grassmann necklace algorithm, it suffices to prove the result for $W$ with $F(\emptyset) = \emptyset$.  Then by Lemma~\ref{lem sian}, $W$ has at least one of the four situations illustrated in Figure~\ref{fig 3 cases}.
+We will prove the result by induction on the number of propagators.  If $W$ has one propagator then the result is immediate.  Now suppose $W$ has more than one propagator.  Since non-supporting vertices play no role in Algorithm~\ref{alg:put GN on WLD}, it suffices to prove the result for $W$ with $F(\emptyset) = \emptyset$.  Then by Lemma~\ref{lem sian}, $W$ has at least one of the four situations illustrated in Figure~\ref{fig 3 cases}.
 
 \begin{figure}
     \includegraphics[scale=0.8]{3cases}
@@ -1726,19 +1713,6 @@ Therefore, once again we can see that the $J_r^{(W)}(*)$ are cyclic for all $r\n
 \begin{gather*}J_p^{(W)}(m) = [m+4,m], \qquad  J_p^{(W)}(m+1) = \{m+1\}, \\  J_p^{(W)}(m+2) = \{m+2\}, \qquad  J_p^{(W)}(m+3) = \{m+3\}.\end{gather*}
 \end{itemize}
 The result now follows by induction.
-
-%Fix $p = (i, j)$. By symmetry, we need only consider the vertices $j$, $j+1$.
-%
-%Let $k_1 \ldots k_r$ be the set of propagators of the form $k_x = (i_{k_x}, j)$, with $i <_{j+1} k_1 <_{j+1} \ldots k_r <_{j+1} j$. Write $k_{r+1}$ to be the counterclockwise most propagator with an end on the edge $j-1$, if it exists. If $r \geq 2$ or $r+1 = 2$, then both $P_j(p)$ and $P_{j+1}(p)$ exists for some subset of $a \in [n]$. If $r=1$ or $r+1= 2$ then only $P_j(p)$ exists. Otherwise, $P_j(p) = \emptyset$. 
-%
-%Consider a protecting set $P_j(p) \subset \cP$ such that $k_1 \in P_j(p)$, if it exists. Write it \bas P_j(p) = \{s_1 \ldots s_r, t_2, \ldots t_r\} \;.\eas Define $b_1 = i_{s_r}+1$. By construction, $P_j(p)$ prevents $p$ from contributing $j$ to $I_a$ for all $a \in [b_1+1, j]$. We see that, if $r >0$, for all $a \in [i+2, b_1]$, $p$ contributes $j$ to $I_a$. (\hlfix{Note that by construction, one cannot have $i_{s_r}+1 <_{j+1} i+2$.}{verify}) This is because in this range, $j$ is the first vertex of $p$ encountered by Algorithm \ref{Alg: put GN on WLD}. Furthermore, by Lemma \ref{protect conv lem}, and definition \ref{protect dfn} if $i_{s_r}+1 \not <_{j+1} i+2$ $P_1$ does not protect $p$ at $j$ for $a$ in this range. If $r = 0$ then $p$ contributes $j$ for all $a \in [i+2, j]$. In this case, we say $b_1 = j$.
-%
-%Now suppose $r$ is such that both $P_j(p)$ and $P_{j+1}(p)$ exists for some $a$. This time $k_2 \subset P_j(p)$. Define $b_2 = i_{s_r}+1$, where now we use $s_r$ to indicate the last propagator in this new protecting set. By construction, $P_{j+1}(p)$ prevents $p$ from contributing $j+1$ to $I_a$ for all $a \in [b_2+2, j+1]$. Therefore, if both protecting sets exist, for all $a \in [b_1+1, b_2]$ $p$ contributes $j+1$ to $I_a$. This is exactly the range in which there is exactly one valid protecting set. Therefore, in this range, $j+1$ is the first vertex of $p$ without a protective set. If there is no $a$ such that both $P_j(p)$ and $P_{j+1}(p)$ do not hold, then  $p$ contributes $j+1$ for all $a \in [b_1 +1, j+1]$.
-%
-%Finally, for $r > 1$, and $j_{k_2}=j$,$a \in [b2+1, j+1]$, $p$ contributes $i$ to $I_a$. Again, for all $a$ in this range, both sets $P_j(p)$ and $P_{j+1}(p)$ protect $p$ at $j$ and $j+1$ from $a$. Furthermore, by Corrollary \ref{protect cor}, there can be no protective sets of $i$ or $i+1$ in this range. 
-%
-%By switching the roles of $i$ and $j$, we see that for every element of $V(p)$, there is a non-empty cyclic interval such that $p$ contributes $v$ to all $I_{a}$ for in said interval.
-
 \end{proof}
 
 
@@ -1751,48 +1725,47 @@ Let $W = (\cP,[n])$ be an admissible Wilson loop diagram and let $M(W)$ be its a
 One of the most important uses of this lemma is for bases.  The lemma says that a subset $J$ of $[n]$ is a basis of $M(W)$ if and only if there is a set bijection between $J$ and $\cP$ with the property that for each $j\in J$ the propagator associated to $j$ under the bijection is supported on vertex $j$.
 
 \begin{proof}
-  Because the nonzero entries of $C(W)$ are independent indeterminants,
-  $J$ is an independent set is if and only if there is some choice of $|J|$ nonzero entries of $C(W)$ one in each row associated to an element of $J$ and each in different columns.
+Because the nonzero entries of $C(W)$ are independent indeterminants, $J$ is an independent set is if and only if there is some choice of $|J|$ nonzero entries of $C(W)$ one in each row associated to an element of $J$ and each in different columns.
 
-  Each entry in $C(W)$ identifies a propagator by the row of the entry and a vertex by the column of the entry.  The entry is nonzero if and only if the propagator is supported on that vertex.
-  
-  Consequently, a choice of $|J|$ nonzero entries of $C(W)$ one in each row associated to an element of $J$ and each in different columns is equivalent to an assignment of the propagators of $J$ to supporting vertices so that no two are assigned to the same vertex.  Such an assignment of the propagators of $J$ to supporting vertices is exactly a map $f$ as described in the statment, hence proving the result.
+Each entry in $C(W)$ identifies a propagator by the row of the entry and a vertex by the column of the entry.  The entry is nonzero if and only if the propagator is supported on that vertex.
+
+Consequently, a choice of $|J|$ nonzero entries of $C(W)$ one in each row associated to an element of $J$ and each in different columns is equivalent to an assignment of the propagators of $J$ to supporting vertices so that no two are assigned to the same vertex.  Such an assignment of the propagators of $J$ to supporting vertices is exactly a map $f$ as described in the statment, hence proving the result.
 \end{proof}
 
-\begin{prop}\label{res:alg gives GN}
-The sequence of $k$-subsets obtained by applying Algorithm~\ref{alg:put GN on WLD} to an admissible diagram $W$ is exactly the Grassmann necklace of the positroid associated to $W$; specifically if we let  $I_i$ be the set of labels on edge $(i,i+1)$ then the sequence $\II = (I_1, \dots, I_n)$ is the Grassmann necklace of the positroid associated to $W$.
-\end{prop}
+\begin{thm}\label{res:alg gives GN}
+The sequence of $k$-subsets $(I_1,\dots,I_n)$ obtained by applying Algorithm~\ref{alg:put GN on WLD} to all vertices of an admissible diagram $W$ is exactly the Grassmann necklace of $M(W)$.
+\end{thm}
 
 \begin{proof}
-Let $I_i$ be the set of labels on edge $(i,i+1)$; the sequence $\II = (I_1, \dots, I_n)$ is a Grassmann necklace if and only if $I_{i+1} \supseteq I_i \backslash \{i\}$ for all $i \in \{1, \dots, n\}$.
+For each $i \in [n]$, let $I_i$ be the set of vertices assigned to the propagators of $W$ by Algorithm~\ref{alg:put GN on WLD} with starting vertex $i$. By Lemma~\ref{GN alg well defined}, we know that $|I_i| = k$ for each $i \in [n]$. By [ref], the sequence $(I_1, \dots, I_n)$ is a Grassmann necklace if and only if $I_{i+1} \supseteq I_i \backslash \{i\}$ for all $i \in [n]$.
 
 
 Suppose for a contradition that there exists an admissible diagram for which there exists an $i$ with $k\in I_{i\backslash\{i\}}$ and $k \not\in I_{i+1}$.  Fix $n$.  Let the triple $(W, i, k)$ be such a counterexample on $n$ vertices which is minimal with respect to the number of propagators. %, and among all those counterexamples on $n$ vertices with the same number of propagators, let $(W,i,k)$ be minimal with respect to the distance from $i$ to $k$ in the $\leq _i$ order.
 
 If $i \not\in I_i$, then there are no propagators supported on $i$ at all.  In this case it is clear that applying Algorithm~\ref{alg:put GN on WLD} at vertex $i$ and vertex $i+1$ produces exactly the same result, i.e. $I_{i+1} = I_i$, and so $(W, i, k)$ is not a counterexample at all.
 
-Now suppose that $i \in I_i$.  Let $p$ be the propagator which contributes $i$ to $I_i$.  Either $p$ has one end on the edge $(i-1, i)$ or it has one end on the edge $(i, i+1)$.  In both cases let $(b, b+1)$ be the edge with the other end of $p$.
+Now suppose that $i \in I_i$.  Let $p$ be the propagator which contributes $i$ to $I_i$; thus one end of $p$ must lie on either edge $i-1$ or edge $i$.  In both cases let $b$ denote the edge supporting the other end of $p$.
 
-\textbf{case I}:  Suppose $p$ has one end on $(i-1, i)$.  Then $p$ is not supported on $i+1$, so in building $I_{i+1}$ we will take the same propagators as in the construction of $I_i$ from vertices $i+1$ up to $b-1$, that is $I_{i+1} \cap \interval{i+1}{b-1} = I_{i} \cap \interval{i+1}{b-1}$.  Furthermore, by Lemma~\ref{vertex cyclic int lem}, in building $I_{i+1}$, it must be that $p$ is taken at vertex $b$, as otherwise $b$ would never be contributed by $p$.    Consequently, in building $I_{i+1}$, when at vertex $b$ no propagator still remaining is before $p$.  This is also true in building $I_i$ when at $b$ since the same propagators have been taken beforehand.  Additionally $k\geq_i b+1$.
+\textbf{Case I}:  Suppose $p$ has one end on edge $i-1$.  Then $p$ is not supported on $i+1$, so in building $I_{i+1}$ we will take the same propagators as in the construction of $I_i$ from vertices $i+1$ up to $b-1$, that is $I_{i+1} \cap [i+1,b-1] = I_{i} \cap [i+1,b-1]$.  Furthermore, by Lemma~\ref{vertex cyclic int lem}, when building $I_{i+1}$ it must happen that $p$ is taken at vertex $b$, as otherwise $b$ would never be contributed by $p$.    Consequently, in building $I_{i+1}$, when the algorithm reaches vertex $b$ there cannot be any unassigned propagators remaining that are before $p$.  This is also true in when the algorithm constructing $I_i$ reaches $b$, since the same propagators have been assigned beforehand.  Finally, we also note that $k\geq_i b+1$.
 
-Let $W'$ be the diagram obtained from $W$ by removing $p$ and all propagators under it in the sense of supported between $i+1$ and $b-1$.
+Let $W'$ be the diagram obtained from $W$ by removing both $p$ and all propagators inside of $p$ (recall Definition~\ref{props inside p}).
 
-By the above observations when we are in $W'$ at $b$ then we are in the same situation with respect to the remaining propagators as if we began at $i$ in $W$ and moved to $b$ following the algorithm; the propagators we took in the latter case are exactly the ones removed to build $W'$.  Similarly starting at $i+1$ in $W$ and moving to $b+1$ leaves us in the same situations with respect to the remaining propagators as beginning at $b+1$ in $W'$.  This gives the equations
+By the above observations, if we commence Algorithm~\ref{alg:put GN on WLD} in $W'$ from vertex $b$, then we are in the same situation with respect to unassigned propagators as if we began at $i$ in $W$ and proceeded to $b$ following the algorithm; the propagators we assigned in the latter case are exactly the ones removed to build $W'$.  Similarly, starting at $i+1$ in $W$ and moving to $b+1$ leaves us in the same situation with respect to unassigned propagators as beginning at $b+1$ in $W'$ would.  This gives the equations
 \begin{align*}
-  I_i^W \cap \interval{b}{i-1} & = I_b^{W'} \\
-  I_{i+1}^W \cap \interval{b+1}{i-1} & = I_{b+1}^{W'}
+  I_i^{(W)} \cap [b,i-1] & = I_b^{(W')} \\
+  I_{i+1}^{(W)} \cap [b+1,i-1] & = I_{b+1}^{(W')}
 \end{align*}
 where the diagram is indicated in the superscript.
-Thus we have $k\in I_b^{W'}\backslash\{b\}$ and $k\not\in I_{b+1}^{W'}$ contradicting the minimality of $(W, i, k)$.
+Thus we have $k\in I_b^{(W')}\setminus\{b\}$ and $k\not\in I_{b+1}^{(W')}$, contradicting the minimality of $(W, i, k)$.
 
-\textbf{case II}: Suppose $p$ has one end on $(i, i+1)$.  Note that by definition $p$ is the propagator contributing $i$ to $I_i$ and so it must be the first propagator in $(i, i+1)$ and hence $p$ contributes $i+1$ to $I_{i+1}$.  Observe that $k\geq_i i+2$ since $i+1\in I_{i+1}$.
+\textbf{Case II}: Suppose $p$ has one end on edge $i$.  Note that by assumption we have $I_i(p) = i$; this means that $p$ must be the first propagator lying on edge $i$, and hence we must have $I_{i+1}(p) = i+1$ as well.  Observe also that $k\geq_i i+2$ since $i+1\in I_{i+1}$.
 
-Let $W'$ be the diagram obtained from $W$ just by removing $p$.  Then
+Let $W'$ be the diagram obtained from $W$ by removing only the propagator $p$.  Then we have
 \begin{align*}
-  I_i^W \backslash \{i\} & = I_{i+1}^{W'} \\
-  I_{i+1}^W \backslash \{i+1\} & = I_{i+2}^{W'}
+  I_i^{(W)} \backslash \{i\} & = I_{i+1}^{(W')} \\
+  I_{i+1}^{(W)} \backslash \{i+1\} & = I_{i+2}^{(W')}
 \end{align*}
-since in both cases in $W'$ we are simply taking the remaining propagators in the same way as we would have in $W$ after taking $p$ for the previous vertex.  Since $k \neq i+1$, we have $k\in I_{i+1}^{W'}\backslash\{i+1\}$ but $k\not\in I_{i+2}^{W'}$ contradicting the minimiality of $(W, i, k)$
+since in both cases the algorithm in $W'$ proceeds identically to that in $W$ after assigning $p$. Since $k \neq i+1$, we have $k\in I_{i+1}^{(W')}\setminus\{i+1\}$ but $k\not\in I_{i+2}^{(W')}$, contradicting the minimiality of $(W, i, k)$
 
 %If $i \not\in I_i$, then there are no propagators supported on $i$ at all.  In this case it is clear that applying Algorithm~\ref{alg:put GN on WLD} at vertex $i$ and vertex $i+1$ produces exactly the same result, i.e. $I_{i+1} = I_i$.
 %
@@ -1816,12 +1789,12 @@ since in both cases in $W'$ we are simply taking the remaining propagators in th
 
 \medskip
 
-We have shown that $\II$ is a Grassmann necklace; it remains to check that this Grassmann necklace defines the positroid $\PP_W$ associated to $W$.  We need to show that:
+We have shown that $(I_1,\dots,I_n)$ is a Grassmann necklace; it remains to check that this Grassmann necklace corresponds to the positroid $M(W)$.  We need to show that:
 \begin{itemize}
-\item For each $i \in \interval{1}{n}$, $I_i$ is a basis for $\PP_W$.
-\item If $J$ is lexicographically smaller than $I_i$ with respect to $<_i$, then $J$ is not a basis for $\PP_W$.
+\item For each $i \in [n]$, $I_i$ is a basis for $M(W)$.
+\item If $J$ is lexicographically smaller than $I_i$ with respect to $<_i$, then $J$ is not a basis for $M(W)$.\note{Si\^an note to self: check whether it's lex smaller or Gale smaller}
 \end{itemize}
-The algorithm is pairing each $j \in I_i$ with a unique propagator supported on that vertex so by Lemma~\ref{lem basis as perm} $I_i$ is a basis for $\PP_W$.
+The algorithm is pairing each $j \in I_i$ with a unique propagator supported on that vertex so by Lemma~\ref{lem basis as perm} $I_i$ is a basis for $M(W)$.
 %%Recall from [ref] that a $k$-subset $J \in \binom{[n]}{k}$ is a basis for $\PP_W$ if and only if it has no subset $U \subseteq J$ such that $|U| > |Prop(U)|$.  It is immediately clear from the construction that $I_i$ is a basis for each $i$: the algorithm is pairing each $j \in I_i$ with a unique propagator supported on that vertex, so $|Prop(U)| \geq U$ for all $U \subseteq I_i$.
 
 %%If $\exists l \in J$ with $Prop(l) = \emptyset$ then $J$ is clearly not a basis, so suppose otherwise.  Write
@@ -1830,30 +1803,34 @@ The algorithm is pairing each $j \in I_i$ with a unique propagator supported on 
 %%\[r-1 \geq |Prop(\{i_1, \dots, i_{r-1}\})| = |Prop(\{i_1, \dots, i_{r+1},j_r\})|,\]
 %%If $|Prop(\{i_1, \dots, i_{r-1}|\}| = r-1$ then we are done; otherwise
 
-Suppose we have $J$ such that $J$ is a basis and yet is lexicographically less than $I_i$ with respect to $<_i$.  By Lemma~\ref{lem basis as perm} there is a set bijection between $J$ and the propagators of $W$ such that the propagator associated to $j$ is supported on vertex $j$.  Choose one such bijection.  For a propagator $p$ of $W$ write $J(p)$ for the associated $j$ according to this bijection.  Similarly write $I_i(p)$ for the vertex assigned to $p$ by the algorithm.  Since $J$ is lexicographically smaller than $I_i$, the $<_i$-smallest element of the symmetric difference of $J$ and $I_i$ is some $j_0\in J$, $j_0 \not\in I_i$.
+Suppose we have a $k$-set $J$ such that $J$ is a basis for $M(W)$ and yet is lexicographically less than $I_i$ with respect to $<_i$.  By Lemma~\ref{lem basis as perm} there is a set bijection between $J$ and the propagators of $W$ such that for each $j \in J$, the propagator associated to $j$ is supported on vertex $j$.  Choose one such bijection.  For a propagator $p$ of $W$ write $J(p)$ for the associated $j$ according to this bijection.   
 
-Let $p$ be the propagator such that $J(p)=j_0$.  Since $j_0\not\in I_i$ but $p$ is supported at $j_0$, then $I_i(p) <_i j_0$.  Thus the propagator $p$ has the following property: $I_i(p) <_i J(p)$ and $I_i\cap \interval{i}{I_i(p)} = J\cap \interval{i}{I_i(p)}$.  Call this property $A$.
+Since $J$ is lexicographically smaller than $I_i$, the $<_i$-smallest element of the symmetric difference of $J$ and $I_i$ is some $j_0\in J$, $j_0 \not\in I_i$. Let $p$ be the propagator such that $J(p)=j_0$.  Since $j_0\not\in I_i$ but $p$ is supported at $j_0$, then $p$ must have been assigned to an earlier vertex by $I_i$, i.e. we have $I_i(p) <_i j_0$.  Thus the propagator $p$ has the following property, which we call property $A$:
+\begin{equation}\label{propertyA}\tag{A}I_i(p) <_i J(p) \text{ \ and \ }I_i\cap [i,I_i(p)] = J\cap [i,I_i(p)]. \end{equation}
 
-{}From the previous paragraph we conclude that if we ever had a $J$ which is lexicographically less than $I_i$ and yet a basis of $\PP_W$ then there exists a propagator $p$ which has property $A$.
+{}From the previous paragraph we conclude that if we ever had a $J$ which is lexicographically less than $I_i$ and yet a basis of $M(W)$, then there exists a propagator $p$ which has property $A$.
 
-Finally, we will prove that whenever there is a propagator $p$ which has property $A$ then there is another propagator $r$ which also has property $A$ and for which $I_i(r) <_i I_i(p)$.  Since $I_i$ is finite this would lead to infinte regress and hence is impossible and thus there can be no such $J$ which will complete the proof of the proposition.
+Finally, we will prove that whenever there is a propagator $p$ which has property $A$ then there is another propagator $r$ which also has property $A$ and for which $I_i(r) <_i I_i(p)$.  This would lead to an infinte regress, contradicting the finiteness of $I_i$; thus there could be no such $J$, which will complete the proof of the proposition.
 
-So suppose $p$ has property $A$.  The same vertices in $\interval{i}{I_i(p)}$ are in the image of the assignment from $J$ and the image of the assignment from $I_i$ so the same number of propagators are assigned to vertices in this interval by each assignment.  However $p$ is one of the propagators assigned to a vertex in this interval in $I_i$ but not in $J$.  Thus there exists a propagator $q$ for which $J(q)\in \interval{i}{I_i(p)}$ but $I_i(q) >_i I_i(p)$.  Therefore $J(q)<_i I_i(q)$ and  $I_i\cap \interval{i}{J(q)} = J\cap \interval{i}{J(q)}$.  This is analogous to property $A$ but with the roles of $J$ and $I_i$ switched.  Thus by the same argument we must have a propagator $r$ for which $I_i(r)\in \interval{i}{J(q)}$ but $J(r)>_i J(q)$.  Therefore $r$ has property $A$ which is what we wanted to prove.
-
+So suppose $p$ has property $A$.  The same vertices in $[i,I_i(p)]$ are in the image of the assignment from $J$ and the image of the assignment from $I_i$ so the same number of propagators are assigned to vertices in this interval by each assignment.  However $p$ is one of the propagators assigned to a vertex in this interval in $I_i$ but not in $J$.  Thus there exists a propagator $q$ for which $J(q)\in [i,I_i(p)]$ but $I_i(q) >_i I_i(p)$.  Therefore $J(q)<_i I_i(q)$ and  $I_i\cap [i,J(q)] = J\cap [i,J(q)]$.  This is analogous to property $A$ but with the roles of $J$ and $I_i$ switched.  Thus by the same argument we must have a propagator $r$ for which $I_i(r)\in[i,J(q)]$ but $J(r)>_i J(q)$.  It follows that $r$ also has property $A$ and that
+\[I_i(r) \leq_i J(q) \leq_i I_i(p)\]
+\hlfix{as required.}{We need $I_i(r) <_i I_i(p)$ but I'm having trouble seeing it?}
 \end{proof}
 
 
 
 
 
-In an arbitrary Grassmann necklace, it is possible for an index $i$ to appear in no terms of the Grassmann necklace (a {\em loop}) or in all terms of the necklace (a {\em coloop}). Clearly any vertex of $W$ that supports no propagators will yield a loop [ref][check: is this iff?], but with Theorem [ref][cyclic intervals thm] in hand we can now easily verify that admissible Wilson loop diagrams do not admit coloops.
+In an arbitrary Grassmann necklace, it is possible for an index $i$ to appear in no terms of the Grassmann necklace (a {\em loop}) or in all terms of the necklace (a {\em coloop}). Using Theorem~\ref{res:alg gives GN}, a characterization of the loops and coloops of the Grassmann necklace associated to a Wilson loop diagram follows easily.
 
 
 \begin{cor}\label{no coloops}
-Grassmann necklaces coming from admissible Wilson loop diagrams have no coloops, that is no indices $a$ such that $a \in I_i$ for all $i$.
+Grassmann necklaces coming from admissible Wilson loop diagrams have no coloops. A vertex $j$ is a loop if and only if $j$ supports no propagators. 
 \end{cor}
 \begin{proof}
-For any $a \in [n]$, $a-1$ is maximal with respect to the $<_{a}$ order. Therefore there is no propagator $p$ with $I_{a}(p) = a-1$ by Lemma~\ref{lem no fourth vertex}, i.e. $a-1 \not\in I_{a}$.
+For any $i \in [n]$, $i-1$ is maximal with respect to the $<_{i}$ order. Therefore there can be no propagator $p$ with $I_{i}(p) = i-1$ by Lemma~\ref{lem no fourth vertex}, i.e. $i-1 \not\in I_{i}$. Thus the Grassmann necklace admis no coloops.
+
+If $j \in [n]$ is a loop then $j \not\in I_j$, which can only happen if there are no propagators supported on vertex $j$. Conversely, if $j$ supports no propagators, then Algorithm ~\ref{alg:put GN on WLD} never assigns a propagator to $j$ and hence $j \not\in I_i$ for all $i \in [n]$.
 \end{proof}
 
 
