@@ -1352,7 +1352,7 @@ In this section, we give an algorithm for passing directly from the Wilson loop 
 
 Let $\binom{[n]}{k}$ be the set of all $k$-subsets of the cyclically ordered set $[n]$.  For each $j \in [n]$, we can define a total order $\leq_j$ on the interval $[n]$ by
 \bas j <_j j+1 <_j \dots <_j n <_j 1 \dots <_j j-1\;.\eas
-This in turn induces a total order on $\binom{[n]}{k}$, namely the lexicographic order with respect to $<_j$.  It also induces a separate partial order $\gale{j}$ on $\binom{[n]}{k}$ (the \textit{Gale order} [ref]), which is defined as follows: for 
+This in turn induces a total order on $\binom{[n]}{k}$, namely the lexicographic order with respect to $<_j$.  It also induces a separate partial order $\gale{j}$ on $\binom{[n]}{k}$ (the \textit{Gale order} \cite{Gale}), which is defined as follows: for 
 \[A = \{a_1 <_j a_2 <_j \dots <_j a_k\} \text{ and } B = \{b_1 <_j b_2 <_j \dots <_j b_k\} \in \binom{[n]}{k},\] we say that
 \[A \gale{j} B \text{ if and only if } a_r \leq_j b_r \text{ for all }1 \leq r \leq k.\]
 For example, in $\binom{[6]}{3}$ we have $\{2,5,6\}\gale{2} \{2,6,1\}$ but $\{2,5,6\}\not\gale{2}\{3,4,6\}$.
@@ -1367,7 +1367,7 @@ A Grassmann necklace of type $(k,n)$ is a sequence $(I_1, \dots, I_n)$ of $n$ se
 By convention, we set $I_{n+1} = I_1$.
 \end{dfn}
 
-By [ref][Oh or Postnikov?], the Grassmann necklaces of type $(k,n)$ are in 1-1 correspondence with the positroid cells in $\Gr(k,n)$.  Further, if $(I_1, \dots, I_n)$ is the Grassmann necklace associated to a positroid $M = ([n],\cB)$, then by [ref][Oh] the bases of $M$ can be computed using the Gale order $\gale{i}$ for each $i \in [n]$:
+By \cite[Theorem 17.1]{Postnikov}, the Grassmann necklaces of type $(k,n)$ are in 1-1 correspondence with the positroid cells in $\Gr(k,n)$.  Further, if $(I_1, \dots, I_n)$ is the Grassmann necklace associated to a positroid $M = ([n],\cB)$, then by \cite[Theorem 8]{Oh} the bases of $M$ can be computed using the Gale order $\gale{i}$ for each $i \in [n]$:
 \[\cB = \left\{J \in \binom{[n]}{k}\ :\ I_i \gale{i} J \ \forall i \in [n]\right\}.\]
 We now describe an algorithm that constructs the Grassmann necklace of an admissible Wilson loop diagram from the diagram. The fact that Algorithm~\ref{alg:put GN on WLD} does construct the required Grassmann necklace is proved in Theorem~\ref{res:alg gives GN}.
 
@@ -1546,7 +1546,7 @@ It follows from the proof of Lemma~\ref{lem no fourth vertex} that Algorithm~\re
 
 Given a propagator $p$ of an admissible WLD $W$ and a vertex $i$ in the support of $p$, define
 \[J_p^{(W)}(i) = \{m \in [n] \ : \ I^{(W)}_m(p) = i \},\]
-i.e. the set of indices $m$ for which Algorithm [ref] assigns the value $i$ to the propagator $p$ in $W$. The following lemma establishes that these sets behave in a simple and predictable manner, a fact which we will repeatedly use in subsequent proofs.
+i.e. the set of indices $m$ for which Algorithm~\ref{alg:put GN on WLD} assigns the value $i$ to the propagator $p$ in $W$. The following lemma establishes that these sets behave in a simple and predictable manner, a fact which we will repeatedly use in subsequent proofs.
 
 \begin{lem} \label{vertex cyclic int lem}
   
@@ -1858,7 +1858,7 @@ If $j \in [n]$ is a loop then $j \not\in I_j$, which can only happen if there ar
 Our next goal is to show that the dimension of the positroid cell defined by a Wilson loop diagram $(\cP, [n])$ has dimension $3|\cP|$.  Marcott in ***cite this*** has a different proof which is geometric and more elegant, bit it is not easy to track the effect of a particular propagator.  Our approach is much more explicit.
 
 
-The dimension of a positroid cell is the same as the number of plusses in the associated Le diagram ***cite something***, and so with Algorithm~\ref{alg:put GN on WLD} along with the algorithm for passing from a Grassmann necklace to a Le diagram (reversing Oh's algorithm) described by some of us in \cite{reversingOh}, we can, at the cost of a bit of messy grunt work, give a recursive proof of the $3|\cP|$-dimensionality that explicitly describes the changes in the positions of the plusses in the Le diagram.
+The dimension of a positroid cell is the same as the number of plusses in the associated Le diagram \cite[Theorem 6.5]{Postnikov}, and so with Algorithm~\ref{alg:put GN on WLD} along with the algorithm for passing from a Grassmann necklace to a Le diagram (reversing Oh's algorithm) described by some of us in \cite{reversingOh}, we can, at the cost of a bit of messy grunt work, give a recursive proof of the $3|\cP|$-dimensionality that explicitly describes the changes in the positions of the plusses in the Le diagram.
 
 %In \cite{reversingOh}, Agarwala and Fryer give an algorithm for passing from a Grassmann Necklace to a Le diagram. We use this algorithm here to pass from a Wilson loop diagram to its associated Le diagram. In this manner, we show that the positroid cell defined by a Wilson loop diagram has dimension $3|\cP|$. Maybe say something about Amplituhedra having $4k$ dimension, but this is not quite what we have, since we are ignoring one column.
 %
@@ -1900,10 +1900,13 @@ We need a number of lemmas, of roughly increasing degree of technicality.
 %The fourth lemma is that we can rotate or reflect without changing the number of plusses.  The best way to see this is probably geometrically so I leave that up to you.
 
 \begin{lem}\label{lem dihedral}
-  If two Wilson loop diagrams differ by a dihedral transformation then their Le diagrams have same number of plusses.
+If two Wilson loop diagrams differ by a dihedral transformation then their Le diagrams have same number of plusses.
 \end{lem}
+\begin{proof}
+By \cite[Proposition 17.10]{Postnikov}, the dimension of a positroid (and hence the number of plusses in its Le diagram) is $k(n-k) - A(\pi_W)$, where $A(\pi_W)$ denotes the number of alignments (see \cite[Figure 17.1]{Postnikov} and preceding discussion) of the decorated permutation $\pi_W$ of the positroid associated to $W$. 
 
-\note{Can I just cite something for this, or can one of you provide a quick geometric proof.  It would be a horrible mess to do by hand combinatorially}
+Since it is clear that dihedral transformations of a Wilson loop diagram $W$ correspond to dihedral transformations of the chord diagram representation of $\pi_W$, and that the number of alignments in a chord diagram is preserved under dihedral transformations, the result follows.
+\end{proof}
 
 %\subsubsection{Changes in Gra\ss mann necklaces for nice configurations}
 
@@ -2283,6 +2286,39 @@ Finally, since $R$ is squarefree, this implies that $R(W)$ is a $\mathbb{Q}$-mul
 \note{Is there any point in working out the $\mathbb{Q}$-coefficient, or otherwise discussing the field?}
 
 ***explain why this result was interesting***
+
+
+
+\begin{thebibliography}{10}
+
+\bibitem{wilsonloop}
+S. Agarwala, E. M. Amat.
+\newblock Wilson loop diagrams and positroids.
+\newblock {\em Commun. Math. Phys.} 2016.
+
+\bibitem{reversingOh}
+S. Agarwala, S. Fryer.
+\newblock An algorithm to construct the Le diagram associated to a Grassmann necklace
+\newblock \url{arXiv:1803.01726}
+
+\bibitem{Gale}
+D. Gale.
+\newblock Optimal assignments in an ordered set: {A}n application of matroid theory.
+\newblock {\em J. Combinatorial Theory}, 4: 176 - 180 (1968).
+
+\bibitem{Oh}
+S. Oh.
+\newblock Positroids and {S}chubert matroids.
+\newblock {\em J. Combin. Theory Ser. A}, 118(8):2426--2435, (2011)
+
+
+\bibitem{Postnikov}
+A.~Postnikov.
+\newblock Total positivity, {G}rassmannians, and networks.
+\newblock \url{arXiv:math/0609764}.
+
+
+\end{thebibliography}
 
 
 \end{document}
