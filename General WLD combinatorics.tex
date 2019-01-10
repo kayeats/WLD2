@@ -997,21 +997,45 @@ Again do I want matroid or positroid in this theorem?
 \end{comment}
 
 \section{Geometry of Wilson Loop diagram}\label{sec GN algorithm}
-Since Wilson loop diagrams correspond to positroids, it is natural to study the subspace of $\Gr(|\cP|, n)$ they define.
-
-% Talk about Grassmann Necklaces and how it defines a cell in a CW complex of $\Gr(k,n)$. Also talk about how this is exactly all the non-negative matrices that represent a particular positroid.
-
-% Also talk about Le diagrams.
 
 
-[We probably need a subsection for background here. Probably move the definition of Grassmann necklace up to here, a few words about positroids and Postnikov's work, def of Le diagrams and GNs, why it's useful to be able to translate between WLD, GN, Le diagrams at will. ]
+Since Wilson loop diagrams correspond to positroids, it is natural to study the subspace of $\Gr(|\cP|, n)$ they define. 
+
+[words about what's in this section]
+
+Throughout this section, $W = (\cP,[n])$ is an admissible Wilson loop diagram with $k$ propagators.
+
+\subsection{Background}\label{sec:positroid background}
+
+[positroids]
+
+Let $\binom{[n]}{k}$ be the set of all $k$-subsets of the cyclically ordered set $[n]$.  For each $j \in [n]$, we can define a total order $\leq_j$ on the interval $[n]$ by
+\[] j <_j j+1 <_j \dots <_j n <_j 1 \dots <_j j-1\;.\]
+This in turn induces a total order on $\binom{[n]}{k}$, namely the lexicographic order with respect to $<_j$.  It also induces a separate partial order $\gale{j}$ on $\binom{[n]}{k}$ (the \textit{Gale order} \cite{Gale}), which is defined as follows: for 
+\[A = \{a_1 <_j a_2 <_j \dots <_j a_k\} \text{ and } B = \{b_1 <_j b_2 <_j \dots <_j b_k\} \in \binom{[n]}{k},\] we say that
+\[A \gale{j} B \text{ if and only if } a_r \leq_j b_r \text{ for all }1 \leq r \leq k.\]
+For example, in $\binom{[6]}{3}$ we have $\{2,5,6\}\gale{2} \{2,6,1\}$ but $\{2,5,6\}\not\gale{2}\{3,4,6\}$.
 
 
-Throughout this section, $W = (\cP,n)$ is an admissible Wilson loop diagram with $k$ propagators.
+\begin{dfn}\label{def:grassmann necklace}
+A Grassmann necklace of type $(k,n)$ is a sequence $(I_1, \dots, I_n)$ of $n$ sets $I_i \in \binom{[n]}{k}$ such that for each $i \in [n]$:
+\begin{itemize}
+\item if $i \in I_i$, then $I_{i+1} = \big(I_i \backslash \{i\}\big) \cup \{j\}$ for some $j \in[n]$.
+\item if $i \not\in I_i$, then $I_{i+1} = I_i$.
+\end{itemize}
+By convention, we set $I_{n+1} = I_1$.
+\end{dfn}
 
-\subsection{Some setup results about propagators}
+By \cite[Theorem 17.1]{Postnikov}, the Grassmann necklaces of type $(k,n)$ are in 1-1 correspondence with the positroid cells in $\Gr(k,n)$.  This correspondence is given explicitly in \cite[Theorem 8]{Oh}: if $(I_1, \dots, I_n)$ is the Grassmann necklace associated to a positroid $M = ([n],\cB)$, then the bases of $M$ are exactly
+\[\cB = \left\{J \in \binom{[n]}{k}\ :\ I_i \gale{i} J \ \forall i \in [n]\right\}.\]
 
 
+[Le diagrams]
+
+
+\subsection{Propagator configurations in admissible Wilson loop diagrams}\label{sec:propagator configs}
+
+Before we can describe the algorithm for extracting the Grassmann necklace of $M(W)$ from the Wilson loop diagram $W$, we require some initial results about the behavior of propagators in admissible WLD.
 
 \begin{dfn}\label{props inside p}
 Let $p$ be a propagator supported on $(i,j)$ in $W$. The region of $W$ bounded by $p$ and the edge of the Wilson loop diagram from $i$ to $j+1$ is refered to as the region {\bf inside} $p$, and the complement is the region {\bf outside }$p$. The set of propagators inside (resp. outside) $p$ are those lying in the region inside (resp. outside) $p$, excluding $p$ itself.
@@ -1344,32 +1368,13 @@ In the case that all vertices of an admissible WLD $W$ support at least two prop
 \end{rmk}
 
 
-\subsection{From Wilson Loop diagrams to Grassmann Necklaces}
+\subsection{From Wilson Loop diagrams to Grassmann Necklaces}\label{sec:GN alg}
 
 Until now, the positroid associated to a Wilson loop diagram $W$ could only be obtained by computing the matrix $C(W)$ associated to $W$, listing all bases of the induced matroid $M(W)$, and constructing the Le diagram or Grassmann necklace of the positroid ``by eye'' from this list. 
 
 In this section, we give an algorithm for passing directly from the Wilson loop diagrams to its Grassmann necklace. This not only greatly simplifies the process above, but will also allow us to relate the behavior of the positroid $M(W)$ directly to the configuration of progators in $W$.
 
-Let $\binom{[n]}{k}$ be the set of all $k$-subsets of the cyclically ordered set $[n]$.  For each $j \in [n]$, we can define a total order $\leq_j$ on the interval $[n]$ by
-\bas j <_j j+1 <_j \dots <_j n <_j 1 \dots <_j j-1\;.\eas
-This in turn induces a total order on $\binom{[n]}{k}$, namely the lexicographic order with respect to $<_j$.  It also induces a separate partial order $\gale{j}$ on $\binom{[n]}{k}$ (the \textit{Gale order} \cite{Gale}), which is defined as follows: for 
-\[A = \{a_1 <_j a_2 <_j \dots <_j a_k\} \text{ and } B = \{b_1 <_j b_2 <_j \dots <_j b_k\} \in \binom{[n]}{k},\] we say that
-\[A \gale{j} B \text{ if and only if } a_r \leq_j b_r \text{ for all }1 \leq r \leq k.\]
-For example, in $\binom{[6]}{3}$ we have $\{2,5,6\}\gale{2} \{2,6,1\}$ but $\{2,5,6\}\not\gale{2}\{3,4,6\}$.
-
-
-\begin{dfn}\label{def:grassmann necklace}
-A Grassmann necklace of type $(k,n)$ is a sequence $(I_1, \dots, I_n)$ of $n$ sets $I_i \in \binom{[n]}{k}$ such that for each $i \in [n]$:
-\begin{itemize}
-\item if $i \in I_i$, then $I_{i+1} = \big(I_i \backslash \{i\}\big) \cup \{j\}$ for some $j \in[n]$.
-\item if $i \not\in I_i$, then $I_{i+1} = I_i$.
-\end{itemize}
-By convention, we set $I_{n+1} = I_1$.
-\end{dfn}
-
-By \cite[Theorem 17.1]{Postnikov}, the Grassmann necklaces of type $(k,n)$ are in 1-1 correspondence with the positroid cells in $\Gr(k,n)$.  Further, if $(I_1, \dots, I_n)$ is the Grassmann necklace associated to a positroid $M = ([n],\cB)$, then by \cite[Theorem 8]{Oh} the bases of $M$ can be computed using the Gale order $\gale{i}$ for each $i \in [n]$:
-\[\cB = \left\{J \in \binom{[n]}{k}\ :\ I_i \gale{i} J \ \forall i \in [n]\right\}.\]
-We now describe an algorithm that constructs the Grassmann necklace of an admissible Wilson loop diagram from the diagram. The fact that Algorithm~\ref{alg:put GN on WLD} does construct the required Grassmann necklace is proved in Theorem~\ref{res:alg gives GN}.
+The fact that Algorithm~\ref{alg:put GN on WLD} does construct the required Grassmann necklace is proved in Theorem~\ref{res:alg gives GN}.
 
 \begin{algorithm}\label{alg:put GN on WLD}
 Let $W = (\cP, [n])$ be an admissible Wilson loop diagram. This gives an algorithm for calculating the set $I_a$, for $a \in [n]$.
@@ -1848,8 +1853,6 @@ For any $i \in [n]$, $i-1$ is maximal with respect to the $<_{i}$ order. Therefo
 
 If $j \in [n]$ is a loop then $j \not\in I_j$, which can only happen if there are no propagators supported on vertex $j$. Conversely, if $j$ supports no propagators, then Algorithm ~\ref{alg:put GN on WLD} never assigns a propagator to $j$ and hence $j \not\in I_i$ for all $i \in [n]$.
 \end{proof}
-
-
 
 
 
