@@ -444,10 +444,12 @@ For $W = (\cP, [n])$, $R(W) = \prod_{e=1}^n R_e$, with $R_e$ defined by the prop
 
 \section{Equivalence classes of Wilson loop diagrams}
 
-In \cite{wilsonloop}, Agarwala and Amat show that Wilson loop diagrams can be interpreted as positroids, a certain well behaved class of realizable matroids (this correspondence is stated precisely in Theorem \ref{thm WLD defines matroid} below). This opens up the study of Wilson loop diagrams to techniques from geometry and combinatorics.
+In \cite{wilsonloop}, Agarwala and Amat show that Wilson loop diagrams can be interpreted as positroids, a certain well behaved class of realizable matroids (this correspondence is stated precisely in Theorem \ref{thm WLD defines matroid} below). This opens up the study of Wilson loop diagrams to techniques from geometry and combinatorics. In particular we examine the partial result shown in \cite{wilsonloop}, that shows that equivalent Wilson Loop Diagrams define the same matroid. In section 2.4, we make the relationship between Wilson Loop diagrams and matroids explicit. We count the size of each equivalence class, and enumerate the {\color{violet} the number of said classes}. We also show that two Wilson Loop diagrams map to the same matroid if and only if they are equivalent. 
 
-In subsection 2.1, we discuss a few matroidal facts about Wilson loop diagrams. In section 2.2, we show that there is a one to one correspondence between exact subdiagrams of Wilson loop diagrams and triangulated pieces of the corresponding polygon partion. In section 2.3, we return to some matroidal facts about Wilson loop diagrams, and exact subdiagrams in partuclar. We show that a subdiagram of $W$ defines a uniform matroid if and only if the subdiagram is exact. This is then used to prove the main result of section 2.3, which is that that two admissible Wilson loop diagrams define the same matroid if and only if they are equivalent (Theorem \ref{same matroid iff equiv}), and we obtain a formula for the number of admissible Wilson loop diagrams in each equivalence class (Corollary \ref{number of equiv diagrams}).  [sentence about why this matters] \todo{much of the above is just text. PUT REFERENCES IN}
+In subsection \ref{sec matroid background}, we discuss a few matroidal facts about Wilson loop diagrams. In section \ref{sec: polygon partitions}, we show that there is a one to one correspondence between exact subdiagrams of Wilson loop diagrams and triangulated pieces of the corresponding polygon partion. In section \ref{sec: exact diagram matroidal props}, we prove some matroidal properties of exact subdiagrams. We show that a subdiagram of $W$ defines a uniform matroid if and only if the subdiagram is exact (Theorem \ref{exactuniformthm}). Furthermore, this uniform matroid is the restriction of the dual matriod of $W$ restricted to the exact subdiagram (Remark \ref{remark exact dual restiction}). The main result of section \ref{sec: matroids and equivalence} shows that that two admissible Wilson loop diagrams define the same matroid if and only if they are equivalent (Theorem \ref{same matroid iff equiv}). We obtain a formula for the number of admissible Wilson loop diagrams in each equivalence class (Corollary \ref{number of equiv diagrams}) {\color{violet}as well as the number of equivalence classes}. In this way, we give a comple characterization of the relationship between Wilson Loop diagrams and their associated matroids. 
 
+
+asdf 
 
 \subsection{Wilson loop diagrams as matroids\label{sec matroid background}}
 
@@ -886,7 +888,7 @@ If $(P, V(P)$ is an exact subdiagram of of $W$, one may write \bas M\big((P, V(P
 This follows from Lemma \ref{matroid contraction}. Lemma \ref{maxexactcomplementrank} shows that the supports of exact subdiagrams satisfy the conditions of this lemma.
 \end{proof}
 
-\begin{rmk}
+\begin{rmk} \label{remark exact dual restiction}
 Let $M^*$ denote the dual of a matroid. The the dual of a contraction of a matroid is the same as the restriction of the dual matroid by the complement: \bas M / S = M^*|_{S^c} \;.\eas Then Theorem \ref{exact diagrams contractions} implies that, for $(P, V(P))$ an exact subdiagram of $W$ \bas M\big((P, V(P))\big) = M(W)  / F(P^c) = M(W)^*|_{V(P)} \;.\eas
 \end{rmk}
 
@@ -913,10 +915,9 @@ Conversely, suppose that $W'$ is not exact and for a contradiction suppose also 
 %as above, but \hlfix{we need to know that $P\setminus\Prop(C)$ is non-empty before we can complete the argument.}{and if we knew this, it would be immediate that $\rk(C) < |P|$}
 \end{proof}
 
-\sanote{Should the rest of this section be stuck in the next section?}
 We now make a few observations about the geometry of matroids defined by exact diagrams.
 
-In \cite{wilsonloops}, the authors show that all admissible Wilson loop diagrams correspond to positroids. That is, they correspond to matroids that can be represented by elements of the positive Grassmannians $\Gr(|\cP|, n)$. Any positroid of rank $k$ on $n$ elements defines a subspace of the positive Grassmannians $\Gr(k, n)$, namely the points which represent it. These subspaces give a CW structure on $\Gr(k,n)$, with each positroid defining a cell. 
+In \cite{wilsonloop}, the authors show that all admissible Wilson loop diagrams correspond to positroids. That is, they correspond to matroids that can be represented by elements of the positive Grassmannians $\Gr(|\cP|, n)$. Any positroid of rank $k$ on $n$ elements defines a subspace of the positive Grassmannians $\Gr(k, n)$, namely the points which represent it. These subspaces give a CW structure on $\Gr(k,n)$, with each positroid defining a cell. 
 
 \begin{dfn}
 Given a Wilson loop diagram $W = (\cP, [n])$, define the positroid cell associated to a Wilson loop diagram, $\Sigma(W)$, to be the cell in the CW complex on $\Gr(|\cP|, n)$ defined by the positroid $M(W)$.
@@ -936,16 +937,16 @@ The unique top dimensional cell of $\Gr(|P|, |V(P)|)$ is defined by all points i
 
 
 
-\subsection{Matroids and equivalent diagrams}
+\subsection{Matroids and equivalent diagrams \label{sec: matroids and equivalence}}
 \note{Si\^an postponed reading this section until the earlier ones are fixed.}
-Now we are ready to prove the main results of this section, namely that two Wilson loop diagrams define the same matroid if and only if they are equivalent (Theorem [ref]) and a formula for the number of Wilson loop diagrams in a given equivalence class (Corollary [ref]).
+Now we are ready to prove the main results of this section, namely that two Wilson loop diagrams define the same matroid if and only if they are equivalent (Theorem \ref{same matroid iff equiv}). We also {\color{violet}count the number of equivalence classes amongst Wilon Loop diagrams with $n$ vertices and $k$ propagators and} give a formula for the number of Wilson loop diagrams in a given equivalence class (Corollary \ref{number of equiv diagrams}), completing the characterization of the correspondence between Wilson Loop diagrams and matroids starting in \cite{wilsonloop}.
 
 \begin{thm}\label{same matroid iff equiv}
 Let $W= (\cP, [n])$ and $W'= (\cP', [n])$ be two Wilson Loop diagrams. They define the same matroid if and only if $W \sim W'$.
 \end{thm}
 
 \begin{proof}
-One direction has been proved in \ref[Theorem 1.18]{wilsonloops}, but we give a different proof here to be consistent with the method of this document.
+One direction has been proved in \cite[Theorem 1.18]{wilsonloop}, but we give a different proof here to be consistent with the method of this document.
 
 Assume that $W$ and $W'$ are equivalent. Without loss of generality, write $W = (P \cup R, [n])$ and $W' = (P \cup R', [n])$, where $P \subset \cP \cap \cP'$ and $(R, V(R))$ and $(R', V(R'))$ are two maximally exact subdiagrams, with $R \neq R'$, but $V(R) = V(R')$. If this is not the case, one may always find a family of diagram, $\{W_i\}$ satisfying this condition and forming a transitive chain connecting $W$ to $W'$ in the equivalence class.
 
@@ -968,6 +969,8 @@ Since there is a unique way to decompose $W$ into maximal exact subdiagrams, it 
   \prod_{i=1}^{j} \frac{1}{n_i-1}\binom{2(n_i-2)}{n_i-2}
   \]
 \end{cor}
+
+In this section we have characterized the correspondence between Wilson loop diagrams and positroids, showing that Wilson Loop diagrams define the same matroid if and only if they are equivalent (Theorem \ref{same matroid iff equiv}). Corollary \ref{number of equiv diagrams} enumerates the fibres of the map from Wilson Loop diagrams to positroids. {\color{violet} By counting the number of equivalence classes (Theorem \ref{}), we enumerate the number of positroids defined by Wilson Loop diagrams. In section \ref{}, Theorem \ref{}, we show that each Wilson Loop diagram with $n$ vertices and $k$ propagators define a positroid cell of dimension $3k$. Comparing the result of Theorem \ref{} to the number of positroid cells of a particular dimension in $\Grtnn(n, k)$, [CITE AND FIND FORMULA HERE], we see that \emph{Wilson loop diagrams do not map onto all positroids of the correct dimension.}} 
 
 
 
