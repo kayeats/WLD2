@@ -1041,16 +1041,17 @@ By \cite[Theorem 17.1]{Postnikov}, the Grassmann necklaces of type $(k,n)$ are i
 Before we can describe the algorithm for extracting the Grassmann necklace of $M(W)$ from the Wilson loop diagram $W$, we require some initial results about the behavior of propagators in admissible WLD.
 
 \begin{dfn}\label{props inside p}
-Let $p$ be a propagator supported on $(i,j)$ in $W$. The region of $W$ bounded by $p$ and the edge of the Wilson loop diagram from $i$ to $j+1$ is refered to as the region {\bf inside} $p$, and the complement is the region {\bf outside }$p$. The set of propagators inside (resp. outside) $p$ are those lying in the region inside (resp. outside) $p$, excluding $p$ itself.
-\end{dfn}
-Note that this depends on the order of $i$ and $j$: if we view $p$ as supported on $(j,i)$ (for example, if we are working with the $<_j$ order on vertices) then the regions inside and outside $p$ are swapped.
+Let $W = (\cP, n)$ be an admissible Wilson loop diagram, and $p = (i,j) \in \cP$ be a propagator. As always, we use the convention $i+1 <_1 j$. The region of $W$ bounded by $p$ and the edge of the Wilson loop diagram from $i$ to $j+1$ is refered to as the region {\bf inside} $p$, and the complement is the region {\bf outside }$p$. The set of propagators inside (resp. outside) $p$ are those lying in the region inside (resp. outside) $p$, excluding $p$ itself.
+\end{dfn} \sanote{changed dfn to match notation} \sanote{do we really mean $i$ to $j+1$, or $i+1$ to $j$, as in length}
+
+Note that this depends on the convention that $i+1 <_1 j$: if we work with the $<_j$ order on vertices then the regions inside and outside $p$ are swapped. \sanote{Is this remark needed? or does is obfuscate?}
 
 
 \begin{dfn}\note{right now this doesn't depend on the order of $i$ and $j$, but that might matter later on?}
-Let $p$ be a propagator supported on $(i,j)$.  Define the \textit{length} of $p$ to be 
+Let $p = (i,j) \in cP$ be a propagator in $W$.  Define the \textit{length} of $p$ to be 
 \[\ell(p) = min\big\{|[i+1,j]|,|[j+1,i]|\big\}.\]
 \end{dfn}
-In other words, the length of $p$ is the number of vertices inside $p$.
+In other words, given that $p$ partitions the vertices of $W$, $\ell(p)$ is the size of the smaller of the two partitions.
 
 
 
