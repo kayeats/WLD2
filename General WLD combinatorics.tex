@@ -1886,13 +1886,13 @@ The dimension of a positroid cell is the same as the number of plusses in the as
 We need a number of lemmas, of roughly increasing degree of technicality.
 
 \begin{lem}\label{lem uncovered}
-  Let $W$ be an admissible Wilson loop diagram with $k$ propagators and with a vertex $i$ which supports no propagators.  Let $V$ be $W$ with $i$ removed.  Then the Le diagram of $W$ is the Le diagram of $V$ with an extra column of all $0$s inserted so as to be labelled $i$ on its bottom in the Oh labelling of the border of the shape of the Le diagram
+  Let $W$ be an admissible Wilson loop diagram with $k$ propagators and with a vertex $i$ which supports no propagators.  Let $V$ be $W$ with vertex $i$ removed.  Then the Le diagram of $W$ is the Le diagram of $V$ with an extra column of all $0$s inserted so as to be labelled $i$ on its bottom in the Oh labelling of the border of the shape of the Le diagram
 \end{lem}
 
 \note{I'm not sure how much I should assume here in terms of what the reader already knows}
 
 \begin{proof}
-  By Algorithm~\ref{alg:put GN on WLD} the Grassmann necklace of $W$ is obtained from the Grassmann necklace of $V$ by duplicating the $i$th element of the Grassmann necklace of $V$ (shifting indices as appropriate), and incrementing all indices greater than $i$ in each Grassmann necklace element.  Formally, if $I_1^{(V)}, \ldots, I_{n-1}^{(V)}$ and $I_1^{(W)}, \ldots, I_n^{(W)}$ are the Grassmann necklaces of $V$ and $W$ respectively then
+By Algorithm~\ref{alg:put GN on WLD} the Grassmann necklace of $W$ is obtained from the Grassmann necklace of $V$ by duplicating the $i$th element of the Grassmann necklace of $V$ (shifting indices as appropriate), and incrementing all indices greater than $i$ in each Grassmann necklace element.  Formally, if $I_1^{(V)}, \ldots, I_{n-1}^{(V)}$ and $I_1^{(W)}, \ldots, I_n^{(W)}$ are the Grassmann necklaces of $V$ and $W$ respectively then
   \[
   I_j^{(W)} =
   \begin{cases}
@@ -1901,9 +1901,9 @@ We need a number of lemmas, of roughly increasing degree of technicality.
   \end{cases}
   \]
 
-  Since $i$ does not appear in the Grassmann necklace of $W$, in particular it is not in the first element of the necklace, and so in the Oh labelling of the boundary of the partition shape for the Le diagram (inside the rectangle $(k, n-k)$), $i$ labels a horizontal edge or equivalently the bottom of a column of boxes.  The shapes of the Le diagrams of $V$ and $W$ are the same except for the insertion of this column since the first Grassmann necklace elements are the same except for the incrementation of the indices $\geq i$ in the transition from the neccklace for $V$ to the necklace for $W$.
+By Lemma~\ref{no coloops} we know that $i \not\in I_1^{(W)}$, and so $i$ must label a horizontal edge on the boundary of the Le diagram of $W$, i.e. it must be a column label.  The shapes of the Le diagrams of $V$ and $W$ are the same except for the insertion of this column since the first Grassmann necklace elements are the same except for the incrementation of the indices $\geq i$ in the transition from the necklace for $V$ to the necklace for $W$.
 
-  By the algorithm of \cite{reversingOh}, since $i$ never appears in the Grassmann necklace of $W$, the column labelled $i$ is filled with all $0$s.  Otherwise the algorithm of \cite{reversingOh} behaves identically on $V$ and $W$ with the plusses for the incremented indices shifted one column to the left, thus skipping over column $i$ in the Le diagram for $W$.
+By the algorithm of \cite{reversingOh} [ref][Sian: update this when/if you put this alg in section 3.1], since $i$ never appears in the Grassmann necklace of $W$, the column labelled $i$ is filled with all $0$s.  Otherwise the algorithm of \cite{reversingOh} behaves identically on $V$ and $W$ with the plusses for the incremented indices shifted one column to the left, thus skipping over column $i$ in the Le diagram for $W$.
 \end{proof}
 
 %The third lemma is now lemma~\ref{lem sian}.
@@ -1916,7 +1916,7 @@ If two Wilson loop diagrams differ by a dihedral transformation then their Le di
 \begin{proof}
 By \cite[Proposition 17.10]{Postnikov}, the dimension of a positroid (and hence the number of plusses in its Le diagram) is $k(n-k) - A(\pi_W)$, where $A(\pi_W)$ denotes the number of alignments (see \cite[Figure 17.1]{Postnikov} and preceding discussion) of the decorated permutation $\pi_W$ of the positroid associated to $W$. 
 
-Since it is clear that dihedral transformations of a Wilson loop diagram $W$ correspond to dihedral transformations of the chord diagram representation of $\pi_W$, and that the number of alignments in a chord diagram is preserved under dihedral transformations, the result follows.
+It can easily be seen from \cite[Section 17]{Postnikov} and Algorithm \ref{alg:put GN on WLD} that dihedral transformations of a Wilson loop diagram $W$ correspond to dihedral transformations of the chord diagram representation of $\pi_W$. Since the number of alignments in a chord diagram is preserved under dihedral transformations, the result follows.
 \end{proof}
 
 %\subsubsection{Changes in Gra\ss mann necklaces for nice configurations}
@@ -1927,20 +1927,22 @@ Since it is clear that dihedral transformations of a Wilson loop diagram $W$ cor
   Let $W$ be an admissible Wilson loop diagram with $n\geq 1$ propagators.  Then there is some dihedral transformation $W'$ of $W$ such that there is a propagator $p$ of $W'$ with the following properties.
   \begin{itemize}
   \item $p = (i, n-1)$ with no propagators inside it (that is $i+2, \ldots, n-2$ do not support any propagators in $W'$).
-  \item Either the edges $i$ in $W'$ only supports $p$ or the edge $i$ in $W'$ supports exactly one other propagator $q = (j ,i)$ with no other propagators inside $q$.
+  \item Either the edge $i$ in $W'$ only supports $p$ or the edge $i$ in $W'$ supports exactly one other propagator $q = (j ,i)$ with no other propagators inside $q$.
   \end{itemize}
 \end{lem}
 
 \begin{proof}
   Remove all vertices of $W$ which do not support any propagators to get a weakly admissible Wilson loop diagram $V$.  Lemma~\ref{lem sian} applied to $V$ gives a length 2 propagator $p$ in $V$ for which either no other propagator is supported on one of the supporting edges of $p$ or there is a second length 2 propagator which is the only other propagator supported on one of the supporting edges of $p$.  Figure~\ref{fig 3 cases} shows the possible cases, and the reader can easily check that in each case $p$ must be in one of the two situations described above.
 
-  By Lemma~\ref{lem dihedral} there is a dihedral transformation of $V$ satisfying the statement of the lemma with $p$ and $q$ both length 2.  Restoring the vertices which do not support any propagators, we obtain a dihedral transformation $W'$ of $W$ as desired (with potentially longer lengths for $p$ and $q$). 
+  By Lemma~\ref{lem dihedral} there is a dihedral transformation of $V$ which yields a diagram satisfying the statement of the lemma with $p$ and $q$ both length 2. Restoring the vertices which do not support any propagators, we obtain a dihedral transformation $W'$ of $W$ as desired (with potentially longer lengths for $p$ and $q$). 
 \end{proof}
 
 %Given an admissible Wilson loop diagram $W$, $I_i^{D}$ denotes the $i$th Grass mann necklace element corresponding to $W$.
 
+Our goal is to compute the dimension of the positroid associated to an arbitrary admissible Wilson loop diagram. By Lemmas \ref{lem uncovered}, \ref{lem dihedral}, and \ref{lem good p}, it suffices to study the Le diagrams of \hlfix{weakly}{check} admissible Wilson loop diagrams admitting one of the configurations described in Lemma~\ref{lem good p} with propagators $p$ and $q$ (if it exists) both of length 2. Diagrams of this type are the subject of the next few lemmas, and are illustrated in Figure~\ref{fig special p}.
+
 \begin{lem}\label{lem I}
-  Let $W$ be an admissible Wilson loop diagram with $n\geq 1$ propagators.  Suppose $p$ is a propagator of $W$ so that the properties of Lemma~\ref{lem good p} are satisfied for $p$ in $W$ and that $p$ has length $2$, as does $q$ if we are in the case of Lemma~\ref{lem good p} involving $q$.  Let $V$ be $W$ with $p$ removed.  Then
+Let $W$ be an admissible Wilson loop diagram with $n\geq 1$ propagators, and suppose that $W$ admits one of the configurations described in Lemma~\ref{lem good p} with $p$ and $q$ (if it exists) both of length 2. Let $V$ be $W$ with $p$ removed.  Then
   \begin{align*}
     I_1^{W} & = I_1^{V} \cup \{n-3\} \\
     I_n^{W} & = I_1^{V} \cup \{n\} \\
@@ -1966,15 +1968,22 @@ Since it is clear that dihedral transformations of a Wilson loop diagram $W$ cor
 \end{figure}
 
 \begin{proof}
-  The two possible situations are illustrated in Figure~\ref{fig special p}.
+The two possible situations are illustrated in Figure~\ref{fig special p}. The arguments proceed in a similar manner to Lemma~\ref{vertex cyclic int lem}.
 
-  If $n-3\in I_1^{V}$ then $n-3\not\in I_1^{W}$, but then $p$ never contributes $n-3$ contradicting Lemma~\ref{vertex cyclic int lem}.  Thus $n-3\not\in I_1^{V}$ and so in building the Grassmann necklace when we get to vertex $n-3$ any other propagators of $V$ which are supported at $n-3$ have already been taken and so we take $p$.  Therefore $I_1^{W}= I_1^{V}\cup \{n-3\}$.
+We first consider $I_1^{(W)}$. Note that $n-3 \not\in I_1^{(V)}$: for the right hand case this is clear from the diagram (since Algorithm~\ref{alg:put GN on WLD} would assign $q$ no later than vertex $n-4$), while for the left hand case it follows from Lemma \ref{lem no fourth vertex}. Therefore when we start at vertex 1 and apply the Grassmann necklace algorithm to $W$, $p$ is the only unassigned propagator when we reach vertex $n-3$ and we have $ I_1^{(W)}(p) = n-3$. 
 
-  In constructing $I_n^{W}$, first for vertex $n$ we take propagator $p$.  Then we are at vertex $1$ and precisely the propagators of $V$ remain.  Thus the rest of the construction will give $I_1^{V}$.  Therefore $I_n^{W} = I_1^{V}\cup \{n\}$.  Essentially the same reasoning gives $I_{n-1}^{W} = I_n^{V}\cup \{n-1\}$.
 
-  Now consider $I_{n-2}^{W}$.  If $n-2\not\in I_{n-2}^{V}$ then at vertex $n-2$ we take $p$ and this does not affect the rest of the construction of $I_{n-2}^{V}$, so $I_{n-2}^{W} = I_{n-2}^{V}\cup \{n-2\}$.  An analogous argument takes care of the first case for $I_k^{W}$.  Suppose $n-2\in I_{n-2}^{V}$ but $n-1\not\in I_{n-2}^{V}$.  Then at vertex $n-2$ we take the same propagator in $V$ as in $W$ (in particular not $p$) because $p$ is the counterclockwisemost propagator supported on $n-2$ and so the last propagator the algorithm would choose at this vertex, and by hypothesis $n-2$ does support at least one propagator in $V$.  However, $n-1$ is not yet taken in $I_{n-2}^{V}$, so at this vertex we will take $p$ in $I_{n-2}^{W}$.  Following this the construction continues as in $I_{n-2}^{V}$.  Therefore $I_{n-2}^{W} = I_{n-2}^{V}\cup \{n-1\}$.  An analogous argument takes care of the case when we have $1<k<n-2$ and $n-3\in I_k^{V}$ but $n-2\not\in I_{k}^{V}$.  Furthermore, either $n-2$ supports no propagators in $V$ or only $q$ is supported by $n-2$ in $V$ and $q$ is also the only propagator supported by $n-3$.  Thus it is not possible for $n-3$ and $n-2$ to both be in $I_{k}^{V}$.  This means that all the cases for $I_k^{W}$ are now proved.
+Next, consider $I_n^{(W)}$, i.e. we apply the Grassmann necklace algorithm with starting vertex $n$. In both cases$I_n^{(W)}(p) = n$. We are now at vertex 1, and the unassigned propagators are exactly those that appear in $V$. Therefore the algorithm continues as in $I_1^{(V)}$, i.e. we have $I_n^{W} = I_1^{V} \cup \{n\}$. Similarly, we must have $I_{n-1}^{W} = I_n^{V} \cup \{n-1\}$.
 
-  The remaining case is when $n-1,n-2\in I_{n-2}^{V}$ for the construction of $I_{n-2}^{W}$.  We must then have a propagator $q$ as in the right hand side of Figure~\ref{fig special p}.  In the construction of $I_{n-2}^{W}$, at vertex $n-2$ we take propagator $q$, as in $I_{n-2}^{V}$.  Then at vertex $n-1$ we take propagator $p$ which is different from what occurs in $I_{n-2}^{V}$.  Next we are at vertex $n$ and propagators $p$ and $q$ have been taken.  Thus we are proceeding like $I_{n}^{V}$ but without propagator $q$.  Fortunately we can determine explicitely how propagator $q$ contributes to $I_{n}^{V}$.  By Lemma~\ref{vertex cyclic int lem} propagator $q$ contributes $n-5$ to $I_{n}^{V}$, and the only way this can occur is if all other propagators of $V$ were already taken by the time we got to vertex $n-5$.  Therefore $I_{n-2}^{W} = (I_{n}^{V} - \{n-5\}) \cup \{n-1, n-2\}$.  This covers all cases and hence completes the proof.
+Now consider $I_{n-2}^{W}$. If $n-2\not\in I_{n-2}^{V}$ (i.e. $n-2$ supports no propagators in $V$), then in $W$ the algorithm assigns $p$ to $n-2$ and this does not affect the rest of the construction of $I_{n-2}^{V}$, so we obtain $I_{n-2}^{W} = I_{n-2}^{V}\cup \{n-2\}$ as above.
+
+On the other hand, if $n-2\in I_{n-2}^{V}$ then we must be in the right hand case of Figure~\ref{fig special p} and the algorithm assigns $q$ to vertex $n-2$ in both $V$ and $W$ (since $p$ is always the counterclockwise-most propagator supported on vertex $n-2$). If $n-1 \not\in I_{n-2}^{(V)}$, then in $W$ the algorithm assigns $p$ to $n-2$ and then proceeds identically to the remainder $I_{n-2}^{(V)}$; thus $I_{n-2}^{W} = I_{n-2}^{V}\cup \{n-1\}$ in this case.
+
+Finally, if $n-2,n-1 \in I_{n-2}^{(V)}$ then the algorithm in $W$ assigns $q$ to $n-2$ and $p$ to $n-1$ as above, but this is different to what occurs in $I_{n-2}^{(V)}$ so we cannot argue as above. We are now at vertex $n$ and only propagators $p$ and $q$ have been assigned; thus we are proceeding as in the construction of $I_n^{(V)}$ but without propagator $q$. By Lemma~\ref{vertex cyclic int lem} we know that $q$ was assigned to $n-5$ by $I_n^{(V)}$, and the only way this could occur is if all other propagators in $V$ had already been assigned when we reached vertex $n-5$. Therefore $I_{n-2}^{W} = (I_{n}^{V} \setminus \{n-5\}) \cup \{n-1, n-2\}$; this completes all cases for $I_{n-2}^{(W)}$.
+
+The arguments for $I_k^{(W)}$ ($1< k < n-2$) proceed analagously to those of $I_{n-2}^{(W)}$, with one simplification: we cannot have both $n-3$ and $n-2$ in $I_k^{(V)}$ since $q$ is the only propagator that could be assigned to either of them, and it cannot be assigned to both.
+
+This covers all cases and hence completes the proof.
 \end{proof}
 
 
