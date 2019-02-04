@@ -274,6 +274,8 @@
 \newcommand{\interval}[2]{[\![#1,#2]\!]}
 \newcommand{\gale}[1]{\preccurlyeq_{#1}}
 \newcommand{\sgale}[1]{\prec_{#1}}
+\renewcommand\vec[1]{\overrightarrow{#1}}
+\newcommand\cev[1]{\overleftarrow{#1}}
 %*****************
 
 %*****************
@@ -313,7 +315,9 @@ This paper studies the combinatorics of Wilson Loop Diagrams.
 What are Wilson loop diagrams and their integrals.
 
 \begin{dfn}\label{WLdfn}
-A Wilson loop diagram is given by the following data: a cyclicly ordered set $V$, along with a choice of first vertex (labeled $1$), and $k$ pairs, called propagators, written $\{p_r = (i_r, j_r)\}_{r=1}^k$ with labels ordered such that $i_r +1 < j_r$ relative to the fisrt vertex. \end{dfn}
+A Wilson loop diagram is given by the following data: a cyclicly ordered set $V$, along with a choice of first vertex (labeled $1$), and $k$ pairs, called propagators, written $\{p_r = (i_r, j_r)\}_{r=1}^k$.  \end{dfn}
+
+Generally speaking, the propagators are undirected, so $p = (i,j) = (j,i)$. In order to fix a convention, we write $p = (i,j)$ with  $i +1 < j$ relative to the first vertex. However, at times (section \ref{sec:propagator configs}), we consider directed propagators, where $p= (i,j)$ denotes a particular propagator flowing in one direction, while $p= (j,i)$ denotes the \emph{same} propagators flowing in the opposite direction. \sanote{Addendum 1}
 
 We depict this data as a circle with marked points, called vertices. The vertices are labeled by $V$ (preserving the cyclic ordering). The arc between consecutive vertices are called edges. There are $k$ wavy lines in the interior of the diagram, depicting the proagators, with endpoints on the edges. A propagator, $p =(i,j)$ has one endpoint on the edge between the vertex labeled $i$ and $i+1$ and another endpoint on the edge defined by $j$ and $j+1$. The condition on $i_r$ and $j_r$ means that the propagator does not go between adjacent edges. Let $\cP = \{p_r\}_{r=1}^k$ be the set of propagators. Then we write \bas W = (\cP, V) \;.\eas
 
@@ -449,7 +453,6 @@ In \cite{wilsonloop}, Agarwala and Amat show that Wilson loop diagrams can be in
 In subsection \ref{sec matroid background}, we discuss a few matroidal facts about Wilson loop diagrams. In section \ref{sec: polygon partitions}, we show that there is a one to one correspondence between exact subdiagrams of Wilson loop diagrams and triangulated pieces of the corresponding polygon partion. In section \ref{sec: exact diagram matroidal props}, we prove some matroidal properties of exact subdiagrams. We show that a subdiagram of $W$ defines a uniform matroid if and only if the subdiagram is exact (Theorem \ref{exactuniformthm}). Furthermore, this uniform matroid is the restriction of the dual matriod of $W$ restricted to the exact subdiagram (Remark \ref{remark exact dual restiction}). The main result of section \ref{sec: matroids and equivalence} shows that that two admissible Wilson loop diagrams define the same matroid if and only if they are equivalent (Theorem \ref{same matroid iff equiv}). We obtain a formula for the number of admissible Wilson loop diagrams in each equivalence class (Corollary \ref{number of equiv diagrams}) {\color{violet}as well as the number of equivalence classes}. In this way, we give a comple characterization of the relationship between Wilson Loop diagrams and their associated matroids. 
 
 
-asdf 
 
 \subsection{Wilson loop diagrams as matroids\label{sec matroid background}}
 
@@ -1040,16 +1043,17 @@ By \cite[Theorem 17.1]{Postnikov}, the Grassmann necklaces of type $(k,n)$ are i
 
 Before we can describe the algorithm for extracting the Grassmann necklace of $M(W)$ from the Wilson loop diagram $W$, we require some initial results about the behavior of propagators in admissible WLD.
 
+ \sanote{can we use the notation directed propagator here? to emphasize the notational change?}
+
 \begin{dfn}\label{props inside p}
-Let $W = (\cP, n)$ be an admissible Wilson loop diagram, and $p = (i,j) \in \cP$ be a propagator. As always, we use the convention $i+1 <_1 j$. The region of $W$ bounded by $p$ and the edge of the Wilson loop diagram from $i$ to $j+1$ is refered to as the region {\bf inside} $p$, and the complement is the region {\bf outside }$p$. The set of propagators inside (resp. outside) $p$ are those lying in the region inside (resp. outside) $p$, excluding $p$ itself.
-\end{dfn} \sanote{changed dfn to match notation} \sanote{do we really mean $i$ to $j+1$, or $i+1$ to $j$, as in length}
+Let $W = (\cP, n)$ be an admissible Wilson loop diagram, and $\vec{p} = (i,j) \in \cP$ be a directional propagator and $\cev{p} = (j,i)$ be the same propagator with the opposite directionality. Call the vertices of $W$ \bas V_{in}(\vec{p}) = \{a \in [n] | i <_i a <_i j\} \cup V(p) \eas the region of $W$ {\bf inside} $\vec{p}$, and \bas V_{out}(\vec{p}) = \{a \in [n] | j <_j a <_j i\} \cup V(p) \;.\eas the region {\bf outside }$\vec{p}$. The set of propagators inside (resp. outside) $\vec{p}$ are those lying in the region inside (resp. outside) are the $q \neq p \in \cP$ such that  $V(q) \subset V_{in}(p)$ (resp. $V(q) \subset V_{out}(p)$) .
+\end{dfn} 
 
-Note that this depends on the convention that $i+1 <_1 j$: if we work with the $<_j$ order on vertices then the regions inside and outside $p$ are swapped. \sanote{Is this remark needed? or does is obfuscate?}
-
+Note that under this definiton, $V_{in}(\vec{p}) = V_{out}(\cev{p})$ and $V_{out}(\vec{p}) = V_{in}(\cev{p})$. That is, the regions inside and outside of a propagator switch depending on the direction imposed on the propagators $p$. 
 
 \begin{dfn}\note{right now this doesn't depend on the order of $i$ and $j$, but that might matter later on?}
 Let $p = (i,j) \in cP$ be a propagator in $W$.  Define the \textit{length} of $p$ to be 
-\[\ell(p) = min\big\{|[i+1,j]|,|[j+1,i]|\big\}.\]
+\[\ell(p) = min\big\{|V_(in)(\vec{p})|,|V_(in)(\cev{p})|\big\}-2 = min\big\{|[i+1,j]|,|[j+1,i]|\big\}.\]
 \end{dfn}
 In other words, given that $p$ partitions the vertices of $W$, $\ell(p)$ is the size of the smaller of the two partitions.
 
