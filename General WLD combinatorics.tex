@@ -1947,8 +1947,7 @@ Let $W$ be an admissible Wilson loop diagram with $k$ propagators, and with a ve
   \]
 
 
-By Algorithm~\ref{alg:GN to Le}, since $i$ never appears in the Grassmann necklace of $W$ we know that the column labelled $i$ contains only $0$ boxes.  Otherwise the algorithm of \cite{reversingOh} behaves identically on $V$ and $W$ with the plusses for the incremented indices shifted one column to the left, thus skipping over column $i$ in the Le diagram for $W$.
-By Lemma~\ref{no coloops} we know that $i \not\in I_w^W$, and so $i$ must label a horizontal edge on the boundary of the Le diagram of $W$, i.e. it must be a column label. The shapes of the Le diagram of $V$ and $W$ are the same except for the insertion of this column since $I_1^*$ is the same for $V$ and $W$ except for the incrementation of the indices $\geq i$ in the transition from the necklace for $V$ to the necklace for $W$. 
+By Lemma~\ref{no coloops} we know that $i \not\in I_1^W$, and so $i$ must label a horizontal edge on the boundary of the Le diagram of $W$, i.e. it must be a column label. The shapes of the Le diagram of $V$ and $W$ are the same except for the insertion of this column since $I_1^*$ is the same for $V$ and $W$ except for the incrementation of the indices $\geq i$ in the transition from the necklace for $V$ to the necklace for $W$. 
 \end{proof}
 
 
@@ -2020,8 +2019,13 @@ Next, consider $I_n^{(W)}$, i.e. we apply the Grassmann necklace algorithm with 
 
 Now consider $I_{n-2}^{W}$. If $n-2\not\in I_{n-2}^{V}$ (i.e. $n-2$ supports no propagators in $V$), then in $W$ the algorithm assigns $p$ to $n-2$ and this does not affect the rest of the construction of $I_{n-2}^{V}$, so we obtain $I_{n-2}^{W} = I_{n-2}^{V}\cup \{n-2\}$ as above.
 
+On the other hand, if $n-2\in I_{n-2}^{V}$ then we must be in the right hand case of Figure~\ref{fig special p} and the algorithm assigns $q$ to vertex $n-2$ in both $V$ and $W$ (since $p$ is always the counterclockwise-most propagator supported on vertex $n-2$). If $n-1 \not\in I_{n-2}^{(V)}$, then in $W$ the algorithm assigns $p$ to $n-2$ and then proceeds identically to the remainder $I_{n-2}^{(V)}$; thus $I_{n-2}^{W} = I_{n-2}^{V}\cup \{n-1\}$ in this case.
 
-% sian will fix this missing part shortly
+Finally, if $n-2,n-1 \in I_{n-2}^{(V)}$ then the algorithm in $W$ assigns $q$ to $n-2$ and $p$ to $n-1$ as above, but this is different to what occurs in $I_{n-2}^{(V)}$ so we cannot argue as above. We are now at vertex $n$ and only propagators $p$ and $q$ have been assigned; thus we are proceeding as in the construction of $I_n^{(V)}$ but without propagator $q$. By Lemma~\ref{vertex cyclic int lem} we know that $q$ was assigned to $n-5$ by $I_n^{(V)}$, and the only way this could occur is if all other propagators in $V$ had already been assigned when we reached vertex $n-5$. Therefore $I_{n-2}^{W} = (I_{n}^{V} \setminus \{n-5\}) \cup \{n-1, n-2\}$; this completes all cases for $I_{n-2}^{(W)}$.
+
+The arguments for $I_k^{(W)}$ ($1< k < n-2$) proceed analagously to those of $I_{n-2}^{(W)}$, with one simplification: we cannot have both $n-3$ and $n-2$ in $I_k^{(V)}$ since $q$ is the only propagator that could be assigned to either of them, and it cannot be assigned to both.
+
+This covers all cases and hence completes the proof.
 \end{proof}
 
 
