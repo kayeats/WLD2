@@ -1101,19 +1101,17 @@ An algorithm for constructing the Grassmann necklace of a Le diagram also exists
 
 Before we can describe the algorithm for extracting the Grassmann necklace of $M(W)$ from the Wilson loop diagram $W$, we require some initial results about the behavior of propagators in admissible WLD.
 
-Note that for any Wilson loop diagram, $W = (\cP, n)$, each propagator $P$ partions $n$ into two sets, $\{V_{in}(p), V_{out}(p)\}$, where $V_{in}(p)$ and $V_{out}(p)$ correspond to the two  cyclic subintervals of $[n]$ that lie on either side of $p$. This in turn defines three sets of propagators, $\{\cP_{in}, p, \cP_{out}\}$, where (for $\bullet \in \{in, \; out\}$) \bas \cP_{\bullet} = \{ q \in (\cP \setminus p) | V(q) \cap V_{\bullet}(p)  \neq \emptyset \} \;.\eas If $W$ has no propagators crossing $p$ and no other propagator supported on $V(p)$, then the set $\{\cP_{in}, p, \cP_{out}\}$ partitions $\cP$. The set $\cP_{in}$ defines the propagators with end points on one side of $p$, while $\cP_{out}$ defines the propagators with end points on the other side. In particular, for (weakly) admissible Wilson loop diagrams, the set $\{\cP_{in}, p, \cP_{out}\}$ is a partition for every propagators $p \in \cP$. 
-
-It remains to determine with set of propagators/vertices are refered to as on the inside of $p$ and which are on the outside. To do this, we impose a direction on $p$.
-
- \sanote{can we use the notation directed propagator here? to emphasize the notational change?}
+Note that for any Wilson loop diagram, $W = (\cP, n)$, each propagator $p$ partions $[n]$ into two cyclic subintervals of $[n]$, $\{[i+1, j], [j+1, i]\}$ that lie on either side of $p$. In the sequel we refer to these intervals as an interval inside and outside of $p$, depending on a ordering we associate to the propagator.
 
 \begin{dfn}\label{props inside p}
 Let $W = (\cP, n)$ be an admissible Wilson loop diagram, with $p = (i,j) \in \cP$. Write $(p, <_i)$ be the same propagator with a direction induced by the linear ordering $<_i$. Then \bas V_{in}(p, <_i) = \{a \in [n] | i+1 <_i a <_i j \}\eas the region of $W$ {\bf inside} $p$, and \bas V_{out}(p, <_i) = \{a \in [n] | j+1 <_j a <_j i \} \;.\eas the region {\bf outside }$p$. 
 \end{dfn} 
 
-We may associate the propagators on the inside and outside of $p$ accordingly.
- 
-Note that under this definiton, $V_{in}(p, <_i) = V_{out}(p, <_j)$. That is, which set of propagators lie inside and outside of $p$ switch depending on the direction imposed $p$. 
+Similarly, we may associate the ordering $<_j$ to $p$, in which case $V_{in}(p, <_i) = V_{out}(p, <_j)$ and $V_{out}(p, <_i) = V_{in}(p, <_j)$.
+
+This in turn defines two sets of propagators, $\{\cP_{in}, \cP_{out}\}$, where (for $\bullet \in \{in, \; out\}$) \bas \cP_{\bullet} = \{ q \in (\cP \setminus p) | V(q) \cap V_{\bullet}(p)  \neq \emptyset \} \;.\eas The set $\cP_{in}$ (resp. $\cP_{out}$) is the set of propagators, not equal to $p$ \hlfix{whose support contains points in $V_{in}(p, <_*)$ (resp. $V_{in}(p, <_*)$), where $<_*$ refers to the appropriate ordering.}{Note, this means that paralell propagators are both on the inside and outside of $p$. Is that okay?} If $W$ has no propagators crossing $p$ and no other propagator supported entirely on $V(p)$, then the set $\{\cP_{in}, p, \cP_{out}\}$ partitions $\cP$. Under these circumstances, the set $\cP_{in}$ defines the propagators with end points on one side of $p$, while $\cP_{out}$ defines the propagators with end points on the other side. In particular, for (weakly) admissible Wilson loop diagrams, the set $\{\cP_{in}, p, \cP_{out}\}$ is a partition for every propagators $p \in \cP$. 
+
+As with the vertex sets,  which set of propagators lie inside and outside of $p$ switch depending on the direction imposed $p$. 
 
 \begin{dfn}\note{right now this doesn't depend on the order of $i$ and $j$, but that might matter later on?}
 Let $p = (i,j) \in cP$ be a propagator in $W$.  Define the \textit{length} of $p$ to be 
