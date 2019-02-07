@@ -1115,9 +1115,9 @@ As with the vertex sets,  which set of propagators lie inside and outside of $p$
 
 \begin{dfn}\note{right now this doesn't depend on the order of $i$ and $j$, but that might matter later on?}
 Let $p = (i,j) \in cP$ be a propagator in $W$.  Define the \textit{length} of $p$ to be 
-\[\ell(p) = min\big\{|V_{in}(p)|,|V_{out}(p)|\big\} = min\big\{|[i+1,j]|,|[j+1,i]|\big\}.\]
+\[\ell(p) = min\big\{|V_{in}(p)|,|V_{out}(p)|\big\} +2 = min\big\{|[i+1,j]|,|[j+1,i]|\big\}.\]
 \end{dfn}
-In other words, $\ell(p)$ is the size of the smaller of the two sets $V_{in}(p)$ and $V_{out}(p)$ defined above.
+In other words, $\ell(p)$ is the size of the smaller of the number of vertices that lie on either side of the progator $p$.
 
 
 
