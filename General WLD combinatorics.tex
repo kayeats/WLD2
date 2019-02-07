@@ -1101,7 +1101,7 @@ An algorithm for constructing the Grassmann necklace of a Le diagram also exists
 
 Before we can describe the algorithm for extracting the Grassmann necklace of $M(W)$ from the Wilson loop diagram $W$, we require some initial results about the behavior of propagators in admissible WLD.
 
-Note that for any Wilson loop diagram, $W = (\cP, n)$, each propagator $p$ partions $[n]$ into two cyclic subintervals of $[n]$, $\{[i+1, j], [j+1, i]\}$ that lie on either side of $p$. In the sequel we refer to these intervals as an interval inside and outside of $p$, depending on a ordering we associate to the propagator.
+Note that for any Wilson loop diagram, $W = (\cP, n)$, each propagator $p$ partions $[n]$ into three subsets of $[n]$, $\{[i+2, j-1], V(p), [j+2, i-1]\}$, the support of $p$ and the vertices that lie on either side of $p$. In the sequel we refer to the latter two intervals as an interval inside and outside of $p$, depending on a ordering we associate to the propagator.
 
 \begin{dfn}\label{props inside p}
 Let $W = (\cP, n)$ be an admissible Wilson loop diagram, with $p = (i,j) \in \cP$. Write $(p, <_i)$ be the same propagator with a direction induced by the linear ordering $<_i$. Then \bas V_{in}(p, <_i) = \{a \in [n] | i+1 <_i a <_i j \}\eas the region of $W$ {\bf inside} $p$, and \bas V_{out}(p, <_i) = \{a \in [n] | j+1 <_j a <_j i \} \;.\eas the region {\bf outside }$p$. 
