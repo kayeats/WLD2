@@ -1109,7 +1109,7 @@ Let $W = (\cP, n)$ be an admissible Wilson loop diagram, with $p = (i,j) \in \cP
 
 Similarly, we may associate the ordering $<_j$ to $p$, in which case $V_{in}(p, <_i) = V_{out}(p, <_j)$ and $V_{out}(p, <_i) = V_{in}(p, <_j)$.
 
-This in turn defines two sets of propagators, $\{\cP_{in}, \cP_{out}\}$, where (for $\bullet \in \{in, \; out\}$) \bas \cP_{\bullet} = \{ q \in (\cP \setminus p) | V(q) \cap V_{\bullet}(p)  \neq \emptyset \} \;.\eas The set $\cP_{in}$ (resp. $\cP_{out}$) is the set of propagators, not equal to $p$ \hlfix{whose support contains points in $V_{in}(p, <_*)$ (resp. $V_{in}(p, <_*)$), where $<_*$ refers to the appropriate ordering.}{Note, this means that paralell propagators are neither on the inside and outside of $p$. Is that okay?} If $W$ has no propagators crossing $p$ and no other propagator supported entirely on $V(p)$, then the set $\{\cP_{in}, p, \cP_{out}\}$ partitions $\cP$. Under these circumstances, the set $\cP_{in}$ defines the propagators with end points on one side of $p$, while $\cP_{out}$ defines the propagators with end points on the other side. In particular, for (weakly) admissible Wilson loop diagrams, the set $\{\cP_{in}, p, \cP_{out}\}$ is a partition for every propagators $p \in \cP$. 
+This in turn defines two sets of propagators, $\{\cP_{in}, \cP_{out}\}$, where (for $\bullet \in \{in, \; out\}$) \bas \cP_{\bullet} = \{ q \in (\cP \setminus p) | V(q) \cap V_{\bullet}(p)  \neq \emptyset \} \;.\eas The set $\cP_{in}$ (resp. $\cP_{out}$) is the set of propagators, not equal to $p$ \hlfix{whose support contains points in $V_{in}(p, <_*)$ (resp. $V_{in}(p, <_*)$), where $<_*$ refers to the appropriate ordering.}{Note, this means that paralell propagators are neither on the inside and outside of $p$. Is that okay?} If $W$ has no propagators crossing $p$ and no other propagator supported entirely on $V(p)$, then the set $\{\cP_{in}, p, \cP_{out}\}$ partitions $\cP$. Under these circumstances, the set $\cP_{in}$ defines the propagators with end points on one side of $p$, while $\cP_{out}$ defines the propagators with end points on the other side. In particular, for (weakly) admissible Wilson loop diagrams, the set $\{\cP_{in}, p, \cP_{out}\}$ is a partition for every propagators $p \in \cP$. Recall from Definition~\ref{admisdfn} that a {\em weakly admissible} diagram is one that satisfies the density and non-crossing conditions but does not require that $|V(\cP)| \geq |\cP| + 4$.
 
 As with the vertex sets,  which set of propagators lie inside and outside of $p$ switch depending on the direction imposed $p$. 
 
@@ -1121,8 +1121,8 @@ In other words, $\ell(p)$ is the size of the smaller of the number of vertices t
 
 
 
-\begin{rmk}\label{rem:props of length 2 and 3}
-The following observations about propagators of short length in $W$ are easily verified:
+\begin{rmk}\label{rem:props of length 2 and 3} \sanote{change remark to "Configurations"?}
+The following observations about propagators of short length in an (weakly) admissibly Wilson loop diagram, $W$, are easily verified:
 \begin{enumerate}
 \item If $p = (i,i+3)$ is a propagator of length 3, then the middle vertex $i+2$ supports at most one propagator.
 \item If every vertex in $W$ supports at least one propagator, then $W$ admits at least one propagator of length 2.
@@ -1130,17 +1130,17 @@ The following observations about propagators of short length in $W$ are easily v
 \end{rmk}
 
 
-The following lemma establishes certain configurations of propagators that must exist in any admissible diagram with no non-supporting vertices (i.e. with $F(\emptyset) = \emptyset$). We make use of this result in several induction proofs below. Recall from Definition~\ref{admisdfn} that a {\em weakly admissible} diagram is one that satisfies the density and non-crossing conditions but does not require that $|V(\cP)| \geq |\cP| + 4$.
+The following lemma establishes certain configurations of propagators that must exist in any admissible diagram with no non-supporting vertices (i.e. with $F(\emptyset) = \emptyset$). We make use of this result in several induction proofs below. 
 
 \begin{lem}\label{lem sian}
   Let $W$ be a weakly admissible WLD with at least 5 vertices and in which each vertex supports at least one propagator.  Then at least one of the following two things occurs.
   \begin{enumerate}
-    \item $W$ has a propagator of length $\leq 6$ with a propagator of length 2 inside it and nothing else inside it.\label{item big and 2}
+    \item $W$ has a propagator of length $\leq 6$ with a propagator of length 2 inside it and nothing else inside it.\label{item big and 2} \sanote{doesn't this depend on which side you call inside? Should we say ``on one side''?}
     \item There exists a pair of propagators of length $2$ with the property that the first propagator is $(i, i+2)$, the second is $(j, j+2)$, no other propagator ends between vertices $i+2$ and $j+1$, and $j\in\{i+2, i+3, i+4\}$.\label{item pair of 2s}
   \end{enumerate}
 \end{lem}
 
-\begin{proof}
+\begin{proof} \sanote{fixed misuse of the word support in lemma}
 Suppose first that $W$ has a propagator of length $3$, say $p=(i, i+3)$.  By Remark~\ref{rem:props of length 2 and 3} and the fact that every vertex of $W$ supports at least one propagator, we have that $i+2$ supports exactly one propagator and this propagator must have length 2 by noncrossingness.  This gives us an instance of configuration~\ref{item big and 2} from the statement.
 
 Now suppose $W$ has no propagators of length $3$.
@@ -1181,7 +1181,7 @@ Now suppose $W$ has no propagators of length $3$.
 We need a bit of notation:
 Define the restriction of $W$ to a region $[i,j]$ to be the subdiagram obtained by forgetting all propagators not wholly supported on vertices in the cyclic interval $[i,j]$; the vertex set remains the same as in $W$.  Denote this diagram by $W_{[i,j]}$.
 
-Note that if $p$ is a propagator supported on $(i,j)$, then we can consider two obvious restrictions of $W$, namely $W_{[i,j+1]}$ and $W_{[j,i+1]}$.  Clearly all other propagators $q\neq p$ appear in exactly one of these subdiagrams, while $p$ appears in both.  In this case, we will say that $p$ \textit{bounds the regions} $[i,j+1]$ and $[j,i+1]$; the ordering of the start and end points allow us to identify one or the other region unambiguously.
+Note that if $p = (i, j)$, then we can consider two obvious restrictions of $W$, namely $W_{[i,j+1]}$ and $W_{[j,i+1]}$.  Clearly all other propagators $q\neq p$ appear in exactly one of these subdiagrams, while $p$ appears in both.  In this case, we will say that $p$ \textit{bounds the regions} $[i,j+1]$ and $[j,i+1]$; the ordering of the start and end points allow us to identify one or the other region unambiguously. \sanote{see e-mail about contracted WLD}
 
 With these observations in mind we can return to the proof.
   
@@ -1190,14 +1190,16 @@ We will inductively construct a sequence of pairs of propagators $(p_r,q_r)$ sat
 or there is a propagator $q_r$ satisfying
 \begin{itemize}
 \item $\ell(q_r) \geq 4$.
-\item $q_r$ bounds a region of $W$ which contains strictly fewer vertices than that bounded by $q_{r-1}$ and the restriction of $W$ to this region does not contain any of the propagators $p_1, \dots, p_r$.
+\item $q_r$ bounds a region of $W$ which contains strictly fewer vertices than that bounded by $q_{r-1}$ and the restriction of $W$ to this region does not contain any of the propagators $p_1, \dots, p_r$. \sanote{so I understand, $q_r$ on the other side of $q_{r-1}$ than the $\{p_i\}$?} 
 \end{itemize}
 Since $W$ contains finitely many vertices, this must eventually terminate in one of the desired configurations. %a configuration of the form \eqref{eq:2 prop config}.
 
-Start by choosing a propagator $p_1$ of length 2 in $W$ (which exists by Remark~\ref{rem:props of length 2 and 3}), and write $(j_1,j_1+2)$ for its support.  If it is part of one of the configurations we are looking for then we are done, 
+Start by choosing a propagator $p_1 = (j_1,j_1+2)$ of length 2 in $W$ (which exists by Remark~\ref{rem:props of length 2 and 3}).  If it is part of one of the configurations we are looking for then we are done, 
 %a configuration \eqref{eq:2 prop config} we are done,
 so suppose otherwise. 
 By assumption: $p_1$ is not in configuration \ref{item pair of 2s}, there are no propagators of length $3$, and every vertex is supported.  Therefore there must exist a propagator $q_1$ of length $\geq 4$ with one end on edge $j_1$ or on edge $j_1-1$ or on edge $j_1-2$.  This bounds a region $[i_1,k_1]$ (where $k_1 \in \{j_1-1, j_1, j_1+1\}$) which does not contain $p_1$.
+
+INSERT PICTURE HERE?
 
 Now suppose $q_{r}$ exists by the induction hypothesis and bounds a region $[i_r,k_r]$ not containing any $p_i$ for $i\leq r$.  Consider the restricted diagram $W_r:=W_{[i_r,k_r]}$; by the original hypotheses on $W$ every vertex $l \in [i_r+2,k_r-2]$ (which is a non-empty interval since $\ell(q_r) \geq 4$) must have support $\geq 1$, while the same is true for $l \in \{i_r,i_r+1,k_r-1,k_r\}$ because these vertices support $q_r$.  
 
