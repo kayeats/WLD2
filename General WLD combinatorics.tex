@@ -1143,7 +1143,7 @@ The following lemma establishes certain configurations of propagators that must 
 \begin{proof} \sanote{fixed misuse of the word support in lemma}
 Suppose first that $W$ has a propagator of length $3$, say $p=(i, i+3)$.  By Remark~\ref{rem:props of length 2 and 3} and the fact that every vertex of $W$ supports at least one propagator, we have that $i+2$ supports exactly one propagator and this propagator must have length 2 by noncrossingness.  This gives us an instance of configuration~\ref{item big and 2} from the statement.
 
-Now suppose $W$ has no propagators of length $3$.
+Now suppose $W$ has no propagators of length $3$. \sanote{when do we deal with this restriction?}
 %  We will prove the following stronger result: that $D$ admits a pair of propagators of length 2 in the following configuration:
 %\begin{equation}\label{eq:2 prop config}
 %\begin{tikzpicture}[baseline=(current bounding box.east)]
@@ -1192,24 +1192,24 @@ We will inductively construct a sequence of pairs of propagators $(p_r,q_r)$ sat
 or there is a propagator $q_r$ satisfying
 \begin{itemize}
 \item $\ell(q_r) \geq 4$.
-\item If we orient the $q_r$ such that the $\{p_1 \ldots p_r\}$ are on the inside. The outer region of $W$ that is bounded by $q_r$ is strictly contained in the region of $W$ bounded by $q_{r-1}$ on the outside. Thus the restriction of $W$ to this region does not contain any of the propagators $p_1, \dots, p_r$. \sanote{changed, have I broken it?}
+\item If we orient the $q_r$ such that the $\{p_1 \ldots p_r\}$ are on the outside. The inner region of $W$ that is bounded by $q_r$ is strictly contained in the region of $W$ bounded by $q_{r-1}$ on the inside. Thus the restriction of $W$ to this region does not contain any of the propagators $p_1, \dots, p_r$. \sanote{changed, have I broken it?}
 \end{itemize}
 Since $W$ contains finitely many vertices, this must eventually terminate in one of the desired configurations. %a configuration of the form \eqref{eq:2 prop config}.
 
 Start by choosing a propagator $p_1 = (j_1,j_1+2)$ of length 2 in $W$ (which exists by Remark~\ref{rem:props of length 2 and 3}).  If it is part of one of the configurations we are looking for then we are done, 
 %a configuration \eqref{eq:2 prop config} we are done,
 so suppose otherwise. 
-By assumption: $p_1$ is not in configuration \ref{item pair of 2s}, there are no propagators of length $3$, and every vertex is supported.  Therefore there must exist a propagator $q_1$ outside of $(p_1, <_j)$ of length $\geq 4$ with one end on edge $j_1$ or on edge $j_1-1$ or on edge $j_1-2$.  This bounds a region $[i_1,k_1]$ on the outside (where $k_1 \in \{j_1-1, j_1, j_1+1\}$) which does not contain $p_1$.
+By assumption: $p_1$ is not in configuration \ref{item pair of 2s}, there are no propagators of length $3$, and every vertex is supported.  Therefore there must exist a propagator $q_1$ outside of $(p_1, <_j)$ of length $\geq 4$ with one end on edge $j_1$ or on edge $j_1-1$ or on edge $j_1-2$.  This bounds a region $[i_1,k_1] = V_{out}(q_1) \cup V(q_1)$ on the outside of $(q_1, <_{i_1})$ (where $k_1 \in \{j_1-1, j_1, j_1+1\}$) which does not contain $p_1$.
 
 INSERT PICTURE HERE?
 
-Now suppose $q_{r}$ exists by the induction hypothesis, oriented such that $(q_r, <_{k_r-1})$ and bounds a region $[i_r,k_r]$ on the outside. This region not containing any $p_i$ for $i\leq r$. \sanote{Know what $p_1$ is. What are the others?}  Consider the restricted diagram $W_r:=W_{[i_r,k_r]}$; by the original hypotheses on $W$ every vertex $l \in [i_r+2,k_r-2]$ (which is a non-empty interval since $\ell(q_r) \geq 4$) must have support $\geq 1$, while the same is true for $l \in \{i_r,i_r+1,k_r-1,k_r\}$ because these vertices support $q_r$.  
+Now suppose $q_{r}$ exists by the induction hypothesis, oriented such that $(q_r, <_{i_r})$ and bounds a region $[i_r,k_r]$ on the outside. This region does not contain any $p_i$ for $i\leq r$. \sanote{Know what $p_1$ is. What are the others?}  Consider the restricted diagram $W_r:=W_{[i_r,k_r]}$; by the original hypotheses on $W$ every vertex $l \in [i_r+2,k_r-2]$ (which is a non-empty interval since $\ell(q_r) \geq 4$) must have support $\geq 1$, while the same is true for $l \in \{i_r,i_r+1,k_r-1,k_r\}$ because these vertices support $q_r$.  
 
-By Remark~\ref{rem:props of length 2 and 3}, $W_r$ admits at least one propagator of length 2.  $W_r$ has no propagators of length $3$ since $W$ has none.  Let $p_{r+1}$ be a propagator of length 2 in $W_r$; if it forms part of configuration \ref{item big and 2} or \ref{item pair of 2s}
+By Remark~\ref{rem:props of length 2 and 3}, $W_r$ admits at least one propagator of length 2.  $W_r$ has no propagators of length $3$ since $W$ has none.  Let $p_{r+1}$ be a propagator of length 2 in $W_r$ (i.e. outside of $(q_r, <_{k_r-2})$; if it forms part of configuration \ref{item big and 2} or \ref{item pair of 2s}
 %the configuration \eqref{eq:2 prop config}
-then we are done, so assume otherwise. \sanote{What if $p_{r+1}$ outside of $(q_r, <_{k_r-1})$?} 
+then we are done, so assume otherwise. 
 
-Note we may replace $q_r$ by any other propagator of length $\geq 4$ in $W_r$ which contains $p_{r+1}$; such a new $q_r$ still satisfies all the hypotheses, and so, without loss of generality we may assume that $q_r$ has minimal length among propagators of length $\geq 4$ which contain $p_{r+1}$.  
+Note we may replace $q_r$ by any other propagator, $q'_{r}$ of length $\geq 4$ in $W_r$ such that $p_{r+1}$ and $q_r$ are on opposite sides; such a new $q'_{r}$ still satisfies all the hypotheses, and so, without loss of generality we may assume that $(q_r, <_{k_r-1})$ has minimal length among propagators of length $\geq 4$ which contain $p_{r+1}$ on the outside.  
 
 There are two cases to consider.
 The first case is that $p_{r+1}$ has one end before $i_r+3$ and the other after $k_r-3$.  Then since $p_{r+1}$ has length 2, it must be that $[i_r+3,k_r-3]$ is at most a single edge, and so $q_r$ has length $\leq 6$.  The only propagators inside $q_r$ that do not also contain $p_{r+1}$ must have both ends in $[i_r, i_r+3]$ or both ends in $[k_r-3, k_r]$ and hence be of length 2.  Therefore, if $q_r$ contains a propagator $t$ of length $\leq 4$, this propagator must also contain $p_{r+1}$ which is impossible my minimality.  Therefore, if $q_r$ contains another propagator of length $2$ we would have configuration \ref{item pair of 2s} which we have already assumed does not occur.  Consequently, $q_r$ contains only $p_{r+1}$ and so we have \ref{item big and 2} which again we have assumed does not occur.
