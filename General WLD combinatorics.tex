@@ -1109,7 +1109,7 @@ Let $W = (\cP, n)$ be an admissible Wilson loop diagram, with $p = (i,j) \in \cP
 
 Similarly, we may associate the ordering $<_j$ to $p$, in which case $V_{in}(p, <_i) = V_{out}(p, <_j)$ and $V_{out}(p, <_i) = V_{in}(p, <_j)$.
 
-This in turn defines two sets of propagators, $\{\cP_{in}, \cP_{out}\}$, where (for $\bullet \in \{in, \; out\}$) \bas \cP_{\bullet} = \{ q \in (\cP \setminus p) | V(q) \cap V_{\bullet}(p)  \neq \emptyset \} \;.\eas The set $\cP_{in}$ (resp. $\cP_{out}$) is the set of propagators, not equal to $p$ \hlfix{whose support contains points in $V_{in}(p, <_*)$ (resp. $V_{in}(p, <_*)$), where $<_*$ refers to the appropriate ordering.}{Note, this means that paralell propagators are neither on the inside and outside of $p$. Is that okay?} If $W$ has no propagators crossing $p$ and no other propagator supported entirely on $V(p)$, then the set $\{\cP_{in}, p, \cP_{out}\}$ partitions $\cP$. Under these circumstances, the set $\cP_{in}$ defines the propagators with end points on one side of $p$, while $\cP_{out}$ defines the propagators with end points on the other side. In particular, for (weakly) admissible Wilson loop diagrams, the set $\{\cP_{in}, p, \cP_{out}\}$ is a partition for every propagators $p \in \cP$. Recall from Definition~\ref{admisdfn} that a {\em weakly admissible} diagram is one that satisfies the density and non-crossing conditions but does not require that $|V(\cP)| \geq |\cP| + 4$.
+This in turn defines two sets of propagators, $\{\cP_{in}(p, <_i), \cP_{out}(p, <_i)\}$, where (for $\bullet \in \{in, \; out\}$) \bas \cP_{\bullet} = \{ q \in (\cP \setminus p) | V(q) \cap V_{\bullet}(p)  \neq \emptyset \} \;.\eas When clear, we drop the parentetical and just write $\cP_{in}$ (resp. $\cP_{out}$). These sets are the sets of propagators, not equal to $p$, \hlfix{whose support contains points in $V_{in}(p, <_*)$ (resp. $V_{in}(p, <_*)$), where $<_*$ refers to the appropriate ordering.}{Note, this means that paralell propagators are neither on the inside and outside of $p$. Is that okay?} If $W$ has no propagators crossing $p$ and no other propagator supported entirely on $V(p)$, then the set $\{\cP_{in}, p, \cP_{out}\}$ partitions $\cP$. Under these circumstances, the set $\cP_{in}$ defines the propagators with end points on one side of $p$, while $\cP_{out}$ defines the propagators with end points on the other side. In particular, for (weakly) admissible Wilson loop diagrams, the set $\{\cP_{in}, p, \cP_{out}\}$ is a partition for every propagators $p \in \cP$. Recall from Definition~\ref{admisdfn} that a {\em weakly admissible} diagram is one that satisfies the density and non-crossing conditions but does not require that $|V(\cP)| \geq |\cP| + 4$.
 
 As with the vertex sets,  which set of propagators lie inside and outside of $p$ switch depending on the direction imposed $p$. 
 
@@ -1135,7 +1135,7 @@ The following lemma establishes certain configurations of propagators that must 
 \begin{lem}\label{lem sian}
   Let $W$ be a weakly admissible WLD with at least 5 vertices and in which each vertex supports at least one propagator.  Then at least one of the following two things occurs.
   \begin{enumerate}
-    \item $W$ has a propagator of length $\leq 6$ with a propagator of length 2 inside it and nothing else inside it.\label{item big and 2} \sanote{doesn't this depend on which side you call inside? Should we say ``on one side''?  -- the point is that the inside should be the length 6 side.  Now there could be two length 6 sides in which case, yes there should exist one of the length 6 sides with the desired property.  I'm not sure how you want to phrase all this}
+    \item $W$ has a propagator of length $\leq 6$ with a propagator of length 2 on one side it and nothing else on that side.\label{item big and 2} \sanote{tweaked}
     \item There exists a pair of propagators of length $2$ with the property that the first propagator is $(i, i+2)$, the second is $(j, j+2)$, no other propagator ends between vertices $i+2$ and $j+1$, and $j\in\{i+2, i+3, i+4\}$.\label{item pair of 2s}
   \end{enumerate}
 \end{lem}
@@ -1178,12 +1178,15 @@ Now suppose $W$ has no propagators of length $3$.
 %\end{tikzpicture}
 %\end{equation}
 
-We need a bit of notation:
-Define the restriction of $W$ to a region $[i,j]$ to be the subdiagram obtained by forgetting all propagators not wholly supported on vertices in the cyclic interval $[i,j]$; the vertex set remains the same as in $W$.  Denote this diagram by $W_{[i,j]}$. That is, if $W = (\cP, n)$ is a Wilson loop diagram, \bas W_{[i,j]} = (\cP \setminus \Prop([i,j]^c), n)\eas
+We need a bit of notation: Let $W = (\cP, n)$ a weakly admissible Wilson loop diagram, and $Q \subseteq \cP$. Define the restriction $W|_Q$ to be the diagram $W$ with the propagators not in $Q$ removed. That is , \bas W|_Q = (Q, n). \eas  \footnote{If we denote $V \subset [n]$ and $Q = \Prop(V^c)$, then we can write \bas M(W|_{Q^c}) = M(W)/F(Q) \oplus M_{\emptyset, n-|i-j+1|} \eas where  $M_{\emptyset, k}$ is the matroid of rank $0$ on a set of $k$. That is $M_{\emptyset, n-|i-j+1|} =M((\emptyset, n-|i-j+1|))$. } \sanote{tweaked this para and the next}
 
-{\color{blue} If we denote $Q = \Prop([i,j]^c)$, then we can write \bas M(W_{[i,j]}) = M(W)/F(Q) \oplus M_{\emptyset, n-|i-j+1|} \eas where  $M_{\emptyset, k}$ is the matroid of rank $0$ on a set of $k$. That is $M_{\emptyset, n-|i-j+1|} =M((\emptyset, n-|i-j+1|))$. } \sanote{If we like this idea, I can incorporate the necessary nomenclature earlier.}
 
-Note that if $p = (i, j)$, then we can consider two obvious restrictions of $W$, namely \bas W_{[i,j+1]} = W_{V_{in}(p, <_i) \cup V(p)} \quad \textrm{and} \quad  W_{[j,i+1]}  = W_{V_{out}(p, <_i) \cup V(p)} \eas corresponding to the regions inside and outside of $(p,<_i)$.  They contain the propagators on the inside and outside of $(p, <_i)$ respectfully, as well as $p$ itself.  We say that $p$ \textit{bounds the regions} $[i,j+1]$ and $[j,i+1]$ which we call outside and inside respectively. The ordering of the start and end points allow us to identify one or the other region unambiguously. 
+%to a region $[i,j]$ to be the subdiagram obtained by forgetting all propagators not wholly supported on vertices in the cyclic interval $[i,j]$; the vertex set remains the same as in $W$.  Denote this diagram by $W_{[i,j]}$. That is, if $W = (\cP, n)$ is a Wilson loop diagram, \bas W_{[i,j]} = (\cP \setminus \Prop([i,j]^c), n)\eas
+
+
+Note that if $p = (i, j)$, then we can consider two obvious restrictions of $W$, namely \bas W|_{\cP_{in} \cup p} \quad \textrm{and} \quad  W|_{\cP_{out}\cup p}, \eas where the set of non-supportive vertices of  $W|_{\cP_{in} \cup p}$ is $V_{out}$ and  the set of non-supportive vertices of  $W|_{\cP_{out} \cup p}$ is $V_{in}$. That is, these restrictions contain the propagators on the inside and outside of $(p, <_i)$ respectfully, as well as $p$ itself.  
+
+%We say that $p$ \textit{bounds the regions} $[i,j+1]$ and $[j,i+1]$ which we call outside and inside respectively. The ordering of the start and end points allow us to identify one or the other region unambiguously. 
 
 With these observations in mind we can return to the proof.
   
@@ -1192,16 +1195,18 @@ We will inductively construct a sequence of pairs of propagators $(p_r,q_r)$ sat
 or there is a propagator $q_r$ satisfying
 \begin{itemize}
 \item $\ell(q_r) \geq 4$.
-\item If we orient the $q_r$ such that the $\{p_1 \ldots p_r\}$ are on the outside. The inner region of $W$ that is bounded by $q_r$ is strictly contained in the region of $W$ bounded by $q_{r-1}$ on the inside. Thus the restriction of $W$ to this region does not contain any of the propagators $p_1, \dots, p_r$. \sanote{changed, have I broken it?}
+\item If we orient the $q_r = (i_1, k_1)$ such that the $\{p_1 \ldots p_r\} \subseteq \cP_{out}(q_r)$ are on the outside. Furthermore, we have have $\cP_{in}(q_r) \subsetneq \cP_{in}(q_{r-1})$. That is, the propagators on the inside of $q_r$ are strictly contained in the set of propagators inside of $q_{r-1}$. In particular, $W_{\cP_{in}(q_r) \cup q_r}$ does not contain any of the propagators $p_1, \dots, p_r$. \sanote{changed, have I broken it?}
 \end{itemize}
 Since $W$ contains finitely many vertices, this must eventually terminate in one of the desired configurations. %a configuration of the form \eqref{eq:2 prop config}.
 
 Start by choosing a propagator $p_1 = (j_1,j_1+2)$ of length 2 in $W$ (which exists by Remark~\ref{rem:props of length 2 and 3}).  If it is part of one of the configurations we are looking for then we are done, 
 %a configuration \eqref{eq:2 prop config} we are done,
 so suppose otherwise. 
-By assumption: $p_1$ is not in configuration \ref{item pair of 2s}, there are no propagators of length $3$, and every vertex is supported.  Therefore there must exist a propagator $q_1$ outside of $(p_1, <_j)$ of length $\geq 4$ with one end on edge $j_1$ or on edge $j_1-1$ or on edge $j_1-2$.  This bounds a region $[i_1,k_1] = V_{out}(q_1) \cup V(q_1)$ on the outside of $(q_1, <_{i_1})$ (where $k_1 \in \{j_1-1, j_1, j_1+1\}$) which does not contain $p_1$.
+By assumption: $p_1$ is not in configuration \ref{item pair of 2s}, there are no propagators of length $3$, and every vertex is supported.  Therefore there must exist a propagator $q_1$ of length $\geq 4$ with one end on edge $j_1$ or on edge $j_1-1$ or on edge $j_1-2$ (that is, $k_1 \in \{j_1-1, j_1, j_1+1\}$). Orient $q_1$ such that  $p_1 \in \cP_{out}(q_1)$, (that is $(q_1, <_{i_1})$). 
 
-INSERT PICTURE HERE?
+%This bounds a region $[i_1,k_1] = V_{out}(q_1) \cup V(q_1)$ on the outside of $(q_1, <_{i_1})$ (where $k_1 \in \{j_1-1, j_1, j_1+1\}$) which does not contain $p_1$.
+
+INSERT PICTURE HERE? 
 
 Now suppose $q_{r}$ exists by the induction hypothesis, oriented such that $(q_r, <_{i_r})$ and bounds a region $[i_r,k_r]$ on the outside. This region does not contain any $p_i$ for $i\leq r$. \sanote{Know what $p_1$ is. What are the others?, they are the things we are inductively constructing and so they are about to be defined inductively (see the next paragraph)}  Consider the restricted diagram $W_r:=W_{[i_r,k_r]}$; by the original hypotheses on $W$ every vertex $l \in [i_r+2,k_r-2]$ (which is a non-empty interval since $\ell(q_r) \geq 4$) must have support $\geq 1$, while the same is true for $l \in \{i_r,i_r+1,k_r-1,k_r\}$ because these vertices support $q_r$.  
 
