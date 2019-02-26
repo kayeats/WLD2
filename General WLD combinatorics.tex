@@ -1903,7 +1903,22 @@ The algorithm is pairing each $j \in I_i$ with a unique propagator supported on 
 %%\[r-1 \geq |Prop(\{i_1, \dots, i_{r-1}\})| = |Prop(\{i_1, \dots, i_{r+1},j_r\})|,\]
 %%If $|Prop(\{i_1, \dots, i_{r-1}|\}| = r-1$ then we are done; otherwise
 
-Suppose we have a $k$-set $J$ such that $J$ is a basis for $M(W)$ and yet is lexicographically less than $I_i$ with respect to $<_i$.  By Lemma~\ref{lem basis as perm} there is a set bijection between $J$ and the propagators of $W$ such that for each $j \in J$, the propagator associated to $j$ is supported on vertex $j$.  Choose one such bijection.  For a propagator $p$ of $W$ write $J(p)$ for the associated $j$ according to this bijection.   
+Suppose we have a $k$-set $J$ such that $J$ is a basis for $M(W)$ and yet is lexicographically less than $I_i$ with respect to $<_i$.  By Lemma~\ref{lem basis as perm} there is a set bijection between $J$ and the propagators of $W$ such that for each $j \in J$, the propagator associated to $j$ is supported on vertex $j$.  Choose one such bijection.  For a propagator $p$ of $W$ write $J(p)$ for the associated $j$ according to this bijection.
+
+Since $J$ is lexicographically smaller than $I_i$, the $<_i$-smallest element of the symmetric difference of $J$ and $I_i$ is some $j_0\in J$, $j_0 \not\in I_i$. Let $p_1$ be the propagator such that $J(p_1)=j_0$.  Since $j_0\not\in I_i$ but $p_1$ is supported at $j_0$, then $p_1$ must have been assigned to an earlier vertex by $I_i$, i.e. we have $I_i(p_1) <_i j_0$.  Let $j_1 = I_i(p_1)$.
+
+However, $j_0$ is the $<_i$-smallest element in the symmetric difference of $J$ and $I_i$, so in particular there is some propagator $p_2$ such that $J(p_2)=I_i(p_1)$.  Now, let $j_2 = I_i(p_2)$ and note that $j_2 \neq J(p_2)$ (since $I_i(p_1)=J(p_2)$), so either $I_i(p_2) \not\in J$ or there is a propagator $p_3$ such that $J(p_3) = I_i(p_2)$.  Continuing likewise we get a list of vertices $j_k$ and propagators $p_k$ such that $J(p_k) = I_i(p_{k-1}) = j_{k-1}$.
+
+We claim that the propagators and vertices in this list are distinct.  The claim is proved by induction.  The definition of $j_0$ gives that $j_0$ and $j_1$ are distinct and that $p_1$ and $p_2$ are distinct.  Now, suppose we have $p_k$ and $j_k$ with $I_i(p_k)=j_k$ and with $j_k\in J$.  Then $p_{k+1}$ is the propagator associated to $j_k$ by the fixed bijection we have chosed for $J$.  Since $j_k$ is distinct from the previous $j_j$, $p_{k+1}$ is distinct from the previous $p_j$.  Then $j_{k+1} = I_i(p_{k+1})$, but $I_i$ is also a bijection, so since $p_{k+1}$ is distinct from the other $p_j$ we have that $j_{k+1}$ is distinct from the other $j_j$ for $1\leq j\leq k$.  Additionally $j_{k+1}\neq j_0$ since $j_0\not\in I_i$ but $j_{k+1}\in I_i$.  This proves the claim.
+
+By finiteness the list must end, and the only way it can end is with some $p_k$ such that $j_k = I_i(p_k)\not\in J$, so in particular $j_k >_i j_0$.
+
+Next we will prove that $j_k <_i j_0$ for all $k > 0$.  This gives a contradiction to the exisitence of $J$ and completes the proof of the theorem.  This proof will also be by induction.  We already observed that $j_1 <_i j_0$.  Suppose we have $j_{j} <_i j_0$ for $j<k$.  Then $p_{k-1}$ and $p_{k}$ are both supported at $j_{k-1}$, but $I_{i}(p_{k-1}) = j_{k-1}$.  Thus either $p_{k-1}$ appears before $p_k$ in the neighbourhood of $j_{k-1}$ or $p_k$ was taken earlier by $I_i$ so $I_i(p_k) <_i I_i(p_{k-1})$.  In the latter case we already have $j_k = I_i(p_k) <_i j_{k-1} <_i j_0$ which is what we want.  So we now assume that $p_{k-1}$ appears before $p_k$ in the neighbourhood of $j_{k-1}$.
+
+There are two cases to consider.  First is if $I_i(p_{k-1}) = J(p_{k-1})-1$ and $p_{k-1}$ has an end on the edge $(I_i(p_{k-1}), J(p_{k-1}))$.  In this case consider the neighbourhood of $I_i(p_{k-2}) = J(p_{k-1})$.  As the $p_j$ are disjoint we know that at this vertex either $p_{k}$ was taken before $p_{k-2}$ (and so $I_i(p_k) <_i I_i(p_{k-2})$ and we are again done), or $p_k$ comes after $p_{k-2}$ around this vertex.
+
+***Karen is here in this file (and her commute ended for the day)***
+
 
 Since $J$ is lexicographically smaller than $I_i$, the $<_i$-smallest element of the symmetric difference of $J$ and $I_i$ is some $j_0\in J$, $j_0 \not\in I_i$. Let $p$ be the propagator such that $J(p)=j_0$.  Since $j_0\not\in I_i$ but $p$ is supported at $j_0$, then $p$ must have been assigned to an earlier vertex by $I_i$, i.e. we have $I_i(p) <_i j_0$.  Thus the propagator $p$ has the following property, which we call property $A$:
 \begin{equation}\label{propertyA}\tag{A}I_i(p) <_i J(p) \text{ \ and \ }I_i\cap [i,I_i(p)] = J\cap [i,I_i(p)]. \end{equation}
