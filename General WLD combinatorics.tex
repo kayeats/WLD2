@@ -1909,25 +1909,52 @@ However, $j_0$ is the $<_i$-smallest element in the symmetric difference of $J$ 
 
 We claim that the propagators and vertices in this list are distinct.  The claim is proved by induction.  The definition of $j_0$ gives that $j_0$ and $j_1$ are distinct and that $p_1$ and $p_2$ are distinct.  Now, suppose we have $p_k$ and $j_k$ with $I_i(p_k)=j_k$ and with $j_k\in J$.  Then $p_{k+1}$ is the propagator associated to $j_k$ by the fixed bijection we have chosed for $J$.  Since $j_k$ is distinct from the previous $j_j$, $p_{k+1}$ is distinct from the previous $p_j$.  Then $j_{k+1} = I_i(p_{k+1})$, but $I_i$ is also a bijection, so since $p_{k+1}$ is distinct from the other $p_j$ we have that $j_{k+1}$ is distinct from the other $j_j$ for $1\leq j\leq k$.  Additionally $j_{k+1}\neq j_0$ since $j_0\not\in I_i$ but $j_{k+1}\in I_i$.  This proves the claim.
 
-By finiteness the list must end, and the only way it can end is with some $p_k$ such that $j_k = I_i(p_k)\not\in J$, so in particular $j_k >_i j_0$.
+By finiteness the list must end, and the only way it can end is with some $p_k$ such that $j_k = I_i(p_k)\not\in J$, so in particular $j_k >_i j_0$.  
 
-Next we will prove that $j_k <_i j_0$ for all $k > 0$.  This gives a contradiction to the exisitence of $J$ and completes the proof of the theorem.  This proof will also be by induction.  We already observed that $j_1 <_i j_0$.  Suppose we have $j_{j} <_i j_0$ for $j<k$.  Then $p_{k-1}$ and $p_{k}$ are both supported at $j_{k-1}$, but $I_{i}(p_{k-1}) = j_{k-1}$.  Thus either $p_{k-1}$ appears before $p_k$ in the neighbourhood of $j_{k-1}$ or $p_k$ was taken earlier by $I_i$ so $I_i(p_k) <_i I_i(p_{k-1})$.  In the latter case we already have $j_k = I_i(p_k) <_i j_{k-1} <_i j_0$ which is what we want.  So we now assume that $p_{k-1}$ appears before $p_k$ in the neighbourhood of $j_{k-1}$.
+Next we will prove that $j_k <_i j_0$ for all $k > 0$.  This gives a contradiction to the exisitence of $J$ and completes the proof of the theorem.  This proof will also be by induction, however, for the induction to go through nicely we will need to prove the following slightly stronger statement:
+for all $k>0$ in the list
+\begin{itemize}
+\item $j_k <_i j_0$ and
+\item either
+  \begin{itemize}
+  \item $I_i(p_k) <_i J(p_k)$, or
+  \item there exists an $ell<k$ such that $I_i(p_\ell) <_i J(p_\ell)$, those two vertices are supported by distinct ends of $p_\ell$ and $p_k$ is on the side of $p_l$ which runs from $I_i(p_\ell)$ to $J(p_\ell)$.
+  \end{itemize}
+\end{itemize}
 
-There are two cases to consider.  First is if $I_i(p_{k-1}) = J(p_{k-1})-1$ and $p_{k-1}$ has an end on the edge $(I_i(p_{k-1}), J(p_{k-1}))$.  In this case consider the neighbourhood of $I_i(p_{k-2}) = J(p_{k-1})$.  As the $p_j$ are disjoint we know that at this vertex either $p_{k}$ was taken before $p_{k-2}$ (and so $I_i(p_k) <_i I_i(p_{k-2})$ and we are again done), or $p_k$ comes after $p_{k-2}$ around this vertex.
 
-***Karen is here in this file (and her commute ended for the day)***
+We already observed that $j_1 <_i j_0$ and $I_i(p_1) <_k J(p_1)$ so we have the base case for the induction.  Suppose we have the inductive hypothesis for all indices less than $k>1$ and that $p_k$ exists.
 
+By definition $J(p_k) = I_i(p_{k-1}) = j_{k-1}$, so $p_{k-1}$ and $p_{k}$ are both supported at $j_{k-1}$, but $I_{i}(p_{k-1}) = j_{k-1}$.  Thus either $p_{k-1}$ appears before $p_k$ in the neighbourhood of $j_{k-1}$ or $p_k$ was taken earlier by $I_i$ so $I_i(p_k) <_i I_i(p_{k-1})$.  In the latter case we are done as $j_k = I_i(p_k) <_i j_{k-1} <_i j_0$ which is what we want.  So we now assume that $p_{k-1}$ appears before $p_k$ in the neighbourhood of $j_{k-1}$.
 
-Since $J$ is lexicographically smaller than $I_i$, the $<_i$-smallest element of the symmetric difference of $J$ and $I_i$ is some $j_0\in J$, $j_0 \not\in I_i$. Let $p$ be the propagator such that $J(p)=j_0$.  Since $j_0\not\in I_i$ but $p$ is supported at $j_0$, then $p$ must have been assigned to an earlier vertex by $I_i$, i.e. we have $I_i(p) <_i j_0$.  Thus the propagator $p$ has the following property, which we call property $A$:
-\begin{equation}\label{propertyA}\tag{A}I_i(p) <_i J(p) \text{ \ and \ }I_i\cap [i,I_i(p)] = J\cap [i,I_i(p)]. \end{equation}
+If $I_i(p_{k-1}) <_i J(p_{k-1})$ and these are vertices supported by distinct ends of $p_{k-1}$ then $p_{k}$ coming after $p_{k-1}$ around $j_{k-1}$ implies that $p_k$ is on the $I_i(p_{k-1})$ to $J(p_{k-1})$ side of $p_{k-1}$.  Therefore $j_k = I_i(p_k) \leq_i J(P_{k-1}) + 1$.  If $k-1 \neq 1$ then this gives $j_k \leq_i I_i(p_{k-2}) + 1 <_i j_0$ so $j_k \leq_i j_0$, but $j_0\not\in I_i$ so $j_k<_i j_0$.  If $k-1= 1$ then either $j_k <_i j_0$ or we have the configuration
+\[
+\includegraphics{impossible_config}
+\]
+which is impossible as $p_2$ is supported at $j_0$ but not taken in $I_i$ until after $j_0$ even though $j_0\not\in I_i$.  Taking all of this paragraph together we are done unless $I_i(p_{k-1})\not<_i J(p_{k-1})$ so now assume this.
 
-{}From the previous paragraph we conclude that if we ever had a $J$ which is lexicographically less than $I_i$ and yet a basis of $M(W)$, then there exists a propagator $p$ which has property $A$.
+By the induction hypothesis,  $I_i(p_{k-1})\not<_i J(p_{k-1})$ implies that there exists and $\ell < k-1$ such that $p_{k-1}$ is on the side of $p_{\ell}$ that goes from $I_i(p_\ell)$ to $J(p_\ell)$.  If $j_{k-1}$ is not in the support of the $J(p_\ell)$ end of $p_\ell$ then $p_{k-1}$ before $p_{k}$ around $j_{k-1}$ implies that $p_k$ is on the same side of $p_\ell$ as $p_{k-1}$ is.  Then the same arguments as above with $\ell$ in place of $k-1$ give $j_k \leq_i J(P_\ell)+1$ implying $j_k <_i j_0$ which is everything we need.
 
-Finally, we will prove that whenever there is a propagator $p$ which has property $A$ then there is another propagator $r$ which also has property $A$ and for which $I_i(r) <_i I_i(p)$.  This would lead to an infinte regress, contradicting the finiteness of $I_i$; thus there could be no such $J$, which will complete the proof of the proposition.
+It remains to consider when $j_{k-1}$ is in the support of the $J(p_\ell)$ end of $p_\ell$, call this case $(*)$.  Since $J(p_\ell) = j_{\ell-1}$ and the $j_i$ are distinct this means that we have one of the following two configurations
+\[
+\includegraphics{induction_conf}
+\]
+If $p_\ell=p_1$ then $j_{\ell-1}=j_0$ and then as $j_0\not\in I_i$ but $p_k$ is supported at $j_0$ we get $I_i(p_k) <_i j_0$ and also $I_i(p_k) <_i j_{k-1} = J(p_k)$ as the only vertices not yet taken for $I_i(p_k)$ must be before both labelled vertices in the illustration.
 
-So suppose $p$ has property $A$.  The same vertices in $[i,I_i(p)]$ are in the image of the assignment from $J$ and the image of the assignment from $I_i$ so the same number of propagators are assigned to vertices in this interval by each assignment.  However $p$ is one of the propagators assigned to a vertex in this interval in $I_i$ but not in $J$.  Thus there exists a propagator $q$ for which $J(q)\in [i,I_i(p)]$ but $I_i(q) >_i I_i(p)$.  Therefore $J(q)<_i I_i(q)$ and  $I_i\cap [i,J(q)] = J\cap [i,J(q)]$.  This is analogous to property $A$ but with the roles of $J$ and $I_i$ switched.  Thus by the same argument we must have a propagator $r$ for which $I_i(r)\in[i,J(q)]$ but $J(r)>_i J(q)$.  It follows that $r$ also has property $A$ and that
-\[I_i(r) \leq_i J(q) \leq_i I_i(p)\]
-\hlfix{as required.}{We need $I_i(r) <_i I_i(p)$ but I'm having trouble seeing it?}
+If $p_\ell \neq p_1$ then we argue as above with $\ell-1$ in place of $k-1$: in particular $J(p_\ell) = I_i(p_{\ell-1})$ but $p_k$ is supported at $p_{\ell-1}$, so either $I_i(p_k) <_i I_i(p_{\ell-1})$ in which case as before we get desired conclusion, or $p_k$ comes before $p_{\ell-1}$ at $j_{\ell-1}$.  Then again argue as before getting a new $p_{\ell'}$ in place of $p_{\ell}$, except that then case $(*)$ must occur simultaneously for both $p_{\ell'}$ and $p_{\ell}$ with respect to $p_{k}$.  This can only occur if $j_{\ell-1}, j_{k-1}, j_{\ell'-1}$ are consecutive.  Iterating the argument one more time we finally cannot have case $(*)$ as then all neighbouring vertices of $j_{k-1}$ are used up.
+
+This completes the induction and thence the proof of the theorem.
+
+%Since $J$ is lexicographically smaller than $I_i$, the $<_i$-smallest element of the symmetric difference of $J$ and $I_i$ is some $j_0\in J$, $j_0 \not\in I_i$. Let $p$ be the propagator such that $J(p)=j_0$.  Since $j_0\not\in I_i$ but $p$ is supported at $j_0$, then $p$ must have been assigned to an earlier vertex by $I_i$, i.e. we have $I_i(p) <_i j_0$.  Thus the propagator $p$ has the following property, which we call property $A$:
+%\begin{equation}\label{propertyA}\tag{A}I_i(p) <_i J(p) \text{ \ and \ }I_i\cap [i,I_i(p)] = J\cap [i,I_i(p)]. \end{equation}
+%
+%{}From the previous paragraph we conclude that if we ever had a $J$ which is lexicographically less than $I_i$ and yet a basis of $M(W)$, then there exists a propagator $p$ which has property $A$.
+%
+%Finally, we will prove that whenever there is a propagator $p$ which has property $A$ then there is another propagator $r$ which also has property $A$ and for which $I_i(r) <_i I_i(p)$.  This would lead to an infinte regress, contradicting the finiteness of $I_i$; thus there could be no such $J$, which will complete the proof of the proposition.
+%
+%So suppose $p$ has property $A$.  The same vertices in $[i,I_i(p)]$ are in the image of the assignment from $J$ and the image of the assignment from $I_i$ so the same number of propagators are assigned to vertices in this interval by each assignment.  However $p$ is one of the propagators assigned to a vertex in this interval in $I_i$ but not in $J$.  Thus there exists a propagator $q$ for which $J(q)\in [i,I_i(p)]$ but $I_i(q) >_i I_i(p)$.  Therefore $J(q)<_i I_i(q)$ and  $I_i\cap [i,J(q)] = J\cap [i,J(q)]$.  This is analogous to property $A$ but with the roles of $J$ and $I_i$ switched.  Thus by the same argument we must have a propagator $r$ for which $I_i(r)\in[i,J(q)]$ but $J(r)>_i J(q)$.  It follows that $r$ also has property $A$ and that
+%\[I_i(r) \leq_i J(q) \leq_i I_i(p)\]
+%\hlfix{as required.}{We need $I_i(r) <_i I_i(p)$ but I'm having trouble seeing it?}
 \end{proof}
 
 
