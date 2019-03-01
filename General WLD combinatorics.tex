@@ -1135,7 +1135,7 @@ The following lemma establishes certain configurations of propagators that must 
 \begin{lem}\label{lem sian}
   Let $W$ be a weakly admissible WLD with at least 5 vertices and in which each vertex supports at least one propagator.  Then at least one of the following two things occurs.
   \begin{enumerate}
-    \item $W$ has a propagator of length $\leq 6$ with a propagator of length 2 on one side it and nothing else on that side.\label{item big and 2} \sanote{tweaked}
+    \item $W$ has a propagator of length $\leq 6$ with a propagator of length 2 on one side it and nothing else on that side.\label{item big and 2}
     \item There exists a pair of propagators of length $2$ with the property that the first propagator is $(i, i+2)$, the second is $(j, j+2)$, no other propagator ends between vertices $i+2$ and $j+1$, and $j\in\{i+2, i+3, i+4\}$.\label{item pair of 2s}
   \end{enumerate}
 \end{lem}
@@ -1178,13 +1178,13 @@ Now suppose $W$ has no propagators of length $3$.
 %\end{tikzpicture}
 %\end{equation}
 
-We need a bit of notation: Let $W = (\cP, n)$ a weakly admissible Wilson loop diagram, and $Q \subseteq \cP$. Define the restriction $W|_Q$ to be the diagram $W$ with the propagators not in $Q$ removed. That is , \bas W|_Q = (Q, n). \eas  \sanote{tweaked this para and the next}
+We need a bit of notation: Let $W = (\cP, n)$ a weakly admissible Wilson loop diagram, and $Q \subseteq \cP$. Define the restriction $W|_Q$ to be the diagram $W$ with the propagators not in $Q$ removed. That is , \bas W|_Q = (Q, n). \eas 
 
 
 %to a region $[i,j]$ to be the subdiagram obtained by forgetting all propagators not wholly supported on vertices in the cyclic interval $[i,j]$; the vertex set remains the same as in $W$.  Denote this diagram by $W_{[i,j]}$. That is, if $W = (\cP, n)$ is a Wilson loop diagram, \bas W_{[i,j]} = (\cP \setminus \Prop([i,j]^c), n)\eas
 
 
-Note that if $p = (i, j)$, then we can consider two obvious restrictions of $W$, namely \bas W|_{\cP_{in} \cup p} \quad \textrm{and} \quad  W|_{\cP_{out}\cup p}, \eas where the set of non-supportive vertices of  $W|_{\cP_{in} \cup p}$ is $V_{out}$ and  the set of non-supportive vertices of  $W|_{\cP_{out} \cup p}$ is $V_{in}$. That is, these restrictions contain the propagators on the inside and outside of $(p, <_i)$ respectfully, as well as $p$ itself. \footnote{If we denote $V \subset [n]$ and $Q = \Prop(V^c)$, then we can write \bas M(W|_{Q^c}) = M(W)/F(Q) \oplus M_{\emptyset, n-|i-j+1|} \eas where  $M_{\emptyset, k}$ is the matroid of rank $0$ on a set of $k$. That is $M_{\emptyset, n-|i-j+1|} =M((\emptyset, n-|i-j+1|))$. }  
+Note that if $p = (i, j)$, then we can consider two obvious restrictions of $W$, namely \bas W|_{\cP_{in} \cup p} \quad \textrm{and} \quad  W|_{\cP_{out}\cup p}, \eas where the set of non-supportive vertices of  $W|_{\cP_{in} \cup p}$ is $V_{out}$ and  the set of non-supportive vertices of  $W|_{\cP_{out} \cup p}$ is $V_{in}$. That is, these restrictions contain the propagators on the inside and outside of $(p, <_i)$ respectively, as well as $p$ itself. \footnote{If we denote $V \subset [n]$ and $Q = \Prop(V^c)$, then we can write \bas M(W|_{Q^c}) = M(W)/F(Q) \oplus M_{\emptyset, n-|i-j+1|} \eas where  $M_{\emptyset, k}$ is the matroid of rank $0$ on a set of $k$. That is $M_{\emptyset, n-|i-j+1|} =M((\emptyset, n-|i-j+1|))$. }  
 
 %We say that $p$ \textit{bounds the regions} $[i,j+1]$ and $[j,i+1]$ which we call outside and inside respectively. The ordering of the start and end points allow us to identify one or the other region unambiguously. 
 
@@ -1195,32 +1195,45 @@ We will inductively construct a sequence of pairs of propagators $(p_r,q_r)$ sat
 or there is a propagator $q_r$ satisfying
 \begin{itemize}
 \item $\ell(q_r) \geq 4$.
-\item If we orient the $q_r = (i_1, k_1)$ such that the $\{p_1 \ldots p_r\} \subseteq \cP_{out}(q_r)$ are on the outside. Furthermore, we have have $\cP_{in}(q_r) \subsetneq \cP_{in}(q_{r-1})$. That is, the propagators on the inside of $q_r$ are strictly contained in the set of propagators inside of $q_{r-1}$. In particular, $W_{\cP_{in}(q_r) \cup q_r}$ does not contain any of the propagators $p_1, \dots, p_r$. \sanote{changed, have I broken it? In particular, $k_i +1$ now used to be called $k_i$ before}
+\item $\{p_1, \ldots, p_r\}$ and $\{q_1, \ldots, q_{r-1}\}$ are all on the same side of $q_r$.  
 \end{itemize}
-Since $W$ contains finitely many vertices, this must eventually terminate in one of the desired configurations. %a configuration of the form \eqref{eq:2 prop config}.
+Note that we will be interested in the orientation of $q_r$ so that the previous $p_i$ and $q_i$ are on the outside of $q_r$.
+By the finiteness of $W$ this must eventually terminate in one of the desired configurations. %a configuration of the form \eqref{eq:2 prop config}.
 
 Start by choosing a propagator $p_1 = (j_1,j_1+2)$ of length 2 in $W$ (which exists by Remark~\ref{rem:props of length 2 and 3}).  If it is part of one of the configurations we are looking for then we are done, 
 %a configuration \eqref{eq:2 prop config} we are done,
 so suppose otherwise. 
-By assumption: $p_1$ is not in configuration \ref{item pair of 2s}, there are no propagators of length $3$, and every vertex is supported.  Therefore there must exist a propagator $q_1$ of length $\geq 4$ with one end on edge $j_1$ or on edge $j_1-1$ or on edge $j_1-2$. Orient $q_1$ such that  $p_1 \in \cP_{out}(q_1)$, (that is $(q_1, <_{i_1})$).
+By assumption: $p_1$ is not in configuration \ref{item pair of 2s}, there are no propagators of length $3$, and every vertex is supported.  Therefore there must exist a propagator $q_1$ of length $\geq 4$ with one end on edge $j_1$ or on edge $j_1-1$ or on edge $j_1-2$.  Orient $q_1 = (i_1, k_1)$ such that  $p_1 \in \cP_{out}(q_1)$, (that is $(q_1, <_{i_1})$).
 
 %This bounds a region $[i_1,k_1] = V_{out}(q_1) \cup V(q_1)$ on the outside of $(q_1, <_{i_1})$ (where $k_1 \in \{j_1-1, j_1, j_1+1\}$) which does not contain $p_1$.
 
 INSERT PICTURE HERE? 
 
-Now suppose $q_{r} = (i_r, k_r) $ exists by the induction hypothesis, oriented $(q_r, <_{i_r})$ as above. For the rest of this proof, we assume this orientation as read, and drop the $<_{i_r}$ from the notation. Call the restriction to the propagators inside $q_r$ in this orientation (including itself) $W_r := W|_{\cP_{in} \cup q_r}$ does not contain any $p_i$ for $i\leq r$. By the original hypotheses on $W$ every vertex in $V_{in}(q_r)$ (which is a non-empty interval since $\ell(q_r) \geq 4$) must have support $\geq 1$, while the same is true for $V(q_r)$ because these vertices support $q_r$. By construction, the remaining vertices of $W|_{\cP_{in} \cup p}$, i.e. $V_{out}(q_r)$ are non-supporting.
+Now suppose $q_{r} = (i_r, k_r)$ exists by the induction hypothesis and is oriented $(q_r, <_{i_r})$ so that the previous $p_i$ and $q_i$ are on the outside. For the rest of this proof, we assume this orientation and drop the $<_{i_r}$ from the notation.
+
+Call let $W_r := W|_{\cP_{in} \cup q_r}$. By the original hypotheses on $W$ every vertex in $V_{in}(q_r)$ (which is a non-empty interval since $\ell(q_r) \geq 4$) must have support $\geq 1$, while the same is true for $V(q_r)$ because these vertices support $q_r$. By construction, the remaining vertices of $W|_{\cP_{in} \cup p}$, i.e. $V_{out}(q_r)$ are non-supporting.
 
 By Remark~\ref{rem:props of length 2 and 3}, $W_r$ admits at least one propagator of length 2.  $W_r$ has no propagators of length $3$ since $W$ has none.  Let $p_{r+1}$ be a propagator of length 2 in $W_r$; if it forms part of configuration \ref{item big and 2} or \ref{item pair of 2s}
 %the configuration \eqref{eq:2 prop config}
 then we are done, so assume otherwise. 
 
-Note we may replace $q_r$ by any other propagator, $q'_{r}$ of length $\geq 4$ in $W_r$ such that $p_{r+1}$ and $q_r$ are on opposite sides; such a new $q'_{r}$ still satisfies all the hypotheses, and so, without loss of generality we may assume that $q_r$ has minimal length among propagators of length $\geq 4$ such that $p_{r+1}\in \cP_{out}(q_r)$ is on the outside.  
+Note we may replace $q_r$ by any other propagator, $q'_{r}$ of length $\geq 4$ in $W_r$ such that $p_{r+1}$ and $q_r$ are on opposite sides; such a new $q'_{r}$ still satisfies all the hypotheses, and so, without loss of generality we may assume that $q_r$ has minimal length among propagators of length $\geq 4$ which have $p_{r+1}$ on their inside.
 
+Write $p_{r+1} = (j_{r+1}, j_{r+1}+2)$.
 There are two cases to consider.
-In the first case define $p_{r+1} = (j_{r+1}, j_{r+1}+2)$  with $i_r \leq j_{r+1} \leq i_r+2$ and $k_r-2 \leq j_{r+1} \leq k_{r}$.  Then since $p_{r+1}$ has length 2, it must be that $(i_r+3)+1 \geq k_r-2$ and so $q_r$ has length $\leq 6$.  Let $s$ be a propagators in $\cP_{in}(q_r)$ such that $p_{r+1}$ is not an interior propagator in the $<_{i_r}$ ordering: $p_{r+1} \not \in \cP_{in}(s, <{i_r})$. If it exists, $s = (i_s, j_s)$ must satisfy $i_r \leq i_s \leq j_s \leq i_r+2$ or $k_r-2 \leq i_s \leq j_s \leq k_r$ and hence be of length 2.  Therefore, if $\cP_{in}(q_r)$ contains a propagator $t$ of length $\leq 4$, $p_{r+1}$ must lie on its inside in the $<i_r$ ordering ( $p_{r+1} \in \cP_{in}(q_r, <_{i_r})$) which is impossible my minimality.  Therefore, if $\cP_{in}(q_r)$ contains another propagator of length $2$ we would have configuration \ref{item pair of 2s} which we have already assumed does not occur.  Consequently, $\cP_{in}(q_r)$ contains only $p_{r+1}$ and so we have \ref{item big and 2} which again we have assumed does not occur.
+The first case is that $i_r \leq j_{r+1} \leq i_r+2$ and $k_r-2 \leq j_{r+1}+2 \leq k_{r}$ (so $p_{r+1}$ has one end before $i_{r} + 3$ and the
+other after $k_{r} - 2$).  Then since $p_{r+1}$ has length 2, it must be that $(i_r+3)+1 \geq k_r-2$ and so $q_r$ has length $\leq 6$.  By the minimality assumption on $q_r$ no propagator in $W_r$ has $q_r$ on one sid eand $p_{r+1}$ on the other side, so there is any propagator in $W_r$ other than $p_{r+1}$ itself must be of the form $(i,j)$ with $i_r\leq i, j\leq i_r+2$ or $k_r-1 \leq i,j\leq k_r$ and hence be of length 2, and so we have configuration \ref{item pair of 2s} which we have already assumed does not occur.  Consequently, $\cP_{in}(q_r)$ contains only $p_{r+1}$ and so we have \ref{item big and 2} which again we have assumed does not occur.
 Therefore the first case cannot occur.
 
-In the second case, write $p_{r+1} = (j_{r+1}, j_{r+1}+2)$. Either at least $i_r+3 \leq j_{r+1} +2 \leq k_r-3$, or $i_r = j_{r+1}$ or $k_r-2 = j_{r+1}$; these situations all behave similarly.  By symmetry we consider only the first two cases. Not that since $j_{r+1}+4 \leq k_r-1$ in both cases, $j_{r+1}+4 \in V_{in}(q_r)$, and is thus supported. Since $p_{r+1}$ is not part of configuration \ref{item pair of 2s}, there is some propagator $t \in \Prop(j_{r+1}+4)$ with \hlfix{length $\geq 4$.  By noncrossingness $t$ is inside $q_r$, $t \in \cP_{in}(q_r)$, and $p_{r+1}$ is outside $t$, $p_{r+1} \not \in \cP_{in}(t, <_{i,r})$ by minimality. So we may set $q_{r+1} = t$ to continue the induction.  }{Hope I haven't broken things, but I don't follow why $\ell(t)\geq 4$ or $p_{r+1} \not \in \cP_{in}(t, <_{i,r})$}
+The second case is that one of the following three things happen
+\begin{itemize}
+\item $i_r+3 \leq j_{r+1}\leq k_r-3$ or $i_r+3 \leq j_{r+1}+2\leq k_r-3$,
+\item $i_r = j_{r+1}$, or 
+\item $k_r-2 = j_{r+1}$
+\end{itemize}
+(Phrased more causually, this is that $p_{r+1}$ has either at least one end on an edge in the interval $[i_r+3, k_r-2]$ or both ends lie in $[i_r, i_r+3]$ or both ends lie in $[k_r-2, k_r+1]$.)
+These situations all behave similarly.
+By symmetry it suffices to only consider the second situation and the second possiblity of the first situation. Note that since $j_{r+1}+4 \leq k_r-1$ in both situations, and $j_{r+1}+4 \in V_{in}(q_r)$, thus $j_{r+1}+4$ is supported by a propagator in $W_r$ other than $q_r$.  Let $t$ be this propagator.  Since $p_{r+1}$ is not part of configuration \ref{item pair of 2s} and $W_r$ has no propagators of length 3, we must have that the length of $t$ is $\geq 4$.  If $q_r$ and $p_{r+1}$ were on different sides of $t$ then this would contradict the minimal length hypothesis on $q_r$.  Therefore $t$ has all the previous $q_i$ and $p_i$ on the same side and length $\geq 4$ and so we may set $q_{r+1} = t$ to continue the induction.
 
 The overall result then follows by induction.
 \end{proof}
