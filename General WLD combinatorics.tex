@@ -2001,7 +2001,7 @@ We start with several lemmas, of roughly increasing degree of technicality.
 
 \begin{lem}\label{lem uncovered}
 
-Let $W$ be an admissible Wilson loop diagram with $k$ propagators, and with a vertex $i$ which supports no propagators.  Let $V$ be $W$ with vertex $i$ removed.  Then the Le diagram of $W$ is obtained from the Le diagram of $V$ by inserting an extra column containing all $0$s in position $i$ (i.e. such that the new column has the label $i$).
+Let $W$ be an admissible Wilson loop diagram with $k$ propagators, and with a vertex $i$ that supports no propagators.  Let $V$ be $W$ with vertex $i$ removed.  Then the Le diagram of $W$ is obtained from the Le diagram of $V$ by inserting an extra column containing all $0$s in position $i$ (i.e. such that the new column has the label $i$).
 \end{lem}
 
 \begin{proof}
@@ -2023,29 +2023,29 @@ By Lemma~\ref{no coloops} we know that $i \not\in I_1^W$, and so $i$ must label 
 If two Wilson loop diagrams differ by a dihedral transformation then their Le diagrams have same number of plusses.
 \end{lem}
 \begin{proof}
-By \cite[Proposition 17.10]{Postnikov}, the dimension of a positroid (and hence the number of plusses in its Le diagram) is $k(n-k) - A(\pi_W)$, where $A(\pi_W)$ denotes the number of alignments (see \cite[Figure 17.1]{Postnikov} and preceding discussion) of the decorated permutation $\pi_W$ of the positroid associated to $W$. 
+By \cite[Proposition 17.10]{Postnikov}, the dimension of a positroid (and hence the number of plusses in its Le diagram) is $k(n-k) - A(\pi_W)$, where $A(\pi_W)$ denotes the number of alignments of the decorated permutation $\pi_W$ of the positroid associated to $W$. (See \cite[Figure 17.1]{Postnikov} and preceding discussion.)
 
 It can easily be seen from \cite[Section 17]{Postnikov} and Algorithm \ref{alg:put GN on WLD} that dihedral transformations of a Wilson loop diagram $W$ correspond to dihedral transformations of the chord diagram representation of $\pi_W$. Since the number of alignments in a chord diagram is preserved under dihedral transformations, the result follows.
 \end{proof}
 
 
 \begin{lem}\label{lem good p}
-  Let $W$ be an admissible Wilson loop diagram with $n\geq 1$ propagators.  Then there is some dihedral transformation $W'$ of $W$ such that there is a propagator $p$ of $W'$ with the following properties.
+  Let $W$ be an admissible Wilson loop diagram with $n\geq 1$ propagators.  Then there is some dihedral transformation $W'$ of $W$ such that $W'$ has a propagator $p$ with the following properties.
   \begin{itemize}
-  \item $p = (i, n-1)$ with no propagators inside it (that is $i+2, \ldots, n-2$ do not support any propagators in $W'$).
+  \item $p = (i, n-1)$ for some $i$, and $p$ has no propagators inside it (that is $i+2, \ldots, n-2$ do not support any propagators in $W'$).
   \item Either the edge $i$ in $W'$ only supports $p$ or the edge $i$ in $W'$ supports exactly one other propagator $q = (j, i)$ with no other propagators inside $q$.
   \end{itemize}
 \end{lem}
 
 \begin{proof}
-  Remove all vertices of $W$ which do not support any propagators to get a weakly admissible Wilson loop diagram $V$.  Lemma~\ref{lem sian} applied to $V$ gives a length 2 propagator $p$ in $V$ for which either no other propagator is supported on one of the supporting edges of $p$ or there is a second length 2 propagator which is the only other propagator supported on one of the supporting edges of $p$.  Figure~\ref{fig 3 cases} shows the possible cases, and the reader can easily check that in each case $p$ must be in one of the two situations described above.
+  Remove all vertices of $W$ which do not support any propagators to get a weakly admissible Wilson loop diagram $V$.  Lemma~\ref{lem sian} applied to $V$ gives a length 2 propagator $p$ in $V$ for which either no other propagator is supported on one of the supporting edges of $p$ or there is a second length 2 propagator which is the only other propagator supported on one of the supporting edges of $p$.  (Figure~\ref{fig 3 cases} shows the possible configurations arising from Lemma~\ref{lem sian}, and the reader can easily check that in each case $p$ must be in one of the two situations described above.)
 
-  By Lemma~\ref{lem dihedral} there is a dihedral transformation of $V$ which yields a diagram satisfying the statement of the lemma with $p$ and $q$ both length 2. Restoring the vertices which do not support any propagators, we obtain a dihedral transformation $W'$ of $W$ as desired (with potentially longer lengths for $p$ and $q$).
+  We can now make a dihedral transformation of $V$ to obtain a diagram satisfying the statement of the lemma with $p$ and $q$ both length 2. Restoring the vertices which do not support any propagators, we obtain a dihedral transformation $W'$ of $W$ as desired (with potentially longer lengths for $p$ and $q$).
 \end{proof}
 
 
 
-Combining Lemmas \ref{lem uncovered}, \ref{lem dihedral}, and \ref{lem good p}, it therefore suffices to study the Le diagrams of \hlfix{weakly}{check} admissible Wilson loop diagrams admitting one of the configurations described in Lemma~\ref{lem good p} with propagators $p$ and $q$ (if $q$ exists) both of length 2. See Figure~\ref{fig special p} for an illustration of the two possibilities.
+Combining Lemmas \ref{lem uncovered}, \ref{lem dihedral}, and \ref{lem good p}, it therefore suffices to study the Le diagrams of weakly admissible Wilson loop diagrams admitting one of the configurations described in Lemma~\ref{lem good p} with propagators $p$ and $q$ (if $q$ exists) both of length 2. See Figure~\ref{fig special p} for an illustration of the two possibilities.
 
 The next few lemmas describe how diagrams of this type are related to the corresponding diagram with propagator $p$ removed, first in terms of the Grassmann necklaces and then in terms of the Le diagrams. These technical lemmas will form the backbone of the inductive step in the main dimensionality argument.
 
@@ -2064,8 +2064,8 @@ Let $W$ be an admissible Wilson loop diagram with $n\geq 1$ propagators, and sup
     \end{cases} \\
     I_{k}^{W} & =
     \begin{cases}
-      I_k^{V}\cup \{n-3\} & \text{if $n-3 \not\in I_k^{V}$}\\
-      I_k^{V}\cup\{n-2\} & \text{if $n-3\in I_k^{V}$}
+      I_k^{V}\cup \{n-3\} & \qquad \qquad \qquad \qquad \text{if $n-3 \not\in I_k^{V}$}\\
+      I_k^{V}\cup\{n-2\} & \qquad \qquad \qquad \qquad \text{if $n-3\in I_k^{V}$}
     \end{cases} \\
     & \text{for $1<k<n-2$}
   \end{align*}
@@ -2078,25 +2078,30 @@ Let $W$ be an admissible Wilson loop diagram with $n\geq 1$ propagators, and sup
 
 \begin{proof}
 
-The two possible situations are illustrated in Figure~\ref{fig special p}. The arguments proceed in a similar manner to Lemma~\ref{vertex cyclic int lem}.
+The two possible cases for $W$ are illustrated in Figure~\ref{fig special p}; all references to the ``left hand case'' or ``right hand case'' below refer to the diagrams in this figure.
 
-We first consider $I_1^{W}$. Note that $n-3 \not\in I_1^{V}$: for the right hand case this is clear from the diagram (since Algorithm~\ref{alg:put GN on WLD} would assign $q$ no later than vertex $n-4$), while for the left hand case it follows from Lemma \ref{lem no fourth vertex}. Therefore when we start at vertex 1 and apply the Grassmann necklace algorithm to $W$, $p$ is the only unassigned propagator when we reach vertex $n-3$ and we have $ I_1^{W}(p) = n-3$. 
+We first consider $I_1^{W}$, i.e. the set obtained by applying the Grassmann necklace algorithm to $W$ with starting vertex 1. Note that $n-3 \not\in I_1^{V}$: for the right hand case this is clear from the diagram (since Algorithm~\ref{alg:put GN on WLD} would assign $q$ no later than vertex $n-4$), while for the left hand case it follows from Lemma \ref{lem no fourth vertex}. Therefore when we start at vertex 1 and apply the Grassmann necklace algorithm to $W$, $p$ is the only remaining unassigned propagator when we reach vertex $n-3$, and so we have $ I_1^{W}(p) = n-3$ and $I_1^W = I_1^V\cup \{n-3\}$.
 
 
-Next consider $I_n^{W}$, i.e. the set obtained when we apply the Grassmann necklace algorithm with starting vertex $n$. In both cases we have $I_n^{W}(p) = n$. We are now at vertex 1, and the unassigned propagators are exactly those that appear in $V$. Therefore the algorithm continues as in $I_1^{V}$, i.e. we have $I_n^{W} = I_1^{V} \cup \{n\}$. By a similar argument, we must have $I_{n-1}^{W} = I_n^{V} \cup \{n-1\}$.
+Next consider $I_n^{W}$. From the figure we see that in both cases we have $I_n^{W}(p) = n$. We are now at vertex 1, and the unassigned propagators are exactly those that appear in $V$. Therefore the algorithm continues as in $I_1^{V}$, i.e. we have $I_n^{W} = I_1^{V} \cup \{n\}$. By a similar argument, we must have $I_{n-1}^{W} = I_n^{V} \cup \{n-1\}$.
 
 Now consider $I_{n-2}^{W}$. If $n-2\not\in I_{n-2}^{V}$ (i.e. $n-2$ supports no propagators in $V$), then in $W$ the algorithm assigns $p$ to $n-2$ and this does not affect the rest of the construction of $I_{n-2}^{V}$, so we obtain $I_{n-2}^{W} = I_{n-2}^{V}\cup \{n-2\}$ as above.
 
 On the other hand, if $n-2\in I_{n-2}^{V}$ then we must be in the right hand case of Figure~\ref{fig special p} and the algorithm assigns $q$ to vertex $n-2$ in both $V$ and $W$ (since $q$ is always the clockwise-most propagator supported on vertex $n-2$; see Figure~\ref{fig special p}). If $n-1 \not\in I_{n-2}^{V}$, then in $W$ the algorithm assigns $p$ to $n-1$ and then proceeds identically to $I_{n-2}^{V}$ for the remainder of its steps; thus $I_{n-2}^{W} = I_{n-2}^{V}\cup \{n-1\}$ in this case.
 
-Finally, if $n-2,n-1 \in I_{n-2}^{V}$ then the algorithm in $W$ assigns $q$ to $n-2$ and $p$ to $n-1$ as above, but this is different to what occurs in $I_{n-2}^{V}$ so we cannot use the same argument as above. We are now at vertex $n$ and only propagators $p$ and $q$ have been assigned; thus we are proceeding as in the construction of $I_n^{V}$ but without propagator $q$. By Lemma~\ref{vertex cyclic int lem} we know that $q$ was assigned to $n-5$ by $I_n^{V}$, and the only way this could occur is if all other propagators in $V$ had already been assigned when we reached vertex $n-5$ (see Figure~\ref{fig special p}); thus $q$ was the final propagator to be assigned in $I_n^{V}$. Therefore $I_{n-2}^{W} = (I_{n}^{V} \setminus \{n-5\}) \cup \{n-1, n-2\}$; this completes all cases for $I_{n-2}^{W}$.
+Finally, if $n-2,n-1 \in I_{n-2}^{V}$ then in $W$ the algorithm assigns $q$ to $n-2$ and $p$ to $n-1$ as above, but this is different to what occured in $I_{n-2}^{V}$ so we cannot use the same argument as above. We are now at vertex $n$ and only propagators $p$ and $q$ have been assigned; thus we are proceeding as in the construction of $I_n^{V}$ but without propagator $q$. By Lemma~\ref{vertex cyclic int lem} we know that $q$ was assigned to $n-5$ by $I_n^{V}$, and from the diagram we see that the only way this could occur is if all other propagators in $V$ had already been assigned when we reached vertex $n-5$; thus $q$ was the final propagator to be assigned in $I_n^{V}$. Therefore $I_{n-2}^{W} = (I_{n}^{V} \setminus \{n-5\}) \cup \{n-1, n-2\}$ in this case. This completes all cases for $I_{n-2}^{W}$.
 
 The arguments for $I_k^{W}$ ($1< k < n-2$) proceed analagously to those of $I_{n-2}^{W}$, with one simplification: we cannot have both $n-3$ and $n-2$ in $I_k^{V}$ since $q$ is the only propagator that could be assigned to either of them, and it cannot be assigned to both.
 
 This covers all cases and hence completes the proof.
 \end{proof}
 
+\begin{figure}
+  \includegraphics{Le_diagrams}
+  \caption{Le diagrams for $V$ (left) and $W$ (right).}\label{fig Le}
+\end{figure}
 
+\note{When doing the final formatting, try to ensure that Figure \ref{fig Le} and Lemma \ref{lem shape} are on the same page}
 \begin{lem}\label{lem shape}
   Let $V$ and $W$ be as in Lemma~\ref{lem I}.
   The shape of the Le diagram of $V$ can be built from left to right of the following blocks: a rectangle which is 3 columns wide, one more column of the same height, and a partition shape with at most as many rows as the rectangle.
@@ -2106,19 +2111,19 @@ This covers all cases and hence completes the proof.
 \begin{proof}
 See Figure~\ref{fig Le} for an illustration of the shapes described in the statement of the lemma.
 
-Recall that $I_1$ determines the shape of the Le diagram. By Lemma~\ref{lem I} we know that $n,n-1,n-2, n-3 \not\in I_1^{V}$ (which yields the leftmost four columns of the diagram for $V$) and that $I_1^{W} = I_1^{V}\cup \{n-3\}$. This implies that the right hand boundary of the shape of $V$ is the same as the right hand boundary of the shape of $W$ except that $W$ has one additional row of 3 boxes while $V$ has an additional column in the $n-3$ position; that is, an extra column fourth from the left.
+Recall that $I_1$ determines the shape of the Le diagram. By Lemma~\ref{lem I} we know that ${n,n-1,n-2, n-3 \not\in I_1^{V}}$ (which yields the leftmost four columns of the diagram for $V$) and that $I_1^{W} = I_1^{V}\cup \{n-3\}$. This implies that the right hand boundary of the shape of $V$ is the same as the right hand boundary of the shape of $W$ except that $W$ has one additional row of 3 boxes while $V$ has an additional column in the $n-3$ position; that is, an extra column fourth from the left.
 \end{proof}
 
 As illustrated in Figure~\ref{fig Le}, the pieces of the Le diagrams of $V$ and $W$ will be called $\mathcal{A}$ and $\mathcal{B}$ in what follows. Over the course of the next few lemmas we will prove that the plusses in the $\mathcal{B}$ parts of each diagram are identical, and that the relationship between the plusses in the $\mathcal{A}$ regions can be described explicitly.
 
-Note that when we speak of a plus in the Le diagram of $V$ being the same as in $W$ or vice versa, we mean that the position of the plus in $\mathcal{A}$ or $\mathcal{B}$ is the same; because of the column insertion the absolute indices may differ.
 
-\begin{figure}
-  \includegraphics{Le_diagrams}
-  \caption{Le diagrams for $V$ (left) and $W$ (right).}\label{fig Le}
-\end{figure}
+We do this by applying Algorithm~\ref{alg:GN to Le}, which constructs the Le diagram associated to a Grassmann necklace, to the Grassmann necklaces of $V$ and $W$. As described in Section [ref], if Algorithm~\ref{alg:GN to Le} places a $+$ in the box with row index $i$ and column index $j$, we say that this plus is in the $i \rightarrow j$ position, and refer to it as the plus defined by ``the (hook) path from $i$ to $j$''. Note that the collection of paths contributed by a single Grassmann necklace term  must be non-crossing.
 
-%Recall Algorithm~\ref{alg:GN to Le}, which constructs the Le diagram associated to a Grassmann necklace. As described in Section [ref], if Algorithm~\ref{alg:GN to Le} places a $+$ in the box with row index $i$ and column index $j$, we say that this plus is in the $i \rightarrow j$ position.
+
+
+Finally, we also note that when we speak of a plus in the Le diagram of $V$ being the same as in $W$ or vice versa, we mean that the position of the plus in $\mathcal{A}$ or $\mathcal{B}$ is the same; because of the column insertion the absolute indices may differ.
+
+
 
 
 \begin{lem}\label{lem n and n-1}
@@ -2134,18 +2139,17 @@ and so by Algorithm~\ref{alg:GN to Le} we have a plus in the $(n-3) \rightarrow 
 Also by Lemma~\ref{lem I} we have $I_{n-1}^{W} = I_n^{V} \cup \{n-1\}$. Recall from the proof of Lemma~\ref{lem I} that $n-3,n-2,n-1,n \not\in I_1^V$; therefore $I_1^W\setminus I_{n-1}^W = (I_1^V \setminus I_n^V) \cup\{n-3\}$, and $n-3$ is maximal in this set. Similarly, 
 \[I_{n-1}^W \setminus I_1^W = (I_n^V \setminus I_1^V) \cup \{n-1\} \subseteq \{n-1,n\},\]
 where the final inclusion follows from the definition of Grassmann necklace. In particular, $n-1$ is minimal in this set, so Algorithm~\ref{alg:GN to Le} yields a plus in the $(n-3) \rightarrow (n-1)$ position (i.e. the second box in the bottom row of the Le diagram of $W$) along with any plusses yielded by $I_n^V$.
-
+\end{proof}
 
 % Additionally $n-3\not\in I_{n}^{V}$ since if it were then $n-3$ would also be in $I_1^{V}$ and hence propagator $p$ could not contribute $n-3$ to $I_1^{W}$ in contradiction to Lemma~\ref{vertex cyclic int lem}.  Similarly $n-1, n-2\not\in I_n^{V}$.  Thus the paths putting the plusses in from $I_n^{V}$ lie completely in $\mathcal{B}$ or take some vertical boundary edge $>n-3$ to $n$.   Now view these paths in the Le diagram of $W$ and note that the path $n-3\rightarrow n-1$ is compatible, and so these paths together build the plusses that $I_{n-1}^{W}$ contributes.  That is, we get all the plusses from $I_{n}^{V}$ along with a $n-3\rightarrow n-1$ plus, that is a plus in the second to the right box of the bottom row.
-\end{proof}
+
 
 \begin{lem}\label{lem n-2 good}
   Let $V$ and $W$ be as in Lemma~\ref{lem I}, and suppose that $n-2 \not\in I_{n-2}^{V}$. Then $I_{n-2}^{W}$ contributes all of the same plusses as $I_{n-1}^{V}=I_{n-2}^{V}$, along with a new $(n-3)\rightarrow (n-2)$ plus.
 \end{lem}
 
 \begin{proof}
-If $n-2\not\in I_{n-2}^{V}$ then $I_{n-1}^{V}=I_{n-2}^{V}$ and by Lemma~\ref{lem I} we have $I_{n-2}^{W} = I_{n-1}^{V} \cup \{n-2\}$.  Note that $n-3\not\in I_{n-2}^{V}$ by Lemma~\ref{lem no fourth vertex}.  Therefore the paths controlling the plusses contributed by $I_{n-2}^{W}$ are exactly the paths for $I_{n-1}^{V}$ along with the $(n-3)\rightarrow (n-2)$ path.  This gives the statement of the lemma.
-
+If $n-2\not\in I_{n-2}^{V}$ then $I_{n-1}^{V}=I_{n-2}^{V}$ by definition, and by Lemma~\ref{lem I} we have $I_{n-2}^{W} = I_{n-1}^{V} \cup \{n-2\}$.  Note that $n-3\not\in I_{n-2}^{V}$ by Lemma~\ref{lem no fourth vertex}.  Therefore the paths controlling the plusses contributed by $I_{n-2}^{W}$ are exactly the paths for $I_{n-1}^{V}$ along with the $(n-3)\rightarrow (n-2)$ path.  This gives the statement of the lemma.
 \end{proof}
 
 \begin{lem}\label{lem n-2 bad}
@@ -2202,7 +2206,7 @@ Furthermore, no element of the Grassmann necklace of $V$ contributes a $(n-5)\ri
 
 
 \begin{lem}\label{lem other k}
-  Let $V$ and $W$ be as in Lemma~\ref{lem I}, and suppose that if $n-2\in I_{n-2}^{V}$ then also $n-1\in I_{n-2}^{V}$. Fix a $k$ in the range $1<k<n-2$. Then $I_k^{W}$ contributes the same plusses as $I_{k}^{V}$, except that if $I_{k}^{V}$ contributed a plus in the $n-3$ column then this plus is shifted one square left into the $n-2$ column, and no plus was already in that location in the Le diagram of $W$.
+  Let $V$ and $W$ be as in Lemma~\ref{lem I}, and suppose that if $n-2\in I_{n-2}^{V}$ then $n-1\in I_{n-2}^{V}$ also. Then for each $k$ in the range $1<k<n-2$, $I_k^{W}$ contributes the same plusses as $I_{k}^{V}$, except that if $I_{k}^{V}$ contributed a plus in the $n-3$ column of the Le diagram of $V$ then this plus is shifted one square left in the Le diagram of $W$, and no plus was already in that location in the Le diagram of $W$.
 \end{lem}
 
 \begin{proof}
@@ -2210,9 +2214,9 @@ Recall that $I_1^W = I_1^V\cup \{n-3\}$ and that $n-2,n-1,n \not\in I_1^W$.
 
   If $n-3\not\in I_{k}^{V}$ then by Lemma~\ref{lem I} we have $I_{k}^{W} = I_k^{V}\cup \{n-3\}$.  Then since $n-3$ is the largest element of $I_1^{W}$ this transformation leaves the disjoint paths unchanged and so the plusses carry over from $V$ to $W$ directly.
 
-  If $n-3\in I_{k}^{V}$ then $I_k^V$ must contribute a plus in the $n-3$ column of the Le diagram of $V$, and by Lemma~\ref{lem I} we have $I_{k}^{W} = I_k^{V}\cup \{n-2\}$. If $n-2$ supports no propagators in $V$ then certainly no pluses appear in the $n-2$ column of the Le diagram of $V$.  If $n-2$ supports at least one propagator in $V$ then $n-2 \in I_{n-2}^V$ and so by hypothesis $n-1 \in I_{n-2}^V$ as well. By Lemma~\ref{lem n-2 bad}, the only necklace element of $V$ containing $n-2$ is $I_{n-2}^{V}$ and the corresponding plus is not contributed to the Le diagram of $W$ by $I_{n-2}^{W}$.
+  If $n-3\in I_{k}^{V}$ then $I_k^V$ must contribute a plus in the $n-3$ column of the Le diagram of $V$, and by Lemma~\ref{lem I} we have $I_{k}^{W} = I_k^{V}\cup \{n-2\}$. If $n-2$ supports no propagators in $V$ then certainly no pluses appear in the $n-2$ column of the Le diagram of $V$. If $n-2$ supports at least one propagator in $V$ then $n-2 \in I_{n-2}^V$ and so by hypothesis $n-1 \in I_{n-2}^V$ as well. By Lemma~\ref{lem n-2 bad}, the only necklace element of $V$ containing $n-2$ is $I_{n-2}^{V}$ and the corresponding plus is not contributed to the Le diagram of $W$ by $I_{n-2}^{W}$.
 
-  Since $n-3 \in I_k^V \setminus I_1^V$, we must have a path from some vertical edge $i$ to the bottom edge $n-3$ in the Le diagram of $V$.  In the Le diagram of $W$, the index $n-3$ labels a vertical edge with no path starting at it (since $n-3$ belongs to both $I_1^W$ and $I_k^W$), and there must be a path leading to $n-2$ since $n-2 \in I_k^W \setminus I_1^W$.  By the previous paragraph no other path from $I_k^V$ could end at $n-2$, so since the paths cannot cross we conclude that the $i\rightarrow (n-3)$ path in the Le diagram of $V$ must become a $i\rightarrow (n-2)$ path in the Le diagram of $W$.
+  Since $n-3 \in I_k^V \setminus I_1^V$, we must have a path from some vertical edge $i$ to the bottom edge $n-3$ in the Le diagram of $V$.  In the Le diagram of $W$, the index $n-3$ labels a vertical edge with no path starting at it (since $n-3$ belongs to both $I_1^W$ and $I_k^W$), and there must be a path leading to $n-2$ since $n-2 \in I_k^W \setminus I_1^W$.  By the previous paragraph no other path from $I_k^V$ could end at $n-2$, and since the paths cannot cross we conclude that the $i\rightarrow (n-3)$ path in the Le diagram of $V$ must become a $i\rightarrow (n-2)$ path in the Le diagram of $W$. All other paths are unchanged.
 
    Thus the plus contributed by $I_k^V$ in the $n-3$ column of the Le diagram of $V$ is shifted into the $n-2$ column in the Le diagram for $W$, where there was no plus before, and no other plusses are changed.
 \end{proof}
@@ -2226,13 +2230,13 @@ Recall that $I_1^W = I_1^V\cup \{n-3\}$ and that $n-2,n-1,n \not\in I_1^W$.
 
   First note that a Wilson loop diagram $W$ with one propagator supported on vertices $i<j<k<\ell$ has Le diagram a single row with $|W|-i$ boxes.  Labelling the columns from left to right by $|W|, \ldots, |W|-i+1$, by the algorithm there are plusses in the $j$, $k$, and $\ell$ positions.
 
-  Now consider Wilson loop diagrams with $k>1$ propagators.  By Lemma~\ref{lem uncovered} it suffices to prove the result for weakly admissible Wilson loop diagrams with $k$ propagators and no non-supporting vertices.  By Lemma~\ref{lem dihedral} it suffices to prove the result for at least one Wilson loop diagram from each dihedral orbit.  Take a weakly admissible Wilson loop diagram $W$ with $k$ propagators and no non-supporting vertices.  Make a dihedral transformation of $W$ if necessary so that $W$ has a propagator $p$ with the properties in Lemma~\ref{lem good p} relative to $W$.  
+  Now consider Wilson loop diagrams with $k>1$ propagators.  By Lemma~\ref{lem uncovered} it suffices to prove the result for weakly admissible Wilson loop diagrams with $k$ propagators and no non-supporting vertices.  By Lemma~\ref{lem dihedral} it suffices to prove the result for at least one Wilson loop diagram from each dihedral orbit.  Take a weakly admissible Wilson loop diagram $W$ with $k$ propagators and no non-supporting vertices.  Make a dihedral transformation of $W$ if necessary so that $W$ has a propagator $p$ with the properties in Lemma~\ref{lem good p}.  
 
   We make one further simplification: if our $W$ is in Case 2 of Figure~\ref{fig special p} and $n-1$ supports only $p$ but $n-2$ supports at least one other propagator, then flip $W$ on the line perpendicular to the edge from $n-2$ to $n-1$ to obtain a diagram with the configuration of Case 1. This eliminates the possibility that we could have $n-2 \in I_{n-2}^W$ but $n-1 \not\in I_{n-2}^W$. 
 
   This diagram will be our $W$ for the remainder of the proof. Let $V$ be $W$ with $p$ removed. 
 
-  From Lemma~\ref{lem shape} we know how the shapes of the Le diagrams of $V$ and $W$ relate; let $\mathcal{A}$ and $\mathcal{B}$ be as described after that lemma.  Lemmas~\ref{lem n and n-1}, \ref{lem n-2 good}, and \ref{lem n-2 bad} tell us that the three boxes of the bottom row of the Le diagram of $W$ each have a plus.  Lemmas~\ref{lem n and n-1}, \ref{lem n-2 good}, \ref{lem n-2 bad}, and \ref{lem other k} show that there is a bijection between the plusses of the Le diagram of $V$ and the plusses of the Le diagram of $W$ that are not in the bottom row.  This bijection can be described as follows.
+  From Lemma~\ref{lem shape} we know how the shapes of the Le diagrams of $V$ and $W$ are related; let $\mathcal{A}$ and $\mathcal{B}$ be as described after that lemma.  Lemmas~\ref{lem n and n-1}, \ref{lem n-2 good}, and \ref{lem n-2 bad} tell us that the three boxes of the bottom row of the Le diagram of $W$ each have a plus.  Lemmas~\ref{lem n and n-1} through \ref{lem other k} show that there is a bijection between the plusses of the Le diagram of $V$ and the plusses of the Le diagram of $W$ that are not in the bottom row.  This bijection can be described as follows:
   \begin{itemize}
   \item All plusses from $\mathcal{B}$ for $V$ maintain their positions in $\mathcal{B}$ for $W$.
   \item All plusses from the leftmost two columns (the $n$ and the $n-1$ columns) of $\mathcal{A}$ for $V$ maintain their positions in $\mathcal{A}$ for $W$.
@@ -2245,9 +2249,7 @@ Recall that $I_1^W = I_1^V\cup \{n-3\}$ and that $n-2,n-1,n \not\in I_1^W$.
 
   % If the Le diagram for $V$ has a plus in the $n-2$ column then Lemma~\ref{lem n-2 bad} applies. By the final part of Lemma~\ref{lem n-2 bad} there is no $n-5\rightarrow n-1$ plus in the Le diagram of $V$, and so the $n-5\rightarrow n-1$ plus of $W$ can be uniquely mapped to the plus in the $n-2$ column of the Le diagram of $V$.  If the Le diagram for $V$ has no plus in the $n-2$ column, then leave the $n-5\rightarrow n-1$ plus where it is in moving back to $V$.  This reverses the map.
 
-
-  By Lemmas~\ref{lem n and n-1}, \ref{lem n-2 good}, and \ref{lem n-2 bad}, the bottom row of the diagram of $W$ always contains 3 new plusses; thus $W$ admits $3k + 3$ plusses in total. Applying induction completes the proof.
-
+Therefore the Le diagram of $W$ contains $3(k-1)$ plusses in bijection with the plusses from the Le diagram of $V$ and 3 new plusses in the bottom row, yielding $3k$ in total. Applying induction completes the proof.
 \end{proof}
 
 
