@@ -313,17 +313,17 @@
 
 \section{Introduction}
 
-This paper is the first in a two part series investigating the combinatorics and geometry underlying SYM $N=4$ theory. This series lays out several results about the relationship between the Wilson loop diagrams and the positroid cells that give a CW complex structure to the positive Grassmanian. This paper expands on an observation from \cite{wilsonloops}, that shows that certain families of Wilson loop diagrams correspond to the same positroid cell. This paper gives a way of enumerating the number of different Wilson loop diagrams that correspond to a given positroid cell. Furthermore, it shows that that the number of cells in the image of the map to positive Grassmannians is given by counting the directions of associahedrons. 
+This paper is the first in a two part series investigating the combinatorics and geometry underlying SYM $N=4$ theory. This series lays out several results about the relationship between the Wilson loop diagrams and the positroid cells that give a CW complex structure to the positive Grassmanian. This paper expands on an observation from \cite{wilsonloop}, that shows that certain families of Wilson loop diagrams correspond to the same positroid cell. This paper gives a way of enumerating the number of different Wilson loop diagrams that correspond to a given positroid cell. Furthermore, it shows that that the number of cells in the image of the map to positive Grassmannians is given by counting the directions of associahedrons. 
 
-The second paper in this series identifies which positroid cell is associated to which Wilson loop diagram \cite{GWLDCII}. It proves that a Wilson loop diagram with $k$ propagators corresponds to a $3k$ dimensional positroid cell. Furthermore, it gives an algorithm for passing from a Wilson loop diagram to the Grassman necklace that identifies the associated positroid cell. In this manner the authors give a means of identifying which positroid cell is associate to which Wilson loop diagram that circumvents the painstaking process of examining bases sets. Finally, the authors characterize the the volume forms that Wilson loop diagrams associate to each positroid cells.
+The second paper in this series identifies which positroid cell is associated to which Wilson loop diagram \cite{generalcombinatoricsI}. It proves that a Wilson loop diagram with $k$ propagators corresponds to a $3k$ dimensional positroid cell. Furthermore, it gives an algorithm for passing from a Wilson loop diagram to the Grassman necklace that identifies the associated positroid cell. In this manner the authors give a means of identifying which positroid cell is associate to which Wilson loop diagram that circumvents the painstaking process of examining bases sets. Finally, the authors characterize the the volume forms that Wilson loop diagrams associate to each positroid cells.
 
-In recent years, there has been a an active program researching the geometry and combinatorics underlying SYM $N=4$ theory \cite{wilsonloops, amplituhedron, correlahedron, karpwilliams, galashinlam}. This body of work started with the observation that the on shell amplitudes of this theory correspond to the volume of a subspace of a positive Grasmannian, called an Amplituhedron \cite{amplituhedron}. Since then, there has been significant work to study the structure of the amplituhedron, geometrically and combinatorially, for instance \cite{amplituhedron2, bigamplituhedronpaper, karpwilliams, galashinlam}. The focus of much of this work has been to understand the relationship between the combinatorial objects from the physics of the system, BCFW diagrams, and their corresponding natural object for studying the positive Grassmannians, positroid cells. 
+In recent years, there has been a an active program researching the geometry and combinatorics underlying SYM $N=4$ theory \cite{wilsonloop, Arkani-Hamed:2013jha, Amplituhedronsquared, AmplituhedronDecomposition, galashinlam}. This body of work started with the observation that the on shell amplitudes of this theory correspond to the volume of a subspace of a positive Grasmannian, called an Amplituhedron \cite{Arkani-Hamed:2013jha}. Since then, there has been significant work to study the structure of the amplituhedron, geometrically and combinatorially, for instance \cite{Arkani-Hamed:2013kca, arkani:2012nw, AmplituhedronDecomposition, galashinlam}. The focus of much of this work has been to understand the relationship between the combinatorial objects from the physics of the system, BCFW diagrams, and their corresponding natural object for studying the positive Grassmannians, positroid cells. 
 
-Meanwhile, there has been a different body of work studying SYM $N=4$ theory from the point of view of Feynman integrals in twistor space\cite{BullimoreSkinner, AldayMaldecena?, Wittenpaper}. These integrals are calculated via Wilson loops. The first author and Amat uncovered a connection between the Feynman integrals developed in this literature and positroids, defined  as matroids that can be realized as an element of $\Gr(k,n)$ \cite{wilsonloops}. With the second author and others, this work was extended to study these Feynman integrals in terms of positroid cells and the positive Grassmanians \cite{casestudy, non-orientable}. Others have tried different approaches to define a geometric space associated to these integrals in a manner similar to the Amplituhedron \cite{correlahedron, HeslopStewart}. 
+Meanwhile, there has been a different body of work studying SYM $N=4$ theory from the point of view of Feynman integrals in twistor space\cite{Adamo:2011pv, Britto:2005fq, Cachazo:2004kj}. These integrals are calculated via Wilson loops. The first author and Amat uncovered a connection between the Feynman integrals developed in this literature and positroids, defined  as matroids that can be realized as an element of $\Gr(k,n)$ \cite{wilsonloop}. With the second author and others, this work was extended to study these Feynman integrals in terms of positroid cells and the positive Grassmanians \cite{casestudy, non-orientable}. Others have tried different approaches to define a geometric space associated to these integrals in a manner similar to the Amplituhedron \cite{Amplituhedronsquared, HeslopStewart}. 
 
-Both the Amplituhedron literature and the Wilson loop literature associate $n$ particle, $N^kMHV$ interaction in SYM $N=4$ theory to volume forms on a set of positroid cells of $\Gr(k,n)$. This gives a CW complex of some submanifold in $\Gr(k,n)$. Understanding the geometry and topology of this space is the subject of ongoing research. For Wilson loop diagrams with $k=2$ and $n=6$, one knows that the manifold is not contractible \cite{casestudy}. Furthermore, the spaces defined by the Amplituhedron and the Wilson loop diagrams are not the same \cite{correlahedron}. In particular, it it more natural to consider Deodhar cells of $\mathbb{G}(k, n+1)$ for Wilson loop diagrams. In this case, one gets that the manifold represented by the diagrams is not orientable \cite{non-orientable}. 
+Both the Amplituhedron literature and the Wilson loop literature associate $n$ particle, $N^kMHV$ interaction in SYM $N=4$ theory to volume forms on a set of positroid cells of $\Gr(k,n)$. This gives a CW complex of some submanifold in $\Gr(k,n)$. Understanding the geometry and topology of this space is the subject of ongoing research. For Wilson loop diagrams with $k=2$ and $n=6$, one knows that the manifold is not contractible \cite{casestudy}. Furthermore, the spaces defined by the Amplituhedron and the Wilson loop diagrams are not the same \cite{Amplituhedronsquared}. In particular, it it more natural to consider Deodhar cells of $\mathbb{G}(k, n+1)$ for Wilson loop diagrams. In this case, one gets that the manifold represented by the diagrams is not orientable \cite{non-orientable}. 
 
-In this paper, we focus on the correspondence between Wilson loop diagrams and positroids, first defined in \cite{wilsonloops}. In that paper, the authors show that there are certain families of diagrams, specifically those with exact subdiagrams, that do map to the same positroid cell. In \cite{casestudy} the authors explictly show that not every positroid cell of a given dimension corresponds to a Wilson loop diagram. In this paper, we better enumerate this correspondence. We show that the map from Wilson loop diagrams to postroid cells is one to one exactly on the subset of diagrams with no non-trivial exact subdiagrams. We show that exact diagrams correspond to uniform matroids, and that contraction by exact subdiagrams has special matroidal properties. Further, given a Wilson loop diagram with a non-trivial exact subdiagram, we count the total number of Wilson loop diagrams that correspond to that same positroid cell. While we do not count the number of distint positroid cells that correspond to Wilson loop diagrams, we do show that this enumeration is equivalent to enumerating the number of directions of an associahedron.
+In this paper, we focus on the correspondence between Wilson loop diagrams and positroids, first defined in \cite{wilsonloop}. In that paper, the authors show that there are certain families of diagrams, specifically those with exact subdiagrams, that do map to the same positroid cell. In \cite{casestudy} the authors explictly show that not every positroid cell of a given dimension corresponds to a Wilson loop diagram. In this paper, we better enumerate this correspondence. We show that the map from Wilson loop diagrams to postroid cells is one to one exactly on the subset of diagrams with no non-trivial exact subdiagrams. We show that exact diagrams correspond to uniform matroids, and that contraction by exact subdiagrams has special matroidal properties. Further, given a Wilson loop diagram with a non-trivial exact subdiagram, we count the total number of Wilson loop diagrams that correspond to that same positroid cell. While we do not count the number of distint positroid cells that correspond to Wilson loop diagrams, we do show that this enumeration is equivalent to enumerating the number of directions of an associahedron.
 
 \subsection{Roadmap}
 
@@ -1104,17 +1104,86 @@ The two propositions imply
 
 \note{Do we want a conclusion section?}
 
-\begin{thebibliography}{10}
+%\begin{thebibliography}{10}
+%\bibliographystyle{plain}
+%\bibliography{C:/Users/agarws1/Documents/GitHub/OldWLDPapers/Bibliography}
+
+
+\begin{thebibliography}{50}
+
+\bibitem{Adamo:2011pv}
+Tim Adamo, Mathew Bullimore, Lionel Mason, and David Skinner.
+\newblock {Scattering Amplitudes and Wilson Loops in Twistor Space}.
+\newblock {\em J.Phys.A}, A44:454008, 2011.
 
 \bibitem{wilsonloop}
-S. Agarwala, E. M. Amat.
+Susama Agarwala and Eloi~Marin Amat.
 \newblock Wilson loop diagrams and positroids.
-\newblock {\em Commun. Math. Phys.} 2016.
+\newblock {\em Communications in Mathematical Physics}, 2016.
+\newblock arXiv:1509.06150.
 
-\bibitem{reversingOh}
-S. Agarwala, S. Fryer.
-\newblock An algorithm to construct the Le diagram associated to a Grassmann necklace
-\newblock \url{arXiv:1803.01726}
+\bibitem{casestudy}
+Susama Agarwala and Sian Fryer.
+\newblock A study in $\textrm{Gr}_{\geq 0}(2,6)$: from the geometric case book
+  of {W}ilson loop diagrams and {SYM} $n=4$.
+\newblock arXiv:1803.00958.
+
+\bibitem{generalcombinatoricsI}
+Susama Agarwala, Sian Fryer, and Karen Yeats.
+\newblock Combinatorics and geometry of wilson loop diagrams.
+\newblock manuscript in progress.
+
+\bibitem{non-orientable}
+Susama Agarwala and Cameron Marcott.
+\newblock Wilson loops in sym $n=4$ do not parametrize an orientable space.
+\newblock arXiv:1807.05397.
+
+\bibitem{arkani:2012nw}
+Nima Arkani-Hamed, Jacob~L. Bourjaily, Freddy Cachazo, Alexander~B Goncharov,
+  Alexander Postnikov, and Jaroslav Trnka.
+\newblock Scattering amplitudes and the positive {G}rassmannian.
+\newblock arXiv:1212.5605, 2012.
+
+\bibitem{Arkani-Hamed:2013kca}
+Nima Arkani-Hamed and Jaroslav Trnka.
+\newblock {Into the Amplituhedron}.
+\newblock {\em JHEP}, 12:182, 2014.
+
+\bibitem{Arkani-Hamed:2013jha}
+Nima Arkani-Hamed and Jaroslav Trnka.
+\newblock {The Amplituhedron}.
+\newblock {\em JHEP}, 10:30, 2014.
+
+\bibitem{Britto:2005fq}
+Ruth Britto, Freddy Cachazo, Bo~Feng, and Edward Witten.
+\newblock {Direct proof of tree-level recursion relation in Yang-Mills theory}.
+\newblock {\em Phys.Rev.Lett.}, 94:181602, 2005.
+
+\bibitem{Cachazo:2004kj}
+Freddy Cachazo, Peter Svrcek, and Edward Witten.
+\newblock {MHV vertices and tree amplitudes in gauge theory}.
+\newblock {\em JHEP}, 0409:006, 2004.
+
+\bibitem{Amplituhedronsquared}
+Burkhard Eden, Paul Heslop, and Lionel Mason.
+\newblock The correlahedron.
+\newblock 2017.
+\newblock arxiv:1701.00453.
+
+\bibitem{galashinlam}
+P.~{Galashin} and T.~{Lam}.
+\newblock {Parity duality for the amplituhedron}.
+\newblock {\em arXiv e-prints}, May 2018.
+
+\bibitem{HeslopStewart}
+Paul Heslop and Alastair Stewart.
+\newblock The twistor wilson loop and the amplituhedron.
+\newblock {\em Journal of High Energy Physics}, 2018(10):142, Oct 2018.
+
+\bibitem{AmplituhedronDecomposition}
+Steven~N. Karp, Lauren~K. Williams, and Yan~X. Zhang.
+\newblock Decompostions of amplituhedra.
+\newblock arXiv:1708.09525.
 
 \bibitem{Gale}
 D. Gale.
@@ -1138,19 +1207,20 @@ A.~Postnikov.
   \newblock {\em J. Combin. Theory Ser. A}, 92(1):68--76, (2000). \url{arXiv:math/9811086}.
 
 \bibitem{Stanley}
-  R. P. Stanley,
+  R. P. Stanley.
   \newblock Enumerative Combinatorics, Vol. 2
   \newblock Wadsworth (1999)
 
 \bibitem{Ziegler}
-  G. M. Ziegler,
+  G. M. Ziegler.
   \newblock Lectures on Polytopes
   \newblock Springer GTM 152, (1995)
 
 \bibitem{CSZinequivalent}
-  Cesar Ceballos, Francisco Santos, and G\"unter M. Ziegler,
+  Cesar Ceballos, Francisco Santos, and G\"unter M. Ziegler.
   \newblock Many non-equivalent realizations of the associahedron
   \newblock {\em Combinatorica}, 35(5):513--551, (2015).  \url{arxiv:1109.5544}
+
 
 \end{thebibliography}
 
