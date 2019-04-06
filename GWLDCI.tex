@@ -342,11 +342,23 @@ The next natural question, then is the number of inequivalent diagrams under thi
 \begin{dfn}\label{WLdfn}
 A Wilson loop diagram is given by the following data: a cyclicly ordered set $V$, along with a choice of first vertex (labeled $1$), and $k$ pairs, called propagators, written $\{p_r = (i_r, j_r)\}_{r=1}^k$.  \end{dfn}
 
-Propagators are undirected, so $p = (i,j) = (j,i)$. In order to fix a convention, we write $p = (i,j)$ with  $i +1 < j$ relative to the first vertex.
+Propagators are undirected, so $p = (i,j) = (j,i)$. In order to fix a convention, we write $p = (i,j)$ with  $i +1 \leq j$ relative to the first vertex.
 
-We depict this data as a circle with marked points, called vertices. The vertices are labeled by $V$ (preserving the cyclic ordering). The arc between consecutive vertices are called edges. There are $k$ wavy lines in the interior of the diagram, depicting the proagators, with endpoints on the edges. A propagator, $p =(i,j)$ has one endpoint on the edge between the vertex labeled $i$ and $i+1$ and another endpoint on the edge defined by $j$ and $j+1$. The condition\note{which condition is this referring to; I think it is talking about one of the admissibility conditions, so maybe this is in the wrong place, alternately the condition might have gotten deleted at some point} on $i_r$ and $j_r$ means that the propagator does not go between adjacent edges. Let $\cP = \{p_r\}_{r=1}^k$ be the set of propagators. Then we write \bas W = (\cP, V) \;.\eas \sanote{picture}
+We depict this data as a circle with marked points, called vertices. The vertices are labeled by $V$ (preserving the cyclic ordering). The arc between consecutive vertices are called edges. There are $k$ wavy lines in the interior of the diagram, depicting the proagators, with endpoints on the edges. A propagator, $p =(i,j)$ has one endpoint on the edge between the vertex labeled $i$ and $i+1$ and another endpoint on the edge defined by $j$ and $j+1$. Then we write \bas W = (\cP, V) \;.\eas 
 
 Note that the marked circle gives the vertices of $W$ a cyclic ordering. The choice of first vertex gives it a compatible linear order. Both the cyclic and the linear order become the correct perspective at various points in this paper. 
+
+For instance, 
+\bas W = (\cP, [8]) = \begin{tikzpicture}[rotate=67.5,baseline=(current bounding box.east)]
+	\begin{scope}
+	\drawWLD{8}{1.5}
+	\drawnumbers
+	\drawprop{1}{0}{4}{0}
+	\drawprop{2}{0}{4}{-1}
+\drawprop{5}{0}{8}{0}
+		\end{scope}
+	\end{tikzpicture}  \eas with $\cP = \{ (1,4), (2, 4), (5, 8)\}$ is a Wilson loop diagram.
+
 
 Often we take $V$ to be $[n]$, the cyclically ordered set of integers, $1 \ldots n$. In this case, we write $W = (\cP, [n])$. We introduce some notation to speak of vertices supporting a propagator, and the set of propagators supported on a vertex set.
 
@@ -359,6 +371,8 @@ Let $W = (\cP, [n])$.
 \item The set of vertices that are not in the support of any propagotors is denoted  $F(\emptyset)$. Vertices in this set are called non-supporting.  
 \end{enumerate}
 \end{dfn}
+
+
 
 \begin{rmk}\label{alt F(P) rmk}
 Note that a more explicit definition of $F(P)$ is \bas F(P)  = \big(V(P) \setminus V(P^c) \big) \cup F(\emptyset) \;.\eas Furthermore, note that by construction $\Prop(F(P)) \subseteq P$.  This containment is strict if there is any propagator $p$ in $P$ with the property that every vertex in the support of $p$ also supports a propagator not in $P$.
@@ -396,6 +410,10 @@ There is one particular type subdiagram that deserves special attention.
 \begin{dfn}
 For $W$ an admissible diagram, $(P, V(P))$ is exact if $|V(P)| = |P| + 3$.
 \end{dfn}
+
+\begin{eg}
+The Wilson loop diagram $W$ shown above is exact. There is a single non-supporting vertex in $W$, $F(\emptyset) = \{7\}$. The subdiagram $(\{(2, 4), (1, 4)\}, \{1, 2, 3, 4, 5, \})$ is an exact subdiagram of $W$. For $p = (5, 8)$ $F(p) = \{6, 7,8\}$. 
+\end{eg}
 
 The exact subdiagrams define an equivalence relation amongst Wilson loop diagrams.
 
@@ -474,7 +492,7 @@ These $C(W)$ parametrize a subspace of $\Gr(k, n)$ as shown in \cite{wilsonloop}
 
 \subsection{Wilson loop diagrams as matroids\label{sec matroid background}}
 
-We first give a quick summary of the matroid terminology that we will need; it is not intended as a comprehensive introduction to matroids and the interested reader is referred to [ref][find a good matroid reference].\note{Oxley is always my go to reference for matroids, but perhaps it has the wrong focus for you?}
+We first give a quick summary of the matroid terminology that we will need; it is not intended as a comprehensive introduction to matroids and the interested reader is referred to \cite{OxleyMatroidBook} 
 
 A {\em matroid} $M = (E,\cB)$ consists of a finite ground set $E$ and a non-empty family $\cB \subseteq \cP(E)$ whose elements satisfy the {\em basis exchange property}: for any distinct $B_1,B_2 \in \cB$ and any $a \in B_1 \setminus B_2$, there exists some $b \in B_2 \setminus B_1$ such that $(B_1 \setminus \{a\})\cup \{b\} \in \cB$ as well. The elements of $\cB$ are called the {\em bases} of the matroid. Note that the basis exchange property immediately implies that all bases have the same size.
 
@@ -1104,10 +1122,8 @@ The two propositions imply
 
 \note{Do we want a conclusion section?}
 
-%\begin{thebibliography}{10}
 %\bibliographystyle{plain}
 %\bibliography{C:/Users/agarws1/Documents/GitHub/OldWLDPapers/Bibliography}
-
 
 \begin{thebibliography}{50}
 
@@ -1215,6 +1231,13 @@ A.~Postnikov.
   G. M. Ziegler.
   \newblock Lectures on Polytopes
   \newblock Springer GTM 152, (1995)
+
+\bibitem{OxleyMatroidBook}
+James~G. Oxley.
+\newblock {\em Matroid Theory}, volume~21 of {\em Oxford graduate texts in
+  mathematics}.
+\newblock Oxford University Press, New York, 2011.
+
 
 \bibitem{CSZinequivalent}
   Cesar Ceballos, Francisco Santos, and G\"unter M. Ziegler.
