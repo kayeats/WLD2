@@ -395,7 +395,7 @@ A Wilson loop diagram is admissible if \begin{enumerate}
 A Wilson loop diagram is weakly admissible if the second and third conditions hold.
  \end{dfn}
 
-The first conditions states that there are at least four more vertices than propagators in an admissible Wilson Loop Diagram. The second imposes an upper bound on how densely the propagators can be fitted in the diagram. The third ensures that ensures that no propagators cross in the interior of the diagram. In other words, a Wilson loop diagram, $(\cP, [n])$ is admissible if and only if $n > \cP +4$, and has neither crossing propagators nor any pairs of propagators that start and end on the same pair of non-adjacent edges.
+The first conditions states that there are at least four more vertices than propagators in an admissible Wilson Loop Diagram. The second imposes an upper bound on how densely the propagators can be fitted in the diagram. The third ensures that ensures that no propagators cross in the interior of the diagram. \note{This ``in other words'' doesn't seem to me to be true as condition 2 could fail for a set of more than two propagators but not for a set of two propagators, and also condition 1 is $\geq$ not $>$}In other words, a Wilson loop diagram, $(\cP, [n])$ is admissible if and only if $n > \cP +4$, and has neither crossing propagators nor any pairs of propagators that start and end on the same pair of non-adjacent edges.
 
 Note that if we take any admissible Wilson loop diagram and remove the non-supporting vertices then we will obtain a weakly admissible Wilson loop diagram that may or may not be admissible itself.
 
@@ -502,7 +502,6 @@ A {\em circuit} in $M$ is a minimally dependent set. That is, it is a set $C \su
 
 Finally, we describe several important types of matroids. A matroid of rank $k$ with a ground set of size $n$ is called {\em realizable} if there exists some $A \in Gr(k,n)$ whose non-zero $k\times k$ minors are exactly those with columns indexed by elements of $\cB$. A {\em positroid} is a matroid which can be realized by an element of the totally nonnegative Grassmannian $\Gr(k,n)$. Finally, a {\em uniform matroid} of rank $r$ is a matroid in which any set of size $\leq r$ is independent.
 
-
 Matroid theory relates to the study of Wilson loop diagrams as follows. In \cite{wilsonloop}, Agarwala and Amat show that every admissible Wilson loop diagram with $k$ propagators defines a positroid of rank $k$, and that the independent sets can be read directly from the diagram:
 
 \begin{thm} \label{thm WLD defines matroid} \cite[Theorem 3.6]{wilsonloop} Any admissible Wilson loop diagram $W =(\cP, [n])$ defines a matroid $M(W)$ with ground set $[n]$. The independent sets are exactly those subsets $V \subseteq [n]$ such that $\nexists U\subseteq V$ satisfying $|\Prop(U)| < |U|$. \label{thm:WLDmatroid}\end{thm}
@@ -523,7 +522,7 @@ Let $W = (\cP,n)$ be an admissible Wilson loop diagram. Then:
 \begin{enumerate}
 \item The rank of a set $V \subseteq [n]$ is bounded above by $\min\{|V|,|\Prop(V)|\}$, with $\rk(V) = |V|$ if and only if $V$ is an independent set.
 %\item Let $v \in [n]$ and $q \in \Prop(v)$. Then for any $V \subset [n]$ such that $q \not \in \Prop(V)$, we have $\rk(V \cup \{v\}) = \rk(V) +1$, i.e. adding a vertex that supports a new propagator to a set increases the rank of the set.
-\item If $C \subseteq [n]$ is a cycle, then $\rk(C) = |Prop(C)|$.
+\item If $C \subseteq [n]$ is a cycle in the matroid, then $\rk(C) = |Prop(C)|$.
 \item If $[n]$ can be partitioned into at least two non-empty sets, each of which support different sets of propagators that form a partition of the propagotor set, \bas [n] = \sqcup_i V(P_i) \quad \textrm{s.t.} \quad \sqcup P_i = \cP; \quad V(P_i) \cap V(P_j) = \emptyset; \quad  P_i \cap P_j = \emptyset \;, \eas then the matroid $M(W)$ is seperable, \bas M(W) = \bigoplus_i M(P_i, V(P_i)) \;.\eas 
 \item $F(P)$ is a flat of $M(W)$, thus justifying the name ``propagator flat''.
 \end{enumerate}
@@ -531,7 +530,7 @@ Let $W = (\cP,n)$ be an admissible Wilson loop diagram. Then:
 \begin{proof}
 The first part of (1) is \cite[Equation (9)]{wilsonloop} and surrounding discussion, and the second part is standard matroid theory. (2) is \cite[Lemma 3.27]{wilsonloop}. (3) is a direct consequence of \cite[Lemma 3.20]{wilsonloop} and the fact that $F(P_1)^c = V(P_1^c)$
 
-To prove (4), we need to show that $F(P)$ is maximally dependent. If $F(P) = [n]$ then this is automatic, so suppose not and let $v \in [n] \setminus F(P)$. In other words, $v \in V(P^c)$ and so $v$ supports some propagator $q \not\in P$.  Let $S \subseteq F(P)$ be an independent set of maximal size. Then $\Prop(S) \subseteq P$ by (1), and no subset of $S$ supports fewer propagators than the number of vertices it contains (this is the definition of an independent set in $M(W)$). Since $v$ supports a new propagator $q \not\in P$, the set $S \cup \{v\} \subseteq F(P) \cup\{v\}$ also satisfies this independence condition. Thus $\rk(F(P) \cup\{v\}) = \rk(F(P)) + 1$, as required.
+To prove (4), we need to show that $F(P)$ is maximally dependent. If $F(P) = [n]$ then this is automatic, so suppose not and let $v \in [n] \setminus F(P)$. In other words, $v \in V(P^c)$ and so $v$ supports some propagator $q \not\in P$.  Let $S \subseteq F(P)$ be an independent set of maximal size. Then $\Prop(S) \subseteq P$ and no subset of $S$ supports fewer propagators than the number of vertices it contains (by (1) this is one characterization of an independent set in $M(W)$). Since $v$ supports a new propagator $q \not\in P$, the set $S \cup \{v\} \subseteq F(P) \cup\{v\}$ also satisfies this independence condition. Thus $\rk(F(P) \cup\{v\}) = \rk(F(P)) + 1$, as required.
 \end{proof}
 
 Note that this means that the set, $F(\emptyset)$, of non-supporting vertices is the maximal subset of vertices of $W$ of rank $0$. That is, it is the unique flat of rank $0$ in $M(W)$. 
@@ -747,7 +746,7 @@ Every triangulated piece $t$ of an admissible Wilson loop diagram $W$ correspond
   \item along with the outer edges of $\tau(W)$ for which both their end points are in the vertex set
   \end{itemize}
 \end{itemize}
-Note that the subgraph $t$ depends on how the propagators of $P$ sit inside $[n]$, not on how they sit in $W_P$ itself.  In particular $t$ is not the subgraph of $\tau(W)$ consisting only of edges corresponding to propagators of $P$. 
+Note that the subgraph $t$ depends on how the propagators of $P$ sit inside $[n]$, not on how they sit in $W_P$ itself.  In particular $t$ is not the subgraph of $\tau(W)$ consisting only of edges corresponding to propagators of $P$. \note{This clarification arose because of a discussion with Susama, but maybe it would be clearer to the reader if an example, like we had in that discussion, were included here}
 
 
 \begin{lem}\label{lem triang to exact}
