@@ -347,6 +347,22 @@ A {\bf Wilson loop diagram} $W = (\cP,V)$ consists of a cyclically ordered set $
 
 A Wilson loop diagram is depicted as a circle, with the vertices $V$ equally spaced along the edge of the circle and listed counterclockwise in their cyclic order. The arc between two consecutive vertices is referred to as an {\bf edge} of the diagram, and the $i$th edge of $W$ is the edge from vertex $i$ to its successor. Each propagator $(i,j) \in \cP$ is denoted by a wavy line inside the circle joining edge $i$ and edge $j$.
 
+\begin{figure}[h]
+\[W\ =\ \begin{tikzpicture}[rotate=67.5,baseline=(current bounding box.east)]
+	\begin{scope}
+	\drawWLD{8}{1.5}
+	\drawnumbers
+	\drawprop{1}{0}{4}{0}
+	\drawprop{2}{0}{4}{-1}
+    \drawprop{5}{0}{8}{0}
+    \drawprop{5}{1}{7}{0}
+		\end{scope}
+	\end{tikzpicture}\]
+
+\caption{The Wilson loop diagram $W = \big(\{(1,4), (2,4), (5,7), (5,8)\},[8]\big)$ which has four propagators and eight vertices.}
+\label{fig:ex of WLD}
+\end{figure}
+
 Generally speaking the propagators are undirected, so $(i,j)$ and $(j,i)$ represent the same propagator. As a general convention, we write $p = (i,j)$ with  $i < j$ relative to the first vertex. However, in Section~\ref{sec:propagator configs} we will need to give the propagators a direction (in order to refer to vertices ``inside'' and ``outside'' the propagator); in this setting, we impose the convention that $p= (i,j)$ denotes a propagator flowing from $i$ to $j$, and $p= (j,i)$ denotes the \emph{same} propagator flowing in the opposite direction.
 
 
@@ -362,15 +378,15 @@ Let $W = (\cP, V)$ be a Wilson loop diagram.
 to be the vertex support of $P$.
 \item For $U \subseteq V$, the set of propagators supported on $U$ is denoted by
 \[\Prop(U) = \{ p \in \cP\ |\ V(p) \cap U \neq \emptyset \}.\]
-\item Vertices of $W$ that do not support any propagators are called non-supporting. The set of all non-supporting vertices in $W$ is denoted $F(\emptyset)$. 
+Note that a propagator does not need to have its entire support contained in $U$. $\Prop(U)$ is the set of all propagators that would be affected by removing the set $U$.
+\item Vertices of $W$ that do not support any propagators are called {\bf non-supporting}. The set of all non-supporting vertices in $W$ is denoted $F(\emptyset)$. 
 \end{enumerate}
 \end{dfn}
 
 
 
 \begin{dfn} \label{subdiagramdfn}
-Let $W = (\cP, V)$ be an admissible Wilson loop diagram. Then $W' = (Q,U)$ is a subdiagram of $W$ if 
-\[ Q \subseteq \cP \quad \text{ and }\quad V(Q) \subseteq U \subseteq V\;.\]
+Let $W = (\cP, V)$ be an admissible Wilson loop diagram. Then $W' = (Q,U)$ is a {\bf subdiagram} of $W$ if $Q \subseteq \cP$ and $V(Q) \subseteq U \subseteq V$.
 \end{dfn}
 
 
@@ -386,9 +402,9 @@ A Wilson loop diagram $W = (\cP, V)$ is called {\bf admissible} if:
 \end{enumerate}
  \end{dfn}
 
-The first condition bounds the total number of propagators in the diagram, while the second limits how densely propagators can be fitted into any part of the diagram; in particular, it prohibits both propagators that connect two adjacent edges and parallel propagators that start and end on the same pair of edges. The third condition simply requires that propagators are non-crossing. 
+The first condition bounds the total number of propagators in the diagram, while the second limits how densely propagators can be fitted into any part of the diagram; in particular, it prohibits propagators that connect two adjacent edges and parallel propagators that start and end on the same pair of edges. The third condition simply requires that propagators are non-crossing. 
 
-These conditions are imposed by the physical interpretation of Wilson loop diagrams (see for example [ref]). We therefore restrict our attention in this paper to admissible Wilson loop diagrams and their subdiagrams only. 
+These conditions are imposed by the physical interpretation of Wilson loop diagrams (see for example \hlfix{[ref]}{probably for Susama: is there a sensible paper to cite here?}). We therefore restrict our attention in this paper to admissible Wilson loop diagrams and their subdiagrams only. 
 
 
 Note that a subdiagram $(Q,U)$ of an admissible Wilson loop diagram need not be admissible itself: it inherits conditions 2 and 3 automatically, but we could have $|V(Q)| = |Q| + 3$. We call diagrams of this type {\bf weakly admissible}; in the context of this paper, they occur only when we take an admissible diagram and delete one or more non-supporting vertices.
@@ -404,19 +420,8 @@ The entries $c_{p,q}$ are non-zero real variables. The columns of $C(W)$ corresp
 
 \begin{eg}
 Consider the admissible Wilson loop diagram 
-\[W = (\{(1,4), (2,4), (5,7), (5,8)\},[8]),\]
-which is represented graphically by the diagram
-\[W = \begin{tikzpicture}[rotate=67.5,baseline=(current bounding box.east)]
-	\begin{scope}
-	\drawWLD{8}{1.5}
-	\drawnumbers
-	\drawprop{1}{0}{4}{0}
-	\drawprop{2}{0}{4}{-1}
-    \drawprop{5}{0}{8}{0}
-    \drawprop{5}{1}{7}{0}
-		\end{scope}
-	\end{tikzpicture}\]
-Ordering the propagators as listed above, we obtain the associated matrix
+\[W = \big(\{(1,4), (2,4), (5,7), (5,8)\},[8]\big),\]
+from Figure~\ref{fig:ex of WLD}. Ordering the propagators as listed above, we obtain the associated matrix
 \[ C(W) = \left(
 \begin{array}{cccccccc}
 c_{1,1} & c_{1,2} & 0 & c_{1,4} & c_{1,5} & 0 & 0 & 0 \\
@@ -427,29 +432,33 @@ c_{4,1} & 0 & 0 & 0 & c_{4,5} & c_{4,6} & 0 & c_{4,8}  \\
 \right) \;.\]
 \end{eg}
 
-The matrix $C(W)$ parametrizes a subspace of $\Gr(k, n)$ as shown in \cite{wilsonloop}; we denote this subspace by $\Sigma(W)$. 
+The matrix $C(W)$ parametrizes a subspace of $\Gr(k, n)$, as shown in \cite{wilsonloop}; we denote this subspace by $\Sigma(W)$. 
 
-From $C(W)$ we obtain the matroid $M(W)$ associated to $W$, which is simply the matroid represented by $C(W)$: its ground set is the set $V$ of vertices of $W$, and the independent sets are exactly the sets $U \subseteq V$ such that the columns of $C(W)$ indexed by $U$ are linearly independent. More detail on this is given in Section~\ref{sec:positroid background} below.
+From $C(W)$ we obtain the matroid $M(W)$ associated to $W$, which is simply the matroid represented by $C(W)$: its ground set is the set $V$ of vertices of $W$, and the independent sets are exactly the sets $U \subseteq V$ such that the columns of $C(W)$ indexed by $U$ are linearly independent. More detail on this is given in Section~\ref{sec:M(W)} below.
 
 
-The Wilson loop diagram also define a volume form on $\Sigma(W)$, namely 
+The Wilson loop diagram also defines a volume form on $\Sigma(W)$, namely 
 \[ \Omega(W) = \frac{\prod_{r=1}^{|\cP|} \prod_{v \in V_{p_r}} \textrm{d}c_{p_r}}{R(W)} \;. \]
-The interested reader is referred to [ref] for more information about the volume form. Of interest to us in this paper is the denominator $R(W)$, which we define next.
+The interested reader is referred to \hlfix{[ref]}{any paper that talks about the volume form} for more information about the volume form. Of interest to us in this paper is the denominator $R(W)$, which we define next.
 
 \begin{dfn}\label{def R(W)}
-Let $W = (\cP,V)$ be an admissible Wilson loop diagram, and fix an edge $e \in V$. Let $\{p_1 \ldots p_r\}$ be the propagators with one end lying on edge $e$, ordered so that $p_1$ is closest to the vertex $e$, $p_r$ closest to $e+1$, and $p_i$ is closer to $e$ than $p_{i+1}$ is. Then we define 
-\[ R_e =  c_{p_1,e+1} \prod_{j= 1}^{r-1} \left((c_{p_j,e} c_{p_{j+1},e+1} - c_{p_{j+1},e} c_{p_{j},e+1} ) \right) c_{p_r,e}\;.\]
-Note that if $r = 1$ (i.e. there is exactly one propagator lying on edge $e$) then $R_e = c_{p,e} c_{p,e+1}$. The denominator $R(W)$ is defined to be the product of all of the $R_e$, i.e. 
+Let $W = (\cP,V)$ be an admissible Wilson loop diagram, and fix an edge $e$. Let $\{p_1 \ldots p_r\}$ be the propagators with one end lying on edge $e$, ordered so that $p_1$ is closest to the vertex $e$, $p_r$ closest to $e+1$, and $p_i$ is closer to $e$ than $p_{i+1}$ is. Define 
+\[ R_e =  c_{p_1,e+1} \prod_{j= 1}^{r-1} \left((c_{p_j,e} c_{p_{j+1},e+1} - c_{p_{j+1},e} c_{p_{j},e+1} ) \right) c_{p_r,e}\;\]
+to be the component of $R(W)$ associated to edge $e$. Note that if $r = 1$ (i.e. there is exactly one propagator lying on edge $e$) then this expression simplifies to $R_e = c_{p,e} c_{p,e+1}$. The denominator $R(W)$ is defined to be the product of all of the $R_e$, i.e. 
 \[R(W) = \prod_{e \in V} R_e.\]
 \end{dfn}
-It is this polynomial $R(W)$ that we characterize in Section~\ref{sec poles}, where we give a simple algorithm to read $R(W)$ directly from the Wilson loop diagram.
+Understanding the polynomial $R(W)$ (and hence the singularities of the volume form $\Omega(W)$) \hlfix{is important for the physics}{help?}. In Section~\ref{sec poles} we give a simple algorithm to read $R(W)$ directly from the Wilson loop diagram.
 
 
-\subsection{Positroid background}\label{sec:positroid background}
+\subsection{Positroids, Grassmann necklaces, and Le diagrams}\label{sec:positroid background}
 
-[positroids]
+Let $\binom{[n]}{k}$ denote the set of all $k$-subsets of the cyclically ordered set $[n]$.  
 
-Let $\binom{[n]}{k}$ be the set of all $k$-subsets of the cyclically ordered set $[n]$.  For each $j \in [n]$, we can define a total order $\leq_j$ on the interval $[n]$ by
+For our purposes, a {\bf positroid} is a matroid $M$ with ground set $[n]$ and bases $\cB \subseteq \binom{[n]}{k}$ which can be represented by an element of the positive Grassmannian $\Gr(k,n)$, i.e. such that there exists a real full-rank $k\times n$ matrix whose $k\times k$ minors are all nonnegative and such that the minor $[[k]|J]$ is positive if and only if $J \in \cB$.
+
+The interested reader is referred to \cite{Postnikov} for an introduction to the geometry and combinatorics of positroid cells in the positive Grassmannian. Postnikov shows in \cite{Postnikov} that the positroids of $\Gr(k,n)$ are indexed by many interesting collections of objects, including Le diagrams, Grassmann necklaces, decorated permutations, and plabic graphs. The two most suited to our purposes are the Grassmann necklaces and the Le diagrams, which we introduce below. In order to do so, we first need some preliminary definitions.
+
+For each $j \in [n]$, we can define a total order $\leq_j$ on the interval $[n]$ by
 \[ j <_j j+1 <_j \dots <_j n <_j 1 \dots <_j j-1\;.\]
 This in turn induces a total order on $\binom{[n]}{k}$, namely the lexicographic order with respect to $<_j$.  It also induces a separate partial order $\gale{j}$ on $\binom{[n]}{k}$ (the {\bf Gale order} \cite{Gale}), which is defined as follows: for 
 \[A = \{a_1 <_j a_2 <_j \dots <_j a_k\} \text{ and } B = \{b_1 <_j b_2 <_j \dots <_j b_k\} \in \binom{[n]}{k},\] we define
@@ -468,12 +477,14 @@ By convention, we set $I_{n+1} = I_1$.
 
 By \cite[Theorem 17.1]{Postnikov}, the Grassmann necklaces of type $(k,n)$ are in 1-1 correspondence with the positroid cells in $\Gr(k,n)$.  This correspondence is given explicitly in \cite[Theorem 8]{Oh}: if $(I_1, \dots, I_n)$ is the Grassmann necklace associated to a positroid $M = ([n],\cB)$, then the bases of $M$ are exactly
 \[\cB = \left\{J \in \binom{[n]}{k}\ :\ I_i \gale{i} J \ \forall i \in [n]\right\}.\]
+Thus the Grassmann necklace is well suited to testing whether a given $k$-set is a basis for $M$, or for generating a list of all bases of $M$.
+
 
 \begin{dfn}\label{def:le diagram}
 A {\bf Le diagram} is a Young diagram in which every square contains either a $+$ or a $0$, subject to the rule that if a square contains a $0$ then either all squares to its left (in the same row) must also contain a $0$, or all squares above it (in the same column) must also contain a $0$, or both.
 \end{dfn}
 
-By \cite[Theorem 6.5]{Postnikov}, the set of all Le diagrams that fit within a $k\times(n-k)$ rectangle is in 1-1 correspondence with the positroid cells of $\Gr(k,n)$. The dimension of a positroid cell is equal to the number of $+$ squares in its Le diagram \cite[Theorem 6.5]{Postnikov}.
+By \cite[Theorem 6.5]{Postnikov}, the set of all Le diagrams that fit within a $k\times(n-k)$ rectangle is in 1-1 correspondence with the positroid cells of $\Gr(k,n)$. Le diagrams are particularly useful for comparing dimensions of positroids, since the dimension of a positroid is equal to the number of $+$ squares in its Le diagram \cite[Theorem 6.5]{Postnikov}.
 
 The rows and columns of a Le diagram are labelled as follows: given a Le diagram fitting inside a $k\times (n-k)$ box, arrange the numbers $1,2, \dots, n$ along its southeast border, starting from the top-right corner. See Figure \ref{fig:row column numbering} for examples.
 
@@ -530,14 +541,19 @@ After performing the above for $2 \leq i \leq n$, place a $0$ in any remaining u
 
 An algorithm for constructing the Grassmann necklace of a Le diagram also exists; this was given by Oh in \cite{Oh}. A method for using the Le diagram to test whether a given $k$-subset is a basis for the corresponding positroid or not was given by Casteels in \cite{CasteelsPaths}.
 
+\subsection{The positroid associated to an admissible Wilson loop diagram}\label{sec:M(W)}
 
+
+words go here
 
 \section{Wilson Loop diagrams and their Grassmann necklaces}\label{sec GN algorithm}
 
 
 Since Wilson loop diagrams correspond to positroids, it is natural to study the subspace of $\Gr(|\cP|, n)$ they define. 
 
-In this section we will give an algorithm to go directly from a Wilson loop diagram to the Grassmann necklace of its positroid.  As well as the result itself, the techniques developped will be useful throughout.  One of the key insights is that an element of the Grassmann necklace can be viewed as a function from the propagators of the diagram to the vertices in the Grassmann necklace element.  This is captured in Definition~\ref{def I_i as a function}, and used throughout the paper.
+In this section we will give an algorithm to go directly from a Wilson loop diagram to the Grassmann necklace of its positroid. This is a useful result in and of itself, as it greatly simplifies the process of identifying the positroid associated to a given WLD. It also allows us to examine how the positroid changes as we make minor changes to the Wilson loop diagram; indeed, the techniques we develop in this section to verify that our algorithm produces the correct Grassmann necklace will also be used repeatedly in later sections.
+
+One of the key insights is that each element of the Grassmann necklace can be viewed as a function from the propagators of the diagram to the vertices in the Grassmann necklace element.  This is captured in Definition~\ref{def I_i as a function}, and used throughout the paper.
 
 Throughout this section, $W = (\cP,[n])$ is an admissible Wilson loop diagram with $k$ propagators.
 
