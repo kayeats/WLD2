@@ -368,17 +368,17 @@ Generally speaking the propagators are undirected, so $(i,j)$ and $(j,i)$ repres
 
 Let $[n]$ denote the set of integers $\{1,\dots,n\}$ with the obvious cyclic and linear orders. Our primary focus is Wilson loop diagrams with $V = [n]$, so in order to simplify the exposition we will often use $i+1$ as shorthand for ``the successor of vertex $i$''. 
 
-We first introduce some definitions that will allow us to talk about subsets of the vertices of $W$, subsets of the propagators of $W$, and what it means to be a ``subdiagram'' of $W$.
+We first introduce some definitions that will allow us to talk about subsets of the vertices of $W$, subsets of the propagators of $W$, and what it means to be a subdiagram of $W$.
 
 \begin{dfn} \label{VPropdfn}
 Let $W = (\cP, V)$ be a Wilson loop diagram.
 \begin{enumerate}
-\item For $p = (i,j) \in \cP$, let $V(p) = \{i, i+1, j, j+1\}$ denote the set of vertices supporting $p$. For a set of propagators $P \subseteq \cP$, define 
+\item For $p = (i,j) \in \cP$, let $V(p) = \{i, i+1, j, j+1\}$ denote the set of {\bf vertices supporting $p$}. For a set of propagators $P \subseteq \cP$, define 
 \[V(P) = \bigcup_{p \in P} V(p)\]
 to be the vertex support of $P$.
-\item For $U \subseteq V$, the set of propagators supported on $U$ is denoted by
+\item For $U \subseteq V$, the set of {\bf propagators supported on $U$} is denoted by
 \[\Prop(U) = \{ p \in \cP\ |\ V(p) \cap U \neq \emptyset \}.\]
-Note that a propagator does not need to have its entire support contained in $U$. $\Prop(U)$ is the set of all propagators that would be affected by removing the set $U$.
+Note that a propagator in $\Prop(U)$ does not need to have its entire support contained in $U$. 
 \item Vertices of $W$ that do not support any propagators are called {\bf non-supporting}. The set of all non-supporting vertices in $W$ is denoted $F(\emptyset)$. 
 \end{enumerate}
 \end{dfn}
@@ -407,10 +407,10 @@ The first condition bounds the total number of propagators in the diagram, while
 These conditions are imposed by the physical interpretation of Wilson loop diagrams (see for example \hlfix{[ref]}{probably for Susama: is there a sensible paper to cite here?}). We therefore restrict our attention in this paper to admissible Wilson loop diagrams and their subdiagrams only. 
 
 
-Note that a subdiagram $(Q,U)$ of an admissible Wilson loop diagram need not be admissible itself: it inherits conditions 2 and 3 automatically, but we could have $|V(Q)| = |Q| + 3$. We call diagrams of this type {\bf weakly admissible}; in the context of this paper, they occur only when we take an admissible diagram and delete one or more non-supporting vertices.
+Note that a subdiagram $(Q,U)$ of an admissible Wilson loop diagram need not be admissible itself: it inherits conditions 2 and 3 automatically, but we could have $|U| = |Q| + 3$. We call diagrams of this type {\bf weakly admissible}; in the context of this paper, they occur only when we take an admissible diagram and delete one or more non-supporting vertices.
 
 
-Due to the physical motivation behind these diagrams, we can associate to each Wilson loop diagram $W$ a matrix $C(W)$, which is defined by
+Due to the physical motivation behind these diagrams, we can associate a matrix $C(W)$ to each Wilson loop diagram $W$, which is defined elementwise by
 
 \begin{equation} C(W)_{p,q} = \begin{cases} c_{p,q} & \textrm{ if } q \in V(p) \\
 0  & \textrm{ if } q \not \in V(p)  \end{cases}
@@ -432,9 +432,11 @@ c_{4,1} & 0 & 0 & 0 & c_{4,5} & c_{4,6} & 0 & c_{4,8}  \\
 \right) \;.\]
 \end{eg}
 
-The matrix $C(W)$ parametrizes a subspace of $\Gr(k, n)$, as shown in \cite{wilsonloop}; we denote this subspace by $\Sigma(W)$. 
+From $C(W)$ we obtain the matroid $M(W)$ associated to $W$, which is simply the matroid represented by $C(W)$: its ground set is the set $V$ of vertices of $W$, and the independent sets are exactly the sets $U \subseteq V$ such that the columns of $C(W)$ indexed by $U$ are linearly independent. 
 
-From $C(W)$ we obtain the matroid $M(W)$ associated to $W$, which is simply the matroid represented by $C(W)$: its ground set is the set $V$ of vertices of $W$, and the independent sets are exactly the sets $U \subseteq V$ such that the columns of $C(W)$ indexed by $U$ are linearly independent. More detail on this is given in Section~\ref{sec:M(W)} below.
+It was shown in \cite{wilsonloop} that $M(W)$ is actually a positroid whenever $W$ is admissible; the matrix $C(W)$ therefore parametrizes a subspace $\Sigma(W)$ of the totally nonnegative real Grassmannian $\Gr(k, n)$. 
+
+Many geometric and combinatorial techniques exist to study the behavior of positroids in $\Gr(k,n)$; more detail on this is given in Section~\ref{sec:positroid background} below. Our perspective in this paper is to study the Wilson loop diagrams by studying the positroids they define.
 
 
 The Wilson loop diagram also defines a volume form on $\Sigma(W)$, namely 
@@ -452,11 +454,11 @@ Understanding the polynomial $R(W)$ (and hence the singularities of the volume f
 
 \subsection{Positroids, Grassmann necklaces, and Le diagrams}\label{sec:positroid background}
 
-Let $\binom{[n]}{k}$ denote the set of all $k$-subsets of the cyclically ordered set $[n]$.  
+Let $\binom{[n]}{k}$ denote the set of all $k$-subsets of $[n]$.  
 
-For our purposes, a {\bf positroid} is a matroid $M$ with ground set $[n]$ and bases $\cB \subseteq \binom{[n]}{k}$ which can be represented by an element of the positive Grassmannian $\Gr(k,n)$, i.e. such that there exists a real full-rank $k\times n$ matrix whose $k\times k$ minors are all nonnegative and such that the minor $[[k]|J]$ is positive if and only if $J \in \cB$.
+For our purposes, a {\bf positroid} is a matroid $M$ (with ground set $[n]$ and bases $\cB \subseteq \binom{[n]}{k}$) which can be represented by an element of the totally nonnegative Grassmannian $\Gr(k,n)$. In other words, there exists a full-rank $k\times n$ real matrix whose $k\times k$ minors are all nonnegative and such that the minor $[[k]|J]$ is positive if and only if $J \in \cB$.
 
-The interested reader is referred to \cite{Postnikov} for an introduction to the geometry and combinatorics of positroid cells in the positive Grassmannian. Postnikov shows in \cite{Postnikov} that the positroids of $\Gr(k,n)$ are indexed by many interesting collections of objects, including Le diagrams, Grassmann necklaces, decorated permutations, and plabic graphs. The two most suited to our purposes are the Grassmann necklaces and the Le diagrams, which we introduce below. In order to do so, we first need some preliminary definitions.
+The interested reader is referred to \cite{Postnikov} for an introduction to the geometry and combinatorics of positroid cells in the totally nonnegative Grassmannian. Postnikov shows in \cite{Postnikov} that the positroids of $\Gr(k,n)$ are indexed by many different collections of objects, each with their own advantages and disadvantages. The two most suited to our purposes are Grassmann necklaces and Le diagrams, which we introduce below. In order to do so, we first need some preliminary definitions.
 
 For each $j \in [n]$, we can define a total order $\leq_j$ on the interval $[n]$ by
 \[ j <_j j+1 <_j \dots <_j n <_j 1 \dots <_j j-1\;.\]
@@ -477,7 +479,7 @@ By convention, we set $I_{n+1} = I_1$.
 
 By \cite[Theorem 17.1]{Postnikov}, the Grassmann necklaces of type $(k,n)$ are in 1-1 correspondence with the positroid cells in $\Gr(k,n)$.  This correspondence is given explicitly in \cite[Theorem 8]{Oh}: if $(I_1, \dots, I_n)$ is the Grassmann necklace associated to a positroid $M = ([n],\cB)$, then the bases of $M$ are exactly
 \[\cB = \left\{J \in \binom{[n]}{k}\ :\ I_i \gale{i} J \ \forall i \in [n]\right\}.\]
-Thus the Grassmann necklace is well suited to testing whether a given $k$-set is a basis for $M$, or for generating a list of all bases of $M$.
+Thus the Grassmann necklace is well suited to testing whether a given $k$-set is a basis for $M$, and for generating a list of all bases of $M$.
 
 
 \begin{dfn}\label{def:le diagram}
@@ -522,12 +524,14 @@ The rows and columns of a Le diagram are labelled as follows: given a Le diagram
 %\node at (0.5,-0.15) {\footnotesize$9$};
 \end{tikzpicture}
 \]
-\caption{Row and column numbering for a Young diagram with $k = 3$, $n = 7$ (left) and $k = 3$, $n = 8$ (right). The top left box in each diagram has coordinates $(1,7)$ (left diagram), $(2,8)$ (right diagram).}
+\caption{Row and column numbering for a Young diagram with $k = 3$, $n = 7$ (left) and $k = 3$, $n = 8$ (right). The top left box has coordinates $(1,7)$ in the left diagram, and $(2,8)$ in the right diagram.}
 \label{fig:row column numbering}
 \end{figure}
 
-An algorithm for constructing the Le diagram associated to a Grassmann necklace was given by Agarwala and Fryer in \cite{ReversingOh}. Since we will make use of this algorithm in Section~\ref{sec dim} below, we summarise the process here.
-\begin{algorithm}\label{alg:GN to Le} \ \cite[Algorithm 2]{ReversingOh}
+Specifying a $k$-subset $J \subseteq [n]$ therefore uniquely determines the shape of the Le diagram, by taking the elements of $J$ to be the row indices of the diagram.
+
+An algorithm for constructing the Le diagram associated to a Grassmann necklace was given by Agarwala and Fryer in \cite{reversingOh}. Since we will make use of this algorithm in Section~\ref{sec dim} below, we summarise the process here.
+\begin{algorithm}\label{alg:GN to Le} \ \cite[Algorithm 2]{reversingOh}
 Let $(I_1,\dots,I_n)$ be a Grassmann necklace of type $(k,n)$. Within a $k \times(n-k)$ square, draw the Young diagram whose rows are labelled by $I_1$ (as per the convention above).
 
 For each $i$, $2 \leq i \leq n$:
@@ -541,10 +545,7 @@ After performing the above for $2 \leq i \leq n$, place a $0$ in any remaining u
 
 An algorithm for constructing the Grassmann necklace of a Le diagram also exists; this was given by Oh in \cite{Oh}. A method for using the Le diagram to test whether a given $k$-subset is a basis for the corresponding positroid or not was given by Casteels in \cite{CasteelsPaths}.
 
-\subsection{The positroid associated to an admissible Wilson loop diagram}\label{sec:M(W)}
 
-
-words go here
 
 \section{Wilson Loop diagrams and their Grassmann necklaces}\label{sec GN algorithm}
 
@@ -925,21 +926,22 @@ Until now, the positroid associated to a Wilson loop diagram $W$ could only be o
 
 In this section, we give an algorithm for passing directly from the Wilson loop diagrams to its Grassmann necklace. This not only greatly simplifies the process above, but will also allow us to relate the behavior of the positroid $M(W)$ directly to the configuration of progators in $W$.
 
-The fact that Algorithm~\ref{alg:put GN on WLD} does construct the required Grassmann necklace is proved in Theorem~\ref{res:alg gives GN}.
+The fact that Algorithm~\ref{alg:put GN on WLD} does construct the required Grassmann necklace is proved in Theorem~\ref{res:alg gives GN}. An worked example of Algorithm~\ref{alg:put GN on WLD} is given after Definition~\ref{def I_i as a function}.
 
 \begin{algorithm}\label{alg:put GN on WLD}
-Let $W = (\cP, [n])$ be an admissible Wilson loop diagram. This gives an algorithm for calculating the set $I_a$, for $a \in [n]$.
+Let $W = (\cP, [n])$ be an admissible Wilson loop diagram. This gives an algorithm for calculating the set $I_i$, for $i \in [n]$.
 
 \begin{enumerate}
-\item Fix a vertex $a \in [n]$. Set $i:=a$ and $I_a = \emptyset$.
+\item Fix a vertex $i \in [n]$. Set $a:=i$ and $I_i = \emptyset$.
 \item While $\cP \neq \emptyset$, perform the following steps.
 \begin{enumerate}
-\item \textbf{Step $i$ for vertex $a$}: If $\Prop(i) \neq \emptyset$ in $W$, write $I_a = I_a \cup i$. Let $p \in \Prop(p)$ be the clockwise most propagator supported on $i$. Write $W = (\cP \setminus p, n)$.
+\item \textbf{Step $a$ for vertex $i$}: If $\Prop(a) \neq \emptyset$ in $W$, write $I_i = I_i \cup \{a\}$. Let $p \in \Prop(a)$ be the clockwise most propagator supported on $a$. Write $W = (\cP \setminus \{p\}, [n])$.
 \item If $Prop(i) = \emptyset$ do nothing.
-\item Increment $i$ by 1 and repeat from (a).
+\item Increment $a$ by 1 and repeat from (a).
 \end{enumerate}
 \end{enumerate}
 \end{algorithm}
+
 
 If the algorithm assigns vertex $j$ to propagator $p$ from starting vertex $i$, we say that $p$ \emph{contributes} $j$ to $I_i$. Notationally, we represent this by allowing the $I_i$ symbol to represent a function as well as a set, as follows:
 \begin{dfn}\label{def I_i as a function}
@@ -949,7 +951,37 @@ for each $p \in \cP$.
 \end{dfn}
 
 
-Given a propagator $p$ and a vertex $i$ in its support, it will be very useful in the following to understand on what set of vertices the Grassmann necklace algorithm assigns $i$ to $p$.  The answer is that the set is a non-empty cyclic interval.  Lemma~\ref{vertex cyclic int lem} establishes this, but first we need a preliminary lemma which is also useful in its own right.
+\begin{eg}Consider the admissible Wilson loop diagram
+\[W\ =\ \begin{tikzpicture}[rotate=67.5,baseline=(current bounding box.east)]
+	\begin{scope}
+	\drawWLD{8}{1.5}
+	\drawnumbers
+	\drawlabeledprop{1}{0}{4}{0}{\footnotesize $q\ $}
+	\drawlabeledprop{2}{0}{4}{-1}{\footnotesize $p$}
+    \drawlabeledprop{5}{0}{8}{0}{\footnotesize $r\ \ $}
+    \drawlabeledprop{5}{1}{7}{0}{\footnotesize $\ \ \ s$}
+
+		\end{scope}
+	\end{tikzpicture}\]
+
+To construct $I_1$ we start at vertex 1, so we begin with $i=1$, $a = 1$, and $I_1 = \emptyset$. 
+\begin{itemize}
+\item $a = 1$: Since $\Prop(1) = \{q,r\}$ and $r$ is the clockwise-most of these propagators, we let $I_1 = \{1\}$ and remove propagator $r$ from the diagram. 
+\item $a = 2$: $\Prop(2) = \{p,q\}$, with $q$ being the clockwise-most of these propagators. So $I_1 = \{1,2\}$ and propagator $q$ is removed.
+\item $a = 3$: $\Prop(3) = \{p\}$, so now $I_1 = \{1,2,3\}$ and propagator $p$ is removed. The only remaining propagator in the diagram is $s$.
+\item $a = 4$: Since $p$ and $q$ were removed in earlier steps, we now have $\Prop(4) = \emptyset$.
+\item $a = 5$: $\Prop(5) = \{s\}$, and we have $I_1 = \{1,2,3,5\}$.
+\end{itemize}
+There are no propagators left in the diagram, so the algorithm terminates and we have ${I_1 = \{1,2,3,5\}}$, or $1235$ for short. Viewed as a function, we have
+\[I_1: \cP \longrightarrow [n] : \quad I_1(p) = 3,\quad I_1(q) = 2, \quad I_1(r) = 1, \quad I_1(s) = 5.\]
+Applying the algorithm for all 8 starting vertices, we obtain the sets
+\[1235, 2356, 3456, 4567, 5671, 6712, 7812, 8123.\]
+The reader can easily verify that this sequence of $k$-sets satisfies the definition of a Grassmann necklace, and can (with significantly more work) also verify that this Grassmann necklace defines the positroid associated to the Wilson loop diagram $W$ given above.
+\end{eg}
+
+
+
+Given a propagator $p$ and a vertex $i$ in its support, it will be very useful in the following to understand on what set of vertices the algorithm assigns $i$ to $p$.  The answer is that the set is a non-empty cyclic interval.  Lemma~\ref{vertex cyclic int lem} establishes this, but first we need a preliminary lemma which is also useful in its own right.
 
 
 \begin{lem}\label{lem no fourth vertex}
@@ -1101,7 +1133,7 @@ It follows from the proof of Lemma~\ref{lem no fourth vertex} that Algorithm~\re
 
 
 Given a propagator $p$ of an admissible WLD $W$ and a vertex $i$ in the support of $p$, define
-\[J_p^{(W)}(i) = \{m \in [n] \ : \ I^{(W)}_m(p) = i \},\]
+\[J_p^{(W)}(i) = \{m \in [n] \ | \ I^{(W)}_m(p) = i \},\]
 i.e. the set of indices $m$ for which Algorithm~\ref{alg:put GN on WLD} assigns the value $i$ to the propagator $p$ in $W$. The following lemma establishes that these sets behave in a simple and predictable manner, a fact which we will repeatedly use in subsequent proofs.
 
 \begin{lem} \label{vertex cyclic int lem}
