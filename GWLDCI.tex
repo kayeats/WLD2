@@ -723,10 +723,10 @@ Consider any two distinct maximal triangulated pieces of $\tau(W)$. These two pi
 \end{proof}
 
 It will be important in the subsequent section to consider retriangulations.
-\begin{dfn}
-  If $W$ and $W'$ are weakly admissible Wilson loop diagrams on the same vertex set then $\tau(W)$ and $\tau(W')$  differ by a \emph{retriangulation} if there is a bijection $f$ between the maximal triangulated pieces of $\tau(W)$ and the maximal triangulated pieces of $\tau(W')$ such that for any triangulated piece $t$ of $\tau(W)$ the vertex sets of $t$ and $f(t)$ are the same.
+\begin{dfn} \label{retriangulation}
+  If $W = (\cP, [n])$ and $W' = (\cP', [n])$ are weakly admissible Wilson loop diagrams, then $\tau(W)$ and $\tau(W')$  differ by a \emph{retriangulation} if there is a bijection $f$ between the maximal triangulated pieces of $\tau(W)$ and the maximal triangulated pieces of $\tau(W')$ such that for any triangulated piece $t$ of $\tau(W)$ the vertex sets of $t$ and $f(t)$ are the same.
 \end{dfn}
-More casually this definition says that the triangulated pieces of $\tau(W)$ and $\tau(W')$ are the same (so far as their vertex sets are concerned) but that some or all of the triangulated pieces may be differently triangulated while the region being triangulated by each piece (which is defined by the vertex set) remains unchanged.
+More casually this definition says that the maximal triangulated pieces of $\tau(W)$ and $\tau(W')$ are the same (so far as their vertex sets are concerned) but that some or all of the triangulated pieces may be differently triangulated while the region being triangulated by each piece (which is defined by the vertex set) remains unchanged. Note that these maximal triangulations correspond to non-crossing partitions of the Wilson loop diagram, in the sense discussed in \cite{positroids13}. 
 
 The previous definition makes sense, in fact, for any two polygon dissections of the same polygon.
 
@@ -843,13 +843,22 @@ To avoid the issue of exact diagrams being subdiagrams of other exact subdiagram
 An exact subdiagram $(P, V(P))$ is a {\em maximal exact subdiagram} of $W$ if there is no other exact subdiagram $(Q, V(Q))$ in $W$ that contains $(P,V(P))$ as a strict subdiagram.
 \end{dfn}
 
-
 \begin{cor} \label{uniqueproppartitioncor}
 Any admissible Wilson loop diagram $W = (\cP, [n])$ can be uniquely decomposed into maximal exact subdiagrams. These maximal subdiagrams partition $\cP$.
 \end{cor}
 
 \begin{proof}
 Combining Lemmas \ref{decompositionlem} and \ref{lem triang to exact} yields the unique decomposition into maximal exact subdiagrams, and Corollary \ref{maxtriangdisjointcor} ensures that no propagator appears in more than one subdiagram in this decomposition. Since the chord edges of $\tau(W)$ correspond to the propagators of $W$, the decomposition of $\tau(W)$ induces a partition of $\cP$.
+\end{proof}
+
+Finally, we may express equivalent Wilson loop diagrams in terms of retriangulations.
+
+\begin{cor}\label{equialentretriangulation}
+Two Wilson loop diagrams, $W$ and $W'$ are equivalent if and only if $\tau(W)$ and $\tau(W')$ differ by retriangulations.
+\end{cor}
+
+\begin{proof}
+This follows from the definition of equivalent Wilson loop diagrams, Definition \ref{equivdfn}, the definition of retriangulations, Definition \ref{retriangulation}, and Lemma\ref{lem triang to exact}.
 \end{proof}
 
 \subsection{Matroidal properties of exact subdiagrams \label{sec: exact diagram matroidal props}}
@@ -1113,7 +1122,7 @@ Note that Wilson loop diagrams which are weakly admissible but not admissible ha
 \end{prop}
 
 \begin{proof}
-  Let $W$ and $X$ be two equivalent Wilson loop diagrams.  From Lemma~\ref{lem triang to exact} along with the definitions of $\sim$ and retriangulation, we know that $\tau(W)$ and $\tau(X)$ differ from each other only by retriangulations of their triangulated pieces. 
+  Let $W$ and $X$ be two equivalent Wilson loop diagrams.  From Corrolary \ref{equialentretriangulation} we know that $\tau(W)$ and $\tau(X)$ differ from each other only by retriangulations of their triangulated pieces. 
 
 All edges of $A_n$ are polygon dissections which are only one diagonal away from being triangulations.  Such dissections consist of triangles and exactly one quadrilateral.  Consider the edges of $A_n$ bounding the faces corresponding to $\tau(W)$ and $\tau(X)$.  These edges have their one quadrilateral within the nontriangulated parts of $\tau(W)$ or $\tau(X)$, but these nontriangulated parts are the same in $\tau(W)$ and $\tau(X)$, so we get a bijection between the edges bounding the face of $\tau(W)$ and the edges bounding the face of $\tau(X)$ which matches edges with the same quadrilateral.
 
@@ -1178,6 +1187,13 @@ The two propositions imply
 %\bibliography{C:/Users/agarws1/Documents/GitHub/OldWLDPapers/Bibliography}
 
 \begin{thebibliography}{50}
+
+\bibitem{positroids13}
+Federico Ardila, Felipe Rinc{\'{o}}n, and Lauren Williams.
+\newblock Positroids and non-crossing partitions.
+\newblock {\em Transactions of the American Mathematical Society}, 2015.
+\newblock arXiv:1308.2698v2.
+
 
 \bibitem{Adamo:2011pv}
 Tim Adamo, Mathew Bullimore, Lionel Mason, and David Skinner.
@@ -1298,8 +1314,6 @@ James~G. Oxley.
 
 
 \end{thebibliography}
-
-
 
 
 \end{document}
