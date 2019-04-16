@@ -363,7 +363,7 @@ A Wilson loop diagram is depicted as a circle, with the vertices $V$ equally spa
 \label{fig:ex of WLD}
 \end{figure}
 
-Generally speaking the propagators are undirected, so $(i,j)$ and $(j,i)$ represent the same propagator. As a general convention, we write $p = (i,j)$ with  $i < j$ relative to the first vertex. However, in Section~\ref{sec:propagator configs} we will need to give the propagators a direction (in order to refer to vertices ``inside'' and ``outside'' the propagator); in this setting, we impose the convention that $p= (i,j)$ denotes a propagator flowing from $i$ to $j$, and $p= (j,i)$ denotes the \emph{same} propagator flowing in the opposite direction.
+Generally speaking the propagators are undirected, so $(i,j)$ and $(j,i)$ represent the same propagator. As a general convention, we write $p = (i,j)$ with  $i < j$ relative to the first vertex. However, in Section~\ref{sec:propagator configs} we will need to give the propagators a direction (in order to refer to the regions ``inside'' and ``outside'' the propagator); in this setting, we write $(p,<_i)$ to indicate that $p$ is directed from $i$ to $j$, and $(p,<_j)$ for the same propagator directed from $j$ to $i$.
 
 
 Let $[n]$ denote the set of integers $\{1,\dots,n\}$ with the obvious cyclic and linear orders. Our primary focus is Wilson loop diagrams with $V = [n]$, so in order to simplify the exposition we will often use $i+1$ as shorthand for ``the successor of vertex $i$''. 
@@ -478,7 +478,7 @@ By convention, we set $I_{n+1} = I_1$.
 \end{dfn}
 
 By \cite[Theorem 17.1]{Postnikov}, the Grassmann necklaces of type $(k,n)$ are in 1-1 correspondence with the positroid cells in $\Gr(k,n)$.  This correspondence is given explicitly in \cite[Theorem 8]{Oh}: if $(I_1, \dots, I_n)$ is the Grassmann necklace associated to a positroid $M = ([n],\cB)$, then the bases of $M$ are exactly
-\[\cB = \left\{J \in \binom{[n]}{k}\ :\ I_i \gale{i} J \ \forall i \in [n]\right\}.\]
+\[\cB = \left\{J \in \binom{[n]}{k}\ |\ I_i \gale{i} J \ \forall i \in [n]\right\}.\]
 Thus the Grassmann necklace is well suited to testing whether a given $k$-set is a basis for $M$, and for generating a list of all bases of $M$.
 
 
@@ -547,6 +547,8 @@ An algorithm for constructing the Grassmann necklace of a Le diagram also exists
 
 
 
+\subsection{Wilson loop diagrams as positroids}\label{sec:WLD as positroids}
+
 \section{Wilson Loop diagrams and their Grassmann necklaces}\label{sec GN algorithm}
 
 
@@ -559,32 +561,37 @@ One of the key insights is that each element of the Grassmann necklace can be vi
 Throughout this section, $W = (\cP,[n])$ is an admissible Wilson loop diagram with $k$ propagators.
 
 
+
+
+
 \subsection{Propagator configurations in admissible Wilson loop diagrams}\label{sec:propagator configs}
 
 Before we can describe the algorithm for extracting the Grassmann necklace of $M(W)$ from the Wilson loop diagram $W$, we require some initial results about the behavior of propagators in admissible WLD.
 
-Note that for any Wilson loop diagram, $W = (\cP, n)$, each propagator $p$ partions $[n]$ into three subsets of $[n]$, $\{[i+2, j-1], V(p), [j+2, i-1]\}$, the support of $p$ and the vertices that lie on either side of $p$. In the sequel we refer to the latter two intervals as an interval inside and outside of $p$, depending on a ordering we associate to the propagator.
+
 
 \begin{dfn}\label{props inside p}
-Let $W = (\cP, n)$ be an admissible Wilson loop diagram, with $p = (i,j) \in \cP$. Write $(p, <_a)$ be the same propagator with a direction induced by the linear ordering $<_a$. Then \bas V_{in}(p, <_a) = \{b \in [n] | i+1 <_a b <_a j \}\eas the region of $W$ {\bf inside} $p$, and \bas V_{out}(p, <_a) = \{b \in [n] | j+1 <_a b <_a i \} \;.\eas the region {\bf outside }$p$. 
+Let $W = (\cP, [n])$ be a weakly admissible Wilson loop diagram, with $p \in \cP$ supported on edges $i$ and $j$. Write $(p, <_i)$ to be the same propagator with a direction induced by the linear ordering $<_i$. Then
+\begin{gather*}\cP_{in}(p,<_i) = \{ q \in \cP \ |\ (q,<_i) = (k,l) \text{ and }i \leq_i k <_i l \leq_i j \} \\
+\cP_{out}(p,<_i) = \{ q \in \cP \ | \ (q,<_i) = (k,l) \text{ and } j \leq_i k <_i l  \} \;\end{gather*}
+are the sets of propagators inside (resp. outside) $p$. \note{by this definition, $p \not\in \cP_{out}$}
 \end{dfn} 
 
-Depending on the ordering associated to $p$, the vertices on the inside and outside chagne. In particular, for $p = (i,j)$, $V_{in}(p, <_i) = V_{out}(p, <_j)$ and $V_{out}(p, <_i) = V_{in}(p, <_j)$.
+% Observe that changing the direction of the propagator simply swaps the inside and outside sets, i.e. for $p = (i,j)$ we have 
+% \[\cP_{in}(p, <_i) = \cP_{out}(p, <_j)\quad \text{ and } \quad \cP_{out}(p, <_i) = \cP_{in}(p, <_j).\]
 
-This in turn defines two sets of propagators, $\{\cP_{in}(p, <_i), \cP_{out}(p, <_i)\}$, where (for $\bullet \in \{in, \; out\}$) \bas \cP_{\bullet} = \{ q \in (\cP \setminus p) | V(q) \cap V_{\bullet}(p)  \neq \emptyset \} \;.\eas When clear, we drop the parentetical and just write $\cP_{in}$ (resp. $\cP_{out}$). These sets are the sets of propagators, not equal to $p$, \hlfix{whose support contains points in $V_{in}(p, <_*)$ (resp. $V_{in}(p, <_*)$), where $<_*$ refers to the appropriate ordering.}{Note, this means that paralell propagators are neither on the inside and outside of $p$. Is that okay?} If $W$ has no propagators crossing $p$ and no other propagator supported entirely on $V(p)$, then the set $\{\cP_{in}, p, \cP_{out}\}$ partitions $\cP$. Under these circumstances, the set $\cP_{in}$ defines the propagators with end points on one side of $p$, while $\cP_{out}$ defines the propagators with end points on the other side. In particular, for (weakly) admissible Wilson loop diagrams, the set $\{\cP_{in}, p, \cP_{out}\}$ is a partition for every propagators $p \in \cP$. Recall from Definition~\ref{admisdfn} that a {\em weakly admissible} diagram is one that satisfies the density and non-crossing conditions but does not require that $|V(\cP)| \geq |\cP| + 4$.
 
-As with the vertex sets,  which set of propagators lie inside and outside of $p$ switch depending on the direction imposed $p$. 
 
-\begin{dfn}\note{right now this doesn't depend on the order of $i$ and $j$, but that might matter later on?}
-Let $p = (i,j) \in cP$ be a propagator in $W$.  Define the \textit{length} of $p$ to be 
-\[\ell(p) = min\big\{|V_{in}(p)|,|V_{out}(p)|\big\} +2 = min\big\{|[i+1,j]|,|[j+1,i]|\big\}.\]
+\begin{dfn}
+Let $p = (i,j) \in \cP$ be a propagator in $W$.  Define the {\bf length} of $p$ to be 
+\[\ell(p) \  =\ \min\big\{|[i+1,j]|,|[j+1,i]|\big\}.\]
 \end{dfn}
-In other words, $\ell(p)$ is the size of the smaller of the number of vertices that lie on either side of the progator $p$.
+In other words, $\ell(p)$ is the size of the smaller of the sets of vertices on either side of the propagator $p$.
 
 
 
 \begin{rmk}\label{rem:props of length 2 and 3} 
-The following observations about configurations of propagators of short length in an (weakly) admissibly Wilson loop diagram, $W$, are easily verified:
+The following observations about configurations of propagators of short length in a weakly admissibly Wilson loop diagram $W$ are easily verified:
 \begin{enumerate}
 \item If $p = (i,i+3)$ is a propagator of length 3, then the middle vertex $i+2$ supports at most one propagator.
 \item If every vertex in $W$ supports at least one propagator, then $W$ admits at least one propagator of length 2.
@@ -606,51 +613,19 @@ The following lemma establishes certain configurations of propagators that must 
 Suppose first that $W$ has a propagator of length $3$, say $p=(i, i+3)$.  By Remark~\ref{rem:props of length 2 and 3} and the fact that every vertex of $W$ supports at least one propagator, we have that $i+2$ supports exactly one propagator and this propagator must have length 2 by noncrossingness.  This gives us an instance of configuration~\ref{item big and 2} from the statement.
 
 Now suppose $W$ has no propagators of length $3$.
-%  We will prove the following stronger result: that $D$ admits a pair of propagators of length 2 in the following configuration:
-%\begin{equation}\label{eq:2 prop config}
-%\begin{tikzpicture}[baseline=(current bounding box.east)]
-%\pgfmathsetmacro{\radius}{2}
-%\pgfmathsetmacro{\angle}{20}
-%
-%\begin{scope}
-%\clip (-\radius*1.1,\radius*0.25) rectangle (\radius*1.1,\radius*1.25);
-%
-%\begin{scope}
-%\clip (-\radius*1.1,\radius*0.45) rectangle (\radius*1.1,\radius*1.1);
-%\draw[-] (0,0) circle[radius=\radius cm];
-%\end{scope}
-%
-%% vertices
-%\foreach \i in {2,3,...,7}{
-%	\draw (\angle*\i:\radius*0.98) --  (\angle*\i:\radius*1.02);
-%}
-%
-%\begin{scope}
-%\clip (0,0) circle[radius=\radius];
-%\draw[propagator] (2.5*\angle:\radius*1.1 cm) to [bend left=90] (4.35*\angle:\radius*1.1 cm);
-%\draw[propagator] (4.65*\angle:\radius*1.1 cm) to [bend left=90] (6.5*\angle:\radius*1.1 cm);
-%
-%\end{scope}
-%
-%\node at (80:\radius*1.1) {\tiny $j$};
-%\node at (100:\radius*1.1) {\tiny $j+1$};
-%\node at (90:\radius*0.5) {\small $s_j = s_{j+1} = 2$};
-%
-%\end{scope}
-%\end{tikzpicture}
-%\end{equation}
 
-We need a bit of notation: Let $W = (\cP, n)$ a weakly admissible Wilson loop diagram, and $Q \subseteq \cP$. Define the restriction $W|_Q$ to be the diagram $W$ with the propagators not in $Q$ removed. That is , \bas W|_Q = (Q, n). \eas 
+Given a propagator $p = (i, j)$ oriented $(p, <_i)$,  we can construct two obvious subdiagrams of $W$ by removing all of the propagators on one side of $p$ and leaving the vertices intact, i.e. the subdiagrams
+\[  (\cP_{in}\cup\{p\}, [n])  \quad \textrm{and} \quad  (\cP_{out}\cup \{p\}, [n]).\]
 
 
-%to a region $[i,j]$ to be the subdiagram obtained by forgetting all propagators not wholly supported on vertices in the cyclic interval $[i,j]$; the vertex set remains the same as in $W$.  Denote this diagram by $W_{[i,j]}$. That is, if $W = (\cP, n)$ is a Wilson loop diagram, \bas W_{[i,j]} = (\cP \setminus \Prop([i,j]^c), n)\eas
 
 
-Given a propagator $p = (i, j)$ oriented $(p, <_i)$,  we can consider two obvious restrictions of $W$, namely \bas W|_{\cP_{in} \cup p} \quad \textrm{and} \quad  W|_{\cP_{out}\cup p}, \eas where the set of non-supportive vertices of  $W|_{\cP_{in} \cup p}$ is $V_{out}$ and  the set of non-supportive vertices of  $W|_{\cP_{out} \cup p}$ is $V_{in}$. That is, these restrictions contain the propagators on the inside and outside of $(p, <_i)$ respectively, as well as $p$ itself. \footnote{If we denote $V \subset [n]$ and $Q = \Prop(V^c)$, then we can write \bas M(W|_{Q^c}) = M(W)/F(Q) \oplus M_{\emptyset, n-|i-j+1|} \eas where  $M_{\emptyset, k}$ is the matroid of rank $0$ on a set of $k$. That is $M_{\emptyset, n-|i-j+1|} =M((\emptyset, n-|i-j+1|))$. }  
+%where the set of non-supportive vertices of  $W|_{\cP_{in} \cup p}$ is $V_{out}$ and  the set of non-supportive vertices of  $W|_{\cP_{out} \cup p}$ is $V_{in}$. That is, these restrictions contain the propagators on the inside and outside of $(p, <_i)$ respectively, as well as $p$ itself. 
+%\footnote{If we denote $V \subset [n]$ and $Q = \Prop(V^c)$, then we can write \bas M(W|_{Q^c}) = M(W)/F(Q) \oplus M_{\emptyset, n-|i-j+1|} \eas where  $M_{\emptyset, k}$ is the matroid of rank $0$ on a set of $k$. That is $M_{\emptyset, n-|i-j+1|} =M((\emptyset, n-|i-j+1|))$. }  
 
 %We say that $p$ \textit{bounds the regions} $[i,j+1]$ and $[j,i+1]$ which we call outside and inside respectively. The ordering of the start and end points allow us to identify one or the other region unambiguously. 
 
-With these observations in mind we can return to the proof.
+%With these observations in mind we can return to the proof.
   
 We will inductively construct a sequence of pairs of propagators $(p_r,q_r)$ satisfying: $\ell(p_r) = 2$, and $p_r$ either forms part of configuration \ref{item big and 2} or \ref{item pair of 2s} from the statement,
   %a configuration \eqref{eq:2 prop config} in $D$
@@ -659,7 +634,7 @@ or there is a propagator $q_r$ satisfying
 \item $\ell(q_r) \geq 4$.
 \item $\{p_1, \ldots, p_r\}$ and $\{q_1, \ldots, q_{r-1}\}$ are all on the same side of $q_r$.  
 \end{itemize}
-Note that we will be interested in the orientation of $q_r$ so that the previous $p_i$ and $q_i$ are on the outside of $q_r$.
+We can then choose the orientation of $q_r$ so that the previous $p_i$ and $q_i$ are all on the outside of $q_r$, and 
 By the finiteness of $W$ this must eventually terminate in one of the desired configurations. %a configuration of the form \eqref{eq:2 prop config}.
 
 Start by choosing a propagator $p_1 = (j_1,j_1+2)$ of length 2 in $W$ (which exists by Remark~\ref{rem:props of length 2 and 3}).  If it is part of one of the configurations we are looking for then we are done, 
@@ -669,7 +644,7 @@ By assumption: $p_1$ is not in configuration \ref{item pair of 2s}, there are no
 
 %This bounds a region $[i_1,k_1] = V_{out}(q_1) \cup V(q_1)$ on the outside of $(q_1, <_{i_1})$ (where $k_1 \in \{j_1-1, j_1, j_1+1\}$) which does not contain $p_1$.
 
-INSERT PICTURE HERE? 
+\hlfix{INSERT PICTURE HERE?}{note highlighting this for anyone skimming through looking for pictures to add}
 
 Now suppose $q_{r} = (i_r, k_r)$ exists by the induction hypothesis and is oriented $(q_r, <_{i_r})$ so that the previous $p_i$ and $q_i$ are on the outside. For the rest of this proof, we assume this orientation and drop the $<_{i_r}$ from the notation.
 
@@ -699,221 +674,6 @@ By symmetry it suffices to only consider the second situation and the second pos
 
 The overall result then follows by induction.
 \end{proof}
-
-%% this was 100% a productive use of my time
-%
-%\[\begin{tabular}{ccc}
-%% possibility 1
-%\begin{tikzpicture}
-%\pgfmathsetmacro{\radius}{2}
-%\pgfmathsetmacro{\angle}{15}
-%\begin{scope}
-%\clip (-\radius*1.1,0) rectangle (\radius*1.1,\radius*1.1);
-%
-%% vertices 
-%\foreach \i in {2,3,4,6,7,8,9,10}{
-%	\draw (\angle*\i:\radius*0.98) --  (\angle*\i:\radius*1.02);
-%}
-%
-%% \dots 
-%\foreach \i in {1,2,3}{
-%	\node at (65 + \i*5:\radius cm) {$\cdot$};
-%}
-%
-%\begin{scope} % this scope contains the propagators
-%\clip (0,0) circle[radius=\radius];
-%
-%\draw[propagator] (\angle*2.4:\radius*1.2 cm) to [bend left=30] (\angle*9.7:\radius*1.2 cm); % q_r
-%\draw[propagator] (\angle*7.7:\radius*1.1 cm) to [bend left=90] (\angle*9.45:\radius*1.1 cm); % p_{r+1}
-%
-%% grey prop begins here
-%
-%\begin{scope}
-%\clip (\angle*7.5:\radius cm) circle[radius=\radius*0.45cm];
-%\draw[light-gray,propagator,seconddash] (\angle*6:\radius*1.02 cm) circle[x radius=\radius*0.4cm, y radius = \radius*0.3cm];
-%\end{scope}
-%
-%\begin{scope}
-%\clip (0,0) circle[radius=\radius];
-%\clip (\angle*7.5:\radius cm) circle[radius=\radius*0.4cm];
-%\draw[light-gray,propagator,firstdash] (\angle*6:\radius*1.02 cm) circle[x radius=\radius*0.4cm, y radius = \radius*0.3cm];
-%\end{scope}
-%
-%\begin{scope}
-%\clip (\angle*7.5:\radius cm) circle[radius=\radius*0.3cm];
-%\clip (0,0) circle[radius=\radius];
-%\draw[light-gray,propagator] (\angle*6:\radius*1.02 cm) circle[x radius=\radius*0.4cm, y radius = \radius*0.3cm];
-%\end{scope}
-%% end gray prop
-%
-%\end{scope}
-%
-%
-%\node at (90:\radius*0.30 cm) {\tiny $q_r$};
-%\node at (\angle*8:\radius*0.73) {\tiny $p_{r+1}$};
-%\node[light-gray] at (\angle*4.9:\radius*0.77 cm) {\tiny $q_{r+1}$};
-%\node at (2*\angle:\radius*1.1) {\tiny $i_r$};
-%\node at (9*\angle:\radius*1.1) {\tiny $j_r$};
-%
-%
-%% circle/edges; needs to happen last to overlap gray
-%\begin{scope}
-%\clip (-\radius*1.1,0.9) rectangle (\radius*1.1,\radius*1.1);
-%\draw[-] (0,0) circle[radius=\radius cm];
-%\end{scope}
-%
-%\end{scope} % ends the overall rectangle clipping
-%\end{tikzpicture}
-%
-%&
-%
-%% possibility 2
-%\begin{tikzpicture}
-%\pgfmathsetmacro{\radius}{2}
-%\pgfmathsetmacro{\angle}{15}
-%\begin{scope}
-%% overall clipping to make the size sensible
-%\clip (-\radius*1.1,0) rectangle (\radius*1.1,\radius*1.1);
-%
-%
-%% vertices
-%\foreach \i in {2,3,4,6,7,8,9,10}{
-%	\draw (\angle*\i:\radius*0.98) --  (\angle*\i:\radius*1.02);
-%}
-%
-%% \dots
-%\foreach \i in {1,2,3}{
-%	\node at (65 + \i*5:\radius cm) {$\cdot$};
-%}
-%
-%\begin{scope} % props
-%\clip (0,0) circle[radius=\radius cm]; 
-%\draw[propagator] (\angle*2.4:\radius*1.2 cm) to [bend left=30] (\angle*9.6:\radius*1.2 cm); % q_r
-%\draw[propagator] (\angle*6.7:\radius*1.1 cm) to [bend left=90] (\angle*8.6:\radius*1.1 cm); % p_{r+1}
-%
-%%% grey prop starts here
-%
-%\clip (\angle*6.5:\radius cm) circle[radius=\radius*0.45cm];
-%\draw[light-gray,propagator,seconddash] (\angle*4.5:\radius*1.3 cm) circle[y radius = 0.5*\radius cm,x radius=\radius*0.7cm];
-%\end{scope}
-%
-%\begin{scope}
-%\clip (0,0) circle[radius=\radius];
-%\clip (\angle*6.5:\radius cm) circle[radius=\radius*0.4cm];
-%\draw[light-gray,propagator,firstdash] (\angle*4.5:\radius*1.3 cm) circle[y radius = 0.5*\radius cm,x radius=\radius*0.7cm];
-%\end{scope}
-%
-%\begin{scope}
-%\clip (\angle*6.5:\radius cm) circle[radius=\radius*0.3cm];
-%\clip (0,0) circle[radius=\radius];
-%\draw[light-gray,propagator] (\angle*4.5:\radius*1.3 cm) circle[y radius = 0.5*\radius cm,x radius=\radius*0.7cm];
-%\end{scope}
-%% grey prop ends here
-%
-%
-%\node at (90:\radius*0.32 cm) {\tiny $q_r$};
-%\node at (\angle*7.75:\radius*0.75) {\tiny $p_{r+1}$};
-%\node[light-gray] at (\angle*4.5:\radius*0.7 cm) {\tiny $q_{r+1}$};
-%\node at (2*\angle:\radius*1.1) {\tiny $i_r$};
-%\node at (9*\angle:\radius*1.1) {\tiny $j_r$};
-%
-%% circle/edges
-%\begin{scope}
-%\clip (-\radius*1.1,0.9) rectangle (\radius*1.1,\radius*1.1);
-%\draw[-] (0,0) circle[radius=\radius cm];
-%\end{scope}
-%
-%\end{scope} % ends overall clip
-%\end{tikzpicture}
-%
-%&
-%
-%% possiblitiy 3
-%\begin{tikzpicture}
-%\pgfmathsetmacro{\radius}{2}
-%\pgfmathsetmacro{\angle}{12}
-%\begin{scope}
-%\clip (-\radius*1.1,0) rectangle (\radius*1.1,\radius*1.1);
-%
-%% vertices
-%\foreach \i in {2,3,6,7,8,9,12,13}{
-%	\draw (\angle*\i:\radius*0.98) --  (\angle*\i:\radius*1.02);
-%}
-%
-%% \dots
-%\foreach \i in {1,2,3}{
-%	\node at (44 + \i*5:\radius cm) {$\cdot$};
-%	\node at (116 + \i*5:\radius cm) {$\cdot$};
-%}
-%
-%\begin{scope} % props
-%\clip (0,0) circle[radius=\radius cm];
-%\draw[propagator] (\angle*2.4:\radius*1.2 cm) to [bend left=30] (\angle*12.6:\radius*1.2 cm); % q_r
-%\draw[propagator] (\angle*6.5:\radius*1.1 cm) to [bend left=100] (\angle*8.5:\radius*1.05 cm); % p_{r+1}
-%
-%%  grey prop 1
-%% not q_{r+1}
-%\begin{scope}
-%\clip (\angle*6.5:\radius cm) circle[radius=\radius*0.45cm];
-%\draw[light-gray,propagator,seconddash] (\angle*6.5:\radius*1.1 cm) to [bend left=90] (\angle*12.5:\radius*1.1cm);
-%\end{scope}
-%
-%\begin{scope}
-%\clip (\angle*6.5:\radius cm) circle[radius=\radius*0.4cm];
-%\draw[light-gray,propagator,firstdash] (\angle*6.5:\radius*1.1 cm) to [bend left=90] (\angle*12.5:\radius*1.1cm);
-%\end{scope}
-%\begin{scope}
-%\clip (\angle*6.5:\radius cm) circle[radius=\radius*0.3cm];
-%\draw[light-gray,propagator] (\angle*6.5:\radius*1.1 cm) to [bend left=90] (\angle*12.5:\radius*1.1cm);
-%\end{scope}
-%% grey prop 1 ends here
-%
-%% grey prop 2
-%% this is q_{r+1}
-%\begin{scope}
-%\clip (\angle*8.5:\radius cm) circle[radius=\radius*0.45cm];
-%\draw[propagator,seconddash,light-gray] (\angle*8.8:\radius*1.1 cm) to [bend left=90] (\angle*12:\radius*1.1cm);
-%\end{scope}
-%
-%\begin{scope}
-%\clip (\angle*8.5:\radius cm) circle[radius=\radius*0.4cm];
-%\draw[propagator,firstdash,light-gray] (\angle*8.8:\radius*1.1 cm) to [bend left=90] (\angle*12:\radius*1.1cm);
-%\end{scope}
-%
-%\begin{scope}
-%\clip (\angle*8.5:\radius cm) circle[radius=\radius*0.3cm];
-%\draw[light-gray,propagator] (\angle*8.8:\radius*1.1 cm) to [bend left=90] (\angle*12:\radius*1.1cm);
-%\end{scope}
-%
-%% grey prop 2 ends here
-%
-%
-%
-%\end{scope}
-%
-%\node at (90:\radius*0.15 cm) {\tiny $q_r$};
-%\node at (\angle*7.5:\radius*0.83) {\tiny $p_{r+1}$};
-%\node[light-gray] at (\angle*11:\radius*0.75 cm) {\tiny $q_{r+1}$};
-%
-%\node at (2*\angle:\radius*1.1) {\tiny $i_r$};
-%\node at (12*\angle:\radius*1.1) {\tiny $j_r$};
-%
-%
-%
-%% overall circle
-%\begin{scope}
-%\clip (-\radius*1.1,0.7) rectangle (\radius*1.1,\radius*1.1);
-%\draw[-] (0,0) circle[radius=\radius cm];
-%\end{scope}
-%
-%
-%\end{scope} % ends overall clip
-%\end{tikzpicture}
-%
-%\end{tabular}
-%\]
-%In each case, the diagram indicates how to choose $q_{r+1}$ satisfying the induction hypothesis.  In the third case, note that \textit{both} ends of $p_{r+1}$ must share their edge with a propagator of length $\geq 4$; the non-crossing hypothesis on propagators guarantees that at least one will bound a region not containing $p_{r+1}$.
-
 
 \begin{rmk}
 In the case that all vertices of an admissible WLD $W$ support at least two propagators, then Lemma~\ref{lem sian} substantially simplifies.  By Remark~\ref{rem:props of length 2 and 3}, $W$ has no propagators of length $3$.  Configuration \ref{item big and 2} necessarily entails vertices with support $1$ as does configuration \ref{item pair of 2s} unless $j=i+2$.  So in the case that $W$ has all vertices with support at least two then $W$ must contain a pair of propagators of length $2$  with the property that the first propagator is $(i, i+2)$, the second is $(i+2, i+4)$ and no other propagator ends on the edge $i+2$.
@@ -980,8 +740,7 @@ The reader can easily verify that this sequence of $k$-sets satisfies the defini
 \end{eg}
 
 
-
-Given a propagator $p$ and a vertex $i$ in its support, it will be very useful in the following to understand on what set of vertices the algorithm assigns $i$ to $p$.  The answer is that the set is a non-empty cyclic interval.  Lemma~\ref{vertex cyclic int lem} establishes this, but first we need a preliminary lemma which is also useful in its own right.
+Given a propagator $p$ and a vertex $i$ in its support, it will be very useful in the following to understand on what set of vertices the Grassmann necklace algorithm assigns $i$ to $p$.  The answer is that the set is a non-empty cyclic interval.  Lemma~\ref{vertex cyclic int lem} establishes this, but first we need a preliminary lemma which is also useful in its own right.
 
 
 \begin{lem}\label{lem no fourth vertex}
@@ -1002,134 +761,6 @@ If $W$ is an admissible Wilson loop diagram with $k$ propagators, then Algorithm
 It follows from the proof of Lemma~\ref{lem no fourth vertex} that Algorithm~\ref{alg:put GN on WLD} can never reach the fourth vertex of a propagator's support (with respect to the starting vertex). Therefore if the algorithm starts at vertex $i$, it must have assigned vertices to all propagators by the time it reaches $i-1$, ensuring that $I_i$ contains exactly $k$ distinct vertices.
 \end{proof}
 
-
-
-
-
-%Next we prove that this algorithm actually gives a Grassmann Necklace as claimed. We begin with some useful definitions and lemmas
-%
-%\begin{dfn}\label{protect dfn}
-%Let $W = (\cP,n)$ be an admissible diagram and $a \in[n]$ a vertex. For $p= (i,j) \in \cP$ an a propagator of $W$  and $v \in \{i, j\}$ a vertex of $W$, let $P_{v}(p)$ or $P_{v+1}(p)$ to be two \emph{protecting sets of $p$ at $v$ and ${v+1}$} be a set of propagators defined as follows: \begin{enumerate}
-%\item Work under the linear order on $[n]$, $<_{v+1}$, every propagator is now written as $p = (i_p, j_p)$ such that $i_p <_{v+1} j_p$.
-%\item If there is a propagator $s_1 \in \cP$ such that $s_1 = (i_{s_1}, v)$ or $s_1 = (i_{s_1}, v-1)$, then $s_1 \in P_v(p)$.
-%\item If $s_1$ as above does not exists, then $P_v(p) = \emptyset$. In this case, $P_w(p) = \emptyset$. When $P_v(p) \neq \emptyset$, if there exists a propagator $t_1 \in \cP$ defined such that $t_1 = (i_{t_1}, v)$ and $s_1 = (i_{s_1}, v)$ with $i_p <_{v+1} i_{t_1} <_{v+1} i_{s_1}$, $P_w(p) = t_1$.
-%\item If $s_1 = (i_{s_1}, v)$ then \bas P_v(p)=  \begin{cases} \{s_1\} \cup P_{i_{s_1}}(s_1) \cup P_{i_{s_1}+1}(s_1) & \textrm{ if } P_{i_{s_1}+1}(s_1) \neq \emptyset \\ s_1 &  \textrm{ else } \end{cases}. \eas  If $s_1 = (i_{s_1}, v-1)$ then \bas P_v(p)=  \begin{cases}  \emptyset & \textrm{ if } P_{v-1}(s_1) = \emptyset \\ \{s_1\} \cup P_{v-1}(s_1) & \textrm{ else } \end{cases} \eas.
-%\end{enumerate}
-%\end{dfn}
-%
-%The protective sets $P_\cdot(p)$ are designed to prevent $p$ from contributing the vertex indicated in the subscript at certain points in the Grassmann Necklace, $I_a$. Write $P_v(p) = \{s_1, \ldots s_r, t_2,  \ldots t_r\}$ with the $t_x = P_{i_{s_{x-1}}+1}(s_{x-1})$ and $s_x \in P_{i_{s_{x-1}}}(s_{x-1})$ for $x \geq 2$. We place the restrictions on the vertex $a$ as follows: \begin{enumerate} \item $P_v$ prevents $p$ from contributing to $I_a$ if \bas i_{s_r}  <_{v+1} a-1 <_{v+1} v\eas \item $P_{v+1}(p)$ prevents $p$ from contributing to $I_a$ only if $P_v(p)$ prevents $p$ from contributing $v$ to $I_a$. \end{enumerate}
-%
-%
-%\begin{eg} \label{eg: protective sets}
-%Consider the admissible Wilson loop diagram
-%\bas W=\begin{tikzpicture}[rotate=120,baseline=(current bounding box.east)]
-%	\begin{scope}
-%	\drawWLD{17}{3}
-%	\drawnumbers
-%	\drawprop{1}{0}{16}{0}
-%	\drawlabeledprop{2}{0}{15}{1}{p}
-%    \drawprop{6}{2}{15}{0}
-%    \drawprop{3}{0}{6}{1}
-%    \drawprop{4}{0}{6}{0}
-%    \drawprop{7}{0}{11}{0}
-%    \drawprop{8}{0}{10}{0}
-%    \drawprop{11}{1}{14}{1}
-%    \drawprop{12}{0}{14}{0}
-%		\end{scope}
-%	\end{tikzpicture}
-%\eas Consider the two sets of propagators $Q = \{(3, 6), (4, 6), (6,15)\}$ and $R = \{ (7, 11), (8, 10), (11, 14), (12, 14)\}$. The propagator $p = (2, 15)$ is protected at $a = 5$ from contributing $15$ to $I_5$ by the set $P_{15} = Q$. There is no set preventing $p$ from contributing $16$ to $I_{15}$. At $a = 9$, the set $P_{15} = \{(6,15)\} \subset Q$. We may just as easily right $P_{15} = Q$, though the other two propagators in the set prove unnecessary to keep $p$ from contributing $15$ to $I_{9}$. At $a = 14$, both $P_{15}$ and $P_{16}$ exists, with $P_{15} = \{(11, 14), (12, 14)\} \subset R $ and $P_{16}= \{(6,15)\} \subset Q$. We may just as easily right $P_{15} = R$ and $P_{16} = R$, though the other two propagators in each set are unnecessary.
-%
-%Note that for $a=1$, the propagator $p$ contributes $2$ to $I_1$. However, in this case, we say that neither $P_{15}$ or $P_{16}$ exist.
-%\end{eg}
-%
-%
-%\begin{lem}\label{protecting lem}
-%Let $W = (\cP, [n])$ be an admissible Wilson loop diagram, and $p = (i,j) \in \cP$, and $a \in [n]$ be a vertex. For $v \in \{i,j\}$, if $P_v(p) \neq \emptyset$, write $P_v(p) = \{s_1 \ldots s_r, t_2, \ldots t_r\}$ as above. Then $p$ does not contribute $v$ to $I_a$ if $i_{s_r} +1 <_{v+1} a <_{v+1} v+1 $. If both $P_v(p)$ and $P_{v+1}(p)$ are non empty, then $p$ also does not contribute $v+1$ to $I_a$.
-%\end{lem}
-%
-%\begin{proof}
-%Note that if $s_1 \in P_v(p)$ exists at step $v$ of Algorithm \ref{alg:put GN on WLD}, then $p$ cannot contribute $p$ to $I_a$. Further, if $P_{v+1}(p) \neq \emptyset$, $p$ cannot contribute $v+1$ to $I_a$ either.
-%
-%Next we show that if $P_v(p)$ is as above, with $i_{s_r}+1 <_{v+1} a$, then the propagator $s_1$ exists at step $v$ of Algorithm \ref{alg:put GN on WLD}. Let $x$ be the largest integer that such that $a <_{v_1} j_{x}+1$. Then $s_x$ cannot contribute to $I_a$ before vertex $v$. By construction $P_{i_{s_x}+1}(s_{x-1})\subset P_v(p)$. Therefore, $s_{x-1}$ does not contribute $i_{s_x}+1$ to $I_a$. Thus we conclude that $s_1$ does not contribute $i_{s_1}$ or $i_{s_1}+1$ to $I_a$. In other words, $s_1$ has not been removed from the diagram at vertex $v$.
-%
-%\end{proof}
-%
-%Thus we say that $P_v(p)$ protects $p$ at $v$ from $a$, for $a \in [i_{s_r}+2, v]$. There is an easy corollary to this, describing when such a protecting set cannot exist.
-%
-%\begin{cor} \label{protecting cor}
-%Let $W = (\cP, [n])$ be an admissible Wilson loop diagram, and $p = (i,j) \in \cP$. Picking a $v \in \{i, j\}$ write $p = (i_p, j_p)$ with $i_p <_{v+1} j_p$. If $a \in [j_p+1, i_p+1]$ then there can be no protecting set $P_v$ or $P_{v+1}$ protecting $p$ at $v$ or $v+1$ from $a$.
-%\end{cor}
-%
-%\begin{proof}
-%Since $W$ is admissible, it cannot have crossing propagators. Therefore neither $P_v$ cannot have the requisite propagator $s_r$ with $i_{s_r}+1  <_{v+1} a$.
-%\end{proof}
-%
-%The converse, however requires an extra condition.
-%
-%\begin{lem} \label{protect conv lem}
-%For $W = (\cP, [n])$, $p = (i,j)$, and $v \in \{i, j\}$ and $ a \in [n]$ a vertex of $W$, if $v$ (resp. $v+1$) is the first vertex of $V(p)$ in the $<_a$ order such that $P_v$ (resp. neither $P_v$ nor $P_{v+1}$) does not exist, then $p$ contributes $v$ (resp. $v+1$) to $I_a$.
-%\end{lem}
-%
-%\begin{proof}
-%Write $p = (i_p, j_p)$ with $i_p <_{v+1} j_p$.
-%
-%
-%If $p$ doesn't contribute $v$ (or $v+1$) to $I_a$, then either $p$ contributes a different supporting vertex $u$ earlier in the $<_a$ order or there is a propagator $s_1$ at step $v$ of the algorithm \ref{alg:put GN on WLD} preventing $p$ from contributing $v$ to $I_a$, (or there are a pair of propagators $s_1$ and $t_1$ at step $v$ preventing $p$ from contributing $v+1$ at $I_a$.)
-%
-%If there are propagators $s_1, t_1 \in \cP$ that are still in the diagram at step $v$, (write them $s_1 = (i_{s_1}, j_{s_1})$, and $t_1 = (i_{t_1}, j_{t_1})$) with $j_{s_1} \in \{v, v-1\}$, and $i_p \leq_{v+1} i_{t_1} <_v i_{s_1} <_v j_{s_1} \leq_{v} j_{t_1} = v$) then $s_1$ or $t_1$ did not contribute $i_{s_1}$ or  $i_{s_1} +1 $ (resp. $i_{t_1}$ or $i_{t_1}+1$) to $I_a$. Then one of the following three situations hold: \begin{enumerate} \item $i_{s_1}+1 <_{v+1} a$ and $j_{s_1} = v$: In this case, $s_1$ cannot be removed until $v$. \item $i_{s_1}+1 <_{v+1} a$ and $j_{s_1} = v-1$: in this case there exists a propagator $s_2 = (i_{s_2}, j_{s_2})$ with $i_{s_1} \leq_{v+1} i_{s_2} <_{v+1} j_{s_2}$ and $j_{s_2} \in \{j_{s_1}-1, j_{s_1}\}$. \item $i_{s_1}+1 \not <_{v+1} a$ and $j_{s_1} = v$: and there must be two other propagators $s_2 = (i_{s_2}, j_{s_2})$ and $t_2 = (i_{t_2}, j_{t_2})$, with $j_{s_2} \in \{i_{s_1}, i_{s_1}-1\}$ and $i_{s_1} \leq_{v+1} i_{t_2} <_{v+1} i_{s_2} <_{v+1} j_{s_2} \leq_{v+1} j_{t_2} = j_{s_1}$   \end{enumerate}
-%
-%However, now one must ensure that the newly identified propagators $s_2$ and $t_3$ do not contribute to $I_a$ before $i_{s_1}$. One does this by a similar construction to above. In this manner, we begin to build the sets $P_v(p)$ and $P_{v+1}(p)$.  By finiteness and admissiblity of the Wilson loop diagram, both these sets are finite; one cannot continue to add propagators $s_i$, $t_i$ ad infinitum.
-%
-%We claim that this implies that at some point there is a terminal propagator, $s_m \in P_v(p)$ such that $i_{s_m} + 1 <_{v+1} a$, and \bas  \textrm{ either }= \begin{cases} j_{s_m}=i_{s_{m-1}} & \textrm{ }\\ j_{s_m}=j_{s_{m-1}} & \textrm{ } \end{cases} .\eas We show that all other possibilities lead to a contradiction. For the remainder of this proof, indicate by $p_k$ some propagator identified at an earlier stage of this construction. That is, for $0 < k < m$, $p_k \in \{s_k, t_k\}$. Futher define $p_0 = p$.
-%
-%
-%%\begin{cases} j_{s_{m}=i_{s_{m-1}} & \textrm{ } \\  j_{s_m}=j_{s_{m-1}} & \text{ }\end{cases}
-%
-%If $j_{s_m} \in \{i_{s_{m-1}}-1, j_{s_{m-1}}-1\}$, then, this cannot be the final propagator added to $P_v(p)$, as one would need a means of preventing $s_m$ from contributing $i_{s_{m-1}}-1$ or $j_{s_{m-1}}-1$ to $I_a$.
-%
-%If $i_{s_m} + 1 \not <_{v+1} a$, then there are two.
-% \begin{description}
-%
-%\item[$j_{s_m} = i_{s_{m-1}}$ and $i_{s_m} \in \{i_{p_k}+2, i_{p_k}+1\}$] for some $k<m$. By admissibility, there is not room to place both the propagators $s_{m+1}$, and $t_{m+1}$. Thus $s_m$ is removed at the step $i_{s_m}$ or $i_{s_m} + 1$. Therefore, $s_1$ contributes at either $i_{s_1}$ or $i_{s_1}+1$. This leads to a contradiction.
-%\item[$j_{s_m} = i_{s_{m-1}}$ and $i_{s_m} = i_{p_k}+2$] for some $k<m$. This requires either crossing propagators or propagators starting and ending at the same edge, which violates admissibility.
-% \end{description} \note{correct but clear as mud? Help?}
-%\end{proof}
-%
-%We use these results to prove some properties about the Algorithm \ref{alg:put GN on WLD}.
-%\begin{prop}\label{res:alg k labels}
-%If $W = (\cP, [n])$ is an admissible Wilson loop diagram with $|\cP| = k$, then Algorithm~\ref{alg:put GN on WLD} puts exactly $k$ distinct labels on each edge.
-%\end{prop}
-%\begin{proof}
-%It is enough to show that the algorithm terminates in at most $n$ steps for each $a \in [n]$. In other words, that all $k$ propagators of $W$ are removed by the time the algorithm has cycled through all the vertices, starting at $a$. Suppose this doesn't happen, i.e. there is a propagator $p= (i,j)\in \cP$ which survives the first $n$ steps of the algorithm for some starting vertex $a$. Without loss of generality, assume $a \leq_a i <_a j$. Otherwise, change the roles of $i$ and $j$.
-%
-%Since $p$ is not removed by step $j+1$, by Lemma \ref{protecting lem} there are $4$ protecting sets, $P_i,P_{i+1}, P_{j}$ , and $P_{j+1}$ respectively, allowing $p$ to remain after $n$ steps.
-
-%However, since the cyclic interval $[i,j] \subseteq [a,j]$, $P_j$ and $P_{j+1}$ cannot be protecting sets by Corrollary \ref{protecting cor}.
-%\end{proof}
-
-
-
-%\begin{lem}\label{lem last vert}
-%  Let W be an admissible WLD on $n$ vertices with Grassmann necklace $I_1, \ldots, I_n$.  Then for all $1\leq a \leq n$, $a-1 \not\in I_a$ interpreted cyclically (that is for $a=1$, $a-1$ is interpreted to be $n$.)
-%\end{lem}
-%
-%\begin{proof}
-%Without loss of generality we can suppose $a=1$, so it suffices to show that $C(W)$ with the $n$th column removed is full rank.  (This suffices because if $C(W)$ with the $n$th column removed had full rank but the lexicographically minimal basis of $C(W)$ included the $n$th column, then we'd obtain a contradiction by taking this minimal basis with the $n$th column removed and extending it to a basis using a column from the first $n-1$ columns of $C(W)$ which is possible by the full rank assumption.)
-%
-%Because the nonzero entries of $C(W)$ are independent indeterminants, it suffices to show that there is some choice of nonzero entries of $C(W)$, one in each row, each in different columns, and none of which are the $n$th column.  This is equivalent to an assignment of all propagators to supporting vertices so that no two are assigned to the same vertex and none are assigned to vertex $n$.  The lemma is proved if we show such an assignment exists.
-%
-%Consider an assignment $f$ of a subset of propagators to vertices not including vertex $n$ with the maximal number of propagators.  If $f$ assigns $n$ propagators then we are done.  Otherwise there is a propagator $p$ which is not assigned but, by maximality, all of $p$s supporting vertices (other than possibly $n$) are assigned.  Build a sequence of sets $S_i$ of propagators and $T_i$ of vertices as follows.
-%
-%\begin{enumerate}
-%  \item $S_0={p}$ and $T_0$ is the support of $p$ except for $n$.  Set $i=0$.
-%  \item Let $R$ be the set of propagators which are assigned to a vertex in $T_i$ by $f$. Let $S_{i+1}= S_i \cup R$.  Let $T_{i+1} = T_i \cup (\text{supp}(R) - \{n\})$.\label{item loop step}
-%  \item If there is a vertex $v_{i+1}$ in $T_{i+1}$ which has not been assigned by $f$ then by construction there is a propagator $q_{i+1} \in S_{i+1}-S_i$ which can be assigned to $v_{i+1}$.  Do so, removing $q_{i+1}$'s old assignment.  This frees up a vertex $v_{i}$ in $T_i$ and so there is a propagator $q_{i} \in S_{i}$ which can be assigned to this vertex freeing up an earlier vertex and so on until $p$ has been assigned.  This new assignment contradicts the maximality of $f$.
-%  \item  If nothing changed in step \ref{item loop step} then all vertices of $T_{i+1}$ are assigned to propagators in $S_{i+1}-\{p\}$ and vice versa.  Thus $|S_{i+1}| = |T_{i+1}|+1$.  Also all the support of propagators in $S_{i+1}$ is in $T_{i+1} \cup \{n\}$, which is a set of size $|T_{i+1}|+1 = |S_{i+1}|$.  Thus we have $|S_{i+1}|$ propagators supported on $|S_{i+1}|$ vertices contradicting admissibility.
-%  \item Increment $i$ and go to \ref{item loop step}
-%\end{enumerate}
-%
-%This procedure must be finite as either a contradiction is found or $S_i$ grows at each step but $W$ has finitely many propagators.  However, the only way for the process to end is by reaching a contradiction.  Therefore any maximal assignment is a basis not including column $n$ which proves the lemma.
-%\end{proof}
 
 
 Given a propagator $p$ of an admissible WLD $W$ and a vertex $i$ in the support of $p$, define
