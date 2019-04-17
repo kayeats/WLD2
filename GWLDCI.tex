@@ -928,10 +928,13 @@ Thus $\rk((F\setminus C)\cup \{e\}) = \rk(F\setminus C) + 1$ for any $e \not\in 
 \end{proof}
 
 \begin{cor} \label{classifyflats}
-  If $F$ is a flat of a Wilson loop diagram, it can be written as the disjoint union of a cyclic propagator flat and an independent set and the set of non-supportive vertices. \end{cor}
-\note{I don't understand this corollary because the non supporting vertices are in $C$}
+  If $F$ is a flat of a Wilson loop diagram, it can be written as the disjoint union of a cyclic propagator flat and an independent set: \bas F =C \sqcup S \eas where $C$ the union of all circuits in S. \end{cor}
  
-In particular, any propagator flat can be written as a union of a cyclic propagator flat, an independent set and $F(\emptyset)$ for the appropriate Wilson loop diagram.
+\begin{proof}
+By Lemma \ref{lem decompose flat}, the set $C$ is a propagator flat. Furthermore, $S = F \setminus C$, which is independent.
+\end{proof}
+
+In particular, any propagator flat can be written as a union of a cyclic propagator flat and an independent set.
 
 Next we examine properties of propagator flats associated to the complement of Wilson Loop diagrams.
 %Finally, we note the differences between subdiagrams of Wilson loop diagrams, and restrictions or cotractions of the associated matroids.
@@ -983,7 +986,9 @@ in the case that $(P, V(P))$ is maximal exact.
 
 To prove the result in the general case, let let $(R,V(R))$ be an exact subdiagram that is not maximal and $P$ be the maximal exact subdiagram containing it. That is, $R \subsetneq P$.
 
-Since $R \subset P$, $V(P) = V(R) \sqcup S$, where $S = V(P) \setminus V(R)$. Since $P$ and $R$ both define exact subdiagrams, we may write $|V(P)| = |V(R)| + |P \setminus R|$, and we have that $S$ is a vertex set of size $|P \setminus R|$ with $(P \setminus R) \subseteq \Prop(S)$. Since  $|S| = |V(P) \setminus V(R)| = |P \setminus R| \leq |\Prop(S) |$, by Lemma \ref{lem facts about WLD matroids}, $\rk(S) = |S|$\note{I don't see why $\rk(S) = |S|$}, implying that $S$ is independent. Taking the complements, we may write \bas F(R^c ) = F(P^c) \sqcup S \;.\eas Taking the rank of both sides, \bas \rk(F(R^c )) = \rk(F(P^c) \sqcup S ) \leq \rk(F(P^c)) + |S| = |P^c| + |\Prop(S)| \leq |R^c| \;.\eas Combining this with \eqref{eq F is dependent} gives the desired result.
+Since $R \subset P$, $V(P) = V(R) \sqcup S$, where $S = V(P) \setminus V(R)$. Since $P$ and $R$ both define exact subdiagrams, we may write $|V(P)| = |V(R)| + |P \setminus R|$, and we have that $S$ is a vertex set of size $|P \setminus R|$ with $(P \setminus R) \subseteq \Prop(S)$. Since  $|S| = |V(P) \setminus V(R)| = |P \setminus R| \leq |\Prop(S) |$, by Lemma \ref{lem facts about WLD matroids}(1), $\rk(S) \leq |S|$. 
+
+Furthermore, by the properties of the rank function, we have that \bas \rk(S) \geq \rk(V(P)) - \rk(V(R)) \geq |V(P) \setminus V(R)| = |S| \; . \eas In otherwords, $\rk(S) = |S|$, implying that $S$ is independent. Taking the complements, we may write \bas F(R^c ) = F(P^c) \sqcup S \;.\eas Taking the rank of both sides, \bas \rk(F(R^c )) = \rk(F(P^c) \sqcup S ) \leq \rk(F(P^c)) + |S| = |P^c| + |\Prop(S)| \leq |R^c| \;.\eas Combining this with \eqref{eq F is dependent} gives the desired result.
 
 \end{proof}
 
