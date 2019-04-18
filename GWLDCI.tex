@@ -1010,7 +1010,7 @@ If $(P, V(P)$ is an exact subdiagram of of $W$, one may write \bas M\big((P, V(P
 \end{thm}
 
 \begin{proof}
-This follows from Lemma \ref{matroid contraction}. Lemma \ref{maxexactcomplementrank} shows that the supports of exact subdiagrams satisfy the conditions of this lemma.
+This follows from Lemma \ref{contractsubdiaglem}. Lemma \ref{maxexactcomplementrank} shows that the supports of exact subdiagrams satisfy the conditions of this lemma.
 \end{proof}
 
 \begin{rmk} \label{remark exact dual restiction}
@@ -1028,7 +1028,7 @@ It follows directly from the definitions that a matroid of rank $r$ is uniform i
 
 We prove the following claim: $W'$ is exact if and only if $V(P)$ contains no circuits $C$ with $\rk C< |P|$ in $(P, V(P))$. Since $\rk(M(W'))$ is bounded above by $|P|$, the result follows.
 
-Suppose $C \subseteq V(P)$ is a circuit of rank $m < |P|$; by Lemma \ref{lem facts about WLD matroids}, we know that $|\Prop_{W'}(C)| = m$ as well, where the subscript to $\Prop$ specifies the diagram we are working in.  Observe that $\Prop_{W'}(C)\subseteq P$ by definition. The set $P \setminus \Prop_{W'}(C)$ is thus nonempty, and we can consider the subdiagram $W'':= (P\setminus \Prop_{W'}(C),V(P\setminus\Prop_{W'}(C))$. By the density condition on subdiagrams of admissible diagrams, we have
+Suppose $C \subseteq V(P)$ is a circuit of rank $m < |P|$. By Lemma \ref{lem facts about WLD matroids}, we know that $|\Prop_{W'}(C)| = m$ as well, where the subscript to $\Prop$ specifies the diagram we are working in.  Observe that $\Prop_{W'}(C)\subseteq P$ by definition. The set $P \setminus \Prop_{W'}(C)$ is thus nonempty, and we can consider the subdiagram $W'':= (P\setminus \Prop_{W'}(C),V(P\setminus\Prop_{W'}(C))$. By the density condition on subdiagrams of admissible diagrams, we have
 \[|V(P\setminus\Prop_{W'}(C))| \geq |P\setminus\Prop_{W'}(C)| + 3.\]
 It is easy to verify that $V(P\setminus\Prop_{W'}(C)) \subseteq V(P)\setminus C$; since $C \subseteq V(P)$ and $\Prop_{W'}(C) \subseteq P$, we can therefore rewrite the previous inequality as
 \[|V(P)| - (m+1) \geq |V(P\setminus\Prop(C))| \geq |P| - m + 3.\]
@@ -1042,7 +1042,7 @@ Conversely, suppose that $W'$ is not exact and for a contradiction suppose also 
 
 We now make a few observations about the geometry of matroids defined by exact diagrams.
 
-In \cite{wilsonloop}, the authors show that all admissible Wilson loop diagrams correspond to positroids. That is, they correspond to matroids that can be represented by elements of the positive Grassmannians $\Gr(|\cP|, n)$. Any positroid of rank $k$ on $n$ elements defines a subspace of the positive Grassmannians $\Gr(k, n)$, namely the points which represent it. These subspaces give a CW structure on $\Gr(k,n)$, with each positroid defining a cell. 
+In \cite{wilsonloop}, the authors show that all admissible Wilson loop diagrams correspond to positroids. That is, they correspond to matroids represented by elements of the positive Grassmannians $\Gr(|\cP|, n)$. Any positroid of rank $k$ on $n$ elements defines a subspace of the positive Grassmannians $\Gr(k, n)$, namely the points which represent it. These subspaces give a CW structure on $\Gr(k,n)$, with each positroid defining a cell. 
 
 \begin{dfn}
 Given a Wilson loop diagram $W = (\cP, [n])$, define the positroid cell associated to a Wilson loop diagram, $\Sigma(W)$, to be the cell in the CW complex on $\Gr(|\cP|, n)$ defined by the positroid $M(W)$.
@@ -1055,7 +1055,7 @@ Let $(P, V(P))$ be an exact subdiagram of $W$. The matroid associated to this su
 \end{cor}
 
 \begin{proof}
-The unique top dimensional cell of $\Gr(|P|, |V(P)|)$ is defined by all points in $\Gr(|P|, |V(P)|)$ such that all Plucker coordinates are strictly greater than $0$. Since $(P, V(P))$ is an exact subdiagram, this all $|P| \times |P|$ minors are non-zero. Intersecting these with the cases with the positive Grassmannians demands that all minors be strictly positive.
+The unique top dimensional cell of $\Gr(|P|, |V(P)|)$ is defined by precisely those points in $\Gr(|P|, |V(P)|)$ with the property that all Pl\"ucker coordinates are strictly greater than $0$. Since $(P, V(P))$ is an exact subdiagram, the matroid is uniform, and so all $|P| \times |P|$ minors are non-zero. Intersecting these with the cases with the positive Grassmannians demands that all minors be strictly positive.\note{I don't understand this last sentence.}
 \end{proof}
 
 %Since the matroid defined by the subdiagram $(P , V(P))$ is not the same as the matroid associated to $W_{V(P)}$, one cannot say that the $W_{V(P)}$ is a uniform matroid. In fact, for any subset $U \subset V(P)$, $\rk_{W_{V(P)}}(U) \geq \rk_{(P , V(P))}(U)$. This is because adding propagators to vertices can only increase the rank. In particular this implies that, for any subset $U \subset V(P)$, if $|U| \leq |P|$, then $U$ is independent in both the restricted matroid $W_{V(P)}$, and the original, $W$.
@@ -1075,11 +1075,11 @@ Let $W= (\cP, [n])$ and $W'= (\cP', n)$ be two Wilson Loop diagrams. They define
 \begin{proof}
 One direction has been proved in \cite[Theorem 1.18]{wilsonloop}, but we give a different proof here to be consistent with the method of this document.
 
-Assume that $W$ and $W'$ are equivalent. Without loss of generality, write $W = (P \cup R, [n])$ and $W' = (P \cup R', [n])$, where $P \subset \cP \cap \cP'$ and $(R, V(R))$ and $(R', V(R'))$ are two maximally exact subdiagrams, with $R \neq R'$, but $V(R) = V(R')$. If this is not the case, one may always find a family of diagram, $\{W_i\}$ satisfying this condition and forming a transitive chain connecting $W$ to $W'$ in the equivalence class.
+Assume that $W$ and $W'$ are equivalent. Without loss of generality, write $W = (P \cup R, [n])$ and $W' = (P \cup R', [n])$, where $P \subset \cP \cap \cP'$ and $(R, V(R))$ and $(R', V(R'))$ are two maximal exact subdiagrams, with $R \neq R'$, but $V(R) = V(R')$. If this is not the case, one may always find a family of diagram, $\{W_i\}$ satisfying this condition and forming a transitive chain connecting $W$ to $W'$ in the equivalence class.
 
-Let $U \subset V(R)$ be any subset of size $|U| = |R|$. Since $(R, V(R))$ defines a uniform matroid, by Lemma \ref{exactuniformthm}, the set $U$ is independent in the subdiagram $(R, V(R))$, and thus in $W$. The complementary set $F(P)$ is a flat of maximal rank by lemma \ref{maxexactcomplementrank} ($\rk(F(P)) = |P|$). Let $B \subset F(P)$ be a maximal indpendent set ($\rk B = |P|$) in $F(P)$. Since $F(P)$ is a flat, adding any element of $V(R)$ to $B$ increases the rank. Therefore, any basis of $W$ can be written as $B \cup U$ for some $B$ and $U$ of the form indicated. However, since $F(P)$ is common to both $W$ and $W'$, and $V(R) = V(R')$, any any basis of $W'$ can also be written $B \cup U$. Thus both matroids have the same bases sets, proving that they are the same.
+Let $U \subset V(R)$ be any subset of size $|U| = |R|$. Since $(R, V(R))$ defines a uniform matroid, by Lemma \ref{exactuniformthm}, the set $U$ is independent in the subdiagram $(R, V(R))$, and thus in $W$. The complementary set $F(R^c) = F(P)$ is a flat of maximal rank by lemma \ref{maxexactcomplementrank} ($\rk(F(P)) = |P|$). Let $B \subset F(P)$ be a maximal independent set ($\rk B = |P|$) in $F(P)$. Since $F(P)$ is a flat, adding any element of $V(R)$ to $B$ increases the rank. Therefore, any basis of $W$ can be written as $B \cup U$ for some $B$ and $U$ of the form indicated. However, since $F(P)$ is common to both $W$ and $W'$, and $V(R) = V(R')$, any any basis of $W'$ can also be written $B \cup U$. Thus both matroids have the same bases sets, proving that they are the same.
 
-For the converse, assume that the matroids associated to $W$ and $W'$ are the same: $M(W) = M(W')= M$. Let $\mathcal{R} = \{(P_i, V(P_i)\}_{i=1}^k$ and $\mathcal{R}' = \{(P'_i, V(P'_i)\}_{i=1}^l$ be the sets of maximally exact subdiagrams of $W$ and $W'$. Write $F_i = F(P_i^c)$ and $F'_i = F(P^{'c}_i)$ to be the complementary cyclic flats. By Theorem \ref{exactuniformthm} and Theorem \ref{exact diagrams contractions},  $M/F_i$ and $M/F_i'$ are uniform matroids. Since, by Theorem \ref{exactuniformthm}, any subset $V$ of $M$ such that $M/(V^c)$ is uniform defines an exact subdiagram of both $W$ and $W'$. If $U \subset V$ are two such thsets, then the corresponding exact subdiagrams are also subsets. Therefore, $|\mathcal{R}| = |\mathcal{R}'|$, and we write $V(P_i) = V(P'_i)$, after possibly reindexing $\mathcal{R}$ and $\mathcal{R}'$.
+For the converse, assume that the matroids associated to $W$ and $W'$ are the same: $M(W) = M(W')= M$. Let $\mathcal{R} = \{(P_i, V(P_i)\}_{i=1}^k$ and $\mathcal{R}' = \{(P'_i, V(P'_i)\}_{i=1}^l$ be the sets of maximal exact subdiagrams of $W$ and $W'$. Write $F_i = F(P_i^c)$ and $F'_i = F(P^{'c}_i)$ to be the complementary cyclic flats. By Theorem \ref{exactuniformthm} and Theorem \ref{exact diagrams contractions},  $M/F_i$ and $M/F_i'$ are uniform matroids. Since, by Theorem \ref{exactuniformthm}, any subset $V$ of $M$ such that $M/(V^c)$ is uniform defines an exact subdiagram of both $W$ and $W'$. If $U \subset V$ are two such sets, then the corresponding exact subdiagrams are also subsets. Therefore, $|\mathcal{R}| = |\mathcal{R}'|$, and we write $V(P_i) = V(P'_i)$, after possibly reindexing $\mathcal{R}$ and $\mathcal{R}'$.
 
 Since the sets of propagators defining maximal exact subdiagrams partition $\cP$, by Lemma \ref{uniqueproppartitioncor}, write $\cup_{i = 1}^k P_i = \cup_{i = 1}^k P'_i = \cP$. Reorganize the vertex sets of maximal exact subdiagrams as follows: \ba \cup_{P_i \not \in \mathcal{R}'} V(P_i) = V(\cup_{P_i \not \in \mathcal{R}'} P_i)  = F(\cup_{P_i \in \mathcal{R}'} P_i)^c\label{vertexsets}\; .\ea The final flat may, of course, be empty.
 
@@ -1088,10 +1088,12 @@ Thus, we have partitioned the vertices of $W$ and $W'$ into two complementary se
 Without loss of generality, assume that $|\mathcal{R}| = |\mathcal{R}'| = 1$. Then the two Wilson loop diagrams are equivalent. If  $|\mathcal{R}| = |\mathcal{R}'| > 1$, then one may define a family of Wilson loop diagrams, $W_0$ to $W_k$ defined such that $W_0 = W$ and $W_i$ is derived from $W_{i-1}$ by replacing the propagator set $P_i$ with $P'_i$. In this manner, $W' = W_k$ and $W_i \sim W_{i+1}$, making $W \sim W'$.
 \end{proof}
 
+\note{Two comments on this proof.  First I think it was written before other things and so doesn't quite match in style and language; I have improved this a bit but it would benefit from more editing with that in mind.  Second, I feel that both directions essentially come down to the fact that there is a unique uniform matroid of each dimension and rank.}
+
 Since there is a unique way to decompose $W$ into maximal exact subdiagrams, it is logical to ask how many diagrams there are in an equivalence class. It is a classical fact (see for instance Chapter 6 of \cite{Stanley}) that the number of triangulations of a convex $n$-gon is the $n-2$ Catalan number, namely $\frac{1}{n-1}\binom{2(n-2)}{n-2}$.  Thus we can count the number of equivalent diagrams.
 
 \begin{cor}\label{number of equiv diagrams}
-  Let $W$ be an admissible Wilson loop diagram where the sizes of the supports of the nontrivial maximal connected exact subdiagrams are $n_1, n_2, \ldots, n_j$.  Then the number of admissible Wilson loop diagrams equivalent to $W$ (including $W$ itself) is
+  Let $W$ be an admissible Wilson loop diagram where the sizes of the supports of the nontrivial maximal exact subdiagrams are $n_1, n_2, \ldots, n_j$.  Then the number of admissible Wilson loop diagrams equivalent to $W$ (including $W$ itself) is
   \[
   \prod_{i=1}^{j} \frac{1}{n_i-1}\binom{2(n_i-2)}{n_i-2}
   \]
@@ -1107,29 +1109,29 @@ The connection between admissible Wilson loop diagrams and polytope dissections 
 
 A \emph{polytope} can equivalently be defined as the convex hull of a finite set of points in some $\mathbb{R}^d$ or as the intersection of finitely many closed half spaces in $\mathbb{R}^d$ with the additional property that this intersection is bounded in the sense of not containing any ray (see chapter 0 of \cite{Ziegler}).
 
-A \emph{face} of a polytope is the intersection of the polytope with any hyperplane for which the entire polytope is in one of the closed half-spaces defined by the hyperplane.  The polytope itself is also considered a face (in the case that that polytope is of full dimension, this definition can be unified by considering linear equalities (including the trivial one) in place of hyperplanes and the corresponding linear inequalities in place of the half-spaces defined by the hyperplane, see chapter 2 of \cite{Ziegler}).  Two faces are \emph{parallel} if one can be mapped to the other by a translation in $\mathbb{R}^d$.  In particular parallel faces must be of the same dimension and any pair of vertices are parallel.
+A \emph{face} of a polytope is the intersection of the polytope with any hyperplane for which the entire polytope is in one of the closed half-spaces defined by the hyperplane.  The polytope itself is also considered a face (in the case that that polytope is of full dimension, this definition can be unified by considering linear equalities (including the trivial one) in place of hyperplanes and the corresponding linear inequalities in place of the half-spaces defined by the hyperplane, see chapter 2 of \cite{Ziegler}).  Two faces are \emph{parallel} if one can be mapped to the other by a translation in $\mathbb{R}^d$.  In particular parallel faces must be of the same dimension and any two vertices are parallel to each other.
 
 There are many important polytopes in combinatorics, including, of primary importance to us, the associahedron.
 
 Two polytopes are \emph{combinatorially equivalent} if there is a bijection between their faces which preserves inclusion of faces.  Often in combinatorics one is primarily interested in the combinatorial equivalence classes, and common names, including the associahedron, refer to these equivalence classes.  A particular polytope in the class is then known as a \emph{realization}.  
 
-Associahedra can also be viewed in terms of polygon dissections.  Let's fix $n$ and consider dissections of a convex $n$-gon.  The $n-1$ asociahedron can be given in terms of the dissections of this $n$-gon; the vertices of the associahedron are the triangulations of the $n$-gon while the dimension $k$ faces are the dissections which are $k$ diagonals away from being a triangulation.  One face is included in another if the first dissection is a refinement of the second. 
+Associahedra can also be viewed in terms of polygon dissections.  Fix $n$ and consider dissections of a convex $n$-gon.  The $n-1$ asociahedron can be given in terms of the dissections of this $n$-gon; the vertices of the associahedron are the triangulations of the $n$-gon while the dimension $k$ faces are the dissections which are $k$ diagonals away from being a triangulation.  One face is included in another if the first dissection is a refinement of the second. 
 
-It turns out that this defines a class of combinatorially equivalent polytopes, which can be proved by giving a realization.  There are many interesting realizations of the associahedron \cite{}; the following will be the one which we will use. \sanote{picture of an associahedron somewhere?}\note{Yes, I agree that there should be a picture}
+It turns out that this defines a class of combinatorially equivalent polytopes, which can be proved by giving a realization.  There are many interesting realizations of the associahedron \cite{CSZinequivalent}; the following will be the one which we will use. \sanote{picture of an associahedron somewhere?}\note{Yes, I agree that there should be a picture}
 
 \begin{dfn}
   Let $x_1, \ldots, x_n$ define a convex $n$-gon.  Let $T$ be the set of triangulations of this $n$-gon.  For each $t\in T$ define $s_t$ to be the point in $\mathbb{R}^n$ whose $i$th coordinate is the sum of the areas of all triangles of $t$ which are incident to $x_i$.  Let $A_n$ be the convex hull of the $s_t$.
 \end{dfn}
-This is the construction of the secondary polytope (so $A_n$ is the secondary polytope of $x_1, \ldots, x_n$), see \cite{Ziegler} Definition 9.9.  In general the $x_1, \ldots, x_n$ may be any points in any $\mathbb{R}^d$.  Triangulations in the more general context are a decomposition into simplices and the areas of the triangles is replaced by the volume of the simplices.  
+This is the construction of the secondary polytope (so $A_n$ is the secondary polytope of $x_1, \ldots, x_n$), see \cite{Ziegler} Definition 9.9.  In general the $x_1, \ldots, x_n$ may be any points in any $\mathbb{R}^d$.  Triangulations in this more general context are decompositions into simplices and the area of the triangles is replaced by the volume of the simplices.  
 
-$A_n$ defined in this way is a realization of the $n-1$ associahedron (\cite{Ziegler}, Example 9.11).  Note that we get a realization for any convex $n$-gon, but these realizations are all equally good for our purposes, and so we fix $x_1, \ldots, x_n$ from now on.
+$A_n$ defined in this way is a realization of the $n-1$ associahedron (\cite{Ziegler}, Example 9.11).  Note that we get a realization for any convex $n$-gon, but these realizations are all equally good for our purposes, and so we fix $x_1, \ldots, x_n$ defining a particular convex $n$-gon from now on.
 
 
 \subsection{Non-parallel faces in the associahedron and inequivalent Wilson loop diagrams}\label{sec associahedron results}
 
-The map $\tau$ defined in Definition \ref{WLDtriangulationdfn} assigns a dissection of an $n$-gon to a Wilson loop diagram $W = (\cP, [n])$. Recall that if $|\cP| = k$, then $\tau(W)$ is a dissection with $k$ chords. Therefore, the map $\tau$ associates to each weakly admissible Wilson loop diagram a $n-3 - k$ dimensional face of the associahedron $A_n$. \sanote{picture of $\tau(W)$ for $k =1$, $n = 5$?}
+The map $\tau$ defined in Definition \ref{WLDtriangulationdfn} assigns a dissection of an $n$-gon to a Wilson loop diagram $W = (\cP, [n])$. Recall that if $|\cP| = k$, then $\tau(W)$ is a dissection with $k$ chords. Therefore, the map $\tau$ associates to each weakly admissible Wilson loop diagram an $n-3 - k$ dimensional face of the associahedron $A_n$. \sanote{picture of $\tau(W)$ for $k =1$, $n = 5$?}
 
-Note that Wilson loop diagrams which are weakly admissible but not admissible have $\tau$ graphs which are triangulations, hence dimension 0 faces (vertices) in $A_n$.  All of these are equivalent in the sense that they are only retriangulations away from each other.  It will be convenient in what follows, to include these diagrams.  The next two propositions would be identical in the case of admissible instead of weakly admissible, while the corollary could be changed to involve admissible diagrams only by subtracting one from the number of non parallel faces in order to account for the missing dimension 0 faces.
+Note that Wilson loop diagrams which are weakly admissible but not admissible are necessarily exact and hence have $\tau$ graphs which are triangulations, hence dimension 0 faces (vertices) in $A_n$.  All of these are equivalent in the sense that they are only retriangulations away from each other.  It will be convenient in what follows, to include these diagrams.  The next two propositions would be identical in the case of admissible instead of weakly admissible, while the corollary could be changed to involve admissible diagrams only by subtracting one from the number of non parallel faces in order to account for the missing dimension 0 faces.
 
 \begin{prop}\label{prop easy way}
   If two weakly admissible Wilson loop diagrams are equivalent then their faces in $A_n$ are parallel.
@@ -1159,7 +1161,7 @@ The following lemma is useful for proving the converse of the above. We also nee
 
 Suppose this never occurs.  Then all the non-triangle faces of $D_2$ which are crossed by a diagonal of $D_1$ must be quadrilaterals and likewise for $D_1$.  This means that any non-triangle and non-quadrilateral faces must be common between $D_1$ and $D_2$.  These common faces are irrelevant for the statement as none of them can be the face containing $x_i, x_j, x_k, x_l$, and so by triangulating any common non-triangle faces, we may assume that $D_1$ and $D_2$ have only quadrilateral and triangle faces.
 
-Assume for a contradiction that no quadrilateral as in the statement exists, and let $d$ and $f$ be as above.  Then $f$ must have two vertices strictly on each side of $d$, say $x_i$ and $x_j$ on one side and $x_k$, $x_l$ on the other side (and in that order).  Consider the face incident to $d$ on the $x_i, x_j$ side of $d$.  Suppose this face is a triangle, then its other vertex cannot be in $[x_i, x_j]$ as otherwise taking one of the other edges of the triangles would give a configuration as in the statement.  Suppose now that this face is a quadrilateral, again no other vertex of this face can be in $(x_i, x_j)$ as otherwise again taking one of the other edges of the face as $d$ we'd get a quadrilateral as in the statement, the same holds if one of the other vertices of the face is $x_i$ or $x_j$ but the other is not.  If the two other vertices of the face are $x_i$ and $x_j$, then we also get a configuration as in the statement but now with the four vertices being the two ende of $q$ and $x_i, x_j$ and with one of the edges of $f$ as the diagonal.  Thus we can conclude that none of the vertices of this face are in $[x_i, x_j]$.  Also if the face has three vertices on one side of $f$ and one on the other then we get a quadrilateral as in the statement again with this face giving the four vertices and the diagonal is a side of $f$.  In this case the face is either a triangle with its third vertex of the triangle must be in $(x_j,x_k)$ or in $(x_l,x_i)$ or a quadrilateral with one more vertex in $(x_j, x_k)$ and one more vertex in $(x_l, x_i)$.  Taking all this together, whether the face is a triangle or a quadrilateral, replacing $d$ with one of the other edges of the face we get a new diagonal $d'$ which also separates $f$ into $x_i, x_j$ and $x_k, x_l$ but is strictly closer to $[x_i, x_j]$ than $d$ was.  The same argument holds for $d'$, but the polygon is finite, so this process cannot go on indefinitely, contradicting that no quadtilateral as in the statement exists.
+Assume for a contradiction that no quadrilateral as in the statement exists, and let $d$ and $f$ be as above.  Then $f$ must have two vertices strictly on each side of $d$, say $x_i$ and $x_j$ on one side and $x_k$, $x_l$ on the other side (and in that order).  Consider the face incident to $d$ on the $x_i, x_j$ side of $d$.  Suppose this face is a triangle, then its other vertex cannot be in $[x_i, x_j]$ as otherwise taking one of the other edges of the triangles would give a configuration as in the statement.  Suppose now that this face is a quadrilateral, again no other vertex of this face can be in $(x_i, x_j)$ as otherwise again taking one of the other edges of the face as $d$ we'd get a quadrilateral as in the statement, the same holds if one of the other vertices of the face is $x_i$ or $x_j$ but the other is not.  If the two other vertices of the face are $x_i$ and $x_j$, then we also get a configuration as in the statement but now with the four vertices being the two ends of $q$ and $x_i, x_j$ and with one of the edges of $f$ as the diagonal.  Thus we can conclude that none of the vertices of this face are in $[x_i, x_j]$.  Also if the face has three vertices on one side of $f$ and one on the other then we get a quadrilateral as in the statement again with this face giving the four vertices and the diagonal is a side of $f$.  In this case the face is either a triangle with its third vertex of the triangle must be in $(x_j,x_k)$ or in $(x_l,x_i)$ or a quadrilateral with one more vertex in $(x_j, x_k)$ and one more vertex in $(x_l, x_i)$.  Taking all this together, whether the face is a triangle or a quadrilateral, replacing $d$ with one of the other edges of the face we get a new diagonal $d'$ which also separates $f$ into $x_i, x_j$ and $x_k, x_l$ but is strictly closer to $[x_i, x_j]$ than $d$ was.  The same argument holds for $d'$, but the polygon is finite, so this process cannot go on indefinitely, contradicting that no quadtilateral as in the statement exists.
 \note{That huge paragraph also needs a picture}
 \end{proof}
 
@@ -1168,9 +1170,9 @@ Assume for a contradiction that no quadrilateral as in the statement exists, and
 \end{prop}
 
 \begin{proof}
-  Let $W$ and $X$ be inequivalent.  If $\tau(W)$ and $\tau(X)$ do not have the same number of diagonals (hence their faces in $A_n$ not having the same dimension) then they are not parallel, so we can assume $\tau(W)$ and $\tau(X)$ do have the same number of diagonals and hence their faces in $A_n$ have the same dimension.  Let the face associated to $\tau(W)$ be $f_W$ and the face associated to $\tau(X)$ be $f_X$.
+  Let $W$ and $X$ be inequivalent.  If $\tau(W)$ and $\tau(X)$ do not have the same number of diagonals (hence their faces in $A_n$ do not have the same dimension) then they are not parallel, so we can assume $\tau(W)$ and $\tau(X)$ do have the same number of diagonals and hence their faces in $A_n$ have the same dimension.  Let the face associated to $\tau(W)$ be $f_W$ and the face associated to $\tau(X)$ be $f_X$.
 
-  As observed in the proof of Proposition~\ref{prop easy way}, the support of any nonzero vector parallel to an edge is on the indices corresponding to the four vertices bounding the quadrilateral of the dissection associated with the edge.  Thus $V_{>3}(\tau(W)) \neq V_{>3}(\tau(X))$ (notation as defined before Lemma~\ref{lem good quads}) then the span of the vectors parallel to their edes has different support and so they cannot be parallel.  So we can assume that $V_{>3}(\tau(W)) = V_{>3}(\tau(X))$.
+  As observed in the proof of Proposition~\ref{prop easy way}, the support of any nonzero vector parallel to an edge is on the indices corresponding to the four vertices bounding the quadrilateral of the dissection associated with the edge.  Thus if $V_{>3}(\tau(W)) \neq V_{>3}(\tau(X))$ (notation as defined before Lemma~\ref{lem good quads}) then the span of the vectors parallel to their edes has different support and so they cannot be parallel.  So we can assume that $V_{>3}(\tau(W)) = V_{>3}(\tau(X))$.
 
     Since $\tau(W)$ and $\tau(X)$ do not have the same set of non-triangle faces, there must be some diagonal $d$ of $\tau(W)$ that crosses through a non-triangle face $f$ of $\tau(X)$. 
     It will be most convenient to look at normal vectors and to use the choice of normal vector discussed on p8 of \cite{CSZinequivalent}, namely pick one side of $d$ to be positive and define the $i$th coordinate of the $\omega^+_d$ to be
@@ -1221,19 +1223,19 @@ Susama Agarwala and Eloi~Marin Amat.
 \newblock arXiv:1509.06150.
 
 \bibitem{casestudy}
-Susama Agarwala and Sian Fryer.
+Susama Agarwala and Si\^an Fryer.
 \newblock A study in $\textrm{Gr}_{\geq 0}(2,6)$: from the geometric case book
-  of {W}ilson loop diagrams and {SYM} $n=4$.
+  of {W}ilson loop diagrams and {SYM} $N=4$.
 \newblock arXiv:1803.00958.
 
 \bibitem{generalcombinatoricsI}
-Susama Agarwala, Sian Fryer, and Karen Yeats.
-\newblock Combinatorics and geometry of wilson loop diagrams.
+Susama Agarwala, Si\^an Fryer, and Karen Yeats.
+\newblock Combinatorics of the geometry of {W}ilson loop diagrams {II}: {G}rassmann necklaces, dimensions, and denominators.
 \newblock manuscript in progress.
 
 \bibitem{non-orientable}
 Susama Agarwala and Cameron Marcott.
-\newblock Wilson loops in sym $n=4$ do not parametrize an orientable space.
+\newblock Wilson loops in {SYM} $N=4$ do not parametrize an orientable space.
 \newblock arXiv:1807.05397.
 
 \bibitem{arkani:2012nw}
@@ -1275,7 +1277,7 @@ P.~{Galashin} and T.~{Lam}.
 
 \bibitem{HeslopStewart}
 Paul Heslop and Alastair Stewart.
-\newblock The twistor wilson loop and the amplituhedron.
+\newblock The twistor {W}ilson loop and the amplituhedron.
 \newblock {\em Journal of High Energy Physics}, 2018(10):142, Oct 2018.
 
 \bibitem{AmplituhedronDecomposition}
@@ -1306,12 +1308,12 @@ A.~Postnikov.
 
 \bibitem{Stanley}
   R. P. Stanley.
-  \newblock Enumerative Combinatorics, Vol. 2
+  \newblock Enumerative Combinatorics, Vol. 2.
   \newblock Wadsworth (1999)
 
 \bibitem{Ziegler}
   G. M. Ziegler.
-  \newblock Lectures on Polytopes
+  \newblock Lectures on Polytopes.
   \newblock Springer GTM 152, (1995)
 
 \bibitem{OxleyMatroidBook}
