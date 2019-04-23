@@ -48,7 +48,7 @@
 %%% WLD drawing and 2,6 shortcuts
 
 \usetikzlibrary{decorations.pathmorphing,calc}
-\usetikzlibrary{intersections}
+\usetikzlibrary{intersections}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
 
 
 \definecolor{light-gray}{gray}{0.6}
@@ -986,9 +986,9 @@ in the case that $(P, V(P))$ is maximal exact.
 
 To prove the result in the general case, let let $(R,V(R))$ be an exact subdiagram that is not maximal and $P$ be the maximal exact subdiagram containing it. That is, $R \subsetneq P$.
 
-Since $R \subset P$, $V(P) = V(R) \sqcup S$, where $S = V(P) \setminus V(R)$. Since $P$ and $R$ both define exact subdiagrams, we may write $|V(P)| = |V(R)| + |P \setminus R|$, and we have that $S$ is a vertex set of size $|P \setminus R|$ with $(P \setminus R) \subseteq \Prop(S)$. Since  $|S| = |V(P) \setminus V(R)| = |P \setminus R| \leq |\Prop(S) |$, by Lemma \ref{lem facts about WLD matroids}(1), $\rk(S) \leq |S|$. 
+Since $R \subset P$, $V(P) = V(R) \sqcup S$, where $S = V(P) \setminus V(R)$. Since $P$ and $R$ both define exact subdiagrams, we may write $|V(P)| = |V(R)| + |P \setminus R|$, and we have that $S$ is a vertex set of size $|P \setminus R|$. Furthermore, $F(R^c) = F(P^c) \sqcup S$. We show that $S$ is an independent set in the subdiagram $(P, V(P))$, and thus in $W$. Independence in $(P, V(P))$ implies that for any maximal independent set $\mathfrak{B} \subset F(P^c)$, the set $\mathfrak{B} \sqcup S$ is independent in $F(R^c)$. Therefore, \bas \rk (F(R^c)) \geq \rk (F(P^c)) + |S| = |P^c| + |P\setminus R| = |R^c|  \;.\eas By Lemma \ref{lem facts about WLD matroids}, $\rk (F(R^c)) \leq |R^c|$. Thus $\rk (F(R^c)) = |R^c|$ as desired.
 
-Furthermore, by the properties of the rank function, we have that \bas \rk(S) \geq \rk(V(P)) - \rk(V(R)) \geq |V(P) \setminus V(R)| = |S| \; . \eas In otherwords, $\rk(S) = |S|$, implying that $S$ is independent. Taking the complements, we may write \bas F(R^c ) = F(P^c) \sqcup S \;.\eas Taking the rank of both sides, \bas \rk(F(R^c )) = \rk(F(P^c) \sqcup S ) \leq \rk(F(P^c)) + |S| = |P^c| + |\Prop(S)| \leq |R^c| \;.\eas Combining this with \eqref{eq F is dependent} gives the desired result.
+It remains to show that $S$ is an independent set in the subdiagram $(P, V(P))$. Suppose not. Then, by Theorem \ref{thm WLD defines matroid} there is a subset $U \subset S$ such that $|\Prop(U)| < |U|$. Then the remaining propagators, $P \setminus \Prop(U)$ are supported entirely on $V(P) \setminus U$. That is \bas  V(P \setminus \Prop(U)) = V(P) \setminus U\; .\eas Comparing sizes of these sets, we get \bas |V(P \setminus \Prop(U))| = |V(P)| - |U| = |P| +3 -|U| > |P| +3 -|\Prop(U)| = |P \setminus \Prop(U)| +3\; ,\eas which violates admissibility. Therefore, $S$ is independent in $(P, V(P))$. 
 
 \end{proof}
 
