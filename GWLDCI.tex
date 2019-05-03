@@ -367,7 +367,7 @@ Let $W = (\cP, [n])$.
 \begin{enumerate}
 \item For $p \in \cP$, let $V(p) = \{i_p, i_p+1, j_p, j_p+1\}$ be the set of vertices supporting $p$. Then, for $P \subseteq \cP$, the set $V(P) = \cup_{p \in P} V(p)$ is the vertex support of $P$.
 \item For $V \subseteq [n]$, write $\Prop(V) = \{ p \in \cP | V(p) \cap V \neq \emptyset \} $.
-\item For $P \subseteq \cP$, define $F(P) = V(P^c)^c$ to be\footnote{Here, as throughout, we are using the subscript $c$ for the set theoretic complement.} the set of vertices in $[n]$ that do not support any propagators outside the set $P$.
+\item For $P \subseteq \cP$, define $F(P) = V(P^c)^c$ to be\footnote{Here, as throughout, we are using the superscript $c$ for the set theoretic complement.} the set of vertices in $[n]$ that do not support any propagators outside the set $P$.
 \item The set of vertices that are not in the support of any propagotors is denoted  $F(\emptyset)$. Vertices in this set are called non-supporting.  
 \end{enumerate}
 \end{dfn}
@@ -731,7 +731,7 @@ It will be important in the subsequent section to consider retriangulations.
 \end{dfn}
 More casually this definition says that the maximal triangulated pieces of $\tau(W)$ and $\tau(W')$ are the same (so far as their vertex sets are concerned) but that some or all of the triangulated pieces may be differently triangulated while the region being triangulated by each piece (which is defined by the vertex set) remains unchanged. Note that these maximal triangulations correspond to non-crossing partitions of the Wilson loop diagram, in the sense discussed in \cite{positroids13}. 
 
-The previous definition makes sense, in fact, for any two polygon dissections of the same polygon, not just for those in the image of $\tau$..
+The previous definition makes sense, in fact, for any two polygon dissections of the same polygon, not just for those in the image of $\tau$.
 
 \medskip
   
@@ -861,7 +861,7 @@ Two Wilson loop diagrams, $W$ and $W'$ are equivalent if and only if $\tau(W)$ a
 \end{cor}
 
 \begin{proof}
-This follows from the definition of equivalent Wilson loop diagrams, Definition \ref{equivdfn}, the definition of retriangulations, Definition \ref{retriangulation}, and Lemma\ref{lem triang to exact}.
+This follows from the definition of equivalent Wilson loop diagrams, Definition \ref{equivdfn}, the definition of retriangulations, Definition \ref{retriangulation}, and Lemma \ref{lem triang to exact}.
 \end{proof}
 
 \subsection{Matroidal properties of exact subdiagrams \label{sec: exact diagram matroidal props}}
@@ -928,7 +928,7 @@ Thus $\rk((F\setminus C)\cup \{e\}) = \rk(F\setminus C) + 1$ for any $e \not\in 
 \end{proof}
 
 \begin{cor} \label{classifyflats}
-  If $F$ is a flat of a Wilson loop diagram, it can be written as the disjoint union of a cyclic propagator flat and an independent set: \bas F =C \sqcup S \eas where $C$ the union of all circuits in S. \end{cor}
+  If $F$ is a flat of an admissible Wilson loop diagram, it can be written as the disjoint union of a cyclic propagator flat and an independent set: \bas F =C \sqcup S \eas where $C$ the union of all circuits in S. \end{cor}
  
 \begin{proof}
 By Lemma \ref{lem decompose flat}, the set $C$ is a propagator flat. Furthermore, $S = F \setminus C$, which is independent.
@@ -952,7 +952,7 @@ Next we examine properties of propagator flats associated to the complement of W
 
 
 \begin{lem} \label{maxexactcomplementrank}
-Let $W = (\cP, [n])$ be a Wilson loop diagram, and $P \subseteq \cP$. Then: \begin{enumerate}
+Let $W = (\cP, [n])$ be an admissible Wilson loop diagram, and $P \subseteq \cP$. Then: \begin{enumerate}
 \item If $(P,V(P))$ is an exact subdiagram in $W$, then $F(P^c)$ is not an independent flat.
 \item If $(P,V(P))$ is a maximal exact subdiagram in $W$, then $F(P^c)$ is a cyclic flat.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          \item If $(P,V(P))$ is an exact subdiagram in $W$, then $\rk(F(P^c)) = |P^c|$.
 \end{enumerate}
@@ -986,9 +986,9 @@ in the case that $(P, V(P))$ is maximal exact.
 
 To prove the result in the general case, let let $(R,V(R))$ be an exact subdiagram that is not maximal and $P$ be the maximal exact subdiagram containing it. That is, $R \subsetneq P$.
 
-Since $R \subset P$, $V(P) = V(R) \sqcup S$, where $S = V(P) \setminus V(R)$. Since $P$ and $R$ both define exact subdiagrams, we may write $|V(P)| = |V(R)| + |P \setminus R|$, and we have that $S$ is a vertex set of size $|P \setminus R|$. Furthermore, $F(R^c) = F(P^c) \sqcup S$. We show that $S$ is an independent set in the subdiagram $(P, V(P))$, and thus in $W$. Independence in $(P, V(P))$ implies that for any maximal independent set $\mathfrak{B} \subset F(P^c)$, the set $\mathfrak{B} \sqcup S$ is independent in $F(R^c)$. Therefore, \bas \rk (F(R^c)) \geq \rk (F(P^c)) + |S| = |P^c| + |P\setminus R| = |R^c|  \;.\eas By Lemma \ref{lem facts about WLD matroids}, $\rk (F(R^c)) \leq |R^c|$. Thus $\rk (F(R^c)) = |R^c|$ as desired.
+Since $R \subset P$, $V(P) = V(R) \sqcup S$, where $S = V(P) \setminus V(R)$. Since $P$ and $R$ both define exact subdiagrams, we may write $|V(P)| = |V(R)| + |P \setminus R|$, and we have that $S$ is a vertex set of size $|P \setminus R|$. Furthermore, $F(R^c) = F(P^c) \sqcup S$. We will show that $S$ is an independent set in the subdiagram $(P, V(P))$, and thus in $W$. Supposing for the moment that $S$ is independent in $(P, V(P)$ this implies that for any maximal independent set $\mathfrak{B} \subset F(P^c)$, the set $\mathfrak{B} \sqcup S$ is independent in $F(R^c)$. Therefore, \bas \rk (F(R^c)) \geq |\mathcal{B}| + |S| = \rk (F(P^c)) + |S| = |P^c| + |P\setminus R| = |R^c|  \;.\eas By Lemma \ref{lem facts about WLD matroids}, $\rk (F(R^c)) \leq |R^c|$. Thus $\rk (F(R^c)) = |R^c|$ as desired.
 
-It remains to show that $S$ is an independent set in the subdiagram $(P, V(P))$. Suppose not. Then, by Theorem \ref{thm WLD defines matroid} there is a subset $U \subset S$ such that $|\Prop(U)| < |U|$. Then the remaining propagators, $P \setminus \Prop(U)$ are supported entirely on $V(P) \setminus U$. That is \bas  V(P \setminus \Prop(U)) = V(P) \setminus U\; .\eas Comparing sizes of these sets, we get \bas |V(P \setminus \Prop(U))| = |V(P)| - |U| = |P| +3 -|U| > |P| +3 -|\Prop(U)| = |P \setminus \Prop(U)| +3\; ,\eas which violates admissibility. Therefore, $S$ is independent in $(P, V(P))$. 
+It remains to show that $S$ is an independent set in the subdiagram $(P, V(P))$. Suppose not. Then, by Theorem \ref{thm WLD defines matroid} there is a subset $U \subseteq S$ such that $|\Prop(U)| < |U|$. Then the remaining propagators, $P \setminus \Prop(U)$ are supported entirely on $V(P) \setminus U$. That is \bas  V(P \setminus \Prop(U)) = V(P) \setminus U\; .\eas Comparing sizes of these sets, we get \bas |V(P \setminus \Prop(U))| = |V(P)| - |U| = |P| +3 -|U| > |P| +3 -|\Prop(U)| = |P \setminus \Prop(U)| +3\; ,\eas which violates admissibility. Therefore, $S$ is independent in $(P, V(P))$. 
 
 \end{proof}
 
