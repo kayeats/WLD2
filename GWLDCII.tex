@@ -353,7 +353,7 @@ Finally in Section~\ref{sec poles} we characterize the denominator of the integr
 \begin{dfn}\label{WLdfn}
 A {\bf Wilson loop diagram} $W = (\cP,V)$ consists of a cyclically ordered set $V$ with one distinguished element (this plays the role of the ``first'' element when we need a compatible linear ordering on $V$), and a set $\cP \subseteq V \times V$. The elements of $V$ are the {\bf vertices} of $W$, and elements of $\cP$ are the {\bf propagators} of $W$. \end{dfn}
 
-A Wilson loop diagram is depicted as a circle, with the vertices $V$ equally spaced along the edge of the circle and listed counterclockwise in their cyclic order. The arc between two consecutive vertices is referred to as an {\bf edge} of the diagram, and the $i$th edge of $W$ is the edge from vertex $i$ to its successor. Each propagator $(i,j) \in \cP$ is denoted by a wavy line inside the circle joining edge $i$ and edge $j$.
+A Wilson loop diagram is depicted as a circle, with the vertices $V$ arranged along the edge of the circle and listed counterclockwise in their cyclic order. The arc between two consecutive vertices is referred to as an {\bf edge} of the diagram, and the $i$th edge of $W$ is the edge from vertex $i$ to its successor. Each propagator $(i,j) \in \cP$ is denoted by a wavy line inside the circle joining edge $i$ and edge $j$.
 
 \begin{figure}[h]
 \[W\ =\ \begin{tikzpicture}[rotate=67.5,baseline=(current bounding box.east)]
@@ -392,10 +392,10 @@ Note that a propagator in $\Prop(U)$ does not need to have its entire support co
 \end{enumerate}
 \end{dfn}
 
-
+In particular, we will see in later sections that all four vertices in the support of a propagator are important in understanding the contribution of that propagator to the overall diagram. This motivates the following definition of a subdiagram, which can consist of any subset $Q$ of the propagators and any subset $U$ of the vertices of $W$ {\em as long as we retain all vertices in the support of $Q$}.
 
 \begin{dfn} \label{subdiagramdfn}
-Let $W = (\cP, V)$ be an admissible Wilson loop diagram. Then $W' = (Q,U)$ is a {\bf subdiagram} of $W$ if $Q \subseteq \cP$ and $V(Q) \subseteq U \subseteq V$.
+Let $W = (\cP, V)$ be a Wilson loop diagram. Then $W' = (Q,U)$ is a {\bf subdiagram} of $W$ if $Q \subseteq \cP$ and $V(Q) \subseteq U \subseteq V$.
 \end{dfn}
 
 
@@ -413,10 +413,11 @@ A Wilson loop diagram $W = (\cP, V)$ is called {\bf admissible} if:
 
 The first condition bounds the total number of propagators in the diagram, while the second limits how densely propagators can be fitted into any part of the diagram; in particular, it prohibits propagators that connect two adjacent edges and parallel propagators that start and end on the same pair of edges. The third condition simply requires that propagators are non-crossing. 
 
-These conditions are imposed by the physical interpretation of Wilson loop diagrams (see for example \hlfix{[ref]}{probably for Susama: is there a sensible paper to cite here?}). We therefore restrict our attention in this paper to admissible Wilson loop diagrams and their subdiagrams only. 
+These conditions are imposed by the physical interpretation of Wilson loop diagrams (see for example \cite{Adamo:2011pv,Adamo:2012xe,wilsonloop,LipsteinMason}). We therefore restrict our attention in this paper to admissible Wilson loop diagrams and their subdiagrams only. 
 
 
-Note that a subdiagram $(Q,U)$ of an admissible Wilson loop diagram need not be admissible itself: it inherits conditions 2 and 3 automatically, but we could have $|U| = |Q| + 3$. We call diagrams of this type {\bf weakly admissible}; in the context of this paper, they occur only when we take an admissible diagram and delete one or more non-supporting vertices.
+Note that a subdiagram $(Q,U)$ of an admissible Wilson loop diagram need not be admissible itself: it inherits conditions 2 and 3 automatically, but we could have $|U| = |Q| + 3$. If a Wilson loop diagrams satisfies conditions 2 and 3 of Definition~\ref{admisdfn}, we call it {\bf weakly admissible}.
+
 
 
 Due to the physical motivation behind these diagrams, we can associate a matrix $C(W)$ to each Wilson loop diagram $W$, which is defined elementwise by
@@ -446,7 +447,7 @@ c_{4,1} & 0 & 0 & 0 & c_{4,5} & c_{4,6} & 0 & c_{4,8}  \\
 
 The Wilson loop diagram also defines a volume form on $\Sigma(W)$, namely 
 \[ \Omega(W) = \frac{\prod_{r=1}^{|\cP|} \prod_{v \in V_{p_r}} \textrm{d}c_{p_r}}{R(W)} \;. \]
-The interested reader is referred to \hlfix{[ref]}{any paper that talks about the volume form} for more information about the volume form. Of interest to us in this paper is the denominator $R(W)$, which we define next.
+The interested reader is referred to \cite{Adamo:2012xe,HeslopStewart,LipsteinMason} for more information about the volume form. Of interest to us in this paper is the denominator $R(W)$, which we define next.
 
 \begin{dfn}\label{def R(W)}
 Let $W = (\cP,V)$ be an admissible Wilson loop diagram, and fix an edge $e$. Let $\{p_1 \ldots p_r\}$ be the propagators with one end lying on edge $e$, ordered so that $p_1$ is closest to the vertex $e$, $p_r$ closest to $e+1$, and $p_i$ is closer to $e$ than $p_{i+1}$ is. Define 
@@ -454,7 +455,9 @@ Let $W = (\cP,V)$ be an admissible Wilson loop diagram, and fix an edge $e$. Let
 to be the component of $R(W)$ associated to edge $e$. Note that if $r = 1$ (i.e. there is exactly one propagator lying on edge $e$) then this expression simplifies to $R_e = c_{p,e} c_{p,e+1}$. The denominator $R(W)$ is defined to be the product of all of the $R_e$, i.e. 
 \[R(W) = \prod_{e \in V} R_e.\]
 \end{dfn}
-Understanding the polynomial $R(W)$ (and hence the singularities of the volume form $\Omega(W)$) \hlfix{is important for the physics}{help?}. In Section~\ref{sec poles} we give a simple algorithm to read $R(W)$ directly from the Wilson loop diagram.
+We expect the volume form associated to the tree amplitudes to be finite \cite{Adamo:2011pv,Adamo:2012xe,Arkani-Hamed:2013jha}. Therefore, we expect that the singularities of $\Omega(W)$ will cancel on the boundaries of the simpleses the diagrams define, analogous to the analysis in \cite{Arkani-Hamed:2013jha}. While there has been work in this area in special cases \cite{Amplituhedronsquared,HeslopStewart,casestudy} there has not been a systematic study of the pole structure of these integrals.
+
+In Section~\ref{sec poles} we give a simple algorithm to read $R(W)$ directly from the Wilson loop diagram, paving the way for a general study of these poles in future.
 
 
 \subsection{Positroids, Grassmann necklaces, and Le diagrams}\label{sec:positroid background}
@@ -467,7 +470,7 @@ For our purposes, a {\bf positroid} is a matroid $M$ (with ground set $[n]$ and 
 
 Postnikov shows in \cite{Postnikov} that the positroids of $\Gr(k,n)$ are indexed by many different collections of objects, each with their own advantages and disadvantages. The two most suited to our purposes are Grassmann necklaces and Le diagrams, which we introduce below. In order to do so, we first need some preliminary definitions.
 
-For each $j \in [n]$, we can define a total order $\leq_j$ on the interval $[n]$ by
+For each $j \in [n]$, we can define a total order $<_j$ on the interval $[n]$ by
 \[ j <_j j+1 <_j \dots <_j n <_j 1 \dots <_j j-1\;.\]
 This in turn induces a total order on $\binom{[n]}{k}$, namely the lexicographic order with respect to $<_j$.  It also induces a separate partial order $\gale{j}$ on $\binom{[n]}{k}$ (the {\bf Gale order} \cite{Gale}), which is defined as follows: for 
 \[A = \{a_1 <_j a_2 <_j \dots <_j a_k\} \text{ and } B = \{b_1 <_j b_2 <_j \dots <_j b_k\} \in \binom{[n]}{k},\] we define
@@ -564,7 +567,7 @@ In \cite{wilsonloop}, Agarwala and Amat show that $M(W)$ is also characterized b
 \begin{thm} \label{thm WLD defines matroid} \cite[Theorem 3.6]{wilsonloop} The independent sets of the matroid $M(W)$ associated to an admissible Wilson loop diagram $W = (\cP,[n])$ and realized by $C(W)$ are exactly those subsets $V \subseteq [n]$ such that $\nexists U\subseteq V$ satisfying $|\Prop(U)| < |U|$. \end{thm}
 In other words, the independent sets of $M(W)$ correspond to sets of vertices in $W$ in which no subset supports fewer propagators than the vertices it contains.
 
-By studying $M(W)$ in terms of the behavior of the propagators in $W$, Agarwala and Amat also showed that $M(W)$ is in fact a positroid whenever $W$ is admissible \cite[Corollary 3.39]{wilsonloop}. In theory, this allows us to leverage geometric and combinatorial results about $\Gr(k,n)$ to study Wilson loop diagrams.
+By relating the behavior of the propagators in $W$ to the matroidal properties of $M(W)$, Agarwala and Amat also showed that $M(W)$ is in fact a positroid whenever $W$ is admissible \cite[Corollary 3.39]{wilsonloop}.
 
 However, in order to identify the positroid associated to a given Wilson loop diagram $W$ we first have to construct $C(W)$, then make a list of all its non-zero $k\times k$ minors and extract the Le diagram or Grassmann necklace via the methods described in Section~\ref{sec:positroid background}. Alternatively, one could obtain the decorated permutation of the positroid from $C(W)$ as in \hlfix{[ref]}{Sian needs to go find this reference} and then convert it into a Grassmann necklace as described in \cite[Section 16]{Postnikov}. 
 
@@ -572,6 +575,9 @@ In \cite{casestudy}, Agarwala and Fryer apply this process in the smallest non-t
 
 Our first goal is therefore to find a better method of obtaining the positroid associated to a given Wilson loop diagram; this is the focus of the next section.
 
+\begin{rmk}
+While this paper primarily approaches proofs from a combinatorial point of view, readers with a background in matroid theory are encouraged to keep the matroidal viewpoint in mind throughout; we expect that the two approaches will be complementary and will build upon each other. See [ref][paper 1] for some related results concerning the positroids of Wilson loop diagrams obtained by viewing them primarily as matroids.
+\end{rmk}
 
 
 
@@ -580,9 +586,13 @@ Our first goal is therefore to find a better method of obtaining the positroid a
 
 
 
-In this section we will give an algorithm to go directly from a Wilson loop diagram to the Grassmann necklace of its positroid. This is a useful result in and of itself, as it greatly simplifies the process of identifying the positroid associated to a given WLD. It also allows us to examine how the positroid changes as we make minor changes to the Wilson loop diagram; indeed, the techniques we develop in this section to verify that our algorithm produces the correct Grassmann necklace will also be used repeatedly in later sections.
+In this section we will give an algorithm (Algorithm~\ref{alg:put GN on WLD}) to go directly from a Wilson loop diagram to the Grassmann necklace of its positroid. This is a useful result in and of itself, as it greatly simplifies the process of identifying the positroid associated to a given WLD. It also allows us to examine how the positroid changes as we make minor changes to the Wilson loop diagram; indeed, the techniques we develop in this section to verify that our algorithm produces the correct Grassmann necklace will also be used repeatedly in later sections.
 
 One of the key insights is that each element of the Grassmann necklace can be viewed as a function from the propagators of the diagram to the vertices in the Grassmann necklace element.  This is captured in Definition~\ref{def I_i as a function}, and used throughout the paper.
+
+
+\note{Sian thinks that a section roadmap here would be overkill: we gave a roadmap in section 1, each subsection has its own little intro roadmap, and I've added a ref to the algorithm above so that people can skip straight to it if they want}
+%In Section~\ref{sec:propagator configs} we examine the structure of admissible Wilson loop diagrams and prove several technical lemmas about configurations of propagators appearing in these diagrams. In Section~\ref{sec:GN alg} we state the algorithm that extracts the Grassmann necklace of a given diagram (see Algorithm~\ref{alg:put GN on WLD}) and 
 
 Throughout this section, $W = (\cP,[n])$ is an admissible Wilson loop diagram with $k$ propagators.
 
@@ -607,13 +617,14 @@ respectively.
 % Observe that changing the direction of the propagator simply swaps the inside and outside sets, i.e. for $p = (i,j)$ we have 
 % \[\cP_{in}(p, <_i) = \cP_{out}(p, <_j)\quad \text{ and } \quad \cP_{out}(p, <_i) = \cP_{in}(p, <_j).\]
 
-
+\hlfix{[picture]}{is it worth including a picture here?}
 
 \begin{dfn}
 Let $p = (i,j) \in \cP$ be a propagator in $W$.  Define the {\bf length} of $p$ to be 
 \[\ell(p) \  =\ \min\big\{|[i+1,j]|,|[j+1,i]|\big\}.\]
 \end{dfn}
 In other words, $\ell(p)$ is the size of the smaller of the sets of vertices on either side of the propagator $p$.
+
 
 
 
@@ -707,13 +718,13 @@ In this section, we give an algorithm for passing directly from the Wilson loop 
 The fact that Algorithm~\ref{alg:put GN on WLD} does construct the required Grassmann necklace is proved in Theorem~\ref{res:alg gives GN}. An worked example of Algorithm~\ref{alg:put GN on WLD} is given in Example~\ref{eg:apply GN alg}.
 
 \begin{algorithm}\label{alg:put GN on WLD}
-Let $W = (\cP, [n])$ be an admissible Wilson loop diagram. This gives an algorithm for constructing the set $I_j$, for $j \in [n]$.
+Let $W = (\cP, [n])$ be an admissible Wilson loop diagram. This gives an algorithm for constructing the set $I_i$, for $i \in [n]$.
 
 \begin{enumerate}
-\item Fix a vertex $j \in [n]$. Set $j:=i$ and $I_i = \emptyset$.
+\item Fix a vertex $i \in [n]$, the {\bf starting vertex}. Set $j:=i$ and $I_i = \emptyset$.
 \item While $\cP \neq \emptyset$, perform the following steps:
 \begin{enumerate}
-\item \textbf{Step $j$ for vertex $i$}: If $\Prop(j) = \emptyset$, do nothing. Else, let $p \in \Prop(j)$ be the clockwise most propagator supported on $j$. Write $I_i = I_i\cup \{j\}$, and delete propagator $p$ from the diagram.
+\item {\em Step $j$ for starting vertex $i$}: If $\Prop(j) = \emptyset$, do nothing. Else, let $p \in \Prop(j)$ be the clockwise most propagator supported on $j$. Write $I_i = I_i\cup \{j\}$, and delete propagator $p$ from the diagram.
 \item Increment $j$ by 1 and repeat from (a).
 \end{enumerate}
 \end{enumerate}
@@ -743,7 +754,7 @@ for each $p \in \cP$. When the diagram $W$ is clear from context, we drop the su
 		\end{scope}
 	\end{tikzpicture}\]
 
-To construct $I_1$ we start at vertex 1, so we begin with $i=1$, $m = 1$, and $I_1 = \emptyset$. 
+To construct $I_1$ we start at vertex 1, so we set $i=1$, $j = 1$, and $I_1 = \emptyset$. 
 \begin{itemize}
 \item $j = 1$: Since $\Prop(1) = \{q,r\}$ and $r$ is the clockwise-most of these propagators, we let $I_1 = \{1\}$ and remove propagator $r$ from the diagram. 
 \item $j = 2$: $\Prop(2) = \{p,q\}$, with $q$ being the clockwise-most of these propagators. So $I_1 = \{1,2\}$ and propagator $q$ is removed.
@@ -758,33 +769,44 @@ Applying the algorithm for all 8 starting vertices, we obtain the sets
 The reader can easily verify that this sequence of $k$-sets satisfies the definition of a Grassmann necklace, and can (with significantly more work) also verify that this Grassmann necklace defines the positroid $M(W)$ associated to the Wilson loop diagram $W$ above.
 \end{eg}
 
+\medskip
 
-We first verify that this algorithm always terminates in fewer than $n$ steps.
-
+We first show that the algorithm can never reach the final vertex in a propagator's support without having already assigned that propagator; in particular, this guarantees that the construction of $I_i$ always terminates in fewer than $n$ steps.
 
 \begin{lem}\label{lem no fourth vertex}
-Let $W$ be an admissible Wilson loop diagram containing at least one propagator. For any $i \in [n]$ and for any $p=(a,b)$ with $i\leq_i a <_i b$, we have $I_i(p) \neq b+1$.
+Let $W$ be an admissible Wilson loop diagram containing at least one propagator. For any $i \in [n]$ and for any $p \in \cP$, $I_i(p)$ is not maximal (with respect to $<_i$) amongst the vertices that support $p$.
 \end{lem}
 \begin{proof}
-Suppose for contradiction that we have $p = (a,b)$ with $i\leq_i a <_i b$ and $I_{i}(p) = b+1$. We may choose $p$ such that $|[a+1,b]|$ is minimal amongst propagators with this property.
+Suppose for contradiction that we have $i \in [n]$ and $p \in \cP$ such that $I_i(p)$ is $<_i$-maximal in $V(p)$. There are two possibilities: either $p = (i-1,b)$ for some $b$ (so $i$ and $I_i(p) = i-1$ are the two ends of a single edge), or $p = (a,b)$ with $i\leq_i a <_i b$ and $I_i(p) = b+1$.
 
-Since $I_i(p) \neq b$, there must exist a propagator $q$ inside of $(p,<_i)$ with $I_i(q) = b$. The propagator $q$ cannot end on the edge $(b-1,b)$, as this would contradict the minimality of $p$, so we have $q = (c,c+1,b,b+1)$ with $a <_i c <_i b$, and $I_i(q) = b$. 
+\includegraphics[width=15cm]{4th_vertex}
 
-In order for $q$ to remain unassigned until vertex $b$, there must be another propagator $r$ with an end on $(c,c+1)$ and $I_i(r) = c+1$; the only way this can occur is if $r$ is outside $q$ but inside $p$. Now $r$ contributes its fourth vertex to $I_i$, again contradicting the minimality of $p$.
+In the first case, observe that we must have another propagator $q = (c,b)$ with $c<_i b$ and $I_i(q) = b+1$, because otherwise $p$ would not survive until vertex $i-1$. Now $q$ also contributes its 4th vertex to $I_i$ and is an instance of the second case listed above, so it suffices to show that no admissible Wilson loop diagram admits this type of configuration.
+
+So let $p = (a,b)$ with $a<_ib$ and $I_i(p) = b+1$, and choose $p$ such that $|[a+1,b]|$ is minimal amongst propagators of $W$ with this property.
+
+Since $I_i(p) \neq b$, there must exist a propagator $q$ inside of $(p,<_i)$ with $I_i(q) = b$. The propagator $q$ cannot end on the edge $b-1$, as this would contradict the minimality of $p$, so we have $q = (d,b)$ with $a <_i d <_i b$, and $I_i(q) = b$. 
+
+In order for $q$ to remain unassigned until vertex $b$, there must be another propagator $r$ with an end on edge $d$ and $I_i(r) = d+1$; the only way this can occur is if $r$ is outside of $(q,<_i)$ but inside $(p,<_i)$. But now $r$ contributes its fourth vertex to $I_i$, again contradicting the minimality of $p$.
 \end{proof}
 
 \begin{cor}\label{GN alg well defined}
 If $W$ is an admissible Wilson loop diagram with $k$ propagators, then Algorithm~\ref{alg:put GN on WLD} assigns exactly $k$ vertices to each $I_i$.
 \end{cor}
 \begin{proof}
-It follows from the proof of Lemma~\ref{lem no fourth vertex} that Algorithm~\ref{alg:put GN on WLD} can never reach the fourth vertex of a propagator's support (with respect to the starting vertex). Therefore if the algorithm starts at vertex $i$, it must have assigned vertices to all propagators by the time it reaches $i-1$, ensuring that $I_i$ contains exactly $k$ distinct vertices.
+Fix $i \in [n]$. It follows from the proof of Lemma~\ref{lem no fourth vertex} that in applying Algorithm~\ref{alg:put GN on WLD} to construct the set $I_i$, the algorithm can never reach the fourth vertex of a propagator's support (ordered with respect to $<_i$) without having already assigned $p$. Therefore if the algorithm starts at vertex $i$, all propagators must have been eliminated by the time it gets to vertex $i-1$, ensuring that the algorithm terminates and that $I_i$ contains exactly $k$ distinct elements.
 \end{proof}
 
 We now reverse our perspective and ask: given a propagator $p$ and a vertex $i$ in the support of $p$, for which set of starting vertices does the algorithm assign $p$ to $i$? 
 
+
+
+
+
+
 Specifically, for each $i$ in the support of $p$, define the set
-\[J_p^{(W)}(i) = \{m \in [n] \ | \ I^{(W)}_m(p) = i \},\]
-the set of starting vertices $m$ such that $I_m^{(W)}$ assigns $p$ to $i$. 
+\[J_p^{W}(i) = \{m \in [n] \ | \ I^{W}_m(p) = i \},\]
+the set of starting vertices $m$ such that $I_m^{W}$ assigns $p$ to $i$. 
 
 The following lemma establishes that these sets behave in a simple and predictable manner, a fact which we will repeatedly use in subsequent proofs.
 
@@ -793,7 +815,7 @@ The following lemma establishes that these sets behave in a simple and predictab
 
 \begin{lem} \label{vertex cyclic int lem}
   
-Let $p=(i,j)$ be a propagator in an admissible WLD $W$ on $n$ vertices.  Then $J_p^{(W)}(i)$, $J_p^{(W)}(i+1)$, $J_p^{(W)}(j)$, and $J_p^{(W)}(j+1)$ are each non-empty cyclic intervals which partition $[n]$ and occur in the given cyclic order.
+Let $W = (\cP,[n])$ be an admissible Wilson loop diagram, and $p = (i,j) \in \cP$.  Then $J_p^{W}(i)$, $J_p^{W}(i+1)$, $J_p^{W}(j)$, and $J_p^{W}(j+1)$ are each non-empty cyclic intervals which partition $[n]$ and occur in the given cyclic order.
 \end{lem}
 
 
@@ -816,159 +838,159 @@ In each of the four cases, when we remove the propagator labelled $p$ we obtain 
 \end{figure}
 
 
-Consider the fourth case of Figure~\ref{fig 3 cases} first, as it is the easiest.  In this case, the vertices $\{l,l+1,l+2,l+3 \}$ which support $p$ in $W$ are non-supporting in $V$, so for every propagator $r$ in $V$ (including $q$) we have $J_r^{(V)} = J_r^{(W)}$; these are non-empty cyclic intervals in the correct order by the induction hypothesis.  Additionally, it is clear from Figure~\ref{fig 3 cases} that $J_p^{(W)}(l+a) = \{l+a\}$ for $a\in\{1,2,3\}$ and $J_p^{(W)}(l) = [n] \backslash \{l+1, l+2, l+3\}$. The result therefore holds in this case.
+Consider the fourth case of Figure~\ref{fig 3 cases} first, as it is the easiest.  In this case, the vertices $\{l,l+1,l+2,l+3 \}$ which support $p$ in $W$ are non-supporting in $V$, so for every propagator $r$ in $V$ (including $q$) we have $J_r^{V} = J_r^{W}$; these are non-empty cyclic intervals in the correct order by the induction hypothesis.  Additionally, it is clear from Figure~\ref{fig 3 cases} that $J_p^{W}(l+a) = \{l+a\}$ for $a\in\{1,2,3\}$ and $J_p^{W}(l) = [n] \backslash \{l+1, l+2, l+3\}$. The result therefore holds in this case.
 
 
 Now we proceed to consider the first three cases of Figure~\ref{fig 3 cases}.
-We first describe $J_q^{(V)}(*)$, which can be handled identically for all three cases.
+We first describe $J_q^{V}(*)$, which can be handled identically for all three cases.
 
 In $V$ there are no propagators inside $q$, so we see from Figure~\ref{fig V diagram} that
-\[l, l+1, \ldots ,j \in J^{(V)}_q(j) \text{ (if $l$ exists) and }  j+1 \in J^{(V)}_q(j+1).\]
-Note that $j+2 \not\in J^{(V)}_q(j+1)$ by Lemma~\ref{lem no fourth vertex}, so by the induction hypothesis we must have $J^{(V)}_q(j+1) = \{j+1\}$ and $j+2 \in J^{(V)}_q(i)$. Thus there exist vertices $d,e \in [j+2,i+1]$ with $d <e$, such that
-\[J^{(V)}_q(i) = [j+2,d-1], \quad J^{(V)}_q(i+1) = [d,e-1], \quad J^{(V)}_q(j) = [e,j], \quad J^{(V)}_q(j+1) = \{j+1\},\]
+\[l, l+1, \ldots ,j \in J^{V}_q(j) \text{ (if $l$ exists) and }  j+1 \in J^{V}_q(j+1).\]
+Note that $j+2 \not\in J^{V}_q(j+1)$ by Lemma~\ref{lem no fourth vertex}, so by the induction hypothesis we must have $J^{V}_q(j+1) = \{j+1\}$ and $j+2 \in J^{V}_q(i)$. Thus there exist vertices $d,e \in [j+2,i+1]$ with $d <e$, such that
+\[J^{V}_q(i) = [j+2,d-1], \quad J^{V}_q(i+1) = [d,e-1], \quad J^{V}_q(j) = [e,j], \quad J^{V}_q(j+1) = \{j+1\},\]
 and all intervals are non-empty.
 
 
 
 
-We now consider what happens as we move from $V$ to each of the three remaining cases for $W$. We need to consider both $J^{(W)}_p$ and $J^{(W)}_r$ for $r \neq p$, since the addition of $p$ can have a knock-on effect on later steps in the algorithm.
+We now consider what happens as we move from $V$ to each of the three remaining cases for $W$. We need to consider both $J^{W}_p$ and $J^{W}_r$ for $r \neq p$, since the addition of $p$ can have a knock-on effect on later steps in the algorithm.
 
 %%%%%%%%%
 
 \textbf{Left two cases}: These cases behave essentially identically (except when $j$ or $j+1$ are not in the support of $p$, which can occur in the second case only; see below) so we handle the majority of the proof for these two cases simultaneously. Let $1\leq a\leq 3$ be the number of non-supporting vertices inside $q$ in $V$; so these vertices are $l, \ldots, l+a-1$.  Write $p=(m,m+2)$ where $m\in \{i, i+1, l\}$.  Note that $l, \ldots, l+a-1$ are all in the support of $p$.
 
-We first calculate $I^{(W)}_w$ for a starting vertex ${w \in [n]\backslash \{l, l+1, \ldots,j,j+1\}}$. Note that $p$ has no effect on other propagators for starting vertices in this range, while the value of $I^{(W)}_w(p)$ depends on how soon $q$ is assigned to a vertex, i.e. on the value of $I^{(V)}_w(q)$. Thus, if $w\in J_q^{(V)}(i)$ then
+We first calculate $I^{W}_w$ for a starting vertex ${w \in [n]\backslash \{l, l+1, \ldots,j,j+1\}}$. Note that $p$ has no effect on other propagators for starting vertices in this range, while the value of $I^{W}_w(p)$ depends on how soon $q$ is assigned to a vertex, i.e. on the value of $I^{V}_w(q)$. Thus, if $w\in J_q^{V}(i)$ then
     \[
-    I_w^{(W)}(r) =  \begin{cases}
+    I_w^{W}(r) =  \begin{cases}
         \max\{i+1, m\} & \text{if } r=p \\
-        I_{w}^{(V)}(r) & \text{if } r\neq p
+        I_{w}^{V}(r) & \text{if } r\neq p
       \end{cases} 
     \]
-    while if $w\in J_q^{(V)}(i+1)$ or $w\in J_q^{(V)}(j)$ then
+    while if $w\in J_q^{V}(i+1)$ or $w\in J_q^{V}(j)$ then
     \[
-    I_w^{(W)}(r) =  \begin{cases}
+    I_w^{W}(r) =  \begin{cases}
         l & \text{if } r=p \\
-        I_{w}^{(V)}(r) & \text{if } r\neq p
+        I_{w}^{V}(r) & \text{if } r\neq p
       \end{cases} 
       \]
-We also need to understand $I^{(W)}_w$ for $w \in \{l,l+1,\ldots,j,j+1\}$. For the majority of these vertices, we use the following observation: if $p$ is the first propagator to be assigned a value by $I_w^{(W)}$, then the remainder of $I_w^{(W)}$ proceeds identically to the assignments of $I^{(V)}_{w+1}$.  Thus we have for any $0\leq b <a$
+We also need to understand $I^{W}_w$ for $w \in \{l,l+1,\ldots,j,j+1\}$. For the majority of these vertices, we use the following observation: if $p$ is the first propagator to be assigned a value by $I_w^{W}$, then the remainder of $I_w^{W}$ proceeds identically to the assignments of $I^{V}_{w+1}$.  Thus we have for any $0\leq b <a$
     \[
-    I_{l+b}^{(W)}(r) = \begin{cases}
+    I_{l+b}^{W}(r) = \begin{cases}
       l+b & \text{if } r=p\\
-      I_{l+b+1}^{(V)}(r) & \text{if } r\neq p
+      I_{l+b+1}^{V}(r) & \text{if } r\neq p
     \end{cases}
     \]
 Similarly, if $j$ is in the support of $p$, then we have
      \[
-       I_j^{(W)}(r) = \begin{cases}
+       I_j^{W}(r) = \begin{cases}
          j & \text{if $r=p$ and $j$ is in the support of $p$}\\
-         I_{j+1}^{(V)}(r) & \text{if $r\neq p$ and $j$ is in the support of $p$}\\
+         I_{j+1}^{V}(r) & \text{if $r\neq p$ and $j$ is in the support of $p$}\\
        \end{cases}
        \]
 If $j$ is not in the support of $p$, then we must be in the second case of Figure~\ref{fig 3 cases} with two vertices in the right hand region.  In this case, if we start the algorithm at $j$ we need to know whether there will be any unassigned propagators other than $p$ when we reach vertex $i$, so as to know what $p$ contributes.
 
-Consider the WLD $X$ formed from $V$ by moving the second end of $q$ to the edge $j-1$ instead of $j$.  $X$ is still admissible since we have not decreased the support of any set of propagators, so the induction hypothesis applies to it as well.  Note that $J_{j}^{(V)}(r) = J_{j}^{(X)}(r)$ for all $r\neq p$ and $J_{j}^{(X)}(r) = J_{j+1}^{(X)}(r)$ for $r\neq q,p$.  Additionally $I_{j+1}^{(X)}(q) = i$ by the induction hypothesis applied to $X$, and so if we start at $j+1$ and assign propagators to vertices according to the algorithm, when we reach vertex $i$ in $X$ all propagators other than $q$ must have been assigned.  Therefore if we start at $j$ in $W$, we first assign $q$ to $j$ then proceed to assign as in $X$ starting at $j+1$, and hence when we get to $i$ the only remaining unassigned propagator is $p$. Therefore
+Consider the WLD $X$ formed from $V$ by moving the second end of $q$ to the edge $j-1$ instead of $j$.  $X$ is still admissible since we have not decreased the support of any set of propagators, so the induction hypothesis applies to it as well.  Note that $J_{j}^{V}(r) = J_{j}^{X}(r)$ for all $r\neq p$ and $J_{j}^{X}(r) = J_{j+1}^{X}(r)$ for $r\neq q,p$.  Additionally $I_{j+1}^{X}(q) = i$ by the induction hypothesis applied to $X$, and so if we start at $j+1$ and assign propagators to vertices according to the algorithm, when we reach vertex $i$ in $X$ all propagators other than $q$ must have been assigned.  Therefore if we start at $j$ in $W$, we first assign $q$ to $j$ then proceed to assign as in $X$ starting at $j+1$, and hence when we get to $i$ the only remaining unassigned propagator is $p$. Therefore
        \[
-       I_j^{(W)}(r) = \begin{cases}
+       I_j^{W}(r) = \begin{cases}
 
        m & \text{if $r =p$ and $j$ is not in the support of $p$} \\
-       I_{j}^{(V)}(r) & \text{if $r\neq p$ and $j$ is not in the support of $p$}\end{cases}
+       I_{j}^{V}(r) & \text{if $r\neq p$ and $j$ is not in the support of $p$}\end{cases}
        \] 
 Finally, we consider what happens when we start the algorithm at vertex $j+1$. If $j+1$ is in the support of $p$ then we can argue as above to get
 \[
-       I_{j+1}^{(W)}(r)  = \begin{cases}
+       I_{j+1}^{W}(r)  = \begin{cases}
          j+1 & \text{if $r=p$ and $j+1$ is in the support of $p$}\\
-         I_{j+2}^{(V)}(r) & \text{if $r\neq p$ and $j+1$ is in the support of $p$}.
+         I_{j+2}^{V}(r) & \text{if $r\neq p$ and $j+1$ is in the support of $p$}.
        \end{cases}
        \]
-Now suppose $j+1$ is not in the support of $p$. If we start at $j+1$ we need to know whether there are any unassigned propagators supported on edge $i$ when we reach vertex $i$. We already know that $J_q^{(V)}(j+1) = \{j+1\}$; in particular this means that $q$ contributes $i$ in $I_{j+2}^{(V)}$.  However the construction of $I^{(V)}_{j+1}$ first associates $q$ to $j+1$ and then proceeds identically to $I^{(V)}_{j+2}$.  In particular if $i$ was assigned in $I^{(V)}_{j+1}$, then it would not be available to assign to $q$ in $I^{(V)}_{j+2}$ as all other propagators supported at $i$ in $V$ come before $q$. 
+Now suppose $j+1$ is not in the support of $p$. If we start at $j+1$ we need to know whether there are any unassigned propagators supported on edge $i$ when we reach vertex $i$. We already know that $J_q^{V}(j+1) = \{j+1\}$; in particular this means that $q$ contributes $i$ in $I_{j+2}^{V}$.  However the construction of $I^{V}_{j+1}$ first associates $q$ to $j+1$ and then proceeds identically to $I^{V}_{j+2}$.  In particular if $i$ was assigned in $I^{V}_{j+1}$, then it would not be available to assign to $q$ in $I^{V}_{j+2}$ as all other propagators supported at $i$ in $V$ come before $q$. 
 
 Therefore $p$ is the only potentially unassigned propagator on edge $i$ when we reach vertex $i$ in $W$, and
     \[
-    I_{j+1}^{(W)}(r)  = \begin{cases}
+    I_{j+1}^{W}(r)  = \begin{cases}
       m & \text{if  $r=p$ and $j+1$ is not in the support of $p$}\\
-      I_{j+1}^{(V)}(r) & \text{if  $r\neq p$ and $j+1$ is not in the support of $p$}
+      I_{j+1}^{V}(r) & \text{if  $r\neq p$ and $j+1$ is not in the support of $p$}
     \end{cases}
     \]
-We can now describe the intervals $J^{(W)}_r(*)$ for the first two cases of Figure~\ref{fig 3 cases}. For $r \neq p$ the intervals are clearly still cyclic and appear in the correct order, and we can assemble the intervals for the $J_p^{(W)}(*)$ as follows.
+We can now describe the intervals $J^{W}_r(*)$ for the first two cases of Figure~\ref{fig 3 cases}. For $r \neq p$ the intervals are clearly still cyclic and appear in the correct order, and we can assemble the intervals for the $J_p^{W}(*)$ as follows.
     \begin{itemize}
       \item 
     If $m=l$ then either $a=2$ (so $l+1=m+1$, $j=m+2$, and $j+1=m+3$) or $a=3$ (so $l+1=m+1$, $l+2=m+2$, $j=m+3$, and $j+1$ is not in the support of $p$), and in both cases
     \begin{gather*}
-    J^{(W)}_p(m) = [m+4, m], \qquad  J^{(W)}_p(m+1) = \{m+1\}, \\ J^{(W)}_p(m+2) = \{m+2\}, \qquad  J^{(W)}_p(m+3) = \{m+3\},
+    J^{W}_p(m) = [m+4, m], \qquad  J^{W}_p(m+1) = \{m+1\}, \\ J^{W}_p(m+2) = \{m+2\}, \qquad  J^{W}_p(m+3) = \{m+3\},
     \end{gather*}
     which are nonempty and otherwise as required.
   \item
         If $m=i+1$ then checking each of the three different possibilities for $a$ we likewise get
     \begin{gather*}
-    J^{(W)}_p(m) = [m+4, d-1], \qquad  J^{(W)}_p(m+1) = [d, m+1], \\  J^{(W)}_p(m+2) = \{m+2\}, \qquad  J^{(W)}_p(m+3) = \{m+3\},
+    J^{W}_p(m) = [m+4, d-1], \qquad  J^{W}_p(m+1) = [d, m+1], \\  J^{W}_p(m+2) = \{m+2\}, \qquad  J^{W}_p(m+3) = \{m+3\},
     \end{gather*}
     which are nonempty and otherwise as required.
   \item If $m=i$ then $a=1$ or $a=2$, in the former case $l=m+2$, $j=m+3$ and $j+1$ is not in the support of $p$ so
     \begin{gather*}
-    J^{(W)}_p(m) = \{m+4\}, \qquad  J^{(W)}_p(m+1) = [m+5, d-1], \\  J^{(W)}_p(m+2) = [d, m+2], \qquad  J^{(W)}_p(m+3) = \{m+3\},
+    J^{W}_p(m) = \{m+4\}, \qquad  J^{W}_p(m+1) = [m+5, d-1], \\  J^{W}_p(m+2) = [d, m+2], \qquad  J^{W}_p(m+3) = \{m+3\},
     \end{gather*}
     while in the latter $l=m+2$, $l+1=m+3$, and $j$ and $j+1$ are not in the support of $p$ so
     \begin{gather*}
-    J^{(W)}_p(m) = [m+4, j+1], \qquad  J^{(W)}_p(m+1) = [j+2, d-1], \\  J^{(W)}_p(m+2) = [d, m+2], \qquad  J^{(W)}_p(m+3) = \{m+3\},
+    J^{W}_p(m) = [m+4, j+1], \qquad  J^{W}_p(m+1) = [j+2, d-1], \\  J^{W}_p(m+2) = [d, m+2], \qquad  J^{W}_p(m+3) = \{m+3\},
     \end{gather*}
     which are again as required.
     \end{itemize}
 
-\textbf{Third case}: In this case there are no non-supporting vertices $l, l+1, \ldots$ inside $q$.  Again write $p=(m, m+2)$ where $m\in \{j, j+1, j+2\}$. We proceed as in the previous cases, by computing $I^{(W)}_w$ for vertices $w$ in roughly increasing order of difficulty.
+\textbf{Third case}: In this case there are no non-supporting vertices $l, l+1, \ldots$ inside $q$.  Again write $p=(m, m+2)$ where $m\in \{j, j+1, j+2\}$. We proceed as in the previous cases, by computing $I^{W}_w$ for vertices $w$ in roughly increasing order of difficulty.
 
-For $w \in [n]\backslash\{j+1,m,m+1,m+2,m+3\}$: if $w\in J_q^{(V)}(i)$ or $w\in J_q^{(V)}(i+1)$ then
+For $w \in [n]\backslash\{j+1,m,m+1,m+2,m+3\}$: if $w\in J_q^{V}(i)$ or $w\in J_q^{V}(i+1)$ then
     \[
-    I_w^{(W)}(r) =  \begin{cases}
+    I_w^{W}(r) =  \begin{cases}
         m & \text{if } r=p \\
-        I_{w}^{(V)}(r) & \text{if } r\neq p
+        I_{w}^{V}(r) & \text{if } r\neq p
       \end{cases} 
     \]
-    while if $w\in J_q^{(V)}(j)$ then
+    while if $w\in J_q^{V}(j)$ then
     \[
-    I_w^{(W)}(r) =  \begin{cases}
+    I_w^{W}(r) =  \begin{cases}
         \max\{m, j+1\} & \text{if } r=p \\
-        I_{w}^{(V)}(r) & \text{if } r\neq p
+        I_{w}^{V}(r) & \text{if } r\neq p
       \end{cases} 
     \]
 
 Finally, for $j+1$ and the vertices in the support of $p$, we have
 
 \begin{align*}
-  I_{j+1}^{(W)}(r) &= \begin{cases}
+  I_{j+1}^{W}(r) &= \begin{cases}
     j+1 & \text{if } r=q\\
     j+2 & \text{if } r=p\\
-    I_{j+3}^{(V)}(r) & \text{if } r\neq p,q
+    I_{j+3}^{V}(r) & \text{if } r\neq p,q
   \end{cases}\\
-  I_m^{(W)}(r) &= \begin{cases}
+  I_m^{W}(r) &= \begin{cases}
     m & \text{if $r=p$ and $q$ not supported on $m$}\\
     m+1 & \text{if $r=p$ and $q$ supported on $m$}\\
-    I_{m}^{(V)}(r) & \text{if } r\neq p
+    I_{m}^{V}(r) & \text{if } r\neq p
   \end{cases}\\
-  I_{m+1}^{(W)}(r) & = \begin{cases}
+  I_{m+1}^{W}(r) & = \begin{cases}
     m+1 & \text{if $r=p$ and $q$ not supported on $m+1$} \\
     m+2 & \text{if $r=p$ and $q$ supported on $m+1$} \\
-    I_{m+1}^{(V)}(r) & \text{if } r\neq p,q
+    I_{m+1}^{V}(r) & \text{if } r\neq p,q
   \end{cases}\\
-  I_{m+2}^{(W)}(r) & = \begin{cases}
+  I_{m+2}^{W}(r) & = \begin{cases}
     m+2 & \text{if } r=p \\
-    I_{m+3}^{(V)}(r) & \text{if } r\neq p
+    I_{m+3}^{V}(r) & \text{if } r\neq p
   \end{cases}\\
-  I_{m+3}^{(W)}(r) & = \begin{cases}
+  I_{m+3}^{W}(r) & = \begin{cases}
     m+3 & \text{if } r=p \\
-    I_{m+4}^{(V)}(r) & \text{if } r\neq p
+    I_{m+4}^{V}(r) & \text{if } r\neq p
   \end{cases}
 \end{align*}
-Note that $I_{m+2}^{(V)}(r) = I_{m+3}^{(V)}(r)$ for all propagators $r$ in $V$, and that if $j+1\not\in\{m, m+1, m+2, m+3\}$ then $j+2$ and $j+3$ are non-supporting vertices in $V$, so in that case $I_{j+2}^{(V)}(r) = I_{j+3}^{(V)}(r) = I_{j+4}^{(V)}(r)$ for $r$ in $V$. 
+Note that $I_{m+2}^{V}(r) = I_{m+3}^{V}(r)$ for all propagators $r$ in $V$, and that if $j+1\not\in\{m, m+1, m+2, m+3\}$ then $j+2$ and $j+3$ are non-supporting vertices in $V$, so in that case $I_{j+2}^{V}(r) = I_{j+3}^{V}(r) = I_{j+4}^{V}(r)$ for $r$ in $V$. 
 
-Therefore, once again we can see that the $J_r^{(W)}(*)$ are cyclic for all $r\neq p$ in $W$.  Assembling the intervals for $p$ we have:
+Therefore, once again we can see that the $J_r^{W}(*)$ are cyclic for all $r\neq p$ in $W$.  Assembling the intervals for $p$ we have:
 \begin{itemize}
 \item if $m=j$ then
-\begin{gather*}J_p^{(W)}(m) = [m+4,e-1], \qquad  J_p^{(W)}(m+1) = [e,m], \\  J_p^{(W)}(m+2) = [m+1,m+2], \qquad  J_p^{(W)}(m+3) = \{m+3\},\end{gather*}
+\begin{gather*}J_p^{W}(m) = [m+4,e-1], \qquad  J_p^{W}(m+1) = [e,m], \\  J_p^{W}(m+2) = [m+1,m+2], \qquad  J_p^{W}(m+3) = \{m+3\},\end{gather*}
 \item if $m=j+1$ then
-\begin{gather*}J_p^{(W)}(m) = [m+4,m-1], \qquad J_p^{(W)}(m+1) = [m,m+1], \\  J_p^{(W)}(m+2) = \{m+2\}, \qquad  J_p^{(W)}(m+3) = \{m+3\},\end{gather*}
+\begin{gather*}J_p^{W}(m) = [m+4,m-1], \qquad J_p^{W}(m+1) = [m,m+1], \\  J_p^{W}(m+2) = \{m+2\}, \qquad  J_p^{W}(m+3) = \{m+3\},\end{gather*}
 \item if $m=j+2$ then
-\begin{gather*}J_p^{(W)}(m) = [m+4,m], \qquad  J_p^{(W)}(m+1) = \{m+1\}, \\  J_p^{(W)}(m+2) = \{m+2\}, \qquad  J_p^{(W)}(m+3) = \{m+3\}.\end{gather*}
+\begin{gather*}J_p^{W}(m) = [m+4,m], \qquad  J_p^{W}(m+1) = \{m+1\}, \\  J_p^{W}(m+2) = \{m+2\}, \qquad  J_p^{W}(m+3) = \{m+3\}.\end{gather*}
 \end{itemize}
 The result now follows by induction.
 \end{proof}
@@ -1011,20 +1033,20 @@ Let $W' = (\cP_{out}(p,<_i), [n])$, i.e. the diagram obtained from $W$ by removi
 
 By the above observations, if we commence Algorithm~\ref{alg:put GN on WLD} in $W'$ from vertex $b$, then we are in the same situation with respect to unassigned propagators as if we began at $i$ in $W$ and proceeded to $b$ following the algorithm; the propagators we assigned in the latter case are exactly the ones removed to build $W'$.  Similarly, starting at $i+1$ in $W$ and moving to $b+1$ leaves us in the same situation with respect to unassigned propagators as beginning at $b+1$ in $W'$ would.  This gives the equations
 \begin{align*}
-  I_i^{(W)} \cap [b,i-1] & = I_b^{(W')} \\
-  I_{i+1}^{(W)} \cap [b+1,i-1] & = I_{b+1}^{(W')}
+  I_i^{W} \cap [b,i-1] & = I_b^{W'} \\
+  I_{i+1}^{W} \cap [b+1,i-1] & = I_{b+1}^{W'}
 \end{align*}
 where the diagram is indicated in the superscript.
-Thus we have $m\in I_b^{(W')}\setminus\{b\}$ and $m\not\in I_{b+1}^{(W')}$, contradicting the minimality of $(W, i, m)$.
+Thus we have $m\in I_b^{W'}\setminus\{b\}$ and $m\not\in I_{b+1}^{W'}$, contradicting the minimality of $(W, i, m)$.
 
 \textbf{Case II}: Suppose $p$ has one end on edge $i$.  Note that by assumption we have $I_i(p) = i$; this means that $p$ must be the first propagator lying on edge $i$, and hence we must have $I_{i+1}(p) = i+1$ as well.  Observe also that $m\geq_i i+2$ since $i+1\in I_{i+1}$.
 
 Let $W'$ be the diagram obtained from $W$ by removing only the propagator $p$.  Then we have
 \begin{align*}
-  I_i^{(W)} \backslash \{i\} & = I_{i+1}^{(W')} \\
-  I_{i+1}^{(W)} \backslash \{i+1\} & = I_{i+2}^{(W')}
+  I_i^{W} \backslash \{i\} & = I_{i+1}^{W'} \\
+  I_{i+1}^{W} \backslash \{i+1\} & = I_{i+2}^{W'}
 \end{align*}
-since in both cases the algorithm in $W'$ proceeds identically to that in $W$ after assigning $p$. Since $m \neq i+1$, we have $m\in I_{i+1}^{(W')}\setminus\{i+1\}$ but $m\not\in I_{i+2}^{(W')}$, contradicting the minimiality of $(W, i, m)$.
+since in both cases the algorithm in $W'$ proceeds identically to that in $W$ after assigning $p$. Since $m \neq i+1$, we have $m\in I_{i+1}^{W'}\setminus\{i+1\}$ but $m\not\in I_{i+2}^{W'}$, contradicting the minimiality of $(W, i, m)$.
 
 %If $i \not\in I_i$, then there are no propagators supported on $i$ at all.  In this case it is clear that applying Algorithm~\ref{alg:put GN on WLD} at vertex $i$ and vertex $i+1$ produces exactly the same result, i.e. $I_{i+1} = I_i$.
 %
@@ -1130,9 +1152,9 @@ In an arbitrary Grassmann necklace, it is possible for an index $i$ to appear in
 Grassmann necklaces coming from admissible Wilson loop diagrams have no coloops. A vertex $j$ is a loop if and only if $j$ supports no propagators. 
 \end{cor}
 \begin{proof}
-For any $i \in [n]$, $i-1$ is maximal with respect to the $<_{i}$ order. Therefore there can be no propagator $p$ with $I_{i}(p) = i-1$ by Lemma~\ref{lem no fourth vertex}, i.e. $i-1 \not\in I_{i}$. Thus the Grassmann necklace admis no coloops.
+For any $i \in [n]$, $i-1$ is maximal with respect to the $<_{i}$ order and so by Lemma~\ref{lem no fourth vertex} there can be no propagator $p$ with $I_{i}(p) = i-1$. Thus $i-1 \not\in I_{i}$, so $i-1$ is not a coloop. Since this holds for any $i \in [n]$, the Grassmann necklace admis no coloops.
 
-If $j \in [n]$ is a loop then $j \not\in I_j$, which can only happen if there are no propagators supported on vertex $j$. Conversely, if $j$ supports no propagators, then Algorithm~\ref{alg:put GN on WLD} never assigns a propagator to $j$ and hence $j \not\in I_i$ for all $i \in [n]$.
+If $j \in [n]$ is a loop then in particular we have $j \not\in I_j$, which can only happen if there are no propagators supported on vertex $j$. Conversely, if $j$ supports no propagators, then Algorithm~\ref{alg:put GN on WLD} never assigns a propagator to $j$ and hence $j \not\in I_i$ for all $i \in [n]$.
 \end{proof}
 
 
@@ -1743,6 +1765,11 @@ Freddy Cachazo Alexander Goncharov Alexander Postnikov Jaroslav~Trnka
   Nima~{A}rkani {H}amed, Jacob~Bourjaily.
 \newblock {\em Grassmannian Geometry of Scattering Amplitudes}.
 \newblock Cambridge University Press, Cambridge, UK, 2016.
+
+\bibitem{LipsteinMason}
+Arthur E. Lipstein, Lionel Mason
+\newblock From dlogs to dilogs; the super Yang-Mills MHV amplitude revisited
+\newblock J. High Energ. Phys. (2014) 2014: 169.
 
 \bibitem{reversingOh}
 S. Agarwala, S. Fryer.
