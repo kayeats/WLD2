@@ -777,11 +777,15 @@ We first show that the algorithm can never reach the final vertex in a propagato
 Let $W$ be an admissible Wilson loop diagram containing at least one propagator. For any $i \in [n]$ and for any $p \in \cP$, $I_i(p)$ is not maximal (with respect to $<_i$) amongst the vertices that support $p$.
 \end{lem}
 \begin{proof}
-Suppose for contradiction that we have $i \in [n]$ and $p \in \cP$ such that $I_i(p)$ is $<_i$-maximal in $V(p)$. There are two possibilities: either $p = (i-1,b)$ for some $b$ (so $i$ and $I_i(p) = i-1$ are the two ends of a single edge), or $p = (a,b)$ with $i\leq_i a <_i b$ and $I_i(p) = b+1$.
+Suppose for contradiction that we have $i \in [n]$ and $p \in \cP$ such that $I_i(p)$ is $<_i$-maximal in $V(p)$. There are two possibilities, which are illustrated in Figure~\ref{fig:no fourth vertex}: either $p = (i-1,b)$ for some $b$ (so $i$ and $I_i(p) = i-1$ are the two ends of a single edge), or $p = (a,b)$ with $i\leq_i a <_i b$ and $I_i(p) = b+1$.
 
+\begin{figure}
 \includegraphics[width=15cm]{4th_vertex}
+\caption{The two possible configurations in which a propagator can contribute its $<_i$-maximal support vertex to $I_i$.}
+\label{fig:no fourth vertex}
+\end{figure}
 
-In the first case, observe that we must have another propagator $q = (c,b)$ with $c<_i b$ and $I_i(q) = b+1$, because otherwise $p$ would not survive until vertex $i-1$. Now $q$ also contributes its 4th vertex to $I_i$ and is an instance of the second case listed above, so it suffices to show that no admissible Wilson loop diagram admits this type of configuration.
+In the left hand case, observe that we must have another propagator $q = (c,b)$ with $c<_i b$ and $I_i(q) = b+1$, because otherwise $I_i$ would assign $p$ to $b+1$. Now $q$ also contributes the $<_i$-maximal vertex in its support to $I_i$ and is an instance of the right hand case listed above. Therefore it suffices to show that no admissible Wilson loop diagram admits the configuration illustrated in the right hand case of Figure~\ref{fig:no fourth vertex}.
 
 So let $p = (a,b)$ with $a<_ib$ and $I_i(p) = b+1$, and choose $p$ such that $|[a+1,b]|$ is minimal amongst propagators of $W$ with this property.
 
