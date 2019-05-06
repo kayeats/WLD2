@@ -659,12 +659,12 @@ Now suppose $W$ has no propagators of length $3$.
 
 
   
-We will inductively construct a sequence of pairs of propagators $(p_r,q_r)$ satisfying: $\ell(p_r) = 2$, and $p_r$ either forms part of configuration \ref{item big and 2} or \ref{item pair of 2s} from the statement,
-  %a configuration \eqref{eq:2 prop config} in $D$
-or there is a propagator $q_r$ satisfying
+We will inductively construct a sequence of propagators $p_r$ and $q_r$, with $\ell(p_r) = 2$ for each $r$ and either:
 \begin{itemize}
-\item $\ell(q_r) \geq 4$.
-\item $\{p_1, \ldots, p_r\}$ and $\{q_1, \ldots, q_{r-1}\}$ are all on the same side of $q_r$.  
+\item $p_r$ forms part of configuration \ref{item big and 2} or \ref{item pair of 2s} from the statement, at which point the induction terminates, 
+  %a configuration \eqref{eq:2 prop config} in $D$
+{\em or} 
+\item there is a propagator $q_r$ satisfying $\ell(q_r) \geq 4$, and $\{p_1, \ldots, p_r, q_1, \ldots, q_{r-1}\}$ are all on the same side of $q_r$.  
 \end{itemize}
 We can then choose the orientation of $q_r$ so that the previous $p_i$ and $q_i$ are all on the outside of $q_r$, and restrict our attention to the subdiagram $(\cP_{in}(q_r),[n])$. By the finiteness of $W$ this must eventually terminate in one of the desired configurations. %a configuration of the form \eqref{eq:2 prop config}.
 
@@ -699,7 +699,7 @@ The second case is that (at least) one of the following four things happen:
 \end{itemize}
 In other words, at least one end of $p_{r+1}$ is supported entirely by vertices in the interval $[i_r+3,k_r+2]$ (the first two bullet points) or both ends lie in $[i_r, i_r+3]$ (third point) or both ends lie in $[k_r-2, k_r+1]$ (fourth point). These situations all behave similarly, and by symmetry it suffices to only consider the second and third possibilities. 
 
-Note that since $j_{r+1}+4 \leq k_r-1$ in both of these situations, the vertex $j_{r+1}+4$ is inside $q_r$ but does not support either $p_r$ or $q_{r+1}$, and must therefore support some other propagator $t$.  Since $p_{r+1}$ is not part of configuration \ref{item pair of 2s} and $W_r$ has no propagators of length 3, it follows that $\ell(t) \geq 4$.  If $q_r$ and $p_{r+1}$ were on different sides of $t$ then this would contradict the minimal length hypothesis on $q_r$.  Therefore we can orient $t$ so that all previous $q_i$ and $p_i$ belong to $\cP_{out}(t)$, and set $q_{r+1} = t$ to continue the induction.
+Note that since $j_{r+1}+4 \leq k_r-1$ in both of these situations, the vertex $j_{r+1}+4$ is inside $q_r$ but does not support either $q_r$ or $p_{r+1}$, and must therefore support some other propagator $t$.  Since $p_{r+1}$ is not part of configuration \ref{item pair of 2s} and $W_r$ has no propagators of length 3, it follows that $\ell(t) \geq 4$.  If $q_r$ and $p_{r+1}$ were on different sides of $t$ then this would contradict the minimal length hypothesis on $q_r$.  Therefore we can orient $t$ so that all previous $q_i$ and $p_i$ belong to $\cP_{out}(t)$, and set $q_{r+1} = t$ to continue the induction.
 
 The overall result then follows by induction.
 \end{proof}
