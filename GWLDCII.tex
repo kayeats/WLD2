@@ -678,13 +678,13 @@ From our existing assumptions, we know the following facts: $p_1$ is not in conf
 
 Now suppose $q_{r} = (i_r, k_r)$ exists by the induction hypothesis and is oriented $(q_r, <_{i_r})$ so that the previous $p_i$ and $q_i$ are on the outside. For the rest of this proof, we assume this orientation and drop the $<_{i_r}$ from the notation.
 
-Let $W_r := (\cP_{in}(q_r),[n])$ be the subdiagram of $W$ consisting only of those propagators inside $q_r$ (including $q_r$ itself); in particular $W_r$ contains none of the previous $p_i$ or $q_i$. By the original hypotheses on $W$, every vertex in $[i_r,k_{r+1}]$ (which is a non-empty interval since $\ell(q_r) \geq 4$) must support at least one propagator. Therefore $W_r$ admits at least one propagator of length 2 (by Remark~\ref{rem:props of length 2 and 3}) and no propagators of length $3$ (by our assumption on $W$).
+Let $W_r := (\cP_{in}(q_r),[n])$ be the subdiagram of $W$ consisting only of those propagators inside $q_r$ (including $q_r$ itself); in particular $W_r$ contains none of the previous $p_i$ or $q_i$. By the original hypotheses on $W$, every vertex in $[i_r,k_{r+1}]$ (of which there are at least 4, since $\ell(q_r) \geq 4$) must support at least one propagator. Therefore $W_r$ admits at least one propagator of length 2 (by Remark~\ref{rem:props of length 2 and 3}) and no propagators of length $3$ (by our assumption on $W$).
 
 Let $p_{r+1} = (j_{r+1}, j_{r+1}+2)$ be a propagator of length 2 in $W_r$; if it forms part of configuration \ref{item big and 2} or \ref{item pair of 2s}
 %the configuration \eqref{eq:2 prop config}
 then we are done, so assume otherwise. 
 
-Note that we could replace $q_r$ by another propagator $q'_{r}$ of length $\geq 4$ in $W_r$, as long as $p_{r+1}$ and $q_r$ are on opposite sides of $q_r'$, and such a new $q'_{r}$ would still satisfy all of the induction hypotheses. Therefore without loss of generality we may assume that $q_r$ has minimal length among propagators of length $\geq 4$ in $W_r$ which have $p_{r+1}$ on their inside.
+Note that we could replace $q_r$ by another propagator $q'_{r}$ in $W_r$, as long as $p_{r+1}$ and $q_r$ are on opposite sides of $q_r'$: such a new $q'_{r}$ would still satisfy all of the induction hypotheses. Therefore without loss of generality we may assume that $q_r$ is the innermost propagator of length $\geq 4$ in $W_r$ which satisfies the induction hypotheses, i.e. we assume that there are no other propagators with $p_{r+1}$ on one side and $q_r$ on the other.
 
 There are two cases to consider.
 
@@ -699,7 +699,7 @@ The second case is that (at least) one of the following four things happen:
 \end{itemize}
 In other words, at least one end of $p_{r+1}$ is supported entirely by vertices in the interval $[i_r+3,k_r+2]$ (the first two bullet points) or both ends lie in $[i_r, i_r+3]$ (third point) or both ends lie in $[k_r-2, k_r+1]$ (fourth point). These situations all behave similarly, and by symmetry it suffices to only consider the second and third possibilities. 
 
-Note that since $j_{r+1}+4 \leq k_r-1$ in both of these situations, the vertex $j_{r+1}+4$ is inside $q_r$ but does not support either $q_r$ or $p_{r+1}$, and must therefore support some other propagator $t$.  Since $p_{r+1}$ is not part of configuration \ref{item pair of 2s} and $W_r$ has no propagators of length 3, it follows that $\ell(t) \geq 4$.  If $q_r$ and $p_{r+1}$ were on different sides of $t$ then this would contradict the minimal length hypothesis on $q_r$.  Therefore we can orient $t$ so that all previous $q_i$ and $p_i$ belong to $\cP_{out}(t)$, and set $q_{r+1} = t$ to continue the induction.
+Note that since $j_{r+1}+4 \leq k_r-1$ in both of these situations, the vertex $j_{r+1}+4$ is inside $q_r$ but does not support either $q_r$ or $p_{r+1}$, and must therefore support some other propagator $t$.  Since $p_{r+1}$ is not part of configuration \ref{item pair of 2s} and $W_r$ has no propagators of length 3, it follows that $\ell(t) \geq 4$.  If $q_r$ and $p_{r+1}$ were on different sides of $t$ then this would contradict the minimality of $q_r$.  Therefore we can orient $t$ so that all previous $q_i$ and $p_i$ belong to $\cP_{out}(t)$, and set $q_{r+1} = t$ to continue the induction.
 
 The overall result then follows by induction.
 \end{proof}
