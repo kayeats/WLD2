@@ -836,7 +836,7 @@ In each of the four cases, when we remove the propagator labelled $p$ we obtain 
 
 
 \begin{figure}
-\includegraphics[scale=0.8]{Vdiagram_modified}
+\includegraphics[width=10cm]{V_diagram}
 \caption{Diagram $V$ is $W$ with $p$ removed; there are no propagators inside $q = (i,j)$, though there may be up to 4 non-supporting vertices labelled $l, l+1, \ldots$.}
 \label{fig V diagram}
 \end{figure}
@@ -1115,34 +1115,46 @@ In the latter case we are done, since $p_r$ being assigned earlier than $p_{r-1}
 
 Now assume that $p_{r-1}$ appears before $p_r$ in the neighbourhood of $j_{r-1}$, and that $I_i$ assigns $p_{r-1}$ before $p_r$.
 
-\hlfix{If $I_i(p_{r-1}) <_i J(p_{r-1})$ and these are vertices supported by distinct ends of $p_{r-1}$}{Sian is confused by this sentence}, then by our assumption above $p_r$ must lie inside $p_{r-1}$ when directed from $I_i(p_{r-1})$ to $J(p_{r-1})$.  Therefore $j_r = I_i(p_r) \leq_i J(p_{r-1}) + 1$.  If $r > 2$ then this gives $j_r \leq_i I_i(p_{r-2}) + 1 \leq_i j_0$, but we know that $j_0\not\in I_i$ so in fact we have a strict inequality $j_r<_i j_0$.  If $r=2$ then either $j_r <_i j_0$ or we have the configuration
+
+
+\hlfix{If $I_i(p_{r-1}) <_i J(p_{r-1})$ and these are vertices supported by distinct ends of $p_{r-1}$}{Sian was unsure about this sentence, and added the blue text below which may or may not be necessary}, then by our assumption that $p_{r-1}$ appears before $p_r$ in the neighbourhood of $j_{r-1}$ it follows that $p_r$ must lie inside $p_{r-1}$ when directed from $I_i(p_{r-1})$ to $J(p_{r-1})$.  Therefore 
+\[j_r = I_i(p_r) \leq_i J(p_{r-1}) + 1.\]
+If $r > 2$ then this gives $j_r \leq_i I_i(p_{r-2}) + 1 \leq_i j_0$, but we know that $j_0\not\in I_i$ so in fact we have a strict inequality $j_r<_i j_0$.  If $r=2$ then the inequality reads $j_2 \leq_i J(p_1) + 1 = j_0 + 1$, so either $j_2 <_i j_0$ or we have the configuration
 \[
 \includegraphics{impossible_config}
 \]
-which is impossible as $p_2$ is supported at $j_0$ but not assigned by $I_i$ until after $j_0$ even though $j_0\not\in I_i$.  Taking all of this paragraph together we are done unless $I_i(p_{r-1})\not<_i J(p_{r-1})$ so now assume this.
+However, this is impossible because now $p_2$ is supported at $j_0$ but not assigned by $I_i$ until after $j_0$, even though $j_0\not\in I_i$. Thus we always have $j_r <_i j_0$ and the inductive step is complete in this case (with $p_{r-1}$ playing the role of $p_l$ here).
 
-By the induction hypothesis,  $I_i(p_{r-1})\not<_i J(p_{r-1})$ implies that there exists and $\ell < r-1$ such that $p_{r-1}$ is on the side of $p_{\ell}$ that goes from $I_i(p_\ell)$ to $J(p_\ell)$.  If $j_{r-1}$ is not in the support of the $J(p_\ell)$ end of $p_\ell$ then $p_{r-1}$ before $p_{r}$ around $j_{r-1}$ implies that $p_r$ is on the same side of $p_\ell$ as $p_{r-1}$ is.  Then the same arguments as above with $\ell$ in place of $r-1$ give $j_r \leq_i J(p_\ell)+1$ implying $j_r <_i j_0$ which is everything we need.
-
-It remains to consider when $j_{r-1}$ is in the support of the $J(p_\ell)$ end of $p_\ell$, call this case $(*)$.  Since $J(p_\ell) = j_{\ell-1}$ and the vertices $j_1,\dots,j_r$ are distinct, this means that we have one of the following two configurations
+\textcolor{blue}{
+On the other hand, if $I_i(p_{r-1}) <_i J(p_{r-1})$ and these vertices are on the same end of $p_{r-1}$, then we must have 
 \[
-\includegraphics{induction_conf}
+\includegraphics[width=10cm]{extra_config}
 \]
-If $p_\ell=p_1$ then $j_{\ell-1}=j_0$ and then as $j_0\not\in I_i$ but $p_r$ is supported at $j_0$ we get $I_i(p_r) <_i j_0$ and also $I_i(p_r) <_i j_{r-1} = J(p_r)$ as the only vertices not yet taken for $I_i(p_r)$ must be before both labelled vertices in the illustration.
+If $r = 2$, then $J(p_{r-1}) = j_0$ and our assumption that $p_{r-1}$ is assigned before $p_r$ means that $I_i$ assigns $p_2$ to $j_0$, which is again a contradiction. If $r>2$ then $J(p_{r-1}) = I_i(p_{r-2})$ implies we have another propagator $p_{r-2}$ on this same edge, which must lie between $p_{r-1}$ and $p_r$ to ensure that $I_i$ assigns everything in the correct order. Now $J(p_{r-2})$ must support the other end of $p_{r-2}$, and we can apply the same argument as above with $p_{r-2}$ instead of $p_{r-1}$.}
 
-If $p_\ell \neq p_1$ then we argue as above with $\ell-1$ in place of $r-1$: in particular $J(p_\ell) = I_i(p_{\ell-1})$ but $p_r$ is supported at $p_{\ell-1}$, so either $I_i(p_r) <_i I_i(p_{\ell-1})$ in which case as before we get desired conclusion, or $p_r$ comes before $p_{\ell-1}$ at $j_{\ell-1}$.  Then again argue as before getting a new $p_{\ell'}$ in place of $p_{\ell}$, except that then case $(*)$ must occur simultaneously for both $p_{\ell'}$ and $p_{\ell}$ with respect to $p_{r}$.  This can only occur if $j_{\ell-1}, j_{r-1}, j_{\ell'-1}$ are consecutive.  Iterating the argument one more time we finally cannot have case $(*)$ as then all neighbouring vertices of $j_{r-1}$ are used up.
+The only remaining possibility is that $I_i(p_{r-1})\not<_i J(p_{r-1})$, so now assume this. We continue to assume that $p_{r-1}$ appears before $p_r$ in the neighbourhood of $j_{r-1}$ and that $I_i$ assigns $p_{r-1}$ before $p_r$.
 
-This completes the induction and thence the proof of the theorem.
+By the induction hypothesis,  $I_i(p_{r-1})\not<_i J(p_{r-1})$ implies that there exists an $\ell < r-1$ such that $p_{r-1}$ lies inside $p_{\ell}$ when directed from $I_i(p_\ell)$ to $J(p_\ell)$. Since $p_{r-1}$ and $p_r$ are both supported on vertex $j_{r-1}$, either $p_r$ is also inside $p_l$ (in which case we apply the arguments above with $l$ instead of $r-1$) or $p_l$ lies between $p_{r-1}$ and $p_r$ in the neighbourhood of $j_{r-1}$.
 
-%Since $J$ is lexicographically smaller than $I_i$, the $<_i$-smallest element of the symmetric difference of $J$ and $I_i$ is some $j_0\in J$, $j_0 \not\in I_i$. Let $p$ be the propagator such that $J(p)=j_0$.  Since $j_0\not\in I_i$ but $p$ is supported at $j_0$, then $p$ must have been assigned to an earlier vertex by $I_i$, i.e. we have $I_i(p) <_i j_0$.  Thus the propagator $p$ has the following property, which we call property $A$:
-%\begin{equation}\label{propertyA}\tag{A}I_i(p) <_i J(p) \text{ \ and \ }I_i\cap [i,I_i(p)] = J\cap [i,I_i(p)]. \end{equation}
-%
-%{}From the previous paragraph we conclude that if we ever had a $J$ which is lexicographically less than $I_i$ and yet a basis of $M(W)$, then there exists a propagator $p$ which has property $A$.
-%
-%Finally, we will prove that whenever there is a propagator $p$ which has property $A$ then there is another propagator $r$ which also has property $A$ and for which $I_i(r) <_i I_i(p)$.  This would lead to an infinte regress, contradicting the finiteness of $I_i$; thus there could be no such $J$, which will complete the proof of the proposition.
-%
-%So suppose $p$ has property $A$.  The same vertices in $[i,I_i(p)]$ are in the image of the assignment from $J$ and the image of the assignment from $I_i$ so the same number of propagators are assigned to vertices in this interval by each assignment.  However $p$ is one of the propagators assigned to a vertex in this interval in $I_i$ but not in $J$.  Thus there exists a propagator $q$ for which $J(q)\in [i,I_i(p)]$ but $I_i(q) >_i I_i(p)$.  Therefore $J(q)<_i I_i(q)$ and  $I_i\cap [i,J(q)] = J\cap [i,J(q)]$.  This is analogous to property $A$ but with the roles of $J$ and $I_i$ switched.  Thus by the same argument we must have a propagator $r$ for which $I_i(r)\in[i,J(q)]$ but $J(r)>_i J(q)$.  It follows that $r$ also has property $A$ and that
-%\[I_i(r) \leq_i J(q) \leq_i I_i(p)\]
-%\hlfix{as required.}{We need $I_i(r) <_i I_i(p)$ but I'm having trouble seeing it?}
+Since $I_i(p_{r-1}) = j_{r-1}$ and $p_{r-1}$ is inside $p_l$, the fact that no propagator can contribute its 4th vertex to $I_i$ (Lemma~\ref{lem no fourth vertex}) means that we have the following configuration:
+\[
+\includegraphics[width=10cm]{new_induction_conf}
+\]
+If $l=1$ then $J(p_l) = j_0$, and $p_r$ is supported on $j_0$ but assigned by $I_i$ later than $j_0$, which is a contradiction. If $l>1$ then $J(p_l) = I_i(p_{l-1})$, and propagator $p_{l-1}$ must appear before $p_r$ in the neighbourhood of $j_{r-1}$ to ensure that $I_i$ assigns $p_{l-1}$ correctly. But now $J(p_{l-1})$ must be on the other end of $p_{l-1}$, since the vertices on this end are $J(p_r)$ and $J(p_l)$ and we know that $l-1 < l < r$. Finally, we must have $I_i(p_{l-1}) <_i J(p_{l-1})$ so that $I_i$ does not assign $p_{l-1}$ to its fourth vertex. Now $p_r$ lies inside $p_{l-1}$ and we argue as above.
+
+
+%  If $j_{r-1}$ is not in the support of the $J(p_\ell)$ end of $p_\ell$ then $p_{r-1}$ before $p_{r}$ around $j_{r-1}$ implies that $p_r$ is on the same side of $p_\ell$ as $p_{r-1}$ is.  Then the same arguments as above with $\ell$ in place of $r-1$ give $j_r \leq_i J(p_\ell)+1$ implying $j_r <_i j_0$ which is everything we need.
+
+% It remains to consider when $j_{r-1}$ is in the support of the $J(p_\ell)$ end of $p_\ell$, call this case $(*)$.  Since $J(p_\ell) = j_{\ell-1}$ and the vertices $j_1,\dots,j_r$ are distinct, this means that we have one of the following two configurations
+% \[
+% \includegraphics{induction_conf}
+% \]
+% If $p_\ell=p_1$ then $j_{\ell-1}=j_0$ and then as $j_0\not\in I_i$ but $p_r$ is supported at $j_0$ we get $I_i(p_r) <_i j_0$ and also $I_i(p_r) <_i j_{r-1} = J(p_r)$ as the only vertices not yet taken for $I_i(p_r)$ must be before both labelled vertices in the illustration.
+
+% If $p_\ell \neq p_1$ then we argue as above with $\ell-1$ in place of $r-1$: in particular $J(p_\ell) = I_i(p_{\ell-1})$ but $p_r$ is supported at $p_{\ell-1}$, so either $I_i(p_r) <_i I_i(p_{\ell-1})$ in which case as before we get desired conclusion, or $p_r$ comes before $p_{\ell-1}$ at $j_{\ell-1}$.  Then again argue as before getting a new $p_{\ell'}$ in place of $p_{\ell}$, except that then case $(*)$ must occur simultaneously for both $p_{\ell'}$ and $p_{\ell}$ with respect to $p_{r}$.  This can only occur if $j_{\ell-1}, j_{r-1}, j_{\ell'-1}$ are consecutive.  Iterating the argument one more time we finally cannot have case $(*)$ as then all neighbouring vertices of $j_{r-1}$ are used up.
+
+This covers all cases and completes the induction, and thence the proof of the theorem.
+
 \end{proof}
 
 
