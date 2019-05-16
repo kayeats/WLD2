@@ -1007,6 +1007,8 @@ We need one more lemma before we can prove that Algorithm~\ref{alg:put GN on WLD
 Let $W = (\cP,[n])$ be an admissible Wilson loop diagram and let $M(W)$ be its associated matroid. A subset $J \subseteq [n]$ is an independent set of $M(W)$ if and only if there exists an injective set map $f : J \rightarrow \cP$ with the property that for each $j\in J$ we have $j \in V(f(j))$.
 \end{lem}
 
+{\color{violet} This is a rephrasing of my theorem with Amat (Lemma 3.5 / Theorem 3.6): A set of vertices $V \subset [n]$ is independent if and only if it does not contain a $U \subsetneq V$ such that $|\Prop(U)| > |U|$, which is your injection condition. Is this second proof necessary? If so, should we at least cite that theorem?}
+
 One of the most important uses of this lemma is for bases.  The lemma says that a subset $J$ of $[n]$ is a basis of $M(W)$ if and only if there is a set bijection between $J$ and $\cP$ with the property that for each $j\in J$ the propagator associated to $j$ under the bijection is supported on vertex $j$.
 
 \begin{proof}
