@@ -877,7 +877,7 @@ We first calculate \hlfix{$I^{W}_w(?)$}{which prop(s), as a function?} for a sta
         I_{w}^{V}(r) & \text{if } r\neq p
       \end{cases} 
       \]
-We also need to understand $I^{W}_w$ for $w \in \{l,l+1,\ldots,j,j+1\}$. For the \hlfix{majority}{$w \in [l, l+a-1]$} of these vertices, we use the following observation: if $p$ is the first propagator to be assigned a value by \hlfix{$I_w^{W}$, then the remainder of $I_w^{W}$}{algorithm instead of $I_w^W$?} proceeds identically to the assignments of $I^{V}_{w+1}$.  Thus we have for any $0\leq b <a$
+We also need to understand $I^{W}_w$ for $w \in \{l,l+1,\ldots,j,j+1\}$. For the \hlfix{majority}{$w \in [l, l+a-1]$} of these vertices, we use the following observation: if $p$ is the first propagator to be assigned a value by \hlfix{$I_w^{W}$, then the remainder of $I_w^{W}$}{$I_w$ instead of $I_w^W$?} proceeds identically to the assignments of $I^{V}_{w+1}$.  Thus we have for any $0\leq b <a$
     \[
     I_{l+b}^{W}(r) = \begin{cases}
       l+b & \text{if } r=p\\
@@ -1026,22 +1026,22 @@ The sequence of $k$-subsets $(I_1,\dots,I_n)$ obtained by applying Algorithm~\re
 \begin{proof}
 For each $i \in [n]$, let $I_i$ be the set of vertices assigned to the propagators of $W$ by Algorithm~\ref{alg:put GN on WLD} with starting vertex $i$. By Lemma~\ref{GN alg well defined}, we know that $|I_i| = k$ for each $i \in [n]$. We first prove that $I_{i+1} \supseteq I_i \backslash \{i\}$ for all $i \in [n]$; this is equivalent to the definition of Grassmann necklace given in Definition~\ref{def:grassmann necklace}.
 
-
-Suppose for a contradition that there exists an admissible diagram for which there exists an $i$ with $m\in I_i\setminus \{i\}$ and $m \not\in I_{i+1}$.  Fix $n$.  Let the triple $(W, i, m)$ be such a counterexample on $n$ vertices which is minimal with respect to the number of propagators. %, and among all those counterexamples on $n$ vertices with the same number of propagators, let $(W,i,k)$ be minimal with respect to the distance from $i$ to $k$ in the $\leq _i$ order.
+Suppose for a contradiction that there exists an admissible diagram for which there exists an $i$ with $m\in I_i\setminus \{i\}$ and $m \not\in I_{i+1}$.  Fix $n$.  Let the triple $(W, i, m)$ be such a counterexample on $n$ vertices which is minimal with respect to the number of propagators. %, and among all those counterexamples on $n$ vertices with the same number of propagators, let $(W,i,k)$ be minimal with respect to the distance from $i$ to $k$ in the $\leq _i$ order.
 
 If $i \not\in I_i$, then there are no propagators supported on $i$ at all.  In this case it is clear that applying Algorithm~\ref{alg:put GN on WLD} at vertex $i$ and vertex $i+1$ produces exactly the same result, i.e. $I_{i+1} = I_i$, and so $(W, i, m)$ is not a counterexample at all.
 
-Now suppose that $i \in I_i$.  Let $p$ be the propagator which contributes $i$ to $I_i$; thus one end of $p$ must lie on either edge $i-1$ or edge $i$.  In both cases let $b$ denote the edge supporting the other end of $p$.
+Now suppose that $i \in I_i$.  Let $p$ be the propagator which contributes $i$ to $I_i$, that is, {\color{violet} $I^W_i(p) = i$}; thus one end of $p$ must lie on either edge $i-1$ or edge $i$.  In both cases let $b$ denote the edge supporting the other end of $p$, {\color{violet}that is, $p = (i, b)$ or $p = (i-1, b)$.}
+\sanote{We use taking and contributing interchangably. Do we want to normalize? I vote for contributing}
 
-\textbf{Case I}:  Suppose $p$ has one end on edge $i-1$.  Then $p$ is not supported on $i+1$, so in building $I_{i+1}$ we will take the same propagators as in the construction of $I_i$ from vertices $i+1$ up to $b-1$, that is $I_{i+1} \cap [i+1,b-1] = I_{i} \cap [i+1,b-1]$.  Furthermore, by Lemma~\ref{vertex cyclic int lem}, when building $I_{i+1}$ it must happen that $p$ is taken at vertex $b$, as otherwise $b$ would never be contributed by $p$.    Consequently, in building $I_{i+1}$, when the algorithm reaches vertex $b$ there cannot be any unassigned propagators remaining that are before $p$.  This is also true in when the algorithm constructing $I_i$ reaches $b$, since the same propagators have been assigned beforehand.  Finally, we also note that $m\geq_i b+1$.
+\textbf{Case I}:  Suppose $p$ has one end on edge $i-1$.  Then $p$ is not supported on $i+1$, so in building $I_{i+1}$ \hlfix{we will take the same propagators as in the construction of $I_i$}{what does this mean? Isn't it possible to take the same propagators but in a different order to get different numbers? If not, is there a proof?} \hlfix{from vertices $i+1$ up to $b-1$, that is $I_{i+1} \cap [i+1,b-1] = I_{i} \cap [i+1,b-1]$}{is this the same fact that is used without proof in 3.11?}.  Furthermore, by Lemma~\ref{vertex cyclic int lem}, when building $I_{i+1}$ it must happen that $p$ is taken \st{at} {\color{violet} by?} vertex $b$, as otherwise $b$ would never be contributed by $p$. Consequently, in building $I_{i+1}$, when the algorithm reaches vertex $b$ there cannot be any unassigned propagators remaining that are \hlfix{before}{do we have an ordering on $\cP$?} $p$.  This is also true in when the algorithm constructing $I_i$ reaches $b$, since the \hlfix{same propagators have been assigned beforehand}{see above.}.  Finally, we also note that $m\geq_i b+1$.
 
 Let $W' = (\cP_{out}(p,<_i), [n])$, i.e. the diagram obtained from $W$ by removing both $p$ and all propagators inside of $p$.
 
-By the above observations, if we commence Algorithm~\ref{alg:put GN on WLD} in $W'$ from vertex $b$, then we are in the same situation with respect to unassigned propagators as if we began at $i$ in $W$ and proceeded to $b$ following the algorithm; the propagators we assigned in the latter case are exactly the ones removed to build $W'$.  Similarly, starting at $i+1$ in $W$ and moving to $b+1$ leaves us in the same situation with respect to unassigned propagators as beginning at $b+1$ in $W'$ would.  This gives the equations
+By the above observations, if we commence Algorithm~\ref{alg:put GN on WLD} in $W'$ from vertex $b$, then we are in the same situation with respect to unassigned propagators as if we began at $i$ in $W$ and proceeded to $b$ following the algorithm {\color{violet}(recall that $I^W_i(p) =i$)}\st{; the propagators we assigned in the latter case}{\color{violet}. The propagators contributing to $I_{i}$ for $W$ before the vertex $b$} are exactly the ones removed to build $W'$.  Similarly, starting at $i+1$ in $W$ and moving to $b+1$ leaves us in the same situation with respect to unassigned propagators as beginning at $b+1$ in $W'$ would.  This gives the equations
 \begin{align*}
   I_i^{W} \cap [b,i-1] & = I_b^{W'} \\
   I_{i+1}^{W} \cap [b+1,i-1] & = I_{b+1}^{W'}
-\end{align*}
+\end{align*} \sanote{ $I_i^{W}$ is a map not a $k$-tuple. Do we mean $I_i$ for $W$? or $I_i^{W}(\cP)$ because we want the image set?}
 where the diagram is indicated in the superscript.
 Thus we have $m\in I_b^{W'}\setminus\{b\}$ and $m\not\in I_{b+1}^{W'}$, contradicting the minimality of $(W, i, m)$.
 
