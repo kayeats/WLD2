@@ -684,7 +684,7 @@ Let $p_{r+1} = (j_{r+1}, j_{r+1}+2)$ be a propagator of length 2 in $W_r$; if it
 %the configuration \eqref{eq:2 prop config}
 then we are done, so assume otherwise. 
 
-Note that we could replace $q_r$ by another propagator $q'_{r}$ in $W_r$, as long as $p_{r+1}$ and $q_r$ are on opposite sides of $q_r'$: such a new $q'_{r}$ would still satisfy all of the induction hypotheses. Therefore without loss of generality we may assume that $q_r$ is the innermost propagator of length $\geq 4$ in $W_r$ which satisfies the induction hypotheses, i.e. we assume that there are no other propagators with $p_{r+1}$ on one side and $q_r$ on the other.
+Note that we could replace $q_r$ by another propagator $q'_{r}$ in $W_r$, as long as $p_{r+1}$ and $q_r$ are on opposite sides of $q_r'$: such a new $q'_{r}$ would still satisfy all of the induction hypotheses. Therefore without loss of generality we may assume that {\color{violet}$\cP_{in}(q_r)$ does not contain a propagator (other than $q_r$ itself)} \st{$q_r$ is the innermost propagator of length $\geq 4$ in $W_r$} which satisfies the induction hypotheses, i.e. we assume that there are no other propagators with $p_{r+1}$ on one side and $q_r$ on the other.
 
 There are two cases to consider.
 
@@ -783,7 +783,7 @@ Suppose for contradiction that we have $i \in [n]$ and $p \in \cP$ such that $I_
 \includegraphics[width=15cm]{4th_vertex}
 \caption{The two possible configurations in which a propagator can contribute its $<_i$-maximal support vertex to $I_i$.}
 \label{fig:no fourth vertex}
-\end{figure}
+\end{figure}f
 
 In the left hand case, observe that we must have another propagator $q = (c,b)$ with $c<_i b$ and $I_i(q) = b+1$, because otherwise $I_i$ would assign $p$ to $b+1$. Now $q$ also contributes the $<_i$-maximal vertex in its support to $I_i$ and is an instance of the right hand case listed above. Therefore it suffices to show that no admissible Wilson loop diagram admits the configuration illustrated in the right hand case of Figure~\ref{fig:no fourth vertex}.
 
@@ -824,7 +824,7 @@ Let $W = (\cP,[n])$ be an admissible Wilson loop diagram, and $p = (i,j) \in \cP
 
 
 \begin{proof}
-We will prove the result by induction on the number of propagators.  If $W$ has one propagator then the result is immediate.  Now suppose $W$ has more than one propagator.  Since non-supporting vertices have no effect on Algorithm~\ref{alg:put GN on WLD}, it suffices to prove the result for $W$ with $F(\emptyset) = \emptyset$.  Then by Lemma~\ref{lem sian}, $W$ has at least one of the four situations illustrated in Figure~\ref{fig 3 cases}.
+We will prove the result by induction on the number of propagators.  If $W$ has one propagator then the result is immediate.  Now suppose $W$ has more than one propagator.  Since non-supporting vertices have no effect on Algorithm~\ref{alg:put GN on WLD}, it suffices to prove the result for $W$ {\color{violet} (possibly weakly admissible)} with $F(\emptyset) = \emptyset$.  Then by Lemma~\ref{lem sian}, $W$ has at least one of the four situations illustrated in Figure~\ref{fig 3 cases}.
 
 \begin{figure}
     \includegraphics[scale=0.8]{3cases}
@@ -848,10 +848,10 @@ Consider the fourth case of Figure~\ref{fig 3 cases} first, as it is the easiest
 Now we proceed to consider the first three cases of Figure~\ref{fig 3 cases}.
 We first describe $J_q^{V}(*)$, which can be handled identically for all three cases.
 
-In $V$ there are no propagators inside $q$, so we see from Figure~\ref{fig V diagram} that
+In $V$ there are no propagators inside $q$, so we see from Figure \ref{fig V diagram} that
 \[l, l+1, \ldots ,j \in J^{V}_q(j) \text{ (if $l$ exists) and }  j+1 \in J^{V}_q(j+1).\]
-Note that $j+2 \not\in J^{V}_q(j+1)$ by Lemma~\ref{lem no fourth vertex}, so by the induction hypothesis we must have $J^{V}_q(j+1) = \{j+1\}$ and $j+2 \in J^{V}_q(i)$. Thus there exist vertices $d,e \in [j+2,i+1]$ with $d <e$, such that
-\[J^{V}_q(i) = [j+2,d-1], \quad J^{V}_q(i+1) = [d,e-1], \quad J^{V}_q(j) = [e,j], \quad J^{V}_q(j+1) = \{j+1\},\]
+Note that $j+2 \not\in J^{V}_q(j+1)$ by Lemma~\ref{lem no fourth vertex}, so  $J^{V}_q(j+1) = \{j+1\}$ and \hlfix{by the induction hypothesis we must have}{moved} $j+2 \in J^{V}_q(i)$. Thus there exist vertices $d,e \in [j+2,i+1]$ with $d <e$, such that
+\ba J^{V}_q(i) = [j+2,d-1], \quad J^{V}_q(i+1) = [d,e-1], \quad J^{V}_q(j) = [e,j], \quad J^{V}_q(j+1) = \{j+1\}, \label{deeqs}\ea
 and all intervals are non-empty.
 
 
@@ -861,9 +861,9 @@ We now consider what happens as we move from $V$ to each of the three remaining 
 
 %%%%%%%%%
 
-\textbf{Left two cases}: These cases behave essentially identically (except when $j$ or $j+1$ are not in the support of $p$, which can occur in the second case only; see below) so we handle the majority of the proof for these two cases simultaneously. Let $1\leq a\leq 3$ be the number of non-supporting vertices inside $q$ in $V$; so these vertices are $l, \ldots, l+a-1$.  Write $p=(m,m+2)$ where $m\in \{i, i+1, l\}$.  Note that $l, \ldots, l+a-1$ are all in the support of $p$.
+\textbf{Left two cases}: These cases behave essentially identically (except when $j$ or $j+1$ are not in the support of $p$, which can occur in the second case only; see below) so we handle the majority of the proof for these two cases simultaneously. \hlfix{Write $p=(m,m+2)$ where $m\in \{i, i+1, l\}$.}{moved} Let $1\leq a\leq 3$ be the number of non-supporting vertices inside $q$ in $V$ (note that there is at least 1); so these vertices are $l, \ldots, l+a-1$.  Note that these non-supporting vertices are all in the support of $p$. 
 
-We first calculate $I^{W}_w$ for a starting vertex ${w \in [n]\backslash \{l, l+1, \ldots,j,j+1\}}$. Note that $p$ has no effect on other propagators for starting vertices in this range, while the value of $I^{W}_w(p)$ depends on how soon $q$ is assigned to a vertex, i.e. on the value of $I^{V}_w(q)$. Thus, if $w\in J_q^{V}(i)$ then
+We first calculate \hlfix{$I^{W}_w(?)$}{which prop(s), as a function?} for a starting vertex ${w \in [n]\backslash \{l, l+1, \ldots,j,j+1\}}$. Note that $p$ has no effect on other propagators for starting vertices in this range, {\color{violet}(if $r \neq p$, $I_w^W(r) = I_w^V(r)$)} while the value of $I^{W}_w(p)$ depends on \st{how soon $q$ is assigned to a vertex, i.e. on}\sanote{don't like the phrasing ``soon''} the value of $I^{V}_w(q)$. Thus, if $w\in J_q^{V}(i)$ then 
     \[
     I_w^{W}(r) =  \begin{cases}
         \max\{i+1, m\} & \text{if } r=p \\
@@ -877,7 +877,7 @@ We first calculate $I^{W}_w$ for a starting vertex ${w \in [n]\backslash \{l, l+
         I_{w}^{V}(r) & \text{if } r\neq p
       \end{cases} 
       \]
-We also need to understand $I^{W}_w$ for $w \in \{l,l+1,\ldots,j,j+1\}$. For the majority of these vertices, we use the following observation: if $p$ is the first propagator to be assigned a value by $I_w^{W}$, then the remainder of $I_w^{W}$ proceeds identically to the assignments of $I^{V}_{w+1}$.  Thus we have for any $0\leq b <a$
+We also need to understand $I^{W}_w$ for $w \in \{l,l+1,\ldots,j,j+1\}$. For the \hlfix{majority}{$w \in [l, l+a-1]$} of these vertices, we use the following observation: if $p$ is the first propagator to be assigned a value by \hlfix{$I_w^{W}$, then the remainder of $I_w^{W}$}{algorithm instead of $I_w^W$?} proceeds identically to the assignments of $I^{V}_{w+1}$.  Thus we have for any $0\leq b <a$
     \[
     I_{l+b}^{W}(r) = \begin{cases}
       l+b & \text{if } r=p\\
@@ -893,7 +893,7 @@ Similarly, if $j$ is in the support of $p$, then we have
        \]
 If $j$ is not in the support of $p$, then we must be in the second case of Figure~\ref{fig 3 cases} with two vertices in the right hand region.  In this case, if we start the algorithm at $j$ we need to know whether there will be any unassigned propagators other than $p$ when we reach vertex $i$, so as to know what $p$ contributes.
 
-Consider the WLD $X$ formed from $V$ by moving the second end of $q$ to the edge $j-1$ instead of $j$.  $X$ is still admissible since we have not decreased the support of any set of propagators, so the induction hypothesis applies to it as well.  Note that $J_{j}^{V}(r) = J_{j}^{X}(r)$ for all $r\neq p$ and $J_{j}^{X}(r) = J_{j+1}^{X}(r)$ for $r\neq q,p$.  Additionally $I_{j+1}^{X}(q) = i$ by the induction hypothesis applied to $X$, and so if we start at $j+1$ and assign propagators to vertices according to the algorithm, when we reach vertex $i$ in $X$ all propagators other than $q$ must have been assigned.  Therefore if we start at $j$ in $W$, we first assign $q$ to $j$ then proceed to assign as in $X$ starting at $j+1$, and hence when we get to $i$ the only remaining unassigned propagator is $p$. Therefore
+Consider the \st{WLD} {\color{violet} weakly admissible Wilson loop diagram}\sanote{actually, I think this is admissible, because we are removing a propagator from a weakly admissible. But it needs a few words?} $X$ formed from $V$ by \st{moving the second end of $q$ to the edge $j-1$ instead of $j$} {\color{violet} replacing the propagator $q = (i,j)$ with $q = (i, j-1)$}.  $X$ is still {\color{violet}weakly} admissible since we have not decreased the support of any set of propagators, so the induction hypothesis applies to it as well. Note that $J_{j}^{V}(r) = J_{j}^{X}(r)$ for all $r\neq p$ {\color{violet}and in particular for $r=q$. Further, } \st{and} $J_{j}^{X}(r) = J_{j+1}^{X}(r)$ for $r\neq q,p$.  Additionally $I_{j+1}^{X}(q) = i$ \st{by the induction hypothesis applied to $X$}, {\color{violet}because} \st{and so} if we start at $j+1$ and assign propagators to vertices according to the algorithm, when we reach vertex $i$ in $X$ all propagators other than $q$ must have been assigned.  Therefore if we start at $j$ in $W$, we first assign $q$ to $j$ then proceed to assign as in $X$ starting at $j+1$, and hence when we get to $i$ the only remaining unassigned propagator is $p$. Therefore
        \[
        I_j^{W}(r) = \begin{cases}
 
@@ -907,9 +907,9 @@ Finally, we consider what happens when we start the algorithm at vertex $j+1$. I
          I_{j+2}^{V}(r) & \text{if $r\neq p$ and $j+1$ is in the support of $p$}.
        \end{cases}
        \]
-Now suppose $j+1$ is not in the support of $p$. If we start at $j+1$ we need to know whether there are any unassigned propagators supported on edge $i$ when we reach vertex $i$. We already know that $J_q^{V}(j+1) = \{j+1\}$; in particular this means that $q$ contributes $i$ in $I_{j+2}^{V}$.  However the construction of $I^{V}_{j+1}$ first associates $q$ to $j+1$ and then proceeds identically to $I^{V}_{j+2}$.  In particular if $i$ was assigned in $I^{V}_{j+1}$, then it would not be available to assign to $q$ in $I^{V}_{j+2}$ as all other propagators supported at $i$ in $V$ come before $q$. 
+Now suppose $j+1$ is not in the support of $p$. If we start at $j+1$ we need to know whether there are any unassigned propagators supported on edge $i$ when we reach vertex $i$. We already know that $J_q^{V}(j+1) = \{j+1\}$; \hlfix{in particular this means that $q$ contributes $i$ in $I_{j+2}^{V}$}{why? It is true but what does it follow from? The next few lines?}.  However the construction of $I^{V}_{j+1}$ first associates $q$ to $j+1$ and \hlfix{then proceeds identically to $I^{V}_{j+2}$.}{We use this fact a lot should it be a lemma?}  In particular if $i$ was assigned in $I^{V}_{j+1}$, then it would not be available to assign to $q$ in $I^{V}_{j+2}$ as all other propagators supported at $i$ in $V$ come before $q$. 
 
-Therefore $p$ is the only potentially unassigned propagator on edge $i$ when we reach vertex $i$ in $W$, and
+Therefore $p$ is the only potentially unassigned propagator on edge $i$ when we reach vertex $i$ in $W$ {\color{violet} in the algorithm for $I_{j+1}^W$}, and
     \[
     I_{j+1}^{W}(r)  = \begin{cases}
       m & \text{if  $r=p$ and $j+1$ is not in the support of $p$}\\
@@ -929,7 +929,7 @@ We can now describe the intervals $J^{W}_r(*)$ for the first two cases of Figure
     \begin{gather*}
     J^{W}_p(m) = [m+4, d-1], \qquad  J^{W}_p(m+1) = [d, m+1], \\  J^{W}_p(m+2) = \{m+2\}, \qquad  J^{W}_p(m+3) = \{m+3\},
     \end{gather*}
-    which are nonempty and otherwise as required.
+    which are nonempty and otherwise as required. {\color{violet}Here, $d$ is as in display \eqref{deeqs}.}
   \item If $m=i$ then $a=1$ or $a=2$, in the former case $l=m+2$, $j=m+3$ and $j+1$ is not in the support of $p$ so
     \begin{gather*}
     J^{W}_p(m) = \{m+4\}, \qquad  J^{W}_p(m+1) = [m+5, d-1], \\  J^{W}_p(m+2) = [d, m+2], \qquad  J^{W}_p(m+3) = \{m+3\},
