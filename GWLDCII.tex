@@ -488,12 +488,12 @@ By convention, we set $I_{n+1} = I_1$.
 \end{dfn}
 
 By \cite[Theorem 17.1]{Postnikov}, the Grassmann necklaces of type $(k,n)$ are in 1-1 correspondence with the positroid cells in $\Gr(k,n)$. Each term $I_i$ is simply the minimal (with respect to the $<_i$-lex order) basis of the positroid. A characterization of all bases of the positroid in terms of the Grassmann necklace and the Gale order was given by Oh in \cite[Theorem 8]{Oh}: if $(I_1, \dots, I_n)$ is the Grassmann necklace associated to a positroid $M = ([n],\cB)$, then the bases of $M$ are exactly
-\[\cB = \left\{J \in \binom{[n]}{k}\ |\ I_i \gale{i} J \ \forall i \in [n]\right\}.\]
+\ba \cB = \left\{J \in \binom{[n]}{k}\ |\ I_i \gale{i} J \ \forall i \in [n]\right\}. \label{basesofmatroids}\ea
 Thus the Grassmann necklace is well suited to testing whether a given $k$-set is a basis for $M$, and for generating a list of all bases of $M$.
 
 
 \begin{dfn}\label{def:le diagram}
-A {\bf Le diagram} is a Young diagram in which every square contains either a $+$ or a $0$, subject to the rule that if a square contains a $0$ then either all squares to its left (in the same row) must also contain a $0$, or all squares above it (in the same column) must also contain a $0$, or both.
+A {\bf Le diagram} is a Young diagram in which every square contains either a $+$ or a $0$, subject to the rule that if a square contains a $0$ then either all squares to its left (in the same row) must also contain a $0$, or all squares above it (in the same column) mustbasesofmatroids\ also contain a $0$, or both.
 \end{dfn}
 
 By \cite[Theorem 6.5]{Postnikov}, the set of all Le diagrams that fit within a $k\times(n-k)$ rectangle is in 1-1 correspondence with the positroid cells of $\Gr(k,n)$. Le diagrams are particularly useful for comparing dimensions of positroids, since the dimension of a positroid is equal to the number of $+$ squares in its Le diagram \cite[Theorem 6.5]{Postnikov}.
@@ -1007,11 +1007,13 @@ We need one more lemma before we can prove that Algorithm~\ref{alg:put GN on WLD
 Let $W = (\cP,[n])$ be an admissible Wilson loop diagram and let $M(W)$ be its associated matroid. A subset $J \subseteq [n]$ is an independent set of $M(W)$ if and only if there exists an injective set map $f : J \rightarrow \cP$ with the property that for each $j\in J$ we have $j \in V(f(j))$.
 \end{lem}
 
-{\color{violet} This is a rephrasing of my theorem with Amat (Lemma 3.5 / Theorem 3.6): A set of vertices $V \subset [n]$ is independent if and only if it does not contain a $U \subsetneq V$ such that $|\Prop(U)| > |U|$, which is your injection condition. Is this second proof necessary? If so, should we at least cite that theorem?}
 
-One of the most important uses of this lemma is for bases.  The lemma says that a subset $J$ of $[n]$ is a basis of $M(W)$ if and only if there is a set bijection between $J$ and $\cP$ with the property that for each $j\in J$ the propagator associated to $j$ under the bijection is supported on vertex $j$.
+\st{One of the most important uses of this lemma is for bases.}  The lemma says that a subset $J$ of $[n]$ is a basis of $M(W)$ if and only if there is a set bijection between $J$ and $\cP$ with the property that for each $j\in J$ the propagator associated to $j$ under the bijection is supported on vertex $j$.
 
-\begin{proof}
+{\color{violet} This is equivalent to the condition for a set to be independent  or a basis established in Lemma 3.5 and Theorem 3.6 of \cite{wilsonloop}. The equivalence can ben seen by applications of the the pigeon hole principle directly in one direction, and inductively in the other. Below, we provide a different proof of this condition for independence. Note that either definition of independence and bases corresponds to the sets independent columns and bases of $C(W)$.}
+
+
+\begin{proof} \sanote{ I would still argue that this should be moved to section 2. That is the only place we talk about matroids and positroid associated to Wilson loop diagrams. While this is a general linear algebra result, it does reference $C(W)$ several times in the proof.}
 Because the nonzero entries of $C(W)$ are independent indeterminants, $J$ is an independent set is if and only if there is some choice of $|J|$ nonzero entries of $C(W)$ one in each row associated to an element of $J$ and each in different columns.
 
 Each entry in $C(W)$ identifies a propagator by the row of the entry and a vertex by the column of the entry.  The entry is nonzero if and only if the propagator is supported on that vertex.
@@ -1033,7 +1035,7 @@ If $i \not\in I_i$, then there are no propagators supported on $i$ at all.  In t
 Now suppose that $i \in I_i$.  Let $p$ be the propagator which contributes $i$ to $I_i$, that is, {\color{violet} $I^W_i(p) = i$}; thus one end of $p$ must lie on either edge $i-1$ or edge $i$.  In both cases let $b$ denote the edge supporting the other end of $p$, {\color{violet}that is, $p = (i, b)$ or $p = (i-1, b)$.}
 \sanote{We use taking and contributing interchangably. Do we want to normalize? I vote for contributing}
 
-\textbf{Case I}:  Suppose $p$ has one end on edge $i-1$.  Then $p$ is not supported on $i+1$, so in building $I_{i+1}$ \hlfix{we will take the same propagators as in the construction of $I_i$}{what does this mean? Isn't it possible to take the same propagators but in a different order to get different numbers? If not, is there a proof?} \hlfix{from vertices $i+1$ up to $b-1$, that is $I_{i+1} \cap [i+1,b-1] = I_{i} \cap [i+1,b-1]$}{is this the same fact that is used without proof in 3.11?}.  Furthermore, by Lemma~\ref{vertex cyclic int lem}, when building $I_{i+1}$ it must happen that $p$ is taken \st{at} {\color{violet} by?} vertex $b$, as otherwise $b$ would never be contributed by $p$. Consequently, in building $I_{i+1}$, when the algorithm reaches vertex $b$ there cannot be any unassigned propagators remaining that are \hlfix{before}{do we have an ordering on $\cP$?} $p$.  This is also true in when the algorithm constructing $I_i$ reaches $b$, since the \hlfix{same propagators have been assigned beforehand}{see above.}.  Finally, we also note that $m\geq_i b+1$.
+\textbf{Case I}:  Suppose $p$ has one end on edge $i-1$.  \st{Then} {\color{violet}If} $p$ is not supported on $i+1$, \st{so} in building $I_{i+1}$ \hlfix{we will take the same propagators as in the construction of $I_i$from vertices $i+1$ up to $b-1$, that is $I_{i+1} \cap [i+1,b-1] = I_{i} \cap [i+1,b-1]$}{Lemma-ize?}.  {\color{violet} (If $p$ is supported on $i+1$, $b= i+1$ and the interval $[i+1,b-1]$ is emptry.)} Furthermore, by Lemma~\ref{vertex cyclic int lem}, when building $I_{i+1}$ it must happen that $p$ is taken \st{at} {\color{violet} by?} vertex $b$, as otherwise $b$ would never be contributed by $p$. Consequently, in building $I_{i+1}$, when the algorithm reaches vertex $b$ there cannot be any unassigned propagators remaining that are \hlfix{before}{do we have an ordering on $\cP$?} $p$.  This is also true in when the algorithm constructing $I_i$ reaches $b$, since the \hlfix{same propagators have been assigned beforehand}{see above.}.  Finally, we also note that $m\geq_i b+1$.
 
 Let $W' = (\cP_{out}(p,<_i), [n])$, i.e. the diagram obtained from $W$ by removing both $p$ and all propagators inside of $p$.
 
@@ -1045,7 +1047,7 @@ By the above observations, if we commence Algorithm~\ref{alg:put GN on WLD} in $
 where the diagram is indicated in the superscript.
 Thus we have $m\in I_b^{W'}\setminus\{b\}$ and $m\not\in I_{b+1}^{W'}$, contradicting the minimality of $(W, i, m)$.
 
-\textbf{Case II}: Suppose $p$ has one end on edge $i$.  Note that by assumption we have $I_i(p) = i$; this means that $p$ must be the first propagator lying on edge $i$, and hence we must have $I_{i+1}(p) = i+1$ as well.  Observe also that $m\geq_i i+2$ since $i+1\in I_{i+1}$.
+\textbf{Case II}: Suppose $p$ has one end on edge $i$.  Note that by assumption we have $I_i(p) = i$; this means that $p$ must be the \st{first} {\color{violet} counterclockwise most} propagator lying on edge $i$, and hence we must have $I_{i+1}(p) = i+1$ as well.  Observe also that $m\geq_i i+2$ since $i+1\in I_{i+1}$.
 
 Let $W'$ be the diagram obtained from $W$ by removing only the propagator $p$.  Then we have
 \begin{align*}
@@ -1074,12 +1076,12 @@ since in both cases the algorithm in $W'$ proceeds identically to that in $W$ af
 %\item $j \not\in I_i$ implies that $p_r$ is the \textit{only} propagator supported on vertex $j$ at this step.  There is therefore no knock-on effect, and any remaining propagators in the diagram contribute the same label to both $I_i$ and $I_{i+1}$. We conclude that $I_{i+1} = I_i \backslash \{i\} \cup \{j\}$.
 %\end{enumerate}
 
-\medskip
+\medskip  \sanote{Suggested breakpoint of theorem}
 
-We have shown that $(I_1,\dots,I_n)$ is a Grassmann necklace; it remains to check that this Grassmann necklace corresponds to the positroid $M(W)$.  We need to show that:
+We have shown that $(I_1,\dots,I_n)$ is a Grassmann necklace; it remains to check that this Grassmann necklace corresponds to the positroid $M(W)$.  {\color{violet} By equation \eqref{basesofmatroids}, w}e need to show that: \sanote{added a number to this eq. make it a dfn?}
 \begin{itemize}
 \item For each $i \in [n]$, $I_i$ is a basis for $M(W)$.
-\item If $J$ is lexicographically smaller than $I_i$ with respect to $<_i$, then $J$ is not a basis for $M(W)$.
+\item If $J$ is lexicographically smaller than {\color{violet} any} $I_i$ with respect to $<_i$, then $J$ is not a basis for $M(W)$. 
 \end{itemize}
 The first point follows immediately: since the algorithm is pairing each $j \in I_i$ with a unique propagator supported on that vertex, $I_i$ is a basis for $M(W)$ by Lemma~\ref{lem basis as perm}.
 
