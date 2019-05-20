@@ -1168,7 +1168,7 @@ We can now unambiguously refer to Algorithm~\ref{alg:put GN on WLD} as the Grass
 In an arbitrary Grassmann necklace, it is possible for an index $i$ to appear in no terms of the Grassmann necklace (a {\em loop}) or in all terms of the necklace (a {\em coloop}). Using Theorem~\ref{res:alg gives GN}, a characterization of the loops and coloops of the Grassmann necklace associated to a Wilson loop diagram follows easily.
 
 
-\begin{cor}\label{no coloops}
+\begin{cor}\label{no coloops}\sanote{cite more prominently in frontmatter}
 Grassmann necklaces coming from admissible Wilson loop diagrams have no coloops. A vertex $j$ is a loop if and only if $j$ supports no propagators. 
 \end{cor}
 \begin{proof}
@@ -1193,10 +1193,10 @@ We start with several lemmas, of roughly increasing degree of technicality.
 \begin{lem}\label{lem uncovered}
 
 Let $W$ be an admissible Wilson loop diagram with $k$ propagators, and with a vertex $i$ that supports no propagators.  Let $V$ be $W$ with vertex $i$ removed.  Then the Le diagram of $W$ is obtained from the Le diagram of $V$ by inserting an extra column containing all $0$s in position $i$ (i.e. such that the new column has the label $i$).
-\end{lem}
+\end{lem} 
 
 \begin{proof}
-  By Algorithm~\ref{alg:put GN on WLD} the Grassmann necklace of $W$ is obtained from the Grassmann necklace of $V$ by duplicating the $i$th element of the Grassmann necklace of $V$ (shifting indices as appropriate), and incrementing all indices greater than $i$ in each Grassmann necklace element.  Formally, if $I_1^{V}, \ldots, I_{n-1}^{V}$ and $I_1^{W}, \ldots, I_n^{W}$ are the Grassmann necklaces of $V$ and $W$ respectively then
+  By Algorithm~\ref{alg:put GN on WLD} the Grassmann necklace of $W$ is obtained from the Grassmann necklace of $V$ by duplicating the $i$th element of the Grassmann necklace of $V$ (shifting indices by $1$ for all indices greater than $i$) \sanote{changed a bit of wording on the proof}, and incrementing all indices greater than $i$ by $1$ in each Grassmann necklace element.  Formally, if $I_1^{V}, \ldots, I_{n-1}^{V}$ and $I_1^{W}, \ldots, I_n^{W}$ are the Grassmann necklaces of $V$ and $W$ respectively then
   \[
   I_j^{W} =
   \begin{cases}
@@ -1224,7 +1224,7 @@ It can easily be seen from \cite[Section 17]{Postnikov} and Algorithm \ref{alg:p
   Let $W$ be an admissible Wilson loop diagram with $n\geq 1$ propagators.  Then there is some dihedral transformation $W'$ of $W$ such that $W'$ has a propagator $p$ with the following properties.
   \begin{itemize}
   \item $p = (i, n-1)$ for some $i$, and $p$ has no propagators inside it (that is $i+2, \ldots, n-2$ do not support any propagators in $W'$).
-  \item Either the edge $i$ in $W'$ only supports $p$ or the edge $i$ in $W'$ supports exactly one other propagator $q = (j, i)$ with no other propagators inside $q$.
+  \item Either the edge $i$ in $W'$ only supports $p$ or the edge $i$ in $W'$ supports exactly one other propagator \hlfix{$q = (i, j)$ with no other propagators inside $q$ in the $<_i$ ordering, and $j <_1 i$.}{changed. Correct? Explicitly, not letting $i <_i j <_i n-1$. Also made this change below. } 
   \end{itemize}
 \end{lem}
 
@@ -1236,7 +1236,7 @@ It can easily be seen from \cite[Section 17]{Postnikov} and Algorithm \ref{alg:p
 
 
 
-Combining Lemmas \ref{lem uncovered}, \ref{lem dihedral}, and \ref{lem good p}, it therefore suffices to study the Le diagrams of weakly admissible Wilson loop diagrams admitting one of the configurations described in Lemma~\ref{lem good p} with propagators $p$ and $q$ (if $q$ exists) both of length 2. See Figure~\ref{fig special p} for an illustration of the two possibilities.
+Combining Lemmas \ref{lem uncovered}, \ref{lem dihedral}, and \ref{lem good p}, it therefore suffices to study the Le diagrams of weakly admissible Wilson loop diagrams with $F(\emptyset)  = \emptyset$, admitting one of the configurations described in Lemma \ref{lem good p} with propagators \hlfix{$p = (n-3, n-1)$ and $q= (n-5, n-3)$}{changed. correct?} (if $q$ exists) both of length 2. See Figure~\ref{fig special p} for an illustration of the two possibilities. 
 
 The next few lemmas describe how diagrams of this type are related to the corresponding diagram with propagator $p$ removed, first in terms of the Grassmann necklaces and then in terms of the Le diagrams. These technical lemmas will form the backbone of the inductive step in the main dimensionality argument.
 
