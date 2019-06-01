@@ -374,7 +374,7 @@ Let $W = (\cP, [n])$.
 \begin{enumerate}
 \item For $p = (i_p,j_p) \in \cP$, define $V(p) = \{i_p, i_p+1, j_p, j_p+1\}$ to be the set of vertices supporting $p$. Similarly, for $P \subseteq \cP$ we define the set $V(P) = \cup_{p \in P} V(p)$ to be the vertex support of $P$.
 \item For $U \subseteq [n]$, write $\Prop(U) = \{ p \in \cP  \ | \ V(p) \cap U \neq \emptyset \} $ to denote the set of propagators which are at least partially supported on $U$.
-\item For $P \subseteq \cP$, define $F(P) = V(P^c)^c$ to be\footnote{Here, as throughout, we are using the superscript $c$ for the set theoretic complement.} the set of vertices in $[n]$ that do not support any propagators outside of the set $P$.
+\item For $P \subseteq \cP$, define the {\em propagator flat} $F(P) = V(P^c)^c$ to be\footnote{Here, as throughout, we are using the superscript $c$ for the set theoretic complement.} the set of vertices in $[n]$ that do not support any propagators outside of the set $P$. (This choice of terminology is justified in Lemma~\ref{lem facts about WLD matroids} below.)
 \item The set of vertices that do not support any propagators is denoted $F(\emptyset)$. Vertices in this set are called {\em non-supporting}.  
 \end{enumerate}
 \end{dfn}
@@ -828,7 +828,7 @@ The subgraph $t$ is then
 	\end{scope}
 	\end{tikzpicture} \eas
 
-The key point to note is that the subgraph $t$ depends on how the propagators of $P$ sit inside $[n]$, not on how they sit in $W_P$ itself.  In particular, $t$ is not the subgraph of $\tau(W)$ consisting only of edges corresponding to propagators of $P$ (as it may also include some of the outer edges of $\tau(W)$), nor is it the polygon dissection of $(P,V(P))$ (which would contain the extra vertices 5 and 9).
+The key point to note is that the subgraph $t$ depends on how the propagators of $P$ sit inside $[n]$, not on how they sit in $W_P$ itself.  In particular, $t$ is not the subgraph of $\tau(W)$ consisting only of edges corresponding to propagators of $P$ (as it may also include some of the outer edges of $\tau(W)$), nor is it the polygon dissection of $(P,V(P))$ viewed as a Wilson loop diagram in its own right (which would have vertex set equal to $V(P)$).
 \end{eg}
 
 \begin{lem}\label{lem triang to exact}
@@ -891,7 +891,7 @@ This follows from the definition of equivalent Wilson loop diagrams (Definition 
 \end{proof}
 
 
-\note{sian note to self: reading/editing has reached this point}
+
 \subsection{Matroidal properties of exact subdiagrams \label{sec: exact diagram matroidal props}}
 
 Since Corollary \ref{uniqueproppartitioncor} allows us to decompose any admissible Wilson loop diagram into a collection of maximal exact subdiagrams, we are motivated to examine the matroid properties of exact subdiagrams more closely. In this section, we prove two main results:
@@ -900,32 +900,32 @@ Since Corollary \ref{uniqueproppartitioncor} allows us to decompose any admissib
 \item The matroid associated to an exact subdiagram is uniform (Theorem \ref{exactuniformthm} ).
 \end{enumerate}
 
-We begin by proving some useful facts about propagator flats, and flats of matroids associated to admissible Wilson loop diagrams more generally.
+We begin by proving some useful facts about propagator flats, and flats of matroids associated to admissible Wilson loop diagrams more generally. Recall from Definition~\ref{VPropdfn} that the propagator flat $F(P)$ of $P \subseteq \cP$ denotes the set $V(P^c)^c$ of vertices that do not support any propagators not in $P$.
 
-\begin{comment}
-
-
-\begin{dfn}\label{def prop flat} 
-Let $W = (\cP,n)$ be an admissible Wilson loop diagram and $P \subseteq \cP$. The set $F(P) := V(P^c)^c$ is called the {\em propagator flat} of $P$.
-\end{dfn}
-Thus in Lemma \ref{contractsubdiaglem} above we would contract $M(W)$ by the propagator flat $F(P^c)$ of the {\em complement} of $P$ in order to study $(P,V(P))$. The justification for this notation is given by (1) of the next lemma: the set $F(P)$ consists of vertices which {\em only} support propagators in $P$ (or no propagators at all).
-
-\begin{lem}\label{lem properties of prop flats} \sanote{do we need the first 2? They follow directly from the definition 1.2. Do we use them later?}
-Let $F(P)$ be a propagator flat as defined above. Then
-\begin{enumerate}
-\item $F(\emptyset)$ is exactly the set of vertices which support no propagators, while for $P \neq \emptyset$ we have \[F(P) = \big(V(P) \setminus V(P^c)\big) \cup F(\emptyset).\] \note{updated (1) to match new definition of $F(P)$; }
-\item If $Q\subseteq P$ then $F(Q) \subseteq F(P)$.
-\item $F(P)$ is a flat of $M(W)$, thus justifying the name ``propagator flat''.
-\end{enumerate}
-\end{lem} \sanote{I'd like to attach this to the "generic facts about matroids" in lemma 2.2?}
-\begin{proof}
-The proof of (1) and (2) are routine applications of the definition and are omitted.
-
-To prove (3), we need to show that $F(P)$ is maximally dependent. If $F(P) = [n]$ then this is automatic, so suppose not and let $v \in [n] \setminus F(P)$. In other words, $v \in V(P^c)$ and so $v$ supports some propagator $q \not\in P$.  Let $S \subseteq F(P)$ be an independent set of maximal size. Then $\Prop(S) \subseteq P$ by (1), and no subset of $S$ supports fewer propagators than the number of vertices it contains (this is the definition of an independent set in $M(W)$). Since $v$ supports a new propagator $q \not\in P$, the set $S \cup \{v\} \subseteq F(P) \cup\{v\}$ also satisfies this independence condition. Thus $\rk(F(P) \cup\{v\}) = \rk(F(P)) + 1$, as required.
-\end{proof}
+% \begin{comment}
 
 
-\end{comment}
+% \begin{dfn}\label{def prop flat} 
+% Let $W = (\cP,n)$ be an admissible Wilson loop diagram and $P \subseteq \cP$. The set $F(P) := V(P^c)^c$ is called the {\em propagator flat} of $P$.
+% \end{dfn}
+% Thus in Lemma \ref{contractsubdiaglem} above we would contract $M(W)$ by the propagator flat $F(P^c)$ of the {\em complement} of $P$ in order to study $(P,V(P))$. The justification for this notation is given by (1) of the next lemma: the set $F(P)$ consists of vertices which {\em only} support propagators in $P$ (or no propagators at all).
+
+% \begin{lem}\label{lem properties of prop flats} \sanote{do we need the first 2? They follow directly from the definition 1.2. Do we use them later?}
+% Let $F(P)$ be a propagator flat as defined above. Then
+% \begin{enumerate}
+% \item $F(\emptyset)$ is exactly the set of vertices which support no propagators, while for $P \neq \emptyset$ we have \[F(P) = \big(V(P) \setminus V(P^c)\big) \cup F(\emptyset).\] \note{updated (1) to match new definition of $F(P)$; }
+% \item If $Q\subseteq P$ then $F(Q) \subseteq F(P)$.
+% \item $F(P)$ is a flat of $M(W)$, thus justifying the name ``propagator flat''.
+% \end{enumerate}
+% \end{lem} \note{I'd like to attach this to the "generic facts about matroids" in lemma 2.2?}
+% \begin{proof}
+% The proof of (1) and (2) are routine applications of the definition and are omitted.
+
+% To prove (3), we need to show that $F(P)$ is maximally dependent. If $F(P) = [n]$ then this is automatic, so suppose not and let $v \in [n] \setminus F(P)$. In other words, $v \in V(P^c)$ and so $v$ supports some propagator $q \not\in P$.  Let $S \subseteq F(P)$ be an independent set of maximal size. Then $\Prop(S) \subseteq P$ by (1), and no subset of $S$ supports fewer propagators than the number of vertices it contains (this is the definition of an independent set in $M(W)$). Since $v$ supports a new propagator $q \not\in P$, the set $S \cup \{v\} \subseteq F(P) \cup\{v\}$ also satisfies this independence condition. Thus $\rk(F(P) \cup\{v\}) = \rk(F(P)) + 1$, as required.
+% \end{proof}
+
+
+% \end{comment}
 
 \begin{lem} \label{lem decompose flat}Let $F$ be a flat in $M(W)$, and let $C \subseteq F$ be the union of all circuits contained in $F$. Then the following are true:
 \begin{enumerate}
@@ -937,29 +937,33 @@ To prove (3), we need to show that $F(P)$ is maximally dependent. If $F(P) = [n]
 \begin{proof}
 (1) If $F$ is an independent flat, then $C = \emptyset$ and the statement is trivially true. Now suppose that $F$ is a dependent set, so $C$ is non-empty.
 
-Let $v \in C$. Clearly $\Prop(v) \subseteq \Prop(C)$. Since $F(P)  = V(P^c)^c$, we have $F(\Prop(v)) \subseteq F(\Prop(C))$. Since $v \in F(\Prop(v))$ by the definition of propagator flat, we have $v \in F(\Prop(C))$, and so $C \subseteq F(\Prop(C))$. 
+Let $v \in C$. Clearly $\Prop(v) \subseteq \Prop(C)$, and hence $F(\Prop(v)) \subseteq F(\Prop(C))$ (this is easily verified by applying the definition and simplifying out all of the complements). Since $v \in F(\Prop(v))$ by the definition of propagator flat, it follows that $v \in F(\Prop(C))$. Thus $C \subseteq F(\Prop(C))$.
 
-Now suppose there exists some $w \in  F(\Prop(C)) \setminus C$. Let $B$ be an independent subset of $C$ of maximal rank; we first show that $B \cup \{w\}$ is a dependent set in $M(W)$. By Lemma \ref{lem facts about WLD matroids}, \bas |\Prop(C)| = \rk(C) = |B| = \rk(B) .\eas Since $\rk(B) \leq |\Prop(B)|$ and $B \subseteq C$ implies that  $\Prop(B) \subseteq \Prop(C)$, this implies that $\Prop(B) = \Prop(C)$. Furthermore, since $w \in F(Prop(C))$, we have $\Prop(B\cup w) \subseteq \Prop(B)$. By Lemma \ref{lem facts about WLD matroids}
+Now suppose there exists some $w \in  F(\Prop(C)) \setminus C$. Let $B$ be an independent subset of $C$ of maximal rank; we first show that $B \cup \{w\}$ is a dependent set in $M(W)$. By Lemma \ref{lem facts about WLD matroids}, we have
+\begin{equation}\label{eq:equality in lem decompose flat} |\Prop(C)| = \rk(C) = |B| = \rk(B) .\end{equation}
+Since $\rk(B) \leq |\Prop(B)|$, and $B \subseteq C$ implies that  $\Prop(B) \subseteq \Prop(C)$, it follows that $\Prop(B) = \Prop(C)$. Combining this with the fact that $w \in F(\Prop(C))$, we have $\Prop(B\cup \{w\}) \subseteq \Prop(B)$. We can now say something about $\rk(B\cup \{w\})$: by Lemma \ref{lem facts about WLD matroids}, we have 
 \[
-\rk (B \cup w) \leq \min\{|B\cup w|, |\Prop(B\cup w)|\},
+\rk (B \cup \{w\}) \leq \min\{|B\cup \{w\}|, |\Prop(B\cup \{w\})|\} \leq \min\{|B|+1,|Prop(B)|\},
 \]
-but $\rk (B\cup w) \leq \rk(C) = |B|$, and therefore $\rk (B \cup w) < |B\cup w|$. That is, $B\cup w$ contains a circuit containing $w$ and this circuit is in $F(\Prop(C))$. Therefore, $w \in C$, leading to a contradiction.
+which becomes 
+\[\rk(B\cup \{w\}) \leq \min\{|B|+1,|B|\} = |B| < |B \cup\{w\}|\]
+via equation \eqref{eq:equality in lem decompose flat}. Therefore $B\cup\{w\}$ is a dependent set, which implies that $B\cup \{w\}$ contains a circuit $D$. We must have $w \in D$ (since $B$ was an independent set), and \hlfix{$D \subseteq F(\Prop(C))$}{I know we've talked about this before and I can't remember why this is true} $\subseteq F$. Since $C$ was the union of all circuits in $F$, we finally obtain $w \in C$, which is a contradiction. This completes the proof of (1).
 
 
 For part (2), first note that $F \setminus C$ is automatically independent as it contains no circuits.
 
 Note that since $F(\emptyset)$ has rank $0$, $F(\emptyset)$ is contained in every flat of $W$. Therefore, if $F(\emptyset) \neq \emptyset$, then $F\setminus C$ cannot be a flat. 
 
-If $F(\emptyset) = \emptyset$, for any $e \not\in F$, we certainly have $\rk((F\setminus C)\cup\{e\}) = \rk(F\setminus C) +1$ since $F$ is a flat. Now let $e \in C$, and suppose that $\rk((F\setminus C)\cup\{e\}) = \rk(F\setminus C)$. This implies that $(F\setminus C)\cup \{e\}$ is dependent, and hence contains a circuit, $S$. Since $F(\emptyset) = \emptyset$, this circuit must contain at least two elements but this contradicts the fact that $C$ was the union of all circuits in $F$. 
+Now suppose that $F(\emptyset) = \emptyset$; we must show that $F\setminus C$ is a flat. For any $e \not\in F$ we certainly have $\rk((F\setminus C)\cup\{e\}) = \rk(F\setminus C) +1$, since $F$ is a flat. Now let $e \in C$, and suppose that $\rk((F\setminus C)\cup\{e\}) = \rk(F\setminus C)$. This implies that $(F\setminus C)\cup \{e\}$ is dependent, and hence contains a circuit. Since $F(\emptyset) = \emptyset$ this circuit must contain at least two elements: one of these elements is $e$, but any others must come from $F \setminus C$. This contradicts the fact that $C$ was the union of all circuits in $F$. 
 
 Thus $\rk((F\setminus C)\cup \{e\}) = \rk(F\setminus C) + 1$ for any $e \not\in F\setminus C$, and hence $F\setminus C$ is a flat.
 \end{proof}
 
 \begin{cor} \label{classifyflats}
-  If $F$ is a flat of an admissible Wilson loop diagram, it can be written as the disjoint union of a cyclic propagator flat and an independent set: \bas F =C \sqcup S \eas where $C$ the union of all circuits in S. \end{cor}
+  If $F$ is a flat of an admissible Wilson loop diagram, it can be written as the disjoint union of a cyclic propagator flat and an independent set: \bas F =C \sqcup S \eas where $C$ the union of all circuits in $F$. \end{cor}
  
 \begin{proof}
-By Lemma \ref{lem decompose flat}, the set $C$ is a propagator flat. Furthermore, $S = F \setminus C$, which is independent.
+By Lemma \ref{lem decompose flat} the set $C = F(\Prop(C))$ is a propagator flat, and $S := F \setminus C$ is independent.
 \end{proof}
 
 In particular, any propagator flat can be written as a union of a cyclic propagator flat and an independent set.
@@ -981,8 +985,9 @@ Next we examine properties of propagator flats associated to the complement of W
 
 \begin{lem} \label{maxexactcomplementrank}
 Let $W = (\cP, [n])$ be an admissible Wilson loop diagram, and $P \subseteq \cP$. Then: \begin{enumerate}
-\item If $(P,V(P))$ is an exact subdiagram in $W$, then $F(P^c)$ is not an independent flat.
-\item If $(P,V(P))$ is a maximal exact subdiagram in $W$, then $F(P^c)$ is a cyclic flat.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          \item If $(P,V(P))$ is an exact subdiagram in $W$, then $\rk(F(P^c)) = |P^c|$.
+\item If $(P,V(P))$ is an exact subdiagram in $W$, then $F(P^c)$ is a dependent flat.
+\item If $(P,V(P))$ is a maximal exact subdiagram in $W$, then $F(P^c)$ is a cyclic flat.
+\item If $(P,V(P))$ is an exact subdiagram in $W$, then $\rk(F(P^c)) = |P^c|$.
 \end{enumerate}
 \end{lem}
 
@@ -990,37 +995,54 @@ Let $W = (\cP, [n])$ be an admissible Wilson loop diagram, and $P \subseteq \cP$
 \begin{proof}
 %Note that $|P^c|$ is always an upper bound on the rank of $F(P^c)$ for any $P \subseteq \cP$, since $F(P^c)$ supports at most $P^c$ propagators (see Remark \ref{alt F(P) rmk}), and $\rk (F(P^c)) = \min\{ |F(P^c)|, |\Prop(F(P^c))|\}$. To show equality, we need to show that $F(P^c)$ is not an independent set and that $\Prop(F(P^c)) = P^c$. 
 
-First note that if $(P,V(P))$ is exact then the admissiblity of $W$ guarantees that $F(P^c)$ is a non-empty flat. That is, $V(P) \subsetneq [n]$.
+First note that if $(P,V(P))$ is exact then the admissiblity of $W$ guarantees that $V(P) \neq [n]$, so $F(P^c) = V(P)^c$ is not empty. 
 
-Since $W$ is admissible, we have $n \geq |\cP| + 4$. Rewriting this as
+We know from Lemma~\ref{lem facts about WLD matroids} that $F(P^c)$ is always a flat, so for part (1) we only need to show that $F(P^c)$ is dependent.
+
+Since $W$ is admissible, we have $n \geq |\cP| + 4$. Rewriting this inequality as
 \[|V(P)| + |F(P^c)|  \geq  |P| + |P^c| +4,\]
 and combining it with the fact that $|V(P)| = |P| + 3$ (from the exactness of $(P,V(P))$), we obtain
 \begin{equation}\label{eq F is dependent}|F(P^c)| > |P^c| \;.\end{equation}
-Equation \eqref{eq F is dependent} is therefore saying that $F(P^c)$ supports fewer propagators than the number of vertices it contains, i.e. $F(P^c)$ is not an independent set.
+Equation \eqref{eq F is dependent} implies that $F(P^c)$ supports fewer propagators than the number of vertices it contains, i.e. $F(P^c)$ is not an independent set.
 
 For part (2), suppose that $(P, V(P))$ is a maximal exact subdiagram. By Corollary \ref{classifyflats} we can decompose $F(P^c)$ as
 \begin{equation}\label{eq decompose F}V(P)^c = F(P^c) = C \sqcup S = F(\Prop(C)) \sqcup S,\end{equation}
 where $C$ is the largest cyclic flat contained in $F(P^c)$ and $S$ is an  independent set. Note that $C$ must be non-empty since $F(P^c)$ is non-empty and dependent (by part (1)).
 
-Since $S$ is an independent set, $\rk(S) = |S|$, and every element of $S$ is independent of $C$, $\rk\big(F(P^c)\big) = \rk(C) + \rk(S)$. By Lemma \ref{lem facts about WLD matroids}(1), \ba \rk(S) = \rk\big(F(P^c)\big) -  \rk(C) \leq |P^c| - \rk(C) \;. \label{increasingrank} \ea
+By similar arguments to Lemma~\ref{lem decompose flat}, the fact that $S$ is independent and that $C$ is the union of all circuits in $F(P^c)$ implies that every element of $S$ is independent of $C$, and therefore ${\rk\big(F(P^c)\big) = \rk(C) + \rk(S)}$. We also know that $\rk(S) = |S|$, by the independence of $S$. Combining these with Lemma~\ref{lem facts about WLD matroids}(1), we get \ba |S| = \rk(S) = \rk\big(F(P^c)\big) -  \rk(C) \leq |P^c| - \rk(C) \;. \label{increasingrank} \ea
 
-Let $Q^c = \Prop(C)$. The goal will be to show that $Q=P$ and hence that $S=0$ so $F(P^c)$ is a cyclic flat.  From the definition of $Q$, we obtain $C = F(Q^c)$ and, by Lemma \ref{lem facts about WLD matroids}(2), $\rk(C) = |Q^c|$. By equation \eqref{increasingrank}, \ba |P| + |S| \leq |P| + |P^c| - \rk(C) = |\cP| - |Q^c| = |Q| \;. \label{Qsizebound}\ea From equation \eqref{eq decompose F}, \bas V(P) \sqcup S = C^c = F(\Prop(C))^c = F(Q^c)^c = V(Q) \;. \eas Combining this with equation \eqref{increasingrank} gives \ba |V(Q)| = | V(P) | + |S| = | P | + 3 + |S| \leq |Q| +3 \;. \label{Q defines exact}\ea Since $W$ is admissible, one must have $|V(Q)| = |Q| +3$, that is the subdiagram $(Q, V(Q))$ is exact.
+Define $Q = \Prop(C)^c$. We will show that $Q=P$, which will imply that $S=\emptyset$ and that ${F(P^c) = F(Q^c) = F(\Prop(C))}$ is a cyclic flat.
 
-Next, note that \bas C = F(Q^c) = V(Q)^c \subseteq F(P^c) = V(P)^c \;,\eas which implies that $P \subseteq Q$. That is, $(P, V(P))$ is a subdiagram of $(Q, V(Q))$. Since $(P, V(P))$ is maximally exact by hypothesis, and $(Q, V(Q))$ is exact by \eqref{Q defines exact}, we are forced to have $S = \emptyset$. Therefore, $F(P^c)$ is a cyclic flat.
+From the definition of $Q$ we obtain $C = F(Q^c)$, and, by Lemma \ref{lem facts about WLD matroids}(2), it follows that $\rk(C) = |Q^c|$. By equation \eqref{increasingrank}, we obtain
+\ba |P| + |S| \leq |P| + |P^c| - \rk(C) = |\cP| - |Q^c| = |Q| \;. \label{Qsizebound}\ea 
+Meanwhile, from equation \eqref{eq decompose F} we have
+\bas V(P) \sqcup S = C^c = F(\Prop(C))^c = F(Q^c)^c = V(Q) \;. \eas
+Combining this with equation \eqref{Qsizebound} gives 
+\ba |V(Q)| = | V(P) | + |S| = | P | + 3 + |S| \leq |Q| +3 \;. \label{Q defines exact}\ea
+Since $W$ is admissible this cannot be a strict inequality, so we have $|V(Q)| = |Q| +3$ and the subdiagram $(Q, V(Q))$ is exact.
 
-To see (3), first note that the second point of this Lemma, combined with Lemma \ref{lem facts about WLD matroids} gives that
-\bas\rk(F(P^c)) = |\Prop(F(P^c))| = |P^c|\eas
-in the case that $(P, V(P))$ is maximal exact.
+Finally, note that 
+\bas C = F(Q^c) = V(Q)^c \subseteq F(P^c) = V(P)^c \;,\eas
+where the $\subseteq$ follows from equation~\eqref{eq decompose F}. This implies that \hlfix{$P \subseteq Q$}{sian should go look up why this is true}, and hence $(P, V(P))$ is a subdiagram of $(Q, V(Q))$. Since $(P, V(P))$ is maximally exact by hypothesis, and $(Q, V(Q))$ is exact by equation \eqref{Q defines exact}, we must have $P = Q$. Therefore $S = \emptyset$ and $F(P^c)$ is a cyclic flat.
 
-To prove the result in the general case, let let $(R,V(R))$ be an exact subdiagram that is not maximal and $P$ be the maximal exact subdiagram containing it. That is, $R \subsetneq P$.
+To see (3), first note that when $(P,V(P))$ is maximal exact, part (2) of this lemma combined with Lemma \ref{lem facts about WLD matroids} gives that
+\bas\rk(F(P^c)) = |\Prop(F(P^c))| = |P^c|.\eas
 
-Since $R \subset P$, $V(P) = V(R) \sqcup S$, where $S = V(P) \setminus V(R)$. Since $P$ and $R$ both define exact subdiagrams, we may write $|V(P)| = |V(R)| + |P \setminus R|$, and we have that $S$ is a vertex set of size $|P \setminus R|$. Furthermore, $F(R^c) = F(P^c) \sqcup S$. We will show that $S$ is an independent set in the subdiagram $(P, V(P))$, and thus in $W$. Supposing for the moment that $S$ is independent in $(P, V(P)$ this implies that for any maximal independent set $\mathfrak{B} \subset F(P^c)$, the set $\mathfrak{B} \sqcup S$ is independent in $F(R^c)$. Therefore, \bas \rk (F(R^c)) \geq |\mathcal{B}| + |S| = \rk (F(P^c)) + |S| = |P^c| + |P\setminus R| = |R^c|  \;.\eas By Lemma \ref{lem facts about WLD matroids}, $\rk (F(R^c)) \leq |R^c|$. Thus $\rk (F(R^c)) = |R^c|$ as desired.
+To prove the result in the general case, let $(R,V(R))$ be an exact subdiagram of $W$ that is not maximal and let $P$ be the maximal exact subdiagram containing it. That is, $R \subsetneq P$.
 
-It remains to show that $S$ is an independent set in the subdiagram $(P, V(P))$. Suppose not. Then, by Theorem \ref{thm WLD defines matroid} there is a subset $U \subseteq S$ such that $|\Prop(U)| < |U|$. Then the remaining propagators, $P \setminus \Prop(U)$ are supported entirely on $V(P) \setminus U$. That is \bas  V(P \setminus \Prop(U)) = V(P) \setminus U\; .\eas Comparing sizes of these sets, we get \bas |V(P \setminus \Prop(U))| = |V(P)| - |U| = |P| +3 -|U| > |P| +3 -|\Prop(U)| = |P \setminus \Prop(U)| +3\; ,\eas which violates admissibility. Therefore, $S$ is independent in $(P, V(P))$. 
+Since $R \subsetneq P$ we can write 
+\begin{equation}\label{eq: relate P and R diagrams}V(P) = V(R) \sqcup S, \quad \text{ where } S := V(P) \setminus V(R).\end{equation}
+Since $P$ and $R$ both define exact subdiagrams, it follows that $|V(P)| = |V(R)| + |P \setminus R|$, and hence that $S$ is a vertex set of size $|P \setminus R|$. Furthermore, by taking complements of both sides of equation~\eqref{eq: relate P and R diagrams}, we see that $F(R^c) = F(P^c) \sqcup S$. 
+
+We will show that $S$ is an independent set in the subdiagram $(P, V(P))$, and thus in $W$. This will imply that for any maximal independent set $T \subseteq F(P^c)$, the set $T \sqcup S$ is independent in $F(R^c)$, and hence that 
+\bas \rk (F(R^c)) \geq |T| + |S| = \rk (F(P^c)) + |S| = |P^c| + |P\setminus R| = |R^c|  \;.\eas 
+The reverse inequality $\rk (F(R^c)) \leq |R^c|$ always holds (see Lemma \ref{lem facts about WLD matroids}), so if $S$ is independent in $(P,V(P))$ we obtain $\rk (F(R^c)) = |R^c|$ as desired.
+
+It remains to show that $S$ is an independent set in the subdiagram $(P, V(P))$, so for a contradition suppose otherwise. Then by Theorem \ref{thm WLD defines matroid} there is a subset $U \subseteq S$ such that $|\Prop(U)| < |U|$. Then the remaining propagators $P \setminus \Prop(U)$ are supported entirely on $V(P) \setminus U$, i.e. \bas  V(P \setminus \Prop(U)) \subseteq V(P) \setminus U\; .\eas Comparing sizes of these sets, we get \bas |V(P \setminus \Prop(U))| \leq |V(P)| - |U| = |P| +3 -|U| < |P| +3 -|\Prop(U)| = |P \setminus \Prop(U)| +3\; ,\eas which violates admissibility. Therefore $S$ must be independent in $(P, V(P))$ after all, and (as described above) it follows that $\rk(F(R^c)) = |R^c|$.
 
 \end{proof}
 
-We are now ready to show that any exact subdiagram $(P, V(P)$ of $W$ can be written as a contraction of $M(W)$ by $F(P^c)$. We begin with a definition.
+We are now in a position to describe the matroid structure of exact subdiagrams $(P, V(P))$ of $W$ in terms of $M(W)$ and $F(P^c)$. We begin with a definition.
 
 \begin{dfn}\label{matroid contraction}
 Let $M = (E,\cB)$ be a matroid, and $S \subseteq E$. The {\em contraction} of $M$ by $S$ is the matroid $M/S = (E \setminus S, \cB / S)$, where
@@ -1033,19 +1055,22 @@ In \cite{wilsonloop}, Agarwala and Amat show that certain subdiagrams of $W$ can
 Let $W = (\cP, [n])$ be an admissible Wilson loop diagram and $P \subseteq \cP$. If the set $V(P)^c$ has rank $|P^c|$, then the matroid defined by the subdiagram $(P, V(P))$ is equal to the contraction $M(W)/V(P)^c$.
 \end{lem}
 
+Putting all of this together, we obtain our first major theorem of this section:
+
 \begin{thm} \label{exact diagrams contractions}
-If $(P, V(P)$ is an exact subdiagram of of $W$, one may write \bas M\big((P, V(P))\big) = M(W)  / F(P^c) \;.\eas 
+If $(P, V(P)$ is an exact subdiagram of of $W$, the matroid of $(P,V(P))$ is the contraction of $M(W)$ by the propagator flat $F(P^c)$, i.e. \bas M\big((P, V(P))\big) = M(W)  / F(P^c) \;.\eas 
 \end{thm}
 
 \begin{proof}
 This follows from Lemma \ref{contractsubdiaglem}. Lemma \ref{maxexactcomplementrank} shows that the supports of exact subdiagrams satisfy the conditions of this lemma.
 \end{proof}
 
-\begin{rmk} \label{remark exact dual restiction}
-Let $M^*$ denote the dual of a matroid. The the dual of a contraction of a matroid is the same as the restriction of the dual matroid by the complement: \bas M / S = M^*|_{S^c} \;.\eas Then Theorem \ref{exact diagrams contractions} implies that, for $(P, V(P))$ an exact subdiagram of $W$ \bas M\big((P, V(P))\big) = M(W)  / F(P^c) = M(W)^*|_{V(P)} \;.\eas
+\begin{rmk} \label{remark exact dual restiction} For readers familiar with duals and complements of matroids, we reinterpret Theorem~\ref{exact diagrams contractions} in these terms. If $M^*$ denotes the dual of a matroid, then by standard matroid theory \hlfix{[ref]}{if we're not going to define them here (and we really shouldn't!) then it's probably polite to give a reference} the dual of a contraction of a matroid is the same as the restriction of the dual matroid by the complement: \bas M / S = M^*|_{S^c} \;.\eas Then Theorem \ref{exact diagrams contractions} implies that, for $(P, V(P))$ an exact subdiagram of $W$, we have \bas M\big((P, V(P))\big) = M(W)  / F(P^c) = M(W)^*|_{V(P)} \;.\eas
 \end{rmk}
 
-Matroids coming from exact subdiagrams have an especially nice structure, namely, they are uniform. Recall from Section \ref{sec matroid background} that a uniform matroid of rank $r$ is one in which all sets of size $ \leq r$ are independent.
+We now show that matroids coming from exact subdiagrams have an especially nice structure, namely, they are uniform. Recall from Section \ref{sec matroid background} that a uniform matroid of rank $r$ is one in which all sets of size $ \leq r$ are independent.
+
+\note{sian note to self: editing has reached this point}
 
 \begin{thm} \label{exactuniformthm}
 Let $W':= (P, V(P))$ be a subdiagram of an admissible Wilson loop diagram $W= (\cP, [n])$. Then $W'$ is an exact subdiagram if and only if $M(W')$ is a uniform matroid of rank $|P|$.
@@ -1091,7 +1116,7 @@ The unique top dimensional cell of $\Gr(|P|, |V(P)|)$ is defined by precisely th
 
 
 \subsection{Matroids and equivalent diagrams \label{sec: matroids and equivalence}}
-\note{Si\^an postponed reading this section until the earlier ones are fixed.}
+
 Now we are ready to prove the main results of this section, namely that two Wilson loop diagrams define the same matroid if and only if they are equivalent (Theorem \ref{same matroid iff equiv}).
 We also
 give a formula for the number of Wilson loop diagrams in a given equivalence class (Corollary \ref{number of equiv diagrams}), completing the characterization of the correspondence between Wilson Loop diagrams and matroids starting in \cite{wilsonloop}.
