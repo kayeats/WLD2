@@ -1070,7 +1070,7 @@ This follows from Lemma \ref{contractsubdiaglem}. Lemma \ref{maxexactcomplementr
 
 We now show that matroids coming from exact subdiagrams have an especially nice structure, namely, they are uniform. Recall from Section \ref{sec matroid background} that a uniform matroid of rank $r$ is one in which all sets of size $ \leq r$ are independent.
 
-\note{sian note to self: editing has reached this point}
+
 
 \begin{thm} \label{exactuniformthm}
 Let $W':= (P, V(P))$ be a subdiagram of an admissible Wilson loop diagram $W= (\cP, [n])$. Then $W'$ is an exact subdiagram if and only if $M(W')$ is a uniform matroid of rank $|P|$.
@@ -1079,15 +1079,15 @@ Let $W':= (P, V(P))$ be a subdiagram of an admissible Wilson loop diagram $W= (\
 \begin{proof}
 It follows directly from the definitions that a matroid of rank $r$ is uniform if and only if all circuits have rank $r$; we therefore focus on the circuits of $M(W')$.
 
-We prove the following claim: $W'$ is exact if and only if $V(P)$ contains no circuits $C$ with $\rk C< |P|$ in $(P, V(P))$. Since $\rk(M(W'))$ is bounded above by $|P|$, the result follows.
+We prove the following claim: $W'$ is exact if and only if $V(P)$ contains no circuits $C$ with $\rk (C)< |P|$ in $(P, V(P))$. Since $\rk(M(W'))$ is bounded above by $|P|$, the result follows.
 
-Suppose $C \subseteq V(P)$ is a circuit of rank $m < |P|$. By Lemma \ref{lem facts about WLD matroids}, we know that $|\Prop_{W'}(C)| = m$ as well, where the subscript to $\Prop$ specifies the diagram we are working in.  Observe that $\Prop_{W'}(C)\subseteq P$ by definition. The set $P \setminus \Prop_{W'}(C)$ is thus nonempty, and we can consider the subdiagram $W'':= (P\setminus \Prop_{W'}(C),V(P\setminus\Prop_{W'}(C))$. By the density condition on subdiagrams of admissible diagrams, we have
+First suppose $C \subseteq V(P)$ is a circuit of rank $m < |P|$. Observe that $\Prop_{W'}(C)\subseteq P$ by definition, where the subscript to $\Prop$ specifies the diagram we are working in. By Lemma \ref{lem facts about WLD matroids} we know that ${|\Prop_{W'}(C)| = m}$; thus the set $P \setminus \Prop_{W'}(C)$ must be nonempty, and we can consider the subdiagram $W'':= (P\setminus \Prop_{W'}(C),V(P\setminus\Prop_{W'}(C))$. By the density condition on subdiagrams of admissible diagrams, we have
 \[|V(P\setminus\Prop_{W'}(C))| \geq |P\setminus\Prop_{W'}(C)| + 3.\]
-It is easy to verify that $V(P\setminus\Prop_{W'}(C)) \subseteq V(P)\setminus C$; since $C \subseteq V(P)$ and $\Prop_{W'}(C) \subseteq P$, we can therefore rewrite the previous inequality as
+It is easy to verify that $V(P\setminus\Prop_{W'}(C)) \subseteq V(P)\setminus C$. Since $C \subseteq V(P)$ and $\Prop_{W'}(C) \subseteq P$, it follows from the previous inequality that
 \[|V(P)| - (m+1) \geq |V(P\setminus\Prop(C))| \geq |P| - m + 3.\]
 Simplifying, we obtain $|V(P)| \geq |P| + 4$, i.e. $(P,V(P))$ is not an exact diagram.
 
-Conversely, suppose that $W'$ is not exact and for a contradiction suppose also that $M(W')$ is uniform of rank $|P|$.  Take $p \in P$.  Then $|V(P)\setminus V(p)| = |V(P)| - 4 \geq |P|$ by non-exactness.  By uniformity there is an independent set of size $|P|$ in $V(P)\setminus V(p)$.  This is impossible because the submatrix corresponding to this independent set has $|P|$ rows but the one corresponding to $p$ is all $0$ one of them is all 0 so it cannot be full rank.
+Conversely, suppose that $W'$ is not exact and for a contradiction suppose also that $M(W')$ is uniform of rank $|P|$.  Take $p \in P$.  Then $|V(P)\setminus V(p)| = |V(P)| - 4 \geq |P|$ by non-exactness.  By uniformity there must be an independent set of size $|P|$ in $V(P)\setminus V(p)$.  However, this is impossible because the submatrix of $C(W')$ corresponding to this independent set has $|P|$ rows but the one corresponding to $p$ is all $0$, so it cannot be full rank.
 %suppose that $(P,V(P))$ is not exact, i.e. $|V(P)| \geq |P| +4$. We have 
 %\[|V(P)| - (m+1) \geq |P| - m + 3\]
 %as above, but \hlfix{we need to know that $P\setminus\Prop(C)$ is non-empty before we can complete the argument.}{and if we knew this, it would be immediate that $\rk(C) < |P|$}
@@ -1098,7 +1098,7 @@ We now make a few observations about the geometry of matroids defined by exact d
 In \cite{wilsonloop}, the authors show that all admissible Wilson loop diagrams correspond to positroids. That is, they correspond to matroids represented by elements of the positive Grassmannians $\Gr(|\cP|, n)$. Any positroid of rank $k$ on $n$ elements defines a subspace of the positive Grassmannians $\Gr(k, n)$, namely the points which represent it. These subspaces give a CW structure on $\Gr(k,n)$, with each positroid defining a cell. 
 
 \begin{dfn}
-Given a Wilson loop diagram $W = (\cP, [n])$, define the positroid cell associated to a Wilson loop diagram, $\Sigma(W)$, to be the cell in the CW complex on $\Gr(|\cP|, n)$ defined by the positroid $M(W)$.
+Given a Wilson loop diagram $W = (\cP, [n])$ and its associated positroid $M(W)$, let $\Sigma(W)$ denote the corresponding positroid cell in the CW complex on $\Gr(|\cP|, n)$.
 \end{dfn}
 
 With this definition in mind, we have the following corollary:
@@ -1119,7 +1119,7 @@ The unique top dimensional cell of $\Gr(|P|, |V(P)|)$ is defined by precisely th
 
 Now we are ready to prove the main results of this section, namely that two Wilson loop diagrams define the same matroid if and only if they are equivalent (Theorem \ref{same matroid iff equiv}).
 We also
-give a formula for the number of Wilson loop diagrams in a given equivalence class (Corollary \ref{number of equiv diagrams}), completing the characterization of the correspondence between Wilson Loop diagrams and matroids starting in \cite{wilsonloop}.
+give a formula for the number of Wilson loop diagrams in a given equivalence class (Corollary \ref{number of equiv diagrams}), completing the characterization of the correspondence between Wilson loop diagrams and matroids starting in \cite{wilsonloop}.
 
 \begin{thm}\label{same matroid iff equiv}
 Let $W= (\cP, [n])$ and $W'= (\cP', n)$ be two Wilson Loop diagrams. They define the same matroid if and only if $W \sim W'$.
@@ -1152,7 +1152,7 @@ Since there is a unique way to decompose $W$ into maximal exact subdiagrams, it 
   \]
 \end{cor}
 
-In this section we have characterized the correspondence between Wilson loop diagrams and positroids, showing that Wilson Loop diagrams define the same matroid if and only if they are equivalent (Theorem \ref{same matroid iff equiv}). Corollary \ref{number of equiv diagrams} enumerates the fibres of the map from Wilson Loop diagrams to positroids.  The obvious next question would be to enumerate the number of equivlence classes.  We do not obtain a formula for this, but do obtain an alternate characterization of the equvalence classes which is the subject of the next section.
+The obvious next step would be to enumerate the number of equivalence classes.  We do not obtain a formula for this, but in the next section we give an alternate characterization of the equivalence classes in terms of faces in associahedra.
 
 \section{Associahedra and inequivalent Wilson loop diagrams}\label{sec associahedron}
 
@@ -1160,24 +1160,33 @@ The connection between admissible Wilson loop diagrams and polytope dissections 
 
 \subsection{Polytope background}\label{sec polytope background}
 
-A \emph{polytope} can equivalently be defined as the convex hull of a finite set of points in some $\mathbb{R}^d$ or as the intersection of finitely many closed half spaces in $\mathbb{R}^d$ with the additional property that this intersection is bounded in the sense of not containing any ray (see chapter 0 of \cite{Ziegler}).
+We first give a quick summary of the polytope terminology we will use in this section; the interested reader is referred to \cite{Ziegler} for more details.
 
-A \emph{face} of a polytope is the intersection of the polytope with any hyperplane for which the entire polytope is in one of the closed half-spaces defined by the hyperplane.  The polytope itself is also considered a face (in the case that that polytope is of full dimension, this definition can be unified by considering linear equalities (including the trivial one) in place of hyperplanes and the corresponding linear inequalities in place of the half-spaces defined by the hyperplane, see chapter 2 of \cite{Ziegler}).  Two faces are \emph{parallel} if one can be mapped to the other by a translation in $\mathbb{R}^d$.  In particular parallel faces must be of the same dimension and any two vertices are parallel to each other.
+A \emph{polytope} can equivalently be defined as the convex hull of a finite set of points in some $\mathbb{R}^d$, or as the intersection of finitely many closed half spaces in $\mathbb{R}^d$ with the additional property that this intersection is bounded in the sense of not containing any ray (see chapter 0 of \cite{Ziegler}).
 
-There are many important polytopes in combinatorics, including, of primary importance to us, the associahedron.
+A \emph{face} of a polytope is the intersection of the polytope with any hyperplane for which the entire polytope is in one of the closed half-spaces defined by the hyperplane.  The polytope itself is also considered a face; in the case that that polytope is of full dimension, this definition can be unified by considering linear equalities (including the trivial one) in place of hyperplanes and the corresponding linear inequalities in place of the half-spaces defined by the hyperplane (see chapter 2 of \cite{Ziegler}).  
 
-Two polytopes are \emph{combinatorially equivalent} if there is a bijection between their faces which preserves inclusion of faces.  Often in combinatorics one is primarily interested in the combinatorial equivalence classes, and common names, including the associahedron, refer to these equivalence classes.  A particular polytope in the class is then known as a \emph{realization}.  
+Two faces are \emph{parallel} if one can be mapped to the other by a translation in $\mathbb{R}^d$.  In particular parallel faces must be of the same dimension and any two vertices are parallel to each other.
 
-Associahedra can also be viewed in terms of polygon dissections.  Fix $n$ and consider dissections of a convex $n$-gon.  The $n-1$ asociahedron can be given in terms of the dissections of this $n$-gon; the vertices of the associahedron are the triangulations of the $n$-gon while the dimension $k$ faces are the dissections which are $k$ diagonals away from being a triangulation.  One face is included in another if the first dissection is a refinement of the second. 
+Finally, two polytopes are \emph{combinatorially equivalent} if there is a bijection between their faces which preserves inclusion of faces.  Often in combinatorics one is primarily interested in the combinatorial equivalence classes, and common names, including the associahedron, refer to these equivalence classes.  A particular polytope in the class is then known as a \emph{realization}.  
 
-It turns out that this defines a class of combinatorially equivalent polytopes, which can be proved by giving a realization.  There are many interesting realizations of the associahedron \cite{CSZinequivalent}; the following will be the one which we will use.  See Figure~\ref{associahedron5gon} for examples.
+There are many important polytopes in combinatorics, including, of primary importance to us, the associahedron. The associahedron can be characterized in many different ways; here is one definition.
 
-\begin{dfn}
-  Let $x_1, \ldots, x_n$ define a convex $n$-gon.  Let $T$ be the set of triangulations of this $n$-gon.  For each $t\in T$ define $s_t$ to be the point in $\mathbb{R}^n$ whose $i$th coordinate is the sum of the areas of all triangles of $t$ which are incident to $x_i$.  Let $A_n$ be the convex hull of the $s_t$.
+\begin{dfn}\label{def:associahedron}
+Fix $n$ and consider dissections of a convex $n$-gon.  The $n-1$ {\em associahedron} can be given in terms of the dissections of this $n$-gon; the vertices of the associahedron are the triangulations of the $n$-gon while the $k$-dimensional faces are the dissections which are $k$ diagonals away from being a triangulation.  One face is included in another if the first dissection is a refinement of the second. 
 \end{dfn}
-This is the construction of the secondary polytope (so $A_n$ is the secondary polytope of $x_1, \ldots, x_n$), see \cite{Ziegler} Definition 9.9.  In general the $x_1, \ldots, x_n$ may be any points in any $\mathbb{R}^d$.  Triangulations in this more general context are decompositions into simplices and the area of the triangles is replaced by the volume of the simplices.  
 
-$A_n$ defined in this way is a realization of the $n-1$ associahedron (\cite{Ziegler}, Example 9.11).  Note that we get a realization for any convex $n$-gon, but these realizations are all equally good for our purposes, and so we fix $x_1, \ldots, x_n$ defining a particular convex $n$-gon from now on.
+It turns out that this defines a class of combinatorially equivalent polytopes, which can be proved by giving a realization.  There are many interesting realizations of the associahedron \cite{CSZinequivalent}; the following realization will be the one which we will use.  
+
+\begin{dfn}\label{def:secondary polytope}
+  Let $x_1, \ldots, x_n$ define a convex $n$-gon, and let $T$ be the set of triangulations of this $n$-gon.  For each $t\in T$ define $s_t$ to be the point in $\mathbb{R}^n$ whose $i$th coordinate is the sum of the areas of all triangles of $t$ which are incident to $x_i$.  Let $A_n$ be the convex hull of the $s_t$; then $A_n$ a realization of the $n-1$ associahedron (\cite{Ziegler}, Example 9.11)
+\end{dfn}
+Note that this construction works for any convex $n$-gon, but these realizations are all equally good for our purposes, and so we fix $x_1, \ldots, x_n$ defining a particular convex $n$-gon from now on.
+
+
+Definition~\ref{def:secondary polytope} is a special case of the {\em secondary polytope} construction; see \cite[Definition 9.9]{Ziegler} for more details.  In general the $x_1, \ldots, x_n$ may be any points in any $\mathbb{R}^d$.  Triangulations in this more general context are decompositions into simplices and the area of the triangles is replaced by the volume of the simplices.  
+
+
 
 
 \subsection{Non-parallel faces in the associahedron and inequivalent Wilson loop diagrams}\label{sec associahedron results}
@@ -1186,21 +1195,23 @@ The map $\tau$ defined in Definition \ref{WLDtriangulationdfn} assigns a dissect
 
 \begin{figure}
 \includegraphics{associahedron5gon} \hspace{1cm} \includegraphics{associahedron3d}
-\caption{Two associahedra labelled by all and some (respectively) of their polygon dissections.}\label{associahedron5gon}
+\caption{Two associahedra, labelled by all and some (respectively) of their polygon dissections.}\label{associahedron5gon}
 \end{figure}
 
-Note that Wilson loop diagrams which are weakly admissible but not admissible are necessarily exact and hence have $\tau$ graphs which are triangulations, hence dimension 0 faces (vertices) in $A_n$.  All of these are equivalent in the sense that they are only retriangulations away from each other.  It will be convenient in what follows, to include these diagrams.  The next two propositions would be identical in the case of admissible instead of weakly admissible, while the corollary could be changed to involve admissible diagrams only by subtracting one from the number of non parallel faces in order to account for the missing dimension 0 faces.
+Note that Wilson loop diagrams which are weakly admissible but not admissible are necessarily exact, and hence have $\tau$ graphs which are triangulations, i.e. dimension 0 faces (vertices) in $A_n$.  All of these are equivalent (as Wilson loop diagrams) in the sense that they are only retriangulations away from each other; meanwhile, as noted above, all vertices of $A_n$ are parallel to each other.  It will be convenient in what follows to include these diagrams, but the results are easily modified to remove them if needed: Propositions~\ref{prop easy way} and \ref{prop hard way} would be identical if we replaced ``weakly admissible'' by ``admissible'', while Corollary~\ref{cor:count inequiv diagrams} could be changed to consider only admissible diagrams by subtracting 1 from the number of non-parallel faces in order to account for the missing dimension 0 faces.
 
 \begin{prop}\label{prop easy way}
   If two weakly admissible Wilson loop diagrams are equivalent then their faces in $A_n$ are parallel.
 \end{prop}
 
 \begin{proof}
-  Let $W$ and $X$ be two equivalent Wilson loop diagrams.  From Corrolary \ref{equialentretriangulation} we know that $\tau(W)$ and $\tau(X)$ differ from each other only by retriangulations of their triangulated pieces. 
+  Let $W$ and $X$ be two equivalent Wilson loop diagrams.  From Corollary \ref{equialentretriangulation} we know that $\tau(W)$ and $\tau(X)$ differ from each other only by retriangulations of their triangulated pieces. 
 
 All edges of $A_n$ are polygon dissections which are only one diagonal away from being triangulations.  Such dissections consist of triangles and exactly one quadrilateral.  Consider the edges of $A_n$ bounding the faces corresponding to $\tau(W)$ and $\tau(X)$.  These edges have their one quadrilateral within the nontriangulated parts of $\tau(W)$ or $\tau(X)$, but these nontriangulated parts are the same in $\tau(W)$ and $\tau(X)$, so we get a bijection between the edges bounding the face of $\tau(W)$ and the edges bounding the face of $\tau(X)$ which matches edges with the same quadrilateral.
 
-  Consider now an edge whose quadrilateral has corners $x_i$, $x_j$, $x_k$, and $x_l$ in that order.  Let $t_1$ and $t_2$ be the triangulations corresponding to the two ends of the edge where $t_1$ has a diagonal from $x_j$ to $x_l$ and $t_2$ has a diagonal from $x_i$ to $x_k$.  From the definition of $A_n$ we see that $s_{t_1}$ and $s_{t_2}$ only differ at coordinates $i$, $j$, $k$, and $l$, and all of the triangles incident to any of these vertices other than the one coming from triangulating $x_i, x_j, x_k, x_l$ are the same in both $t_1$ and $t_2$.  Let $a$ be the area of the quadrilateral and let $a(i,j,k)$ be the area of the triangle with corners $x_i$, $x_j$ and $x_k$, and similarly for other indices then $s_{t_1}$ on coordinates $i$, $j$, $k$, $l$ is $(a(i,j,l) + b_i, a+b_j, a(k,l,j)+b_k, a+b_l)$ and $s_{t_2}$ on these coordinates is $(a + b_i, a(j,k,i)+b_j, a+b_k, a(l,i,k)+b_l$, where the $b_i$ are the sums of the areas of the relevant triangles which are common to both triangulations.  Thus a vector parallel to this edge is the vector which is $(a(i,j,l) - a, a-a(j,k,i), a(k,l,j)-a, a-a(l,i,k)) = (-a(j,k,l), a(i,k,l), -a(i,j,l), a(i,j,k))$ on $i$, $j$, $k$, $l$ and $0$ in all other coordinates.  This is illustrated in Figure~\ref{triangulate}.
+  Consider now an edge whose quadrilateral has corners $x_i$, $x_j$, $x_k$, and $x_l$ in that order.  Let $t_1$ and $t_2$ be the triangulations corresponding to the two ends of the edge where $t_1$ has a diagonal from $x_j$ to $x_l$ and $t_2$ has a diagonal from $x_i$ to $x_k$.  From the definition of $A_n$ we see that $s_{t_1}$ and $s_{t_2}$ only differ at coordinates $i$, $j$, $k$, and $l$, and all of the triangles incident to any of these vertices other than the one coming from triangulating $x_i, x_j, x_k, x_l$ are the same in both $t_1$ and $t_2$.  Let $a$ be the area of the quadrilateral and let $a(i,j,k)$ be the area of the triangle with corners $x_i$, $x_j$ and $x_k$, and similarly for other indices then $s_{t_1}$ on coordinates $i$, $j$, $k$, $l$ is $(a(i,j,l) + b_i, a+b_j, a(k,l,j)+b_k, a+b_l)$ and $s_{t_2}$ on these coordinates is $(a + b_i, a(j,k,i)+b_j, a+b_k, a(l,i,k)+b_l$, where the $b_i$ are the sums of the areas of the relevant triangles which are common to both triangulations.  Thus a vector parallel to this edge is the vector which is 
+  \[(a(i,j,l) - a, a-a(j,k,i), a(k,l,j)-a, a-a(l,i,k)) = (-a(j,k,l), a(i,k,l), -a(i,j,l), a(i,j,k))\]
+  on $i$, $j$, $k$, $l$ and $0$ in all other coordinates.  This is illustrated in Figure~\ref{triangulate}.
 
 \begin{figure}
 \includegraphics{triangulate} 
@@ -1254,21 +1265,24 @@ Assume for a contradiction that no quadrilateral as in the statement exists, and
     \[
     \omega^+_d(i) = \begin{cases} \text{dist}(x_i, d) & \text{if $x$ is on the positive side of $d$}\\ 0 & \text{otherwise} \end{cases}
     \]
-    We have from \cite{CSZinequivalent} that $\omega^+_d$ is a normal vector for any face with $d$ as a diagonal, however we can also check this fact in a completely elementary way using the shoelace formula for the area of a triangle.  The shoelace formula says that if $(x_1, y_1), (x_2, y_2), (x_3, y_3)$ are the coordinates of the corners of a triangle in counterclockwise order then the area of the triangle is $(x_1y_2 - x_1y_3 + x_2y_3 - x_2y_1 + x_3y_1 - x_3y_2)/2$.
+    We have from \cite{CSZinequivalent} that $\omega^+_d$ is a normal vector for any face with $d$ as a diagonal, however we can also check this fact in a completely elementary way using the shoelace formula for the area of a triangle.  The shoelace formula says that if $(x_1, y_1), (x_2, y_2), (x_3, y_3)$ are the coordinates of the corners of a triangle in counterclockwise order then the area of the triangle is 
+    \[(x_1y_2 - x_1y_3 + x_2y_3 - x_2y_1 + x_3y_1 - x_3y_2)/2.\]
 
     Proceed now to check that $\omega^+_d$ is a normal vector for any face associated to a dissection including $d$.  We will do this by showing it is normal to every edge bounding the face.  To do so, choose the coordinate system for the polygon so that $d$ is along the $x$-axis.  Let $(a_i, h_i)$, $i=1,2,3,4$ be the coordinates of the vertices of a quadrilateral in counterclockwise order and which corresponds to an edge bounding the face.  Since the dissection includes $d$ either all four points are on the negative side of $d$, and so the dot product of $\omega^+_d$ with the direction vector for the quadrilateral is immediately $0$, or, by the formula in the proof of the previous proposition and the shoelace formula, the dot product of $\omega^+_d$ with the vector associated to the quadrilateral is
     \begin{align*}
-      & h_1(a_2h_3-a_2h_4+a_3h_4-a_3h_2+a_4h_2-a_4h_3)/2 - h_2(a_1h_3-a_1h_4+a_3h_4-a_3h_1+a_4h_1-a_4h_3)/2 \\
-      & + h_3(a_1h_2-a_1h_4+a_2h_4-a_2h_1+a_4h_1-a_4h_2)/2 - h_4(a_1h_2-a_1h_3+a_2h_3-a_2h_1+a_3h_1-a_3h_2)/2 \\
-      & = 0
+       & \hspace{1cm}\textstyle\frac{1}{2}h_1(a_2h_3-a_2h_4+a_3h_4-a_3h_2+a_4h_2-a_4h_3) \\
+       &\hspace{3cm} - \textstyle\frac{1}{2} h_2(a_1h_3-a_1h_4+a_3h_4-a_3h_1+a_4h_1-a_4h_3) \\
+       &\hspace{5cm}+ \textstyle\frac{1}{2}h_3(a_1h_2-a_1h_4+a_2h_4-a_2h_1+a_4h_1-a_4h_2) \\
+       &\hspace{7cm}- \textstyle\frac{1}{2}h_4(a_1h_2-a_1h_3+a_2h_3-a_2h_1+a_3h_1-a_3h_2), 
     \end{align*}
+    which evaluates to 0.
 
     Now, $\tau(W)$ and $\tau(X)$ satisfy the hypotheses of Lemma~\ref{lem good quads}, so we can assume that $f$ and $d$ have the property that there is one side of $d$, which we will call the positive side, so that exactly one vertex of $f$ is strictly on that side.  Then $\omega^+_d$ with the direction vector of $d$ have common support exactly on that one vertex and so their dot product is nonzero.  Since the direction vector of $d$ is contained in the direction of $\tau(X)$ but is not orthogonal to $\omega^+_d$, while $\omega^+_d$ is normal to the face of $\tau(W)$, it follows that the faces associated to $\tau(W)$ and $\tau(X)$ are not parallel, as desired.
 \end{proof}
 
 
-The two propositions imply
-\begin{cor}
+Propositions~\ref{prop easy way} and \ref{prop hard way} together imply:
+\begin{cor}\label{cor:count inequiv diagrams}
   The number of inequivalent weakly admissible Wilson loop diagrams on $n$ is the number of non-parallel faces in the associahedron $A_n$.
 \end{cor}
 
