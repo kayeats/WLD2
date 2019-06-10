@@ -460,7 +460,7 @@ c_{4,1} & 0 & 0 & 0 & c_{4,5} & c_{4,6} & 0 & c_{4,8}  \\
 \end{array}
 \right) \;.\]
 
-To calculate $R(W)$, write \bmls R_1 = c_{1,1} c_{1, 2}\quad R_2 = c_{2,2} c_{2,3} \quad R_4 = c_{2,5} (c_{2,4}c_{1,5} - c_{2,5}c_{1,4})c_{1,4} \\ R_5 = c_{4,6} (c_{4,6}c_{3,5} - c_{3,6}c_{4,5})c_{3,5} \quad R_7 = c_{3,7} c_{3,8} \quad R_8 = c_{4,8} c_{4,1} \;.\emls All other $R_e$ are $1$.  Finally, the integran associated to this Wilson loop diagram is \bas \Omega(W) = \frac{\textrm{d}c_{1,1}\textrm{d}c_{1,1}\textrm{d}c_{1,1}\textrm{d}c_{1,2}\textrm{d}c_{1,4}\textrm{d}c_{1,5}\textrm{d}c_{2,1}\textrm{d}c_{2,3}\textrm{d}c_{2,4}\textrm{d}c_{2,5}\textrm{d}c_{3,5}\textrm{d}c_{3,6}\textrm{d}c_{3,7}\textrm{d}c_{3,7}\textrm{d}c_{4,5}\textrm{d}c_{4,6}\textrm{d}c_{4,8}\textrm{d}c_{4,1}}{c_{1,1} c_{1, 2}c_{2,2} c_{2,3}c_{2,5} (c_{2,4}c_{1,5} - c_{2,5}c_{1,4})c_{1,4}c_{4,6} (c_{4,6}c_{3,5} - c_{3,6}c_{4,5})c_{3,5}c_{3,7} c_{3,8}c_{4,8} c_{4,1}} \;. \]\eas
+To calculate $R(W)$, write \bmls R_1 = c_{1,1} c_{1, 2}\quad R_2 = c_{2,2} c_{2,3} \quad R_4 = c_{2,5} (c_{2,4}c_{1,5} - c_{2,5}c_{1,4})c_{1,4} \\ R_5 = c_{4,6} (c_{4,6}c_{3,5} - c_{3,6}c_{4,5})c_{3,5} \quad R_7 = c_{3,7} c_{3,8} \quad R_8 = c_{4,8} c_{4,1} \;.\emls All other $R_e$ are $1$.  Finally, the integrand associated to this Wilson loop diagram is \bas \Omega(W) = \frac{\textrm{d}c_{1,1}\textrm{d}c_{1,1}\textrm{d}c_{1,1}\textrm{d}c_{1,2}\textrm{d}c_{1,4}\textrm{d}c_{1,5}\textrm{d}c_{2,1}\textrm{d}c_{2,3}\textrm{d}c_{2,4}\textrm{d}c_{2,5}\textrm{d}c_{3,5}\textrm{d}c_{3,6}\textrm{d}c_{3,7}\textrm{d}c_{3,7}\textrm{d}c_{4,5}\textrm{d}c_{4,6}\textrm{d}c_{4,8}\textrm{d}c_{4,1}}{c_{1,1} c_{1, 2}c_{2,2} c_{2,3}c_{2,5} (c_{2,4}c_{1,5} - c_{2,5}c_{1,4})c_{1,4}c_{4,6} (c_{4,6}c_{3,5} - c_{3,6}c_{4,5})c_{3,5}c_{3,7} c_{3,8}c_{4,8} c_{4,1}} \;. \eas
 \end{eg}
 
 
@@ -622,15 +622,27 @@ respectively.
 % Observe that changing the direction of the propagator simply swaps the inside and outside sets, i.e. for $p = (i,j)$ we have 
 % \[\cP_{in}(p, <_i) = \cP_{out}(p, <_j)\quad \text{ and } \quad \cP_{out}(p, <_i) = \cP_{in}(p, <_j).\]
 
-\hlfix{[picture]}{is it worth including a picture here?}
+\begin{eg}
+Let $W$ be the Wilson loop diagram from Figure \ref{fig:ex of WLD}, reproduced here for convenience.  \[W\ =\ \begin{tikzpicture}[rotate=67.5,baseline=(current bounding box.east)]
+	\begin{scope}
+	\drawWLD{8}{1.5}
+	\drawnumbers
+	\drawlabeledprop{1}{0}{4}{0}{\footnotesize $p$}
+	\drawprop{2}{0}{4}{-1}
+    \drawprop{5}{0}{8}{0}
+    \drawprop{5}{1}{7}{0}
+		\end{scope}
+	\end{tikzpicture}\]
+
+Let $p$ be the propatagor $p = (1, 4)$. Then $\cP_{in}(p, <_4) = \{(1,4), (5, 8), (5, 7) \}$ and $\cP_{out}(p, <_4) = \{(2,4) \}$
+\end{eg}
+
 
 \begin{dfn}
 Let $p = (i,j) \in \cP$ be a propagator in $W$.  Define the {\bf length} of $p$ to be 
 \[\ell(p) \  =\ \min\big\{|[i+1,j]|,|[j+1,i]|\big\}.\]
 \end{dfn}
 In other words, $\ell(p)$ is the size of the smaller of the sets of vertices on either side of the propagator $p$.
-
-
 
 
 \begin{rmk}\label{rem:props of length 2 and 3} 
@@ -678,6 +690,17 @@ Start by choosing a propagator $p_1 = (j_1,j_1+2)$ of length 2 in $W$ (which exi
 so suppose otherwise. 
 
 From our existing assumptions, we know the following facts: $p_1$ is not in configuration \ref{item pair of 2s}, there are no propagators of length $3$, and every vertex supports at least one propagator.  Therefore there must be a propagator of length $\geq 4$ with one end on edge $j_1$ or on edge $j_1-1$ or on edge $j_1-2$.  Let $q_1 = (i_1, k_1)$ be this propagator, oriented such that $p_1 \in \cP_{out}(q_1,<_{i_1})$. This completes the base case.
+
+\bas \begin{tikzpicture}[rotate=15,baseline=(current bounding box.east)]
+	\begin{scope}
+	\drawWLD{20}{1.5}
+	%\drawnumbers
+	%\drawprop{1}{0}{4}{0}
+	\drawlabeledprop{5}{0}{7}{0}{\footnotesize $p_1$}
+    \drawlabeledprop{3}{0}{12}{0}{\footnotesize $q_1$}
+		\end{scope}
+	\end{tikzpicture}\eas
+
 
 \hlfix{INSERT PICTURE HERE?}{note highlighting this for anyone skimming through looking for pictures to add}
 
