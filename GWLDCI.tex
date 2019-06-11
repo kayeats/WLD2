@@ -382,7 +382,8 @@ Let $W = (\cP, [n])$.
 
 
 \begin{rmk}\label{alt F(P) rmk}
-An equivalent definition of $F(P)$ \note{Sian note to self: doublecheck that these {\em are} equiv definitions now} is \bas F(P)  = \big(V(P) \setminus V(P^c) \big) \cup F(\emptyset) \;,\eas 
+An equivalent definition of $F(P)$ is \bas F(P)  = \big(V(P) \setminus V(P^c) \big) \cup \{\text{ all non-supporting vertices in $W$ }\} \;,\eas 
+\note{replaced $F(\emptyset)$ with words in this definition because we were defining $F(P)$ in terms of $F(\emptyset)$ and it was mildly inelegant/recursive)}
 i.e. $F(P)$ can be thought of as the set of vertices that either only support propagators in $P$ or do not support any propagators at all. Furthermore, note that by construction $\Prop(F(P)) \subseteq P$.  This containment is strict if there is any propagator $p$ in $P$ with the property that every vertex in the support of $p$ also supports a propagator not in $P$.
 \end{rmk}
 
@@ -556,8 +557,9 @@ The first part of (1) is \cite[Equation (9)]{wilsonloop} and surrounding discuss
 To prove (4), we need to show that $F(P)$ is maximally dependent. If $F(P) = [n]$ then this is automatic, so suppose not and let $v \in [n] \setminus F(P)$. In other words, $v \in V(P^c)$ and so $v$ supports some propagator $q \not\in P$.  Let $S \subseteq F(P)$ be an independent set of maximal size. Then $\Prop(S) \subseteq P$ (from the definition of $F(P)$) and no subset of $S$ supports fewer propagators than the number of vertices it contains (by Theorem~\ref{thm WLD defines matroid} this is one characterization of an independent set in $M(W)$). Since $v$ supports a new propagator $q \not\in P$, the set $S \cup \{v\} \subseteq F(P) \cup\{v\}$ also satisfies this independence condition. Thus $\rk(F(P) \cup\{v\}) = \rk(F(P)) + 1$, as required.
 \end{proof}
 
-\note{sian note to self: come back and package this as a remark, and make sure it follows from the previous result}
-Note that this means that the set $F(\emptyset)$ of non-supporting vertices is the maximal subset of vertices of $W$ of rank $0$. That is, it is the unique flat of rank $0$ in $M(W)$. This also implies that every element of $F(\emptyset)$ is a circuit, and all other circuits of $M(W)$ contain at least two elements.
+\begin{rmk}
+By point (4) of Lemma~\ref{lem facts about WLD matroids}, the set $F(\emptyset)$ of non-supporting vertices in $W$ is a flat; indeed, it is the unique flat of rank 0 in $M(W)$. Every element of $F(\emptyset)$ defines a circuit of size 1, and all other circuits of $M(W)$ must contain at least two elements.
+\end{rmk}
 
 
 
@@ -947,7 +949,9 @@ Since $\rk(B) \leq |\Prop(B)|$, and $B \subseteq C$ implies that  $\Prop(B) \sub
 \]
 which becomes 
 \[\rk(B\cup \{w\}) \leq \min\{|B|+1,|B|\} = |B| < |B \cup\{w\}|\]
-via equation \eqref{eq:equality in lem decompose flat}. Therefore $B\cup\{w\}$ is a dependent set, which implies that $B\cup \{w\}$ contains a circuit $D$. We must have $w \in D$ (since $B$ was an independent set), and \hlfix{$D \subseteq F(\Prop(C))$}{I know we've talked about this before and I can't remember why this is true} $\subseteq F$. Since $C$ was the union of all circuits in $F$, we finally obtain $w \in C$, which is a contradiction. This completes the proof of (1).
+via equation \eqref{eq:equality in lem decompose flat}. Therefore $B\cup\{w\}$ is a dependent set, which implies that $B\cup \{w\}$ contains a circuit $D$. In particular we must have $w \in D$ (since $B$ was an independent set), and since we have already shown that $C \subseteq F(\Prop(C))$, we also have the chain of inclusions 
+\[D \subseteq B\cup \{w\} \subseteq F(\Prop(C)) \subseteq F.\]
+Since $C$ was the union of all circuits in $F$, we finally obtain $w \in C$, which is a contradiction. This completes the proof of (1).
 
 
 For part (2), first note that $F \setminus C$ is automatically independent as it contains no circuits.
@@ -1021,11 +1025,11 @@ Combining this with equation \eqref{Qsizebound} gives
 \ba |V(Q)| = | V(P) | + |S| = | P | + 3 + |S| \leq |Q| +3 \;. \label{Q defines exact}\ea
 Since $W$ is admissible this cannot be a strict inequality, so we have $|V(Q)| = |Q| +3$ and the subdiagram $(Q, V(Q))$ is exact.
 
-Finally, note that 
-\bas C = F(Q^c) = V(Q)^c \subseteq F(P^c) = V(P)^c \;,\eas
-where the $\subseteq$ follows from equation~\eqref{eq decompose F}. This implies that \hlfix{$P \subseteq Q$}{sian should go look up why this is true}, and hence $(P, V(P))$ is a subdiagram of $(Q, V(Q))$. Since $(P, V(P))$ is maximally exact by hypothesis, and $(Q, V(Q))$ is exact by equation \eqref{Q defines exact}, we must have $P = Q$. Therefore $S = \emptyset$ and $F(P^c)$ is a cyclic flat.
+Finally, note that since $F(P^c) = C \sqcup S$ (equation~\eqref{eq decompose F}), we have
+\[\Prop(C) \subseteq \Prop(F(P^c)) \subseteq P^c.\]
+Taking complements, we obtain $P \subseteq \Prop(C)^c = Q$, and hence that $(P, V(P))$ is a subdiagram of $(Q, V(Q))$. Since $(P, V(P))$ is maximally exact by hypothesis, and $(Q, V(Q))$ is exact by equation \eqref{Q defines exact}, we must have $P = Q$. Therefore $S = \emptyset$ and $F(P^c)$ is a cyclic flat.
 
-To see (3), first note that when $(P,V(P))$ is maximal exact, part (2) of this lemma combined with Lemma \ref{lem facts about WLD matroids} gives that
+To see point (3), first note that when $(P,V(P))$ is maximal exact, part (2) of this lemma combined with Lemma \ref{lem facts about WLD matroids} gives that
 \bas\rk(F(P^c)) = |\Prop(F(P^c))| = |P^c|.\eas
 
 To prove the result in the general case, let $(R,V(R))$ be an exact subdiagram of $W$ that is not maximal and let $P$ be the maximal exact subdiagram containing it. That is, $R \subsetneq P$.
@@ -1153,6 +1157,10 @@ Since there is a unique way to decompose $W$ into maximal exact subdiagrams, it 
 
 \sanote{I undid Sian's edit here. I like "saying what i'm about to say. Saying it. Summarizing what I said"}\note{Sian: sure. I'll push back if it gets too repetitive, but it works here.}In this section we have characterized the correspondence between Wilson loop diagrams and positroids, showing that Wilson Loop diagrams define the same matroid if and only if they are equivalent (Theorem \ref{same matroid iff equiv}). Corollary \ref{number of equiv diagrams} enumerates the fibres of the map from Wilson Loop diagrams to positroids.  The obvious next question would be to enumerate the number of equivlence classes.  We do not obtain a formula for this, but do obtain an alternate characterization of the equvalence classes which is the subject of the next section.
 
+\section{Associahedra and inequivalent Wilson loop diagrams}\label{sec associahedron}
+
+The connection between admissible Wilson loop diagrams and polytope dissections suggests a connection to associahedra. First we need some background. \sanote{expand}
+
 \subsection{Polytope background}\label{sec polytope background}
 
 We first give a quick summary of the polytope terminology we will use in this section; the interested reader is referred to \cite{Ziegler} for more details.
@@ -1200,25 +1208,37 @@ Note that Wilson loop diagrams which are weakly admissible but not admissible ar
 \end{prop}
 
 \begin{proof}
-  Let $W$ and $X$ be two equivalent Wilson loop diagrams.  From Corrollary \ref{equialentretriangulation} we know that $\tau(W)$ and $\tau(X)$ differ from each other only by retriangulations of their triangulated pieces. 
+  Let $W$ and $X$ be two equivalent Wilson loop diagrams.  From Corollary \ref{equialentretriangulation} we know that $\tau(W)$ and $\tau(X)$ differ from each other only by retriangulations of their triangulated pieces. 
 
 All edges of $A_n$ are polygon dissections which are only one diagonal away from being triangulations.  Such dissections consist of triangles and exactly one quadrilateral.  Consider the edges of $A_n$ bounding the faces corresponding to $\tau(W)$ and $\tau(X)$.  These edges have their one quadrilateral within the nontriangulated parts of $\tau(W)$ or $\tau(X)$, but these nontriangulated parts are the same in $\tau(W)$ and $\tau(X)$, so we get a bijection between the edges bounding the face of $\tau(W)$ and the edges bounding the face of $\tau(X)$ which matches edges with the same quadrilateral.
 
-Consider now an edge in $A_n$ whose quadrilateral is defined by the vertices of $\tau(W)$ or $\tau(X)$, $x_i$, $x_j$, $x_k$, and $x_l$ in that order.  Let $t_1$ and $t_2$ be the triangulations corresponding to the two ends of the edge where $t_1$ has a diagonal from $x_j$ to $x_l$ and $t_2$ has a diagonal from $x_i$ to $x_k$.  From Definition \ref{def:secondary polytope}, defining $A_n$,  we see that $s_{t_1}$ and $s_{t_2}$ only differ at coordinates $i$, $j$, $k$, and $l$. All of the triangles incident to any of these vertices other than the one coming from triangulating $x_i, x_j, x_k, x_l$ are the same in both $t_1$ and $t_2$.  Let $a$ be the area of the quadrilateral and let $a(i,j,k)$ be the area of the triangle with corners $x_i$, $x_j$ and $x_k$, and similarly for other indices then $s_{t_1}$ on coordinates $i$, $j$, $k$, $l$ is $(a(i,j,l) + b_i, a+b_j, a(k,l,j)+b_k, a+b_l)$ and $s_{t_2}$ on these coordinates is $(a + b_i, a(j,k,i)+b_j, a+b_k, a(l,i,k)+b_l$, where the $b_i$ are the sums of the areas of the relevant triangles which are common to both triangulations.  Thus a vector parallel to this edge is the vector which is $(a(i,j,l) - a, a-a(j,k,i), a(k,l,j)-a, a-a(l,i,k)) = (-a(j,k,l), a(i,k,l), -a(i,j,l), a(i,j,k))$ on $i$, $j$, $k$, $l$ and $0$ in all other coordinates.  This is illustrated in Figure~\ref{triangulate}.
+Consider now an edge in $A_n$ whose quadrilateral is defined by the vertices of $\tau(W)$ or $\tau(X)$, which we label $x_i$, $x_j$, $x_k$, and $x_l$ in that order (see Figure \ref{triangulate} below).  Let $t_1$ and $t_2$ be the triangulations corresponding to the two ends of the edge where $t_1$ has a diagonal from $x_j$ to $x_l$ and $t_2$ has a diagonal from $x_i$ to $x_k$.  From the construction of the secondary polytope $A_n$ in \ref{def:secondary polytope}, we see that $s_{t_1}$ and $s_{t_2}$ only differ at coordinates $i$, $j$, $k$, and $l$: all of the triangles incident to any of these vertices other than the one coming from triangulating $x_i, x_j, x_k, x_l$ are the same in both $t_1$ and $t_2$.  
+
+Let $a$ be the area of the quadrilateral and let $a(i,j,k)$ be the area of the triangle with corners $x_i$, $x_j$ and $x_k$ (and similarly for other indices), and let $b_*$ denote the sum of the areas of triangles incident to vertex $*$ which are common to both triangulations. Then $s_{t_1}$ on coordinates $i$, $j$, $k$, $l$ is 
+\[(a(i,j,l) + b_i, a+b_j, a(k,l,j)+b_k, a+b_l),\]
+and $s_{t_2}$ on these coordinates is 
+\[(a + b_i, a(j,k,i)+b_j, a+b_k, a(l,i,k)+b_l).\] 
+This is illustrated in Figure~\ref{triangulate}.
+
+Thus a vector parallel to this edge is the vector which is 
+\begin{equation}\label{eq:direction vector for quadrilateral}(a(i,j,l) - a, a-a(j,k,i), a(k,l,j)-a, a-a(l,i,k)) = (-a(j,k,l), a(i,k,l), -a(i,j,l), a(i,j,k))\end{equation}
+on $i$, $j$, $k$, $l$, and $0$ in all other coordinates. 
 
 \begin{figure}
 \includegraphics{triangulate} 
-\caption{The shaded regions are triangulated regions which are the same in $t_1$ and $t_2$.  Consider $s_{t_1}$ and $s_{t_2}$ at coordinate $i$.  In $s_{t_1}$ this coordinate is given by the area of those shaded triangles incident to $x_i$ along with $a(i,j,l)$.  In $s_{t_2}$ this coordinate is given by the area of those shaded triangles incident to $x_i$ along with $a(i,l,k) + a(i,j,k) = a$.}\label{triangulate}
+\caption{The shaded regions are triangulated regions which are the same in $t_1$ and $t_2$.  Consider $s_{t_1}$ and $s_{t_2}$ at coordinate $i$.  In $s_{t_1}$ this coordinate is given by the area of those shaded triangles incident to $x_i$ (denoted by $b_i$ in the proof) along with $a(i,j,l)$.  In $s_{t_2}$ this coordinate is given by $b_i$ along with $a(i,l,k) + a(i,j,k) = a$.}\label{triangulate}
 \end{figure}
 
-  Returning to $\tau(W)$ and $\tau(X)$, since the direction vector of an edge in $A_n$ depends only on its quadrilateral and the bijection between the edges bounding $\tau(W)$ and the edges bounding $\tau(X)$ preserves the quadrilateral, we have the same direction vectors bounding $\tau(W)$ as $\tau(X)$.  Furthermore, the bijection also maintains the relative configuration of the edges and so the edges corresponding to $\tau(W)$ and $\tau(X)$ are parallel.
+Returning to $\tau(W)$ and $\tau(X)$, since the direction vector of an edge in $A_n$ depends only on its quadrilateral and the bijection between the edges bounding $\tau(W)$ and the edges bounding $\tau(X)$ preserves the quadrilateral, we have the same direction vectors bounding $\tau(W)$ as $\tau(X)$.  Furthermore, the bijection also maintains the relative configuration of the edges and so the edges corresponding to $\tau(W)$ and $\tau(X)$ are parallel.
 \end{proof}
 
 
-The following lemma is useful for proving the converse of the above. We also need the following notation.  Given a polygon dissection $D$ of an $n$-gon, let $V_{>3}(D)$ be the set of vertices of the polygon which are on at least one non-triangle face of $D$.  Note that $D$ may have many non-triangle faces and so $V_{>3}(D)$ will be the union of the vertices of each non-triangle face.
+In order to prove the converse of Proposition~\ref{prop easy way}, we first require a preliminary lemma.
+
+We also need the following notation: given a polygon dissection $D$ of an $n$-gon, let $V_{>3}(D)$ be the set of vertices of the polygon which are on at least one non-triangle face of $D$.  (Note that $D$ may have many non-triangle faces and so $V_{>3}(D)$ will be the union of the vertices of each non-triangle face.) We also write $[x_i,x_j]$ for the set of vertices from $x_i$ to $x_j$ including the endpoints, and $(x_i,x_j)$ for the same set but excluding the endpoints.
 
 \begin{lem}\label{lem good quads}
-Let $D_1$ and $D_2$ be two dissections of a convex $n$-gon defined by the vertices $x_1, \ldots, x_n$.  Suppose $V_{>3}(D_1) = V_{>3}(D_2)$, but that the $D_1$ and $D_2$ do not have the same set of non-triangle faces.  Then there are four vertices $x_i$, $x_j$, $x_k$, $x_l$ satisfying the following conditions:\begin{enumerate} \item in either $D_1$ or $D_2$ all four vertices are on the same non-triangle face \item in the other disection, there is a diagonal of the dissection such that exactly one of $\{x_i, x_j, x_k, x_l\}$ lies on one side (so the others are either end points of this diagonal or strictly on the other side). \end{enumerate}
+Let $D_1$ and $D_2$ be two dissections of a convex $n$-gon defined by the vertices $x_1, \ldots, x_n$.  \hlfix{Suppose that $V_{>3}(D_1) = V_{>3}(D_2)$}{we probably use this implicitly somewhere in the proof but I can't see it; can we make it explicit?}, but that the $D_1$ and $D_2$ do not have the same set of non-triangle faces.  Then there are four vertices $x_i$, $x_j$, $x_k$, $x_l$ satisfying the following conditions:\begin{enumerate} \item In either $D_1$ or $D_2$ all four vertices are on the same non-triangle face; \item In the other dissection, there is a diagonal of the dissection such that exactly one of $\{x_i, x_j, x_k, x_l\}$ lies on one side of the diagonal (so the others are either end points of this diagonal or strictly on the other side). \end{enumerate}
 \end{lem} 
 
 The situation described in the lemma is illustrated in Figure~\ref{configs}.
@@ -1232,17 +1252,23 @@ The situation described in the lemma is illustrated in Figure~\ref{configs}.
 \note{I wonder if either of you see a shorter or more conceptual way to prove this.}
 
 \begin{proof}
-  Since $D_1$ and $D_2$ do not have the same set of non-triangle faces, there must be some diagonal $d$ of $D_1$ that crosses through a non-triangle face $f$ of $D_2$.  If that face of $D_2$ has degree at least 5 then it must contain four vertices as in the statement.
+  Since $D_1$ and $D_2$ do not have the same set of non-triangle faces, there must be some diagonal $d$ of $D_1$ that crosses through a non-triangle face $f$ of $D_2$.  If that face of $D_2$ has degree at least 5 then it must contain four vertices in the configuration described in the statement.
 
 Suppose this never occurs.  Then all the non-triangle faces of $D_2$ which are crossed by a diagonal of $D_1$ must be quadrilaterals and likewise for $D_1$.  This means that any non-triangle and non-quadrilateral faces must be common between $D_1$ and $D_2$.  These common faces are irrelevant for the statement as none of them can be the face containing $x_i, x_j, x_k, x_l$, and so by triangulating any common non-triangle faces, we may assume that $D_1$ and $D_2$ have only quadrilateral and triangle faces.
 
 This proof is by a symmetrical consruction, where we give a proof with respect to a single edge in $f$, leaving the rest of the argument as read due to the symmetry.
 
-Assume for a contradiction that no quadrilateral as in the statement exists, and let $d$ and $f$ be as above.  Then $f$ must have two vertices strictly on each side of $d$, say $x_i$ and $x_j$ on one side and $x_k$, $x_l$ on the other side (and in that order).  Consider the face in $D_1$ incident to $d$ on the $x_i, x_j$ side of $d$. Call this $g$. Suppose this face is a triangle, then its other vertex cannot be in \st{$[x_i, x_j]$} the cyclic interval bounded by $x_i$ and $x_j$ (i.e. $[x_i, x_j]$) as in this case taking one of the other edges of the triangle $g$ would give a configuration as in the statement.  Suppose then that this face, $g$, is a quadrilateral. Again no other vertex of this face can be in $(x_i, x_j)$ as otherwise again replacing $d$ with one of the other edges of $g$ gives a quadrilateral as in the statement. The same holds if one of the other vertices of $g$ is $x_i$ or $x_j$ but the other is not.  If both the other vertices of $g$ are $x_i$ and $x_j$, then we also get a configuration as in the statement but now with the four vertices being those defining $g$ and the diagonal is one of the edges of $f$. (For instance $d$ can now be the edge connecting $x_l$ to $x_i$ or $x_j$ to $x_k$. Thus we can conclude that none of the vertices of this face are in $[x_i, x_j]$.  
+Assume for a contradiction that no quadrilateral as in the statement exists, and let $d$ and $f$ be as above.  Then $f$ must have two vertices strictly on each side of $d$: name the vertices on one side of $d$ as $x_i$ and $x_j$, and those on the other side as $x_k$, $x_l$ (and in that order; see Figure~\ref{inductive_step}).  Let $g$ be the face in $D_1$ that is incident to $d$ on the $x_i, x_j$ side of $d$.
 
-Suppose the face $g$ has one vertex in $(x_j, ,x_k)$ and the rest in $(x_l, x_i)$ (or vice versa). If $g$ is a quadrilateral, its four vertices satisfy the condition with the edge between $x_k$ and $x_j$ in $f$ serving as an example we get a quadrilateral as in the statement again with this face giving the four vertices and the diagonal is a side of $f$.  If $g$ a triangle, let $d'$ be the other diagonal across $f$. These are the first two cases illustrated in Figure~\ref{inductive_step}.
+We first show that none of the vertices defining $g$ can lie in the cyclic interval $[x_i,x_j]$. Indeed, if $g$ is a triangle then we immediately see that its third vertex cannot lie in the interval $[x_i,x_j]$, as we could obtain a configuration as described in the statement by replacing $d$ with one of the other edges of $g$.
 
-Finally, if the face $g$ has two vertices in $(x_j, x_k)$ and two in $(x_l, x_i)$, let $d'$ be the the other edge of $g$ that forms a diagonal across $f$. In these last two cases (those represented in Figure~\ref{inductive_step}), replace $d$ with $d'$, which also separates $f$ into $x_i, x_j$ and $x_k, x_l$ \hlfix{but is strictly closer to $[x_i, x_j]$ than $d$ was}{why is this the case?}.  The same argument holds for $d'$, but the polygon is finite, so this process cannot go on indefinitely, contradicting that no quadtilateral as in the statement exists.
+Similarly, if $g$ is a quadrilateral then immediately by the same argument none of its vertices can lie in the interval $(x_i, x_j)$, nor can we have exactly one of $x_i$ or $x_j$ being a vertex of $g$ for the same reason. If both the other vertices of $g$ are $x_i$ and $x_j$ (so $g$ is the quadrilateral defined by $x_i$, $x_j$, and the two endpoints of $d$) then we still obtain a configuration as described in the lemma statement by swapping the roles of $f$ and $g$: now the four vertices would be the ones defining $g$, and the diagonal would be one of the edges of $f$. (For instance $d$ can now be the edge connecting $x_l$ to $x_i$ or $x_j$ to $x_k$.) Thus we can conclude that none of the vertices of the face $g$ are in the interval $[x_i, x_j]$.  
+
+There are now two possibilities for $g$: either it has one vertex in the interval $(x_j, x_k)$ and the rest in $(x_l, x_i)$ (or vice versa), or it has two vertices in $(x_j, x_k)$ and two in $(x_l, x_i)$. In the first case, $g$ must be a triangle since if $g$ was a quadrilateral then its four vertices provide the desired configuration (with the edge of $f$ that connects $x_j$ and $x_k$ providing the desired diagonal); in the second case, $g$ has four vertices and is therefore a quadrilateral.
+
+These cases are illustrated in Figure~\ref{inductive_step}. If $g$ is a triangle then let $d'$ be the other diagonal across $f$ (leftmost two cases in the figure), while if $g$ is a quadrilateral let $d'$ be the other diagonal that crosses $f$. In all cases, note that $d'$ is strictly closer to $[x_i,x_j]$ than $d$ was, since we chose $g$ to be the face incident to $d$ on the $x_i,x_j$ side.
+
+Now $d'$ is also a diagonal of $D_1$ that crosses the non-triangle face $f$ of $D_2$, and we can repeat the above argument with $d'$ instead of $d$. This process can be repeated indefinitely but the polygon is finite, yielding a contradiction to our assumption that no quadrilateral with the configuration described in the statement exists.
 \end{proof}
 
 \begin{figure}
@@ -1251,31 +1277,31 @@ Finally, if the face $g$ has two vertices in $(x_j, x_k)$ and two in $(x_l, x_i)
 \end{figure}
 
 \begin{prop}\label{prop hard way}
-  If two weakly admissible Wilson loop diagrams are not equivalent then their faces in $A_n$ are not parallel
+  If two weakly admissible Wilson loop diagrams are not equivalent then their faces in $A_n$ are not parallel.
 \end{prop}
 
 \begin{proof}
-  Let $W$ and $X$ be inequivalent.  If $\tau(W)$ and $\tau(X)$ do not have the same number of diagonals (hence their faces in $A_n$ do not have the same dimension) then they are not parallel, so we can assume $\tau(W)$ and $\tau(X)$ do have the same number of diagonals and hence their faces in $A_n$ have the same dimension.  Let the face associated to $\tau(W)$ be $f_W$ and the face associated to $\tau(X)$ be $f_X$.
+  Let $W$ and $X$ be inequivalent.  If $\tau(W)$ and $\tau(X)$ do not have the same number of diagonals (hence their faces in $A_n$ do not have the same dimension) then they are not parallel by definition. Now suppose that $\tau(W)$ and $\tau(X)$ do have the same number of diagonals and hence their faces in $A_n$ have the same dimension.  Let the face associated to $\tau(W)$ in $A_n$ be $f_W$ and the face associated to $\tau(X)$ be $f_X$.
 
-  As observed in the proof of Proposition~\ref{prop easy way}, the support of any nonzero vector parallel to an edge is on the indices corresponding to the four vertices bounding the quadrilateral of the dissection associated with the edge.  Thus if $V_{>3}(\tau(W)) \neq V_{>3}(\tau(X))$ (notation as defined before Lemma~\ref{lem good quads}) then the span of the vectors parallel to their edes has different support and so they cannot be parallel.  So we can assume that $V_{>3}(\tau(W)) = V_{>3}(\tau(X))$.
+  As observed in the proof of Proposition~\ref{prop easy way}, the support of any nonzero vector parallel to an edge is on the indices corresponding to the four vertices bounding the quadrilateral of the dissection associated with the edge.  Thus if $V_{>3}(\tau(W)) \neq V_{>3}(\tau(X))$ (notation as defined before Lemma~\ref{lem good quads}) then the span of the vectors parallel to their edges has different support and so they cannot be parallel.  So we can assume that $V_{>3}(\tau(W)) = V_{>3}(\tau(X))$.
 
     Since $\tau(W)$ and $\tau(X)$ do not have the same set of non-triangle faces, there must be some diagonal $d$ of $\tau(W)$ that crosses through a non-triangle face $f$ of $\tau(X)$. 
-    It will be most convenient to look at normal vectors and to use the choice of normal vector discussed on p8 of \cite{CSZinequivalent}, namely pick one side of $d$ to be positive and define the $i$th coordinate of the $\omega^+_d$ to be
+    It will be most convenient to consider faces in terms of their normal vectors. We make use of the construction discussed on p8 of \cite{CSZinequivalent}: namely, pick one side of $d$ to be positive and define the $i$th coordinate of the vector $\omega^+_d$ to be
     \[
     \omega^+_d(i) = \begin{cases} \text{dist}(x_i, d) & \text{if $x$ is on the positive side of $d$}\\ 0 & \text{otherwise} \end{cases}
     \]
-    We have from \cite{CSZinequivalent} that $\omega^+_d$ is a normal vector for any face with $d$ as a diagonal, however we can also check this fact in a completely elementary way using the shoelace formula for the area of a triangle.  The shoelace formula says that if $(x_1, y_1), (x_2, y_2), (x_3, y_3)$ are the coordinates of the corners of a triangle in counterclockwise order then the area of the triangle is $(x_1y_2 - x_1y_3 + x_2y_3 - x_2y_1 + x_3y_1 - x_3y_2)/2$.
+    We have from \cite{CSZinequivalent} that $\omega^+_d$ is a normal vector for any face with $d$ as a diagonal; however we can also check this fact in a completely elementary way using the shoelace formula for the area of a triangle.  The shoelace formula says that if $(x_1, y_1), (x_2, y_2), (x_3, y_3)$ are the coordinates of the corners of a triangle in counterclockwise order then the area of the triangle is \[\textstyle\frac{1}{2}(x_1y_2 - x_1y_3 + x_2y_3 - x_2y_1 + x_3y_1 - x_3y_2).\]
 
-    Proceed now to check that $\omega^+_d$ is a normal vector for any face associated to a dissection including $d$.  We will do this by showing it is normal to every edge bounding the face.  To do so, choose the coordinate system for the polygon so that $d$ is along the $x$-axis.  Let $(a_i, h_i)$, $i=1,2,3,4$ be the coordinates of the vertices of a quadrilateral in counterclockwise order and which corresponds to an edge bounding the face.  Since the dissection includes $d$ either all four points are on the negative side of $d$, and so the dot product of $\omega^+_d$ with the direction vector for the quadrilateral is immediately $0$, or, by the formula in the proof of the previous proposition and the shoelace formula, the dot product of $\omega^+_d$ with the vector associated to the quadrilateral is
+    We now check that $\omega^+_d$ is a normal vector for any face associated to a dissection including $d$, which we accomplish by showing it is normal to every edge bounding the face.  To do so, choose the coordinate system for the polygon so that $d$ is along the $x$-axis.  Let $(a_i, h_i)$, $i\in \{1,2,3,4\}$ be the coordinates of the vertices of a quadrilateral in counterclockwise order and which corresponds to an edge bounding the face.  Since the dissection includes $d$, either all four points are on the negative side of $d$ and so the dot product of $\omega^+_d$ with the direction vector for the quadrilateral is immediately $0$, or, by the formula in equation \eqref{eq:direction vector for quadrilateral} and the shoelace formula, the dot product of $\omega^+_d$ with the vector associated to the quadrilateral is
    \begin{align*}
        & \hspace{1cm}\textstyle\frac{1}{2}h_1(a_2h_3-a_2h_4+a_3h_4-a_3h_2+a_4h_2-a_4h_3) \\
        &\hspace{3cm} - \textstyle\frac{1}{2} h_2(a_1h_3-a_1h_4+a_3h_4-a_3h_1+a_4h_1-a_4h_3) \\
        &\hspace{5cm}+ \textstyle\frac{1}{2}h_3(a_1h_2-a_1h_4+a_2h_4-a_2h_1+a_4h_1-a_4h_2) \\
        &\hspace{7cm}- \textstyle\frac{1}{2}h_4(a_1h_2-a_1h_3+a_2h_3-a_2h_1+a_3h_1-a_3h_2), 
     \end{align*}
-    which evaluates to 0.
+    which also evaluates to 0.
 
-    Now, $\tau(W)$ and $\tau(X)$ satisfy the hypotheses of Lemma~\ref{lem good quads}, so we can assume that $f$ and $d$ have the property that there is one side of $d$, which we will call the positive side, so that exactly one vertex of $f$ is strictly on that side.  Then $\omega^+_d$ with the direction vector of $d$ have common support exactly on that one vertex and so their dot product is nonzero.  Since the direction vector of $d$ is contained in the direction of $\tau(X)$ but is not orthogonal to $\omega^+_d$, while $\omega^+_d$ is normal to the face of $\tau(W)$, it follows that the faces associated to $\tau(W)$ and $\tau(X)$ are not parallel, as desired.
+    Now, $\tau(W)$ and $\tau(X)$ satisfy the hypotheses of Lemma~\ref{lem good quads}, so we can assume that $f$ and $d$ have the property that we can choose a side of $d$ to be the positive side in such a way that exactly one vertex of $f$ is strictly on the positive side.  Then $\omega^+_d$ and the direction vector of $d$ have common support exactly on that one vertex and so their dot product is nonzero.  Since the direction vector of $d$ is contained in the direction of $\tau(X)$ but is not orthogonal to $\omega^+_d$, while $\omega^+_d$ is normal to the face of $\tau(W)$, it follows that the faces associated to $\tau(W)$ and $\tau(X)$ are not parallel, as desired.
 \end{proof}
 
 
