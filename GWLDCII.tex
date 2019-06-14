@@ -748,13 +748,13 @@ In this section, we give an algorithm for passing directly from the Wilson loop 
 The fact that Algorithm~\ref{alg:put GN on WLD} does construct the required Grassmann necklace is proved in Theorem~\ref{res:alg gives GN}. An worked example of Algorithm~\ref{alg:put GN on WLD} is given in Example~\ref{eg:apply GN alg}.
 
 \begin{algorithm}\label{alg:put GN on WLD}
-Let $W = (\cP, [n])$ be an admissible Wilson loop diagram. This gives an algorithm for constructing the set $I_i$, for $i \in [n]$.
+Let $W = (\cP, [n])$ be an admissible Wilson loop diagram. This gives an algorithm for constructing the set $I_i^W$ (or just $I_i$ when $W$ is clear from context), for $i \in [n]$.
 
 \begin{enumerate}
-\item Fix a vertex $i \in [n]$, the {\bf starting vertex}. Set $j:=i$ and $I_i = \emptyset$.
+\item Fix a vertex $i \in [n]$, the {\bf starting vertex}. Set $j:=i$ and $I_i^W = \emptyset$.
 \item While $\cP \neq \emptyset$, perform the following steps:
 \begin{enumerate}
-\item {\em Step $j$ for starting vertex $i$}: If $\Prop(j) = \emptyset$, do nothing. Else, let $p \in \Prop(j)$ be the clockwise most propagator supported on $j$. Write $I_i = I_i\cup \{j\}$, and delete propagator $p$ from the diagram.
+\item {\em Step $j$ for starting vertex $i$}: If $\Prop(j) = \emptyset$, do nothing. Else, let $p \in \Prop(j)$ be the clockwise most propagator supported on $j$. Write $I_i^W = I_i^W\cup \{j\}$, and delete propagator $p$ from the diagram.
 \item Increment $j$ by 1 and repeat from (a).
 \end{enumerate}
 \end{enumerate}
@@ -801,7 +801,15 @@ The reader can easily verify that this sequence of $k$-sets satisfies the defini
 
 \medskip
 
-We first show that the algorithm can never reach the final vertex in a propagator's support without having already assigned that propagator; in particular, this guarantees that the construction of $I_i$ always terminates in fewer than $n$ steps.
+\begin{rmk}
+The following observation will be very useful in many of the arguments below.  
+
+Suppose we are going through the algorithm to construct $I_i^W$ and we are currenctly at step $j$ of the loop.  Consider the diagram $W'$ formed by $W$ with all the propagators already contributed removed; think of a vertex being taken away when it is contributed, since it can only contribute once, so it is gone from the point of view of the rest of the construction of $I_i^W$.  Now suppose for some other diagram $V$ on the same vertex set we are constructing $I_k^V$ and we are at step $j$ of the loop, for the same $j$ as above.  Again let $V'$ be $V$ with all the propagators already contributed removed.
+
+With this setup, if there is an interval, $(j-1, \ldots, \ell+1)$ (with $\ell <_i i$ and $\ell <_k k$) in $W'$ and $V'$ where the propagators ending in that interval are identical in both diagrams, then the construction of $I_i^W$ and $I_k^V$ is identical up to and including step $\ell$.  The constructions are identical for those steps simply because the local situation of propagators supported at $j, j+1, \ldots, \ell$ is identical in both cases and the algorithm only sees the local situation at the vertex corresponding to the current step.
+\end{rmk}
+
+With that in mind we are ready to begin proving properties of the algorithm. We first show that the algorithm can never reach the final vertex in a propagator's support without having already assigned that propagator; in particular, this guarantees that the construction of $I_i$ always terminates in fewer than $n$ steps.
 
 \begin{lem}\label{lem no fourth vertex}
 Let $W$ be an admissible Wilson loop diagram containing at least one propagator. For any $i \in [n]$ and for any $p \in \cP$, $I_i(p)$ is not maximal (with respect to $<_i$) amongst the vertices that support $p$.
