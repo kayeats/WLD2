@@ -577,6 +577,20 @@ In \cite{wilsonloop}, Agarwala and Amat show that $M(W)$ is also characterized b
 \begin{thm} \label{thm WLD defines matroid} \cite[Theorem 3.6]{wilsonloop} The independent sets of the matroid $M(W)$ associated to an admissible Wilson loop diagram $W = (\cP,[n])$ and realized by $C(W)$ are exactly those subsets $V \subseteq [n]$ such that $\nexists U\subseteq V$ satisfying $|\Prop(U)| < |U|$. \end{thm}
 In other words, the independent sets of $M(W)$ correspond to sets of vertices in $W$ in which no subset supports fewer propagators than the vertices it contains.
 
+One useful corollary of this, which we will want to keep in mind later, is the following.
+\begin{cor}\label{lem basis as perm}
+Let $W = (\cP,[n])$ be an admissible Wilson loop diagram and let $M(W)$ be its associated matroid. A subset $J \subseteq [n]$ is an independent set of $M(W)$ if and only if there exists an injective set map $f : J \rightarrow \cP$ with the property that for each $j\in J$ we have $j \in V(f(j))$.
+\end{cor}
+
+\begin{proof}
+  This follows as a corollary of the previous theorem by induction in one direction and the pigeonhole principle in the other direction.  
+
+Forgetting about the matroid and simply thinking about the condition of linear independence in the matrix $C(W)$, the corollary can also be proved directly by linear algebra and the definition of $C(W)$ as follows: because the nonzero entries of $C(W)$ are independent indeterminants, $J$ is an independent set is if and only if there is some choice of $|J|$ nonzero entries of $C(W)$ one in each row associated to an element of $J$ and each in different columns. Each entry in $C(W)$ identifies a propagator by the row of the entry and a vertex by the column of the entry.  The entry is nonzero if and only if the propagator is supported on that vertex.  Consequently, a choice of $|J|$ nonzero entries of $C(W)$ one in each row associated to an element of $J$ and each in different columns is equivalent to an assignment of the propagators of $J$ to supporting vertices so that no two are assigned to the same vertex.  Such an assignment of the propagators of $J$ to supporting vertices is exactly a map $f$ as described in the statment, hence proving the result.
+\end{proof}
+
+In particular, this corollary says that a subset $J$ of $[n]$ is a basis of $M(W)$ if and only if there is a set bijection between $J$ and $\cP$ with the property that for each $j\in J$ the propagator associated to $j$ under the bijection is supported on vertex $j$.
+
+
 By relating the behavior of the propagators in $W$ to the matroidal properties of $M(W)$, Agarwala and Amat also showed that $M(W)$ is in fact a positroid whenever $W$ is admissible \cite[Corollary 3.39]{wilsonloop}.
 
 However, in order to identify the positroid associated to a given Wilson loop diagram $W$ we first have to construct $C(W)$, then make a list of all its non-zero $k\times k$ minors and extract the Le diagram or Grassmann necklace via the methods described in Section~\ref{sec:positroid background}. Alternatively, one could obtain the decorated permutation of the positroid from $C(W)$ as in \hlfix{[ref]}{Sian needs to go find this reference} and then convert it into a Grassmann necklace as described in \cite[Section 16]{Postnikov}. 
@@ -1047,25 +1061,7 @@ The result now follows by induction.
 
 
 
-We need one more lemma before we can prove that Algorithm~\ref{alg:put GN on WLD} does in fact give the Grassmann necklace of the positroid associated to $W$.
-
-\begin{lem}\label{lem basis as perm}
-Let $W = (\cP,[n])$ be an admissible Wilson loop diagram and let $M(W)$ be its associated matroid. A subset $J \subseteq [n]$ is an independent set of $M(W)$ if and only if there exists an injective set map $f : J \rightarrow \cP$ with the property that for each $j\in J$ we have $j \in V(f(j))$.
-\end{lem}
-
-
-In particular, this lemma says that a subset $J$ of $[n]$ is a basis of $M(W)$ if and only if there is a set bijection between $J$ and $\cP$ with the property that for each $j\in J$ the propagator associated to $j$ under the bijection is supported on vertex $j$.
-
-This is equivalent to the condition for a set to be independent or a basis established in Lemma 3.5 and Theorem 3.6 of \cite{wilsonloop}. The equivalence can be seen by applications of the the pigeonhole principle in one direction, and inductively in the other. Below, we provide a different proof of this condition for independence. \hlfix{Note that either definition of independence and bases corresponds to the sets independent columns and bases of $C(W)$.}{I'm having trouble parsing this sentence: help?}
-
-
-\begin{proof} \sanote{ I would still argue that this should be moved to section 2. That is the only place we talk about matroids and positroid associated to Wilson loop diagrams. While this is a general linear algebra result, it does reference $C(W)$ several times in the proof.}
-Because the nonzero entries of $C(W)$ are independent indeterminants, $J$ is an independent set is if and only if there is some choice of $|J|$ nonzero entries of $C(W)$ one in each row associated to an element of $J$ and each in different columns.
-
-Each entry in $C(W)$ identifies a propagator by the row of the entry and a vertex by the column of the entry.  The entry is nonzero if and only if the propagator is supported on that vertex.
-
-Consequently, a choice of $|J|$ nonzero entries of $C(W)$ one in each row associated to an element of $J$ and each in different columns is equivalent to an assignment of the propagators of $J$ to supporting vertices so that no two are assigned to the same vertex.  Such an assignment of the propagators of $J$ to supporting vertices is exactly a map $f$ as described in the statment, hence proving the result.
-\end{proof}
+We are now ready to prove that Algorithm~\ref{alg:put GN on WLD} does in fact give the Grassmann necklace of the positroid associated to $W$.
 
 \note{Sian is here}
 
@@ -1131,9 +1127,9 @@ We have shown that $(I_1,\dots,I_n)$ is a Grassmann necklace; it remains to chec
 \item For each $i \in [n]$, $I_i$ is a basis for $M(W)$.
 \item If $J$ is lexicographically smaller than {\color{violet} any} $I_i$ with respect to $<_i$, then $J$ is not a basis for $M(W)$. 
 \end{itemize}
-The first point follows immediately: since the algorithm is pairing each $j \in I_i$ with a unique propagator supported on that vertex, $I_i$ is a basis for $M(W)$ by Lemma~\ref{lem basis as perm}.
+The first point follows immediately: since the algorithm is pairing each $j \in I_i$ with a unique propagator supported on that vertex, $I_i$ is a basis for $M(W)$ by Corollary~\ref{lem basis as perm}.
 
-Now suppose we have a $k$-set $J$ such that $J$ is a basis for $M(W)$ and yet is lexicographically less than $I_i$ with respect to $<_i$.  By Lemma~\ref{lem basis as perm} there is a set bijection between $J$ and the propagators of $W$ such that for each $j \in J$, the propagator associated to $j$ is supported on vertex $j$.  Choose one such bijection.  For each propagator $p$ of $W$, write $J(p)$ for the vertex $j$ associated to $p$ according to this bijection.
+Now suppose we have a $k$-set $J$ such that $J$ is a basis for $M(W)$ and yet is lexicographically less than $I_i$ with respect to $<_i$.  By Corollary~\ref{lem basis as perm} there is a set bijection between $J$ and the propagators of $W$ such that for each $j \in J$, the propagator associated to $j$ is supported on vertex $j$.  Choose one such bijection.  For each propagator $p$ of $W$, write $J(p)$ for the vertex $j$ associated to $p$ according to this bijection.
 
 Since $J$ is lexicographically smaller than $I_i$, the $<_i$-smallest element of the symmetric difference of $J$ and $I_i$ is some $j_0\in J$, $j_0 \not\in I_i$. Let $p_1$ be the propagator such that $J(p_1)=j_0$.  Since $j_0\not\in I_i$ but $p_1$ is supported at $j_0$, then $p_1$ must have been assigned to an earlier vertex by $I_i$, i.e. we have $I_i(p_1) <_i j_0$.  Let $j_1 = I_i(p_1)$.
 
@@ -1626,7 +1622,7 @@ We are now ready to begin proving the main result of this section. We begin with
 \begin{proof}
 \begin{enumerate}
     \item The nonzero entries of $C(W)$ are independent indeterminates and so every $i\times i$ minor of $C(W)$ is either homogeneous of degree $i$ or is $0$.  Thus each $\Delta_{I_i}$ and each $r_i$ is homogeneous.  %Furthermore, each row contributes one factor to each term in the expansion of $\Delta_{I_i}$ so the result of setting the variables from a subset of rows to $1$ is still homogeneous.  Thus each $r_i$ is homogeneous.
-    \item Using the expression for the determinant as a sum over permutations from Lemma \ref{lem basis as perm} we see that $\Delta_{I_i}$ is a sum over bijections between $I_i$ and $\mathcal{P}$.  The nonzero terms in this sum are precisely those bijections such that each propagator is associated to one of its supporting vertices in $I_i$, since only those locations in $C(W)$ are nonzero.  Since the nonzero entries of $C(W)$ are independent there can be no cancellation between terms in this expansion.
+    \item Using the expression for the determinant as a sum over permutations from Corollary~\ref{lem basis as perm} we see that $\Delta_{I_i}$ is a sum over bijections between $I_i$ and $\mathcal{P}$.  The nonzero terms in this sum are precisely those bijections such that each propagator is associated to one of its supporting vertices in $I_i$, since only those locations in $C(W)$ are nonzero.  Since the nonzero entries of $C(W)$ are independent there can be no cancellation between terms in this expansion.
 
 Suppose $\Delta_{I_i}$ has an irreducible factor $f$.  Let $\mathcal{P}'$ be the set of propagators which contribute a variable to $f$ and let $J$ be the set of vertices which contribute a variable to $f$.
 
