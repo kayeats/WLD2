@@ -53,9 +53,12 @@
 
 \definecolor{light-gray}{gray}{0.6}
 
-
+% some propagator styles
 \tikzstyle{propagator}=[decorate,decoration={snake,amplitude=0.8mm}]
 \tikzstyle{smallpropagator}=[decorate,decoration={snake,segment length=3mm,amplitude=0.5mm}]
+
+% for highlighting regions of a diagram edge
+\tikzstyle{linehighlight}=[red,line width = 3pt,line cap = round, draw opacity = 0.5]
 
 % these two for drawing partial propagators
 \tikzstyle{firstdash}=[dashed,line cap=round, dash pattern=on 2pt off 1pt]
@@ -101,7 +104,7 @@
 
 \begin{scope}
 %\clip (\angle*\r:\radius) -- (\angle + \angle*\r:\radius) -- (\angle*\s:\radius) -- (\angle + \angle*\s:\radius) -- (\angle*\r:\radius);
-\draw[propagator] (\angle*\r + \angle/2 + \bumpr*\perturbe:\radius) -- (\angle*\s + \angle/2 + \bumps*\perturbe:\radius);
+\draw[smallpropagator] (\angle*\r + \angle/2 + \bumpr*\perturbe:\radius) -- (\angle*\s + \angle/2 + \bumps*\perturbe:\radius);
 \end{scope}
 }
 
@@ -114,7 +117,7 @@
 
 \begin{scope}
 %\clip (\angle*\r:\radius) -- (\angle + \angle*\r:\radius) -- (\angle*\s:\radius) -- (\angle + \angle*\s:\radius) -- (\angle*\r:\radius);
-\draw[propagator] (\angle*\r + \angle/2 + \bumpr*\perturbe:\radius) -- (\angle*\s + \angle/2 + \bumps*\perturbe:\radius) node[midway, below] {#5};
+\draw[smallpropagator] (\angle*\r + \angle/2 + \bumpr*\perturbe:\radius) -- (\angle*\s + \angle/2 + \bumps*\perturbe:\radius) node[midway, below] {#5};
 \end{scope}
 }
 
@@ -212,6 +215,69 @@
 
 
 
+%%%%%%%
+% Drawing partial WLD
+%%%%%%%
+\def\centerarc[#1](#2)(#3:#4:#5)% Syntax: [draw options] (center) (initial angle:final angle:radius)
+    { \draw[#1] ($(#2)+({#5*cos(#3)},{#5*sin(#3)})$) arc (#3:#4:#5); }
+
+\def\clipcenterarc(#1)(#2:#3:#4)% Syntax: [draw options] (center) (initial angle:final angle:radius)
+    { \clip ($(#1)+({#4*cos(#2)},{#4*sin(#2)})$) arc (#2:#3:#4); }
+
+
+%\drawWLDfragment[number of nodes]{radius}{fraction of circle to be displayed}
+\newcommand{\drawWLDfragment}[3][10]{
+\pgfmathsetmacro{\n}{#1} % use this to get consistent spacing between nodes
+\pgfmathsetmacro{\radius}{#2}
+\pgfmathsetmacro{\fragment}{#3} % between 0 and 1, gets you that percentage of a circle
+\pgfmathsetmacro{\halfangle}{360*\fragment/2}
+\pgfmathsetmacro{\startpoint}{270 - \halfangle}
+\pgfmathsetmacro{\endpoint}{270 + \halfangle}
+\pgfmathsetmacro{\step}{2*\halfangle/\n} 
+\pgfmathsetmacro{\zero}{\startpoint-0.5*\step} % so node i is at angle \zero + i*\step
+\centerarc[black](0,0)(\startpoint:\endpoint:\radius)
+}
+
+
+
+\newcommand{\drawnumberspartial}{
+\node (0,0) {$\bullet$};
+  \foreach \i in {1,2,...,\n} {
+  \pgfmathsetmacro{\x}{\step*\i}
+  \draw (\zero + \x:\radius*1.15) node {\footnotesize \i};
+}
+}
+
+
+\newcommand{\newnode}[3][left]{
+	\node[label={[label distance=-1mm]#1:{\scriptsize $#3$}}] at (\zero + #2*\step:\radius) {\scriptsize $\bullet$};
+	%\node[#1] at (\zero + #2*\step:\radius) {\scriptsize $#3$};
+}
+
+% messier but more flexible: use when you want more control over label placement
+\newcommand{\newbetternode}[3][{label distance=-1mm]left}]{
+	\node[label={#1:{\scriptsize $#3$}}] at (\zero + #2*\step:\radius) {\scriptsize $\bullet$};
+	%\node[#1] at (\zero + #2*\step:\radius) {\scriptsize $#3$};
+}
+
+
+
+% \newprop[label position]{start node}{end node}{label}
+\newcommand{\newprop}[4][midway,below]{
+\pgfmathsetmacro{\startnode}{#2}
+\pgfmathsetmacro{\endnode}{#3}
+
+\draw[smallpropagator] (\zero+\startnode*\step:\radius) -- (\zero + \endnode*\step:\radius) node[#1] {#4};
+}
+
+\newcommand{\newpropbend}[3]{
+\draw[smallpropagator] (\zero+#1*\step:\radius*1.1) to[bend left = #3] (\zero + #2*\step:\radius*1.1);
+}
+
+%%%%%%%%%%%%%%
+
+
+
 %*****************
 
 %*****************
@@ -297,7 +363,6 @@
 \newtheorem{rmk}[thm]{Remark}
 \newtheorem{ntn}[thm]{Notation}
 %*****************
-
 
 
 
@@ -713,12 +778,11 @@ From our existing assumptions, we know the following facts: $p_1$ is not in conf
 	\node at (\angle*6.5:\radius*0.6cm) {\footnotesize $p_1$};
 	\end{scope}
     \drawlabeledprop{3}{0}{10}{0}{\footnotesize \qquad $q_1$}
-    	\node at (\angle*5:\radius*1.15cm) {\footnotesize $j_1$};
-    	\node at (\angle*10:\radius*1.15cm) {\footnotesize $i_1$};
+    \node at (\angle*5:\radius*1.15cm) {\footnotesize $j_1$};
+    \node at (\angle*10:\radius*1.15cm) {\footnotesize $i_1$};
+	\node at (10:\radius*0.5) {\small $\cP_{in}(q_1)$};
 		\end{scope}
 	\end{tikzpicture}\eas
-
-\note{Sian note to self: come back and check this later, if we end up with code for drawing partial diagrams then that might make a better diagram}
 
 Now suppose $q_{r} = (i_r, k_r)$ exists by the induction hypothesis and is oriented $(q_r, <_{i_r})$ so that the previous $p_i$ and $q_i$ are on the outside. For the rest of this proof, we assume this orientation and drop the $<_{i_r}$ from the notation.
 
