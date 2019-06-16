@@ -393,7 +393,7 @@
 
 
 
-% template to set up a partial WLD diagram
+Template to set up a partial WLD diagram
 
 \[
 \begin{tikzpicture}[baseline=(current bounding box.east)]
@@ -405,7 +405,7 @@
 \]
 
 \vspace{4em}
-% working example:
+Working example:
 
 \[
 \begin{tikzpicture}[baseline=(current bounding box.east)]
@@ -445,7 +445,9 @@
 
 
 
-% fig:no fourth vertex
+ fig:no fourth vertex
+
+%\draw[smallpropagator,light-gray] (\zero+7.55*\step:\radius*1.1) -- (0:\radius*0.5); 
 
 \[
 \begin{tikzpicture}[baseline=(current bounding box.east)]
@@ -460,6 +462,7 @@
 	\newnode[right]{16}{b+1}
 	\newprop[midway,above]{4.7}{15.7}{\scriptsize $p$}
 	\newprop[midway,below]{7.5}{15.3}{\scriptsize $q$}
+      \draw[smallpropagator,light-gray] (\zero +\step *4.3:\radius*1) -- (90:\radius*0.5); 
 	\node at (270:\radius*1.5) {\em Case 1};
 	% \begin{scope}
 	% \clip (\zero + 5*\step:\radius*1.1) rectangle (90:\radius*0.8);
@@ -495,17 +498,10 @@
 	\end{scope}
 		\end{scope}
 	\end{tikzpicture}
-\]
+\] 
 
 
-
-
-
-
-
-
-
-% fig V diagram
+ fig V diagram
 
 
 \[
@@ -535,8 +531,7 @@
 \]
 
 
-
-% fig special p
+ fig special p
 
 \[
 \begin{tikzpicture}[rotate = 150,baseline=(current bounding box.east),label distance = -2mm]
@@ -582,12 +577,11 @@
 \end{tikzpicture}
 \]
 
+\newpage
 
 
 
-
-% fig 3 cases
-
+ fig 3 cases
 
 
 
@@ -750,8 +744,76 @@
 \end{tikzpicture}
 \end{tabular}
 
+fig R eg
 
-
+\bas 
+\begin{tikzpicture}[rotate=67.5,baseline=(current bounding box.east)]
+	\begin{scope}
+	\drawWLD{7}{1.5}
+	\drawnumbers
+	\drawlabeledprop{1}{-1}{6}{0}{\footnotesize   $p$}
+	\drawlabeledprop{1}{0}{5}{0}{\footnotesize   $q$}
+	\drawlabeledprop{1}{1}{4}{0}{\footnotesize \; \qquad  $r$}
+	\node at (\angle*1.5:\radius*2) {$I_1$};
+	\node at (4*\angle:\radius*1.7) {$I_1(p) = 1, \; I_1(q) = 2, \; I_1(r) = 4$};
+		\end{scope}
+	\end{tikzpicture} \; ; \; 
+\begin{tikzpicture}[rotate=67.5,baseline=(current bounding box.east)]
+	\begin{scope}
+	\drawWLD{7}{1.5}
+	\drawnumbers
+	\drawlabeledprop{1}{-1}{6}{0}{\footnotesize   $p$}
+	\drawlabeledprop{1}{0}{5}{0}{\footnotesize   $q$}
+	\drawlabeledprop{1}{1}{4}{0}{\footnotesize \; \qquad  $r$}
+	\node at (\angle*1.5:\radius*2) {$I_2$};
+	\node at (4*\angle:\radius*1.7) {$I_2(p) = 1,  \; I_2(r) = 4,\; I_2(q) = 5$};
+	\end{scope} 
+\end{tikzpicture}\; ; \;
+\begin{tikzpicture}[rotate=67.5,baseline=(current bounding box.east)]
+	\begin{scope}
+	\drawWLD{7}{1.5}
+	\drawnumbers
+	\drawlabeledprop{1}{-1}{6}{0}{\footnotesize   $p$}
+	\drawlabeledprop{1}{0}{5}{0}{\footnotesize   $q$}
+	\drawlabeledprop{1}{1}{4}{0}{\footnotesize \; \qquad  $r$}
+	\node at (\angle*1.5:\radius*2) {$I_3 = I_4$};
+	\node at (4*\angle:\radius*1.7) {$I_3(r) = 4,\;  I_3(q) = 5, \; I_3(p) = 6$ };
+	\end{scope} 
+\end{tikzpicture}\quad ;  \\  
+ \begin{tikzpicture}[rotate=67.5,baseline=(current bounding box.east)]
+	\begin{scope}
+	\drawWLD{7}{1.5}
+	\drawnumbers
+	\drawlabeledprop{1}{-1}{6}{0}{\footnotesize   $p$}
+	\drawlabeledprop{1}{0}{5}{0}{\footnotesize   $q$}
+	\drawlabeledprop{1}{1}{4}{0}{\footnotesize \; \qquad  $r$}
+	\node at (\angle*1.5:\radius*2) {$I_5$};
+	\node at (4*\angle:\radius*1.7) {$I_5(r) = 5,\;  I_5(q) = 6, \; I_5(p) = 7$ };
+	\end{scope} 
+\end{tikzpicture}\; ; \; 
+\begin{tikzpicture}[rotate=67.5,baseline=(current bounding box.east)]
+	\begin{scope}
+	\drawWLD{7}{1.5}
+	\drawnumbers
+	\drawlabeledprop{1}{-1}{6}{0}{\footnotesize   $p$}
+	\drawlabeledprop{1}{0}{5}{0}{\footnotesize   $q$}
+	\drawlabeledprop{1}{1}{4}{0}{\footnotesize \; \qquad  $r$}
+	\node at (\angle*1.5:\radius*2) {$I_6$};
+	\node at (4*\angle:\radius*1.7) {$I_6(q) = 6, \; I_6(p) = 7, \; I_6(r) = 1 $ };	
+	\end{scope}
+	\end{tikzpicture}  \; ; \; 
+\begin{tikzpicture}[rotate=67.5,baseline=(current bounding box.east)]
+	\begin{scope}
+	\drawWLD{7}{1.5}
+	\drawnumbers
+	\drawlabeledprop{1}{-1}{6}{0}{\footnotesize   $p$}
+	\drawlabeledprop{1}{0}{5}{0}{\footnotesize   $q$}
+	\drawlabeledprop{1}{1}{4}{0}{\footnotesize \; \qquad  $r$}
+	\node at (\angle:\radius*1.7) {$I_7$};
+	\node at (4*\angle:\radius*1.7) {$I_7(p) = 1,  \; I_7(q) = 1, \; I_7(r) = 2$};
+	\end{scope} 
+\end{tikzpicture}
+\eas
 
 
 \end{document}
