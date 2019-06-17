@@ -516,7 +516,7 @@ c_{4,1} & 0 & 0 & 0 & c_{4,5} & c_{4,6} & 0 & c_{4,8}  \\
 
 We first give a quick summary of the matroid terminology that we will need; it is not intended as a comprehensive introduction to matroids and the interested reader is referred to \cite{OxleyMatroidBook} 
 
-A {\em matroid} $M = (E,\cB)$ consists of a finite ground set $E$ and a non-empty family $\cB \subseteq \cP(E)$ whose elements satisfy the {\em basis exchange property}: for any distinct $B_1,B_2 \in \cB$ and any $a \in B_1 \setminus B_2$, there exists some $b \in B_2 \setminus B_1$ such that $(B_1 \setminus \{a\})\cup \{b\} \in \cB$ as well. The elements of $\cB$ are called the {\em bases} of the matroid. Note that the basis exchange property immediately implies that all bases have the same size.
+A {\em matroid} $M = (E,\cB)$ consists of a finite ground set $E$ and a non-empty family $\cB$ of subsets of $E$, such that elements of $\cB$ satisfy the {\em basis exchange property}: for any distinct $B_1,B_2 \in \cB$ and any $a \in B_1 \setminus B_2$, there exists some $b \in B_2 \setminus B_1$ such that $(B_1 \setminus \{a\})\cup \{b\} \in \cB$ as well. The elements of $\cB$ are called the {\em bases} of the matroid. Note that the basis exchange property immediately implies that all bases have the same size.
 
 A subset $A \subseteq E$ is called {\em independent} in $M$ if $A \subseteq B$ for some $B \in \cB$, and {\em dependent} otherwise. The {\em rank}  $\rk(A)$ of a subset $A \subseteq E$ is the size of the largest independent set contained in $A$. The rank of the matroid itself is defined to be $\rk(E)$.
 
@@ -540,7 +540,7 @@ Let $W = (\cP,[n])$ be an admissible Wilson loop diagram, and $M(W)$ its associa
 In particular, this allows us to prove results about $M(W)$ by considering the behavior of propagators in $W$. We record a few facts about the ranks cycles and flats of $M(W)$ here as an example of this.
 
 \begin{lem}\label{lem facts about WLD matroids}
-Let $W = (\cP,n)$ be an admissible Wilson loop diagram. Then:
+Let $W = (\cP,[n])$ be an admissible Wilson loop diagram. Then:
 \begin{enumerate}
 \item The rank of a set $V \subseteq [n]$ is bounded above by $\min\{|V|,|\Prop(V)|\}$, with $\rk(V) = |V|$ if and only if $V$ is an independent set.
 %\item Let $v \in [n]$ and $q \in \Prop(v)$. Then for any $V \subset [n]$ such that $q \not \in \Prop(V)$, we have $\rk(V \cup \{v\}) = \rk(V) +1$, i.e. adding a vertex that supports a new propagator to a set increases the rank of the set.
@@ -1127,7 +1127,7 @@ We also
 give a formula for the number of Wilson loop diagrams in a given equivalence class (Corollary \ref{number of equiv diagrams}), completing the characterization of the correspondence between Wilson Loop diagrams and matroids starting in \cite{wilsonloop}.
 
 \begin{thm}\label{same matroid iff equiv}
-Let $W= (\cP, [n])$ and $W'= (\cP', n)$ be two Wilson loop diagrams. They define the same matroid if and only if $W \sim W'$.
+Let $W= (\cP, [n])$ and $W'= (\cP', [n])$ be two Wilson loop diagrams. They define the same matroid if and only if $W \sim W'$.
 \end{thm}
 
 \begin{proof}
@@ -1241,7 +1241,7 @@ In order to prove the converse of Proposition~\ref{prop easy way}, we first requ
 We also need the following notation: given a polygon dissection $D$ of an $n$-gon, let $V_{>3}(D)$ be the set of vertices of the polygon which are on at least one non-triangle face of $D$.  (Note that $D$ may have many non-triangle faces and so $V_{>3}(D)$ will be the union of the vertices of each non-triangle face.) We also write $[x_i,x_j]$ for the set of vertices from $x_i$ to $x_j$ including the endpoints, and $(x_i,x_j)$ for the same set but excluding the endpoints.
 
 \begin{lem}\label{lem good quads}
-Let $D_1$ and $D_2$ be two dissections of a convex $n$-gon defined by the vertices $x_1, \ldots, x_n$.  \hlfix{Suppose that $V_{>3}(D_1) = V_{>3}(D_2)$}{we probably use this implicitly somewhere in the proof but I can't see it; can we make it explicit?}, but that the $D_1$ and $D_2$ do not have the same set of non-triangle faces.  Then there are four vertices $x_i$, $x_j$, $x_k$, $x_l$ satisfying the following conditions:\begin{enumerate} \item In either $D_1$ or $D_2$ all four vertices are on the same non-triangle face; \item In the other dissection, there is a diagonal of the dissection such that exactly one of $\{x_i, x_j, x_k, x_l\}$ lies on one side of the diagonal (so the others are either end points of this diagonal or strictly on the other side). \end{enumerate}
+Let $D_1$ and $D_2$ be two dissections of a convex $n$-gon defined by the vertices $x_1, \ldots, x_n$.  Suppose that $V_{>3}(D_1) = V_{>3}(D_2)$, but that the $D_1$ and $D_2$ do not have the same set of non-triangle faces.  Then there are four vertices $x_i$, $x_j$, $x_k$, $x_l$ satisfying the following conditions:\begin{enumerate} \item In either $D_1$ or $D_2$ all four vertices are on the same non-triangle face; \item In the other dissection, there is a diagonal of the dissection such that exactly one of $\{x_i, x_j, x_k, x_l\}$ lies on one side of the diagonal (so the others are either end points of this diagonal or strictly on the other side). \end{enumerate}
 \end{lem} 
 
 The situation described in the lemma is illustrated in Figure~\ref{configs}.
@@ -1286,7 +1286,7 @@ Now $d'$ is also a diagonal of $D_1$ that crosses the non-triangle face $f$ of $
 \begin{proof}
   Let $W$ and $X$ be inequivalent.  If $\tau(W)$ and $\tau(X)$ do not have the same number of diagonals (hence their faces in $A_n$ do not have the same dimension) then they are not parallel by definition. Now suppose that $\tau(W)$ and $\tau(X)$ do have the same number of diagonals and hence their faces in $A_n$ have the same dimension.  Let the face associated to $\tau(W)$ in $A_n$ be $f_W$ and the face associated to $\tau(X)$ be $f_X$.
 
-  As observed in the proof of Proposition~\ref{prop easy way}, the support of any nonzero vector parallel to an edge is on the indices corresponding to the four vertices bounding the quadrilateral of the dissection associated with the edge.  Thus if $V_{>3}(\tau(W)) \neq V_{>3}(\tau(X))$ (notation as defined before Lemma~\ref{lem good quads}) then the span of the vectors parallel to their edges has different support and so they cannot be parallel.  So we can assume that $V_{>3}(\tau(W)) = V_{>3}(\tau(X))$.
+  As observed in the proof of Proposition~\ref{prop easy way}, the support of any non-zero vector parallel to an edge is on the indices corresponding to the four vertices bounding the quadrilateral of the dissection associated with the edge.  Thus if $V_{>3}(\tau(W)) \neq V_{>3}(\tau(X))$ (notation as defined before Lemma~\ref{lem good quads}) then the span of the vectors parallel to their edges has different support and so they cannot be parallel.  So we can assume that $V_{>3}(\tau(W)) = V_{>3}(\tau(X))$.
 
     Since $\tau(W)$ and $\tau(X)$ do not have the same set of non-triangle faces, there must be some diagonal $d$ of $\tau(W)$ that crosses through a non-triangle face $f$ of $\tau(X)$. 
     It will be most convenient to consider faces in terms of their normal vectors. We make use of the construction discussed on p8 of \cite{CSZinequivalent}: namely, pick one side of $d$ to be positive and define the $i$th coordinate of the vector $\omega^+_d$ to be
@@ -1304,7 +1304,7 @@ Now $d'$ is also a diagonal of $D_1$ that crosses the non-triangle face $f$ of $
     \end{align*}
     which also evaluates to 0.
 
-    Now, $\tau(W)$ and $\tau(X)$ satisfy the hypotheses of Lemma~\ref{lem good quads}, so we can assume that $f$ and $d$ have the property that we can choose a side of $d$ to be the positive side in such a way that exactly one vertex of $f$ is strictly on the positive side.  Then $\omega^+_d$ and the direction vector of $d$ have common support exactly on that one vertex and so their dot product is nonzero.  Since the direction vector of $d$ is contained in the direction of $\tau(X)$ but is not orthogonal to $\omega^+_d$, while $\omega^+_d$ is normal to the face of $\tau(W)$, it follows that the faces associated to $\tau(W)$ and $\tau(X)$ are not parallel, as desired.
+    Now, $\tau(W)$ and $\tau(X)$ satisfy the hypotheses of Lemma~\ref{lem good quads}, so we can assume that $f$ and $d$ have the property that we can choose a side of $d$ to be the positive side in such a way that exactly one vertex of $f$ is strictly on the positive side.  Then $\omega^+_d$ and the direction vector of $d$ have common support exactly on that one vertex and so their dot product is non-zero.  Since the direction vector of $d$ is contained in the direction of $\tau(X)$ but is not orthogonal to $\omega^+_d$, while $\omega^+_d$ is normal to the face of $\tau(W)$, it follows that the faces associated to $\tau(W)$ and $\tau(X)$ are not parallel, as desired.
 \end{proof}
 
 
