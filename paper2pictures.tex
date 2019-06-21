@@ -393,54 +393,107 @@
 
 
 
-Template to set up a partial WLD diagram
+% Template to set up a partial WLD diagram
+
+% \[
+% \begin{tikzpicture}[baseline=(current bounding box.east)]
+% 	\begin{scope}
+% 	\drawWLDfragment[10]{2}{0.5} 
+% 	\drawnumberspartial % use this to debug
+% \end{scope}
+% \end{tikzpicture}
+% \]
+
+% \vspace{4em}
+% Working example:
+
+% \[
+% \begin{tikzpicture}[baseline=(current bounding box.east)]
+% 	\begin{scope}
+% 	\drawWLDfragment[8]{4}{0.3} % big radius, small fraction of diagram: wide shallow arc
+% 	%\drawnumberspartial
+% 	%
+% 	% vertices don't get displayed automatically, you have to declare each one that you want to see 
+% 	\newnode[above right]{1}{i}
+% 	\newnode[below]{2}{i+1}
+% 	\newnode[below]{6}{}
+% 	%
+% 	%
+% 	% new propagator: doesn't have to be whole numbers
+% 	\newprop[midway,above]{1.5}{8.2}{\footnotesize $p$}
+% 	%
+% 	%
+% 	%
+% 	% for small props, we extend them past the edge of the diagram and then clip otherwise they go squiggly at the ends
+% 	% so they need to go inside a scope
+% 	% \startpoint,\endpoint are the angles that define the start/end of the WLD curve
+
+% 	%
+% 	% sometimes we need to place a label manually: the number multiplying the \step corresponds to the numbers in \drawnumberspartial
+% 	\node at (\zero + 4.6*\step:\radius*0.9){\footnotesize $q$};
+% \end{scope}
+% \end{tikzpicture}
+% \]
+
+% \newpage 
+
+
+
+to replace the currently unlabelled picture in Lemma 3.5 (lem sian)
 
 \[
-\begin{tikzpicture}[baseline=(current bounding box.east)]
+\begin{tikzpicture}[baseline=(current bounding box.east),rotate=-20]
 	\begin{scope}
-	\drawWLDfragment[10]{2}{0.5} 
-	\drawnumberspartial % use this to debug
-\end{scope}
-\end{tikzpicture}
-\]
-
-\vspace{4em}
-Working example:
-
-\[
-\begin{tikzpicture}[baseline=(current bounding box.east)]
+	\drawWLDfragment[10]{3}{0.4} 
+	%\drawnumberspartial % use this to debug
+	\centerarc[linehighlight](0,0)(\zero + 1.5*\step:\zero + 2.35*\step:\radius)
+	\newnode{1}{}
+	\newnode{3}{}
+	\newnode{4}{}
+	\newnode{5}{}
+	\newnode[below]{9}{i_1}
+	\newnode{10}{}
+	\newprop[midway,above]{1.4}{9.5}{\footnotesize $q_1$}
 	\begin{scope}
-	\drawWLDfragment[8]{4}{0.3} % big radius, small fraction of diagram: wide shallow arc
-	%\drawnumberspartial
-	%
-	% vertices don't get displayed automatically, you have to declare each one that you want to see 
-	\newnode[above right]{1}{i}
-	\newnode[below]{2}{i+1}
-	\newnode[below]{6}{}
-	%
-	%
-	% new propagator: doesn't have to be whole numbers
-	\newprop[midway,above]{1.5}{8.2}{\footnotesize $p$}
-	%
-	%
-	%
-	% for small props, we extend them past the edge of the diagram and then clip otherwise they go squiggly at the ends
-	% so they need to go inside a scope
-	% \startpoint,\endpoint are the angles that define the start/end of the WLD curve
-	\begin{scope}
-	\clipcenterarc(0,0)(\startpoint:\endpoint:\radius)
-	\newpropbend{4.2}{6.7}{55}
-	\newpropbend{1.8}{3.8}{55}
+		\clipcenterarc(0,0)(\startpoint:\endpoint:\radius)
+		\newpropbend{2.3}{4.7}{60}
+		\node at (\zero + 3.5*\step:\radius*0.78) {\footnotesize $p_1$};
 	\end{scope}
-	%
-	% sometimes we need to place a label manually: the number multiplying the \step corresponds to the numbers in \drawnumberspartial
-	\node at (\zero + 4.6*\step:\radius*0.9){\footnotesize $q$};
+\node[align = center] at (\zero +1.7*\step:\radius*1.4) {\footnotesize \em 0, 1, or 2 \\ \footnotesize \em vertices in \\ \footnotesize \em this region};
+\node at (\zero + 10*\step:\radius*0.3) {$\cP_{in}(q_1)$};
+
 \end{scope}
 \end{tikzpicture}
 \]
 
 
-\newpage
+a second picture for lem sian
+
+\[
+\begin{tikzpicture}[baseline=(current bounding box.east)]
+	\begin{scope}
+	\drawWLDfragment[15]{4}{0.4} 
+	%\drawnumberspartial % use this to debug
+	\newnode[left]{1}{i_r}
+	\newnode[left]{2}{i_r+1}
+	\newnode{5}{}
+	\newnode{6}{}
+	\newnode{7}{}
+	\newnode{8}{}
+	\newnode[right]{14}{k_r}
+	\newnode[right]{15}{k_r+1}
+	\newprop[midway,above]{1.5}{14.5}{\footnotesize $q_r$}
+	\draw[smallpropagator,gray] (\zero+2.5*\step:\radius) -- (\zero + 12.5*\step:\radius) node[midway,above,gray] {\footnotesize $q_{r}'$};
+	\begin{scope}
+		\clipcenterarc(0,0)(\startpoint:\endpoint:\radius)
+		\newpropbend{5.2}{7.7}{80}
+		\node at (\zero + 6.5*\step:\radius*0.85) {\footnotesize $p_{r+1}$};
+	\end{scope}
+\end{scope}
+\end{tikzpicture}
+\]
+
+
 
 
 
@@ -509,7 +562,8 @@ Working example:
 	\begin{scope}
 	\drawWLDfragment[8]{4}{0.3}
 	%\drawnumbers % use this to debug
-	\clip (\zero + 1.5*\step:1.5*\radius) rectangle (345:{\radius});
+	%\clip (\zero + 1.5*\step:1.5*\radius) rectangle (345:{\radius});
+	\centerarc[linehighlight](0,0)(\zero + 2.8*\step:\zero + 6.2*\step:\radius)
 	\newnode[below]{1}{i}
 	\newnode[below]{2}{i+1}
 	\newnode[below]{3}{l}
@@ -518,11 +572,11 @@ Working example:
 	\newnode[below]{6}{l+3}
 	\newnode[below]{7}{j}
 	\newnode[below]{8}{\quad j+1}
-	\node[rotate=-15] at (\zero + 2.7*\step:\radius) {\Large $($};
-	\node[rotate=15] at (\zero + 6.3*\step:\radius) {\Large $)$};
+	%\node[rotate=-15] at (\zero + 2.7*\step:\radius) {\Large $($};
+	%\node[rotate=15] at (\zero + 6.3*\step:\radius) {\Large $)$};
 	\node at (\zero + 4.5*\step:\radius*0.85) {\em \scriptsize up to 4 vertices here};
 	\begin{scope}
-	\clip (0,0) circle (\radius);
+	\clipcenterarc(0,0)(\startpoint-10:\endpoint+10:\radius)
 		\draw[smallpropagator] (\zero+1.3*\step:\radius*1.2) to [bend left = 40] (\zero + 7.7*\step:\radius*1.2); 
 	\node at (\zero + 4.5*\step:\radius*0.5){\footnotesize $q$};
 \end{scope}
@@ -577,13 +631,11 @@ Working example:
 \end{tikzpicture}
 \]
 
-\newpage
-
 
 
  fig 3 cases
 
-
+Note: check the proof to make sure all the vertices are labeled correctly, since it's been rewritten several times since the picture was drawn, and rewrite any references to ``left two cases'' etc since they now have labels 1, 2, 3, 4.
 
 
 \begin{tabular}{lll}
@@ -596,8 +648,8 @@ Working example:
 	\centerarc[linehighlight](0,0)(\zero + 1.85*\step:\zero + 4.4*\step:\radius)
 	\centerarc[linehighlight](0,0)(\zero + 6.75*\step:\zero + 7.4*\step:\radius)
 	% labels explaining the highlighted regions
-	\node[align = center] at (\zero + 2.7*\step:\radius*1.3) {\em \footnotesize 1 or 2 nodes \\[3pt] \em \footnotesize in this region};
-	\node[align = center] at (\zero + 7.5*\step:\radius*1.4) {\em \footnotesize 0 or 1 nodes \\[3pt]\em \footnotesize in this region};
+	\node[align = center] at (\zero + 2.7*\step:\radius*1.3) {\em \footnotesize 1 or 2 vertices \\[3pt] \em \footnotesize in this region};
+	\node[align = center] at (\zero + 7.5*\step:\radius*1.4) {\em \footnotesize 0 or 1 vertices \\[3pt]\em \footnotesize in this region};
 	\begin{scope} % this scope draws the propagators and their labels
 		\clipcenterarc(0,0)(\startpoint-20:\endpoint+20:\radius)
 		%q
@@ -636,8 +688,8 @@ Working example:
 	\centerarc[linehighlight](0,0)(\zero + 1.85*\step:\zero + 2.4*\step:\radius)
 	\centerarc[linehighlight](0,0)(\zero + 4.75*\step:\zero + 7.4*\step:\radius)
 	%labels for highlighted regions
-	\node[align = center] at (\zero + 6.6*\step:\radius*1.3) {\em \footnotesize 1 or 2 nodes \\[3pt]\em \footnotesize in this region};
-	\node[align = center] at (\zero + 1.6*\step:\radius*1.35) {\em \footnotesize 0 or 1 nodes \\[3pt]\em \footnotesize in this region};
+	\node[align = center] at (\zero + 6.6*\step:\radius*1.3) {\em \footnotesize 1 or 2 vertices \\[3pt]\em \footnotesize in this region};
+	\node[align = center] at (\zero + 1.6*\step:\radius*1.35) {\em \footnotesize 0 or 1 vertices \\[3pt]\em \footnotesize in this region};
 	% draw props and their labels
 	\begin{scope}
 		\clipcenterarc(0,0)(\startpoint-20:\endpoint+20:\radius)
@@ -677,7 +729,7 @@ Working example:
 	% highlight region
 	\centerarc[linehighlight](0,0)(\zero + 3.6*\step:\zero + 5.4*\step:\radius)
 	% region label
-	\node[align = center] at (\zero + 4.5*\step:\radius*1.3) {\em \footnotesize 0, 1, or 2 nodes \\[3pt]\em \footnotesize in this region};
+	\node[align = center] at (\zero + 4.5*\step:\radius*1.3) {\em \footnotesize 0, 1, or 2 vertices \\[3pt]\em \footnotesize in this region};
 	% scope to draw props and their labels
 	\begin{scope}
 		\clipcenterarc(0,0)(\startpoint-20:\endpoint+20:\radius)
@@ -744,76 +796,234 @@ Working example:
 \end{tikzpicture}
 \end{tabular}
 
+
+
+
+
 fig R eg
 
-\bas 
+\begin{tabular}{rrrrr}
 \begin{tikzpicture}[rotate=67.5,baseline=(current bounding box.east)]
 	\begin{scope}
 	\drawWLD{7}{1.5}
 	\drawnumbers
 	\drawlabeledprop{1}{-1}{6}{0}{\footnotesize   $p$}
 	\drawlabeledprop{1}{0}{5}{0}{\footnotesize   $q$}
-	\drawlabeledprop{1}{1}{4}{0}{\footnotesize \; \qquad  $r$}
+	\drawlabeledprop{1}{1}{4}{0}{\footnotesize \; \qquad  $s$}
+	\pgfmathsetmacro{\move}{\angle/\n};
+	\draw[->,shorten >=2pt,red,thick] (1.5*\angle + -1*\move:\radius) to[bend left = 45] (\angle*1:\radius); %p
+	\draw[->,shorten >=2pt,red,thick] (1.5*\angle:\radius) to[bend right = 45] (\angle*2:\radius); %q
+	\draw[->,shorten >=2pt,red,thick] (4.5*\angle:\radius) to[bend left = 45] (\angle*4:\radius); %r
 	\node at (\angle*1.5:\radius*2) {$I_1$};
-	\node at (4*\angle:\radius*1.7) {$I_1(p) = 1, \; I_1(q) = 2, \; I_1(r) = 4$};
+	\node[align = center] at (4*\angle:\radius*1.7) {$I_1(p) = 1, \; I_1(q) = 2,$ \\[5pt] $I_1(s) = 4$.};
 		\end{scope}
-	\end{tikzpicture} \; ; \; 
+	\end{tikzpicture} 
+	& \quad \quad  &
 \begin{tikzpicture}[rotate=67.5,baseline=(current bounding box.east)]
 	\begin{scope}
 	\drawWLD{7}{1.5}
 	\drawnumbers
 	\drawlabeledprop{1}{-1}{6}{0}{\footnotesize   $p$}
 	\drawlabeledprop{1}{0}{5}{0}{\footnotesize   $q$}
-	\drawlabeledprop{1}{1}{4}{0}{\footnotesize \; \qquad  $r$}
+	\drawlabeledprop{1}{1}{4}{0}{\footnotesize \; \qquad  $s$}
+	\pgfmathsetmacro{\move}{\angle/\n};
+	\draw[->,shorten >=2pt,red,thick] (1.5*\angle + -1*\move:\radius) to[bend right = 45] (\angle*2:\radius); %p
+	\draw[->,shorten >=2pt,red,thick] (5.5*\angle:\radius) to[bend left = 45] (\angle*5:\radius); %q
+	\draw[->,shorten >=2pt,red,thick] (4.5*\angle:\radius) to[bend left = 45] (\angle*4:\radius); %r
 	\node at (\angle*1.5:\radius*2) {$I_2$};
-	\node at (4*\angle:\radius*1.7) {$I_2(p) = 1,  \; I_2(r) = 4,\; I_2(q) = 5$};
+	\node[align = center] at (4*\angle:\radius*1.7) {$I_2(p) = 1,  \; I_2(s) = 4,$ \\[5pt] $I_2(q) = 5.$};
 	\end{scope} 
-\end{tikzpicture}\; ; \;
+\end{tikzpicture}
+& \quad & 
 \begin{tikzpicture}[rotate=67.5,baseline=(current bounding box.east)]
 	\begin{scope}
 	\drawWLD{7}{1.5}
 	\drawnumbers
 	\drawlabeledprop{1}{-1}{6}{0}{\footnotesize   $p$}
 	\drawlabeledprop{1}{0}{5}{0}{\footnotesize   $q$}
-	\drawlabeledprop{1}{1}{4}{0}{\footnotesize \; \qquad  $r$}
+	\drawlabeledprop{1}{1}{4}{0}{\footnotesize \; \qquad  $s$}
+	\pgfmathsetmacro{\move}{\angle/\n};
+	\draw[->,shorten >=2pt,red,thick] (6.5*\angle:\radius) to[bend left = 45] (\angle*6:\radius); %p
+	\draw[->,shorten >=2pt,red,thick] (5.5*\angle:\radius) to[bend left = 45] (\angle*5:\radius); %q
+	\draw[->,shorten >=2pt,red,thick] (4.5*\angle:\radius) to[bend left = 45] (\angle*4:\radius); %r
 	\node at (\angle*1.5:\radius*2) {$I_3 = I_4$};
-	\node at (4*\angle:\radius*1.7) {$I_3(r) = 4,\;  I_3(q) = 5, \; I_3(p) = 6$ };
+	\node[align = center] at (4*\angle:\radius*1.7) {$I_3(s) = 4,\;  I_3(q) = 5,$ \\[5pt] $I_3(p) = 6.$ };
 	\end{scope} 
-\end{tikzpicture}\quad ;  \\  
+\end{tikzpicture}  
+\\ 
+ & & & &  \\
  \begin{tikzpicture}[rotate=67.5,baseline=(current bounding box.east)]
 	\begin{scope}
 	\drawWLD{7}{1.5}
 	\drawnumbers
 	\drawlabeledprop{1}{-1}{6}{0}{\footnotesize   $p$}
 	\drawlabeledprop{1}{0}{5}{0}{\footnotesize   $q$}
-	\drawlabeledprop{1}{1}{4}{0}{\footnotesize \; \qquad  $r$}
+	\drawlabeledprop{1}{1}{4}{0}{\footnotesize \; \qquad  $s$}
+	\pgfmathsetmacro{\move}{\angle/\n};
+	\draw[->,shorten >=2pt,red,thick] (6.5*\angle:\radius) to[bend right = 45] (\angle*7:\radius); %p
+	\draw[->,shorten >=2pt,red,thick] (5.5*\angle:\radius) to[bend right = 45] (\angle*6:\radius); %q
+	\draw[->,shorten >=2pt,red,thick] (4.5*\angle:\radius) to[bend right = 45] (\angle*5:\radius); %r
 	\node at (\angle*1.5:\radius*2) {$I_5$};
-	\node at (4*\angle:\radius*1.7) {$I_5(r) = 5,\;  I_5(q) = 6, \; I_5(p) = 7$ };
-	\end{scope} 
-\end{tikzpicture}\; ; \; 
-\begin{tikzpicture}[rotate=67.5,baseline=(current bounding box.east)]
-	\begin{scope}
-	\drawWLD{7}{1.5}
-	\drawnumbers
-	\drawlabeledprop{1}{-1}{6}{0}{\footnotesize   $p$}
-	\drawlabeledprop{1}{0}{5}{0}{\footnotesize   $q$}
-	\drawlabeledprop{1}{1}{4}{0}{\footnotesize \; \qquad  $r$}
-	\node at (\angle*1.5:\radius*2) {$I_6$};
-	\node at (4*\angle:\radius*1.7) {$I_6(q) = 6, \; I_6(p) = 7, \; I_6(r) = 1 $ };	
-	\end{scope}
-	\end{tikzpicture}  \; ; \; 
-\begin{tikzpicture}[rotate=67.5,baseline=(current bounding box.east)]
-	\begin{scope}
-	\drawWLD{7}{1.5}
-	\drawnumbers
-	\drawlabeledprop{1}{-1}{6}{0}{\footnotesize   $p$}
-	\drawlabeledprop{1}{0}{5}{0}{\footnotesize   $q$}
-	\drawlabeledprop{1}{1}{4}{0}{\footnotesize \; \qquad  $r$}
-	\node at (\angle:\radius*1.7) {$I_7$};
-	\node at (4*\angle:\radius*1.7) {$I_7(p) = 1,  \; I_7(q) = 1, \; I_7(r) = 2$};
+	\node[align = center] at (4*\angle:\radius*1.7) {$I_5(s) = 5,\;  I_5(q) = 6,$  \\[5pt] $I_5(p) = 7$ };
 	\end{scope} 
 \end{tikzpicture}
-\eas
+& \quad & 
+\begin{tikzpicture}[rotate=67.5,baseline=(current bounding box.east)]
+	\begin{scope}
+	\drawWLD{7}{1.5}
+	\drawnumbers
+	\drawlabeledprop{1}{-1}{6}{0}{\footnotesize   $p$}
+	\drawlabeledprop{1}{0}{5}{0}{\footnotesize   $q$}
+	\drawlabeledprop{1}{1}{4}{0}{\footnotesize \; \qquad  $s$}
+	\pgfmathsetmacro{\move}{\angle/\n};
+	\draw[->,shorten >=2pt,red,thick] (6.5*\angle:\radius) to[bend right = 45] (\angle*7:\radius); %p
+	\draw[->,shorten >=2pt,red,thick] (5.5*\angle:\radius) to[bend right = 45] (\angle*6:\radius); %q
+	\draw[->,shorten >=2pt,red,thick] (1.5*\angle + 1*\move:\radius) to[bend left = 45] (\angle*1:\radius); %r
+	\node at (\angle*1.5:\radius*2) {$I_6$};
+	\node[align = center] at (4*\angle:\radius*1.7) {$I_6(q) = 6, \; I_6(p) = 7, $ \\[5pt] $I_6(s) = 1. $ };	
+	\end{scope}
+	\end{tikzpicture}  
+& \quad &
+\begin{tikzpicture}[rotate=67.5,baseline=(current bounding box.east)]
+	\begin{scope}
+	\drawWLD{7}{1.5}
+	\drawnumbers
+	\drawlabeledprop{1}{-1}{6}{0}{\footnotesize   $p$}
+	\drawlabeledprop{1}{0}{5}{0}{\footnotesize   $q$}
+	\drawlabeledprop{1}{1}{4}{0}{\footnotesize \; \qquad  $s$}
+	\pgfmathsetmacro{\move}{\angle/\n};
+	\draw[->,shorten >=2pt,red,thick] (6.5*\angle:\radius) to[bend right = 45] (\angle*7:\radius); %p
+	\draw[->,shorten >=2pt,red,thick] (1.5*\angle:\radius) to[bend left = 45] (\angle*1:\radius); %q
+	\draw[->,shorten >=2pt,red,thick] (1.5*\angle + \move:\radius) to[bend right = 45] (\angle*2:\radius); %r
+	\node at (\angle*1.5:\radius*2) {$I_7$};
+	\node[align = center] at (4*\angle:\radius*1.7) {$I_7(p) = 1,  \; I_7(q) = 1, $ \\[5pt] $I_7(s) = 2.$};
+	\end{scope} 
+\end{tikzpicture}
+\\
+\end{tabular}
+
+
+
+
+
+fig no big factors
+
+
+\[
+\begin{tikzpicture}[baseline=(current bounding box.east),rotate=-20]
+\begin{scope}
+	\drawWLDfragment[8]{3}{0.4} 
+	%\drawnumberspartial % use this to debug
+	\newnode[left]{1}{i-1}
+	\newnode[below]{2}{i}
+	\newnode[below]{7}{m}
+	\begin{scope}
+		\clipcenterarc(0,0)(\startpoint-10:\endpoint+10:\radius)
+		\newpropbend{1.7}{7.2}{60}
+		\draw[smallpropagator,blue] (\zero+7.8*\step:\radius*1.1) to[bend left = 55] (\zero + 10*\step:\radius*1.1);
+		\node at (\zero + 1.2*\step:\radius*0.5) {\footnotesize $p$};
+	\end{scope}
+	\node[align = center,black] at (\zero + \step*4.5:\radius*0.65) {\em \footnotesize propagators \\ \footnotesize \em inside $p$};
+	\draw[->,shorten >=2pt,thick,gray] (\zero + 1.6*\step:\radius) to[bend left = 45] (\zero + 1*\step:\radius); %p
+	\draw[->,shorten >=2pt,thick,gray] (\zero + 7.9*\step:\radius) to[bend left = 45] (\zero + 7*\step:\radius); 
+	\node[align = center,black] at (\zero + 6.8*\step:1.5*\radius) {\em \footnotesize If $m \in I_i$ then \\ \em \footnotesize it was contributed by \\ \em \footnotesize the blue propagator};
+\end{scope}
+\end{tikzpicture}
+\qquad 
+\begin{tikzpicture}[baseline=(current bounding box.east),rotate=-20]
+	\begin{scope}
+	\drawWLDfragment[8]{3}{0.4}  
+	%\drawnumberspartial % use this to debug
+	\newnode[left]{1}{i}
+	\newnode[below]{2}{i+1}
+	\newnode[below]{7}{j}
+	\centerarc[red,line width = 2pt,line cap = round](0,0)(\zero + 1.5*\step:\zero+1.56*\step:\radius);
+	\draw[->,shorten >=2pt,thick,gray] (\zero + 1.45*\step:\radius) to[bend left = 45] (\zero + 1*\step:\radius); %p
+	\draw[->,shorten >=2pt,thick,gray] (\zero + 1.61*\step:\radius) to[bend right = 45] (\zero + 2*\step:\radius); %q 
+	\draw[->,shorten >=2pt,thick,gray] (\zero + 7.7*\step:\radius) to[bend left = 45] (\zero + 7*\step:\radius); %blue
+	\begin{scope}
+		\clipcenterarc(0,0)(\startpoint-10:\endpoint+10:\radius)
+		\newpropbend{1.6}{7.2}{40} % q
+		\draw[smallpropagator] (\zero+1.5*\step:\radius*1.1) to[bend right = 40] (\zero  - 3*\step:\radius*1.1); % p
+		\draw[smallpropagator,blue] (\zero+7.6*\step:\radius*1.1) to[bend left = 55] (\zero + 10*\step:\radius*1.1);
+		\node at (\zero + 5*\step:\radius*0.3) {\footnotesize $q$};
+		\node at (\zero + 1*\step:\radius*0.6) {\footnotesize $p$};
+	\end{scope}
+	\node[align = center,black] at (\zero + \step*4.5:\radius*0.75) {\em \footnotesize propagators \\ \footnotesize \em inside $q$};
+	\node[align = center] at (\zero + 1.5*\step:\radius*1.5) {\footnotesize \em No \\ \footnotesize \em propagators \\ \footnotesize \em between \\ \footnotesize \em $p$ and $q$ \\ \footnotesize \em here};
+	\node[align = center,black] at (\zero + 6.8*\step:1.5*\radius) {\em \footnotesize If $j \in I_i$ then \\ \em \footnotesize it was contributed by \\ \em \footnotesize the blue propagator};
+\end{scope}
+\end{tikzpicture}
+\]
+
+
+
+
+fig quadratic
+
+\[
+\begin{tikzpicture}[baseline=(current bounding box.east)]
+	\begin{scope}
+	\drawWLDfragment[2]{4}{0.1} 
+	%\drawnumberspartial % use this to debug
+	\newnode[below]{1}{a}
+	\newnode[below]{2}{b}
+	\begin{scope}
+	\clipcenterarc(0,0)(\zero - 1.5*\step:\zero + 4.5*\step:\radius)
+	\newprop[midway,left]{1.33}{-7}{\footnotesize $p$}
+	\newprop[midway,right]{1.66}{10}{\footnotesize $q$}
+	\end{scope}
+	\node at (\zero + 0.6*\step:\radius*0.7) {\footnotesize $p$};
+	\node at (\zero + 2.4*\step:\radius*0.7) {\footnotesize $q$};
+\end{scope}
+\end{tikzpicture}
+\begin{tikzpicture}[baseline=(current bounding box.east)]
+	\begin{scope}
+	\drawWLDfragment[2]{4}{0.1} 
+	%\drawnumberspartial % use this to debug
+	\newnode[below]{1}{b}
+	\newnode[below]{2}{a}
+	\begin{scope}
+	\clipcenterarc(0,0)(\zero - 1.5*\step:\zero + 4.5*\step:\radius)
+	\newprop[midway,left]{1.33}{-7}{\footnotesize $q$}
+	\newprop[midway,right]{1.66}{10}{\footnotesize $p$}
+	\end{scope}
+	\node at (\zero + 0.6*\step:\radius*0.7) {\footnotesize $q$};
+	\node at (\zero + 2.4*\step:\radius*0.7) {\footnotesize $p$};
+\end{scope}
+\end{tikzpicture}
+\]
+
+fig part4
+
+\[
+\begin{tikzpicture}[baseline=(current bounding box.east),rotate = -40]
+	\begin{scope}
+	\drawWLDfragment[8]{3}{0.4} 
+	%\drawnumberspartial % use this to debug
+	\newnode{1}{}
+	\newnode[left]{2}{i-1}
+	\newnode[below]{5}{a-1\quad}
+	\newnode[below]{6}{a}
+	\newnode[below]{7}{b}
+	\begin{scope}
+		\clipcenterarc(0,0)(\startpoint:\endpoint+\step:\radius)
+		\newpropbend{1.5}{5.7}{20}
+		\newpropbend{1.3}{6.4}{30}
+		\newprop{6.6}{-6}{}
+	\end{scope}
+	\node at (\zero + 3.5*\step:\radius*0.8){\footnotesize $s$};
+	\node at (\zero + 4.8*\step:\radius*0.45){\footnotesize $p$};
+	\node at (\zero + 8*\step:\radius*0.65){\footnotesize $q$};
+\end{scope}
+\end{tikzpicture}
+\]
+
+
+
+
+
+
 
 
 \end{document}
