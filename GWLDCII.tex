@@ -887,6 +887,12 @@ The reader can easily verify that this sequence of $k$-sets satisfies the defini
 
 \medskip
 
+{\color{violet}\begin{dfn} \label{proporderingdfn}
+Each $I^W_i$ imposes an ordering on the propagators of $W = (\cP, n)$, determined by when the propagator contributes to the sequence. If $W$ has $k$ propagators, we ma write $\cP = \{p_1, \ldots p_k\}$ with $I_i = I_i(p_1)I_i(p_2) \ldots I_i(p_k)$, where the superscript $W$ is taken as read.
+\end{dfn}
+
+Since each propagator is removed by the algorithm after it contributes, each propagator contributed exactly once to $I^W_i$, making the above ordering well defined.}
+
 \begin{rmk}\label{rmk algorithm locally same}
 The following observation will be very useful in many of the arguments below.  
 
@@ -1255,7 +1261,33 @@ This covers all cases and completes the induction, and thence the proof of the t
 
 \end{proof}
 
+\sanote{alternate proof of second half of above}
+{\color{violet} \begin{thm}
+The Grassmann necklace $(I_1 \ldots I_n)$ is the Grassmann neclace for $M(W)$ 
+\end{thm}
 
+\begin{proof}
+We have shown that $(I_1,\dots,I_n)$ is a Grassmann necklace; it remains to check that this Grassmann necklace corresponds to the positroid $M(W)$.  Recall from the discussion following Definition~\ref{def:grassmann necklace}, and equation \eqref{basesofmatroids} in particular, that it suffices to show: 
+\begin{itemize}
+\item For each $i \in [n]$, $I_i$ is a basis for $M(W)$.
+\item If $J$ is lexicographically smaller than $I_i$ with respect to $<_i$ (for any $i \in [n]$) then $J$ is not a basis for $M(W)$. 
+\end{itemize}
+The first point follows immediately: since the algorithm is pairing each $j \in I_i$ with a unique propagator supported on that vertex, $I_i$ is a basis for $M(W)$ by Corollary~\ref{lem basis as perm}.
+ 
+For the second point, consider the matrix $C(W)$ associated to the diagram $W$. Recall that $C(W)$ is only defined up to an ordering of the propoagators of $W$. Therefore order them according to the ordering induced by the algorithm for $I_i$. Write $\cP = \{p_1, \ldots , p_k\}$. That is, $p_i$ defines the $i^{th}$ row of $C(W)$. If $p, q \in \Prop(i)$ are two propagators supported on the vertex $i$, we may write $p = (a_p, b_p)$ and $q = (a_q, b_q)$, with the initial vertices $a_p$ and $a_q$ in the set $\{i, i-1\}$. By construction, the propagator $q$ is located clockwise relative to $p$ if and only if $p$ is inside $q$. That is, $p \in \cP_{in}(q, <_{a_q})$. 
+
+For $m < k$, write $\cP_m =\{p_1, \ldots , p_m\} \subset \cP$ to indicate the first $m$ propagators. For any subset of propagators $Q \subset \cP$, write $W|_Q = (Q, [n])$ be the subdiagram of $W$ consisting only of the propagators in $Q$ and all the vertices $[n]$.
+
+Write $I_i(p_j)=a_j$. By algorithm \ref{alg:put GN on WLD}, $a_j$ is the smallest number in the $<_{a_{j-1}}$ ordering such that $c_{j, a_j} \neq 0$ (that is, is an indeterminant entry). It is the first column in the $j^{th}$ row of $C(W)$ that is both non-zero and is greater than the index contributed by the previous propagator:  \bas \begin{bmatrix}\ddots & & & & & & \\ \ldots  & c_{j-1, a_{j-1}} & * & \ldots &  & & \\  \ldots  &* &0 & \ldots & 0 &c_{j, a_j} & \ldots \\ & & & & & & \ddots \end{bmatrix}  \eas
+
+\hlfix{In particular, any number between two consecutive indices in $I_i$, say $a_j < v < a_{j+1}$, correspond to vertices inside the propagator $p_j$ in the $a_j-1$ ordering. }{I know we got rid or interior vertices. Can we bring it back or rephrase?} Furthermore, every propagator preceeding $p_j$ is outside it in the same ordering: $\cP_{j-1} \subset \cP_{out}(p_j)$ in the $a_j-1$ ordering. 
+
+Let $J = (j_1,\ldots j_k)$ be a sequence that is lexicographically less than $I_i = (a_1 \ldots a_k)$: $J <_i I_i$. By the above, for some $m < k$, $j_m <_i a_m$ and the matrix entry $c_{m, j_m} = 0$ is $0$. Without loss of generality, let $m$ be the smallest $m$ in the $<_i$ order for which this is true: \bas \forall l <m, \; I_i(p_l) = j_l \; ; \; j_m < I_i(p_m) \;.\eas Write $J_m = (j_1, \ldots, j_m)$ indicate the first $m$ entries of $m$. 
+
+We claim that $J_m$ is not a basis for $W|_{\cP_m}$. To see this, first note that, since $c_{m, j_m} = 0$, the propagator $p_m$ is not supported on $j_m$. Furthermore, by construction, $a_{m-1} < j_m < a_m$. Therefore, $j_m \in V_{in}(p_{j_m})$ in the $a_j-1$ ordering. Since  $\cP_{j-1} \subset \cP_{out}(p_j)$ in the $  a_j-1$ ordering, non-crossing of propagators ensures that none of the first $m-1$ propoagators are supported on the vertex $j_m$. This implies that the minor of $C(W|_{\cP_m})$ defined by $J_{m}$, has a column of $0$s. That is, $J_m$ is not an independent set in $C(W|_{\cP_m})$, and thus not in $C(W)$.
+
+\end{proof}
+}
 We can now unambiguously refer to Algorithm~\ref{alg:put GN on WLD} as the Grassmann necklace algorithm. We close this section with a simple observation about the Grassmann necklaces of positroids associated to Wilson loop diagrams.
 
 
