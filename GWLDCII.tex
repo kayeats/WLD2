@@ -925,7 +925,7 @@ In order for $q$ to remain unassigned until vertex $b$, there must be another pr
 \end{proof}
 
 \begin{cor}\label{GN alg well defined}
-If $W$ is an admissible Wilson loop diagram with $k$ propagators, then Algorithm~\ref{alg:put GN on WLD} assigns exactly $k$ vertices to each $I_i$.
+If $W$ is an admissible Wilson loop diagram with $k$ propagators, then Algorithm~\ref{alg:put GN on WLD} assigns exactly $k$ vertices to each $I_i$. \sanote{suddenly confused. Don't we need working about in going onely once around or somesuch?}
 \end{cor}
 \begin{proof}
 Fix $i \in [n]$. It follows from the proof of Lemma~\ref{lem no fourth vertex} that in applying Algorithm~\ref{alg:put GN on WLD} to construct the set $I_i$, the algorithm can never reach the fourth vertex of a propagator's support (ordered with respect to $<_i$) without having already assigned $p$. Therefore if the algorithm starts at vertex $i$, all propagators must have been eliminated by the time it gets to vertex $i-1$, ensuring that the algorithm terminates and that $I_i$ contains exactly $k$ distinct elements.
@@ -1274,19 +1274,52 @@ We have shown that $(I_1,\dots,I_n)$ is a Grassmann necklace; it remains to chec
 \end{itemize}
 The first point follows immediately: since the algorithm is pairing each $j \in I_i$ with a unique propagator supported on that vertex, $I_i$ is a basis for $M(W)$ by Corollary~\ref{lem basis as perm}.
  
-For the second point, consider the matrix $C(W)$ associated to the diagram $W$. Recall that $C(W)$ is only defined up to an ordering of the propoagators of $W$. Therefore order them according to the ordering induced by the algorithm for $I_i$. Write $\cP = \{p_1, \ldots , p_k\}$. That is, $p_i$ defines the $i^{th}$ row of $C(W)$. If $p, q \in \Prop(i)$ are two propagators supported on the vertex $i$, we may write $p = (a_p, b_p)$ and $q = (a_q, b_q)$, with the initial vertices $a_p$ and $a_q$ in the set $\{i, i-1\}$. By construction, the propagator $q$ is located clockwise relative to $p$ if and only if $p$ is inside $q$. That is, $p \in \cP_{in}(q, <_{a_q})$. 
+For the second point, order the propagators according to the ordering induced by the algorithm for $I_i$. Write $\cP = \{p_1, \ldots , p_k\}$. That is, $p_i$ defines the $i^{th}$ row of $C(W)$. For $m<k$, write $\cP_m = \{p_1, \ldots , p_k\}$.
 
-For $m < k$, write $\cP_m =\{p_1, \ldots , p_m\} \subset \cP$ to indicate the first $m$ propagators. For any subset of propagators $Q \subset \cP$, write $W|_Q = (Q, [n])$ be the subdiagram of $W$ consisting only of the propagators in $Q$ and all the vertices $[n]$.
+Write $I_i(p_j)=a_j$. If two consecutive propagators do not contribute consecutive vertices, that is, there exist $a_{j-1} <_i x <_i a_j$ then the vertex $x$ supports only propagators in $\cP_j$, if any: $\Prop(x) \subset \cP_j$. 
+
+Let $J = (j_1,\ldots j_k)$ be a sequence that is lexicographically less than $I_i = (a_1 \ldots a_k)$: $J <_i I_i$. By the above, for some $m < k$, $a_{m-1} <_i j_m <_i a_m$ and the matrix entry $c_{m, j_m} = 0$ is $0$. Without loss of generality, let $m$ be the smallest $m$ in the $<_i$ order for which this is true: \bas \forall l <m, \; I_i(p_l) = j_l \; ; \; j_m < I_i(p_m) \;.\eas Write $J_m = (j_1, \ldots, j_m)$ indicate the first $m$ entries of $J$. We claim that there exists some subset  of vertices $U \subset J_m$ such that $|\Prop(U)| < |U|$. 
+
+Consider the vertices contributed by the propagators originally supported on $j_m$: $V = I_i(\Prop(j_m))$. By construction, these are a subset of $J_{m-1}$. Note that $\Prop(V) \subset \cP_m$. Let $p_l$ be supported on $j_m$. If $q$ is suported on $p_l$, either $q$ preceeds $p_l$ (i.e. is not there when the algorithm reaches $a_l$) or is positioned counterclockwise to $p_l$ at the vertex $a_l$. That is, $q$ is inside $p_l$ in the $<_i$ ordering. By Lemma \ref{lem no fourth vertex}, $q$ does not contibute its last supporting vertex to $I_i$. That is, $I_i(q) <j_m$. \hlfix{But this implies that $q$ contributed before $p_m$, which contradicts the hypothesis.}{Seems to demand that $I_i$ catches all propagators in a single circuit of the vertices. Is this explicit anywhere, or am I jumping the gun?} Therefore $q \in \cP_{m-1}$.
+
+If $\Prop(j_m) = \Prop(V)$, we have that $V$ and $V \cup j_m$ support the same propagators. That is, \bas |\Prop(V)| = |V| = |\Prop(V \cup j_m )| <  |V \cup j_m| \;.\eas
+
+If $\Prop(j_m) \subsetneq \Prop(V)$, expand $V$ to include the vertices contributed by $\Prop(V)$. That is, $V' = I_i(\Prop(V))$. By the argument above, $\Prop(V) \subset \cP_m$. If $\Prop(V) = \Prop(V')$ then the relevant vertex set is $V'$. Else, continue expanding $V'$ in this manner until no new propagators are added. Since all of these sets of propagators are contained in $\cP_m$, which is finite, this process is finite. 
+
+\begin{comment}
+By algorithm \ref{alg:put GN on WLD}, $a_j$ is the smallest number in the $<_{a_{j-1}}$ ordering such that $c_{j, a_j} \neq 0$ (that is, is an indeterminant entry). Therefore, $p_m \not \in \Prop(j_m)$. In fact, no $q$ that follow $p_m$ in the ordering can be supported on $j_m$. Since $j_m < a_m$, the algorithm for $I_i$ checks this vertex before $a_m$.  If any propagator in $\cP \setminus \cP_{m-1}$ are supported on $j_m$, then this propapagator would preceed $p_m$, i.e. be an element of $\cP_{m-1}$. Therefore, the only non-zero entries in column $j_m$ of $C(W)$ lie in the first $m-1$ rows.
+
+Therefore, $\Prop(j_m) \subset \cP_{m-1}$. Let $V =  V(\Prop(j_m)) \cap J_{m-1}$ be the vertices in $J_m$ supporting the propagators supported on $j_m$. That is, $V$ is contains the vertices contributed by $\Prop(j_m)$. So $|\Prop(j_m)| \leq |V|$. We show that $\Prop (V) \subset \Prop_{m-1}$. Suppose otherwise. Let $q \in \cP \setminus \cP_m$ be a propagators after $p_m$ and $p_l \in \Prop(j_m)$ a propagators before $p_m$ supported on $j_m$ such that both $q$ and $p_l$ are supported on $I_i(p_l)= a_l$. Since $p_l$ contributes $a_l$, it must be the clockwisemost propagator in $\cP \setminus \cP_{l-1}$ supported on $a_l$. In other words, $q \in \cP_{in}(p_l, <_{a_l-1})$ is inside $p_l$ in the $a_l-1$ order. Specifically, the last supporting vertex of $q$ is strictly less than $j_m$.  By Lemma \ref{lem no fourth vertex}, $q$ does not contibute its last supporting vertex to $I_i$. That is, $I_i(q) <j_m$. \hlfix{But this implies that $q$ contributed before $p_m$, which contradicts the hypothesis.}{Seems to demand that $I_i$ catches all propagators in a single circuit of the vertices. Is this explicit anywhere, or am I jumping the gun?}
+
+By construction, this implies that $V \subset \Prop(j_m)$. But $V$ contains the vertices 
+Since $J_{m-1}$ is independent, $V \subset J_{m-1}$ is too. Therefore, $|V| \leq |\Prop(V)| $. Since  $\Prop (V) \subset \cP_{m-1}$
+***************
+For the second point, consider the matrix $C(W)$ associated to the diagram $W$. Recall that $C(W)$ is only defined up to an ordering of the propoagators of $W$. Therefore order them according to the ordering induced by the algorithm for $I_i$. Write $\cP = \{p_1, \ldots , p_k\}$. That is, $p_i$ defines the $i^{th}$ row of $C(W)$. 
 
 Write $I_i(p_j)=a_j$. By algorithm \ref{alg:put GN on WLD}, $a_j$ is the smallest number in the $<_{a_{j-1}}$ ordering such that $c_{j, a_j} \neq 0$ (that is, is an indeterminant entry). It is the first column in the $j^{th}$ row of $C(W)$ that is both non-zero and is greater than the index contributed by the previous propagator:  \bas \begin{bmatrix}\ddots & & & & & & \\ \ldots  & c_{j-1, a_{j-1}} & * & \ldots &  & & \\  \ldots  &* &0 & \ldots & 0 &c_{j, a_j} & \ldots \\ & & & & & & \ddots \end{bmatrix}  \eas
-Since $p$ never contributes its last vertex in the $<_i$ order to $I_i$, by Lemma \ref{lem no fourth vertex}, every propagator preceeding $p_j$ is outside it in the $a_j-1$ ordering: $\cP_{j-1} \subset \cP_{out}(p_j)$. 
 
 Let $J = (j_1,\ldots j_k)$ be a sequence that is lexicographically less than $I_i = (a_1 \ldots a_k)$: $J <_i I_i$. By the above, for some $m < k$, $j_m <_i a_m$ and the matrix entry $c_{m, j_m} = 0$ is $0$. Without loss of generality, let $m$ be the smallest $m$ in the $<_i$ order for which this is true: \bas \forall l <m, \; I_i(p_l) = j_l \; ; \; j_m < I_i(p_m) \;.\eas Write $J_m = (j_1, \ldots, j_m)$ indicate the first $m$ entries of $J$. 
+
+We claim that the $j_m^{th}$ column of $C(W)$ is in the span of the columns indexed by $J_{m-1}$.
+
+Since $J_{m-1}$ is an independent set in $C(W)$, row reduce the first $j_{m-1}$ columns of $C(W)$ to have $1$ in the $(r, j_r)$ position and $0$ to the right: \bas \begin{bmatrix}1 &0  &\ldots  & &  &0 \\  * & \ldots  & * & 1 & 0&\ldots \\    &\ddots &  &  &\ldots & 1 \\  *&* &* &\ldots &* &* \\  &\ddots & & & \ddots &  \\ *&* &* &\ldots &* &*  \end{bmatrix}  \;.\eas \sanote{fix this! wrote echelon order!}
+
+Next consider the $j_m^{th}$ column of $C(W)$. First note that, since $c_{m, j_m} = 0$. Furthermore, no $q$ that follow $p_m$ in the ordering can be supported on $j_m$. Since $j_m < a_m$, the algorithm for $I_i$ checks this vertex before $a_m$.  If any propagators remain to be supported on this vertex after the removal of $p_1$ to $p_{m-1}$, then this propapagator would preceed $p_m$. Therefore, the only non-zero entries in column $j_m$ of $C(W)$ lie in the first $m-1$ rows.  \sanote{add something here} Therefore, column $j_m$ lies in the span of the first $j_{m-1}$ columns of $C(W)$. 
+
+*******
+%If $p, q \in \Prop(i)$ are two propagators supported on the vertex $i$, we may write $p = (a_p, b_p)$ and $q = (a_q, b_q)$, with the initial vertices $a_p$ and $a_q$ in the set $\{i, i-1\}$. By construction, the propagator $q$ is located clockwise relative to $p$ if and only if $p$ is inside $q$. That is, $p \in \cP_{in}(q, <_{a_q})$. 
+
+%For $m < k$, write $\cP_m =\{p_1, \ldots , p_m\} \subset \cP$ to indicate the first $m$ propagators. For any subset of propagators $Q \subset \cP$, write $W|_Q = (Q, [n])$ be the subdiagram of $W$ consisting only of the propagators in $Q$ and all the vertices $[n]$.
+
+
+%Since $p$ never contributes its last vertex in the $<_i$ order to $I_i$, by Lemma \ref{lem no fourth vertex}, every propagator preceeding $p_j$ is outside it in the $a_j-1$ ordering: $\cP_{j-1} \subset \cP_{out}(p_j)$. 
+
 
 We claim that $J_m$ is not a basis for $W|_{\cP_m}$. To see this, first note that, since $c_{m, j_m} = 0$, the propagator $p_m$ is not supported on $j_m$. If $p_m$ does not share support with any propagator in $\cP_m$ in the cyclic interval $[i, j_m]$, then the minor of $C(W|_{\cP_m})$ defined by $J_{m}$, has a row of $0$s.
 
 Otherwise, let $p_l$ be a propagator preceeding $p_m$ ($p_l \in \cP_{m-1}$) that shares support with it in $J_m$: $V(p_l) \cap V(p_m) \cap J_m \neq \emptyset$. Then $p_l \in Q$ is positioned clockwise to $p_m$ on vertex $a_l$, therefore, $p_l$ is outside $p_m$ in the $a_l -1$ order. Since $a_l <_i j_m <_i a_m$ with $a_l$ and $a_m$ both in the support of $p_m$, \hlfix{$j_m$ is inside $p_m$ in the $a_l-1$ ordering. }{I know we got rid or interior vertices. Can we bring it back or rephrase?} Furthermore since all of $\cP_{m-1} \subset \cP_{out}(p_m)$ is outside of $p_m$ in that $a_l-1$ order, and $j_m$ is a vertex inside it, no propagator prior to $p_m$ can be supported on $j_m$. Otherwise, one would have crossing propagators. Therefore, the minor of $C(W|_{\cP_m})$ defined by $J_{m}$, has a column of $0$s.
-
+******
+\end{comment}
 \end{proof}
 }
 
