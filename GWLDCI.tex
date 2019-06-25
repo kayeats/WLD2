@@ -903,30 +903,6 @@ Since Corollary \ref{uniqueproppartitioncor} allows us to decompose any admissib
 
 We begin by proving some useful facts about propagator flats, and flats of matroids associated to admissible Wilson loop diagrams more generally. Recall from Definition~\ref{VPropdfn} that the propagator flat $F(P)$ of $P \subseteq \cP$ denotes the set $V(P^c)^c$ of vertices that do not support any propagators not in $P$.
 
-% \begin{comment}
-
-
-% \begin{dfn}\label{def prop flat} 
-% Let $W = (\cP,n)$ be an admissible Wilson loop diagram and $P \subseteq \cP$. The set $F(P) := V(P^c)^c$ is called the {\em propagator flat} of $P$.
-% \end{dfn}
-% Thus in Lemma \ref{contractsubdiaglem} above we would contract $M(W)$ by the propagator flat $F(P^c)$ of the {\em complement} of $P$ in order to study $(P,V(P))$. The justification for this notation is given by (1) of the next lemma: the set $F(P)$ consists of vertices which {\em only} support propagators in $P$ (or no propagators at all).
-
-% \begin{lem}\label{lem properties of prop flats} \sanote{do we need the first 2? They follow directly from the definition 1.2. Do we use them later?}
-% Let $F(P)$ be a propagator flat as defined above. Then
-% \begin{enumerate}
-% \item $F(\emptyset)$ is exactly the set of vertices which support no propagators, while for $P \neq \emptyset$ we have \[F(P) = \big(V(P) \setminus V(P^c)\big) \cup F(\emptyset).\] \note{updated (1) to match new definition of $F(P)$; }
-% \item If $Q\subseteq P$ then $F(Q) \subseteq F(P)$.
-% \item $F(P)$ is a flat of $M(W)$, thus justifying the name ``propagator flat''.
-% \end{enumerate}
-% \end{lem} \note{I'd like to attach this to the "generic facts about matroids" in lemma 2.2?}
-% \begin{proof}
-% The proof of (1) and (2) are routine applications of the definition and are omitted.
-
-% To prove (3), we need to show that $F(P)$ is maximally dependent. If $F(P) = [n]$ then this is automatic, so suppose not and let $v \in [n] \setminus F(P)$. In other words, $v \in V(P^c)$ and so $v$ supports some propagator $q \not\in P$.  Let $S \subseteq F(P)$ be an independent set of maximal size. Then $\Prop(S) \subseteq P$ by (1), and no subset of $S$ supports fewer propagators than the number of vertices it contains (this is the definition of an independent set in $M(W)$). Since $v$ supports a new propagator $q \not\in P$, the set $S \cup \{v\} \subseteq F(P) \cup\{v\}$ also satisfies this independence condition. Thus $\rk(F(P) \cup\{v\}) = \rk(F(P)) + 1$, as required.
-% \end{proof}
-
-
-% \end{comment}
 
 \begin{lem} \label{lem decompose flat}Let $F$ be a flat in $M(W)$, and let $C \subseteq F$ be the union of all circuits contained in $F$. Then the following are true:
 \begin{enumerate}
@@ -1061,7 +1037,7 @@ Let $W = (\cP, [n])$ be an admissible Wilson loop diagram and $P \subseteq \cP$.
 Putting all of this together, we obtain our first major theorem of this section:
 
 \begin{thm} \label{exact diagrams contractions}
-If $(P, V(P)$ is an exact subdiagram of of $W$, the matroid of $(P,V(P))$ is the contraction of $M(W)$ by the propagator flat $F(P^c)$, i.e. \bas M\big((P, V(P))\big) = M(W)  / F(P^c) \;.\eas 
+If $(P, V(P))$ is an exact subdiagram of of $W$, the matroid of $(P,V(P))$ is the contraction of $M(W)$ by the propagator flat $F(P^c)$, i.e. \bas M\big((P, V(P))\big) = M(W)  / F(P^c) \;.\eas 
 \end{thm}
 
 \begin{proof}
@@ -1114,7 +1090,6 @@ The unique top dimensional cell of $\Gr(|P|, |V(P)|)$ is defined by precisely th
 \end{proof}
 
 
-%Since the matroid defined by the subdiagram $(P , V(P))$ is not the same as the matroid associated to $W_{V(P)}$, one cannot say that the $W_{V(P)}$ is a uniform matroid. In fact, for any subset $U \subset V(P)$, $\rk_{W_{V(P)}}(U) \geq \rk_{(P , V(P))}(U)$. This is because adding propagators to vertices can only increase the rank. In particular this implies that, for any subset $U \subset V(P)$, if $|U| \leq |P|$, then $U$ is independent in both the restricted matroid $W_{V(P)}$, and the original, $W$.
 
 
 
@@ -1129,13 +1104,17 @@ Let $W= (\cP, [n])$ and $W'= (\cP', [n])$ be two Wilson loop diagrams. They defi
 \end{thm}
 
 \begin{proof}
-One direction has been proved in \cite[Theorem 1.18]{wilsonloop}, but we give a different proof here to be consistent with the method of this document.
+One direction has been proved in \cite[Theorem 1.18]{wilsonloop}, but we give a different proof here to be consistent with the method of this document. 
 
-Assume that $W$ and $W'$ are equivalent. Without loss of generality, write $W = (P \sqcup R, [n])$ and $W' = (P \sqcup R', [n])$, where $P \subset \cP \cap \cP'$ and $(R, V(R))$ and $(R', V(R'))$ are two maximal exact subdiagrams, with $R \neq R'$, but $V(R) = V(R')$. If one cannot find this partition of $\cP$ and $\cP'$, one may always find a family of diagrams, $\{W_1 \ldots W_n\}$ such that $W_{i-1}$ and $W_i$ satisfy this contion, and with $W = W_0$ and $W' = W_{n+1}$. That is, we can find a  transitive chain ($\{W_1 \ldots W_n\}$) between $W$ and $W'$ in the equivalence class.
+For the if direction, it suffices to prove the result for two equivalent diagrams that differ in exactly one exact subdiagram. Let $W$ and $W'$ be equivalent Wilson loop diagrams which can be decomposed as
+\[W = (P \sqcup R, [n]), \qquad W' = (P \sqcup R', [n]),\]
+where $(R,V(R))$ and $(R',V(R'))$ are maximal exact subdiagrams of $W$, $W'$ respectively, and $V(R) = V(R')$. By Theorem \ref{exactuniformthm}, $(R, V(R))$ defines a uniform matroid. Therefore any set $U \subseteq V(R)$ of size $|R|$ is independent in the subdiagram $(R, V(R))$, and thus in $W$. 
 
-By Theorem \ref{exactuniformthm}, $(R, V(R))$ defines a uniform matroid. Therefore, any set $U$ of size $|R|$ is independent in the subdiagram $(R, V(R))$, and thus in $W$. 
+Now consider the complement $V(R)^c$, which is just the propagator flat $F(R^c)$. By Lemma \ref{maxexactcomplementrank}, $F(R^c)$ is a cyclic flat of rank $|R^c| = |P|$ in $M(W)$. Let $B \subseteq V(R)^c$ be a maximal independent subset of $V(R)^c$, i.e. $\rk (B) = |P|$. Since $V(R)^c$ is a flat, adding any element of $V(R)$ to $B$ increases the rank of the set. 
 
-By the third point of Lemma \ref{maxexactcomplementrank}, the complementary flat, $F(P)$ has rank equal to the number of propagators: $\rk(F(P)) = |P|$. Let $B \subset F(P)$ be a maximal independent subset of $F(P)$: $\rk (B) = |P|$. Since $F(P)$ is a flat, adding any element of $V(R)$ to $B$ increases the rank. Therefore, any basis of $W$ can be written as $B \cup U$ for some $B$ and $U$ of the form indicated. However, since $F(P)$ is common to both $W$ and $W'$, and $V(R) = V(R')$, any any basis of $W'$ can also be written $B \cup U$. Thus both matroids have the same bases sets, proving that they are the same.
+Therefore, any basis of $W$ can be written as $B \sqcup U$ for some $B$ and $U$ of the form indicated described above. Applying the same argument to $W'$
+
+However, since $F(P)$ is common to both $W$ and $W'$, and $V(R) = V(R')$, any basis of $W'$ can also be written $B \cup U$. Thus both matroids have the same bases sets, proving that they are the same.
 
 For the converse, assume that the matroids associated to $W$ and $W'$ are the same: $M(W) = M(W')= M$. Let $\mathcal{R} = \{(P_i, V(P_i)\}_{i=1}^m$ and $\mathcal{R}' = \{(P'_i, V(P'_i)\}_{i=1}^l$ be the sets of maximal exact subdiagrams of $W$ and $W'$. Recall that these sets $\{P_i\}$ and $\{P_i'\}$ partition the propagator sets $\cP$ and $\cP'$ of $W$ and $W'$ respectivley. Let $\mathcal{F}$ and $\mathcal{F}'$ the respective complementary vertices: \bas \mathcal{F} = \{F_i = V(P_i)^c | (P_i, V(P_i)) \in \mathcal{R}\} \quad  \mathcal{F}' = \{F_i' = V(P'_i)^c | (P'_i, V(P'_i)) \in \mathcal{R}\} \;.\eas By Theorem \ref{maxexactcomplementrank}, every $F_i$ and $F_i'$ is a cyclic flat in $M$. They are also propagator flats in $W$ and $W'$ of rank equal to the number of propagators defining it. We claim that $\mathcal{F} = \mathcal{F'}$. 
 
@@ -1144,6 +1123,30 @@ If not, there would be a cyclic flat $F_j$ of $M$. Without loss of generality, w
 Suppose the exact diagram  $(P_j', V(P_j'))$ has $m$ more propagators than $(Q^c, V(Q^c))$: $|P_j' \setminus Q^c| = m$. Since $(P_j', V(P_j'))$ defines a uniform matroid, any subset of vertices numbering fewer than the number of propagators in $P_j'$ forms an independent flat of $M(P_j', V(P_j'))$, and thus an independent set of $M$. \sanote{is it worth citing a result that says for $W \subset W'$, if $V$ independent in $M(W)$ then also independent in $M(W')$?} Next, compare the number of vertices in $F_j'$ and $F_j$ to see that $F_j'$ has $m$ more vertices than $F_j$:  \bas |F_j| = n -|Q^c| -3  \textrm{ while } |F_j'| = n -|P_j'| -3 = n -|Q^c| -m -3\;.\eas So $|F_j \setminus F_j' | = m$ and $F_j \setminus F_j' = V(P_j')\setminus V(Q^c)$.  Thus $F_j \setminus F_j'$ is an independent set in $M$. Therefore $F_j$ is the union of a cyclic flat, $F_j'$, and an independent set, $F_j \setminus F_j'$. Therefore, $F_j$ is not a cyclic flat. Therefore, $F_j \not \in \mathcal{F} \setminus \mathcal{F}'$. Therefore, $\mathcal{F} = \mathcal{F}'$, as claimed.
 
 Since $\mathcal{F} = \mathcal{F'}$, the maximally exact subdiagrams of $W$ and $W'$, are supported on the same vertex sets. All propagators of $W$ and $W'$ are accounted for in these sets. There there exists a transitive chain of equivalent diagrams that put $W$ and $W'$ in the same equivalence class.
+\end{proof}
+
+\begin{proof}[Proposed alternative proof]
+One direction has been proved in \cite[Theorem 1.18]{wilsonloop}, but we give a different proof here to be consistent with the method of this paper. 
+
+For the if direction, it suffices to prove the result for two equivalent diagrams that differ in exactly one exact subdiagram. Let $W$ and $W'$ be equivalent Wilson loop diagrams which can be decomposed as
+\[W = (P \sqcup R, [n]), \qquad W' = (P \sqcup R', [n]),\]
+where $(R,V(R))$ and $(R',V(R'))$ are maximal exact subdiagrams of $W$ and $W'$ respectively, and $V(R) = V(R')$. 
+
+By Theorem \ref{exactuniformthm}, $M(R, V(R))$ and $M(R',V(R'))$ are both uniform matroids of rank $|R| = |R'|$; in particular, this means that any subset of $V(R)$ is independent in both $M(W)$ and $M(W')$.
+
+Now consider the propagator flat $F(P)$, which is a cyclic flat of rank $|P|$ in both $M(W)$ and $M(W')$ by Lemma \ref{maxexactcomplementrank}. Let $B \subseteq F(P)$ be an independent set of rank $|P|$. Adding any element of $V(R)$ to $B$ increases its rank in both matroids since $F(P)$ is a flat and $F(P) \cap V(R) = \emptyset$, so we can lift any independent set in $F(P)$ to an independent set of both $M(W)$ and $M(W')$ by adjoining any independent set in $V(R)$. In particular, $B\sqcup U$ is a basis in both $M(W)$ and $M(W')$ for any $U \subseteq V(R)$ with $|U| = |R|$.
+
+Finally, note that any basis of $M(W)$ or $M(W')$ must be of this form, since $[n] = F(P) \sqcup V(R)$ and $\rk F(P) + \rk V(R) = |P| + |R| = n$. Thus both matroids have the same set of bases, proving that they are the same.
+
+For the converse, suppose that $M(W) = M(W') = M$. This immediately implies that $|\cP| = |\cP'|$, so to demonstrate the equivalence of $W$ and $W'$ it suffices to show that for any maximal exact subdiagram $(P,V(P))$ in $W$, there is a corresponding maximal exact subdiagram $(P',V(P'))$ in $W'$ with $V(P) = V(P')$.
+
+So let $(P,V(P))$ be a maximal exact diagram in $W$. By Lemma~\ref{maxexactcomplementrank}, this implies that $F:=F(P^c)$ is a cyclic flat in $M$. Viewing $M$ as the matroid of $W'$, Lemma~\ref{lem decompose flat} implies that $F = F(\Prop_{W'}(F))$ (recall that ``cyclic'' simply means ``a union of circuits'', so the union of all circuits in $F$ is $F$ itself). Define $Q^c = \Prop_{W'}(F)$, so that $F(P^c) = F = F(Q^c)$, and therefore $V(P) = V(Q)$.
+
+By Lemma~\ref{maxexactcomplementrank} we know that $\rk(F) = |P^c|$; however, by Lemma~\ref{lem facts about WLD matroids} we also know that the rank of a cycle is equal to the number of propagators supported on that cycle, so $\rk(F) = |\Prop_{W'}(F)| = |Q^c|$ as well. Since $(P,V(P))$ is exact and we have shown that $V(P) = V(Q)$ and $|P| = |Q|$, it follows that $|V(Q)| = |Q| + 3$, i.e.  $(Q,V(Q))$ is exact in $W'$.
+
+However, $(Q,V(Q))$ is not a priori {\em maximal} exact, so let $(P',V(P'))$ be the maximal exact subdiagram in $W'$ that contains $(Q,V(Q))$ as a subdiagram (possibly trivially). Applying the argument above to $(P',V(P'))$, we obtain an exact subdiagram $(R,V(R))$ in $W$ with $V(R) = V(P')$ and $|R| = |P'|$. Now we have
+\[V(P) = V(Q) \subseteq V(P') = V(R),\]
+which implies that $(P,V(P)) = (R,V(R))$ by the maximality of $(P,V(P))$, and hence $(Q,V(Q)) = (P',V(P'))$ is maximal exact in $W'$.
 \end{proof}
 
 
