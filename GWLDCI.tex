@@ -1112,20 +1112,20 @@ where $(R,V(R))$ and $(R',V(R'))$ are maximal exact subdiagrams of $W$, $W'$ res
 
 Now consider the complement $V(R)^c$, which is just the propagator flat $F(R^c)$. By Lemma \ref{maxexactcomplementrank}, $F(R^c)$ is a cyclic flat of rank $|R^c| = |P|$ in $M(W)$. Let $B \subseteq V(R)^c$ be a maximal independent subset of $V(R)^c$, i.e. $\rk (B) = |P|$. Since $V(R)^c$ is a flat, adding any element of $V(R)$ to $B$ increases the rank of the set. 
 
-Therefore, any basis of $W$ can be written as $B \sqcup U$ for some $B$ and $U$ of the form indicated described above. Applying the same argument to $W'$
+Therefore, any basis of $W$ can be written as $B \sqcup U$ for some $B$ and $U$ of the form indicated described above. We may apply the same arguments to $W'$.
 
 However, since $F(P)$ is common to both $W$ and $W'$, and $V(R) = V(R')$, any basis of $W'$ can also be written $B \cup U$. Thus both matroids have the same bases sets, proving that they are the same.
 
 For the converse, assume that the matroids associated to $W$ and $W'$ are the same: $M(W) = M(W')= M$. Let $\mathcal{R} = \{(P_i, V(P_i)\}_{i=1}^m$ and $\mathcal{R}' = \{(P'_i, V(P'_i)\}_{i=1}^l$ be the sets of maximal exact subdiagrams of $W$ and $W'$. Recall that these sets $\{P_i\}$ and $\{P_i'\}$ partition the propagator sets $\cP$ and $\cP'$ of $W$ and $W'$ respectivley. Let $\mathcal{F}$ and $\mathcal{F}'$ the respective complementary vertices: \bas \mathcal{F} = \{F_i = V(P_i)^c | (P_i, V(P_i)) \in \mathcal{R}\} \quad  \mathcal{F}' = \{F_i' = V(P'_i)^c | (P'_i, V(P'_i)) \in \mathcal{R}\} \;.\eas By Theorem \ref{maxexactcomplementrank}, every $F_i$ and $F_i'$ is a cyclic flat in $M$. They are also propagator flats in $W$ and $W'$ of rank equal to the number of propagators defining it. We claim that $\mathcal{F} = \mathcal{F'}$. 
 
-If not, there would be a cyclic flat $F_j$ of $M$. Without loss of generality, write $F_j \in \mathcal{F} \setminus \mathcal{F}'$.  We may write $F_j = V(P_j)^c$, with $(P_j, V(P_j))$ a maximal exact subdiagram in $W$. By Lemma \ref{lem facts about WLD matroids} (5), we may write $F_j= F(Q)$ as a propagator flat. Therefore, Lemma \ref{maxexactcomplementrank}, $\rk(F_j) = |Q|$. By Lemma \ref{contractsubdiaglem}, $M/F(Q) = F/F_j = M(Q^c, V(Q^c))$, which is uniform, by construction of $F_j$. Theorem \ref{exactuniformthm} $(Q^c, V(Q^c))$ is exact. Since this exact subdiagram is not in $\mathcal{R}'$ by construction of $F_j$, it is not a maximal exact subdiagram of $W'$. That is, there is a maximal exact subdiagram containing it: $(Q^c, V(Q^c)) \subsetneq (P_j', V(P_j'))$. Thus there is a $F_j' \in \mathcal{R}'$ such that $F_j' \subsetneq F_j$. We show that $F_j$ is not a cyclic flat. 
+If not, there would be a cyclic flat $F_j$ of $M$ in one set but not the other. Without loss of generality, write $F_j \in \mathcal{F} \setminus \mathcal{F}'$.  We may write $F_j = V(P_j)^c$, with $(P_j, V(P_j))$ a maximal exact subdiagram in $W$. By Lemma \ref{lem facts about WLD matroids} (5), we may write $F_j= F(Q)$ as a propagator flat. Therefore, Lemma \ref{maxexactcomplementrank}, $\rk(F_j) = |Q|$. By Lemma \ref{contractsubdiaglem}, $M/F(Q) = F/F_j = M(Q^c, V(Q^c))$, which is uniform, by construction of $F_j$. Theorem \ref{exactuniformthm} $(Q^c, V(Q^c))$ is exact. Since this exact subdiagram is not in $\mathcal{R}'$ by construction of $F_j$, it is not a maximal exact subdiagram of $W'$. That is, there is a maximal exact subdiagram containing it: $(Q^c, V(Q^c)) \subsetneq (P_j', V(P_j'))$. Thus there is a $F_j' \in \mathcal{R}'$ such that $F_j' \subsetneq F_j$. We show that $F_j$ is not a cyclic flat. 
 
 Suppose the exact diagram  $(P_j', V(P_j'))$ has $m$ more propagators than $(Q^c, V(Q^c))$: $|P_j' \setminus Q^c| = m$. Since $(P_j', V(P_j'))$ defines a uniform matroid, any subset of vertices numbering fewer than the number of propagators in $P_j'$ forms an independent flat of $M(P_j', V(P_j'))$, and thus an independent set of $M$. \sanote{is it worth citing a result that says for $W \subset W'$, if $V$ independent in $M(W)$ then also independent in $M(W')$?} Next, compare the number of vertices in $F_j'$ and $F_j$ to see that $F_j'$ has $m$ more vertices than $F_j$:  \bas |F_j| = n -|Q^c| -3  \textrm{ while } |F_j'| = n -|P_j'| -3 = n -|Q^c| -m -3\;.\eas So $|F_j \setminus F_j' | = m$ and $F_j \setminus F_j' = V(P_j')\setminus V(Q^c)$.  Thus $F_j \setminus F_j'$ is an independent set in $M$. Therefore $F_j$ is the union of a cyclic flat, $F_j'$, and an independent set, $F_j \setminus F_j'$. Therefore, $F_j$ is not a cyclic flat. Therefore, $F_j \not \in \mathcal{F} \setminus \mathcal{F}'$. Therefore, $\mathcal{F} = \mathcal{F}'$, as claimed.
 
 Since $\mathcal{F} = \mathcal{F'}$, the maximally exact subdiagrams of $W$ and $W'$, are supported on the same vertex sets. All propagators of $W$ and $W'$ are accounted for in these sets. There there exists a transitive chain of equivalent diagrams that put $W$ and $W'$ in the same equivalence class.
 \end{proof}
 
-\begin{proof}[Proposed alternative proof]
+\begin{proof}[Proposed alternative proof] \sanote{Looks good to me}
 One direction has been proved in \cite[Theorem 1.18]{wilsonloop}, but we give a different proof here to be consistent with the method of this paper. 
 
 For the if direction, it suffices to prove the result for two equivalent diagrams that differ in exactly one exact subdiagram. Let $W$ and $W'$ be equivalent Wilson loop diagrams which can be decomposed as
@@ -1159,11 +1159,13 @@ Since there is a unique way to decompose $W$ into maximal exact subdiagrams, it 
   \]
 \end{cor}
 
-In this section we have characterized the correspondence between Wilson loop diagrams and positroids, showing that Wilson Loop diagrams define the same matroid if and only if they are equivalent (Theorem \ref{same matroid iff equiv}). Corollary \ref{number of equiv diagrams} enumerates the fibres of the map from Wilson Loop diagrams to positroids.  The obvious next question would be to enumerate the number of equivlence classes.  We do not obtain a formula for this, but do obtain an alternate characterization of the equvalence classes which is the subject of the next section.
+In this section we have characterized the correspondence between Wilson loop diagrams and positroids, showing that Wilson Loop diagrams define the same matroid if and only if they are equivalent (Theorem \ref{same matroid iff equiv}). Corollary \ref{number of equiv diagrams} enumerates the fibres of the map from Wilson Loop diagrams to positroids.  The obvious next question would be to enumerate the number of equivlence classes.  
+
+We know from example, for instance \cite{casestudy} that, even after taking the dimension of the positroid cell into consideration\footnote{it is proven in \cite{GWLDII} and \cite{Marcott} that Wilson loop diagrams with $k$ propagators map to $3k$ dimensional positroid cells}, many positroid cells do not appear as admissible Wilson loop diagrams with a fixed number of propagators and vertices. That is, the map from admissible Wilson loop diagrams to positroid cells of the correct dimension in the correct Grassmannian neither injective nor surjective. We do not obtain a formula for the number of cells, but do obtain an alternate characterization of the equvalence classes which is the subject of the next section.
 
 \section{Associahedra and inequivalent Wilson loop diagrams}\label{sec associahedron}
 
-The connection between admissible Wilson loop diagrams and polytope dissections suggests a connection to associahedra. First we need some background. \sanote{expand}
+The correspondence between (weakly) admissible Wilson loop diagrams and polygon dissections shown in section \ref{sec: polygon partitions} suggests a connection to associahedra. First we need some background. There is a realization of associahedra that is charactertized by polygon partitions. In this section, we show that the number of equivalence classes of Wilson loop diagrams correspond to the number of non-parallel faces of the appropriate associahedron (Theorem \ref{thm:count }). While this section does not give an explicit formula for the number of these faces, we hope that this linkage with a combinatorially well studied object will shed light on the issue in the future.
 
 \subsection{Polytope background}\label{sec polytope background}
 
@@ -1205,7 +1207,7 @@ The map $\tau$ defined in Definition \ref{WLDtriangulationdfn} assigns a dissect
 \caption{Two associahedra, labelled by all and some (respectively) of their polygon dissections.}\label{associahedron5gon}
 \end{figure}
 
-Note that Wilson loop diagrams which are weakly admissible but not admissible are necessarily exact, and hence have $\tau$ graphs which are triangulations, i.e. dimension 0 faces (vertices) in $A_n$.  All of these are equivalent (as Wilson loop diagrams) in the sense that they are only retriangulations away from each other; meanwhile, as noted above, all vertices of $A_n$ are parallel to each other.  It will be convenient in what follows to include these diagrams, but the results are easily modified to remove them if needed: Propositions~\ref{prop easy way} and \ref{prop hard way} would be identical if we replaced ``weakly admissible'' by ``admissible'', while Corollary~\ref{cor:count inequiv diagrams} could be changed to consider only admissible diagrams by subtracting 1 from the number of non-parallel faces in order to account for the missing dimension 0 faces.
+Note that Wilson loop diagrams which are weakly admissible but not admissible are necessarily exact, and hence have $\tau$ graphs which are triangulations, i.e. dimension 0 faces (vertices) in $A_n$.  All of these are equivalent (as Wilson loop diagrams) in the sense that they are only retriangulations away from each other; meanwhile, as noted above, all vertices of $A_n$ are parallel to each other.  It will be convenient in what follows to include these diagrams, but the results are easily modified to remove them if needed: Propositions~\ref{prop easy way} and \ref{prop hard way} would be identical if we replaced ``weakly admissible'' by ``admissible'', while Theorem~\ref{thm:count inequiv diagrams} could be changed to consider only admissible diagrams by subtracting 1 from the number of non-parallel faces in order to account for the missing dimension 0 faces.
 
 \begin{prop}\label{prop easy way}
   If two weakly admissible Wilson loop diagrams are equivalent then their faces in $A_n$ are parallel.
@@ -1239,7 +1241,7 @@ Returning to $\tau(W)$ and $\tau(X)$, since the direction vector of an edge in $
 
 In order to prove the converse of Proposition~\ref{prop easy way}, we first require a preliminary lemma.
 
-We also need the following notation: given a polygon dissection $D$ of an $n$-gon, let $V_{>3}(D)$ be the set of vertices of the polygon which are on at least one non-triangle face of $D$.  (Note that $D$ may have many non-triangle faces and so $V_{>3}(D)$ will be the union of the vertices of each non-triangle face.) We also write $[x_i,x_j]$ for the set of vertices from $x_i$ to $x_j$ including the endpoints, and $(x_i,x_j)$ for the same set but excluding the endpoints.
+We also need the following notation: given a polygon dissection $D$ of an $n$-gon, let $V_{>3}(D)$ be the set of vertices of the polygon which are on at least one non-triangle face of $D$.  (Note that $D$ may have many non-triangle faces and so $V_{>3}(D)$ will be the union of the vertices of each non-triangle face.) We also write $[x_i,x_j]$ for the set of vertices from $x_i$ to $x_j$ including the endpoints, and $(x_i,x_j)$ for the same set but excluding the endpoints. \sanote{make a dfn?}
 
 \begin{lem}\label{lem good quads}
 Let $D_1$ and $D_2$ be two dissections of a convex $n$-gon defined by the vertices $x_1, \ldots, x_n$.  Suppose that $V_{>3}(D_1) = V_{>3}(D_2)$, but that the $D_1$ and $D_2$ do not have the same set of non-triangle faces.  Then there are four vertices $x_i$, $x_j$, $x_k$, $x_l$ satisfying the following conditions:\begin{enumerate} \item In either $D_1$ or $D_2$ all four vertices are on the same non-triangle face; \item In the other dissection, there is a diagonal of the dissection such that exactly one of $\{x_i, x_j, x_k, x_l\}$ lies on one side of the diagonal (so the others are either end points of this diagonal or strictly on the other side). \end{enumerate}
@@ -1287,7 +1289,7 @@ Now $d'$ is also a diagonal of $D_1$ that crosses the non-triangle face $f$ of $
 \begin{proof}
   Let $W$ and $X$ be inequivalent.  If $\tau(W)$ and $\tau(X)$ do not have the same number of diagonals (hence their faces in $A_n$ do not have the same dimension) then they are not parallel by definition. Now suppose that $\tau(W)$ and $\tau(X)$ do have the same number of diagonals and hence their faces in $A_n$ have the same dimension.  Let the face associated to $\tau(W)$ in $A_n$ be $f_W$ and the face associated to $\tau(X)$ be $f_X$.
 
-  As observed in the proof of Proposition~\ref{prop easy way}, the support of any non-zero vector parallel to an edge is on the indices corresponding to the four vertices bounding the quadrilateral of the dissection associated with the edge.  Thus if $V_{>3}(\tau(W)) \neq V_{>3}(\tau(X))$ (notation as defined before Lemma~\ref{lem good quads}) then the span of the vectors parallel to their edges has different support and so they cannot be parallel.  So we can assume that $V_{>3}(\tau(W)) = V_{>3}(\tau(X))$.
+As observed in the proof of Proposition~\ref{prop easy way}, \st{the support of any non-zero vector parallel to an edge is on the indices corresponding to the four vertices bounding the quadrilateral of the dissection associated with the edge.}{\color{violet}any non-zero vector in $\R^n$ paralell to an edge of $A_n$ has non-zero entries only in the coordinates corresponding to the four vertices bounding the quadrilateral of the dissection associated with the edge.}  Thus if $V_{>3}(\tau(W)) \neq V_{>3}(\tau(X))$ \hlfix{(notation as defined before Lemma {\ref{lem good quads}})}{refer to dfn?} then the span of the vectors parallel to their edges has different support and so they cannot be parallel.  So we can assume that $V_{>3}(\tau(W)) = V_{>3}(\tau(X))$.
 
     Since $\tau(W)$ and $\tau(X)$ do not have the same set of non-triangle faces, there must be some diagonal $d$ of $\tau(W)$ that crosses through a non-triangle face $f$ of $\tau(X)$. 
     It will be most convenient to consider faces in terms of their normal vectors. We make use of the construction discussed on p8 of \cite{CSZinequivalent}: namely, pick one side of $d$ to be positive and define the $i$th coordinate of the vector $\omega^+_d$ to be
@@ -1309,10 +1311,10 @@ Now $d'$ is also a diagonal of $D_1$ that crosses the non-triangle face $f$ of $
 \end{proof}
 
 
-Propositions~\ref{prop easy way} and \ref{prop hard way} together imply:
-\begin{cor}\label{cor:count inequiv diagrams}
+Propositions~\ref{prop easy way} and \ref{prop hard way} together imply the main result of this section:
+\begin{thm}\label{thm:count inequiv diagrams}
   The number of inequivalent weakly admissible Wilson loop diagrams on $n$ is the number of non-parallel faces in the associahedron $A_n$.
-\end{cor}
+\end{thm} \sanote{this is the main result of the section}
 
 \note{Do we want a conclusion section?}
 
