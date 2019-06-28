@@ -857,6 +857,17 @@ for each $p \in \cP$. When the diagram $W$ is clear from context, we drop the su
 \end{dfn}
 
 
+{\color{violet}
+Each $I_i$ also imposes an ordering on the propagators, determined by when the propagator contributes to the sequence:
+\begin{dfn} \label{proporderingdfn}
+The ordering of the propagators on $W = (\cP, [n])$ defined by $I_i^W$ is $\cP = \{p_1, \ldots p_k\}$, where 
+\[I_i = \{I_i(p_1) <_i I_i(p_2) <_i \ldots <_i I_i(p_k)\}.\]
+(The superscript $W$ is omitted here to simplify the notation.)\note{Sian tweaked this slightly to emphasise the $<_i$ order, because standard convention in most papers is to write all GN terms in the 1-order.}
+\end{dfn}
+
+Since each propagator is removed by the algorithm after it contributes, each propagator contributed exactly once to $I^W_i$, making the above ordering well defined.}
+
+
 \begin{eg}\label{eg:apply GN alg}Consider the admissible Wilson loop diagram
 \[W\ =\ \begin{tikzpicture}[rotate=67.5,baseline=(current bounding box.east)]
 	\begin{scope}
@@ -878,27 +889,26 @@ To construct $I_1$ we start at vertex 1, so we set $i=1$, $j = 1$, and $I_1 = \e
 \item $j = 4$: Since $p$ and $q$ were removed in earlier steps, we now have $\Prop(4) = \emptyset$.
 \item $j = 5$: $\Prop(5) = \{s\}$, and we have $I_1 = \{1,2,3,5\}$.
 \end{itemize}
-There are no propagators left in the diagram, so the algorithm terminates and we have ${I_1 = \{1,2,3,5\}}$, or $1235$ for short. Viewed as a function, we have
-\[I_1: \cP \longrightarrow [n] : \quad I_1(p) = 3,\quad I_1(q) = 2, \quad I_1(r) = 1, \quad I_1(s) = 5.\]
+There are no propagators left in the diagram, so the algorithm terminates and we have ${I_1 = \{1,2,3,5\}}$, or $1235$ for short. So the propagators are ordered $r,q,p,s$ with respect to $I_1$, and $I_1$ viewed as a function is given by
+\[I_1: \cP \longrightarrow [n] : \quad I_1(r) = 1,\quad I_1(q) = 2, \quad I_1(p) = 3, \quad I_1(s) = 5.\]
 Applying the algorithm for all 8 starting vertices, we obtain the sets
 \[1235, 2356, 3456, 4567, 5671, 6712, 7812, 8123.\]
 The reader can easily verify that this sequence of $k$-sets satisfies the definition of a Grassmann necklace, and can (with significantly more work) also verify that this Grassmann necklace defines the positroid $M(W)$ associated to the Wilson loop diagram $W$ above.
 \end{eg}
 
-\medskip
 
-{\color{violet}\begin{dfn} \label{proporderingdfn}
-Each $I^W_i$ imposes an ordering on the propagators of $W = (\cP, n)$, determined by when the propagator contributes to the sequence. If $W$ has $k$ propagators, we ma write $\cP = \{p_1, \ldots p_k\}$ with $I_i = I_i(p_1)I_i(p_2) \ldots I_i(p_k)$, where the superscript $W$ is taken as read.
-\end{dfn}
-
-Since each propagator is removed by the algorithm after it contributes, each propagator contributed exactly once to $I^W_i$, making the above ordering well defined.}
 
 \begin{rmk}\label{rmk algorithm locally same}
-The following observation will be very useful in many of the arguments below.  
+The following observation about the local behavior of the algorithm will be very useful in many of the arguments below.
 
-Suppose we are going through the algorithm to construct $I_i^W$ for some $i$, and we are currently at step $j$ of the loop.  Consider the diagram $W'$ formed by $W$ with all the propagators already contributed removed. Not that the algorithm automatically removes a propagator once it contibutes to the algorithm.  Now suppose for some other diagram $V$ on the same vertex set we are constructing $I_m^V$ for some $m$, and we are at step $j$ of the loop, for the same $j$ as above.  Again let $V'$ be $V$ with all the propagators already contributed removed. \sanote{rewrote, do we like this?}
+Suppose we are going through the algorithm to construct $I_i^W$ for some $i$, and we are currently at step $j$ of the loop.  Consider the diagram $W'$ formed by removing from $W$ all propagators that have already contributed to $I_i^W$. (This just replicates the behavior of the algorithm, which removes each propagator once it contibutes to $I_i^W$.)  Now suppose for some other diagram $V$ on the same vertex set we are constructing $I_m^V$ for some $m$, and we are at step $j$ of the loop, for the same $j$ as above.  Again obtain $V'$ from $V$ by removing all propagators assigned so far. \sanote{rewrote, do we like this?}\note{Sian: rewrote some more. We need to be a bit careful with ``contributes'' because $p$ is assigned, not contributed, by the algorithm: vertices are contributed, propagators contribute.}
 
-With this setup, if there is an interval, $(j-1, \ldots, \ell+1)$ (with $\ell <_i i$ and $\ell <_m m$) in $W'$ and $V'$ where the propagators ending in that interval are identical in both diagrams, then the construction of $I_i^W$ and $I_m^V$ is identical up to and including step $\ell$.  The constructions are identical for those steps simply because the local situation of propagators supported at $j, j+1, \ldots, \ell$ is identical in both cases and the algorithm only sees the local situation at the vertex corresponding to the current step.
+With this setup, if we can find a vertex $\ell$ (with $\ell <_i i$ and $\ell <_m m$) such that the configuration of propagators ending in the interval $(j-1, \ldots, \ell+1)$ is identical in both $W'$ and $V'$, then the vertices contributed to $I_i^W$ and $I_m^V$ are the same from step $j$ to step $\ell$ (inclusive). See Figure~\ref{fig:locally identical} for an illustration of this.
+
+\begin{figure}
+\includegraphics[scale=0.2]{locally_identical.jpg}
+\caption{$W'$ and $V'$ are locally the same between $j$ and $l+1$, so we will have $I_i^W\cap [j,l] = I_m^V\cap[j,l]$ even though $p \neq s$ and $q \neq t$.}\label{fig:locally identical}
+\end{figure}
 \end{rmk}
 
 With that in mind we are ready to begin proving properties of the algorithm. We first show that the algorithm can never reach the final vertex in a propagator's support without having already assigned that propagator; in particular, this guarantees that the construction of $I_i$ always terminates in fewer than $n$ steps.
@@ -911,7 +921,7 @@ Suppose for contradiction that we have $i \in [n]$ and $p \in \cP$ such that $I_
 
 \begin{figure}
 \includegraphics[width=15cm]{4th_vertex}
-\caption{The two possible configurations in which a propagator can contribute its $<_i$-maximal support vertex to $I_i$.}
+\caption{The two types of configuration in which a propagator could (in theory) contribute its $<_i$-maximal support vertex to $I_i$.}
 \label{fig:no fourth vertex}
 \end{figure}f
 
@@ -925,10 +935,10 @@ In order for $q$ to remain unassigned until vertex $b$, there must be another pr
 \end{proof}
 
 \begin{cor}\label{GN alg well defined}
-If $W$ is an admissible Wilson loop diagram with $k$ propagators, then Algorithm~\ref{alg:put GN on WLD} assigns exactly $k$ vertices to each $I_i$. \sanote{suddenly confused. Don't we need working about in going onely once around or somesuch?}
+If $W$ is an admissible Wilson loop diagram with $k$ propagators, then Algorithm~\ref{alg:put GN on WLD} assigns exactly $k$ distinct vertices to each $I_i$. \sanote{suddenly confused. Don't we need working about in going onely once around or somesuch?}\note{Sian: added the word ``distinct'' in the statement and a few words to the last line of the proof, does that help?}
 \end{cor}
 \begin{proof}
-Fix $i \in [n]$. It follows from the proof of Lemma~\ref{lem no fourth vertex} that in applying Algorithm~\ref{alg:put GN on WLD} to construct the set $I_i$, the algorithm can never reach the fourth vertex of a propagator's support (ordered with respect to $<_i$) without having already assigned $p$. Therefore if the algorithm starts at vertex $i$, all propagators must have been eliminated by the time it gets to vertex $i-1$, ensuring that the algorithm terminates and that $I_i$ contains exactly $k$ distinct elements.
+Fix $i \in [n]$. It follows from the proof of Lemma~\ref{lem no fourth vertex} that in applying Algorithm~\ref{alg:put GN on WLD} to construct the set $I_i$, the algorithm can never reach the fourth vertex of a propagator's support (ordered with respect to $<_i$) without having already assigned $p$. Therefore if the algorithm starts at vertex $i$, all propagators must have been eliminated by the time it gets to vertex $i-1$, ensuring that the algorithm is completed in less than one full circumnavigation of the diagram and that $I_i$ contains exactly $k$ distinct elements.
 \end{proof}
 
 We now reverse our perspective and ask: given a propagator $p$ and a vertex $i$ in the support of $p$, for which set of starting vertices does the algorithm assign $p$ to $i$? 
