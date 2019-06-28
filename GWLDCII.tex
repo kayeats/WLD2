@@ -729,8 +729,8 @@ In other words, $\ell(p)$ is the size of the smaller of the sets of vertices on 
 
 
 \begin{rmk}\label{rem:props of length 2 and 3} 
-The following observations about configurations of propagators of short length in a weakly admissibly Wilson loop diagram $W$ are easily verified:
-\begin{enumerate}
+  The following observations about configurations of propagators of short length in a weakly admissibly Wilson loop diagram $W$ are easily verified:
+ \begin{enumerate}
 \item If $p = (i,i+3)$ is a propagator of length 3, then the middle vertex $i+2$ supports at most one propagator.
 \item If every vertex in $W$ supports at least one propagator, then $W$ admits at least one propagator of length 2.
 \end{enumerate}
@@ -901,7 +901,10 @@ The reader can easily verify that this sequence of $k$-sets satisfies the defini
 \begin{rmk}\label{rmk algorithm locally same}
 The following observation about the local behavior of the algorithm will be very useful in many of the arguments below.
 
-Suppose we are going through the algorithm to construct $I_i^W$ for some $i$, and we are currently at step $j$ of the loop.  Consider the diagram $W'$ formed by removing from $W$ all propagators that have already contributed to $I_i^W$. (This just replicates the behavior of the algorithm, which removes each propagator once it contibutes to $I_i^W$.)  Now suppose for some other diagram $V$ on the same vertex set we are constructing $I_m^V$ for some $m$, and we are at step $j$ of the loop, for the same $j$ as above.  Again obtain $V'$ from $V$ by removing all propagators assigned so far. \sanote{rewrote, do we like this?}\note{Sian: rewrote some more. We need to be a bit careful with ``contributes'' because $p$ is assigned, not contributed, by the algorithm: vertices are contributed, propagators contribute.}
+ \note{Remember to keep an eye out when proofreading: do we just need the vertices appearing in the GN element to be the same or actually the function}
+
+
+Suppose we are going through the algorithm to construct $I_i^W$ for some $i$, and we are currently at step $j$ of the loop.  Consider the diagram $W'$ formed by removing from $W$ all propagators that have already contributed to $I_i^W$. (This just replicates the behavior of the algorithm, which removes each propagator once it contibutes to $I_i^W$.)  Now suppose for some other diagram $V$ on the same vertex set we are constructing $I_m^V$ for some $m$, and we are at step $j$ of the loop, for the same $j$ as above.  Again obtain $V'$ from $V$ by removing all propagators assigned so far.
 
 With this setup, if we can find a vertex $\ell$ (with $\ell <_i i$ and $\ell <_m m$) such that the configuration of propagators ending in the interval $(j-1, \ldots, \ell+1)$ is identical in both $W'$ and $V'$, then the vertices contributed to $I_i^W$ and $I_m^V$ are the same from step $j$ to step $\ell$ (inclusive). See Figure~\ref{fig:locally identical} for an illustration of this.
 
