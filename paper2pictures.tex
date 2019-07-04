@@ -495,6 +495,61 @@ a second picture for lem sian
 
 
 
+fig:locally identical
+
+\[
+\begin{tikzpicture}[baseline=(current bounding box.east)]
+	\begin{scope}
+	\drawWLDfragment[12]{3}{0.4} 
+	%\drawnumberspartial % use this to debug
+	\newnode[left]{1}{i}
+	\newnode[below]{4}{j}
+	\newnode{5}{}
+	\newnode{6}{}
+	\newnode{7}{}
+	\newnode{8}{}
+	\newnode{9}{}
+	\newnode{11}{}
+	\newnode[right]{12}{l+1}
+	\begin{scope}
+		\clipcenterarc(0,0)(\startpoint-10:\endpoint+10:\radius)
+		\newpropbend{6.3}{8.6}{80}
+		\node at (\zero + 7.5*\step:\radius*0.8) {\footnotesize $r$};
+		\newprop[midway,left]{5.5}{-4}{}
+		\node at (\zero + 3*\step:\radius*0.5) {\footnotesize $p$};
+		\newprop[midway]{11.5}{-4}{}
+		\node at (\zero + 12.2*\step:\radius*0.7) {\footnotesize $q$};
+	\end{scope}
+\end{scope}
+\end{tikzpicture}
+\qquad \qquad
+\begin{tikzpicture}[baseline=(current bounding box.east)]
+	\begin{scope}
+	\drawWLDfragment[12]{3}{0.4} 
+	%\drawnumberspartial % use this to debug
+	\newnode[left]{2}{m}
+	\newnode[below]{4}{j}
+	\newnode{5}{}
+	\newnode{6}{}
+	\newnode{7}{}
+	\newnode{8}{}
+	\newnode{9}{}
+	\newnode{11}{}
+	\newnode[right]{12}{l+1}
+	\begin{scope}
+		\clipcenterarc(0,0)(\startpoint-10:\endpoint+10:\radius)
+		\newpropbend{6.3}{8.6}{80}
+		\node at (\zero + 7.5*\step:\radius*0.8) {\footnotesize $r$};
+		\newprop[midway,left]{5.5}{19}{}
+		\node at (\zero + 5.5*\step:\radius*0.5) {\footnotesize $p$};
+		\newprop[midway]{11.5}{21}{}
+		\node at (\zero + 11.8*\step:\radius*0.8) {\footnotesize $q$};
+	\end{scope}
+\end{scope}
+\end{tikzpicture}
+\]
+
+
 
 
 
