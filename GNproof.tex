@@ -389,6 +389,8 @@ Now fix $i \in [n]$, and write $I_i = \{a_1 <_i a_2 <_i \dots <_i a_k\}$. This i
 
 We first note that if $a_{m-1}$ and $a_{m}$ are not consecutive vertices for some $m$, then for any intermediate vertex $a_{m-1}<_i x <_i a_{m}$ we must have $\Prop(x) \subseteq \cP_{m-1}$. This is because if any propagator supported on $x$ is still unassigned when the algorithm reaches $x$, we would have $x \in I_i$. 
 
+{\color{violet} Second, we note that when $p_m$ contributes $I_i(p_m) = a_m$ to the Grassmann necklace, it is the clockwisemost propagator supported on $a_m$ in the set $\cP \setminus \cP_{m-1}$. If $p_r$ is also supported on $a_m$, if $p_r$ is outside $p_m$ in the $<_{a_m-1}$ order, then it must have been assigned before $p_m$, i.e. $r <m$. Otherwise, $p_m$ could not be the clockwise most propagator when the algorithm reached $a_m$.}
+
 Let $J = \{j_1 <_i j_2<_i \dots <_i j_k\}$ be a $k$-set, and suppose that $J<_i I_i$ in the $<_i$-lexicographic order. Let $m$ be the minimal index such that $j_m <_i a_m$, i.e. the first entry at which $J$ and $I_i$ differ. We will show that $J$ must be a dependent set.
 
 If $\Prop(j_m) = \emptyset$ then $J$ is automatically dependent since the corresponding column of $C(W)$ contains only zeros, so suppose henceforth that $\Prop(j_m) \neq \emptyset$. In particular, this implies that $m>1$, since if $m=1$ we would have $\Prop(j_1) \subseteq \cP_0 = \emptyset$.
@@ -397,10 +399,14 @@ We define a sequence of sets of propagators by
 \[Q_0 = \Prop(j_m), \qquad Q_{l+1} = \Prop(I_i(Q_l))\quad \forall l \geq 0.\]
 It is easily verified that this is an increasing chain of sets: indeed, if $q \in Q_l$ then $I_i(q) \in I_i(Q_l)$, and since $I_i(q)$ is one of the vertices that supports $q$ we must have $q \in \Prop(I_i(Q_l)) = Q_{l+1}$. The sequence therefore stabilizes in finitely many steps, since $\cP$ is finite.
 
-We claim that $Q_l \subseteq \cP_{m-1}$ for all $l\geq 0$. The base case follows immediately from the observation above that $\Prop(j_m) \subseteq \cP_{m-1}$.
+We claim that $Q_l \subseteq \cP_{m-1}$ for all $l\geq 0$. \st{The base case } \hlfix{The case for $l= 0$}{$l=0$ is not quite the base case} follows immediately from the observation above that $\Prop(j_m) \subseteq \cP_{m-1}$.
 
-[induction step; see final page]
+{\color{violet} Next we prove the base case of $l=1$. If $Q_1 \setminus Q_0 = \emptyset$, we are done. Else, let $q \in Q_1 \setminus Q_0$. By construction $q$ shares support with a propagators in $\Q_{0}$. Call this propagator $p_j$. By the above, $p_j \in \cP_{m-1}$. Suppose that $q \not \in \cP_{m-1}$. The violet note above implies that $q$ must be inside $p_j$ in the $a_{j}-1$ ordering.  If $a_j = j_m-1$, such a $q$ cannot exist (it would force $I_i(q) = j_m$). Else, since $q$ cannot contribute its fourth vertex, by Lemma \ref{insert reference}, $I_i(q) < j_m$. That is, $q \in \cP_{m-1}$, giving a contradiction.}
 
+{\color{violet} Continuing by induction, Since all of $Q_{l-1} \subseteq \cP_{m-1}$ by the induction hypothesis, consider $Q_l \setminus Q_{l-1}$. If this et is empty, we are done. Otherwise, let $q \in Q_l \setminus Q_{l-1}$. By construction $q$ shares support with a propagators in $\Q_{l-1}$. Call this propagator $p_j$. Let $v_j$ be the fourth propagator of $p_j$ in the $a_{j}-1$ ordering (not assigned to $I_i$.) We have two cases: $a_j-1 < v_j < j_m$ in any cyclice ordering, or $a_j-1 < j_m < v_j$. In the first case, following the same argument as the base case, if $q \not \in \cP_{m-1}$, $q$ must be inside $p_j$ in the $a_{j}-1$ ordering.  Since $q$ cannot contribute its fourth vertex, $I_i(q) < v_j < j_m$. That is, $q \in \cP_{m-1}$, giving a contradiction.
+
+In the second case, suppose $p_j$ must share an edge with $p_r \in Q_{l-2}$ and $a_j +1  = a_r$. If a $q \not \in \cP_m$ is supported on $a_j$ it lies inside $p_j$ in the $a_{j-1}$ ordering. However, for this to happen, and $p_r$ to contribute $a_r$, $q$ must also lie inside $p_r$, which we know by induction cannot happen. 
+} \sanote{I hadn't thought through this second case very well when I first wrote the proof. Please check.}
 
 Let $Q:= \lim_{l\rightarrow \infty} Q_l$; by the above, this is well-defined and contained in $\cP_{m-1}$. We can now show that $J$ is a dependent set, by constructing a subset $U \subseteq J$ that satifies $|\Prop(U)| < |U|$.
 
