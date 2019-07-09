@@ -347,16 +347,24 @@ Having identified the equivalence classes and their sizes, the next natural ques
 
 This section gives the relevant physical and combinatorial background for this paper. Section \ref{section WLD background} defines Wilson loop diagrams as combinatorial objects, and presents relevant definitions and results from previous work. Section \ref{sec matroid background} presents some background on matroids and some existing results relating Wilson loop diagrams to matroids. 
 
-\subsection{Wilson Loop diagrams}\label{section WLD background}
+\subsection{Wilson Loop diagrams}\label{section WLD background} 
 
 %What are Wilson loop diagrams and their integrals.
 
 \begin{dfn}\label{WLdfn}
 A {\em Wilson loop diagram} is given by the following data: a cyclically ordered set $V$, along with a choice of first vertex (labeled $1$), and a set $\cP$ of $k$ pairs called {\em propagators}, written $\{p_r = (i_r, j_r)\}_{r=1}^k$. We write $W = (\cP,V)$ to denote the Wilson loop diagram. \end{dfn}
 
-Propagators are undirected, so $p = (i,j) = (j,i)$. In previous work, we have used the convention, we write $p = (i,j)$ with  $i +1 \leq j$ relative to the first vertex. \sanote{Susama stopped here}
+Wherever possible, we drop the subscrips on propagators and their identifying vertices. Propagators are undirected, so $p = (i,j) = (j,i)$. In previous work, we have used the convention, we write $p = (i,j)$ with  $i +1 \leq j$ relative to the first vertex. 
 
 We depict this data as a circle with marked points, called vertices. The vertices are labeled by $V$ (preserving the cyclic ordering). The arcs between consecutive vertices are called {\em edges}. There are $k$ wavy lines in the interior of the diagram depicting the propagators, whose endpoints lie on the edges: specifically, a propagator $p =(i,j)$ has one endpoint on the edge joining vertices $i$ and $i+1$ and another endpoint on the edge joining $j$ and $j+1$, where $i+1$ and $j+1$ denote the successor of $i$ and $j$ respectively in the cyclic order on $V$. 
+
+To simplify language, we let the edges inherit a cyclic ordering from the vertices:
+
+\begin{dfn}\label{def:edges}
+The $i$th edge of $W$ is the arc that lies between the vertices $i$ and $i+1$.
+\end{dfn}
+
+and thus speak of a propagator $p = (i, j)$ as being supported by the $i$th and $j$th edges. \sanote{moved/altered dfn and sandwiching paragrahs to improve flow}
 
 Note that the marked circle captures the cyclic ordering on $V$, and the choice of a first vertex gives it a compatible linear order. Both the cyclic and the linear order become the correct perspective at various points in this paper. 
 
@@ -382,7 +390,7 @@ We introduce some notation to speak of vertices supporting a propagator, and the
 \begin{dfn} \label{VPropdfn}
 Let $W = (\cP, [n])$.
 \begin{enumerate}
-\item For $p = (i_p,j_p) \in \cP$, define $V(p) = \{i_p, i_p+1, j_p, j_p+1\}$ to be the set of vertices supporting $p$. Similarly, for $P \subseteq \cP$ we define the set $V(P) = \cup_{p \in P} V(p)$ to be the vertex support of $P$.
+\item For $p = (i,j) \in \cP$, define $V(p) = \{i, i+1, j, j+1\}$ to be the set of vertices supporting $p$. Similarly, for $P \subseteq \cP$ we define the set $V(P) = \cup_{p \in P} V(p)$ to be the vertex support of $P$.
 \item For $U \subseteq [n]$, write $\Prop(U) = \{ p \in \cP  \ | \ V(p) \cap U \neq \emptyset \} $ to denote the set of propagators which are at least partially supported on $U$.
 \item For $P \subseteq \cP$, define the {\em propagator flat}\footnote{This choice of terminology is justified in Lemma~\ref{lem facts about WLD matroids} below.} $F(P) = V(P^c)^c$ to be the set of vertices in $[n]$ that do not support any propagators outside of the set $P$. Here, as throughout, we are using the superscript $c$ for the set theoretic complement.
 \item The set of vertices that do not support any propagators is denoted $F(\emptyset)$. Vertices in this set are called {\em non-supporting}.  
@@ -393,18 +401,10 @@ Let $W = (\cP, [n])$.
 
 \begin{rmk}\label{alt F(P) rmk}
 An equivalent definition of $F(P)$ is \bas F(P)  = \big(V(P) \setminus V(P^c) \big) \cup \{\text{all non-supporting vertices in $W$}\} \;,\eas 
-i.e. $F(P)$ can be thought of as the set of vertices that either only support propagators in $P$ or do not support any propagators at all. Furthermore, note that by construction we have $\Prop(F(P)) \subseteq P$.  This containment is strict if there is any propagator $p$ in $P$ with the property that every vertex in the support of $p$ also supports a propagator not in $P$.
+i.e. $F(P)$ can be thought of as the set of vertices that either only support propagators in $P$ or do not support any propagators at all. Furthermore, note that by construction we have $\Prop(F(P)) \subseteq P$.  This containment is strict if there is any propagator $p$ in $P$ with the property that every vertex in the support of $p$ also supports a propagator not in $P$. \sanote{whoever added this last sentence, thank you. It is an oft overlooked important point.}
 \end{rmk}
 
-It is sometimes useful to discuss propagators in terms of the edges supporting them (rather than the vertices) so we make the following definition.
-
-\begin{dfn}\label{def:edges}
-The $i$th edge of $W$ is the arc that lies between the vertices $i$ and $i+1$.
-\end{dfn}
-
-In this manner, the propagator $p = (i, j)$ is supported by the $i$th and $j$th edges.
-
-We now define the notion of an admissible diagram, which imposes certain density and non-crossing conditions on the configuration of the propagators. The motivation for these conditions comes from the link to SYM $N=4$ theory, where the admissible Wilson loop diagrams are exactly those that correspond to $N^kMHV$ diagrams; see for example \hlfix{[ref].}{I don't think we should go into any detail here, but I wanted to emphasise that there is a reason for choosing these particular conditions.}
+We now define the notion of an admissible diagram, which imposes certain density and non-crossing conditions on the configuration of the propagators. The motivation for these conditions comes from the link to SYM $N=4$ theory, where the admissible Wilson loop diagrams are exactly those that correspond to $N^kMHV$ diagrams; see for example \cite{Amplituhedronsquared}.
 
 \begin{dfn}\label{admisdfn}
 A Wilson loop diagram $W = (\cP,V)$ is {\em admissible} if \begin{enumerate}
@@ -417,7 +417,7 @@ A Wilson loop diagram is called {\em weakly admissible} if the second and third 
 
 The first condition restricts the overall density of propagators in the diagram, while the second imposes an upper bound on how densely the propagators can be fitted into a portion of the diagram. The third ensures that ensures that no propagators cross in the interior of the diagram. 
 
-In other words, a Wilson loop diagram, $(\cP, [n])$ is admissible only if $n \geq |\cP| +4$, and has no crossing propagators, no propagators of the form $p = (i, i+1)$, and no pairs of propagators that start and end on the same pair of non-adjacent edges.\note{Sian: can we leave this sentence out? By dropping ``iff'' to ``only if'' we make it sound like the converse isn't true.}
+In other words, a Wilson loop diagram, $(\cP, [n])$ is admissible only if $n \geq |\cP| +4$, and has no crossing propagators, no propagators of the form $p = (i, i+1)$, and no pairs of propagators that start and end on the same pair of non-adjacent edges.\note{Sian: can we leave this sentence out? By dropping ``iff'' to ``only if'' we make it sound like the converse isn't true.} \sanote{no objections. Want to check that we don't use this property in the paper though. If not, lets nix}
 
 
 Note that if we take any admissible Wilson loop diagram and remove the non-supporting vertices, we obtain a weakly admissible Wilson loop diagram that may or may not be admissible itself.
@@ -434,11 +434,13 @@ There is one particular type of subdiagram that deserves special attention:
 For $W$ an admissible diagram, the subdiagram $(P, V(P))$ is {\em exact} if $|V(P)| = |P| + 3$.
 \end{dfn}
 
+{\color{violet}Note that by Definition \ref{admisdfn}, any single propagator and its support defines an exact subdiagram. These are called trivial sub diagrams.}
+
 We will see in Section~\ref{sec equiv} that the exact diagrams play an important role in classifying admissible Wilson loop diagrams.
 
 \vspace{3pt}
 \begin{eg}
-The Wilson loop diagram $W$ in Example~\ref{eg of WLD} is an example of an admissible diagram. It has a single non-supporting vertex, namely the vertex labeled 7, so we have $F(\emptyset) = \{7\}$. For $p = (5, 8)$, we have $V(p) = \{5,6,8,1\}$ and $F(p) = \{6, 7,8\}$: the vertices 1 and 5 are excluded from $F(p)$ since they support other propagators as well, and 7 is included (despite not being in the support of $p$) since it supports no propagators at all. Finally, the subdiagram $(\{(2, 4), (1, 4)\}, \{1, 2, 3, 4, 5, \})$ is an example of an exact subdiagram; in fact it is the only non-trivial exact subdiagram in $W$.
+The Wilson loop diagram $W$ in Example~\ref{eg of WLD} is an example of an admissible diagram. It has a single non-supporting vertex, namely the vertex labeled 7, so we have $F(\emptyset) = \{7\}$. For $p = (5, 8)$, we have $V(p) = \{5,6,8,1\}$ and $F(p) = \{6, 7,8\}$: the vertices 1 and 5 are excluded from $F(p)$ since they support other propagators as well, and 7 is included (despite not being in the support of $p$) since it supports no propagators at all. Finally, the subdiagram $(\{(2, 4), (1, 4)\}, \{1, 2, 3, 4, 5, \})$ is an example of an exact subdiagram; \hlfix{in fact it is the only non-trivial exact subdiagram in $W$.}{Either nix or include violet text above. I lean towards nixing.}
 \end{eg}
 
 The exact subdiagrams define an equivalence relation amongst Wilson loop diagrams as follows.
@@ -446,56 +448,56 @@ The exact subdiagrams define an equivalence relation amongst Wilson loop diagram
 \begin{dfn}\label{equivdfn} 
 
 
-Let $W = (\cP,[n])$ and $W' = (\cP',[n])$, and say that $W$ and $W'$ are related if
+Let $W = (\cP,[n])$ and $W' = (\cP',[n])$ be two admissible subdiagrams. We say that $W$ and $W'$ are related if
 \begin{enumerate}
-\item There exist exact subdiagrams $(P, V(P)) \subseteq W$ and $(P', V(P')) \subseteq W'$ with $V(P) =  V(P')$.
-\item The complementary subdiagrams are identical, i.e. $(\cP \setminus P, V(P)^c) = (\cP' \setminus P', V(P')^c)$.
+\item There exist exact subdiagrams $(P, V(P)) \subseteq W$ and $(P', V(P')) \subseteq W'$ with the same number of propagators and suppored on the same vertices; $|P| = |P'|$ and  $V(P) =  V(P')$.
+\item The complementary subdiagrams (i.e. all other propagators and vertices) are identical, i.e. $(\cP \setminus P, V(P)^c) = (\cP' \setminus P', V(P')^c)$. \sanote{made some changes}
 \end{enumerate}
 Let $\sim$ denote the transitive closure of this relation. This is an equivalence relation on the set of all admissible Wilson loop diagrams with vertex set $[n]$.
 \end{dfn}
 
 \begin{eg} \label{eg:equivdiags}
-Note that we genuinely do need to take the transitive closure of this relation in order to obtain an equivalence relation. For example, consider the following three Wilson loop diagrams:
+Note that we genuinely do need to take the transitive closure of this relation in order to obtain an equivalence relation. For example, consider the following three Wilson loop diagrams: 
 \bas
 W_1 = \begin{tikzpicture}[rotate=67.5,baseline=(current bounding box.east)]
 	\begin{scope}
 	\drawWLD{8}{1.5}
 	\drawnumbers
-	\drawprop{1}{0}{4}{0}
-	\drawprop{2}{0}{4}{-1}
-    \drawprop{5}{0}{8}{0}
-    \drawprop{5}{1}{7}{0}
+	\drawlabeledprop{1}{0}{4}{0}{\footnotesize $q$}
+	\drawlabeledprop{2}{0}{4}{-1}{\footnotesize  $p$}
+    \drawlabeledprop{5}{0}{8}{0}{\footnotesize \quad $r$}
+    \drawlabeledprop{5}{1}{7}{0}{\footnotesize \quad $s$}
 		\end{scope}
 	\end{tikzpicture} \quad
 W_2 = \begin{tikzpicture}[rotate=67.5,baseline=(current bounding box.east)]
 	\begin{scope}
 	\drawWLD{8}{1.5}
 	\drawnumbers
-	\drawprop{1}{0}{4}{0}
-	\drawprop{2}{0}{4}{-1}
-    \drawprop{5}{0}{8}{0}
-    \drawprop{6}{0}{8}{-1}
+	\drawlabeledprop{1}{0}{4}{0}{\footnotesize $q$}
+	\drawlabeledprop{2}{0}{4}{-1}{\footnotesize $p$}
+    \drawlabeledprop{5}{0}{8}{0}{\footnotesize \quad $u$}
+    \drawlabeledprop{6}{0}{8}{-1}{\footnotesize $v$}
 		\end{scope}
 	\end{tikzpicture} \quad
 W_3 = \begin{tikzpicture}[rotate=67.5,baseline=(current bounding box.east)]
 	\begin{scope}
 	\drawWLD{8}{1.5}
 	\drawnumbers
-	\drawprop{1}{0}{4}{0}
-	\drawprop{1}{1}{3}{0}
-    \drawprop{5}{0}{8}{0}
-    \drawprop{6}{0}{8}{-1}
+	\drawlabeledprop{1}{0}{4}{0}{\footnotesize $a$}
+	\drawlabeledprop{1}{1}{3}{0}{\footnotesize \quad $b$}
+    \drawlabeledprop{5}{0}{8}{0}{\footnotesize \quad $u$}
+    \drawlabeledprop{6}{0}{8}{-1}{\footnotesize $v$}
 		\end{scope}
 	\end{tikzpicture} .
 \eas
 
 
 We have $W_1 \sim W_2$ because they are identical except on the exact subdiagrams 
-\[(\{(5,8), (5,7)\}, \{5,6,7,8,1\}) \text{ and }(\{(5,8), (6,8)\}, \{5,6,7,8,1\})\] respectively. We also have $W_2 \sim W_3$ due to the exact subdiagrams 
-\[(\{(1,4), (2,4)\}, \{1,2,3,4,5\}) \text{ and }(\{(1,4), (1,3)\}, \{1,2,3,4,5\}).\] 
-However, the difference between $W_1$ and $W_3$ is the union of two exact subdiagrams, which is not itself exact. \end{eg}
+\[(\{r, s\}, \{5,6,7,8,1\}) \text{ and }(\{u, v\}, \{5,6,7,8,1\})\] respectively. We also have $W_2 \sim W_3$ due to the exact subdiagrams 
+\[(\{p, q\}, \{1,2,3,4,5\}) \text{ and }(\{a, b\}, \{1,2,3,4,5\}).\] 
+However, the difference between $W_1$ and $W_3$ is the union of two exact subdiagrams, which is not itself exact. \sanote{labeled propagators to make easier to read} \end{eg}
 
-As described in the introduction, Wilson loop diagrams come from the study of SYM $N = 4$ in the physics literature and therefore each diagram $W$ is associated to a matrix of data $C(W)$, which we now describe.
+As described in the introduction, Wilson loop diagrams come from the study of SYM $N = 4$ in the physics literature \st{and therefore} \hlfix{where each propagator corresponds to a section of  a $k$-line bundle over twistor space. Thus}{I feel the strike out was too vague. The highlighted may be too technical. Can someone find baby bear's text?} each diagram $W$ is associated to a matrix of data $C(W)$, which we now describe. \sanote{Susama ended here}
 
 \begin{dfn}\label{def:CWmatrix}
 Each Wilson loop diagram $W = (\cP, [n])$ with $|\cP| = k$ is associated to a $k \times n$ matrix $C(W)$ with non-zero real variable entries, defined by:
