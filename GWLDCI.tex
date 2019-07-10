@@ -417,7 +417,7 @@ A Wilson loop diagram is called {\em weakly admissible} if the second and third 
 
 The first condition restricts the overall density of propagators in the diagram, while the second imposes an upper bound on how densely the propagators can be fitted into a portion of the diagram. The third ensures that ensures that no propagators cross in the interior of the diagram. 
 
-In other words, a Wilson loop diagram, $(\cP, [n])$ is admissible only if $n \geq |\cP| +4$, and has no crossing propagators, no propagators of the form $p = (i, i+1)$, and no pairs of propagators that start and end on the same pair of non-adjacent edges.\note{Sian: can we leave this sentence out? By dropping ``iff'' to ``only if'' we make it sound like the converse isn't true.} \sanote{no objections. Want to check that we don't use this property in the paper though. If not, lets nix}
+In other words, a Wilson loop diagram, $(\cP, [n])$ is admissible only if $n \geq |\cP| +4$, and has no crossing propagators, no propagators of the form $p = (i, i+1)$, and no pairs of propagators that start and end on the same pair of non-adjacent edges.\note{Sian: can we leave this sentence out? By dropping ``iff'' to ``only if'' we make it sound like the converse isn't true.} \sanote{Lemma \ref{tausimpleplanarlem} uses the no propagators starting and stopping at same edge}
 
 
 Note that if we take any admissible Wilson loop diagram and remove the non-supporting vertices, we obtain a weakly admissible Wilson loop diagram that may or may not be admissible itself.
@@ -434,20 +434,18 @@ There is one particular type of subdiagram that deserves special attention:
 For $W$ an admissible diagram, the subdiagram $(P, V(P))$ is {\em exact} if $|V(P)| = |P| + 3$.
 \end{dfn}
 
-{\color{violet}Note that by Definition \ref{admisdfn}, any single propagator and its support defines an exact subdiagram. These are called trivial sub diagrams.}
+Note that by Definition \ref{admisdfn}, any single propagator and its support defines an exact subdiagram. These are called \emph{trivial} subdiagrams.
 
 We will see in Section~\ref{sec equiv} that the exact diagrams play an important role in classifying admissible Wilson loop diagrams.
 
 \vspace{3pt}
 \begin{eg}
-The Wilson loop diagram $W$ in Example~\ref{eg of WLD} is an example of an admissible diagram. It has a single non-supporting vertex, namely the vertex labeled 7, so we have $F(\emptyset) = \{7\}$. For $p = (5, 8)$, we have $V(p) = \{5,6,8,1\}$ and $F(p) = \{6, 7,8\}$: the vertices 1 and 5 are excluded from $F(p)$ since they support other propagators as well, and 7 is included (despite not being in the support of $p$) since it supports no propagators at all. Finally, the subdiagram $(\{(2, 4), (1, 4)\}, \{1, 2, 3, 4, 5, \})$ is an example of an exact subdiagram; \hlfix{in fact it is the only non-trivial exact subdiagram in $W$.}{Either nix or include violet text above. I lean towards nixing.}
+The Wilson loop diagram $W$ in Example~\ref{eg of WLD} is an example of an admissible diagram. It has a single non-supporting vertex, namely the vertex labeled 7, so we have $F(\emptyset) = \{7\}$. For $p = (5, 8)$, we have $V(p) = \{5,6,8,1\}$ and $F(p) = \{6, 7,8\}$: the vertices 1 and 5 are excluded from $F(p)$ since they support other propagators as well, and 7 is included (despite not being in the support of $p$) since it supports no propagators at all. Finally, the subdiagram $(\{(2, 4), (1, 4)\}, \{1, 2, 3, 4, 5, \})$ is an example of an exact subdiagram; in fact it is the only non-trivial exact subdiagram in $W$.
 \end{eg}
 
 The exact subdiagrams define an equivalence relation amongst Wilson loop diagrams as follows.
 
 \begin{dfn}\label{equivdfn} 
-
-
 Let $W = (\cP,[n])$ and $W' = (\cP',[n])$ be two admissible subdiagrams. We say that $W$ and $W'$ are related if
 \begin{enumerate}
 \item There exist exact subdiagrams $(P, V(P)) \subseteq W$ and $(P', V(P')) \subseteq W'$ with the same number of propagators and suppored on the same vertices; $|P| = |P'|$ and  $V(P) =  V(P')$.
@@ -497,7 +495,7 @@ We have $W_1 \sim W_2$ because they are identical except on the exact subdiagram
 \[(\{p, q\}, \{1,2,3,4,5\}) \text{ and }(\{a, b\}, \{1,2,3,4,5\}).\] 
 However, the difference between $W_1$ and $W_3$ is the union of two exact subdiagrams, which is not itself exact. \sanote{labeled propagators to make easier to read} \end{eg}
 
-As described in the introduction, Wilson loop diagrams come from the study of SYM $N = 4$ in the physics literature \st{and therefore} \hlfix{where each propagator corresponds to a section of  a $k$ dimesional vector bundle over twistor space. Thus}{I feel the strike out was too vague. The highlighted may be too technical. Can someone find baby bear's text?} each diagram $W$ is associated to a matrix of data $C(W)$, which we now describe. \sanote{Susama ended here}
+As described in the introduction, Wilson loop diagrams come from the study of SYM $N = 4$ in the physics literature \st{and therefore} \hlfix{where each propagator corresponds to a section of  a $k$ dimesional vector bundle over twistor space. Thus}{I feel the strike out was too vague. The highlighted may be too technical. Can someone find baby bear's text?} each diagram $W$ is associated to a matrix of data $C(W)$, which we now describe. 
 
 \begin{dfn}\label{def:CWmatrix}
 Each Wilson loop diagram $W = (\cP, [n])$ with $|\cP| = k$ is associated to a $k \times n$ matrix $C(W)$ with non-zero real variable entries, defined by:
@@ -568,7 +566,7 @@ Let $W = (\cP,[n])$ be an admissible Wilson loop diagram. Then:
 \begin{proof}
 The first part of (1) is \cite[Equation (9)]{wilsonloop} and surrounding discussion, and the second part is standard matroid theory. (2) is \cite[Lemma 3.27]{wilsonloop}. (3) is a direct consequence of \cite[Lemma 3.20]{wilsonloop} and the fact that $F(P_1)^c = V(P_1^c)$, and (5) is given in \cite[Lemma 3.28]{wilsonloop}.
 
-To prove (4), we need to show that $F(P)$ is maximally dependent. If $F(P) = [n]$ then this is automatic, so suppose not and let $v \in [n] \setminus F(P)$. In other words, $v \in V(P^c)$ and so $v$ supports some propagator $q \not\in P$.  Let $S \subseteq F(P)$ be an independent set of maximal size. Then $\Prop(S) \subseteq P$ (from the definition of $F(P)$) and no subset of $S$ supports fewer propagators than the number of vertices it contains (by Theorem~\ref{thm WLD defines matroid}) \st{this is one characterization of an independent set in $M(W)$)}. Since $v$ supports a new propagator $q \not\in P$, the set $S \cup \{v\} \subseteq F(P) \cup\{v\}$ also satisfies this independence condition. Furthermore, since $S \cup v$ is independent, by the first point in this lemma, $|S| = \rk(S) = \rk F(P)$. Similarly $|S \cup v| = |S|+1 = \rk (S \cup v) \leq \rk(F(P) \cup v)$.  Thus $\rk(F(P) \cup\{v\}) = \rk(F(P)) + 1$, as required. \sanote{tweaked}
+To prove (4), we need to show that $F(P)$ is maximally dependent. If $F(P) = [n]$ then this is automatic, so suppose not and let $v \in [n] \setminus F(P)$. In other words, $v \in V(P^c)$ and so $v$ supports some propagator $q \not\in P$.  Let $S \subseteq F(P)$ be an independent set of maximal size. Then $\Prop(S) \subseteq P$ (from the definition of $F(P)$) and no subset of $S$ supports fewer propagators than the number of vertices it contains (by Theorem~\ref{thm WLD defines matroid}) \st{this is one characterization of an independent set in $M(W)$)}. Since $v$ supports a new propagator $q \not\in P$, the set $S \cup  \subseteq F(P) \cup v$ also satisfies this independence condition. Furthermore, since $S \cup v$ is independent, by the first point in this lemma, $|S| = \rk(S) = \rk F(P)$. Similarly $|S \cup v| = |S|+1 = \rk (S \cup v) \leq \rk(F(P) \cup v)$.  Thus $\rk(F(P) \cup\{v\}) = \rk(F(P)) + 1$, as required. \sanote{tweaked}
 \end{proof}
 
 \begin{rmk}
@@ -582,20 +580,20 @@ By point (4) of Lemma~\ref{lem facts about WLD matroids}, the set $F(\emptyset)$
 
 This section explores the correspondence between Wilson loop diagrams and positroids, established in \cite{wilsonloop}. In that paper, the authors show that admissible Wilson loop diagrams define matroids that are also positroids, Theorem \ref{put it back in then ref}. Furthermore, they show that if two Wilson loop diagrams are equivalent, they define the same matroid [ref thm].
 
-In this section, we take this analysis further, showing the converse of Theroem [ref] from loc. cit. (see Theorem \ref{same matroid iff equiv}. We also enumerate the number of diagrams that map to an particular matroid, Corollary \ref{number of equiv diagrams}. To do this, we establish a connectection between Wilson loop diagrams and chord diagrams, subsection \ref{sec: polygon partitions}, and prove some matroidal properties of exact subdiagrams in subsection \ref{sec: exact diagram matroidal props}  including that they correspond to uniform matroids (Theorem \ref{exactuniformthm}), and the associated matroid can be written as as a contraction by the complementary propagator flat (Theorem \ref{exact diagrams contractions}).\sanote{stopped here}\sanote{need to discuss positroids, and whether positroids should appear earlier so that they can be discussed here.}
+In this section, we take this analysis further, showing the converse of Theroem [ref] from loc. cit. (see Theorem \ref{same matroid iff equiv}. We also enumerate the number of diagrams that map to an particular matroid, Corollary \ref{number of equiv diagrams}. To do this, we establish a connectection between Wilson loop diagrams and chord diagrams, subsection \ref{sec: polygon partitions}, and prove some matroidal properties of exact subdiagrams in subsection \ref{sec: exact diagram matroidal props}  including that they correspond to uniform matroids (Theorem \ref{exactuniformthm}), and the associated matroid can be written as as a contraction by the complementary propagator flat (Theorem \ref{exact diagrams contractions}).\sanote{need to discuss positroids, and whether positroids should appear earlier so that they can be discussed here.}
 
 
 \subsection{Polygon dissections of Wilson loop diagrams\label{sec: polygon partitions}}
 
 
-The equivalence relation on Wilson loop diagrams is defined in terms of exact subdiagrams; thus in order to understand the equivalence, we need a way to extract and compare exact subdiagrams. We do this via the notion of a polygon dissection of $W$.
+The equivalence relation on Wilson loop diagrams (Definition \ref{equivdfn}) is defined in terms of exact subdiagrams. Thus in order to understand the equivalence, we need a way to extract and compare exact subdiagrams. We do this via the notion of a polygon dissection of $W$.
 
 \begin{dfn}\label{WLDtriangulationdfn}
   Let $W = (\cP, [n])$ be an admissible Wilson loop diagram.  The \emph{polygon dissection} associated to $W$, denoted $\tau(W)$, is defined as follows.
   \begin{itemize}
   \item The vertices of $\tau(W)$ correspond to the edges of $W$.
   \item Labeling the vertices of $\tau(W)$ with the edge number of $W$gives a cyclic order to the vertices. Connecting consecutive vertices gives a graph theoretic cycle called the polygon of $\tau(W)$.
-  \item Each propagator of $W$ defines a chord \note{We were originally thinking in terms of chord diagrams hence the language ``chord'' but I think ``diagonal'' would be more natural now.  Any thoughts against before I change it?} edge of $\tau(W)$; specifically,  a propagator $(i,j) \in \cP$ defines a chord connecting the vertices $i$ and $j$ in $\tau(W)$.
+  \item Each propagator of $W$ defines a chord \note{We were originally thinking in terms of chord diagrams hence the language ``chord'' but I think ``diagonal'' would be more natural now.  Any thoughts against before I change it?}\sanote{go for it.} edge of $\tau(W)$; specifically,  a propagator $(i,j) \in \cP$ defines a chord connecting the vertices $i$ and $j$ in $\tau(W)$.
   \end{itemize}
 \end{dfn}
 
@@ -606,7 +604,7 @@ If $W = (\cP, [n])$ is an admissible Wilson loop diagram, then $\tau(W)$ is a si
 \end{lem}
 
 \begin{proof}
-Since the vertices of $\tau(W)$ are labeled by the edges of $W$, which are cyclically ordered, this gives an ordering to the vertices and the outer face of $\tau(W)$ is a cycle.  Since $W$ does not admit any propagators of the form $p = (i, i+1)$, there is exactly one edge connecting any two adjacent edges of $\tau(W)$. There does not exist two propagators $p,q$ such that both $p$ and $q$ start at edge $i$ and end at edge $j$. Therefore, no other two vertices of $\tau(W)$ can be connected by more than one edge.  Therefore $\tau(W)$ is a simple graph. Finally, the embedding of $\tau(W)$ is induced from the embedding of the graph $W$ and since $W$ is admissible, no pairs of propagators cross. Therefore, it is a planar embedding. 
+Since the vertices of $\tau(W)$ are labeled by the edges of $W$, which are cyclically ordered, this gives an ordering to the vertices and the outer face of $\tau(W)$ is a cycle.  Since $W$ does not admit any propagators of the form $p = (i, i+1)$, there is exactly one edge connecting any two adjacent edges of $\tau(W)$. There do not exist two propagators $p,q$ such that both $p$ and $q$ start at edge $i$ and end at edge $j$. Therefore, no other two vertices of $\tau(W)$ can be connected by more than one edge.  Therefore $\tau(W)$ is a simple graph. Finally, the embedding of $\tau(W)$ is induced from the embedding of the graph $W$ and since $W$ is admissible, no pairs of propagators cross. Therefore, it is a planar embedding. 
  \end{proof}
 
 \begin{eg}\label{WLDtopolygonpartition}
@@ -689,7 +687,7 @@ Furthermore $T(W)$ is a tree because it is connected, has $n+k+1$ vertices ($k+1
 
 %We claim that $T(W)$ is a tree. Since $\tau(W)$ is a planar graph with $k$ chord edges and no internal vertices, there are $k+1$ internal faces of $\tau(W)$. Each of these internal faces corresponds to a vertex of $T(W)$, and there are $n$ vertices of $T(W)$ from the splitting of the dual graph, so $T(W)$ has $n+k+1$ vertices in total. On the other hand, $T(W)$ has $n+k$ edges, corresponding to the $n +k$ edges of $\tau(W)$. Therefore, $T(W)$ is a tree.
 
-Split every vertex of $T(W)$ which has degree $>3$ (see Figure~\ref{fig:vertex splitting in the dual graph} for an example of this).
+Split every vertex of $T(W)$ which has degree $>3$ (see Figure~\ref{fig:vertex splitting in the dual graph} for an example of this). That is, split $T(W)$ at every vertex corresponding to a non-triangle face of $\tau(W)$. 
 %By construction, each face of $\tau(W)$ is a polygon. Therefore, each vertex of $T(W)$ is at least 3 valent (one for each edge of the polygon). \hlfix{If split each vertex of $T(W)$ if it is strictly greater than $3$ valent.}{???} (In other words, we fail to split exactly when the face is a triangle).
 We claim that the connected components of $T(W)$ correspond to the decomposition of $\tau(W)$ into maximal triangulated pieces and edges originally in the polygon of $\tau(W)$.  To see this, let $f$ be the forest thus obtained.
 The vertices of $f$ either have degree 1 or 3.
@@ -731,21 +729,21 @@ Splitting at all the faces that are not triangles ensures maximality of the deco
     \drawchord{1}{3}
     \drawchord{5}{8}
     \drawchord{6}{8}
- \draw (.1,.1) node {$\bullet$};
-\draw (.1,-.1) node {$\bullet$};
-\draw (-.1,-.1) node {$\bullet$};
-\draw (-.1,.1) node {$\bullet$};
-\draw (-1,.2) node {$\bullet$};	
+ \draw (.2,.2) node {$\bullet$};
+\draw (.2,-.2) node {$\bullet$};
+\draw (-.2,-.2) node {$\bullet$};
+\draw (-.2,.2) node {$\bullet$};
+\draw (-2,.2) node {$\bullet$};	
 \draw (-.5,1.1) node {$\bullet$};
 \draw (.8,-.3) node {$\bullet$};	
 \draw (1.1,-.5) node {$\bullet$};
-\draw(1.1,-.5) -- (.8,-.3) --(.1,-.1); 
-\draw (-.1, .1) --(-1,.2) -- (-.5,1.1);
+\draw(1.1,-.5) -- (.8,-.3) --(.2,-.2); 
+\draw (-.2, .2) --(-1,.2) -- (-.5,1.1);
 \foreach \i in {1,2,...,8} {
       \draw (45*\i:2) node {$\bullet$};
     }
-\draw (45*1:2) --(.1,.1);
-\draw (-.1, -.1) -- (45*5:2);
+\draw (45*1:2) --(.2,.2);
+\draw (-.2, -.2) -- (45*5:2);
 \draw (45*6:2) -- (.8,-.3);
 \draw (45*8:2) -- (1.1,-.5) -- (45*7:2);
 \draw (45*2:2) -- (-.5,1.1) -- (45*3:2);
@@ -754,7 +752,7 @@ Splitting at all the faces that are not triangles ensures maximality of the deco
 	\end{tikzpicture}
 \eas
 
-\caption{The polygon dissection $\tau(W_3)$ overlaid with its dual graph $T(W_3)$ (left diagram), and the forest obtained by splitting at all vertices of degree $>3$ (right diagram).}
+\caption{The polygon dissection $\tau(W_3)$ overlaid with its dual graph $T(W_3)$ (left diagram), and the forest obtained by splitting at the only vertex of degree $>3$ (right diagram).}
 \label{fig:vertex splitting in the dual graph}
 \end{figure}
 
@@ -770,19 +768,17 @@ Given a maximal decomposition of $\tau(W)$, the maximal triangulated pieces are 
 Consider any two distinct maximal triangulated pieces of $\tau(W)$. Using notation as in the previous proof, these two pieces correspond to subtrees of $T(W)$ and intersect, at most, at a vertex in the interior of $\tau(W)$. Since the subtrees corresponding to the maximal triangulated pieces are edge disjoint, and the edges of $T(W)$ correspond to the edges of $\tau(W)$, this forces the maximal triangulated pieces to be edge disjoint as well.
 \end{proof}
 
-It will be important in the subsequent section to consider retriangulations.
+It is worth remarking that these maximal decompositions correspond to non-crossing partitions of the Wilson loop diagram, in the sense discussed in \cite{positroids13}. 
+
+Next, we introduce the idea of retriangulations. 
 \begin{dfn} \label{retriangulation}
   If $W = (\cP, [n])$ and $W' = (\cP', [n])$ are weakly admissible Wilson loop diagrams, then $\tau(W)$ and $\tau(W')$  differ by a \emph{retriangulation} if there is a bijection $f$ between the maximal triangulated pieces of $\tau(W)$ and the maximal triangulated pieces of $\tau(W')$ such that for any maximal triangulated piece $t$ of $\tau(W)$ the vertex sets of $t$ and $f(t)$ are the same.
 \end{dfn}
-More casually this definition says that the maximal triangulated pieces of $\tau(W)$ and $\tau(W')$ are the same (so far as their vertex sets are concerned) but that some or all of the triangulated pieces may be differently triangulated while the region being triangulated by each piece (which is defined by the vertex set) remains unchanged. Note that these maximal triangulations correspond to non-crossing partitions of the Wilson loop diagram, in the sense discussed in \cite{positroids13}. 
-
-The previous definition makes sense for any two polygon dissections of the same polygon, not just for those in the image of $\tau$.
-
-\medskip
-  
+More casually this definition says that the maximal triangulated pieces of $\tau(W)$ and $\tau(W')$ are the same (so far as their vertex sets are concerned) but that some or all of the triangulated pieces may be differently triangulated while the region being triangulated by each piece (which is defined by the vertex set) remains unchanged. This defintion of retriangulation makes sense for any two polygon dissections of the same polygon, not just for those in the image of $\tau$. \sanote{rearranged the paras around dfn \ref{retriangulation} for flow}
+   
 We are now in a position to relate the triangulated pieces of $\tau(W)$ to exact subdiagrams of $W$.
 
-Every triangulated piece $t$ of an admissible Wilson loop diagram $W$ corresponds to a subdiagram of $W$ by taking the set of propagators $P$ corresponding to edges of $t$ and then taking the subdiagram $W_P = (P, V(P))$.  Conversely, given a subdiagram $W_P = (P, V(P))$ of $W$ we can obtain a subgraph of $\tau(W)$, called $t$, as follows:
+For an admissible Wilson loop diagram $W$, every triangulated piece, $t$, of $\tau(W)$ corresponds to a subdiagram of $W$ by taking the set of propagators $P$ corresponding to edges of $t$ and then taking the subdiagram $W_P = (P, V(P))$.  Conversely, given a subdiagram $W_P = (P, V(P))$ of $W$ we can obtain a subgraph of $\tau(W)$, called $t$, as follows:
 \begin{itemize}
 \item The vertex set of the subgraph $t$ is
   \begin{itemize}
@@ -791,7 +787,7 @@ Every triangulated piece $t$ of an admissible Wilson loop diagram $W$ correspond
 \item The edge set of the subgraph is
   \begin{itemize}
   \item the edges of $\tau(W)$ corresponding to propagators of $P$,
-  \item along with the outer edges of $\tau(W)$ for which both their end points are in the vertex set.
+  \item the outer edges of $\tau(W)$ for which both their end points are in the vertex set.
   \end{itemize}
 \end{itemize}
 
@@ -806,6 +802,14 @@ Consider the following Wilson loop diagram $W$ and its corresponding chord diagr
 	\drawprop{4}{1}{8}{0}
 	\drawprop{8}{1}{1}{-1}
 	\drawprop{5}{0}{7}{0}
+%\draw (0,-2) --(0,2); horiontal
+%\draw (-2,0) --(2,0);
+%\draw (0,-2) node {\footnotesize $-y$};
+%\draw (-2,0) node {\footnotesize $-x$};
+\draw (-.3,1.) node {\footnotesize $p$};
+\draw (-.2,.65) node {\footnotesize $q$};
+\draw (0,-.4) node {\footnotesize $r$};
+\draw (.7, 0) node {\footnotesize $s$};
 		\end{scope}
 	\end{tikzpicture}  \; \quad
 \tau(W) = \begin{tikzpicture}[rotate=67.5,baseline=(current bounding box.east)]
@@ -817,10 +821,14 @@ Consider the following Wilson loop diagram $W$ and its corresponding chord diagr
     \drawchord{4}{8}
     \drawchord{8}{1}
     \drawchord{5}{7}
+\draw (-.3,1.) node {\footnotesize $p$};
+\draw (-.2,.65) node {\footnotesize $q$};
+\draw (0,-.4) node {\footnotesize $r$};
+\draw (.7, 0) node {\footnotesize $s$};
 	\end{scope}
 	\end{tikzpicture} \eas
 
-The set of propagators $P= \{(1,4), (2,4), (4, 8), (1,8) \}$ defines an exact subdiagram of $W$, with $V(P) = \{1,2,3,4,5,8,9\}$.  The corresponding subgraph $t$ of $\tau(W)$ has vertex set $\{1, 2,3, 4, 8\}$. Note that we don't include vertex 5 because it corresponds to the edge in $W$ that connects vertices 5 and 6, but 6 does not belong to $V(P)$. Vertex 9 is excluded for similar reasons.
+The set of propagators $P= \{p,q,r,s \}$ defines an exact subdiagram of $W$, with $V(P) = \{1,2,3,4,5,8,9\}$.  The corresponding subgraph $t$ of $\tau(W)$ has vertex set $\{1, 2,3, 4, 8\}$. Note that we don't include vertex 5 because it corresponds to the edge in $W$ that connects vertices 5 and 6, but 6 does not belong to $V(P)$. Vertex 9 is excluded for similar reasons.
 
 The subgraph $t$ is then 
 
