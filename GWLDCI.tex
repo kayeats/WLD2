@@ -828,7 +828,7 @@ Consider the following Wilson loop diagram $W$ and its corresponding chord diagr
 	\end{scope}
 	\end{tikzpicture} \eas
 
-The set of propagators $P= \{p,q,r,s \}$ defines an exact subdiagram of $W$, with $V(P) = \{1,2,3,4,5,8,9\}$.  The corresponding subgraph $t$ of $\tau(W)$ has vertex set $\{1, 2,3, 4, 8\}$. Note that we don't include vertex 5 because it corresponds to the edge in $W$ that connects vertices 5 and 6, but 6 does not belong to $V(P)$. Vertex 9 is excluded for similar reasons.
+The set of propagators $P= \{p,q,r,s \}$ defines an exact subdiagram of $W$, with $V(P) = \{1,2,3,4,5,8,9\}$.  The corresponding subgraph $t$ of $\tau(W)$ has vertex set $\{1, 2,3, 4, 8\}$. Note that we include vertex 3 of $\tau(W)$ because the two endpoints of edge 3 in $W$ (namely the vertices 3 and 4) are both in $V(P)$. However, we don't include vertex 5 of $\tau(W)$ because only of its endpoints in $W$ (5 and 6) are in $V(P)$, namely 5. The same argument applies to vertices 7, 9 and 10. Vertex 6 is excluded because none of its endpoints lie in $V(P)$. 
 
 The subgraph $t$ is then 
 
@@ -857,7 +857,7 @@ The subgraph $t$ is then
 	\end{scope}
 	\end{tikzpicture} \eas
 
-The key point to note is that the subgraph $t$ depends on how the propagators of $P$ sit inside $[n]$, not on how they sit in $W_P$ itself.  In particular, $t$ is not the subgraph of $\tau(W)$ consisting only of edges corresponding to propagators of $P$ (as it may also include some of the outer edges of $\tau(W)$), nor is it the polygon dissection of $(P,V(P))$ viewed as a Wilson loop diagram in its own right (which would have vertex set equal to $V(P)$).
+The key point to note is that the subgraph $t$ depends on how the propagators of $P$ sit inside $[n]$, not on how they sit in $W_P$, which would have an outer edge between vertices 8 and 1, one between 2 and 4, and another between 4 and 8, but would not include vertex 3.  In particular, $t$ is not the subgraph of $\tau(W)$ consisting only of edges corresponding to propagators of $P$ (as it may also include some of the outer edges of $\tau(W)$), nor is it the polygon dissection of $(P,V(P))$ viewed as a Wilson loop diagram in its own right (which would have vertex set equal to $V(P)$).
 \end{eg}
 
 \begin{lem}\label{lem triang to exact}
@@ -873,7 +873,7 @@ If $t$ has 2 vertices then $t$ corresponds to a propagator that connects two non
 
 Now suppose that $t$ has $m>2$ vertices.  We count how many edges of $t$ are not on the outer face of $\tau(W)$.  These are exactly the edges of $t$ defined by propagators of $W$. Consider the intersection of $t$ with the outer face of $\tau(W)$: this is a possibly disconnected subgraph of the polygon of $\tau(W)$ and this subgraph has $m$ vertices. Call this subgraph $S$, and let $j$ be the number of connected components of $S$.   To join the components of $S$ into the outer face of $t$, $t$ must have $j$ edges in its outer face which are not in the outer face of $\tau(W)$.  Furthermore $t$ has $m-3$ edges not in its outer face and so also not in the outer face of $\tau(W)$.  Thus there are $m-3+j$ edges of $t$ not in the outer face of $\tau(W)$.
 
-Each of these $m-3+j$ internal edges corresponds to a propagator in $W$; call this set of propagators $P$.  Next we count the size of $V(P)$.  Each of the $m$ vertices in the outer face of $t$ corresponds to an edge of $W$. These $m$ edges define $j$ connected components of the outer polygon of $W$. Thus the set $V(P)$ has $m+j$ vertices.  In other words, 
+Each of these $m-3+j$ \hlfix{internal}{diagonal? chord?} edges corresponds to a propagator in $W$; call this set of propagators $P$.  Next we count the size of $V(P)$.  Each of the $m$ vertices in the outer face of $t$ corresponds to an edge of $W$. These $m$ edges define $j$ connected components of the outer polygon of $W$. Thus the set $V(P)$ has $m+j$ vertices.  In other words, 
 \[|V(P)| = m+j = |P| +3\;.\]
 Thus the subdiagram $(P,V(P))$ defined by $t$ is exact.
 
@@ -882,10 +882,10 @@ Conversely, suppose we have an exact subdiagram $(P, V(P))$ of $W = (\cP, [n])$ 
 
 Suppose $|P|=1$. Let $p$ be the element of $P$. The exactness condition on $(P, V(P))$ says that the four supporting vertices of $p$ are distinct.  If the support of $p$ is four consecutive vertices, then $V(p)$ defines three consecutive boundary edges of $W$, so $t$ is a single triangle, hence a triangulated piece.  If the support of $p$ is not four consecutive vertices, then the vertices which are the ends of $t$ are separated by at least two vertices along the cycle.  This implies that $t$ is a trivial triangulated piece.
 
-Now suppose $|P|>1$.  Let $j=|P|$, $m=|V(P)|$, and 
-suppose that the set $V(P)$ defines $c$ disjoint cyclic intervals of $[n]$. Then $t$ has $m-c$ vertices.  If $t$ were a triangulation, $t$ would have $j -c$ internal edges.
+Now suppose $|P|>1$.  Let $j=|P|$, $m= j+3=|V(P)|$, and 
+suppose that the set $V(P)$ defines $c$ disjoint cyclic intervals of $[n]$. Then $t$ has $m-c$ vertices.  If $t$ were a triangulation, $t$ would have $j -c$ \hlfix{internal}{here, internal means that it doesn't define the outer face of $t$ in the induced embedding. Different use of the word than above?} edges.
 
-The graph $t$ has $j$ edges that come from propagators, and $m - 2c$ edges that come from the boundary polygon of $\tau(W)$. Since $t$ has $m-c$ vertices, it has $m-c$ external edges, of which $c$ come from propagators. Therefore, of the $j$ edges of $t$ that come from propagators, $j-c$ are internal to the connected component. Therefore, $t$ is a triangulated piece.
+The graph $t$ has $j$ edges that come from propagators, and $m - 2c$ edges that come from the boundary polygon of $\tau(W)$. Since $t$ has $m-c$ vertices, it has $m-c$ \hlfix{external}{means defines outer face, not just and outer edge of $\tau(W)$} edges, of which $c$ come from propagators. Therefore, of the $j$ edges of $t$ that come from propagators, $j-c$ are internal to the connected component. Therefore, $t$ is a triangulated piece.
 
 
 %  The statement of the lemma then follows form the fact that inclusion is preserved under $\tau$ and so maximality also corresponds under $\tau$.
@@ -929,7 +929,7 @@ Since Corollary \ref{uniqueproppartitioncor} allows us to decompose any admissib
 \item The matroid associated to an exact subdiagram is uniform (Theorem \ref{exactuniformthm} ).
 \end{enumerate}
 
-We begin by proving some useful facts about propagator flats, and flats of matroids associated to admissible Wilson loop diagrams more generally. Recall from Definition~\ref{VPropdfn} that the propagator flat $F(P)$ of $P \subseteq \cP$ denotes the set $V(P^c)^c$ of vertices that do not support any propagators not in $P$.
+We begin by proving some useful facts about propagator flats, and flats of matroids associated to admissible Wilson loop diagrams more generally. Recall from Definition~\ref{VPropdfn} that the propagator flat $F(P)$ of $P \subseteq \cP$ denotes the set $V(P^c)^c$ of vertices that \st{do not support any propagators not in $P$.}\hlfix{only support propagators in $P$ (or no propagators)}{too many negatives. Can we use this instead?}
 
 
 \begin{lem} \label{lem decompose flat}Let $F$ be a flat in $M(W)$, and let $C \subseteq F$ be the union of all circuits contained in $F$. Then the following are true:
@@ -992,10 +992,10 @@ Next we examine properties of propagator flats associated to the complement of W
 
 \begin{lem} \label{maxexactcomplementrank}
 Let $W = (\cP, [n])$ be an admissible Wilson loop diagram, and $P \subseteq \cP$. Then: \begin{enumerate}
-\item If $(P,V(P))$ is an exact subdiagram in $W$, then $F(P^c)$ is a dependent flat. \note{Should we emphasize that all these $P^c$ are wrt $W$ not the subdiagram?}
-\item If $(P,V(P))$ is a maximal exact subdiagram in $W$, then $F(P^c)$ is a cyclic flat.
+\item If $(P,V(P))$ is an exact subdiagram of $W$, then $F(P^c)$ is a dependent flat in $W$. \note{Should we emphasize that all these $P^c$ are wrt $W$ not the subdiagram?} \sanote{yes. done}
+\item If $(P,V(P))$ is a maximal exact subdiagram of $W$, then $F(P^c)$ is a cyclic flat in $W$.
 \item If $(P,V(P))$ is an exact subdiagram in $W$, then $\rk(F(P^c)) = |P^c|$.
-\end{enumerate}
+\end{enumerate} \sanote{end here}
 \end{lem}
 
 
