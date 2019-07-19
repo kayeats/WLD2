@@ -1,0 +1,416 @@
+\documentclass[11pt]{article}
+
+
+\usepackage{amssymb, amsmath, verbatim, amsthm,url, multirow,fullpage,mathtools, outlines}
+\usepackage{longtable, rotating,makecell,array}
+\usepackage[aligntableaux=top]{ytableau}
+
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1.5ex plus 0.5ex minus 0.2ex}
+
+
+%***************************
+%Frontmatter Table of contents
+%***************************
+% Annotations
+%xypic packages
+%WLD tkx program
+%Useful numeric rings and fields
+%Other useful mathematical operations and functions
+%Equation display shortcuts
+%Shortcuts for frequently used special characters
+%Theorem environments
+%***************************
+
+%*****************
+% Annotations
+\usepackage{soul}
+\usepackage[colorinlistoftodos,textsize=footnotesize]{todonotes}
+\newcommand{\hlfix}[2]{\texthl{#1}\todo{#2}}
+\newcommand{\hlnew}[2]{\texthl{#1}\todo[color=green!40]{#2}}
+\newcommand{\sanote}{\todo[color=violet!30]}
+\newcommand{\note}{\todo[color=green!40]}
+\newcommand{\newstart}{\note{The inserted text starts here}}
+\newcommand{\newfinish}{\note{The inserted text finishes here}}
+\setstcolor{red}
+%***************************
+
+
+%*****************
+%xypic packages
+\usepackage[all]{xy}
+\xyoption{poly}
+\xyoption{arc}
+%*****************
+
+%*****************
+%%% WLD drawing and 2,6 shortcuts
+
+\usetikzlibrary{decorations.pathmorphing,calc}
+\usetikzlibrary{intersections}
+
+
+\definecolor{light-gray}{gray}{0.6}
+
+% some propagator styles
+\tikzstyle{propagator}=[decorate,decoration={snake,amplitude=0.8mm}]
+\tikzstyle{smallpropagator}=[decorate,decoration={snake,segment length=3mm,amplitude=0.5mm}]
+
+% for highlighting regions of a diagram edge
+\tikzstyle{linehighlight}=[red,line width = 3pt,line cap = round, draw opacity = 0.5]
+
+% these two for drawing partial propagators
+\tikzstyle{firstdash}=[dashed,line cap=round, dash pattern=on 2pt off 1pt]
+\tikzstyle{seconddash}=[dashed,line cap=round, dash pattern=on 0.5pt off 1pt]
+
+% vertices, radius
+\newcommand{\drawWLD}[2]{
+
+\pgfmathsetmacro{\n}{#1}
+\pgfmathsetmacro{\radius}{#2}
+\pgfmathsetmacro{\angle}{360/\n}
+\draw (0,0) circle (\radius);
+    \foreach \i in {1,2,...,\n} {
+      \draw (\angle*\i:\radius) node {$\bullet$};
+       %\pgfmathsetmacro{\x}{\angle*\i}
+       %\draw[-,shorten >=-\radius*0.1 cm,shorten <=-\radius*0.1 cm]  (\x:\radius cm)-- (\x + \angle: \radius cm);
+    }
+
+}
+
+\newcommand{\drawpolypart}[2]{
+\pgfmathsetmacro{\n}{#1}
+\pgfmathsetmacro{\radius}{#2}
+\pgfmathsetmacro{\angle}{360/\n}
+    \foreach \i in {1,2,...,\n} {
+      \draw (\angle*\i+ \angle/2:\radius) node {$\bullet$};
+     \pgfmathsetmacro{\x}{\angle*\i - \angle/2}
+      \pgfmathsetmacro{\concave}{((\n-1.5)/\n)}
+      \draw (\x:\radius cm) .. controls (\angle *\i: \concave* \radius cm) .. (\x + \angle:\radius cm);
+      %\draw (\angle *\i: .8* \radius cm) node {$\bullet$};
+    }
+
+}
+
+
+% r, bumpr, s, bumps: r, s are start/end vertices, bumpr and bumps are how many steps to bump the start/end for multiple props on one edge
+\newcommand{\drawprop}[4]{
+\pgfmathsetmacro{\r}{#1}
+\pgfmathsetmacro{\bumpr}{#2}
+\pgfmathsetmacro{\s}{#3}
+\pgfmathsetmacro{\bumps}{#4}
+\pgfmathsetmacro{\perturbe}{\angle/\n}
+
+\begin{scope}
+%\clip (\angle*\r:\radius) -- (\angle + \angle*\r:\radius) -- (\angle*\s:\radius) -- (\angle + \angle*\s:\radius) -- (\angle*\r:\radius);
+\draw[smallpropagator] (\angle*\r + \angle/2 + \bumpr*\perturbe:\radius) -- (\angle*\s + \angle/2 + \bumps*\perturbe:\radius);
+\end{scope}
+}
+
+\newcommand{\drawlabeledprop}[5]{
+\pgfmathsetmacro{\r}{#1}
+\pgfmathsetmacro{\bumpr}{#2}
+\pgfmathsetmacro{\s}{#3}
+\pgfmathsetmacro{\bumps}{#4}
+\pgfmathsetmacro{\perturbe}{\angle/\n}
+
+\begin{scope}
+%\clip (\angle*\r:\radius) -- (\angle + \angle*\r:\radius) -- (\angle*\s:\radius) -- (\angle + \angle*\s:\radius) -- (\angle*\r:\radius);
+\draw[smallpropagator] (\angle*\r + \angle/2 + \bumpr*\perturbe:\radius) -- (\angle*\s + \angle/2 + \bumps*\perturbe:\radius) node[midway, below] {#5};
+\end{scope}
+}
+
+
+\newcommand{\drawchord}[2]{
+\pgfmathsetmacro{\r}{#1}
+\pgfmathsetmacro{\s}{#2}
+
+\begin{scope}
+%\clip (\angle*\r:\radius) -- (\angle + \angle*\r:\radius) -- (\angle*\s:\radius) -- (\angle + \angle*\s:\radius) -- (\angle*\r:\radius);
+\draw (\angle*\r + \angle/2:\radius) -- (\angle*\s + \angle/2:\radius);
+\end{scope}
+}
+
+
+% for anything that requires modifying the propagator, e.g. colour, different amplitude,etc
+% 5th argument should be {propagator,<other stuff>} or {smallpropagator,<otherstuff>} otherwise you'll get a straight line
+\newcommand{\modifiedprop}[5]{
+\pgfmathsetmacro{\r}{#1}
+\pgfmathsetmacro{\bumpr}{#2}
+\pgfmathsetmacro{\s}{#3}
+\pgfmathsetmacro{\bumps}{#4}
+\pgfmathsetmacro{\perturbe}{\angle/\n}
+
+\begin{scope}
+\clip (\angle*\r:\radius) -- (\angle + \angle*\r:\radius) -- (\angle*\s:\radius) -- (\angle + \angle*\s:\radius) -- (\angle*\r:\radius);
+\draw[#5] (\angle*\r + \angle/2 + \bumpr*\perturbe:\radius) -- (\angle*\s + \angle/2 + \bumps*\perturbe:\radius);
+\end{scope}
+}
+
+
+\newcommand{\boundaryprop}[4]{
+\pgfmathsetmacro{\r}{#1}
+\pgfmathsetmacro{\bumpr}{#2}
+\pgfmathsetmacro{\s}{#3}
+\pgfmathsetmacro{\perturbe}{\angle/\n}
+
+\begin{scope}
+\clip (\angle*\r:\radius) -- (\angle + \angle*\r:\radius) -- (\angle*\s - \angle:\radius) -- (\angle*\s:\radius) -- (\angle + \angle*\s:\radius) -- (\angle*\r:\radius);
+\draw[#4] (\angle*\r + \angle/2 + \bumpr*\perturbe:\radius) -- (\angle*\s:\radius);
+\end{scope}
+	
+}
+
+\newcommand{\drawnumbers}{
+  \foreach \i in {1,2,...,\n} {
+  \pgfmathsetmacro{\x}{\angle*\i}
+  \draw (\x:\radius*1.15) node {\footnotesize \i};
+}
+}
+
+\newcommand{\drawnumbersshift}{
+  \foreach \i in {1,2,...,\n} {
+  \pgfmathsetmacro{\x}{\angle*\i + \angle/2}
+  \draw (\x:\radius*1.15) node {\footnotesize \i};
+}
+}
+
+
+
+\newcommand{\boundA}[3]{
+	\pgfmathsetmacro{\r}{#1}
+	\pgfmathsetmacro{\bumpr}{#2}
+	\pgfmathsetmacro{\destination}{#3}
+	\pgfmathsetmacro{\perturbe}{\angle/\n}
+	\path [name path=polyedge1] (\angle*\r:\radius) -- (\angle*\r + \angle:\radius);
+	\path [name path=radius1] (0:0) -- (\angle*\r + \angle/2 + \bumpr*\perturbe:\radius);
+	\draw[->,
+	name intersections={of=polyedge1 and radius1,by=p},
+	shorten >=\radius*0.1 cm] (p) ++(\angle*\r + \angle/2 + \bumpr*\perturbe:\radius*0.15) -- (\angle*\destination: \radius*1.15);
+
+}
+
+
+
+\newcommand{\boundB}[3]{
+	\pgfmathsetmacro{\rangle}{#1*\angle + \angle/2 + #2*\angle/\n}
+	\pgfmathsetmacro{\sangle}{#1*\angle + \angle/2 + #3*\angle/\n}
+
+
+	\draw[->,shorten <=\radius*0.02cm,shorten >=\radius*0.05cm] (\rangle:\radius*1.05) -- (\sangle:\radius*1.05);
+
+}
+
+\newcommand{\makediag}[8]{
+	\begin{tikzpicture}[rotate=60,baseline=(current bounding box.east)]
+	\begin{scope}
+	\drawWLD{6}{0.8}
+	%\drawnumbers
+	\drawprop{#1}{#2}{#3}{#4}
+	\drawprop{#5}{#6}{#7}{#8}
+	\end{scope}
+	\end{tikzpicture}
+}
+
+
+
+%%%%%%%
+% Drawing partial WLD
+%%%%%%%
+\def\centerarc[#1](#2)(#3:#4:#5)% Syntax: [draw options] (center) (initial angle:final angle:radius)
+    { \draw[#1] ($(#2)+({#5*cos(#3)},{#5*sin(#3)})$) arc (#3:#4:#5); }
+
+\def\clipcenterarc(#1)(#2:#3:#4)% Syntax: [draw options] (center) (initial angle:final angle:radius)
+    { \clip ($(#1)+({#4*cos(#2)},{#4*sin(#2)})$) arc (#2:#3:#4); }
+
+
+%\drawWLDfragment[number of nodes]{radius}{fraction of circle to be displayed}
+\newcommand{\drawWLDfragment}[3][10]{
+\pgfmathsetmacro{\n}{#1} % use this to get consistent spacing between nodes
+\pgfmathsetmacro{\radius}{#2}
+\pgfmathsetmacro{\fragment}{#3} % between 0 and 1, gets you that percentage of a circle
+\pgfmathsetmacro{\halfangle}{360*\fragment/2}
+\pgfmathsetmacro{\startpoint}{270 - \halfangle}
+\pgfmathsetmacro{\endpoint}{270 + \halfangle}
+\pgfmathsetmacro{\step}{2*\halfangle/\n} 
+\pgfmathsetmacro{\zero}{\startpoint-0.5*\step} % so node i is at angle \zero + i*\step
+\centerarc[black](0,0)(\startpoint:\endpoint:\radius)
+}
+
+
+
+\newcommand{\drawnumberspartial}{
+\node (0,0) {$\bullet$};
+  \foreach \i in {1,2,...,\n} {
+  \pgfmathsetmacro{\x}{\step*\i}
+  \draw (\zero + \x:\radius*1.15) node {\footnotesize \i};
+}
+}
+
+
+\newcommand{\newnode}[3][left]{
+	\node[label={[label distance=-1mm]#1:{\scriptsize $#3$}}] at (\zero + #2*\step:\radius) {\scriptsize $\bullet$};
+	%\node[#1] at (\zero + #2*\step:\radius) {\scriptsize $#3$};
+}
+
+% messier but more flexible: use when you want more control over label placement
+\newcommand{\newbetternode}[3][{label distance=-1mm]left}]{
+	\node[label={#1:{\scriptsize $#3$}}] at (\zero + #2*\step:\radius) {\scriptsize $\bullet$};
+	%\node[#1] at (\zero + #2*\step:\radius) {\scriptsize $#3$};
+}
+
+
+
+% \newprop[label position]{start node}{end node}{label}
+\newcommand{\newprop}[4][midway,below]{
+\pgfmathsetmacro{\startnode}{#2}
+\pgfmathsetmacro{\endnode}{#3}
+
+\draw[smallpropagator] (\zero+\startnode*\step:\radius) -- (\zero + \endnode*\step:\radius) node[#1] {#4};
+}
+
+\newcommand{\newpropbend}[3]{
+\draw[smallpropagator] (\zero+#1*\step:\radius*1.1) to[bend left = #3] (\zero + #2*\step:\radius*1.1);
+}
+
+%%%%%%%%%%%%%%
+
+
+
+%*****************
+
+%*****************
+%Useful numeric rings and fields
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\RP}{\mathbb{R}\mathbb{P}}
+\newcommand{\id}{\mathbb{I}}
+\newcommand{\Gr}{\mathbb{G}_{\R, \geq 0}}
+\newcommand{\Grtnn}{\mathbb{G}_{\R, +}}
+\newcommand{\CW}{\overline{\mathcal{W}}} % CW complex of W(k,n)
+\newcommand{\BW}{\widehat{\mathcal{W}}} % complex minus bald spots
+%*****************
+
+
+%*****************
+%Other useful mathematical operations and functions
+\newcommand{\D}{\partial}
+\newcommand{\rk}{\textrm{rk }}
+\newcommand{\spn}{\textrm{span }}
+\newcommand{\rd}{\textrm{d}}
+\newcommand{\Res}{\textrm{Res}}
+%*****************
+
+
+%*****************
+%Equation display shortcuts
+\def\ba #1\ea{\begin{align} #1 \end{align}}
+\def\bas #1\eas{\begin{align*} #1 \end{align*}}
+\def\bml #1\eml{\begin{multline} #1 \end{multline}}
+\def\bmls #1\emls{\begin{multline*} #1 \end{multline*}}
+%*****************
+
+
+%*****************
+%Shortcuts for frequently used special characters
+\newcommand{\fB}{\mathfrak{B}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\fZ}{\mathfrak{Z}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cI}{\mathcal{I}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\G}{\mathbb{G}}
+\newcommand{\Prop}{\textrm{Prop}}
+\newcommand{\cW}{\mathcal{W}}
+\newcommand{\bM}{\mathbb{M}}
+\newcommand{\cZ}{\mathcal{Z}}
+\newcommand{\cY}{\mathcal{Y}}
+\newcommand{\Dom}{\textrm{Dom}}
+\newcommand{\detzr}[1] {\langle (\cZ_*^\mu|V(p))^{#1} \rangle}
+\newcommand{\II}{\mathcal{I}}
+\newcommand{\PP}{\mathcal{P}}
+\newcommand{\BB}{\mathcal{B}}
+\newcommand{\CS}{\mathcal{S}}
+\newcommand{\interval}[2]{[\![#1,#2]\!]}
+\newcommand{\gale}[1]{\preccurlyeq_{#1}}
+\newcommand{\sgale}[1]{\prec_{#1}}
+\renewcommand\vec[1]{\overrightarrow{#1}}
+\newcommand\cev[1]{\overleftarrow{#1}}
+%*****************
+
+%*****************
+%Theorem environments
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{conj}[thm]{Conjecture}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{algorithm}[thm]{Algorithm}
+
+
+\theoremstyle{remark}
+\newtheorem{eg}[thm]{Example}
+\newtheorem{claim}[thm]{Claim}
+
+\theoremstyle{definition}
+\newtheorem{dfn}[thm]{Definition}
+\newtheorem{rmk}[thm]{Remark}
+\newtheorem{ntn}[thm]{Notation}
+%*****************
+
+
+
+
+\title{Combinatorics of the geometry of Wilson loop diagrams II: Grassmann necklaces, dimensions, and denominators}
+\author{Susama Agarwala, Si\^an Fryer, and Karen Yeats}
+%\date{}
+
+\begin{document}
+
+\begin{thm}
+The Grassmann necklace $(I_1 \ldots I_n)$ from [previous theorem] is the Grassmann necklace for $M(W)$.
+\end{thm}
+
+\begin{proof}
+We have shown that $(I_1,\dots,I_n)$ is a Grassmann necklace; it remains to check that this Grassmann necklace corresponds to the positroid $M(W)$.  Recall from the discussion following Definition~\ref{def:grassmann necklace}, and equation \eqref{basesofmatroids} in particular, that it suffices to show: 
+\begin{itemize}
+\item For each $i \in [n]$, $I_i$ is a basis for $M(W)$.
+\item If $J$ is lexicographically smaller than $I_i$ with respect to $<_i$ (for any $i \in [n]$) then $J$ is not a basis for $M(W)$. 
+\end{itemize}
+The first point follows immediately: the algorithm is pairing each $j \in I_i$ with a unique propagator supported on that vertex, so $I_i$ is a basis for $M(W)$ by Corollary~\ref{lem basis as perm}.
+
+Now fix $i \in [n]$, and write $I_i = \{a_1 <_i a_2 <_i \dots <_i a_k\}$. This imposes an ordering on the propagators $\cP$, where we label them $p_1, p_2, \dots, p_k$ such that $I_i(p_j) = a_j$ for each $j$. Define $\cP_m: = \{p_1,p_2,\dots,p_m\}$ for each $m\geq 0$, with $\cP_0 = \emptyset$.
+
+Write the matrix $C(W)$ such that the $m^{th}$ row is defined by the propagator $p_m$. We give an algorithm to define a new matrix $D(W)$, where the columns of $D(W)$ are linear combinations of the columns of $C(W)$. 
+
+Let $r = 1$
+\begin{enumerate}
+\item Replace column $\vec{a}_r$ with a normalized version where the entry $(r, a_r) = 1$. 
+	\begin{enumerate} \item This can be done since $p_r$ is supported on $a_r$, and subsequent steps to do not set this to $0$. 
+	\end{enumerate}
+\item For any $e$ greater than $a_r$ ($a_r <_i e$), if $(r, e) = x_{r,e} \neq 0$, replace column $\vec{e}$ with $\vec{e} - x_{r,e} \vec{a}_r$.  
+	\begin{enumerate}
+	\item Note that this sets every entry of the form $(q, e) = 0$ for $q \leq r$ and $r <_i e$. 
+	\item All non-zero entries $(s, e)$, below $(r, e)$ (i.e. $r \leq s$) remain non-zero. In fact, each $x_{s,e}$ is a linear combination of rational functions of the variables $c_{p_r, v}$ that define $C(W)$.
+	\end{enumerate}
+\item Increment $r$ and repeat.
+\end{enumerate}
+
+The algorithm above has a $1$ in every $(r, a_r)$, with $0$s above it and $0$s in all subsequent (in the $<_i$ order) entries in the $r^{th}$ row. It remains to check the columns not in $I_i$. 
+
+If $a_k < e$, the $\vec{e}$ column has all $0$ entries by the algorithm. These columns can all be expressed as a linear combination of the columns indicated in $I_i$.
+
+Suppose $a_m + 1 < a_{m+1}$. That is, two consecutive propagators, $p_m$ and $p_{m+1}$ do not contribute consecutive indicies. (Without loss of generality, assume that $m$ is the smallest integer for which this is true.) We claim at the vertices in the cyclic interval $[a_m+1, a_{m+1}-1]$ are also columns of $0$s in $D(W)$. First note that they only support propagators in $\cP_m$. Indeed, if $v \in [a_m+1, a_{m+1}-1]$, and $v$ supported such a propagator, $q \in \Prop(v) \setminus \cP_m$, then $q$ would not have contributed to $I_i$ by the time the algorithm reached $v$, forcing $q$ to contribute either after $p_m$ and before $p_{m+1}$, which is a contradiction, or $q = p_{m+1}$, which contradicts $v < a_{m+1}$.
+
+Therefore, for column $\vec{v}$ to have a non-zero entry, there must exists a $q$ that contributes after $p_m$ supported on an $a_{r_1}$ (with $r_1 < m$) and a sequence $\{a_{r_1} \ldots a_{r_j}, v\}$ such that each contibuting propagator is supported on the next assigned vertex in the series, $p_{r_i} \in \Prop(a_{r_{i+1}})$ and $p_{r_j} \in \Prop(v)$.\sanote{Key condition to check that I haven't missed any cases.} 
+We show that this cannot happen. Note that when $p_{r_1}$ contributes $I_i(p_{r_1}) = a_{r_1}$ to the Grassmann necklace, it must be the clockwise-most propagator (amongst those not yet assigned) that is supported on $a_{r_1}$ i.e. clockwise-most amongst propagators in the set $\cP \setminus \cP_{r_1-1}$. Therefore, if $q$ is assigned after $p_{r_1}$ but also supported on $a_{r_1}$, $q$ must be inside $p_{r_1}$ in the $a_{r_1} -1$ ordering. However, we know that $p_{r_1}$ is also supported on $a_{r_2} >_i a_{r_2}$. This either means that $q$ is also supported on $a_{r_2}$, in which case, we may start the above sequence from $a_{r_2}$, or that $q$ contributes a vertex in the interval $[a_{r_1} +1,a_{r_2} -1]$, which implies that $q$ contributes before $p_{m+1}$, which is a contradition.
+
+Therefore, any set of the form $\{a_1 \ldots a_m, v\}$ is linearly dependent in $C(W)$. Thus any $J$ lexicographically smaller than $I_i$ with respect to $<_i$ must contain a set of this form, we show that $J$ is not linearly dependent.
+\end{proof}
+\end{document}
