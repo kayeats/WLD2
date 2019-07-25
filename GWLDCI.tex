@@ -1289,9 +1289,9 @@ The situation described in the lemma is illustrated in Figure~\ref{configs}.
 
 Suppose this never occurs.  Then all the non-triangle faces of $D_2$ which are crossed by a diagonal of $D_1$ must be quadrilaterals and likewise for $D_1$.  This means that any non-triangle and non-quadrilateral faces must be common between $D_1$ and $D_2$.  These common faces are irrelevant for the statement as none of them can be the face containing $x_i, x_j, x_k, x_l$, and so by triangulating any common non-triangle faces, we may assume that $D_1$ and $D_2$ have only quadrilateral and triangle faces.
 
-This proof is by a symmetrical construction, where we give a proof with respect to a single edge in $f$, leaving the rest of the argument as read due to the symmetry.\note{Actually, since it is by contradiction we don't need to do both directions; one direction already gives a contradiction and that's enough}
+This proof is by a symmetrical construction, where we give a proof with respect to a single edge in the face $f$, leaving the rest of the argument as read due to the symmetry.\note{Actually, since it is by contradiction we don't need to do both directions; one direction already gives a contradiction and that's enough} \sanote{agreed. Withdraw previous questions}
 
-Assume for a contradiction that no quadrilateral as in the statement exists, and let $d$ and $f$ be as above.  Then $f$ must have two vertices strictly on each side of $d$: name the vertices on one side of $d$ as $x_i$ and $x_j$, and those on the other side as $x_k$, $x_l$ (and in that order; see Figure~\ref{inductive_step}).  Let $g$ be the face in $D_1$ that is incident to $d$ on the $x_i, x_j$ side of $d$.
+Assume for a contradiction that no quadrilateral as in the statement exists, and let $d$ be a diagonal in $D_1$ crossing the unique non-triangle face, $f$, of $D_2$. Then $f$ must have two vertices strictly on each side of $d$: name the vertices on one side of $d$ as $x_i$ and $x_j$, and those on the other side as $x_k$, $x_l$ (and in that order; see Figure~\ref{inductive_step}).  Let $g$ be the face in $D_1$ that is incident to $d$ on the $x_i, x_j$ side of $d$.
 
 We first show that none of the vertices defining $g$ can lie in the cyclic interval $[x_i,x_j]$. Indeed, if $g$ is a triangle then we immediately see that its third vertex cannot lie in the interval $[x_i,x_j]$, as we could obtain a configuration as described in the statement by replacing $d$ with one of the other edges of $g$.
 
@@ -1319,7 +1319,7 @@ Now $d'$ is also a diagonal of $D_1$ that crosses the non-triangle face $f$ of $
 As observed in the proof of Proposition~\ref{prop easy way}, any non-zero vector in $\R^n$ parallel to an edge of $A_n$ has non-zero entries only in the coordinates corresponding to the four vertices bounding the quadrilateral of the dissection associated with the edge.  Thus if $V_{>3}(\tau(W)) \neq V_{>3}(\tau(X))$ (notation as defined before Lemma \ref{lem good quads}) then the span of the vectors parallel to their edges has different support and so they cannot be parallel.  So we can assume that $V_{>3}(\tau(W)) = V_{>3}(\tau(X))$.
 
     Since $\tau(W)$ and $\tau(X)$ do not have the same set of non-triangle faces, there must be some diagonal $d$ of $\tau(W)$ that crosses through a non-triangle face $f$ of $\tau(X)$. 
-    It will be most convenient to consider faces in terms of their normal vectors. We make use of the construction discussed on p8 of \cite{CSZinequivalent}: namely, pick one side of $d$ to be positive and define the $i$th coordinate of the vector $\omega^+_d$ to be
+    It will be most convenient to consider faces in terms of their normal vectors. We make use of the construction discussed on page 8 of \cite{CSZinequivalent}: namely, pick one side of $d$ to be positive and define the $i$th coordinate of the vector $\omega^+_d$ to be
     \[
     \omega^+_d(i) = \begin{cases} \text{dist}(x_i, d) & \text{if $x$ is on the positive side of $d$}\\ 0 & \text{otherwise} \end{cases}
     \]
