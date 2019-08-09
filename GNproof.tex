@@ -395,7 +395,7 @@ We enumerate two important observations:
 
 Now, let $J = \{j_1 <_i j_2<_i \dots <_i j_k\}$ be a $k$-set, and suppose that $J<_i I_i$ in the $<_i$-lexicographic order. Let $m$ be the minimal index such that $j_m <_i a_m$, i.e. the first entry at which $J$ and $I_i$ differ. We will show that $J$ must be a dependent set.
 
-%If $\Prop(j_m) = \emptyset$ then $J$ is automatically dependent since the corresponding column of $C(W)$ contains only zeros, so suppose henceforth that $\Prop(j_m) \neq \emptyset$. In particular, this implies that $m>1$, since if $m=1$ we would have $\Prop(j_1) \subseteq \cP_0 = \emptyset$.
+If $\Prop(j_m) = \emptyset$ then $J$ is automatically dependent since the corresponding column of $C(W)$ contains only zeros, so suppose henceforth that $\Prop(j_m) \neq \emptyset$. %In particular, this implies that $m>1$, since if $m=1$ we would have $\Prop(j_1) \subseteq \cP_0 = \emptyset$.
 
 In order to exhibit a dependent subset of vertices in $J$, we first define a sequence of sets of propagators by
 \[Q_0 = \Prop(j_m), \qquad Q_{l+1} = \Prop(I_i(Q_l))\quad \forall l \geq 0.\]
@@ -403,7 +403,9 @@ It is easily verified that this is an increasing chain of sets: indeed, if $q \i
 
 We will show that $Q \subseteq \mathcal{P}_{m-1}$, which will imply the theorem as follows: if $Q \subseteq \cP_{m-1}$ then we have $I_i(Q)\subseteq J$, and hence $I_i(Q) \cup \{j_m\} \subseteq J$ as well. Since $I_i(Q) \cup \{j_m\}$ only supports the propagators in $Q$ but has $|Q|+1$ vertices, it is a dependent set. Thus $J$ is a dependent set, and the Grassmann necklace $(I_1,\dots,I_n)$ constructed from $W$ does indeed define the positroid $M(W)$.
 
-We now proceed to prove $Q\subseteq \mathcal{P}_{m-1}$ by inductively proving $Q_l \subseteq \mathcal{P}_{m-1}$ for all $l \geq 0$.  If $Q_0 = \Prop(j_m) = \emptyset$ then $Q = \emptyset$, and $I_i(Q) \cup \{j_m\}= \{j_m\}$ is a single vertex supporting no propagators, and thus a dependent set. Otherwise, $Q_0 \subseteq \cP_{m-1}$ follows immediately from the first observation above that $\Prop(j_m) \subseteq \cP_{m-1}$
+We now proceed to prove $Q\subseteq \mathcal{P}_{m-1}$ by inductively proving $Q_l \subseteq \mathcal{P}_{m-1}$ for all $l \geq 0$.
+%If $Q_0 = \Prop(j_m) = \emptyset$ then $Q = \emptyset$, and $I_i(Q) \cup \{j_m\}= \{j_m\}$ is a single vertex supporting no propagators, and thus a dependent set. Otherwise,
+For the base case $Q_0 \subseteq \cP_{m-1}$ follows immediately from the first observation above that $\Prop(j_m) \subseteq \cP_{m-1}$
 
 Now assume that $Q_0,\dots,Q_{l-1} \subseteq \cP_{m-1}$, and consider $Q_{l}$. If $Q_{l} \setminus Q_{l-1} = \emptyset$ then we are done, with $Q = Q_l$.  Otherwise, let $q \in Q_{l} \setminus Q_{l-1}$. By construction there is some propagator $p_r \in Q_{l-1}$ such that $p_r$ and $q$ are both supported on $I_i(p_r) = a_r$. If $q$ is clockwise of $p_r$ on vertex $a_r$ then we immediately have $q \in \cP_{m-1}$ as observed above.  It remains to consider the case that $q$ is counter-clockwise of $p_r$ at $a_r$.
 
