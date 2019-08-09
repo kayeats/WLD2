@@ -373,9 +373,6 @@
 
 \begin{document}
 
-\begin{dfn}
-Let $p = (i, j)$ be a propatagor in $W = (\cP, [n])$. Without loss of generality, impose the $<_i$ ordering on $p$. Then $p$ partitions the vertices of $W$ into three groups: $V(p)$, the vertices of $p$, $V_{in}(p) = [i+2, j-1]$, the vertices (other than $V_p$) that can support propagators in $\cP_{in}$, and $V_{in}(p) = [j+2, i-1]$, the vertices (other than $V_p$) that can support propagators in $\cP_{out}$. \end{dfn}
-
 \begin{thm}
 The Grassmann necklace $(I_1 \ldots I_n)$ from [previous theorem] is the Grassmann necklace for $M(W)$.
 \end{thm}
@@ -390,7 +387,11 @@ The first point follows immediately: the algorithm is  so $I_i$ is a basis for $
 
 Now fix $i \in [n]$, and write $I_i = \{a_1 <_i a_2 <_i \dots <_i a_k\}$. This imposes an ordering on the propagators $\cP$, where we label them $p_1, p_2, \dots, p_k$ such that $I_i(p_j) = a_j$ for each $j$. Define $\cP_m: = \{p_1,p_2,\dots,p_m\}$ for each $m\geq 0$, with $\cP_0 = \emptyset$.
 
-We enumerate two important observations: \begin{enumerate} \item If $a_{m-1}$ and $a_{m}$ are not consecutive vertices for some $m$, then for any intermediate vertex $a_{m-1}<_i x <_i a_{m}$ we must have $\Prop(x) \subseteq \cP_{m-1}$. This is because if any propagator supported on $x$ is still unassigned when the algorithm reaches $x$, we would have $x \in I_i$. \item When $p_m$ contributes $I_i(p_m) = a_m$ to the Grassmann necklace, it must be the clockwise-most propagator (amongst those not yet assigned) that is supported on $a_m$ i.e. any other propagators supported by $a_m$ in $\cP \setminus \cP_{m-1}$ is inside $p_m$ in the $a_m-1$ ordering.\end{enumerate} \sanote{maybe move to a remark before lemma for ease of reference?}
+We enumerate two important observations:
+\begin{enumerate}
+\item If $a_{m-1}$ and $a_{m}$ are not consecutive vertices for some $m$, then for any intermediate vertex $a_{m-1}<_i x <_i a_{m}$ we must have $\Prop(x) \subseteq \cP_{m-1}$. This is because if any propagator supported on $x$ is still unassigned when the algorithm reaches $x$, we would have $x \in I_i$.
+\item When $p_m$ contributes $I_i(p_m) = a_m$ to the Grassmann necklace, it must be the clockwise-most propagator (amongst those not yet assigned) that is supported on $a_m$ i.e. any other propagators supported by $a_m$ in $\cP \setminus \cP_{m-1}$ is inside $p_m$ in the $a_m-1$ ordering.
+\end{enumerate}
 
 Now, let $J = \{j_1 <_i j_2<_i \dots <_i j_k\}$ be a $k$-set, and suppose that $J<_i I_i$ in the $<_i$-lexicographic order. Let $m$ be the minimal index such that $j_m <_i a_m$, i.e. the first entry at which $J$ and $I_i$ differ. We will show that $J$ must be a dependent set.
 
@@ -398,30 +399,25 @@ Now, let $J = \{j_1 <_i j_2<_i \dots <_i j_k\}$ be a $k$-set, and suppose that $
 
 In order to exhibit a dependent subset of vertices in $J$, we first define a sequence of sets of propagators by
 \[Q_0 = \Prop(j_m), \qquad Q_{l+1} = \Prop(I_i(Q_l))\quad \forall l \geq 0.\]
-It is easily verified that this is an increasing chain of sets: indeed, if $q \in Q_l$ then $I_i(q) \in I_i(Q_l)$, and since $I_i(q)$ is one of the vertices that supports $q$ we must have $q \in \Prop(I_i(Q_l)) = Q_{l+1}$. Since $\cP$ is finite, the sequence therefore stabilizes in finitely many steps when $Q_{l+1} = Q_l$. Let $Q$ be this set of propagators. We show that $I_i(Q) \subseteq \mathcal{P}_{m-1}$. Since $I_i$ assigns a single vertex to each propagator, $|I_i(Q)| = |Q|$. Therefore $I_i(Q) \cup {j_m}$ is a dependent set because it only supports the propagators in $Q$ but has $|Q|+1$ vertices. Thus $J$ is a dependent set, and the Grassmann necklace $(I_1,\dots,I_n)$ constructed from $W$ does indeed define the positroid $M(W)$.
+It is easily verified that this is an increasing chain of sets: indeed, if $q \in Q_l$ then $I_i(q) \in I_i(Q_l)$, and since $I_i(q)$ is one of the vertices that supports $q$ we must have $q \in \Prop(I_i(Q_l)) = Q_{l+1}$. Since $\cP$ is finite, the sequence therefore stabilizes in finitely many steps when $Q_{l+1} = Q_l$. Let $Q$ be this set of propagators.
 
-We construct $Q$ by induction.  If $Q_0 = \Prop(j_m) = \emptyset$, then $Q = Q_0$, and $I_i(Q) \cup {j_m}= j_m$, a single vertex supporting no propagators, and thus a dependent set. Otherwise, $Q_0 \subseteq \cP_{m-1}$ follows immediately from the first observation above that $\Prop(j_m) \subseteq \cP_{m-1}$
+Our remaining goal is to show that $Q \subseteq \mathcal{P}_{m-1}$. This will imply the theorem as follows.  Once the goal is proven we have $I_i(Q)\subseteq J$.  Then $I_i(Q) \cup {j_m}$ is a dependent set contained in $J$ because it only supports the propagators in $Q$ but has $|Q|+1$ vertices. Thus $J$ is a dependent set, and the Grassmann necklace $(I_1,\dots,I_n)$ constructed from $W$ does indeed define the positroid $M(W)$.
 
-Now assume that $Q_0,\dots,Q_{l-1} \subseteq \cP_{m-1}$, and consider $Q_{l}$. If $Q_{l} \setminus Q_{l-1} = \emptyset$ then we are done, with $Q = Q_l$.  Otherwise, let $q \in Q_{l} \setminus Q_{l-1}$. By construction there is some propagator $p_r \in Q_{l-1}\setminus Q_{l-2}$ such that $p_r$ and $q$ are both supported on $I_i(p_r) = a_r$. If $q$ is clockwise of $p_r$ on vertex $a_r$ then we immediately have $q \in \cP_{m-1}$ as observed above. However, if $q$ is counter-clockwise of $p_r$  we show that $V(q) \subseteq [a_r-1, j_m-1]$. (If $l>0$, then $j_m \not \in V_q$.) That is, $q$ contributes before $j_m-1$. Since $I_i(q) \not \in [a_{m-1}+1, j_m-1]$, $q$ must be in $\cP_{m-1}$ as desired. 
+We now proceed to prove $Q\subseteq \mathcal{P}_{m-1}$ by inductively proving $Q_l \subseteq \mathcal{P}_{m-1}$ for all $l \geq 0$.  If $Q_0 = \Prop(j_m) = \emptyset$, then $Q = Q_0$, and $I_i(Q) \cup {j_m}= j_m$, a single vertex supporting no propagators, and thus a dependent set. Otherwise, $Q_0 \subseteq \cP_{m-1}$ follows immediately from the first observation above that $\Prop(j_m) \subseteq \cP_{m-1}$
 
-To check that $V(q) \subseteq [a_r-1, j_m-1]$, there are two cases to consider: when $j_m \in V_{out}(p_r)$ in the $a_r-1$ order, and when $j_m \in V_{in}(p_r)$. Note that for $l>0$, $j_m \not \in V(p_r)$ in the $a_r-1$ order. 
+Now assume that $Q_0,\dots,Q_{l-1} \subseteq \cP_{m-1}$, and consider $Q_{l}$. If $Q_{l} \setminus Q_{l-1} = \emptyset$ then we are done, with $Q = Q_l$.  Otherwise, let $q \in Q_{l} \setminus Q_{l-1}$. By construction there is some propagator $p_r \in Q_{l-1}\setminus Q_{l-2}$ such that $p_r$ and $q$ are both supported on $I_i(p_r) = a_r$. If $q$ is clockwise of $p_r$ on vertex $a_r$ then we immediately have $q \in \cP_{m-1}$ as observed above.  It remains to consider the case that $q$ is counter-clockwise of $p_r$ at $a_r$.
 
-%Note that we cannot have $a_r+ 1 = j_m$ when $q$ is counterclockwise of $p_r$, since $q \not\in \Prop(j_m)$ by assumption. If the other end of $p_r$ (i.e. the end not supported on $a_r$) lies on an edge between $a_r$ and $j_m$ then since $q$ is inside $p_r$ with respect to $<_{a_r-1}$ we must have $V(q) \subseteq [a_r-1,j_m]$ and hence $q \in \cP_{m-1}$ by Lemma [no fourth vertex]. In particular, if $l=1$ then $p_r \in Q_{0} = \Prop(j_m)$ and we must be in this case. 
+Note that we cannot have $a_r+ 1 = j_m$ when $q$ is counterclockwise of $p_r$, since $q \not\in \Prop(j_m)$ by assumption. If the other end of $p_r$ (i.e. the end not supported on $a_r$) lies on an edge between $a_r$ and $j_m$ then since $q$ is inside $p_r$ with respect to $<_{a_r-1}$ we must have $V(q) \subseteq [a_r-1,j_m]$ and hence $q \in \cP_{m-1}$ by Lemma [no fourth vertex]. In particular, if $l=1$ then $p_r \in Q_{0} = \Prop(j_m)$ and we must be in this case. 
 
-If $j_m \in V_{out}(p_r)$ in the $a_r-1$ order, then there must be some propagator $p_s \in Q_{l-2}\setminus Q_{l-3}$ such that $p_r$ and $p_s$ are both supported on $I_i(p_s) := a_s$. Since $p_r$ is outside $q$ in the $a_r-1$ order, and $q \not\in Q_{l-1}$, $q$ cannot be supported on $I_i(p_s)$. It follows that $I_i(p_s) <_i I_i(p_r)$. Therefore $q$ is inside $p_s$ with respect to $<_{a_s - 1}$ as well.
+If not, then there must be some propagator $p_s \in Q_{l-2}$ such that $p_r$ and $p_s$ are both supported on $I_i(p_s) := a_s$. Since $p_r$ is clockwise of $q$, and $q$ cannot be supported on $I_i(p_s)$ since $q \not\in Q_{l-1}$, it follows that $I_i(p_s) <_i I_i(p_r)$. Therefore $q$ is inside $p_s$ with respect to $<_{a_s - 1}$ as well.
 
 \begin{figure}[h]
 \includegraphics[scale = 0.3]{awkward_induction_case.jpg}
 \caption{This picture isn't quite the one we need any more, but it should help to illustrate the claim about $I_i(p_s) <_i I_i(p_r)$}\label{fig:awkward induction step}
 \end{figure}
 
-Now repeat the argument above with $p_s$ in place of $p_r$. Either $j_m \in V_{out}(p_r)$, and when $j_m \in V_{in}(p_r)$. In the first case, $V(q) \subseteq [a_s-1, j_m-1]$. In the second case, there exists some $p_t \in Q_{l-3}$ with $p_s$ supported on $I_i(p_t)$ and $I_i(p_t) <_i I_i(p_s)$. Since there are finitely many steps this process can take before reaching $Q_0$, and any $p_* \in Q_0  = \Prop(j_m)$ has $j_m$ in its support by definition, this argument eventually terminates with the construction of a propagator constraining the positioning of $q$ as required. This completes the induction step.
+Now repeat the argument above with $p_s$ in place of $p_r$: if the other end of $p_s$ lands on an edge between $q$ and $j_m$ then we have $q \in \cP_{m-1}$ as above; if not then there exists some $p_t \in Q_{l-3}$ with $p_s$ supported on $I_i(p_t)$ and $I_i(p_t) <_i I_i(p_r)$. Since there are finitely many steps this process can take before reaching $Q_0$, and any $p_* \in Q_0  = \Prop(j_m)$ has $j_m$ in its support by definition, this argument eventually terminates with the construction of a propagator constraining the positioning of $q$ as required. This completes the induction step, and hence the proof.
 
-%Finally, let $Q:= \lim_{l\rightarrow \infty} Q_l$; by the above, this is well-defined and contained in $\cP_{m-1}$. We can now show that $J$ is a dependent set, by constructing a subset $U \subseteq J$ that satifies $|\Prop(U)| < |U|$.
-
-%Specifically, we take $U = I_i(Q) \cup \{j_m\}$. This is a subset of $J$ because $I_i$ and $J$ agree on their first $m-1$ terms and $Q \subseteq \cP_{m-1}$. Further, we have $j_m \not\in I_i(Q)$, so $|U| = |I_i(Q)| + 1 = |Q| +1$. On the other hand, since $\Prop(j_m) \subseteq Q$, we have
-%\[\Prop(U) = \Prop(I_i(Q)) \cup \Prop(j_m) = Q\]
-%by the construction of $Q$, and hence $|\Prop(U)| = |Q| < |U|$. Thus $J$ is a dependent set, and the Grassmann necklace $(I_1,\dots,I_n)$ constructed from $W$ does indeed define the positroid $M(W)$.
 \end{proof}
 
 
