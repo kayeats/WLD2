@@ -45,7 +45,7 @@
 %*****************
 
 %*****************
-%%% WLD drawing and 2,6 shortcuts
+%%% WLD drawing 
 
 \usetikzlibrary{decorations.pathmorphing,calc}
 \usetikzlibrary{intersections}
@@ -64,7 +64,7 @@
 \tikzstyle{firstdash}=[dashed,line cap=round, dash pattern=on 2pt off 1pt]
 \tikzstyle{seconddash}=[dashed,line cap=round, dash pattern=on 0.5pt off 1pt]
 
-% vertices, radius
+% to draw a (full) WLD; \drawWLD{8}{2} is a circle of radius 2 with 8 marked points
 \newcommand{\drawWLD}[2]{
 
 \pgfmathsetmacro{\n}{#1}
@@ -79,6 +79,7 @@
 
 }
 
+% as above, but draws the outer edge of the polygon partition instead
 \newcommand{\drawpolypart}[2]{
 \pgfmathsetmacro{\n}{#1}
 \pgfmathsetmacro{\radius}{#2}
@@ -94,20 +95,21 @@
 }
 
 
-% r, bumpr, s, bumps: r, s are start/end vertices, bumpr and bumps are how many steps to bump the start/end for multiple props on one edge
+% to draw a propagator in a WLD: \drawprop{a}{b}{c}{d} draws a prop from edge a (offset by b from the centre of the edge)
+% to edge c (offset by d from the centre)
 \newcommand{\drawprop}[4]{
 \pgfmathsetmacro{\r}{#1}
 \pgfmathsetmacro{\bumpr}{#2}
 \pgfmathsetmacro{\s}{#3}
 \pgfmathsetmacro{\bumps}{#4}
 \pgfmathsetmacro{\perturbe}{\angle/\n}
-
 \begin{scope}
 %\clip (\angle*\r:\radius) -- (\angle + \angle*\r:\radius) -- (\angle*\s:\radius) -- (\angle + \angle*\s:\radius) -- (\angle*\r:\radius);
 \draw[smallpropagator] (\angle*\r + \angle/2 + \bumpr*\perturbe:\radius) -- (\angle*\s + \angle/2 + \bumps*\perturbe:\radius);
 \end{scope}
 }
 
+% as above but the 5th argument labels the prop (must include formatting, $ signs, etc)
 \newcommand{\drawlabeledprop}[5]{
 \pgfmathsetmacro{\r}{#1}
 \pgfmathsetmacro{\bumpr}{#2}
@@ -121,7 +123,7 @@
 \end{scope}
 }
 
-
+% \drawchord{a}{b} draws a straight line from vertex a to vertex b in the polygon partition
 \newcommand{\drawchord}[2]{
 \pgfmathsetmacro{\r}{#1}
 \pgfmathsetmacro{\s}{#2}
@@ -149,18 +151,7 @@
 }
 
 
-\newcommand{\boundaryprop}[4]{
-\pgfmathsetmacro{\r}{#1}
-\pgfmathsetmacro{\bumpr}{#2}
-\pgfmathsetmacro{\s}{#3}
-\pgfmathsetmacro{\perturbe}{\angle/\n}
 
-\begin{scope}
-\clip (\angle*\r:\radius) -- (\angle + \angle*\r:\radius) -- (\angle*\s - \angle:\radius) -- (\angle*\s:\radius) -- (\angle + \angle*\s:\radius) -- (\angle*\r:\radius);
-\draw[#4] (\angle*\r + \angle/2 + \bumpr*\perturbe:\radius) -- (\angle*\s:\radius);
-\end{scope}
-	
-}
 
 \newcommand{\drawnumbers}{
   \foreach \i in {1,2,...,\n} {
@@ -178,42 +169,6 @@
 
 
 
-\newcommand{\boundA}[3]{
-	\pgfmathsetmacro{\r}{#1}
-	\pgfmathsetmacro{\bumpr}{#2}
-	\pgfmathsetmacro{\destination}{#3}
-	\pgfmathsetmacro{\perturbe}{\angle/\n}
-	\path [name path=polyedge1] (\angle*\r:\radius) -- (\angle*\r + \angle:\radius);
-	\path [name path=radius1] (0:0) -- (\angle*\r + \angle/2 + \bumpr*\perturbe:\radius);
-	\draw[->,
-	name intersections={of=polyedge1 and radius1,by=p},
-	shorten >=\radius*0.1 cm] (p) ++(\angle*\r + \angle/2 + \bumpr*\perturbe:\radius*0.15) -- (\angle*\destination: \radius*1.15);
-
-}
-
-
-
-\newcommand{\boundB}[3]{
-	\pgfmathsetmacro{\rangle}{#1*\angle + \angle/2 + #2*\angle/\n}
-	\pgfmathsetmacro{\sangle}{#1*\angle + \angle/2 + #3*\angle/\n}
-
-
-	\draw[->,shorten <=\radius*0.02cm,shorten >=\radius*0.05cm] (\rangle:\radius*1.05) -- (\sangle:\radius*1.05);
-
-}
-
-\newcommand{\makediag}[8]{
-	\begin{tikzpicture}[rotate=60,baseline=(current bounding box.east)]
-	\begin{scope}
-	\drawWLD{6}{0.8}
-	%\drawnumbers
-	\drawprop{#1}{#2}{#3}{#4}
-	\drawprop{#5}{#6}{#7}{#8}
-	\end{scope}
-	\end{tikzpicture}
-}
-
-
 
 %%%%%%%
 % Drawing partial WLD
@@ -225,7 +180,8 @@
     { \clip ($(#1)+({#4*cos(#2)},{#4*sin(#2)})$) arc (#2:#3:#4); }
 
 
-%\drawWLDfragment[number of nodes]{radius}{fraction of circle to be displayed}
+%\drawWLDfragment[number of nodes, default = 10]{radius}{fraction of circle to be displayed}
+% unlike \drawWLD above, nodes are not marked by default, use \newnode below 
 \newcommand{\drawWLDfragment}[3][10]{
 \pgfmathsetmacro{\n}{#1} % use this to get consistent spacing between nodes
 \pgfmathsetmacro{\radius}{#2}
@@ -239,7 +195,7 @@
 }
 
 
-
+% puts numbers on the partialWLD; only really useful for debugging
 \newcommand{\drawnumberspartial}{
 \node (0,0) {$\bullet$};
   \foreach \i in {1,2,...,\n} {
@@ -249,12 +205,14 @@
 }
 
 
+% \newnode[location]{b}{c} puts a dot on the node at position b, with label c. location = left by default
 \newcommand{\newnode}[3][left]{
 	\node[label={[label distance=-1mm]#1:{\scriptsize $#3$}}] at (\zero + #2*\step:\radius) {\scriptsize $\bullet$};
 	%\node[#1] at (\zero + #2*\step:\radius) {\scriptsize $#3$};
 }
 
 % messier but more flexible: use when you want more control over label placement
+
 \newcommand{\newbetternode}[3][{label distance=-1mm]left}]{
 	\node[label={#1:{\scriptsize $#3$}}] at (\zero + #2*\step:\radius) {\scriptsize $\bullet$};
 	%\node[#1] at (\zero + #2*\step:\radius) {\scriptsize $#3$};
@@ -262,7 +220,7 @@
 
 
 
-% \newprop[label position]{start node}{end node}{label}
+% \newprop[label position]{start node}{end node}{label}; for \partialWLD only
 \newcommand{\newprop}[4][midway,below]{
 \pgfmathsetmacro{\startnode}{#2}
 \pgfmathsetmacro{\endnode}{#3}
@@ -270,6 +228,9 @@
 \draw[smallpropagator] (\zero+\startnode*\step:\radius) -- (\zero + \endnode*\step:\radius) node[#1] {#4};
 }
 
+
+% as above but with a bend in it; \newpropbend{startnode}{endnode}{bend in degrees}
+% note that the propagator extends past the edge of the diagram: always use this in a scope with \clipcenterarc (above)
 \newcommand{\newpropbend}[3]{
 \draw[smallpropagator] (\zero+#1*\step:\radius*1.1) to[bend left = #3] (\zero + #2*\step:\radius*1.1);
 }
@@ -758,39 +719,41 @@ We will inductively construct a sequence of propagators $p_r$ and $q_r$, with $\
 {\em or} 
 \item there is a propagator $q_r$ satisfying $\ell(q_r) \geq 4$, and $\{p_1, \ldots, p_r, q_1, \ldots, q_{r-1}\}$ are all on the same side of $q_r$.  
 \end{itemize}
+
+\begin{figure}
+\[
+\begin{tikzpicture}[baseline=(current bounding box.east),rotate=-20]
+	\begin{scope}
+	\drawWLDfragment[10]{3}{0.4} 
+	%\drawnumberspartial % use this to debug
+	\centerarc[linehighlight](0,0)(\zero + 1.5*\step:\zero + 2.35*\step:\radius)
+	\newnode{1}{}
+	\newnode{3}{}
+	\newnode{4}{}
+	\newnode{5}{}
+	\newnode[below]{9}{i_1}
+	\newnode{10}{}
+	\newprop[midway,above]{1.4}{9.5}{\footnotesize $q_1$}
+	\begin{scope}
+		\clipcenterarc(0,0)(\startpoint:\endpoint:\radius)
+		\newpropbend{2.3}{4.7}{60}
+		\node at (\zero + 3.5*\step:\radius*0.78) {\footnotesize $p_1$};
+	\end{scope}
+\node[align = center] at (\zero +1.7*\step:\radius*1.4) {\footnotesize \em 0, 1, or 2 \\ \footnotesize \em vertices in \\ \footnotesize \em this region};
+\node at (\zero + 10*\step:\radius*0.3) {$\cP_{in}(q_1)$};
+\end{scope}
+\end{tikzpicture}
+\]
+\caption{The base case of the induction in Lemma~\ref{lem sian}.}\label{fig base case lem sian} \end{figure}
+
 We can then choose the orientation of $q_r$ so that the previous $p_i$ and $q_i$ are all on the outside of $q_r$, and restrict our attention to the subdiagram $(\cP_{in}(q_r),[n])$. By the finiteness of $W$ this must eventually terminate in one of the desired configurations. %a configuration of the form \eqref{eq:2 prop config}.
 
 Start by choosing a propagator $p_1 = (j_1,j_1+2)$ of length 2 in $W$ (which exists by Remark~\ref{rem:props of length 2 and 3}).  If it is part of one of the configurations we are looking for then we are done, 
 %a configuration \eqref{eq:2 prop config} we are done,
 so suppose otherwise. 
 
-From our existing assumptions, we know the following facts: $p_1$ is not in configuration \ref{item pair of 2s}, there are no propagators of length $3$, and every vertex supports at least one propagator.  Therefore there must be a propagator of length $\geq 4$ with one end on edge $j_1$ or on edge $j_1-1$ or on edge $j_1-2$.  Let $q_1 = (i_1, k_1)$ be this propagator, oriented such that $p_1 \in \cP_{out}(q_1,<_{i_1})$. This completes the base case.
+From our existing assumptions, we know the following facts: $p_1$ is not in configuration \ref{item pair of 2s}, there are no propagators of length $3$, and every vertex supports at least one propagator.  Therefore there must be a propagator of length $\geq 4$ with one end on edge $j_1$ or on edge $j_1-1$ or on edge $j_1-2$.  Let $q_1 = (i_1, k_1)$ be this propagator, oriented such that $p_1 \in \cP_{out}(q_1,<_{i_1})$; see Figure~\ref{fig base case lem sian}. This completes the base case.
 
-\bas \begin{tikzpicture}[rotate=15,baseline=(current bounding box.east)]
-	\begin{scope}
-	\drawWLD{15}{2}
-	%\drawnumbers
-	%\drawprop{1}{0}{4}{0}
-	\begin{scope}
-	\clip (0,0) circle (\radius cm);
-	\draw[propagator] (\angle*5.3:\radius*1.2cm) to [bend left=50] (\angle*7.7:\radius*1.2cm);
-	\node at (\angle*6.5:\radius*0.6cm) {\footnotesize $p_1$};
-	\end{scope}
-    \drawlabeledprop{3}{0}{10}{0}{\footnotesize \qquad $q_1$};
-    \node at (\angle*5:\radius*1.15cm) {\footnotesize $j_1$};
-     \node at (\angle*10:\radius*1.15cm) {\footnotesize $i_1$};
-     \node at (10:\radius*0.5) {\small $\cP_{in}(q_1)$};
-	\node[rotate = 45] at (\angle * 5.2:\radius) {\Large $($};
-\node[rotate = -15] at (\angle * 2.7:\radius) {\Large $)$};
-\node[rotate = 20] at (\angle* 4:\radius*1.2) {\em \scriptsize 1, 2 or 3 vertices};
-		\end{scope}
-	\end{tikzpicture}\eas 
-
- %\node[rotate=-15] at (\zero + 2.7*\step:\radius) {\Large $($};
- %    \node[rotate=15] at (\zero + 6.3*\step:\radius) {\Large $)$};
-   %  \node at (\zero + 4.5*\step:\radius*0.85) {\em \scriptsize up to 4 vertices here};
-
-\sanote{played with Sian's code. May need to tweak this picture}
 Now suppose $q_{r} = (i_r, k_r)$ exists by the induction hypothesis and is oriented $(q_r, <_{i_r})$ so that the previous $p_i$ and $q_i$ are on the outside. For the rest of this proof, we assume this orientation and drop the $<_{i_r}$ from the notation.
 
 Let $W_r := (\cP_{in}(q_r),[n])$ be the subdiagram of $W$ consisting only of those propagators inside $q_r$ (including $q_r$ itself); in particular $W_r$ contains none of the previous $p_i$ or $q_i$. By the original hypotheses on $W$, every vertex in $[i_r,k_{r+1}]$ (of which there are at least 4, since $\ell(q_r) \geq 4$) must support at least one propagator. Therefore $W_r$ admits at least one propagator of length 2 (by Remark~\ref{rem:props of length 2 and 3}) and no propagators of length $3$ (by our assumption on $W$).
@@ -800,6 +763,34 @@ Let $p_{r+1} = (j_{r+1}, j_{r+1}+2)$ be a propagator of length 2 in $W_r$; if it
 then we are done, so assume otherwise. 
 
 Note that we could replace $q_r$ by another propagator $q'_{r}$ in $W_r$, as long as $p_{r+1}$ and $q_r$ are on opposite sides of $q_r'$: such a new $q'_{r}$ would still satisfy all of the induction hypotheses. Therefore without loss of generality we may assume that $\cP_{in}(q_r)$ does not contain any propagators (other than $q_r$ itself) which satisfy the induction hypotheses, i.e. we assume that there are no other propagators with $p_{r+1}$ on one side and $q_r$ on the other.
+
+\begin{figure}
+\[
+\begin{tikzpicture}[baseline=(current bounding box.east)]
+	\begin{scope}
+	\drawWLDfragment[15]{4}{0.4} 
+	%\drawnumberspartial % use this to debug
+	\newnode[left]{1}{i_r}
+	\newnode[left]{2}{i_r+1}
+	\newnode{5}{}
+	\newnode{6}{}
+	\newnode{7}{}
+	\newnode{8}{}
+	\newnode[right]{14}{k_r}
+	\newnode[right]{15}{k_r+1}
+	\newprop[midway,above]{1.5}{14.5}{\footnotesize $q_r$}
+	\draw[smallpropagator,gray] (\zero+2.5*\step:\radius) -- (\zero + 12.5*\step:\radius) node[midway,above,gray] {\footnotesize $q_{r}'$};
+	\begin{scope}
+		\clipcenterarc(0,0)(\startpoint:\endpoint:\radius)
+		\newpropbend{5.2}{7.7}{80}
+		\node at (\zero + 6.5*\step:\radius*0.85) {\footnotesize $p_{r+1}$};
+	\end{scope}
+\end{scope}
+\end{tikzpicture}
+\]
+\caption{We can replace $q_r$ with $q'_r$ as long as the conditions of the induction hypothesis remain satisfied.}
+\label{fig smallest q in lem sian}
+\end{figure}
 
 There are two cases to consider.
 
@@ -908,7 +899,57 @@ Suppose we are going through the algorithm to construct $I_i^W$ for some $i$, an
 With this setup, if we can find a vertex $\ell$ (with $\ell <_i i$ and $\ell <_m m$) such that the configuration of propagators ending in the interval $(j-1, \ldots, \ell+1)$ is identical in both $W'$ and $V'$, then the vertices contributed to $I_i^W$ and $I_m^V$ are the same from step $j$ to step $\ell$ (inclusive). See Figure~\ref{fig:locally identical} for an illustration of this.
 
 \begin{figure}
-\includegraphics[scale=0.2]{locally_identical.jpg}
+\[
+\begin{tikzpicture}[baseline=(current bounding box.east)]
+	\begin{scope}
+	\drawWLDfragment[12]{3}{0.4} 
+	%\drawnumberspartial % use this to debug
+	\newnode[left]{1}{i}
+	\newnode[below]{4}{j}
+	\newnode{5}{}
+	\newnode{6}{}
+	\newnode{7}{}
+	\newnode{8}{}
+	\newnode{9}{}
+	\newnode{11}{}
+	\newnode[right]{12}{l+1}
+	\begin{scope}
+		\clipcenterarc(0,0)(\startpoint-10:\endpoint+10:\radius)
+		\newpropbend{6.3}{8.6}{80}
+		\node at (\zero + 7.5*\step:\radius*0.8) {\footnotesize $r$};
+		\newprop[midway,left]{5.5}{-4}{}
+		\node at (\zero + 3*\step:\radius*0.5) {\footnotesize $p$};
+		\newprop[midway]{11.5}{-4}{}
+		\node at (\zero + 12.2*\step:\radius*0.7) {\footnotesize $q$};
+	\end{scope}
+\end{scope}
+\end{tikzpicture}
+\qquad \qquad
+\begin{tikzpicture}[baseline=(current bounding box.east)]
+	\begin{scope}
+	\drawWLDfragment[12]{3}{0.4} 
+	%\drawnumberspartial % use this to debug
+	\newnode[left]{2}{m}
+	\newnode[below]{4}{j}
+	\newnode{5}{}
+	\newnode{6}{}
+	\newnode{7}{}
+	\newnode{8}{}
+	\newnode{9}{}
+	\newnode{11}{}
+	\newnode[right]{12}{l+1}
+	\begin{scope}
+		\clipcenterarc(0,0)(\startpoint-10:\endpoint+10:\radius)
+		\newpropbend{6.3}{8.6}{80}
+		\node at (\zero + 7.5*\step:\radius*0.8) {\footnotesize $r$};
+		\newprop[midway,left]{5.5}{19}{}
+		\node at (\zero + 5.5*\step:\radius*0.5) {\footnotesize $s$};
+		\newprop[midway]{11.5}{21}{}
+		\node at (\zero + 11.8*\step:\radius*0.8) {\footnotesize $t$};
+	\end{scope}
+\end{scope}
+\end{tikzpicture}
+\]
 \caption{$W'$ and $V'$ are locally the same between $j$ and $l+1$, so we will have $I_i^W\cap [j,l] = I_m^V\cap[j,l]$ even though $p \neq s$ and $q \neq t$.}\label{fig:locally identical}
 \end{figure}
 \end{rmk}
@@ -922,7 +963,56 @@ Let $W$ be an admissible Wilson loop diagram containing at least one propagator.
 Suppose for contradiction that we have $i \in [n]$ and $p \in \cP$ such that $I_i(p)$ is $<_i$-maximal in $V(p)$. There are two possibilities, which are illustrated in Figure~\ref{fig:no fourth vertex}: either $p = (i-1,b)$ for some $b$ (so $i$ and $I_i(p) = i-1$ are the two ends of a single edge), or $p = (a,b)$ with $i\leq_i a <_i b$ and $I_i(p) = b+1$.
 
 \begin{figure}
-\includegraphics[width=15cm]{4th_vertex}
+\[
+\begin{tikzpicture}[baseline=(current bounding box.east)]
+	\begin{scope}
+	\drawWLDfragment[20]{2}{1}
+	%\drawnumbers % use this to debug
+	\newnode[left]{4}{I_i(p) = i-1}
+	\newnode[left]{5}{i}
+	\newnode[left]{7}{c}
+	\newnode[left]{8}{}
+	\newnode[right]{15}{b}
+	\newnode[right]{16}{b+1}
+	\newprop[midway,above]{4.7}{15.7}{\scriptsize $p$}
+	\newprop[midway,below]{7.5}{15.3}{\scriptsize $q$}
+      \draw[smallpropagator,light-gray] (\zero +\step *4.3:\radius*1) -- (90:\radius*0.5); 
+	\node at (270:\radius*1.5) {\em Case 1};
+	% \begin{scope}
+	% \clip (\zero + 5*\step:\radius*1.1) rectangle (90:\radius*0.8);
+	% \draw[smallpropagator,color=gray] (\zero+4.5*\step:\radius) -- (\zero + 19*\step:\radius);
+	% \end{scope}
+		\end{scope}
+	\end{tikzpicture}
+\qquad \qquad 
+	\begin{tikzpicture}[baseline=(current bounding box.east)]
+	\begin{scope}
+	\drawWLDfragment[20]{2}{1}
+	%\drawnumbers % use this to debug
+	\newnode[left]{4}{a}
+	\newnode[left]{5}{}
+	\newnode[left]{7}{}
+	\newnode[left]{8}{}
+	\newnode[right]{15}{b}
+	\newnode[right]{16}{b+1 = I_i(p)}
+	\newnode[below]{11}{d}
+	\newnode[below]{12}{}
+	\newnode[above]{2}{i}
+	\newprop[midway,above]{4.5}{15.7}{\scriptsize $p$}
+		\node at (270:\radius*1.5) {\em Case 2};
+	\begin{scope}
+	\clip (0,0) circle (\radius);
+	%q
+	\draw[smallpropagator] (\zero+11.5*\step:\radius*1.2) to [bend left = 45] (\zero + 15.5*\step:\radius*1.2); 
+	\node at (\zero + 13.5*\step:\radius*0.55) {\scriptsize $q$};
+	%r
+	\draw[smallpropagator] (\zero+7.5*\step:\radius*1.2) to [bend left = 45] (\zero + 11.4*\step:\radius*1.2);
+	\node at (\zero + 9.5*\step:\radius*0.55) {\scriptsize $r$};
+
+	\end{scope}
+		\end{scope}
+	\end{tikzpicture}
+\] 
 \caption{The two types of configuration in which a propagator could (in theory) contribute its $<_i$-maximal support vertex to $I_i$.}
 \label{fig:no fourth vertex}
 \end{figure}f
@@ -963,26 +1053,174 @@ The following lemma establishes that these sets behave in a simple and predictab
   
 Let $W = (\cP,[n])$ be an admissible Wilson loop diagram, and $p = (i,j) \in \cP$.  Then $J_p^{W}(i)$, $J_p^{W}(i+1)$, $J_p^{W}(j)$, and $J_p^{W}(j+1)$ are each non-empty cyclic intervals which partition $[n]$ and occur in the given cyclic order.
 \end{lem}
-\note{Right at the end when we put the tikz figures in, someone needs to go through this proof and replace ``leftmost two cases'' with ``Case 1 and 2'' etc, because the tikz picture is arranged differently}
+\note{This proof needs to be updated to refer to the new figure (e.g. case 1 and 2 instead of ``leftmost two cases''); also check that all the vertices are labeled correctly}
 
 \begin{proof}
 We will prove the result by induction on the number of propagators.  If $W$ has one propagator then the result is immediate.  Now suppose $W$ has more than one propagator.  Since non-supporting vertices have no effect on Algorithm~\ref{alg:put GN on WLD}, it suffices to prove the result for $W$  (possibly weakly admissible) with $F(\emptyset) = \emptyset$.  Then by Lemma~\ref{lem sian}, $W$ has at least one of the four situations illustrated in Figure~\ref{fig 3 cases}.
 
 \begin{figure}
-    \includegraphics[scale=0.8]{3cases}
+\begin{tabular}{lll}
+% case 1
+\begin{tikzpicture}[baseline=(current bounding box.east)]
+	\begin{scope}
+	\drawWLDfragment[8]{3}{0.3} % draws the arc and sets up the parameters
+	%\drawnumbers % use this to debug
+	% next two lines draw the highlighted regions
+	\centerarc[linehighlight](0,0)(\zero + 1.85*\step:\zero + 4.4*\step:\radius)
+	\centerarc[linehighlight](0,0)(\zero + 6.75*\step:\zero + 7.4*\step:\radius)
+	% labels explaining the highlighted regions
+	\node[align = center] at (\zero + 2.7*\step:\radius*1.3) {\em \footnotesize 1 or 2 vertices \\[3pt] \em \footnotesize in this region};
+	\node[align = center] at (\zero + 7.5*\step:\radius*1.4) {\em \footnotesize 0 or 1 vertices \\[3pt]\em \footnotesize in this region};
+	\begin{scope} % this scope draws the propagators and their labels
+		\clipcenterarc(0,0)(\startpoint-20:\endpoint+20:\radius)
+		%q
+		\draw[smallpropagator] (\zero+1.65*\step:\radius*1.1) to [bend left = 40] (\zero + 7.4*\step:\radius*1.1); 
+		%p
+		\draw[smallpropagator] (\zero+4.3*\step:\radius*1.1) to [bend left = 55] (\zero + 6.8*\step:\radius*1.1); 
+		\draw[smallpropagator,light-gray] (\zero+1.5*\step:\radius*1.1) -- (180:\radius*0.5); 
+		\draw[smallpropagator,light-gray] (\zero+1.6*\step:\radius*1.1) -- (180:\radius*0.25);
+		\draw[smallpropagator,light-gray] (\zero+7.55*\step:\radius*1.1) -- (0:\radius*0.5); 
+		%\draw[smallpropagator,light-gray] (\zero+7.5*\step:\radius*1.1) -- (0:\radius*0.25);  
+		\node at (\zero + 4.5*\step:\radius*0.5){\footnotesize $q$};
+		\node at (\zero + 5.5*\step:\radius*0.8){\footnotesize $p$};
+	\end{scope}
+	% draw the nodes
+	\newnode[left]{1}{i}
+	\newnode[right]{8}{j+1}
+	\newnode[below]{5}{}
+	\newnode[below]{6}{}
+% case label
+\node at (270:\radius*0.2) {\em Case 1};
+\end{scope}
+\end{tikzpicture}
+%
+%
+%
+& \qquad \qquad &
+%
+%
+%
+% case 2
+\begin{tikzpicture}[baseline=(current bounding box.east)]
+\begin{scope}
+	\drawWLDfragment[8]{3}{0.3} % draw arc
+	%\drawnumbers % use this to debug
+	% highlighted regions
+	\centerarc[linehighlight](0,0)(\zero + 1.85*\step:\zero + 2.4*\step:\radius)
+	\centerarc[linehighlight](0,0)(\zero + 4.75*\step:\zero + 7.4*\step:\radius)
+	%labels for highlighted regions
+	\node[align = center] at (\zero + 6.6*\step:\radius*1.3) {\em \footnotesize 1 or 2 vertices \\[3pt]\em \footnotesize in this region};
+	\node[align = center] at (\zero + 1.6*\step:\radius*1.35) {\em \footnotesize 0 or 1 vertices \\[3pt]\em \footnotesize in this region};
+	% draw props and their labels
+	\begin{scope}
+		\clipcenterarc(0,0)(\startpoint-20:\endpoint+20:\radius)
+		%q
+		\draw[smallpropagator] (\zero+1.65*\step:\radius*1.1) to [bend left = 40] (\zero + 7.4*\step:\radius*1.1); 
+		%p
+		\draw[smallpropagator] (\zero+2.3*\step:\radius*1.1) to [bend left = 55] (\zero + 4.8*\step:\radius*1.1); 
+		\draw[smallpropagator,light-gray] (\zero+1.5*\step:\radius*1.1) -- (180:\radius*0.5); 
+		\draw[smallpropagator,light-gray] (\zero+1.6*\step:\radius*1.1) -- (180:\radius*0.25);
+		\draw[smallpropagator,light-gray] (\zero+7.55*\step:\radius*1.1) -- (0:\radius*0.5); 
+		%\draw[smallpropagator,light-gray] (\zero+7.5*\step:\radius*1.1) -- (0:\radius*0.25);  
+		\node at (\zero + 4.5*\step:\radius*0.5){\footnotesize $q$};
+		\node at (\zero + 3.5*\step:\radius*0.8){\footnotesize $p$};
+	\end{scope}
+	% nodes
+	\newnode[left]{1}{i}
+	\newnode[right]{8}{j+1}
+	\newnode[below]{3}{}
+	\newnode[below]{4}{}
+	% case label
+	\node at (270:\radius*0.2) {\em Case 2};
+\end{scope}
+\end{tikzpicture}
+%
+%
+%
+\\
+\ & \ & \ \\
+%
+%
+%
+% case 3
+\begin{tikzpicture}[baseline=(current bounding box.east)]
+\begin{scope}
+	\drawWLDfragment[8]{3}{0.3} % draw arc
+	%\drawnumbers % use this to debug
+	% highlight region
+	\centerarc[linehighlight](0,0)(\zero + 3.6*\step:\zero + 5.4*\step:\radius)
+	% region label
+	\node[align = center] at (\zero + 4.5*\step:\radius*1.3) {\em \footnotesize 0, 1, or 2 vertices \\[3pt]\em \footnotesize in this region};
+	% scope to draw props and their labels
+	\begin{scope}
+		\clipcenterarc(0,0)(\startpoint-20:\endpoint+20:\radius)
+		%q
+		\draw[smallpropagator] (\zero+1.5*\step:\radius*1.1) to [bend left = 55] (\zero + 3.7*\step:\radius*1.1); 
+		%p
+		\draw[smallpropagator] (\zero+5.3*\step:\radius*1.1) to [bend left = 55] (\zero + 7.6*\step:\radius*1.1); 
+		\draw[smallpropagator,light-gray] (\zero+1.5*\step:\radius*1.1) -- (180:\radius*0.5); 
+		\draw[smallpropagator,light-gray] (\zero+1.6*\step:\radius*1.1) -- (180:\radius*0.25);
+		\draw[smallpropagator,light-gray] (\zero+7.55*\step:\radius*1.1) -- (0:\radius*0.5); 
+		%\draw[smallpropagator,light-gray] (\zero+7.5*\step:\radius*1.1) -- (0:\radius*0.25);  
+		\node at (\zero + 2.8*\step:\radius*0.8){\footnotesize $q$};
+		\node at (\zero + 6.5*\step:\radius*0.8){\footnotesize $p$};
+	\end{scope}
+	% draw nodes
+	\newnode[left]{1}{i}
+	\newnode[below]{2}{}
+	\newnode[below]{3}{j}
+	\newnode[below]{6}{}
+	\newnode[below]{7}{}
+	\newnode[right]{8}{}
+	% case label
+	\node at (270:\radius*0.2) {\em Case 3};
+\end{scope}
+\end{tikzpicture}
+%
+%
+%
+& \qquad \qquad & \qquad
+%
+%
+%
+% case 4
+\begin{tikzpicture}[baseline=(current bounding box.east)]
+	\begin{scope}
+	\drawWLDfragment[8]{3}{0.3} % draw arc
+	%\drawnumbers % use this to debug
+	%scope to draw props and their labels
+	\begin{scope}
+		\clipcenterarc(0,0)(\startpoint-20:\endpoint+20:\radius)
+		%q
+		\draw[smallpropagator] (\zero+1.65*\step:\radius*1.1) to [bend left = 40] (\zero + 7.4*\step:\radius*1.1); 
+		%p
+		\draw[smallpropagator] (\zero+3.3*\step:\radius*1.1) to [bend left = 55] (\zero + 5.8*\step:\radius*1.1); 
+		\draw[smallpropagator,light-gray] (\zero+1.5*\step:\radius*1.1) -- (180:\radius*0.5); 
+		\draw[smallpropagator,light-gray] (\zero+1.6*\step:\radius*1.1) -- (180:\radius*0.25);
+		\draw[smallpropagator,light-gray] (\zero+7.55*\step:\radius*1.1) -- (0:\radius*0.5); 
+		%\draw[smallpropagator,light-gray] (\zero+7.5*\step:\radius*1.1) -- (0:\radius*0.25);  
+		\node at (\zero + 4.5*\step:\radius*0.5){\footnotesize $q$};
+		\node at (\zero + 5*\step:\radius*0.8){\footnotesize $p$};
+	\end{scope}
+	% draw nodes
+	\newnode[left]{1}{i}
+	\newnode[below]{2}{i+1\quad }
+	\newnode[below]{3}{l\quad}
+	\newnode[below]{4}{l+1\ \ }
+	\newnode[below]{5}{\ \ l+2}
+	\newnode[below]{6}{\quad l+3}
+	\newnode[below]{7}{\quad j}
+	\newnode[right]{8}{j+1}
+	% case label
+	\node at (270:\radius*0.2) {\em Case 4};
+\end{scope}
+\end{tikzpicture}
+\end{tabular}
     \caption{Four cases for admissible WLDs with no non-supporting vertices. The green half-propagators illustrate where propagators may occur, but are not required to exist; no other regions illustrated may support additional propagators.}\label{fig 3 cases}
   \end{figure}
 
 
 In each of the four cases, when we remove the propagator labelled $p$ we obtain a diagram which satisfies the statement of the theorem by the induction hypothesis, and contains a propagator ${q = (i,j)}$ with no other propagators inside it (with respect to the $<_i$ orientation). Note that this region may or may not contain non-supporting vertices, which we will call $l, l+1, \ldots$ as necessary. Let $V$ be the diagram obtained by removing the propagator $p$ from $W$ (Figure \ref{fig V diagram}). $V$ is guaranteed to be an admissible diagram, since it was formed by removing a propagator from a diagram that was at least weakly admissible.
-
-
-\begin{figure}
-\includegraphics[width=10cm]{V_diagram}
-\caption{Diagram $V$ is $W$ with $p$ removed; there are no propagators inside $q = (i,j)$, though there may be up to 4 non-supporting vertices labelled $l, l+1, \ldots$.}
-\label{fig V diagram}
-\end{figure}
-
 
 Consider the fourth case of Figure~\ref{fig 3 cases} first, as it is the easiest.  In this case, the vertices ${\{l,l+1,l+2,l+3\}}$ which support $p$ in $W$ are non-supporting in $V$, so for every propagator $r$ in $V$ (including $q$) we have $J_r^{V} = J_r^{W}$; these are non-empty cyclic intervals in the correct order by the induction hypothesis.  Additionally, it is clear from Figure~\ref{fig 3 cases} that $J_p^{W}(l+a) = \{l+a\}$ for $a\in\{1,2,3\}$ and $J_p^{W}(l) = [n] \backslash \{l+1, l+2, l+3\}$. The result therefore holds in this case.
 
@@ -996,10 +1234,39 @@ Note that $j+2 \not\in J^{V}_q(j+1)$ by Lemma~\ref{lem no fourth vertex}, so  $J
 \ba J^{V}_q(i) = [j+2,d-1], \quad J^{V}_q(i+1) = [d,e-1], \quad J^{V}_q(j) = [e,j], \quad J^{V}_q(j+1) = \{j+1\}, \label{deeqs}\ea
 and all intervals are non-empty.
 
-
-
-
 We now consider what happens as we move from $V$ to each of the three remaining cases for $W$. We need to consider both $J^{W}_p$ and $J^{W}_r$ for $r \neq p$, since the addition of $p$ can have a knock-on effect on later steps in the algorithm.
+
+
+\begin{figure}
+\[
+\begin{tikzpicture}[baseline=(current bounding box.east)]
+	\begin{scope}
+	\drawWLDfragment[8]{4}{0.3}
+	%\drawnumbers % use this to debug
+	%\clip (\zero + 1.5*\step:1.5*\radius) rectangle (345:{\radius});
+	\centerarc[linehighlight](0,0)(\zero + 2.8*\step:\zero + 6.2*\step:\radius)
+	\newnode[below]{1}{i}
+	\newnode[below]{2}{i+1}
+	\newnode[below]{3}{l}
+	\newnode[below]{4}{l+1}
+	\newnode[below]{5}{l+2}
+	\newnode[below]{6}{l+3}
+	\newnode[below]{7}{j}
+	\newnode[below]{8}{\quad j+1}
+	%\node[rotate=-15] at (\zero + 2.7*\step:\radius) {\Large $($};
+	%\node[rotate=15] at (\zero + 6.3*\step:\radius) {\Large $)$};
+	\node at (\zero + 4.5*\step:\radius*0.85) {\em \scriptsize up to 4 vertices here};
+	\begin{scope}
+	\clipcenterarc(0,0)(\startpoint-10:\endpoint+10:\radius)
+		\draw[smallpropagator] (\zero+1.3*\step:\radius*1.2) to [bend left = 40] (\zero + 7.7*\step:\radius*1.2); 
+	\node at (\zero + 4.5*\step:\radius*0.5){\footnotesize $q$};
+\end{scope}
+\end{scope}
+\end{tikzpicture}
+\]
+\caption{Diagram $V$ is $W$ with $p$ removed; there are no propagators inside $q = (i,j)$, though there may be up to 4 non-supporting vertices labelled $l, l+1, \ldots$.}
+\label{fig V diagram}
+\end{figure}
 
 %%%%%%%%%
 
@@ -1188,152 +1455,60 @@ Let $W'$ be the diagram obtained from $W$ by removing only the propagator $p$.  
 since in both cases the algorithm in $W'$ proceeds identically to that in $W$ after assigning $p$. Since $m \neq i+1$, we have $m\in I_{i+1}^{W'}\setminus\{i+1\}$ but $m\not\in I_{i+2}^{W'}$, contradicting the minimiality of $(W, i, m)$.
 
 
-\medskip  \sanote{Suggested breakpoint of theorem}
-
-We have shown that $(I_1,\dots,I_n)$ is a Grassmann necklace; it remains to check that this Grassmann necklace corresponds to the positroid $M(W)$.  Recall from the discussion following Definition~\ref{def:grassmann necklace}, and equation \eqref{basesofmatroids} in particular, that it suffices to show: 
-\begin{itemize}
-\item For each $i \in [n]$, $I_i$ is a basis for $M(W)$.
-\item If $J$ is lexicographically smaller than $I_i$ with respect to $<_i$ (for any $i \in [n]$) then $J$ is not a basis for $M(W)$. 
-\end{itemize}
-The first point follows immediately: since the algorithm is pairing each $j \in I_i$ with a unique propagator supported on that vertex, $I_i$ is a basis for $M(W)$ by Corollary~\ref{lem basis as perm}.
-
-Now suppose we have a $k$-set $J$ such that $J$ is a basis for $M(W)$ and yet is lexicographically less than $I_i$ with respect to $<_i$.  By Corollary~\ref{lem basis as perm} there is a set bijection between $J$ and the propagators of $W$ such that for each $j \in J$, the propagator associated to $j$ is supported on vertex $j$.  Choose one such bijection.  For each propagator $p$ of $W$, write $J(p)$ for the vertex $j$ associated to $p$ according to this bijection.
-
-Since $J$ is lexicographically smaller than $I_i$, the $<_i$-smallest element of the symmetric difference of $J$ and $I_i$ is some $j_0\in J$, $j_0 \not\in I_i$. Let $p_1$ be the propagator such that $J(p_1)=j_0$.  Since $j_0\not\in I_i$ but $p_1$ is supported at $j_0$, then $p_1$ must have been assigned to an earlier vertex by $I_i$, i.e. we have $I_i(p_1) <_i j_0$.  Let $j_1 = I_i(p_1)$.
-
-However, $j_0$ is the $<_i$-smallest element in the symmetric difference of $J$ and $I_i$, so we must have $j_1 \in J$ as well; in particular, there is some propagator $p_2$ such that $J(p_2)=I_i(p_1)$.  Let $j_2 = I_i(p_2)$ and note that $j_2 \neq J(p_2)$ (since $I_i(p_1)=J(p_2)$), so either $I_i(p_2) \not\in J$ or there is a propagator $p_3$ such that $J(p_3) = I_i(p_2)$. Continue this process for as many steps as possible (i.e. for as long as $I_i(p_*) \in J$); this produces a list of vertices $j_r$ and propagators $p_r$ such that 
-\[J(p_r) = I_i(p_{r-1}) = j_{r-1}.\]
-
-We claim that there is no repetition of propagators or vertices in this list; this will show that the process must eventually terminate. The claim is proved by induction.  The definition of $j_0$ gives that $j_0$ and $j_1$ are distinct and that $p_1$ and $p_2$ are distinct.  Now, suppose we have $p_r$ and $j_r$ with $I_i(p_r)=j_r$, with $j_r$ distinct from all previous $j_*$ and with $j_r\in J$.  Then there must exist a propagator $p_{r+1}$ with $J(p_{r+1}) = j_r$.  Since $J: \cP \longrightarrow [n]$ is injective and $j_r$ is not equal to any of the previous vertices $j_0, \dots, j_{r-1}$ by assumption, $p_{r+1}$ must be distinct from the previous propagators $p_1,\dots,p_r$.  Following the pattern, define $j_{r+1} = I_i(p_{r+1})$. Since $I_i: \cP \longrightarrow [n]$ is also injective and $p_{r+1}$ is distinct from the earlier $p_*$, it follows that $j_{r+1}$ is distinct from the other $j_s$ for $1\leq s\leq r$.  Finally, we have $j_{r+1}\neq j_0$ since $j_0\not\in I_i$ but $j_{r+1}\in I_i$.  This proves the claim.
-
-Therefore the list must end, and the only way it can end is with some $p_r$ such that $j_r = I_i(p_r)\not\in J$. In particular, this implies that $j_r >_i j_0$.  
-
-Next we will prove that $j_r <_i j_0$ for all $r > 0$; this gives a contradiction to the existence of $J$ and completes the proof of the theorem.  This proof will also be by induction; however, for the induction to go through nicely we will need to prove the following slightly stronger statement:
-for all $r>0$ in the list
-\begin{itemize}
-\item $j_r <_i j_0$ and
-\item either
-  \begin{itemize}
-  \item $I_i(p_r) <_i J(p_r)$, or
-  \item there exists an $\ell<r$ such that $I_i(p_\ell) <_i J(p_\ell)$, those two vertices support distinct ends of $p_\ell$, and $p_r$ is inside $p_l$ when $p_l$ is directed from $I_i(p_\ell)$ to $J(p_\ell)$.\note{Should I replace this with ``$p_r$ is inside $(p_l,<_i)$''? It matches previous notation but maybe is less clear?}
-  \end{itemize}
-\end{itemize}
-
-We observed above that $j_1 <_i j_0$ and $I_i(p_1) <_i J(p_1)$ so we have the base case for the induction.  Now fix $r > 1$ and suppose that the inductive hypothesis holds for all indices less than $r$ and that $p_r$ exists.
-
-By definition $J(p_r) = I_i(p_{r-1}) = j_{r-1}$, so $p_{r-1}$ and $p_{r}$ are both supported at vertex $j_{r-1}$. 
-
-
-
-Since $I_i$ always chooses the earliest unassigned propagator supported at a vertex, we have two possibilities (which are not mutually exclusive): either $p_{r-1}$ appears before $p_r$ in the neighbourhood of $j_{r-1}$, or $p_r$ was assigned earlier than $p_{r-1}$ by the algorithm for $I_i$. (Note that the ordering $p_1,p_2,\dots,p_r$ need not match the order in which Algorithm~\ref{alg:put GN on WLD} assigns propagators to vertices.)
-
-In the latter case we are done, since $p_r$ being assigned earlier than $p_{r-1}$ by $I_i$ means exactly that $I_i(p_r) <_i I_i(p_{r-1})$. Recalling that $I_i(p_{r-1}) = J(p_r) = j_{r-1}$, this implies that $I_i(p_r) <_i J(p_r)$ and $j_r = I_i(p_r) <_i j_{r-1} <_i j_0$, as required. 
-
-Now assume that $p_{r-1}$ appears before $p_r$ in the neighbourhood of $j_{r-1}$, and that $I_i$ assigns $p_{r-1}$ before $p_r$.
-
-
-
-\hlfix{If $I_i(p_{r-1}) <_i J(p_{r-1})$ and these are vertices supported by distinct ends of $p_{r-1}$}{Sian was unsure about this sentence, and added the blue text below which may or may not be necessary}, then by our assumption that $p_{r-1}$ appears before $p_r$ in the neighbourhood of $j_{r-1}$ it follows that $p_r$ must lie inside $p_{r-1}$ when directed from $I_i(p_{r-1})$ to $J(p_{r-1})$.  Therefore 
-\[j_r = I_i(p_r) \leq_i J(p_{r-1}) + 1.\]
-If $r > 2$ then this gives $j_r \leq_i I_i(p_{r-2}) + 1 \leq_i j_0$, but we know that $j_0\not\in I_i$ so in fact we have a strict inequality $j_r<_i j_0$.  If $r=2$ then the inequality reads $j_2 \leq_i J(p_1) + 1 = j_0 + 1$, so either $j_2 <_i j_0$ or we have the configuration
-\[
-\includegraphics{impossible_config}
-\]
-However, this is impossible because now $p_2$ is supported at $j_0$ but not assigned by $I_i$ until after $j_0$, even though $j_0\not\in I_i$. Thus we always have $j_r <_i j_0$ and the inductive step is complete in this case (with $p_{r-1}$ playing the role of $p_l$ here).
-
-\textcolor{blue}{
-On the other hand, if $I_i(p_{r-1}) <_i J(p_{r-1})$ and these vertices are on the same end of $p_{r-1}$, then we must have 
-\[
-\includegraphics[width=10cm]{extra_config}
-\]
-If $r = 2$, then $J(p_{r-1}) = j_0$ and our assumption that $p_{r-1}$ is assigned before $p_r$ means that $I_i$ assigns $p_2$ to $j_0$, which is again a contradiction. If $r>2$ then $J(p_{r-1}) = I_i(p_{r-2})$ implies we have another propagator $p_{r-2}$ on this same edge, which must lie between $p_{r-1}$ and $p_r$ to ensure that $I_i$ assigns everything in the correct order. Now $J(p_{r-2})$ must support the other end of $p_{r-2}$, and we can apply the same argument as above with $p_{r-2}$ instead of $p_{r-1}$.}
-
-The only remaining possibility is that $I_i(p_{r-1})\not<_i J(p_{r-1})$, so now assume this. We continue to assume that $p_{r-1}$ appears before $p_r$ in the neighbourhood of $j_{r-1}$ and that $I_i$ assigns $p_{r-1}$ before $p_r$.
-
-By the induction hypothesis,  $I_i(p_{r-1})\not<_i J(p_{r-1})$ implies that there exists an $\ell < r-1$ such that $p_{r-1}$ lies inside $p_{\ell}$ when directed from $I_i(p_\ell)$ to $J(p_\ell)$. Since $p_{r-1}$ and $p_r$ are both supported on vertex $j_{r-1}$, either $p_r$ is also inside $p_l$ (in which case we apply the arguments above with $l$ instead of $r-1$) or $p_l$ lies between $p_{r-1}$ and $p_r$ in the neighbourhood of $j_{r-1}$.
-
-Since $I_i(p_{r-1}) = j_{r-1}$ and $p_{r-1}$ is inside $p_l$, the fact that no propagator can contribute its 4th vertex to $I_i$ (Lemma~\ref{lem no fourth vertex}) means that we have the following configuration:
-\[
-\includegraphics[width=10cm]{new_induction_conf}
-\]
-If $l=1$ then $J(p_l) = j_0$, and $p_r$ is supported on $j_0$ but assigned by $I_i$ later than $j_0$, which is a contradiction. If $l>1$ then $J(p_l) = I_i(p_{l-1})$, and propagator $p_{l-1}$ must appear before $p_r$ in the neighbourhood of $j_{r-1}$ to ensure that $I_i$ assigns $p_{l-1}$ correctly. But now $J(p_{l-1})$ must be on the other end of $p_{l-1}$, since the vertices on this end are $J(p_r)$ and $J(p_l)$ and we know that $l-1 < l < r$. Finally, we must have $I_i(p_{l-1}) <_i J(p_{l-1})$ so that $I_i$ does not assign $p_{l-1}$ to its fourth vertex. Now $p_r$ lies inside $p_{l-1}$ and we argue as above.
-
-
-%  If $j_{r-1}$ is not in the support of the $J(p_\ell)$ end of $p_\ell$ then $p_{r-1}$ before $p_{r}$ around $j_{r-1}$ implies that $p_r$ is on the same side of $p_\ell$ as $p_{r-1}$ is.  Then the same arguments as above with $\ell$ in place of $r-1$ give $j_r \leq_i J(p_\ell)+1$ implying $j_r <_i j_0$ which is everything we need.
-
-% It remains to consider when $j_{r-1}$ is in the support of the $J(p_\ell)$ end of $p_\ell$, call this case $(*)$.  Since $J(p_\ell) = j_{\ell-1}$ and the vertices $j_1,\dots,j_r$ are distinct, this means that we have one of the following two configurations
-% \[
-% \includegraphics{induction_conf}
-% \]
-% If $p_\ell=p_1$ then $j_{\ell-1}=j_0$ and then as $j_0\not\in I_i$ but $p_r$ is supported at $j_0$ we get $I_i(p_r) <_i j_0$ and also $I_i(p_r) <_i j_{r-1} = J(p_r)$ as the only vertices not yet taken for $I_i(p_r)$ must be before both labelled vertices in the illustration.
-
-% If $p_\ell \neq p_1$ then we argue as above with $\ell-1$ in place of $r-1$: in particular $J(p_\ell) = I_i(p_{\ell-1})$ but $p_r$ is supported at $p_{\ell-1}$, so either $I_i(p_r) <_i I_i(p_{\ell-1})$ in which case as before we get desired conclusion, or $p_r$ comes before $p_{\ell-1}$ at $j_{\ell-1}$.  Then again argue as before getting a new $p_{\ell'}$ in place of $p_{\ell}$, except that then case $(*)$ must occur simultaneously for both $p_{\ell'}$ and $p_{\ell}$ with respect to $p_{r}$.  This can only occur if $j_{\ell-1}, j_{r-1}, j_{\ell'-1}$ are consecutive.  Iterating the argument one more time we finally cannot have case $(*)$ as then all neighbouring vertices of $j_{r-1}$ are used up.
-
-This covers all cases and completes the induction, and thence the proof of the theorem.
-
 \end{proof}
 
-\sanote{alternate proof of second half of above}
-{\color{violet} \begin{thm}
-The Grassmann necklace $(I_1 \ldots I_n)$ is the Grassmann neclace for $M(W)$ 
+\begin{thm}
+The Grassmann necklace $(I_1 \ldots I_n)$ from Theorem~\ref{res:alg gives GN} is the Grassmann necklace for $M(W)$.
 \end{thm}
 
 \begin{proof}
-We have shown that $(I_1,\dots,I_n)$ is a Grassmann necklace; it remains to check that this Grassmann necklace corresponds to the positroid $M(W)$.  Recall from the discussion following Definition~\ref{def:grassmann necklace}, and equation \eqref{basesofmatroids} in particular, that it suffices to show: 
+We have shown that $(I_1,\dots,I_n)$ is a Grassmann necklace; it remains to check that this Grassmann necklace corresponds to the positroid $M(W)$. Recall from the discussion following Definition~\ref{def:grassmann necklace}, and equation \eqref{basesofmatroids} in particular, that it suffices to show: 
 \begin{itemize}
 \item For each $i \in [n]$, $I_i$ is a basis for $M(W)$.
 \item If $J$ is lexicographically smaller than $I_i$ with respect to $<_i$ (for any $i \in [n]$) then $J$ is not a basis for $M(W)$. 
 \end{itemize}
-The first point follows immediately: since the algorithm is pairing each $j \in I_i$ with a unique propagator supported on that vertex, $I_i$ is a basis for $M(W)$ by Corollary~\ref{lem basis as perm}.
- 
-For the second point, order the propagators according to the ordering induced by the algorithm for $I_i$. Write $\cP = \{p_1, \ldots , p_k\}$. That is, $p_i$ defines the $i^{th}$ row of $C(W)$. For $m<k$, write $\cP_m = \{p_1, \ldots , p_k\}$.
+The first point follows immediately: the algorithm assigns each propagator to a vertex in the support of that propagator, so $I_i$ is a basis for $M(W)$ by Corollary~\ref{lem basis as perm}.
 
-Write $I_i(p_j)=a_j$. If two consecutive propagators do not contribute consecutive vertices, that is, there exist $a_{j-1} <_i x <_i a_j$ then the vertex $x$ supports only propagators in $\cP_j$, if any: $\Prop(x) \subset \cP_j$. 
+Now fix $i \in [n]$, and write $I_i = \{a_1 <_i a_2 <_i \dots <_i a_k\}$. This imposes an ordering on the propagators $\cP$, where we label them $p_1, p_2, \dots, p_k$ such that $I_i(p_j) = a_j$ for each $j$. Define $\cP_m: = \{p_1,p_2,\dots,p_m\}$ for each $m\geq 0$, with $\cP_0 = \emptyset$.
 
-Let $J = (j_1,\ldots j_k)$ be a sequence that is lexicographically less than $I_i = (a_1 \ldots a_k)$: $J <_i I_i$. By the above, for some $m < k$, $a_{m-1} <_i j_m <_i a_m$ and the matrix entry $c_{m, j_m} = 0$ is $0$. Without loss of generality, let $m$ be the smallest $m$ in the $<_i$ order for which this is true: \bas \forall l <m, \; I_i(p_l) = j_l \; ; \; j_m < I_i(p_m) \;.\eas Write $J_m = (j_1, \ldots, j_m)$ indicate the first $m$ entries of $J$. We claim that there exists some subset  of vertices $U \subset J_m$ such that $|\Prop(U)| < |U|$. 
+We enumerate two important observations:
+\begin{enumerate}
+\item If $a_{m-1}$ and $a_{m}$ are not consecutive vertices for some $m$, then for any intermediate vertex $a_{m-1}<_i x <_i a_{m}$ we must have $\Prop(x) \subseteq \cP_{m-1}$. This is because if any propagator supported on $x$ is still unassigned when the algorithm reaches $x$, we would have $x \in I_i$.
+\item When $p_m$ contributes $I_i(p_m) = a_m$ to the Grassmann necklace, it must be the clockwise-most propagator (amongst those not yet assigned) that is supported on $a_m$ i.e. any other propagators supported by $a_m$ in $\cP \setminus \cP_{m-1}$ is inside $p_m$ in the $a_m-1$ ordering.
+\end{enumerate}
 
-Consider the vertices contributed by the propagators originally supported on $j_m$: $V = I_i(\Prop(j_m))$. By construction, these are a subset of $J_{m-1}$. Note that $\Prop(V) \subset \cP_m$. Let $p_l$ be supported on $j_m$. If $q$ is suported on $p_l$, either $q$ preceeds $p_l$ (i.e. is not there when the algorithm reaches $a_l$) or is positioned counterclockwise to $p_l$ at the vertex $a_l$. That is, $q$ is inside $p_l$ in the $<_i$ ordering. By Lemma \ref{lem no fourth vertex}, $q$ does not contibute its last supporting vertex to $I_i$. That is, $I_i(q) <j_m$. \hlfix{But this implies that $q$ contributed before $p_m$, which contradicts the hypothesis.}{Seems to demand that $I_i$ catches all propagators in a single circuit of the vertices. Is this explicit anywhere, or am I jumping the gun?} Therefore $q \in \cP_{m-1}$.
+Now, let $J = \{j_1 <_i j_2<_i \dots <_i j_k\}$ be a $k$-set, and suppose that $J<_i I_i$ in the $<_i$-lexicographic order. Let $m$ be the minimal index such that $j_m <_i a_m$, i.e. the first entry at which $J$ and $I_i$ differ. We will show that $J$ must be a dependent set.
 
-If $\Prop(j_m) = \Prop(V)$, we have that $V$ and $V \cup j_m$ support the same propagators. That is, \bas |\Prop(V)| = |V| = |\Prop(V \cup j_m )| <  |V \cup j_m| \;.\eas
+If $\Prop(j_m) = \emptyset$ then $J$ is automatically dependent since the corresponding column of $C(W)$ contains only zeros, so suppose henceforth that $\Prop(j_m) \neq \emptyset$. %In particular, this implies that $m>1$, since if $m=1$ we would have $\Prop(j_1) \subseteq \cP_0 = \emptyset$.
 
-If $\Prop(j_m) \subsetneq \Prop(V)$, expand $V$ to include the vertices contributed by $\Prop(V)$. That is, $V' = I_i(\Prop(V))$. By the argument above, $\Prop(V) \subset \cP_m$. If $\Prop(V) = \Prop(V')$ then the relevant vertex set is $V'$. Else, continue expanding $V'$ in this manner until no new propagators are added. Since all of these sets of propagators are contained in $\cP_m$, which is finite, this process is finite. 
+In order to exhibit a dependent subset of vertices in $J$, we first define a sequence of sets of propagators by
+\[Q_0 = \Prop(j_m), \qquad Q_{l+1} = \Prop(I_i(Q_l))\quad \forall l \geq 0.\]
+It is easily verified that this is an increasing chain of sets: indeed, if $q \in Q_l$ then $I_i(q) \in I_i(Q_l)$, and since $I_i(q)$ is one of the vertices that supports $q$ we must have $q \in \Prop(I_i(Q_l)) = Q_{l+1}$. Since $\cP$ is finite, the sequence therefore stabilizes in finitely many steps when $Q_{l+1} = Q_l$. Let $Q = \cup_{l \geq 0} Q_l$ be this set of propagators.
 
-\begin{comment}
-By algorithm \ref{alg:put GN on WLD}, $a_j$ is the smallest number in the $<_{a_{j-1}}$ ordering such that $c_{j, a_j} \neq 0$ (that is, is an indeterminant entry). Therefore, $p_m \not \in \Prop(j_m)$. In fact, no $q$ that follow $p_m$ in the ordering can be supported on $j_m$. Since $j_m < a_m$, the algorithm for $I_i$ checks this vertex before $a_m$.  If any propagator in $\cP \setminus \cP_{m-1}$ are supported on $j_m$, then this propapagator would preceed $p_m$, i.e. be an element of $\cP_{m-1}$. Therefore, the only non-zero entries in column $j_m$ of $C(W)$ lie in the first $m-1$ rows.
+We will show that $Q \subseteq \mathcal{P}_{m-1}$, which will imply the theorem as follows: if $Q \subseteq \cP_{m-1}$ then we have $I_i(Q)\subseteq J$, and hence $I_i(Q) \cup \{j_m\} \subseteq J$ as well. Since $I_i(Q) \cup \{j_m\}$ only supports the propagators in $Q$ but has $|Q|+1$ vertices, it is a dependent set. Thus $J$ is a dependent set, and the Grassmann necklace $(I_1,\dots,I_n)$ constructed from $W$ does indeed define the positroid $M(W)$.
 
-Therefore, $\Prop(j_m) \subset \cP_{m-1}$. Let $V =  V(\Prop(j_m)) \cap J_{m-1}$ be the vertices in $J_m$ supporting the propagators supported on $j_m$. That is, $V$ is contains the vertices contributed by $\Prop(j_m)$. So $|\Prop(j_m)| \leq |V|$. We show that $\Prop (V) \subset \Prop_{m-1}$. Suppose otherwise. Let $q \in \cP \setminus \cP_m$ be a propagators after $p_m$ and $p_l \in \Prop(j_m)$ a propagators before $p_m$ supported on $j_m$ such that both $q$ and $p_l$ are supported on $I_i(p_l)= a_l$. Since $p_l$ contributes $a_l$, it must be the clockwisemost propagator in $\cP \setminus \cP_{l-1}$ supported on $a_l$. In other words, $q \in \cP_{in}(p_l, <_{a_l-1})$ is inside $p_l$ in the $a_l-1$ order. Specifically, the last supporting vertex of $q$ is strictly less than $j_m$.  By Lemma \ref{lem no fourth vertex}, $q$ does not contibute its last supporting vertex to $I_i$. That is, $I_i(q) <j_m$. \hlfix{But this implies that $q$ contributed before $p_m$, which contradicts the hypothesis.}{Seems to demand that $I_i$ catches all propagators in a single circuit of the vertices. Is this explicit anywhere, or am I jumping the gun?}
+We now proceed to prove $Q\subseteq \mathcal{P}_{m-1}$ by inductively proving $Q_l \subseteq \mathcal{P}_{m-1}$ for all $l \geq 0$.
+%If $Q_0 = \Prop(j_m) = \emptyset$ then $Q = \emptyset$, and $I_i(Q) \cup \{j_m\}= \{j_m\}$ is a single vertex supporting no propagators, and thus a dependent set. Otherwise,
+For the base case $Q_0 \subseteq \cP_{m-1}$ follows immediately from the first observation above that $\Prop(j_m) \subseteq \cP_{m-1}$
 
-By construction, this implies that $V \subset \Prop(j_m)$. But $V$ contains the vertices 
-Since $J_{m-1}$ is independent, $V \subset J_{m-1}$ is too. Therefore, $|V| \leq |\Prop(V)| $. Since  $\Prop (V) \subset \cP_{m-1}$
-***************
-For the second point, consider the matrix $C(W)$ associated to the diagram $W$. Recall that $C(W)$ is only defined up to an ordering of the propoagators of $W$. Therefore order them according to the ordering induced by the algorithm for $I_i$. Write $\cP = \{p_1, \ldots , p_k\}$. That is, $p_i$ defines the $i^{th}$ row of $C(W)$. 
+Now assume that $Q_0,\dots,Q_{l-1} \subseteq \cP_{m-1}$, and consider $Q_{l}$. If $Q_{l} \setminus Q_{l-1} = \emptyset$ then we are done, with $Q = Q_l$.  Otherwise, let $q \in Q_{l} \setminus Q_{l-1}$. By construction there is some propagator $p_r \in Q_{l-1}$ such that $p_r$ and $q$ are both supported on $I_i(p_r) = a_r$. If $q$ is clockwise of $p_r$ on vertex $a_r$ then we immediately have $q \in \cP_{m-1}$ as observed above.  It remains to consider the case that $q$ is counter-clockwise of $p_r$ at $a_r$.
 
-Write $I_i(p_j)=a_j$. By algorithm \ref{alg:put GN on WLD}, $a_j$ is the smallest number in the $<_{a_{j-1}}$ ordering such that $c_{j, a_j} \neq 0$ (that is, is an indeterminant entry). It is the first column in the $j^{th}$ row of $C(W)$ that is both non-zero and is greater than the index contributed by the previous propagator:  \bas \begin{bmatrix}\ddots & & & & & & \\ \ldots  & c_{j-1, a_{j-1}} & * & \ldots &  & & \\  \ldots  &* &0 & \ldots & 0 &c_{j, a_j} & \ldots \\ & & & & & & \ddots \end{bmatrix}  \eas
+Note that we cannot have $a_r+ 1 = j_m$ when $q$ is counterclockwise of $p_r$, since $q \not\in \Prop(j_m)$ by assumption. If the other end of $p_r$ (i.e. the end not supported on $a_r$) lies on an edge between $a_r$ and $j_m$ then since $q$ is inside $p_r$ with respect to $<_{a_r-1}$ we must have $V(q) \subseteq [a_r-1,j_m]$, and hence $q \in \cP_{m-1}$ by Lemma~\ref{lem no fourth vertex}. In particular, if $l=1$ then $p_r \in Q_{0} = \Prop(j_m)$ and we must be in this case. 
 
-Let $J = (j_1,\ldots j_k)$ be a sequence that is lexicographically less than $I_i = (a_1 \ldots a_k)$: $J <_i I_i$. By the above, for some $m < k$, $j_m <_i a_m$ and the matrix entry $c_{m, j_m} = 0$ is $0$. Without loss of generality, let $m$ be the smallest $m$ in the $<_i$ order for which this is true: \bas \forall l <m, \; I_i(p_l) = j_l \; ; \; j_m < I_i(p_m) \;.\eas Write $J_m = (j_1, \ldots, j_m)$ indicate the first $m$ entries of $J$. 
+If not, then there must be some propagator $p_s \in Q_{l-2}$ such that $p_r$ and $p_s$ are both supported on $I_i(p_s) := a_s$. Since $p_r$ is clockwise of $q$, and $q$ cannot be supported on $I_i(p_s)$ since $q \not\in Q_{l-1}$, it follows that $I_i(p_s) <_i I_i(p_r)$. Therefore $q$ is inside $p_s$ with respect to $<_{a_s - 1}$ as well.
 
-We claim that the $j_m^{th}$ column of $C(W)$ is in the span of the columns indexed by $J_{m-1}$.
+\begin{figure}[h]
+\includegraphics[scale = 0.3]{awkward_induction_case.jpg}
+\caption{This picture isn't quite the one we need any more, but it should help to illustrate the claim about $I_i(p_s) <_i I_i(p_r)$}\label{fig:awkward induction step}
+\end{figure}
 
-Since $J_{m-1}$ is an independent set in $C(W)$, row reduce the first $j_{m-1}$ columns of $C(W)$ to have $1$ in the $(r, j_r)$ position and $0$ to the right: \bas \begin{bmatrix}1 &0  &\ldots  & &  &0 \\  * & \ldots  & * & 1 & 0&\ldots \\    &\ddots &  &  &\ldots & 1 \\  *&* &* &\ldots &* &* \\  &\ddots & & & \ddots &  \\ *&* &* &\ldots &* &*  \end{bmatrix}  \;.\eas \sanote{fix this! wrote echelon order!}
+Now repeat the argument above with $p_s$ in place of $p_r$: if the other end of $p_s$ lands on an edge between $q$ and $j_m$ then we have $q \in \cP_{m-1}$ as above; if not then there exists some $p_t \in Q_{l-3}$ with $p_s$ supported on $I_i(p_t)$ and $I_i(p_t) <_i I_i(p_r)$. Since there are finitely many steps this process can take before reaching $Q_0$, and any $p_* \in Q_0  = \Prop(j_m)$ has $j_m$ in its support by definition, this argument eventually terminates with the construction of a propagator constraining the positioning of $q$ as required. This completes the induction step, and hence the proof.
 
-Next consider the $j_m^{th}$ column of $C(W)$. First note that, since $c_{m, j_m} = 0$. Furthermore, no $q$ that follow $p_m$ in the ordering can be supported on $j_m$. Since $j_m < a_m$, the algorithm for $I_i$ checks this vertex before $a_m$.  If any propagators remain to be supported on this vertex after the removal of $p_1$ to $p_{m-1}$, then this propapagator would preceed $p_m$. Therefore, the only non-zero entries in column $j_m$ of $C(W)$ lie in the first $m-1$ rows.  \sanote{add something here} Therefore, column $j_m$ lies in the span of the first $j_{m-1}$ columns of $C(W)$. 
-
-*******
-%If $p, q \in \Prop(i)$ are two propagators supported on the vertex $i$, we may write $p = (a_p, b_p)$ and $q = (a_q, b_q)$, with the initial vertices $a_p$ and $a_q$ in the set $\{i, i-1\}$. By construction, the propagator $q$ is located clockwise relative to $p$ if and only if $p$ is inside $q$. That is, $p \in \cP_{in}(q, <_{a_q})$. 
-
-%For $m < k$, write $\cP_m =\{p_1, \ldots , p_m\} \subset \cP$ to indicate the first $m$ propagators. For any subset of propagators $Q \subset \cP$, write $W|_Q = (Q, [n])$ be the subdiagram of $W$ consisting only of the propagators in $Q$ and all the vertices $[n]$.
-
-
-%Since $p$ never contributes its last vertex in the $<_i$ order to $I_i$, by Lemma \ref{lem no fourth vertex}, every propagator preceeding $p_j$ is outside it in the $a_j-1$ ordering: $\cP_{j-1} \subset \cP_{out}(p_j)$. 
-
-
-We claim that $J_m$ is not a basis for $W|_{\cP_m}$. To see this, first note that, since $c_{m, j_m} = 0$, the propagator $p_m$ is not supported on $j_m$. If $p_m$ does not share support with any propagator in $\cP_m$ in the cyclic interval $[i, j_m]$, then the minor of $C(W|_{\cP_m})$ defined by $J_{m}$, has a row of $0$s.
-
-Otherwise, let $p_l$ be a propagator preceeding $p_m$ ($p_l \in \cP_{m-1}$) that shares support with it in $J_m$: $V(p_l) \cap V(p_m) \cap J_m \neq \emptyset$. Then $p_l \in Q$ is positioned clockwise to $p_m$ on vertex $a_l$, therefore, $p_l$ is outside $p_m$ in the $a_l -1$ order. Since $a_l <_i j_m <_i a_m$ with $a_l$ and $a_m$ both in the support of $p_m$, \hlfix{$j_m$ is inside $p_m$ in the $a_l-1$ ordering. }{I know we got rid or interior vertices. Can we bring it back or rephrase?} Furthermore since all of $\cP_{m-1} \subset \cP_{out}(p_m)$ is outside of $p_m$ in that $a_l-1$ order, and $j_m$ is a vertex inside it, no propagator prior to $p_m$ can be supported on $j_m$. Otherwise, one would have crossing propagators. Therefore, the minor of $C(W|_{\cP_m})$ defined by $J_{m}$, has a column of $0$s.
-******
-\end{comment}
 \end{proof}
-}
+
+
+
+
 
 
 We can now unambiguously refer to Algorithm~\ref{alg:put GN on WLD} as the Grassmann necklace algorithm. We close this section with a simple observation about the Grassmann necklaces of positroids associated to Wilson loop diagrams.
@@ -1439,7 +1614,49 @@ Let $W$ be an admissible Wilson loop diagram with $n\geq 1$ propagators, and sup
 \end{lem}
 
 \begin{figure}
- \includegraphics{specialp}
+\[
+\begin{tikzpicture}[rotate = 150,baseline=(current bounding box.east),label distance = -2mm]
+\begin{scope}
+	\drawWLDfragment[6]{3}{0.3}
+	%\drawnumbers % use this to debug
+	\begin{scope}
+		\clipcenterarc(0,0)(\startpoint:\endpoint:\radius)
+		\draw[smallpropagator] (\zero+2.4*\step:\radius*1.1) to [bend left = 55] (\zero + 4.6*\step:\radius*1.1); 
+		\node at (\zero + 3.5*\step:\radius*0.75){\footnotesize $p$};
+	\end{scope}
+	\centerarc[red,line width = 2pt,line cap = round](0,0)(\zero + 2*\step:\zero+4.45*\step:\radius)
+	\newbetternode[{[label distance=-3mm]above right}]{1}{n-4}
+	\newbetternode[{[label distance=-3mm]above right}]{2}{n-3}
+	\newbetternode[{[label distance=-3mm]above right}]{3}{n-2}
+	\newbetternode[{[label distance=-3mm]above right}]{4}{n-1}
+	\newnode[above]{5}{n}
+	\newnode[above]{6}{1}
+\end{scope}
+\end{tikzpicture}
+\qquad 
+\qquad 
+\begin{tikzpicture}[rotate=150, baseline=(current bounding box.east)]
+\begin{scope}
+	\drawWLDfragment[7]{3}{0.3}
+	%\drawnumbers % use this to debug
+	\begin{scope}
+		\clipcenterarc(0,0)(\startpoint:\endpoint:\radius)
+		\draw[smallpropagator] (\zero+1.4*\step:\radius*1.1) to [bend left = 60] (\zero + 3.5*\step:\radius*1.1); 
+		\draw[smallpropagator] (\zero+3.5*\step:\radius*1.1) to [bend left = 60] (\zero + 5.6*\step:\radius*1.1); 
+		\node at (\zero + 2.4*\step:\radius*0.8){\footnotesize $q$};
+		\node at (\zero + 4.5*\step:\radius*0.8){\footnotesize $p$};
+	\end{scope}
+	\centerarc[red,line width = 2pt,line cap = round](0,0)(\zero + 1.6*\step:\zero+5.5*\step:\radius)
+	\newbetternode[{[label distance=-3mm]above right}]{1}{n-5}
+	\newbetternode[{[label distance=-3mm]above right}]{2}{n-4}
+	\newbetternode[{[label distance=-3mm]above right}]{3}{n-3}
+	\newbetternode[{[label distance=-3mm]above right}]{4}{n-2}
+	\newbetternode[{[label distance=-3mm]above right}]{5}{n-1}
+	\newnode[above]{6}{n}
+	\newnode[above]{7}{1}
+\end{scope}
+\end{tikzpicture}
+\]
   \caption{The two cases for $W$ and $p$.  No other propagators can end in the fat red sections.  Other segments may have additional propagators ending in them.}\label{fig special p}
 \end{figure}
 
@@ -1660,7 +1877,105 @@ As we take each $r_i$ to simply be the determinant of a particular submatrix of 
 %  However, we will not be interested in these signs as they only contribute an overall sign to $R$ and our main theorem in this section (Theorem~\ref{thm denom}) will simply be to show that $R$ is equal up to a $\mathbb{Q}$-multiple to the denominator of the Wilson loop diagram (see Definition~\ref{def R(W)}). 
 
 \begin{figure}
-\includegraphics{egWLD_forR}
+\begin{tabular}{rrrrr}
+\begin{tikzpicture}[rotate=67.5,baseline=(current bounding box.east)]
+	\begin{scope}
+	\drawWLD{7}{1.5}
+	\drawnumbers
+	\drawlabeledprop{1}{-1}{6}{0}{\footnotesize   $p$}
+	\drawlabeledprop{1}{0}{5}{0}{\footnotesize   $q$}
+	\drawlabeledprop{1}{1}{4}{0}{\footnotesize \; \qquad  $s$}
+	\pgfmathsetmacro{\move}{\angle/\n};
+	\draw[->,shorten >=2pt,red,thick] (1.5*\angle + -1*\move:\radius) to[bend left = 45] (\angle*1:\radius); %p
+	\draw[->,shorten >=2pt,red,thick] (1.5*\angle:\radius) to[bend right = 45] (\angle*2:\radius); %q
+	\draw[->,shorten >=2pt,red,thick] (4.5*\angle:\radius) to[bend left = 45] (\angle*4:\radius); %r
+	\node at (\angle*1.5:\radius*2) {$I_1$};
+	\node[align = center] at (4*\angle:\radius*1.7) {$I_1(p) = 1, \; I_1(q) = 2,$ \\[5pt] $I_1(s) = 4$.};
+		\end{scope}
+	\end{tikzpicture} 
+	& \quad \quad  &
+\begin{tikzpicture}[rotate=67.5,baseline=(current bounding box.east)]
+	\begin{scope}
+	\drawWLD{7}{1.5}
+	\drawnumbers
+	\drawlabeledprop{1}{-1}{6}{0}{\footnotesize   $p$}
+	\drawlabeledprop{1}{0}{5}{0}{\footnotesize   $q$}
+	\drawlabeledprop{1}{1}{4}{0}{\footnotesize \; \qquad  $s$}
+	\pgfmathsetmacro{\move}{\angle/\n};
+	\draw[->,shorten >=2pt,red,thick] (1.5*\angle + -1*\move:\radius) to[bend right = 45] (\angle*2:\radius); %p
+	\draw[->,shorten >=2pt,red,thick] (5.5*\angle:\radius) to[bend left = 45] (\angle*5:\radius); %q
+	\draw[->,shorten >=2pt,red,thick] (4.5*\angle:\radius) to[bend left = 45] (\angle*4:\radius); %r
+	\node at (\angle*1.5:\radius*2) {$I_2$};
+	\node[align = center] at (4*\angle:\radius*1.7) {$I_2(p) = 1,  \; I_2(s) = 4,$ \\[5pt] $I_2(q) = 5.$};
+	\end{scope} 
+\end{tikzpicture}
+& \quad & 
+\begin{tikzpicture}[rotate=67.5,baseline=(current bounding box.east)]
+	\begin{scope}
+	\drawWLD{7}{1.5}
+	\drawnumbers
+	\drawlabeledprop{1}{-1}{6}{0}{\footnotesize   $p$}
+	\drawlabeledprop{1}{0}{5}{0}{\footnotesize   $q$}
+	\drawlabeledprop{1}{1}{4}{0}{\footnotesize \; \qquad  $s$}
+	\pgfmathsetmacro{\move}{\angle/\n};
+	\draw[->,shorten >=2pt,red,thick] (6.5*\angle:\radius) to[bend left = 45] (\angle*6:\radius); %p
+	\draw[->,shorten >=2pt,red,thick] (5.5*\angle:\radius) to[bend left = 45] (\angle*5:\radius); %q
+	\draw[->,shorten >=2pt,red,thick] (4.5*\angle:\radius) to[bend left = 45] (\angle*4:\radius); %r
+	\node at (\angle*1.5:\radius*2) {$I_3 = I_4$};
+	\node[align = center] at (4*\angle:\radius*1.7) {$I_3(s) = 4,\;  I_3(q) = 5,$ \\[5pt] $I_3(p) = 6.$ };
+	\end{scope} 
+\end{tikzpicture}  
+\\ 
+ & & & &  \\
+ \begin{tikzpicture}[rotate=67.5,baseline=(current bounding box.east)]
+	\begin{scope}
+	\drawWLD{7}{1.5}
+	\drawnumbers
+	\drawlabeledprop{1}{-1}{6}{0}{\footnotesize   $p$}
+	\drawlabeledprop{1}{0}{5}{0}{\footnotesize   $q$}
+	\drawlabeledprop{1}{1}{4}{0}{\footnotesize \; \qquad  $s$}
+	\pgfmathsetmacro{\move}{\angle/\n};
+	\draw[->,shorten >=2pt,red,thick] (6.5*\angle:\radius) to[bend right = 45] (\angle*7:\radius); %p
+	\draw[->,shorten >=2pt,red,thick] (5.5*\angle:\radius) to[bend right = 45] (\angle*6:\radius); %q
+	\draw[->,shorten >=2pt,red,thick] (4.5*\angle:\radius) to[bend right = 45] (\angle*5:\radius); %r
+	\node at (\angle*1.5:\radius*2) {$I_5$};
+	\node[align = center] at (4*\angle:\radius*1.7) {$I_5(s) = 5,\;  I_5(q) = 6,$  \\[5pt] $I_5(p) = 7$ };
+	\end{scope} 
+\end{tikzpicture}
+& \quad & 
+\begin{tikzpicture}[rotate=67.5,baseline=(current bounding box.east)]
+	\begin{scope}
+	\drawWLD{7}{1.5}
+	\drawnumbers
+	\drawlabeledprop{1}{-1}{6}{0}{\footnotesize   $p$}
+	\drawlabeledprop{1}{0}{5}{0}{\footnotesize   $q$}
+	\drawlabeledprop{1}{1}{4}{0}{\footnotesize \; \qquad  $s$}
+	\pgfmathsetmacro{\move}{\angle/\n};
+	\draw[->,shorten >=2pt,red,thick] (6.5*\angle:\radius) to[bend right = 45] (\angle*7:\radius); %p
+	\draw[->,shorten >=2pt,red,thick] (5.5*\angle:\radius) to[bend right = 45] (\angle*6:\radius); %q
+	\draw[->,shorten >=2pt,red,thick] (1.5*\angle + 1*\move:\radius) to[bend left = 45] (\angle*1:\radius); %r
+	\node at (\angle*1.5:\radius*2) {$I_6$};
+	\node[align = center] at (4*\angle:\radius*1.7) {$I_6(q) = 6, \; I_6(p) = 7, $ \\[5pt] $I_6(s) = 1. $ };	
+	\end{scope}
+	\end{tikzpicture}  
+& \quad &
+\begin{tikzpicture}[rotate=67.5,baseline=(current bounding box.east)]
+	\begin{scope}
+	\drawWLD{7}{1.5}
+	\drawnumbers
+	\drawlabeledprop{1}{-1}{6}{0}{\footnotesize   $p$}
+	\drawlabeledprop{1}{0}{5}{0}{\footnotesize   $q$}
+	\drawlabeledprop{1}{1}{4}{0}{\footnotesize \; \qquad  $s$}
+	\pgfmathsetmacro{\move}{\angle/\n};
+	\draw[->,shorten >=2pt,red,thick] (6.5*\angle:\radius) to[bend right = 45] (\angle*7:\radius); %p
+	\draw[->,shorten >=2pt,red,thick] (1.5*\angle:\radius) to[bend left = 45] (\angle*1:\radius); %q
+	\draw[->,shorten >=2pt,red,thick] (1.5*\angle + \move:\radius) to[bend right = 45] (\angle*2:\radius); %r
+	\node at (\angle*1.5:\radius*2) {$I_7$};
+	\node[align = center] at (4*\angle:\radius*1.7) {$I_7(p) = 1,  \; I_7(q) = 1, $ \\[5pt] $I_7(s) = 2.$};
+	\end{scope} 
+\end{tikzpicture}
+\\
+\end{tabular}
 \caption{Example WLD for illustrating Algorithm~\ref{alg WLD to denom via GN} and bijections between propagators and vertices for each Grassmann necklace element.}\label{fig R eg}
 \end{figure}
 
@@ -1725,7 +2040,52 @@ Finally, we can suppose that $W$ is minimal in number of propagators with an irr
 Let $p$ be the propagator such that $I_i(p) = i$. There are two cases to consider, depending on which edge $p$ is supported on.  These are illustrated in Figure~\ref{fig no big factors}
 
 \begin{figure}
-  \includegraphics{no_big_factors}
+\[
+\begin{tikzpicture}[baseline=(current bounding box.east),rotate=-20]
+\begin{scope}
+	\drawWLDfragment[8]{3}{0.4} 
+	%\drawnumberspartial % use this to debug
+	\newnode[left]{1}{i-1}
+	\newnode[below]{2}{i}
+	\newnode[below]{7}{m}
+	\begin{scope}
+		\clipcenterarc(0,0)(\startpoint-10:\endpoint+10:\radius)
+		\newpropbend{1.7}{7.2}{60}
+		\draw[smallpropagator,blue] (\zero+7.8*\step:\radius*1.1) to[bend left = 55] (\zero + 10*\step:\radius*1.1);
+		\node at (\zero + 1.2*\step:\radius*0.5) {\footnotesize $p$};
+	\end{scope}
+	\node[align = center,black] at (\zero + \step*4.5:\radius*0.65) {\em \footnotesize propagators \\ \footnotesize \em inside $p$};
+	\draw[->,shorten >=2pt,thick,gray] (\zero + 1.6*\step:\radius) to[bend left = 45] (\zero + 1*\step:\radius); %p
+	\draw[->,shorten >=2pt,thick,gray] (\zero + 7.9*\step:\radius) to[bend left = 45] (\zero + 7*\step:\radius); 
+	\node[align = center,black] at (\zero + 6.8*\step:1.5*\radius) {\em \footnotesize If $m \in I_i$ then \\ \em \footnotesize it was contributed by \\ \em \footnotesize the blue propagator};
+\end{scope}
+\end{tikzpicture}
+\qquad 
+\begin{tikzpicture}[baseline=(current bounding box.east),rotate=-20]
+	\begin{scope}
+	\drawWLDfragment[8]{3}{0.4}  
+	%\drawnumberspartial % use this to debug
+	\newnode[left]{1}{i}
+	\newnode[below]{2}{i+1}
+	\newnode[below]{7}{j}
+	\centerarc[red,line width = 2pt,line cap = round](0,0)(\zero + 1.5*\step:\zero+1.56*\step:\radius);
+	\draw[->,shorten >=2pt,thick,gray] (\zero + 1.45*\step:\radius) to[bend left = 45] (\zero + 1*\step:\radius); %p
+	\draw[->,shorten >=2pt,thick,gray] (\zero + 1.61*\step:\radius) to[bend right = 45] (\zero + 2*\step:\radius); %q 
+	\draw[->,shorten >=2pt,thick,gray] (\zero + 7.7*\step:\radius) to[bend left = 45] (\zero + 7*\step:\radius); %blue
+	\begin{scope}
+		\clipcenterarc(0,0)(\startpoint-10:\endpoint+10:\radius)
+		\newpropbend{1.6}{7.2}{40} % q
+		\draw[smallpropagator] (\zero+1.5*\step:\radius*1.1) to[bend right = 40] (\zero  - 3*\step:\radius*1.1); % p
+		\draw[smallpropagator,blue] (\zero+7.6*\step:\radius*1.1) to[bend left = 55] (\zero + 10*\step:\radius*1.1);
+		\node at (\zero + 5*\step:\radius*0.3) {\footnotesize $q$};
+		\node at (\zero + 1*\step:\radius*0.6) {\footnotesize $p$};
+	\end{scope}
+	\node[align = center,black] at (\zero + \step*4.5:\radius*0.75) {\em \footnotesize propagators \\ \footnotesize \em inside $q$};
+	\node[align = center] at (\zero + 1.5*\step:\radius*1.5) {\footnotesize \em No \\ \footnotesize \em propagators \\ \footnotesize \em between \\ \footnotesize \em $p$ and $q$ \\ \footnotesize \em here};
+	\node[align = center,black] at (\zero + 6.8*\step:1.5*\radius) {\em \footnotesize If $j \in I_i$ then \\ \em \footnotesize it was contributed by \\ \em \footnotesize the blue propagator};
+\end{scope}
+\end{tikzpicture}
+\]
   \caption{The two cases in the proof that no factors of $\Delta_{I_i}$ have degree 3 or more.}\label{fig no big factors}
 \end{figure}
 
@@ -1766,7 +2126,38 @@ As in the proof of part (2), make a new admissible diagram by removing the propa
 Now suppose two variables from the row $p$ appear in a quadratic factor $f$.  By part (3), there is another propagator $q$ and an edge $(a,b)$ such that $f$ is the $2\times 2$ minor coming from $p, q$ and $a, b$, with $I_i(p)=a$, $I_i(q)=b$.  There are two situations which can occur, both illustrated in Figure~\ref{fig quadratic}; we show that in both cases it follows that $q \in S_i$ as well.
 
 \begin{figure}
-  \includegraphics{quadratic}
+\[
+\begin{tikzpicture}[baseline=(current bounding box.east)]
+	\begin{scope}
+	\drawWLDfragment[2]{4}{0.1} 
+	%\drawnumberspartial % use this to debug
+	\newnode[below]{1}{a}
+	\newnode[below]{2}{b}
+	\begin{scope}
+	\clipcenterarc(0,0)(\zero - 1.5*\step:\zero + 4.5*\step:\radius)
+	\newprop[midway,left]{1.33}{-7}{\footnotesize $p$}
+	\newprop[midway,right]{1.66}{10}{\footnotesize $q$}
+	\end{scope}
+	\node at (\zero + 0.6*\step:\radius*0.7) {\footnotesize $p$};
+	\node at (\zero + 2.4*\step:\radius*0.7) {\footnotesize $q$};
+\end{scope}
+\end{tikzpicture}
+\begin{tikzpicture}[baseline=(current bounding box.east)]
+	\begin{scope}
+	\drawWLDfragment[2]{4}{0.1} 
+	%\drawnumberspartial % use this to debug
+	\newnode[below]{1}{b}
+	\newnode[below]{2}{a}
+	\begin{scope}
+	\clipcenterarc(0,0)(\zero - 1.5*\step:\zero + 4.5*\step:\radius)
+	\newprop[midway,left]{1.33}{-7}{\footnotesize $q$}
+	\newprop[midway,right]{1.66}{10}{\footnotesize $p$}
+	\end{scope}
+	\node at (\zero + 0.6*\step:\radius*0.7) {\footnotesize $q$};
+	\node at (\zero + 2.4*\step:\radius*0.7) {\footnotesize $p$};
+\end{scope}
+\end{tikzpicture}
+\]
   \caption{The situations giving a quadratic factor with variables appearing in $r_i$.}\label{fig quadratic}
 \end{figure}
 
@@ -1777,7 +2168,28 @@ Now consider the case where $a<_i b$, and suppose for contradiction that $q \not
 Say $s$ is supported on $(j, j+1, a-1, a)$ and $p$ is supported on $(k, k+1, a, b)$ with $i-1 \leq_{i-1} k+1 \leq_{i-1} j+1$. But by Lemma~\ref{lem no fourth vertex}, if $I_{i-1}(s) = a$ then $a$ cannot be maximal in the support of $s$ with respect to $<_{i-1}$; thus we must have $i-1 = j+1$, and we are in the situation in figure~\ref{fig part 4}.
 
 \begin{figure}
-  \includegraphics[scale=0.5]{part4}
+\[
+\begin{tikzpicture}[baseline=(current bounding box.east),rotate = -40]
+	\begin{scope}
+	\drawWLDfragment[8]{3}{0.4} 
+	%\drawnumberspartial % use this to debug
+	\newnode{1}{}
+	\newnode[left]{2}{i-1}
+	\newnode[below]{5}{a-1\quad}
+	\newnode[below]{6}{a}
+	\newnode[below]{7}{b}
+	\begin{scope}
+		\clipcenterarc(0,0)(\startpoint:\endpoint+\step:\radius)
+		\newpropbend{1.5}{5.7}{20}
+		\newpropbend{1.3}{6.4}{30}
+		\newprop{6.6}{-6}{}
+	\end{scope}
+	\node at (\zero + 3.5*\step:\radius*0.8){\footnotesize $s$};
+	\node at (\zero + 4.8*\step:\radius*0.45){\footnotesize $p$};
+	\node at (\zero + 8*\step:\radius*0.65){\footnotesize $q$};
+\end{scope}
+\end{tikzpicture}
+\]
   \caption{In order to obtain $I_{i-1}(s) = a$, propagators $s$ and $p$ must each have an end on the edge $(i-2,i-1)$.}\label{fig part 4}
 \end{figure}
 
