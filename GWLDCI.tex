@@ -1000,7 +1000,7 @@ Next we examine properties of propagator flats associated to the complement of W
 
 \begin{lem} \label{maxexactcomplementrank}
 Let $W = (\cP, [n])$ be an admissible Wilson loop diagram, and $P \subseteq \cP$. Then: \begin{enumerate}
-\item If $(P,V(P))$ is an exact subdiagram of $W$, then $F(P^c)$ is not an independent flat in $W$.
+\item If $(P,V(P))$ is an exact subdiagram of $W$, then $F(P^c)$ is a dependent flat in $W$.
 \item If $(P,V(P))$ is a maximal exact subdiagram of $W$, then $F(P^c)$ is a cyclic flat in $W$.
 \item If $(P,V(P))$ is an exact subdiagram in $W$, then $\rk(F(P^c)) = |P^c|$.
 \end{enumerate} 
@@ -1012,7 +1012,7 @@ Let $W = (\cP, [n])$ be an admissible Wilson loop diagram, and $P \subseteq \cP$
 
 First note that if $(P,V(P))$ is exact then the admissibility of $W$ guarantees that $V(P) \neq [n]$, so $F(P^c) = V(P)^c$ is not empty. 
 
-We know from Lemma~\ref{lem facts about WLD matroids} that $F(P^c)$ is always a flat, so for part (1) we only need to show that $F(P^c)$ is not independent.
+We know from Lemma~\ref{lem facts about WLD matroids} that $F(P^c)$ is always a flat, so for part (1) we only need to show that $F(P^c)$ is dependent.
 
 Since $W$ is admissible, we have $n \geq |\cP| + 4$. Rewriting this inequality as
 \[|V(P)| + |F(P^c)|  \geq  |P| + |P^c| +4,\]
@@ -1022,7 +1022,7 @@ Equation \eqref{eq F not independent} implies that $F(P^c)$ supports fewer propa
 
 For part (2), suppose that $(P, V(P))$ is a maximal exact subdiagram of $W$. By Lemma \ref{lem decompose flat}(1) and Corollary \ref{classifyflats} we can decompose $F(P^c)$ as
 \begin{equation}\label{eq decompose F}V(P)^c = F(P^c) = C \sqcup S = F(\Prop(C)) \sqcup S,\end{equation}
-where $C$ is the largest cyclic flat contained in $F(P^c)$ and $S$ is an independent set. We show that $\Prop(C) = P^c$, thus forcing $S$ to be empty and implying that $F(P^c) = C$, i.e. $F(P^c)$ is a cyclic flat. Note that $C$ must be non-empty since $F(P^c)$ is non-empty and not independent (by part (1)). 
+where $C$ is the largest cyclic flat contained in $F(P^c)$ and $S$ is an independent set. We show that $\Prop(C) = P^c$, thus forcing $S$ to be empty and implying that $F(P^c) = C$, i.e. $F(P^c)$ is a cyclic flat. Note that $C$ must be non-empty since $F(P^c)$ is non-empty and dependent (by part (1)). 
 
 By similar arguments to Lemma~\ref{lem decompose flat}, the fact that $S$ is independent and that $C$ is the union of all circuits in $F(P^c)$ implies that every element of $S$ is independent of $C$. Further, we know that $\rk(C) = |\Prop(C)|$ from Lemma \ref{lem facts about WLD matroids}(2), and $\rk(S) = |S|$ from Lemma \ref{lem facts about WLD matroids}(1) and the independence of $S$.  Combining these gives
 \ba \rk\big(F(P^c)\big) = \rk(C) + \rk(S)  = |\Prop(C)| + |S| \leq |\Prop(F(P^c))|\;,\label{rank of comp flat} \ea 
