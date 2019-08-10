@@ -1498,11 +1498,70 @@ Note that we cannot have $a_r+ 1 = j_m$ when $q$ is counterclockwise of $p_r$, s
 If not, then there must be some propagator $p_s \in Q_{l-2}$ such that $p_r$ and $p_s$ are both supported on $I_i(p_s) := a_s$. Since $p_r$ is clockwise of $q$, and $q$ cannot be supported on $I_i(p_s)$ since $q \not\in Q_{l-1}$, it follows that $I_i(p_s) <_i I_i(p_r)$. Therefore $q$ is inside $p_s$ with respect to $<_{a_s - 1}$ as well.
 
 \begin{figure}[h]
-\includegraphics[scale = 0.3]{awkward_induction_case.jpg}
-\caption{This picture isn't quite the one we need any more, but it should help to illustrate the claim about $I_i(p_s) <_i I_i(p_r)$}\label{fig:awkward induction step}
+
+\bas{\begin{tikzpicture}[baseline=(current bounding box.east)]
+\begin{scope}
+	\drawWLDfragment[8]{3}{0.3} % draw arc
+	%\drawnumbers % use this to debug
+	% highlight region
+	%\centerarc[linehighlight](0,0)(\zero + 3.6*\step:\zero + 5.4*\step:\radius)
+	% region label
+	%\node[align = center] at (\zero + 4.5*\step:\radius*1.3) {\em \footnotesize 0, 1, or 2 vertices \\[3pt]\em \footnotesize in this region};
+	% scope to draw props and their labels
+	\begin{scope}
+		\clipcenterarc(0,0)(\startpoint-20:\endpoint+20:\radius)
+		%p_r
+		\draw[smallpropagator] (\zero+2.5*\step:\radius*1.1) to [bend left = 55] (\zero + 6.7*\step:\radius*1.1); 
+		%q
+		\draw[smallpropagator] (\zero+2.6*\step:\radius*1.1) to [bend left = 55] (\zero + 5.3*\step:\radius*1.1); 
+		%\draw[smallpropagator,light-gray] (\zero+7.5*\step:\radius*1.1) -- (0:\radius*0.25);  
+		\node at (\zero + 2.8*\step:\radius*0.8){\footnotesize $p_r$};
+		\node at (\zero + 4.7*\step:\radius*.84){\footnotesize $q$};
+	\end{scope}
+	% draw nodes
+	\newnode[left]{1}{i}
+	\newnode[below]{2}{a_r}
+	\newnode[below]{3}{}
+	\newnode[right]{8}{j_m}
+	% case label
+	\node at (270:\radius*0.1) {\em all vertices of $p_r$ lie between $a_r-1$ and $j_m$};
+\end{scope}
+\end{tikzpicture} \qquad \qquad \begin{tikzpicture}[baseline=(current bounding box.east)]
+\begin{scope}
+	\drawWLDfragment[8]{3}{0.3} % draw arc
+	%\drawnumbers % use this to debug
+	% highlight region
+		% scope to draw props and their labels
+	\begin{scope}
+		\clipcenterarc(0,0)(\startpoint-20:\endpoint+20:\radius)
+		%random prop preventing p_s from contributing a_s-1
+		\draw[smallpropagator,gray] (\zero+2.3*\step:\radius) -- (\zero + 16.5*\step:\radius) ;
+		%p_s
+		\draw[smallpropagator] (\zero+2.4*\step:\radius*1.1) to [bend left = 55] (\zero + 7.5*\step:\radius*1.1); 
+		%p_r
+		\draw[smallpropagator] (\zero+2.5*\step:\radius*1.1) to [bend left = 70] (\zero + 4.5*\step:\radius*1.1); 
+		%q
+		\draw[smallpropagator] (\zero+4.55*\step:\radius*1.1) to [bend left = 70] (\zero + 6.7*\step:\radius*1.1); 
+		\node at (\zero + 4.5*\step:\radius*0.55){\footnotesize $p_s$};
+		\node at (\zero + 3.5*\step:\radius*0.84){\footnotesize $p_r$};
+		\node at (\zero + 6.2*\step:\radius*0.85){\footnotesize $q$};
+	\end{scope}
+	% draw nodes
+	\newnode[left]{1}{i}
+	\newnode[below]{2}{}
+	\newnode[below]{3}{a_s}
+	\newnode[below]{4}{a_r}
+	\newnode[below]{5}{}
+	\newnode[right]{8}{j_m}
+	% case label
+	\node at (270:\radius*0.1) {\em all vertices of $p_r$ do not lie between $a_r-1$ and $j_m$};
+\end{scope} 
+\end{tikzpicture} }\eas
+\caption{The two cases of the induction step. Note that $I_i(p_s) <_i I_i(p_r)$}\label{fig:awkward induction step}
 \end{figure}
 
-Now repeat the argument above with $p_s$ in place of $p_r$: if the other end of $p_s$ lands on an edge between $q$ and $j_m$ then we have $q \in \cP_{m-1}$ as above; if not then there exists some $p_t \in Q_{l-3}$ with $p_s$ supported on $I_i(p_t)$ and $I_i(p_t) <_i I_i(p_r)$. Since there are finitely many steps this process can take before reaching $Q_0$, and any $p_* \in Q_0  = \Prop(j_m)$ has $j_m$ in its support by definition, this argument eventually terminates with the construction of a propagator constraining the positioning of $q$ as required. This completes the induction step, and hence the proof.
+\
+Now repeat the argument above with $p_s$ in place of $p_r$: if the other end of $p_s$ lands on an edge between $q$ and $j_m$ then we have $q \in \cP_{m-1}$ as above; if not then there exists some $p_t \in Q_{l-3}$ with $p_s$ supported on $I_i(p_t)$ and \hlfix{$I_i(p_t) <_i I_i(p_r)$}{$I_i(p_t) <_i I_i(p_s)<_i I_i(p_s)$? Or is the implication clear enough not to be mentioned}. Since there are finitely many steps this process can take before reaching $Q_0$, and any $p_* \in Q_0  = \Prop(j_m)$ has $j_m$ in its support by definition, this argument eventually terminates with the construction of a propagator constraining the positioning of $q$ as required. This completes the induction step, and hence the proof.
 
 \end{proof}
 
