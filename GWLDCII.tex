@@ -344,7 +344,7 @@ This paper is the second in a two part series investigating the combinatorics an
 
 % In this paper, we give an algorithm to identify which cell corresponds to which diagram, via Grassmann Necklaces. Using the Le diagram representation of positroid cells, we prove results about the dimensions of these cells. Finally, we state some results about the structures of the volume forms defined on these positroid cells by the Wilson loop diagrams.
 
-In contrast, the first paper in this series focuses on combinatorial and matroidal properties of the Wilson loop diagrams. The main focus of that paper is to enumerate the positroid cells that are associated to Wilson loop diagrams with a fixed number of vertices and propagators, as well as counting the number of Wilson loop diagrams in the pre-image of \hlfix{any positroid cell under this association.}{I'd like to mildly rephrase this because it sounds like we know exactly which cells have non-empty pre-image, which isn't quite what we proved.}
+In contrast, the first paper in this series focuses on combinatorial and matroidal properties of the Wilson loop diagrams. The main focus of that paper is to enumerate the positroid cells that are associated to Wilson loop diagrams with a fixed number of vertices and propagators, as well as counting the number of Wilson loop diagrams in the pre-image of \hlfix{any positroid cell in the image of this association.}{I'd like to mildly rephrase this because it sounds like we know exactly which cells have non-empty pre-image, which isn't quite what we proved.} \sanote{changed}
 
 In recent years, there has been significant interest in understanding the geometry and combinatorics underlying the field theory SYM $N=4$ \cite{wilsonloop, Arkani-Hamed:2013jha, Amplituhedronsquared, galashinlam, AmplituhedronDecomposition}. This started with the observation that BCFW diagrams, which represent the on shell interactions of this theory, correspond to plabic graphs \cite{GrassmannAmplitudebook}. Plabic graphs were introduced by Postnikov in \cite{Postnikov}, and provide one of the many equivalent ways to classify the positroid cells of the positive real Grassmannian $\Gr(k,n)$. This led to the representation of the on shell integrals associated to this theory in terms of a geometric space (the Amplituhedron) embedded in $\Gr(k,n)$ \cite{Arkani-Hamed:2013kca,Arkani-Hamed:2013jha}. Moreover, integrals associated to the BCFW diagrams define a volume form on the Amplituhedron. This both gives a novel and elegant interpretation of scattering amplitudes for this theory, as well as a means of greatly simplifying the calculations involved in traditional Feynman diagram approaches. Since then, there has been significant work to understand the volume form and its physical implications \cite{UnwindingAmplituhedron,galashinlam}.
 
@@ -364,7 +364,7 @@ In Section~\ref{section general background}, we summarize the required backgroun
 
 In Section~\ref{sec GN algorithm} we state an algorithm for constructing the Grassmann necklace of the positroid associated to a Wilson loop diagram (Algorithm~\ref{alg:put GN on WLD}) and prove its correctness (Theorem~\ref{res:alg gives GN}). While it was already possible to construct the Grassmann necklace of a Wilson loop diagram via existing bijections between some of the various combinatorial objects that index the positroid cells, this process was convoluted and involved multiple steps; our algorithm allows us to track directly how each propagator in the Wilson loop diagram contributes to each term in the Grassmann necklace. Many of the technical lemmas required to prove Theorem~\ref{res:alg gives GN} continue to be important in subsequent sections: in particular we have Lemma~\ref{lem sian}, which identifies certain configurations of propagators that must appear in any admissible Wilson loop diagram, and Lemma~\ref{vertex cyclic int lem}, which shows that the pattern of values that a propagator contributes to each term of the Grassmann necklace is both simple and predictable.
 
-In Section~\ref{sec dim} we examine the dimension of positroids associated to Wilson loop diagrams, and show that the dimension is always equal to three times the number of propagators in the diagram (Theorem~\ref{thm dim}).  While this has been proved by Marcott in \hlfix{[ref]}{Did this get published yet?} using geometric methods, our proof is constructive and explicitly relates the position of the plusses in the Le diagram to the propagators in the Wilson loop diagram.
+In Section~\ref{sec dim} we examine the dimension of positroids associated to Wilson loop diagrams, and show that the dimension is always equal to three times the number of propagators in the diagram (Theorem~\ref{thm dim}).  While this has been proved by Marcott in \cite{WLDdim} using matroidal arguments, our proof is constructive and explicitly relates the position of the plusses in the Le diagram to the propagators in the Wilson loop diagram.
 
 Finally in Section~\ref{sec poles} we characterize the denominator of the integral of a Wilson loop diagram in terms of how propagators contribute to the Grassmann necklace.  This characterization is given explicitly by Algorithm~\ref{alg WLD to denom via GN} and Theorem~\ref{thm denom}.
 
@@ -399,7 +399,7 @@ A Wilson loop diagram is depicted as a circle, with the vertices $V$ arranged al
 
 Let $[n]$ denote the set of integers $\{1,\dots,n\}$ with the obvious cyclic and linear orders. Our primary focus is Wilson loop diagrams with $V = [n]$, so in order to simplify the exposition we will often use $i+1$ as shorthand for ``the successor of vertex $i$''. 
 
-Generally speaking the propagators in a Wilson loop diagram are undirected, so $(i,j)$ and $(j,i)$ represent the same propagator. If we need to impose a direction on a propagator $p = (i,j)$, for example in order to consider the region ``inside'' or ``outside'' of $p$, we write $(p,<_i)$ to indicate that $p$ is directed from edge $i$ to edge $j$, and $(p,<_j)$ for the opposite direction.
+Generally speaking the propagators in a Wilson loop diagram are undirected, so $(i,j)$ and $(j,i)$ represent the same propagator. If we need to impose a direction on a propagator $p = (i,j)$, for example in order to consider the region ``inside'' or ``outside'' of $p$, we write $(p,<_i)$ to indicate that $p$ is directed from edge $i$ to edge $j$, and $(p,<_j)$ for the opposite direction. {\color{violet} Note to consider while reading: Might it be notationally easier and/or clearer to talk about ordering the propagators as clockwise or counter clockwise? If so, are the benefits of this new notation worth the rewriting?}
 
 We also impose the convention that all vertices should always be interpreted in terms of the cyclic order on $V$; for example, if $V = [n]$ then $(n,n+3)$ means the propagator connecting edges $3$ and $n$. This viewpoint is beneficial for us since many of our proofs rely on restricting our attention to a region of the diagram bounded by a given propagator, or to short propagators such as $(i,i+2)$, and these behave the same regardless of whether we cross the ``first'' vertex or not; however, we emphasize that this is different to the standard convention in the physics literature, where propagators are written $(i,j)$ with $1 \leq i<j \leq n$.
 
@@ -1507,7 +1507,7 @@ If not, then there must be some propagator $p_s \in Q_{l-2}$ such that $p_r$ and
 
 \bas{\begin{tikzpicture}[baseline=(current bounding box.east)]
 \begin{scope}
-	\drawWLDfragment[8]{3}{0.3} % draw arc
+	\drawWLDfragment[9]{3}{0.3} % draw arc
 	%\drawnumbers % use this to debug
 	% highlight region
 	%\centerarc[linehighlight](0,0)(\zero + 3.6*\step:\zero + 5.4*\step:\radius)
@@ -1517,9 +1517,9 @@ If not, then there must be some propagator $p_s \in Q_{l-2}$ such that $p_r$ and
 	\begin{scope}
 		\clipcenterarc(0,0)(\startpoint-20:\endpoint+20:\radius)
 		%p_r
-		\draw[smallpropagator] (\zero+2.5*\step:\radius*1.1) to [bend left = 55] (\zero + 6.7*\step:\radius*1.1); 
+		\draw[smallpropagator] (\zero+2.3*\step:\radius*1.1) to [bend left = 55] (\zero + 6.7*\step:\radius*1.1); 
 		%q
-		\draw[smallpropagator] (\zero+2.6*\step:\radius*1.1) to [bend left = 55] (\zero + 5.3*\step:\radius*1.1); 
+		\draw[smallpropagator] (\zero+2.4*\step:\radius*1.1) to [bend left = 55] (\zero + 5.3*\step:\radius*1.1); 
 		%\draw[smallpropagator,light-gray] (\zero+7.5*\step:\radius*1.1) -- (0:\radius*0.25);  
 		\node at (\zero + 2.8*\step:\radius*0.8){\footnotesize $p_r$};
 		\node at (\zero + 4.7*\step:\radius*.84){\footnotesize $q$};
@@ -1528,13 +1528,13 @@ If not, then there must be some propagator $p_s \in Q_{l-2}$ such that $p_r$ and
 	\newnode[left]{1}{i}
 	\newnode[below]{2}{a_r}
 	\newnode[below]{3}{}
-	\newnode[right]{8}{j_m}
+	\newnode[right]{9}{j_m}
 	% case label
 	\node at (270:\radius*0.1) {\em all vertices of $p_r$ lie between $a_r-1$ and $j_m$};
 \end{scope}
 \end{tikzpicture} \qquad \qquad \begin{tikzpicture}[baseline=(current bounding box.east)]
 \begin{scope}
-	\drawWLDfragment[8]{3}{0.3} % draw arc
+	\drawWLDfragment[10]{3}{0.3} % draw arc
 	%\drawnumbers % use this to debug
 	% highlight region
 		% scope to draw props and their labels
@@ -1545,7 +1545,7 @@ If not, then there must be some propagator $p_s \in Q_{l-2}$ such that $p_r$ and
 		%p_s
 		\draw[smallpropagator] (\zero+2.4*\step:\radius*1.1) to [bend left = 55] (\zero + 7.5*\step:\radius*1.1); 
 		%p_r
-		\draw[smallpropagator] (\zero+2.5*\step:\radius*1.1) to [bend left = 70] (\zero + 4.5*\step:\radius*1.1); 
+		\draw[smallpropagator] (\zero+2.5*\step:\radius*1.1) to [bend left = 90] (\zero + 4.5*\step:\radius*1.1); 
 		%q
 		\draw[smallpropagator] (\zero+4.55*\step:\radius*1.1) to [bend left = 70] (\zero + 6.7*\step:\radius*1.1); 
 		\node at (\zero + 4.5*\step:\radius*0.55){\footnotesize $p_s$};
@@ -1558,14 +1558,15 @@ If not, then there must be some propagator $p_s \in Q_{l-2}$ such that $p_r$ and
 	\newnode[below]{3}{a_s}
 	\newnode[below]{4}{a_r}
 	\newnode[below]{5}{}
-	\newnode[right]{8}{j_m}
+	\newnode[below]{8}{}
+	\newnode[right]{9}{j_m}
 	% case label
 	\node at (270:\radius*0.1) {\em all vertices of $p_r$ do not lie between $a_r-1$ and $j_m$};
 \end{scope} 
 \end{tikzpicture} }\eas
 \caption{The two cases of the induction step. Note that $I_i(p_s) <_i I_i(p_r)$}\label{fig:awkward induction step}
 \end{figure}
-Now repeat the argument above with $p_s$ in place of $p_r$: if the other end of $p_s$ lands on an edge between $q$ and $j_m$ then we have $q \in \cP_{m-1}$ as above; if not then there exists some $p_t \in Q_{l-3}$ with $p_s$ supported on $I_i(p_t)$ and \hlfix{$I_i(p_t) <_i I_i(p_r)$}{$I_i(p_t) <_i I_i(p_s)<_i I_i(p_s)$? Or is the implication clear enough not to be mentioned}\note{Nope: we just need $<_i I_i(p_r)$. $I_i(p_t) <_i I_i(p_r)$ certainly isn't obvious and may not be true}. Since there are finitely many steps this process can take before reaching $Q_0$, and any $p_* \in Q_0  = \Prop(j_m)$ has $j_m$ in its support by definition, this argument eventually terminates with the construction of a propagator constraining the positioning of $q$ as required. This completes the induction step, and hence the proof.\end{proof}
+Now repeat the argument above with $p_s$ in place of $p_r$: if the other end of $p_s$ lands on an edge between $q$ and $j_m$ then we have $q \in \cP_{m-1}$ as above; if not then there exists some $p_t \in Q_{l-3}$ with $p_s$ supported on $I_i(p_t)$ and \hlfix{$I_i(p_t) <_i I_i(p_r)$}{$I_i(p_t) <_i I_i(p_s)<_i I_i(p_s)$? Or is the implication clear enough not to be mentioned}\note{Nope: we just need $<_i I_i(p_r)$. $I_i(p_t) <_i I_i(p_r)$ certainly isn't obvious and may not be true}. {\color{violet} May not be necessary, but I think highlighted tex follows from "Now repeat the argument...." \begin{enumerate}\item If $V(p_r) \in [a_r-1, j_m]$ (other end closer to $j_m$) then $q$ inside $p_r$ in $a_r-1$ order. \item Else, $V(p_r) \in [i, a_r+1]$ (Maybe $[i-1, a_r +1]$?). (Main point is that other end closer to $i$) Either way,  admissibility implies that $a_s < a_r$ \item Now we repeat. Either  $V(p_s) \in [a_s-1, j_m]$ then $q$ inside $p_s$ in $a_s-1$ order and we are done \item Else, $V(p_s) \in [i, a_s+1]$ (Maybe $[i-1, a_s +1]$?). Either way, admissibility implies that $a_t < a_s$ and we've already established $a_s < a_r$ \end{enumerate} We don't have to include this argument. It may be totally unnecessary. But I want to make certain that I'm not missing anything.}  Since there are finitely many steps this process can take before reaching $Q_0$, and any $p_* \in Q_0  = \Prop(j_m)$ has $j_m$ in its support by definition, this argument eventually terminates with the construction of a propagator constraining the positioning of $q$ as required. This completes the induction step, and hence the proof.\end{proof}
 
 
 
