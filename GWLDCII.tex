@@ -474,7 +474,7 @@ to be the component of $R(W)$ associated to edge $e$. Note that if $r = 1$ (i.e.
 \[R(W) = \prod_{e \in V} R_e.\]
 \end{dfn}
 
-In Section \ref{sec poles}, we show that the denominator $R(W)$ is determined by the positroid cell $\Sigma(W)$ and the structure of $W$, as encapsulated by $C(W)$. In fact, it can be read directly off of $C(W)$, in terms of a characterization of $\Sigma(W)$ called the Grassmann necklace (see Definition~\ref{def:grassmann necklace}). We also give an algorithm to read $R(W)$ directly from the Wilson loop diagram, paving the way for a general study of these poles in future. \todo{cite the theorems where these results appear}
+In Section \ref{sec poles}, we show that the denominator $R(W)$ is determined by the positroid cell $\Sigma(W)$ and the structure of $W$, as encapsulated by $C(W)$. In fact, it can be read directly off of $C(W)$, in terms of a characterization of $\Sigma(W)$ called the Grassmann necklace (see Definition~\ref{def:grassmann necklace}) as shown in Algorithm \ref{alg:put GN on WLD}. We also give an algorithm to read $R(W)$ directly from the Wilson loop diagram, paving the way for a general study of these poles in future. 
 
 We end this section with an example of computing $C(W)$ and $R(W)$ for a particular Wilson loop diagram $W$.
 
@@ -611,7 +611,7 @@ Let $W = (\cP,[n])$ be an admissible Wilson loop diagram and let $M(W)$ be its a
 \begin{proof}
   This follows as a corollary of the previous theorem by induction in one direction and the pigeonhole principle in the other direction.  
 
-  Alternatively if we forget about the matroid and simply think about the condition of linear independence in the matrix $C(W)$, the corollary can also be proved directly by linear algebra and the definition of $C(W)$ as follows.
+  Alternatively if we forget about the \st{matroid} {\color{violet} diagram} \sanote{okay?} and simply think about the condition of linear independence in the matrix $C(W)$, the corollary can also be proved directly by linear algebra and the definition of $C(W)$ as follows.
 
   Because the nonzero entries of $C(W)$ are independent indeterminants, $J$ is an independent set if and only if there is some choice of $|J|$ nonzero entries of $C(W)$ one in each row associated to an element of $J$ and each in different columns. Each entry in $C(W)$ identifies a propagator by the row of the entry and a vertex by the column of the entry.  The entry is nonzero if and only if the propagator is supported on that vertex.  Consequently, a choice of $|J|$ nonzero entries of $C(W)$ one in each row associated to an element of $J$ and each in different columns is equivalent to an assignment of the propagators of $J$ to supporting vertices so that no two are assigned to the same vertex.  Such an assignment of the propagators of $J$ to supporting vertices is exactly a map $f$ as described in the statment, hence proving the result.
 \end{proof}
@@ -623,7 +623,7 @@ By relating the behavior of the propagators in $W$ to the matroidal properties o
 
 However, in order to identify the positroid associated to a given Wilson loop diagram $W$ we first have to construct $C(W)$, then make a list of all its non-zero $k\times k$ minors and extract the Le diagram or Grassmann necklace via the methods described in Section~\ref{sec:positroid background}. In \cite{casestudy}, Agarwala and Fryer apply this process in the smallest non-trivial case: admissible Wilson loop diagrams with two propagators on six vertices. Even in this simple case, we see that the mapping from admissible WLD to positroid cells is neither one-to-one nor onto, and the process described above makes it almost impossible to track the relationship between the original Wilson loop diagram and the resulting positroid.
 
-Our first goal is therefore to find a better method of obtaining the positroid associated to a given Wilson loop diagram; this is the focus of the next section.
+Our first goal is therefore to find a better method of obtaining the positroid associated to a given Wilson loop diagram; this is the focus of the next section. \sanote{Should the 2 paras before the remark be moved to when whe walk about the GN algorithm?}
 
 \begin{rmk}
 While this paper primarily approaches proofs from a combinatorial point of view, readers with a background in matroid theory are encouraged to keep the matroidal viewpoint in mind throughout; we expect that the two approaches will be complementary and will build upon each other. See \cite{generalcombinatoricsI} for some related results concerning the positroids of Wilson loop diagrams obtained by viewing them primarily as matroids.
