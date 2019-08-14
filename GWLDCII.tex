@@ -418,7 +418,7 @@ Note that a propagator in $\Prop(U)$ does not need to have its entire support co
 \end{enumerate}
 \end{dfn}
 
-In particular, we will see in later sections that all four vertices in the support of a propagator are important in understanding the contribution of that propagator to the overall diagram. This motivates the following definition of a subdiagram, which can consist of any subset $Q$ of the propagators and any subset $U$ of the vertices of $W$ {\em as long as we retain all vertices in the support of $Q$}.
+In particular, we will see in later sections that all four vertices supporting a propagator are important in understanding the contribution of that propagator to the \st{overall diagram}{geomtric object represented by the diagram} \sanote{Is this what we mean?}. This motivates the following definition of a subdiagram, any subset $Q$ of the propagators and any subset $U$ of the vertices of $W$ {\em containing the support of $Q$}.
 
 \begin{dfn} \label{subdiagramdfn}
 Let $W = (\cP, V)$ be a Wilson loop diagram. Then $W' = (Q,U)$ is a {\bf subdiagram} of $W$ if $Q \subseteq \cP$ and $V(Q) \subseteq U \subseteq V$.
@@ -433,7 +433,7 @@ A Wilson loop diagram $W = (\cP, V)$ is called {\bf admissible} if:
 \begin{enumerate}
 \item $|V| \geq |\cP| + 4$.
 \item There does not exist a non-empty set of propagators $Q \subseteq \cP$ such that $|V(Q)| < |Q| + 3$.
-\item There does not exist a pair of propagators $\{(i,j),(k,l)\} \subseteq \cP$ such that $i < k < j < l$.
+\item There does not exist a pair of crossing propagators: that is, there does not exist $\{(i,j),(k,l)\} \subseteq \cP$ such that $i < k < j < l$.
 \end{enumerate}
  \end{dfn}
 
@@ -443,7 +443,7 @@ These conditions are imposed by the physical interpretation of Wilson loop diagr
 
 Note that a subdiagram $(Q,U)$ of an admissible Wilson loop diagram need not be admissible itself: it inherits conditions 2 and 3 automatically, but we could have $|U| = |Q| + 3$. If a Wilson loop diagrams satisfies conditions 2 and 3 of Definition~\ref{admisdfn}, we call it {\bf weakly admissible}.
 
-These diagrams correspond to (tree level) amplitudes of SYM $N=4$ theory in twistor space. As such, it associates a real value to $n$ particles, one for each vertex. Each particle is represented as a section of a $|\cP|$-vector bundle over twistor space, projected onto a real subspace in a process called bosonization \cite{Arkani-Hamed:2013jha}. In other words, each Wilson loop diagram defines a functional on external particles. This is represented as an integral $I(W)$, which is the equivalent of a Feynman integral in this setting. 
+These diagrams correspond to (tree level) amplitudes of SYM $N=4$ theory in twistor space. As such, it associates a real value to $n$ particles, one for each vertex. Each particle is represented as a section of a $|\cP|$-vector bundle over twistor space, projected onto a real subspace in a process called bosonization \cite{Arkani-Hamed:2013jha}. In other words, each Wilson loop diagram defines a functional on external particles. This is represented as an integral $I(W)$, which is the equivalent of a Feynman integral in this setting. \sanote{This feels like too much detail. Thoughts?} This integral is comprised of two main components, and interaction matrix, $C(W)$ and a volume form, $\Omega(W)$. These are described below.
 
 A $|\cP| \times n$ matrix $C(W)$ represents the (tree level) particle interactions. Each row of $C(W)$ corresponds to an internal propagator, each column to an external particle. $C(W)$ is defined as follows:
 
@@ -453,28 +453,28 @@ A $|\cP| \times n$ matrix $C(W)$ represents the (tree level) particle interactio
 
 The entries $c_{p,q}$ are non-zero real variables. Thus the zero entries in row $p$ correspond to the external particles that the propagator $p$ does not interact with. See Example~\ref{integraldetails} for an example of a diagram $W$ and its associated matrix.
 
-The matrix $C(W)$ can be interpreted as a parametrization of the positroid cell associated to $W$ in the positive Grassmannian $\Gr(n, |\cP|)$, which we denote by $\Sigma(W)$ \cite{wilsonloop}. Most of the work in this paper, and in \cite{generalcombinatoricsI} focuses on characterizing the positroid cell associated to each Wilson loop diagram $W$. 
+The matrix $C(W)$ can be interpreted as a \hlfix{parametrization of the positroid cell associated to $W$}{I know we've been saying this, but we have $4k$ parameters for a $3k$ dimensional space. Is this okay?} in the positive Grassmannian $\Gr(n, |\cP|)$, which we denote by $\Sigma(W)$ \cite{wilsonloop}. Most of the work in this paper, and in \cite{generalcombinatoricsI} focuses on characterizing the positroid cell associated to each Wilson loop diagram $W$. 
 
-Note that since there is no ordering on the propagators of $W$, $C(W)$ is only defined up to rearrangement of the rows. This will not matter here, as it does not affect the parametrization of $\Sigma(W)$.
+Note that since there is no ordering on the propagators of $W$, $C(W)$ is only defined up to rearrangement of the rows. When needed, we will impose various orders on these rows. This will not matter, as it does not affect the parametrization of $\Sigma(W)$.
 
-One may also interpret the functional $I(W)$ as associating a volume to each cell $\Sigma(W)$ \cite{wilsonloop, Amplituhedronsquared, HeslopStewart}. The volume form is written in terms of the elements of $C(W)$ as  \begin{equation} \label{eq:omega(W) def}\Omega(W) = \frac{\prod_{r=1}^{|\cP|} \prod_{v \in V_{p_r}} \textrm{d}c_{p_r}}{R(W)} \;, \end{equation}
+One may also interpret the functional $I(W)$ as associating a volume to each cell $\Sigma(W)$ \cite{wilsonloop, Amplituhedronsquared, HeslopStewart}. The volume form is written in terms of the elements of $C(W)$ as  \begin{equation} \label{eq:omega(W) def}\Omega(W) = \frac{\prod_{r=1}^{|\cP|} \prod_{v \in V(p_r)} \textrm{d}c_{p_r}}{R(W)} \;, \end{equation}
 where the denominator $R(W)$ is given in Definition~\ref{def R(W)} below. The interested reader is referred to \cite{Adamo:2012xe,HeslopStewart,LipsteinMason} for more information about the volume form. 
 
 For a fixed number of propagators and particles, the tree level amplitude of the Wilson loop diagrams is computed as the sum of the $I(W)$ for all $W$ of the correct size. By \cite{Adamo:2011pv,Adamo:2012xe,Arkani-Hamed:2013jha} this sum is finite for all sets of external particles, i.e. we have 
 \bas \mathcal{A}_{k, n}^{tree} = \sum_{\substack{W = (\cP, [n]), \\ |\cP| = k}} I(W) <\infty. \eas
 
-In particular, this implies that any singularities in the integrals $I(W)$ must cancel out in the sum. Specifically, they must cancel on the boundaries of the positroid cells $\Sigma(W)$, analogous to the analysis in \cite{Arkani-Hamed:2013jha}. This has been checked for particular classes of examples (e.g. \cite{casestudy, Amplituhedronsquared, HeslopStewart}) but has not been proven in general.
+In particular, this implies that any singularities in the integrals $I(W)$ must cancel out in the sum, in particular, all poles arising from $R(W)$ must cancel. Specifically, these poles must cancel on the boundaries of the positroid cells $\Sigma(W)$, analogous to the analysis in \cite{Arkani-Hamed:2013jha}. This has been checked for particular classes of examples (e.g. \cite{casestudy, Amplituhedronsquared, HeslopStewart}) but has not been proven in general.
 
 With this motivation in mind, in this paper we study the denominator $R(W)$ of the volume form $\Omega(W)$, which we define next.
 
 \begin{dfn}\label{def R(W)}
-Let $W = (\cP,V)$ be an admissible Wilson loop diagram, and fix an edge $e$. Let $\{p_1 \ldots p_r\}$ be the propagators with one end lying on edge $e$, ordered so that $p_1$ is closest to the vertex $e$, $p_r$ is closest to $e+1$, and $p_i$ is closer to $e$ than $p_{i+1}$ is. Define the polynomial
+Let $W = (\cP,V)$ be an admissible Wilson loop diagram, and fix an edge $e$. Let $\{p_1 \ldots p_r\}$ be the propagators with one end lying on edge $e$ under a counterclockwise orderin. That is, $p_1$ is closest to the vertex $e$, $p_i$ is positioned counterclockwise to $p_{i+1}$ and $p_r$ is the clockwise most propagator on this edge (closest to $e+1$). Define the polynomial
 \[ R_e =  c_{p_1,e+1} \prod_{j= 1}^{r-1} \left((c_{p_j,e} c_{p_{j+1},e+1} - c_{p_{j+1},e} c_{p_{j},e+1} ) \right) c_{p_r,e}\;\]
 to be the component of $R(W)$ associated to edge $e$. Note that if $r = 1$ (i.e. there is exactly one propagator lying on edge $e$) then this expression simplifies to $R_e = c_{p,e} c_{p,e+1}$. If $r=0$, set $R_e = 1$. The denominator $R(W)$ is defined to be the product of all of the $R_e$, i.e. 
 \[R(W) = \prod_{e \in V} R_e.\]
 \end{dfn}
 
-In Section \ref{sec poles}, we show that the denominator $R(W)$ is determined by the positroid cell $\Sigma(W)$ and the structure of $W$, as encapsulated by $C(W)$. In fact, it can be read directly off of $C(W)$, in terms of a characterization of $\Sigma(W)$ called the Grassmann necklace (see Definition~\ref{def:grassmann necklace}). We also give an algorithm to read $R(W)$ directly from the Wilson loop diagram, paving the way for a general study of these poles in future.
+In Section \ref{sec poles}, we show that the denominator $R(W)$ is determined by the positroid cell $\Sigma(W)$ and the structure of $W$, as encapsulated by $C(W)$. In fact, it can be read directly off of $C(W)$, in terms of a characterization of $\Sigma(W)$ called the Grassmann necklace (see Definition~\ref{def:grassmann necklace}). We also give an algorithm to read $R(W)$ directly from the Wilson loop diagram, paving the way for a general study of these poles in future. \todo{cite the theorems where these results appear}
 
 We end this section with an example of computing $C(W)$ and $R(W)$ for a particular Wilson loop diagram $W$.
 
