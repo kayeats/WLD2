@@ -638,7 +638,7 @@ While this paper primarily approaches proofs from a combinatorial point of view,
 
 In this section we will give an algorithm (Algorithm~\ref{alg:put GN on WLD}) to go directly from a Wilson loop diagram to the Grassmann necklace of its positroid. This is a useful result in and of itself, as it greatly simplifies the process of identifying the positroid associated to a given WLD. It also allows us to examine how the positroid changes as we make minor changes to the Wilson loop diagram; indeed, the techniques we develop in this section to verify that our algorithm produces the correct Grassmann necklace will also be used repeatedly in later sections.
 
-One of the key insights is that each element of the Grassmann necklace can be viewed as a function from the propagators of the diagram to the vertices in the Grassmann necklace element.  This is captured in Definition~\ref{def I_i as a function}, and used throughout the paper.
+One of the key insights is that each element of the Grassmann necklace can be viewed as a function from the propagators of the diagram to the vertices in the \st{Grassmann necklace element}{\color{violet} Wilson loop diagram?}.  This is captured in Definition~\ref{def I_i as a function}, and used throughout the paper.
 
 
 %\note{Sian thinks that a section roadmap here would be overkill: we gave a roadmap in section 1, each subsection has its own little intro roadmap, and I've added a ref to the algorithm above so that people can skip straight to it if they want}
@@ -658,7 +658,7 @@ Before we can describe the algorithm for extracting the Grassmann necklace of $M
 
 
 \begin{dfn}\label{props inside p}
-Let $W = (\cP, [n])$ be a weakly admissible Wilson loop diagram, with $p \in \cP$ supported on edges $i$ and $j$. Write $(p, <_i)$ to represent the same propagator directed from $i$ to $j$. Then the sets of propagators {\bf inside} and {\bf outside} of $(p,<_i)$ are defined to be
+Let $W = (\cP, [n])$ be a weakly admissible Wilson loop diagram, with $p \in \cP$ supported on edges $i$ and $j$. Write $(p, <_i)$ to represent the same propagator directed from $i$ to $j$. Then the sets of propagators {\bf inside} \sanote{just checking: $p \in \cP_{in}(p)$?} and {\bf outside} of $(p,<_i)$ are defined to be
 \begin{gather*}\cP_{in}(p,<_i) = \{ (k,l) \in \cP \ |\ i \leq_i k <_i l \leq_i j \}, \\
 \cP_{out}(p,<_i) = \cP\setminus \cP_{in}(p,<_i),
 \end{gather*}
@@ -758,13 +758,13 @@ From our existing assumptions, we know the following facts: $p_1$ is not in conf
 
 Now suppose $q_{r} = (i_r, k_r)$ exists by the induction hypothesis and is oriented $(q_r, <_{i_r})$ so that the previous $p_i$ and $q_i$ are on the outside. For the rest of this proof, we assume this orientation and drop the $<_{i_r}$ from the notation.
 
-Let $W_r := (\cP_{in}(q_r),[n])$ be the subdiagram of $W$ consisting only of those propagators inside $q_r$ (including $q_r$ itself); in particular $W_r$ contains none of the previous $p_i$ or $q_i$. By the original hypotheses on $W$, every vertex in $[i_r,k_{r+1}]$ (of which there are at least 4, since $\ell(q_r) \geq 4$) must support at least one propagator. Therefore $W_r$ admits at least one propagator of length 2 (by Remark~\ref{rem:props of length 2 and 3}) and no propagators of length $3$ (by our assumption on $W$).
+Let \hlfix{$W_r := (\cP_{in}(q_r),[n])$}{technically has non supporting vertices. Want $(\cP_{in}(q_r),[i_r, k_r+1])$. However this is clear later. Do we care?} be the subdiagram of $W$ consisting only of those propagators inside $q_r$ (including $q_r$ itself); in particular $W_r$ contains none of the previous $p_i$ or $q_i$. By the original hypotheses on $W$, every vertex in $[i_r,k_{r+1}]$ (of which there are at least 4, since $\ell(q_r) \geq 4$) must support at least one propagator. Therefore $W_r$ admits at least one propagator of length 2 (by Remark~\ref{rem:props of length 2 and 3}) and no propagators of length $3$ (by our assumption on $W$).
 
 Let $p_{r+1} = (j_{r+1}, j_{r+1}+2)$ be a propagator of length 2 in $W_r$; if it forms part of configuration \ref{item big and 2} or \ref{item pair of 2s}
 %the configuration \eqref{eq:2 prop config}
 then we are done, so assume otherwise. 
 
-Note that we could replace $q_r$ by another propagator $q'_{r}$ in $W_r$, as long as $p_{r+1}$ and $q_r$ are on opposite sides of $q_r'$: such a new $q'_{r}$ would still satisfy all of the induction hypotheses. (See Figure~\ref{fig smallest q in lem sian}.) Therefore without loss of generality we may assume that $\cP_{in}(q_r)$ does not contain any propagators (other than $q_r$ itself) which satisfy the induction hypotheses, i.e. we assume that there are no other propagators with $p_{r+1}$ on one side and $q_r$ on the other.
+Note that we could replace $q_r$ by another propagator $q'_{r}$ in \st{$W_r$} {\color{violet}$W_r = (\cP_{in}(q_r), [n])$}\sanote{just want to emphasize that $q_r'$ is inside $q_r$}, as long as $p_{r+1}$ and $q_r$ are on opposite sides of $q_r'$: such a new $q'_{r}$ would still satisfy all of the induction hypotheses. (See Figure~\ref{fig smallest q in lem sian}.) Therefore without loss of generality we may assume that $\cP_{in}(q_r)$ does not contain any propagators (other than $q_r$ itself) which satisfy the induction hypotheses, \st{i.e. we assume that there are no other propagators with $p_{r+1}$ on one side and $q_r$ on the other}.
 
 \begin{figure}[h]
 \vspace{1cm}
@@ -781,6 +781,7 @@ Note that we could replace $q_r$ by another propagator $q'_{r}$ in $W_r$, as lon
 	\newnode{8}{}
 	\newnode[right]{14}{k_r}
 	\newnode[right]{15}{k_r+1}
+	\newnode[below]{5}{j_{r+1}}
 	\newprop[midway,above]{1.5}{14.5}{\footnotesize $q_r$}
 	\draw[smallpropagator,gray] (\zero+2.5*\step:\radius) -- (\zero + 12.5*\step:\radius) node[midway,above,gray] {\footnotesize $q_{r}'$};
 	\begin{scope}
@@ -797,18 +798,18 @@ Note that we could replace $q_r$ by another propagator $q'_{r}$ in $W_r$, as lon
 
 There are two cases to consider.
 
-The first case is that $i_r \leq j_{r+1} \leq i_r+2$ and $k_r-2 \leq j_{r+1}+2 \leq k_{r}$ (so $p_{r+1}$ has one end before $i_{r} + 3$ and the other after $k_{r} - 2$, i.e. both ends of $p_{r+1}$ are close to the ends of $q_r$).  Then since $p_{r+1}$ has length 2, it must be that $(i_r+3)+1 \geq k_r-2$ and so $q_r$ has length $\leq 6$.  By the minimality assumption on $q_r$, no propagator in $W_r$ has $q_r$ on one side and $p_{r+1}$ on the other side. Therefore, any propagator in $W_r$ other than $q_r$ and $p_{r+1}$ must be of the form $(i,j)$ with $i_r\leq i < j\leq i_r+2$ or $k_r-2 \leq i < j\leq k_r$. Both of these require that $(i,j)$ has length 2, and so we have configuration \ref{item pair of 2s} which we have already assumed does not occur.  Consequently, $W_r$ contains only the two propagators $q_r$ and $p_{r+1}$, yielding configuration \ref{item big and 2} from the lemma statement and again contradicting our assumption. Therefore this first case cannot occur.
+The first case is that $i_r \leq j_{r+1} \leq i_r+2$ and $k_r-2 \leq j_{r+1}+2 \leq k_{r}$ (so $p_{r+1}$ has one end before $i_{r} + 3$ and the other after $k_{r} - 2$, i.e. there are at most two vertices between an endpoint of $p_{r+1}$ and an endpoint of $q_r$).  Then since $p_{r+1}$ has length 2, \st{it must be that $(i_r+3)+1 \geq k_r-2$ and so} {\color{violet} this implies that} $q_r$ has length $\leq 6$.  By the minimality assumption on $q_r$, no propagator in $W_r$ has $q_r$ on one side and $p_{r+1}$ on the other side. Therefore, any propagator in $W_r$ other than $q_r$ and $p_{r+1}$ must be of the form $(i,j)$ with $i_r\leq i < j\leq i_r+2$ or $k_r-2 \leq i < j\leq k_r$. Both of these require that $(i,j)$ has length 2, and so we have configuration \ref{item pair of 2s} which we have already assumed does not occur.  Consequently, $W_r$ contains only the two propagators $q_r$ and $p_{r+1}$, yielding configuration \ref{item big and 2} from the lemma statement and again contradicting our assumption. Therefore this first case cannot occur.
 
-The second case is that (at least) one of the following four things happen:
-\begin{itemize}
-\item $i_r+3 \leq j_{r+1}\leq k_r-3$, or
-\item $i_r+3 \leq j_{r+1}+2\leq k_r-3$, or
-\item $i_r = j_{r+1}$, or 
-\item $k_r-2 = j_{r+1}$
+The second case, \hlfix{there are at least $3$ vertices between one endpoint of $p_{r+1}$ and the nearest endpoint of $q_r$.}{Does this just convolute matters?} In other words,  (at least) one of the following four things happen:
+\begin{itemize} 
+\item $i_r+3 \leq j_{r+1}\leq k_r-3$ (one endpoint of $p_{r+1}$ has at least 3 vertices between it and the nearest enpoint of $q_r$), or
+\item $i_r+3 \leq j_{r+1}+2\leq k_r-3$ (one endpoint of $p_{r+1}$ has at least 3 vertices between it and the nearest enpoint of $q_r$), or
+\item $i_r = j_{r+1}$ ($p_{r+1}$ and $q_r$ share and end edge), or 
+\item $k_r = j_{r+1} +2$  ($p_{r+1}$ and $q_r$ share and end edge)
 \end{itemize}
 In other words, at least one end of $p_{r+1}$ is supported entirely by vertices in the interval $[i_r+3,k_r+2]$ (the first two bullet points) or both ends lie in $[i_r, i_r+3]$ (third point) or both ends lie in $[k_r-2, k_r+1]$ (fourth point). These situations all behave similarly, and by symmetry it suffices to only consider the second and third possibilities. 
 
-Note that since $j_{r+1}+4 \leq k_r-1$ in both of these situations, the vertex $j_{r+1}+4$ is inside $q_r$ but does not support either $q_r$ or $p_{r+1}$, and must therefore support some other propagator $t$.  Since $p_{r+1}$ is not part of configuration \ref{item pair of 2s} and $W_r$ has no propagators of length 3, it follows that $\ell(t) \geq 4$.  If $q_r$ and $p_{r+1}$ were on different sides of $t$ then this would contradict the minimality of $q_r$.  Therefore we can orient $t$ so that all previous $q_i$ and $p_i$ belong to $\cP_{out}(t)$, and set $q_{r+1} = t$ to continue the induction.
+\st{Note that since} {\color{violet} Since there are at least $3$ vertices between one endpoint of $p_{r+1}$ and the nearest endpoint of $q_r$},  $j_{r+1}+4 \leq k_r-1$ in both of these situations, the vertex \hlfix{$j_{r+1}+4{\color{violet} \in [i_r, k_r+1]}$}{or is a vertex of $W_r$ in the restricted version, have explicitly removed notation about vertices being inside or outside} \st{is inside $q_r$} but does not support either $q_r$ or $p_{r+1}$, and must therefore support some other propagator $t$.  Since $p_{r+1}$ is not part of configuration \ref{item pair of 2s} and $W_r$ has no propagators of length 3, it follows that $\ell(t) \geq 4$.  If $q_r$ and $p_{r+1}$ were on different sides of $t$ then this would contradict the minimality of $q_r$.  Therefore we can orient $t$ so that all previous $q_i$ and $p_i$ belong to $\cP_{out}(t)$, and set $q_{r+1} = t$ to continue the induction.
 
 The overall result then follows by induction.
 \end{proof}
