@@ -900,10 +900,14 @@ The reader can easily verify that this sequence of $k$-sets satisfies the defini
 
 Notice that for each element in the Grassmann necklace, the propagators contribute in a particular order. It is sometimes useful to think of the propagators in this order. 
 \begin{dfn} \label{prop order dfn}
-Given a set $\cP$ of $k$ propagators defining a Wilson loop diagram $(\cP, [n])$, the Grassmann necklace element $I_i$ imposes an ordering on it $\cP^i = \{p_1 \ldots p_k\}$ where $p_m$ is the $m^{th}$ propagator to contribute to $I_i$. We write $\cP_m^i = \{p_1 \ldots p_m\}$ to be the first $m$ propagators that contribute to $I_i$. 
+Given a set $\cP$ of $k$ propagators defining a Wilson loop diagram $(\cP, [n])$, the Grassmann necklace element $I_i$ imposes an ordering on it $\cP^i = \{p_1 \ldots p_k\}$ where $p_m$ is the $m^{th}$ propagator to contribute to $I_i$. We write $\cP_m^i = \{p_1 \ldots p_m\}$ to be the first $m$ propagators that contribute to $I_i$. We drop the superscript if the Grassman necklace element is clear.
 \end{dfn}
 
-In the sequel, when we refer to orderings on propagators, we refer to the ordering $\cP^i$. Note that different elements of the Grassmann necklace impose different orderings on the propagators. \hlfix{{Furthermore, Lemma \ref{no fourth vertex} shows that this ordering respects the ordering of vertices in $I_i$. That is, $I_i(p_j) <_i I_i(p_l)$ for all $j <l$.}}{Maybe move closer to reference lemma}
+In the sequel, when we refer to orderings on propagators, we refer to the ordering $\cP^i$. Note that different elements of the Grassmann necklace impose different orderings on the propagators. Furthermore, Lemma \ref{no fourth vertex} shows that this ordering respects the ordering of vertices in $I_i$. That is, $I_i(p_j) <_i I_i(p_l)$ for all $j <l$.\sanote{Maybe move closer to reference lemma}
+
+\begin{rmk} \label{clockwise ordering rem}
+When $p_m$ contributes $I_i(p_m) = a_m$ to the Grassmann necklace, it must be the clockwise-most propagator (amongst those not yet assigned) that is supported on $a_m$ i.e. any other propagator in $\cP \setminus \cP_{m-1}$ that is supported on $a_m$ must be inside $p_m$ in the $a_m-1$ ordering.
+\end{rmk} \sanote{We use this fact at least twice below}
 
 \begin{rmk}\label{rmk algorithm locally same}
 The following observation about the local behavior of the algorithm will be very useful in many of the arguments below.
@@ -976,7 +980,7 @@ With that in mind, we are ready to begin proving properties of the algorithm. We
 Let $W$ be an admissible Wilson loop diagram containing at least one propagator. For any $i \in [n]$ and for any $p \in \cP$, $I_i(p)$ is not maximal (with respect to $<_i$) amongst the vertices that support $p$.
 \end{lem}
 \begin{proof}
-Suppose for contradiction that we have $i \in [n]$ and $p \in \cP$ such that $I_i(p)$ is $<_i$-maximal in $V(p)$. There are two possibilities, which are illustrated in Figure~\ref{fig:no fourth vertex}: either $p = (i-1,b)$ for some $b$ (so $i$ and $I_i(p) = i-1$ are the two ends of a single edge), or $p = (a,b)$ with $i\leq_i a <_i b$ and $I_i(p) = b+1$.
+Suppose for contradiction that we have $i \in [n]$ and $p \in \cP$ such that $I_i(p)$ is $<_i$-maximal in $V(p)$. There are two possibilities, which are illustrated in Figure~\ref{fig:no fourth vertex}: \st{either $p = (i-1,b)$ for some $b$ (so $i$ and $I_i(p) = i-1$ are the two ends of a single edge), or $p = (a,b)$ with $i\leq_i a <_i b$ and $I_i(p) = b+1$.} {\color{violet}either $i-1 \in V(p)$, in which case it is the last vertex in the $<_i$ order and $I_i(p)= i-1$, or $i-1 \not \in V(p)$ in which case,  $p= a, b$, $i \in [b+2, a]$ and $I_i(p) = b+1$.}
 
 \begin{figure}
 
@@ -1033,11 +1037,11 @@ Suppose for contradiction that we have $i \in [n]$ and $p \in \cP$ such that $I_
 \caption{The two types of configuration in which a propagator could (in theory) contribute its $<_i$-maximal support vertex to $I_i$.}
 \label{fig:no fourth vertex}
 \end{figure}
-\note{Question: is the diagram clearer in this configuration (starting vertex $i$ matches up in both) or in the old configuration (propagator $p$ matches up)?}
+\note{Question: is the diagram clearer in this configuration (starting vertex $i$ matches up in both) or in the old configuration (propagator $p$ matches up)?} \sanote{I think it is fine as is}
 
-In Case 1, observe that we must have another propagator $q = (c,b)$ with $c<_i b$ and $I_i(q) = b+1$, because otherwise $I_i$ would assign $p$ to $b+1$. Now $q$ also contributes the $<_i$-maximal vertex in its support to $I_i$ and is an instance of Case 2. Therefore it suffices to show that no admissible Wilson loop diagram admits the configuration illustrated in Case 2 of Figure~\ref{fig:no fourth vertex}.
+In Case 1, \st{observe that we must have another propagator $q = (c,b)$ with $c<_i b$ and $I_i(q) = b+1$, because otherwise $I_i$ would assign $p$ to $b+1$.}{\color{violet} since $b+1<_i I_i(p)$ there must be some propagator, $q$ before $p$ in $\cP^i$ such that $I_i(q) = b+1$. By remark \ref{clockwise ordering rem}, $p$ is inside $q$ in the $<_b$ order. Specifically, $q$ must also end on the $b^{th}$ edge. By non-crossing and desnity arguements of admissibility $i-1$ cannot be in $V(q)$.} Now $q$ also contributes the $<_i$-maximal vertex in its support to $I_i$ and is an instance of Case 2. Therefore it suffices to show that no admissible Wilson loop diagram admits the configuration illustrated in Case 2 of Figure~\ref{fig:no fourth vertex}. 
 
-So let $p = (a,b)$ with $a<_ib$ and $I_i(p) = b+1$, and choose $p$ such that $\big|[a+1,b]\big|$ is minimal amongst propagators of $W$ with this property.
+So let $p = (a,b)$ with $a<_ib$ and $I_i(p) = b+1$, and choose $p$ such that $\big|[a+1,b]\big|$ is minimal amongst propagators of $W$ with this property. \sanote{in the picture for case 2, $\big|[d+1,b]\big| <\big|[a+1,b]\big|$.Worried about case 2}
 
 Since $I_i(p) \neq b$, there must exist a propagator $q$ inside of $(p,<_i)$ with $I_i(q) = b$. The propagator $q$ cannot end on the edge $b-1$, as this would contradict the minimality of $p$, so we have $q = (d,b)$ with $a <_i d <_i b$, and $I_i(q) = b$. 
 
