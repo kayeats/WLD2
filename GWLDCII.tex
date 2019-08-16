@@ -878,11 +878,11 @@ for each $p \in \cP$. When the diagram $W$ is clear from context, we drop the su
 
 To construct $I_1$ we start at vertex 1, so we set $i=1$, $j = 1$, and $I_1 = \emptyset$. 
 \begin{itemize}
-\item $j = 1$: Since $\Prop(1) = \{q,r\}$ and $r$ is the clockwise-most of these propagators, we let $I_1 = \{1\}$ and remove propagator $r$ from the diagram. 
-\item $j = 2$: $\Prop(2) = \{p,q\}$, with $q$ being the clockwise-most of these propagators. So $I_1 = \{1,2\}$ and propagator $q$ is removed.
-\item $j = 3$: $\Prop(3) = \{p\}$, so now $I_1 = \{1,2,3\}$ and propagator $p$ is removed. The only remaining propagator in the diagram is $s$.
+\item $j = 1$: Since $\Prop(1) = \{q,r\}$ and $r$ is the clockwise-most of these propagators, $r$ contributes at this step: $I_1(r)=1$. We let $I_1 = \{1\}$ and remove propagator $r$ from the diagram. 
+\item $j = 2$: $\Prop(2) = \{p,q\}$, with $q$ being the clockwise-most of these propagators, $q$ contributes at this step: $I_1(q)=1$. So $I_1 = \{1,2\}$ and propagator $q$ is removed.
+\item $j = 3$: $\Prop(3) = \{p\}$, so now $I_i(p) = 3$ and $I_1 = \{1,2,3\}$. The propagator $p$ is removed. The only remaining propagator in the diagram is $s$.
 \item $j = 4$: Since $p$ and $q$ were removed in earlier steps, we now have $\Prop(4) = \emptyset$.
-\item $j = 5$: $\Prop(5) = \{s\}$, and we have $I_1 = \{1,2,3,5\}$.
+\item $j = 5$: $\Prop(5) = \{s\}$, and we have $I_1 = \{1,2,3,5\}$ with $I_1(s) = 5$.
 \end{itemize}
 There are no propagators left in the diagram, so the algorithm terminates and we have ${I_1 = \{1,2,3,5\}}$, or $1235$ for short. 
 %So the propagators are ordered $r,q,p,s$ with respect to $I_1$, and 
@@ -893,23 +893,27 @@ Applying the algorithm for all 8 starting vertices, we obtain the sets
 The reader can easily verify that this sequence of $k$-sets satisfies the definition of a Grassmann necklace, and can (with significantly more work) also verify that this Grassmann necklace defines the positroid $M(W)$ associated to the Wilson loop diagram $W$ above.
 \end{eg}
 
+Notice that for each element in the Grassmann necklace, the propagators contribute in a particular order. It is sometimes useful to think of the propagators in this order. 
+\begin{dfn} \label{prop order dfn}
+Given a set $\cP$ of $k$ propagators defining a Wilson loop diagram $(\cP, [n])$, the Grassmann necklace element $I_i$ imposes an ordering on it $\cP^i = \{p_1 \ldots p_k\}$ where $p_m$ is the $m^{th}$ propagator to contribute to $I_i$. We write $\cP_m^i = \{p_1 \ldots p_m\}$ to be the first $m$ propagators that contribute to $I_i$. 
+\end{dfn}
 
+In the sequel, when we refer to orderings on propagators, we refer to the ordering $\cP^i$. Note that different elements of the Grassmann necklace impose different orderings on the propagators. \hlfix{{Furthermore, Lemma \ref{no fourth vertex} shows that this ordering respects the ordering of vertices in $I_i$. That is, $I_i(p_j) <_i I_i(p_l)$ for all $j <l$.}}{Maybe move closer to reference lemma}
 
 \begin{rmk}\label{rmk algorithm locally same}
 The following observation about the local behavior of the algorithm will be very useful in many of the arguments below.
 
  \note{Remember to keep an eye out when proofreading: do we just need the vertices appearing in the GN element to be the same, or do we actually need the functions to match up}
 
+Suppose we are going through the algorithm to construct $I_i^W$ for some $i$, and we are currently at step $j$ of the loop. Consider the diagram $W'$ formed by removing from $W$ all propagators that have already contributed to $I_i^W$. (This just replicates the behavior of the algorithm, which removes each propagator once it contibutes to $I_i^W$.)  Now suppose for some other diagram $V$ on the same vertex set we are constructing $I_m^V$ for some $m$, and we are at step $j$ of the loop, for the same $j$ as above.  Again obtain $V'$ from $V$ by removing all propagators assigned so far.
 
-Suppose we are going through the algorithm to construct $I_i^W$ for some $i$, and we are currently at step $j$ of the loop.  Consider the diagram $W'$ formed by removing from $W$ all propagators that have already contributed to $I_i^W$. (This just replicates the behavior of the algorithm, which removes each propagator once it contibutes to $I_i^W$.)  Now suppose for some other diagram $V$ on the same vertex set we are constructing $I_m^V$ for some $m$, and we are at step $j$ of the loop, for the same $j$ as above.  Again obtain $V'$ from $V$ by removing all propagators assigned so far.
-
-With this setup, if we can find a vertex $\ell$ (with $\ell <_i i$ and $\ell <_m m$) such that the configuration of propagators ending in the interval $(j-1, \ldots, \ell+1)$ is identical in both $W'$ and $V'$, then the vertices contributed to $I_i^W$ and $I_m^V$ are the same from step $j$ to step $\ell$ (inclusive). See Figure~\ref{fig:locally identical} for an illustration of this.
+With this setup, if we can find a vertex $\ell$ (with \st{$\ell <_i i$ and $\ell <_m m$} {\color{violet} $i <_i \ell$ and $m <_m \ell$?}) such that the \emph{configuration} of propagators ending in the interval \st{$(j-1, \ldots, \ell+1)$} {\color{violet}$[j, l]$} is identical in both $W'$ and $V'$, then the vertices contributed to $I_i^W$ and $I_m^V$ are the same from step $j$ to step $\ell$ (inclusive). See Figure~\ref{fig:locally identical} for an illustration of this. 
 
 \begin{figure}
 \[
 \begin{tikzpicture}[baseline=(current bounding box.east)]
 	\begin{scope}
-	\drawWLDfragment[12]{3}{0.4} 
+	W' = \drawWLDfragment[12]{3}{0.4} 
 	%\drawnumberspartial % use this to debug
 	\newnode[left]{1}{i}
 	\newnode[below]{4}{j}
@@ -933,7 +937,7 @@ With this setup, if we can find a vertex $\ell$ (with $\ell <_i i$ and $\ell <_m
 \end{tikzpicture}
 \qquad \qquad
 \begin{tikzpicture}[baseline=(current bounding box.east)]
-	\begin{scope}
+	V' = \begin{scope}
 	\drawWLDfragment[12]{3}{0.4} 
 	%\drawnumberspartial % use this to debug
 	\newnode[left]{2}{m}
@@ -958,10 +962,10 @@ With this setup, if we can find a vertex $\ell$ (with $\ell <_i i$ and $\ell <_m
 \end{tikzpicture}
 \]
 \caption{$W'$ and $V'$ are locally the same between $j$ and $l+1$, so we will have $I_i^W\cap [j,l] = I_m^V\cap[j,l]$ even though $p \neq s$ and $q \neq t$.}\label{fig:locally identical}
-\end{figure}
+\end{figure} \sanote{just checking, we are allowing the first and the last propagators (in the $I_i$ induced ordering) to be different, but not the internal ones?}
 \end{rmk}
 
-With that in mind, we are ready to begin proving properties of the algorithm. We first show that the algorithm can never reach the final vertex in a propagator's support without having already assigned that propagator; in particular, this guarantees that the construction of $I_i$ always terminates in fewer than $n$ steps.
+With that in mind, we are ready to begin proving properties of the algorithm. We first show that the algorithm for $I_i$ can never reach the final vertex (in the $<_i$ order) in a propagator's support without having already assigned that propagator; in particular, this guarantees that the construction of $I_i$ always terminates in fewer than $n$ steps.
 
 \begin{lem}\label{lem no fourth vertex}
 Let $W$ be an admissible Wilson loop diagram containing at least one propagator. For any $i \in [n]$ and for any $p \in \cP$, $I_i(p)$ is not maximal (with respect to $<_i$) amongst the vertices that support $p$.
