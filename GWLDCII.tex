@@ -856,17 +856,16 @@ For both $I_i^W$ the set and the function, when the diagram $W$ is clear from co
 % Sian deleted the propagator ordering for now: since we only use it in one proof, we can make it a local definition.
 % Obviously if we find ourselves using it elsewhere we can bring this definition back. (If so, uncomment the line in the following example as well.)
 
-Each $I_i$ also imposes an ordering on the propagators, determined by when the propagator contributes to the sequence:
+%Each $I_i$ also imposes an ordering on the propagators, determined by when the propagator contributes to the sequence:
 \begin{dfn} \label{proporderingdfn}
-  The ordering of the propagators on $W = (\cP, [n])$ defined by $I_i^W$ is the ordering in which they contribute to the algorithm as it constructs $I_i^W$.
+  There is an ordering on the propagators on $W = (\cP, [n])$ defined by $I_i$. This is the ordering in which they contribute to the algorithm as it constructs $I_i$.
 %  $\cP = \{p_1, \ldots p_k\}$, where 
 % \[I_i = \{I_i(p_1) <_i I_i(p_2) <_i \ldots <_i I_i(p_k)\}.\]
 % (The superscript $W$ is omitted here to simplify the notation.)\note{Sian tweaked this slightly to emphasise the $<_i$ order, because standard convention in most papers is to write all GN terms in the 1-order.}
 \end{dfn}
 
-Since each propagator is removed by the algorithm after it contributes, each propagator contributed exactly once to $I^W_i$, making the above ordering well defined.
-
-Note that different $I^W_*$ impose different orderings on the propagators. Furthermore, Lemma \ref{no fourth vertex} shows that this ordering respects the ordering of vertices in $I_i$. That is, $I_i(p_j) <_i I_i(p_l)$ for all $j <l$.
+Since each propagator is removed by the algorithm after it contributes, each propagator contributed exactly once to $I_i$, making the above ordering well defined.
+Note that different $I_*$ impose different orderings on the propagators. Furthermore, Lemma \ref{lem no fourth vertex} shows that this ordering respects the ordering of vertices in $I_i$. That is, $I_i(p_j) <_i I_i(p_l)$ for all $j <l$.
 
 \begin{eg}\label{eg:apply GN alg}Consider the admissible Wilson loop diagram
 \[W\ =\ \begin{tikzpicture}[rotate=67.5,baseline=(current bounding box.east)]
@@ -905,7 +904,7 @@ The reader can easily verify that this sequence of $k$-sets satisfies the defini
 %In the sequel, when we refer to orderings on propagators, we refer to the ordering $\cP^i$. 
 
 \begin{rmk} \label{clockwise ordering rem}
-When $p_m$ contributes $I_i(p_m) = a_m$ to the Grassmann necklace, it must be the clockwise-most propagator (amongst those not yet assigned) that is supported on $a_m$ i.e. any other propagator in $\cP \setminus \cP_{m-1}$ that is supported on $a_m$ must be inside $p_m$ in the $a_m-1$ ordering.
+When $p$ contributes $I_i(p) = a$, it must be the clockwise-most propagator amongst those not yet assigned that is supported on $a$ i.e. any propagator assigned later that is supported on $a$ must be inside $(p, <_{a-1})$.
 \end{rmk} \sanote{We use this fact at least twice below}
 
 \begin{rmk}\label{rmk algorithm locally same}
