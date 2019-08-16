@@ -352,7 +352,7 @@ Meanwhile, a different body of work has studied SYM $N=4$ theory from the point 
 
 In the above work and elsewhere, it is clear that while the space parametrized by the Wilson loop diagrams is related to the Amplituhedron, they are not the same space. For instance, it is conjectured that the Amplituhedron is orientable, whereas Agarwala and Marcott show in \cite{non-orientable} that the space parametrized by the Wilson loop diagrams can be seen as a non-orientable vector bundle over some submanifold of $\Gr(k,n)$. Furthermore, the cells associated to the Wilson loop diagrams are different from the cells associated to BCFW diagrams, which can be seen by comparing the results of \cite{AmplituhedronDecomposition} and \cite{casestudy}. This is not too alarming, as it is conjectured that the space parametrized by the Wilson loop diagrams will project down to something close to the Amplituhedron \cite{wilsonloop, Amplituhedronsquared}. 
 
-This paper continues this work by identifying which positroid cells are associated to which Wilson loop diagram: specifically, we give an algorithm to read off the Grassmann necklace of the associated positroid cell from the Wilson loop diagram. We also show that the positroid cells associated to Wilson loop diagrams are all $3k$-dimensional; by contrast, the BCFW cells are all $4k$-dimensional \cite{Arkani-Hamed:2013jha}. Again, this is not too alarming, as it was shown in \cite{non-orientable} that the actual geometric space parametrized by the Wilson loop diagrams is a non-orientable $k$-dimensional bundle over this $3k$ dimensional manifold in $\Gr(k,n)$.
+This paper continues this work by identifying which positroid cells are associated to which Wilson loop diagram: specifically, we give an algorithm to read off the Grassmann necklace of the associated positroid cell from the Wilson loop diagram. We also show that the positroid cells associated to Wilson loop diagrams are all $3k$-dimensional; by contrast, the BCFW cells are all $4k$-dimensional \cite{Arkani-Hamed:2013jha}. Again, this is not too alarming, as it was shown in \cite{non-orientable} that the actual geometric space defined by the Wilson loop diagrams is a non-orientable $k$-dimensional bundle over this $3k$ dimensional manifold in $\Gr(k,n)$.
 
 As noted above, the sum of the Feynman integrals associated to Wilson loop diagrams gives the volume of a convex polytope; if this volume is to be finite, then any singularities appearing in individual integrals must cancel out in the overall sum. This has been conjectured in general \cite{Hodges2013} and verified explicitly in a few cases \cite{casestudy, HeslopStewart}, but it is hard to prove in general due to the fact that the relationship between Wilson loop diagrams and $3k$-dimensional positroid cells of $\Gr(k,n)$ is neither one-to-one nor onto. In this paper, we give a characterization of the factors appearing in the denominator of these Feynman integrals in terms of the Grassmann necklace of the associated positroid, thus providing a much simpler and more tractable link between the singularities and the diagrams. 
 
@@ -418,7 +418,7 @@ Note that a propagator in $\Prop(U)$ does not need to have its entire support co
 \end{enumerate}
 \end{dfn}
 
-In particular, we will see in later sections that all four vertices supporting a propagator are important in understanding the contribution of that propagator to the \st{overall diagram}{geometric object represented by the diagram} \sanote{Is this what we mean?}\note{Is this chatty bit even helpful at all: this seems like the most natural notion of subobject anyway.}. This motivates the following definition of a subdiagram, any subset $Q$ of the propagators and any subset $U$ of the vertices of $W$ {\em containing the support of $Q$}.
+In particular, we will see in later sections that all four vertices supporting a propagator are important in understanding the contribution of that propagator to the objects represented by the diagram. This motivates the following definition of a subdiagram: any subset $Q$ of the propagators and any subset $U$ of the vertices of $W$ {\em containing the support of $Q$}.
 
 \begin{dfn} \label{subdiagramdfn}
 Let $W = (\cP, V)$ be a Wilson loop diagram. Then $W' = (Q,U)$ is a {\bf subdiagram} of $W$ if $Q \subseteq \cP$ and $V(Q) \subseteq U \subseteq V$.
@@ -443,19 +443,19 @@ These conditions are imposed by the physical interpretation of Wilson loop diagr
 
 Note that a subdiagram $(Q,U)$ of an admissible Wilson loop diagram need not be admissible itself: it inherits conditions 2 and 3 automatically, but we could have $|U| = |Q| + 3$. If a Wilson loop diagrams satisfies conditions 2 and 3 of Definition~\ref{admisdfn}, we call it {\bf weakly admissible}.
 
-These diagrams correspond to (tree level) amplitudes of SYM $N=4$ theory in twistor space. As such, it\note{What is this ``it'', is it ``these diagrams'' if so there's a singular/plural agreement problem, if not then it isn't clearly enough written.} associates a real value to $n$ particles, one for each vertex. Each particle is represented as a section of a $|\cP|$-vector bundle over twistor space, projected onto a real subspace in a process called bosonization \cite{Arkani-Hamed:2013jha}. In other words, each Wilson loop diagram defines a functional on external particles. This is represented as an integral $I(W)$, which is the equivalent of a Feynman integral in this setting. \sanote{This feels like too much detail. Thoughts?}\note{Seems ok to me, at least with the grammar fixed as noted above} This integral is comprised of two main components, and interaction matrix, $C(W)$ and a volume form, $\Omega(W)$. These are described below.
+These diagrams correspond to (tree level) amplitudes of SYM $N=4$ theory in twistor space. As such, a diagram associates a real value to $n$ particles, one for each vertex. Each particle is represented as a section of a $|\cP|$-vector bundle over twistor space, projected onto a real subspace in a process called bosonization \cite{Arkani-Hamed:2013jha}. In other words, each Wilson loop diagram defines a functional on external particles. This is represented as an integral $I(W)$, which is the equivalent of a Feynman integral in this setting. This integral is comprised of two main components, and interaction matrix, $C(W)$ and a volume form, $\Omega(W)$. These are described below.
 
 A $|\cP| \times n$ matrix $C(W)$ represents the (tree level) particle interactions. Each row of $C(W)$ corresponds to an internal propagator, each column to an external particle. $C(W)$ is defined as follows:
 
 \begin{equation} C(W)_{p,q} = \begin{cases} c_{p,q} & \textrm{ if } q \in V(p) \\
 0  & \textrm{ if } q \not \in V(p)  \end{cases}
-\;. \label{C(W) dfn}\end{equation} \todo{$c_{p,q}$ or $x_{p,q}$? Should be consistent} 
+\;. \label{C(W) dfn}\end{equation} \todo{Change $c_{p,q}$ to $x_{p,q}$ to be consistent} 
 
 The entries $c_{p,q}$ are non-zero real variables. Thus the zero entries in row $p$ correspond to the external particles that the propagator $p$ does not interact with. See Example~\ref{integraldetails} for an example of a diagram $W$ and its associated matrix.
 
-The matrix $C(W)$ can be interpreted as a \hlfix{parametrization of the positroid cell associated to $W$}{I know we've been saying this, but we have $4k$ parameters for a $3k$ dimensional space. Is this okay?}\note{Maybe there's a better word than ``parametrization''?  It does define the positroid cell by giving its points, we wouldn't need to say parametrizaion to say that.} in the positive Grassmannian $\Gr(n, |\cP|)$, which we denote by $\Sigma(W)$ \cite{wilsonloop}. Most of the work in this paper, and in \cite{generalcombinatoricsI} focuses on characterizing the positroid cell associated to each Wilson loop diagram $W$. 
+The matrix $C(W)$ defines a positroid cell associated to $W$ in the positive Grassmannian $\Gr(n, |\cP|)$, which we denote by $\Sigma(W)$ \cite{wilsonloop}. Most of the work in this paper, and in \cite{generalcombinatoricsI} focuses on characterizing the positroid cell associated to each Wilson loop diagram $W$. 
 
-Note that since there is no ordering on the propagators of $W$, $C(W)$ is only defined up to rearrangement of the rows. When needed, we will impose various orders on these rows. This will not matter, as it does not affect the parametrization of $\Sigma(W)$.
+Note that since there is no ordering on the propagators of $W$, $C(W)$ is only defined up to rearrangement of the rows. When needed, we will impose various orders on these rows. This will not matter, as it does not affect $\Sigma(W)$.
 
 One may also interpret the functional $I(W)$ as associating a volume to each cell $\Sigma(W)$ \cite{wilsonloop, Amplituhedronsquared, HeslopStewart}. The volume form is written in terms of the elements of $C(W)$ as  \begin{equation} \label{eq:omega(W) def}\Omega(W) = \frac{\prod_{r=1}^{|\cP|} \prod_{v \in V(p_r)} \textrm{d}c_{p_r}}{R(W)} \;, \end{equation}
 where the denominator $R(W)$ is given in Definition~\ref{def R(W)} below. The interested reader is referred to \cite{Adamo:2012xe,HeslopStewart,LipsteinMason} for more information about the volume form. 
@@ -502,13 +502,14 @@ We summarize here only the subset of positroid theory that we require in this pa
 
 Let $\binom{[n]}{k}$ denote the set of all $k$-subsets of $[n]$.  
 
-For our purposes, a {\bf positroid} is\footnote{Note that matroid isomorphism allows arbitrary permutations of the ground set but positroid isomorphism allows only cyclic permutations, so the property of being a positroid is not in general preserved by matroid isomorphism.} a matroid $M$ (with ground set $[n]$ and bases $\cB \subseteq \binom{[n]}{k}$) which can be represented by an element of the positive Grassmannian $\Gr(k,n)$. In other words, there exists a full-rank $k\times n$ real matrix whose $k\times k$ minors are all nonnegative and such that the minor $[[k]|J]$\note{I don't think we have this $[[k]|J]$ notation defined?} is positive if and only if $J \in \cB$.
+For our purposes, a {\bf positroid} is\footnote{Note that matroid isomorphism allows arbitrary permutations of the ground set but positroid isomorphism allows only cyclic permutations, so the property of being a positroid is not in general preserved by matroid isomorphism.} a matroid $M$ (with ground set $[n]$ and bases $\cB \subseteq \binom{[n]}{k}$) which can be represented by an element of the positive Grassmannian $\Gr(k,n)$. In other words, there exists a full-rank $k\times n$ real matrix whose $k\times k$ minors are all nonnegative and such that the minor given by the columns of $J$ 
+is positive if and only if $J \in \cB$.
 
 Postnikov shows in \cite{Postnikov} that the positroids of $\Gr(k,n)$ are indexed by many different collections of objects, each with their own advantages and disadvantages. The two most suited to our purposes are Grassmann necklaces and Le diagrams, which we introduce below. In order to do so, we first need some preliminary definitions.
 
 For each $j \in [n]$, we can define a total order $<_j$ on the interval $[n]$ by
 \[ j <_j j+1 <_j \dots <_j n <_j 1 \dots <_j j-1\;.\]
-This in turn induces a total order on $\binom{[n]}{k}$, namely the lexicographic order with respect to $<_j$.  It also induces a separate partial order $\gale{j}$ on $\binom{[n]}{k}$ (the {\bf Gale order} \cite{Gale}\note{We only use this once and in this particular section, so maybe we don't need to define and name it but can just put the def in-line where we need it}), which is defined as follows: for 
+This in turn induces a total order on $\binom{[n]}{k}$, namely the lexicographic order with respect to $<_j$.  It also induces a separate partial order $\gale{j}$ on $\binom{[n]}{k}$ (the {\bf Gale order} \cite{Gale}), which is defined as follows: for 
 \[A = \{a_1 <_j a_2 <_j \dots <_j a_k\} \text{ and } B = \{b_1 <_j b_2 <_j \dots <_j b_k\} \in \binom{[n]}{k},\] we define
 \[A \gale{j} B \text{ if and only if } a_r \leq_j b_r \text{ for all }1 \leq r \leq k.\]
 For example, in $\binom{[6]}{3}$ we have $\{2,5,6\}\gale{2} \{2,6,1\}$ but $\{2,5,6\}\not\gale{2}\{3,4,6\}$.
@@ -598,7 +599,7 @@ An algorithm for constructing the Grassmann necklace of a Le diagram also exists
 
 Let $W = (\cP,[n])$ be an admissible Wilson loop diagram with $k$ propagators, and $C(W)$ the associated matrix defined in equation~\eqref{C(W) dfn}. Let $M(W)$ be the matroid realized by $C(W)$, i.e. the matroid with ground set $[n]$ whose independent sets are exactly the sets $V \subseteq [n]$ such that the columns of $C(W)$ indexed by $V$ are linearly independent.
 
-In \cite{wilsonloop}, Agarwala and Marin-Amat show that $M(W)$ is also characterized by the Wilson loop diagram itself\note{I don't like this phrasing; can we discuss}:
+In \cite{wilsonloop}, Agarwala and Marin-Amat show that $M(W)$ can also be read directly from the Wilson loop diagram itself:
 
 \begin{thm} \label{thm WLD defines matroid} \cite[Theorem 3.6]{wilsonloop} The independent sets of the matroid $M(W)$ associated to an admissible Wilson loop diagram $W = (\cP,[n])$ and realized by $C(W)$ are exactly those subsets $V \subseteq [n]$ such that $\nexists U\subseteq V$ satisfying $|\Prop(U)| < |U|$. \end{thm}
 In other words, the independent sets of $M(W)$ correspond to sets of vertices in $W$ in which no subset supports fewer propagators than the vertices it contains.
@@ -611,7 +612,7 @@ Let $W = (\cP,[n])$ be an admissible Wilson loop diagram and let $M(W)$ be its a
 \begin{proof}
   This follows as a corollary of the previous theorem by induction in one direction and the pigeonhole principle in the other direction.  
 
-  Alternatively if we forget about the \st{matroid} {\color{violet} diagram} \sanote{okay?} and simply think about the condition of linear independence in the matrix $C(W)$, the corollary can also be proved directly by linear algebra and the definition of $C(W)$ as follows.
+  Alternatively we can simply think about the condition of linear independence in the matrix $C(W)$, the corollary can also be proved directly by linear algebra and the definition of $C(W)$ as follows.
 
   Because the nonzero entries of $C(W)$ are independent indeterminants, $J$ is an independent set if and only if there is some choice of $|J|$ nonzero entries of $C(W)$ one in each row associated to an element of $J$ and each in different columns. Each entry in $C(W)$ identifies a propagator by the row of the entry and a vertex by the column of the entry.  The entry is nonzero if and only if the propagator is supported on that vertex.  Consequently, a choice of $|J|$ nonzero entries of $C(W)$ one in each row associated to an element of $J$ and each in different columns is equivalent to an assignment of the propagators of $J$ to supporting vertices so that no two are assigned to the same vertex.  Such an assignment of the propagators of $J$ to supporting vertices is exactly a map $f$ as described in the statment, hence proving the result.
 \end{proof}
@@ -621,9 +622,9 @@ In particular, this corollary says that a subset $J$ of $[n]$ is a basis of $M(W
 
 By relating the behavior of the propagators in $W$ to the matroidal properties of $M(W)$, Agarwala and Marin-Amat also showed that $M(W)$ is in fact a positroid whenever $W$ is admissible \cite[Corollary 3.39]{wilsonloop}.
 
-However, in order to identify the positroid associated to a given Wilson loop diagram $W$ we first have to construct $C(W)$, then make a list of all its non-zero $k\times k$ minors and extract the Le diagram or Grassmann necklace via the methods described in Section~\ref{sec:positroid background}. In \cite{casestudy}, Agarwala and Fryer apply this process in the smallest non-trivial case: admissible Wilson loop diagrams with two propagators on six vertices. Even in this simple case, we see that the mapping from admissible WLD to positroid cells is neither one-to-one nor onto, and the process described above makes it almost impossible to track the relationship between the original Wilson loop diagram and the resulting positroid.
+However, to go from the Wilson loop diagram $W$ to the positroid cell, one had to go through the matroid explicitly realized via $C(W)$, then make a list of all its non-zero $k\times k$ minors and extract the Le diagram or Grassmann necklace via the methods described in Section~\ref{sec:positroid background}. In \cite{casestudy}, Agarwala and Fryer apply this process in the smallest non-trivial case: admissible Wilson loop diagrams with two propagators on six vertices. Even in this simple case, we see that the mapping from admissible WLD to positroid cells is neither one-to-one nor onto, and the process described above makes it almost impossible to track the relationship between the original Wilson loop diagram and the resulting positroid.
 
-Our first goal is therefore to find a better method of obtaining the positroid associated to a given Wilson loop diagram; this is the focus of the next section. \sanote{Should the 2 paras before the remark be moved to when whe walk about the GN algorithm?}
+Our first goal is therefore to find a better method of obtaining the positroid associated to a given Wilson loop diagram; this is the focus of the next section.
 
 \begin{rmk}
 While this paper primarily approaches proofs from a combinatorial point of view, readers with a background in matroid theory are encouraged to keep the matroidal viewpoint in mind throughout; we expect that the two approaches will be complementary and will build upon each other. See \cite{generalcombinatoricsI} for some related results concerning the positroids of Wilson loop diagrams obtained by viewing them primarily as matroids.
@@ -638,8 +639,7 @@ While this paper primarily approaches proofs from a combinatorial point of view,
 
 In this section we will give an algorithm (Algorithm~\ref{alg:put GN on WLD}) to go directly from a Wilson loop diagram to the Grassmann necklace of its positroid. This is a useful result in and of itself, as it greatly simplifies the process of identifying the positroid associated to a given WLD. It also allows us to examine how the positroid changes as we make minor changes to the Wilson loop diagram; indeed, the techniques we develop in this section to verify that our algorithm produces the correct Grassmann necklace will also be used repeatedly in later sections.
 
-One of the key insights is that each element of the Grassmann necklace can be viewed as a function from the propagators of the diagram to the vertices in the \st{Grassmann necklace element}{\color{violet} Wilson loop diagram?}.  This is captured in Definition~\ref{def I_i as a function}, and used throughout the paper.
-
+One of the key insights is that each element of the Grassmann necklace can be viewed as a function from the propagators of the diagram to the vertices in the Grassman necklace element.  This is captured in Definition~\ref{def I_i as a function}, and used throughout the paper.
 
 %\note{Sian thinks that a section roadmap here would be overkill: we gave a roadmap in section 1, each subsection has its own little intro roadmap, and I've added a ref to the algorithm above so that people can skip straight to it if they want}
 
@@ -658,13 +658,13 @@ Before we can describe the algorithm for extracting the Grassmann necklace of $M
 
 
 \begin{dfn}\label{props inside p}
-Let $W = (\cP, [n])$ be a weakly admissible Wilson loop diagram, with $p \in \cP$ supported on edges $i$ and $j$. Write $(p, <_i)$ to represent the same propagator directed from $i$ to $j$. Then the sets of propagators {\bf inside} \sanote{just checking: $p \in \cP_{in}(p)$?} and {\bf outside} of $(p,<_i)$ are defined to be
+Let $W = (\cP, [n])$ be a weakly admissible Wilson loop diagram, with $p \in \cP$ supported on edges $i$ and $j$. Write $(p, <_i)$ to represent the same propagator directed from $i$ to $j$. Then the sets of propagators {\bf inside} and {\bf outside} of $(p,<_i)$ are defined to be
 \begin{gather*}\cP_{in}(p,<_i) = \{ (k,l) \in \cP \ |\ i \leq_i k <_i l \leq_i j \}, \\
 \cP_{out}(p,<_i) = \cP\setminus \cP_{in}(p,<_i),
 \end{gather*}
 respectively.
 \end{dfn}
-Note that we have $p\in \cP_{in}(p, <_i)$ and so $\cP_{in}(p, <_i) = \cP_{out}(p, <j)\cup\{p\}$.
+Note that we have $p\in \cP_{in}(p, <_i)$ and so $\cP_{in}(p, <_i) = \cP_{out}(p, <_j)\cup\{p\}$.
 
 
 \begin{eg}
@@ -765,7 +765,7 @@ Let $p_{r+1} = (j_{r+1}, j_{r+1}+2)$ be a propagator of length 2 in $W_r$; if it
 %the configuration \eqref{eq:2 prop config}
 then we are done, so assume otherwise. 
 
-Note that we could replace $q_r$ by another propagator $q'_{r}$ in \st{$W_r$} {\color{violet}$W_r = (\cP_{in}(q_r), [n])$}\sanote{just want to emphasize that $q_r'$ is inside $q_r$}, as long as $p_{r+1}$ and $q_r$ are on opposite sides of $q_r'$: such a new $q'_{r}$ would still satisfy all of the induction hypotheses. (See Figure~\ref{fig smallest q in lem sian}.) Therefore without loss of generality we may assume that $\cP_{in}(q_r)$ does not contain any propagators (other than $q_r$ itself) which satisfy the induction hypotheses, \st{i.e. we assume that there are no other propagators with $p_{r+1}$ on one side and $q_r$ on the other}.\note{I kind of like the struck part, can we make your other changes and also keep the struck part.}
+Note that we could replace $q_r$ by another propagator $q'_{r}$ in $W_r = (\cP_{in}(q_r), [n])$, as long as $p_{r+1}$ and $q_r$ are on opposite sides of $q_r'$: such a new $q'_{r}$ would still satisfy all of the induction hypotheses. (See Figure~\ref{fig smallest q in lem sian}.) Therefore without loss of generality we may assume that $\cP_{in}(q_r)$ does not contain any propagators (other than $q_r$ itself) which satisfy the induction hypotheses, i.e. we assume that there are no other propagators with $p_{r+1}$ on one side and $q_r$ on the other.
 
 \begin{figure}[h]
 \vspace{1cm}
@@ -797,22 +797,20 @@ Note that we could replace $q_r$ by another propagator $q'_{r}$ in \st{$W_r$} {\
 \label{fig smallest q in lem sian}
 \end{figure}
 
-\note{Would it be worth having vertex $j_{r+1}$ labelled in this fig smallest q in lem sian}
-
 There are two cases to consider.
 
-The first case is that $i_r \leq j_{r+1} \leq i_r+2$ and $k_r-2 \leq j_{r+1}+2 \leq k_{r}$ (so $p_{r+1}$ has one end before $i_{r} + 3$ and the other after $k_{r} - 2$, i.e. there are at most two vertices between an endpoint of $p_{r+1}$ and an endpoint of $q_r$).  Then since $p_{r+1}$ has length 2, \st{it must be that $(i_r+3)+1 \geq k_r-2$ and so} {\color{violet} this implies that} $q_r$ has length $\leq 6$.  By the minimality assumption on $q_r$, no propagator in $W_r$ has $q_r$ on one side and $p_{r+1}$ on the other side. Therefore, any propagator in $W_r$ other than $q_r$ and $p_{r+1}$ must be of the form $(i,j)$ with $i_r\leq i < j\leq i_r+2$ or $k_r-2 \leq i < j\leq k_r$. Both of these require that $(i,j)$ has length 2, and so we have configuration \ref{item pair of 2s} which we have already assumed does not occur.  Consequently, $W_r$ contains only the two propagators $q_r$ and $p_{r+1}$, yielding configuration \ref{item big and 2} from the lemma statement and again contradicting our assumption. Therefore this first case cannot occur.
+The first case is that $i_r \leq j_{r+1} \leq i_r+2$ and $k_r-2 \leq j_{r+1}+2 \leq k_{r}$ (so $p_{r+1}$ has one end before $i_{r} + 3$ and the other after $k_{r} - 2$, i.e. there are at most two vertices between an endpoint of $p_{r+1}$ and an endpoint of $q_r$).  Then since $p_{r+1}$ has length 2, it must be that $(i_r+3)+1 \geq k_r-2$ and so $q_r$ has length $\leq 6$.  By the minimality assumption on $q_r$, no propagator in $W_r$ has $q_r$ on one side and $p_{r+1}$ on the other side. Therefore, any propagator in $W_r$ other than $q_r$ and $p_{r+1}$ must be of the form $(i,j)$ with $i_r\leq i < j\leq i_r+2$ or $k_r-2 \leq i < j\leq k_r$. Both of these require that $(i,j)$ has length 2, and so we have configuration \ref{item pair of 2s} which we have already assumed does not occur.  Consequently, $W_r$ contains only the two propagators $q_r$ and $p_{r+1}$, yielding configuration \ref{item big and 2} from the lemma statement and again contradicting our assumption. Therefore this first case cannot occur.
 
-The second case, \hlfix{there are at least $3$ vertices between one endpoint of $p_{r+1}$ and the nearest endpoint of $q_r$.}{Does this just convolute matters?}\note{Well at some stage it got edited so that it isn't a sentence any longer, but I think something like this should be here because it defines what the second case is.} In other words,  (at least) one of the following four things happen:
+The second case is that there are at least $3$ vertices between one endpoint of $p_{r+1}$ and the nearest endpoint of $q_r$. In other words, (at least) one of the following four things happen:
 \begin{itemize} 
 \item $i_r+3 \leq j_{r+1}\leq k_r-3$ (one endpoint of $p_{r+1}$ has at least 3 vertices between it and the nearest enpoint of $q_r$), or
 \item $i_r+3 \leq j_{r+1}+2\leq k_r-3$ (one endpoint of $p_{r+1}$ has at least 3 vertices between it and the nearest enpoint of $q_r$), or
-\item $i_r = j_{r+1}$ ($p_{r+1}$ and $q_r$ share and end edge), or 
-\item $k_r = j_{r+1} +2$  ($p_{r+1}$ and $q_r$ share and end edge)
+\item $i_r = j_{r+1}$ ($p_{r+1}$ and $q_r$ share an end edge), or 
+\item $k_r = j_{r+1} +2$  ($p_{r+1}$ and $q_r$ share an end edge)
 \end{itemize}
 In other words, at least one end of $p_{r+1}$ is supported entirely by vertices in the interval $[i_r+3,k_r+2]$ (the first two bullet points) or both ends lie in $[i_r, i_r+3]$ (third point) or both ends lie in $[k_r-2, k_r+1]$ (fourth point). These situations all behave similarly, and by symmetry it suffices to only consider the second and third possibilities. 
 
-\st{Note that since} {\color{violet} Since there are at least $3$ vertices between one endpoint of $p_{r+1}$ and the nearest endpoint of $q_r$},  $j_{r+1}+4 \leq k_r-1$ in both of these situations, the vertex \hlfix{$j_{r+1}+4{\color{violet} \in [i_r, k_r+1]}$}{or is a vertex of $W_r$ in the restricted version, have explicitly removed notation about vertices being inside or outside} \st{is inside $q_r$} but does not support either $q_r$ or $p_{r+1}$, and must therefore support some other propagator $t$.  Since $p_{r+1}$ is not part of configuration \ref{item pair of 2s} and $W_r$ has no propagators of length 3, it follows that $\ell(t) \geq 4$.  If $q_r$ and $p_{r+1}$ were on different sides of $t$ then this would contradict the minimality of $q_r$.  Therefore we can orient $t$ so that all previous $q_i$ and $p_i$ belong to $\cP_{out}(t)$, and set $q_{r+1} = t$ to continue the induction.
+Since there are at least $3$ vertices between one endpoint of $p_{r+1}$ and the nearest endpoint of $q_r$,  $j_{r+1}+4 \leq k_r-1$ in both of these situations, the vertex $j_{r+1}+4$ is in $[i_r, k_r+1]$ but does not support either $q_r$ or $p_{r+1}$, and must therefore support some other propagator $t$.  Since $p_{r+1}$ is not part of configuration \ref{item pair of 2s} and $W_r$ has no propagators of length 3, it follows that $\ell(t) \geq 4$.  If $q_r$ and $p_{r+1}$ were on different sides of $t$ then this would contradict the minimality of $q_r$.  Therefore we can orient $t$ so that all previous $q_i$ and $p_i$ belong to $\cP_{out}(t)$, and set $q_{r+1} = t$ to continue the induction.
 
 The overall result then follows by induction.
 
@@ -826,14 +824,12 @@ In the case that all vertices of an admissible WLD $W$ support at least two prop
 
 \subsection{From Wilson Loop diagrams to Grassmann Necklaces}\label{sec:GN alg}
 
-Until now, the positroid associated to a Wilson loop diagram $W$ could only be obtained by computing the matrix $C(W)$ associated to $W$, listing all bases of the induced matroid $M(W)$, and constructing the Le diagram or Grassmann necklace of the positroid ``by eye'' from this list. \note{Can we discuss how to say this in a way that doesn't appear weak.}
-
-In this section, we give an algorithm for passing directly from the Wilson loop diagrams to its Grassmann necklace. This not only greatly simplifies the process above, but will also allow us to relate the behavior of the positroid $M(W)$ directly to the configuration of progators in $W$.
+In this section, we give an algorithm for passing directly from the Wilson loop diagrams to its Grassmann necklace. This not only greatly simplifies the previously known process to obtain a positroid cell from a Wilson loop diagram, but will also allow us to relate the behavior of the positroid $M(W)$ directly to the configuration of progators in $W$.
 
 The fact that Algorithm~\ref{alg:put GN on WLD} does construct the required Grassmann necklace is proved in Theorem~\ref{res:alg gives GN}. An worked example of Algorithm~\ref{alg:put GN on WLD} is given in Example~\ref{eg:apply GN alg}.
 
 \begin{algorithm}\label{alg:put GN on WLD}
-Let $W = (\cP, [n])$ be an admissible Wilson loop diagram. In order to construct the set set $I_i^W$ (or just $I_i$ when $W$ is clear from context\note{We have gone from not pointing out this convention to pointing it out 3 times. Can we find a happy medium?}) for $i \in [n]$, perform the following steps:
+Let $W = (\cP, [n])$ be an admissible Wilson loop diagram. In order to construct the set $I_i^W$ for $i \in [n]$, perform the following steps:
 
 \begin{enumerate}
 \item Fix a vertex $i \in [n]$, the {\bf starting vertex}. Set $j:=i$ and $I_i^W = \emptyset$.
@@ -852,22 +848,25 @@ If the algorithm assigns vertex $j$ to propagator $p$ from starting vertex $i$, 
 \begin{dfn}\label{def I_i as a function}
 Let $W = (\cP, [n])$ be an admissible Wilson loop diagram. For each $i \in [n]$, define a function $I_i^W : \cP \longrightarrow [n]$ by
 \[I_i^W(p) := \text{the vertex label that $p$ contributes to $I_i$ in Algorithm~\ref{alg:put GN on WLD},}\]
-for each $p \in \cP$. When the diagram $W$ is clear from context, we drop the superscript and simply write $I_i$.
+for each $p \in \cP$. 
 \end{dfn}
+
+For both $I_i^W$ the set and the function, when the diagram $W$ is clear from context, we drop the superscript and simply write $I_i$.
 
 % Sian deleted the propagator ordering for now: since we only use it in one proof, we can make it a local definition.
 % Obviously if we find ourselves using it elsewhere we can bring this definition back. (If so, uncomment the line in the following example as well.)
 
-% {\color{violet}
-% Each $I_i$ also imposes an ordering on the propagators, determined by when the propagator contributes to the sequence:
-% \begin{dfn} \label{proporderingdfn}
-% The ordering of the propagators on $W = (\cP, [n])$ defined by $I_i^W$ is $\cP = \{p_1, \ldots p_k\}$, where 
+Each $I_i$ also imposes an ordering on the propagators, determined by when the propagator contributes to the sequence:
+\begin{dfn} \label{proporderingdfn}
+  The ordering of the propagators on $W = (\cP, [n])$ defined by $I_i^W$ is the ordering in which they contribute to the algorithm as it constructs $I_i^W$.
+%  $\cP = \{p_1, \ldots p_k\}$, where 
 % \[I_i = \{I_i(p_1) <_i I_i(p_2) <_i \ldots <_i I_i(p_k)\}.\]
 % (The superscript $W$ is omitted here to simplify the notation.)\note{Sian tweaked this slightly to emphasise the $<_i$ order, because standard convention in most papers is to write all GN terms in the 1-order.}
-% \end{dfn}
+\end{dfn}
 
-% Since each propagator is removed by the algorithm after it contributes, each propagator contributed exactly once to $I^W_i$, making the above ordering well defined.}
+Since each propagator is removed by the algorithm after it contributes, each propagator contributed exactly once to $I^W_i$, making the above ordering well defined.
 
+Note that different $I^W_*$ impose different orderings on the propagators. Furthermore, Lemma \ref{no fourth vertex} shows that this ordering respects the ordering of vertices in $I_i$. That is, $I_i(p_j) <_i I_i(p_l)$ for all $j <l$.
 
 \begin{eg}\label{eg:apply GN alg}Consider the admissible Wilson loop diagram
 \[W\ =\ \begin{tikzpicture}[rotate=67.5,baseline=(current bounding box.east)]
@@ -898,12 +897,12 @@ Applying the algorithm for all 8 starting vertices, we obtain the sets
 The reader can easily verify that this sequence of $k$-sets satisfies the definition of a Grassmann necklace, and can (with significantly more work) also verify that this Grassmann necklace defines the positroid $M(W)$ associated to the Wilson loop diagram $W$ above, as we will prove in general shortly.
 \end{eg}
 
-Notice that for each element in the Grassmann necklace, the propagators contribute in a particular order. It is sometimes useful to think of the propagators in this order. 
-\begin{dfn} \label{prop order dfn}
-Given a set $\cP$ of $k$ propagators defining a Wilson loop diagram $(\cP, [n])$, the Grassmann necklace element $I_i$ imposes an ordering on it $\cP^i = \{p_1 \ldots p_k\}$ where $p_m$ is the $m^{th}$ propagator to contribute to $I_i$. We write $\cP_m^i = \{p_1 \ldots p_m\}$ to be the first $m$ propagators that contribute to $I_i$. We drop the superscript if the Grassman necklace element is clear.
-\end{dfn}
+%Notice that for each element in the Grassmann necklace, the propagators contribute in a particular order. It is sometimes useful to think of the propagators in this order. 
+%\begin{dfn} \label{prop order dfn}
+%Given a set $\cP$ of $k$ propagators defining a Wilson loop diagram $(\cP, [n])$, the Grassmann necklace element $I_i$ imposes an ordering on it $\cP^i = \{p_1 \ldots p_k\}$ where $p_m$ is the $m^{th}$ propagator to contribute to $I_i$. We write $\cP_m^i = \{p_1 \ldots p_m\}$ to be the first $m$ propagators that contribute to $I_i$. We drop the superscript if the Grassman necklace element is clear.
+%\end{dfn}
 
-In the sequel, when we refer to orderings on propagators, we refer to the ordering $\cP^i$. Note that different elements of the Grassmann necklace impose different orderings on the propagators. Furthermore, Lemma \ref{no fourth vertex} shows that this ordering respects the ordering of vertices in $I_i$. That is, $I_i(p_j) <_i I_i(p_l)$ for all $j <l$.\sanote{Maybe move closer to reference lemma}
+%In the sequel, when we refer to orderings on propagators, we refer to the ordering $\cP^i$. 
 
 \begin{rmk} \label{clockwise ordering rem}
 When $p_m$ contributes $I_i(p_m) = a_m$ to the Grassmann necklace, it must be the clockwise-most propagator (amongst those not yet assigned) that is supported on $a_m$ i.e. any other propagator in $\cP \setminus \cP_{m-1}$ that is supported on $a_m$ must be inside $p_m$ in the $a_m-1$ ordering.
