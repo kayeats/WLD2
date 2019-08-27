@@ -413,7 +413,7 @@ to be the vertex support of $P$.
 \item For $U \subseteq V$, the set of {\bf propagators supported on $U$} is denoted by
 \[\Prop(U) = \{ p \in \cP\ |\ V(p) \cap U \neq \emptyset \}.\]
 Note that a propagator in $\Prop(U)$ does not need to have its entire support contained in $U$. 
-\item Vertices of $W$ that do not support any propagators are called {\bf non-supporting}. The set of all non-supporting vertices in $W$ is denoted $F(\emptyset)$. 
+\item Vertices of $W$ that do not support any propagators are called {\bf non-supporting}. \st{The set of all non-supporting vertices in $W$ is denoted $F(\emptyset)$. }\sanote{tried to get rid of this notation. Check if I"ve missed any}
 \end{enumerate}
 \end{dfn}
 
@@ -1073,7 +1073,7 @@ Let $W = (\cP,[n])$ be an admissible Wilson loop diagram\st{, and}{\color{violet
 \end{lem}
 
 \begin{proof}
-We will prove the result by induction on the number of propagators.  If $W$ has one propagator then the result is immediate.  Now suppose $W$ has more than one propagator.  Since non-supporting vertices have no effect on Algorithm~\ref{alg:put GN on WLD}, it suffices to prove the result for $W$  (possibly weakly admissible) with $F(\emptyset) = \emptyset$.  Then by Lemma~\ref{lem sian}, $W$ has at least one of the four situations illustrated in Figure~\ref{fig 3 cases}.
+We will prove the result by induction on the number of propagators.  If $W$ has one propagator then the result is immediate.  Now suppose $W$ has more than one propagator.  Since non-supporting vertices have no effect on Algorithm~\ref{alg:put GN on WLD}, it suffices to prove the result for $W$  (possibly weakly admissible) with \st{$F(\emptyset) = \emptyset$}{\color{violet} no non-supporting vertices}.  Then by Lemma~\ref{lem sian}, $W$ has at least one of the four situations illustrated in Figure~\ref{fig 3 cases}.
 
 \begin{figure}
 \begin{tabular}{lll}
@@ -1647,9 +1647,9 @@ It can easily be seen from \cite[Section 17]{Postnikov} and Algorithm \ref{alg:p
 
 
 \begin{lem}\label{lem good p}
-  Let $W$ be an admissible Wilson loop diagram with $n\geq 1$ propagators.  Then there is some dihedral transformation of $W$ such that the resulting diagram $W'$ has a propagator $p$ with the following properties:
+  Let $W$ be an admissible Wilson loop diagram with \hlfix{$n\geq 1$}{$k \geq 1$? $n$ is the number of vertices?} propagators.  Then there is some dihedral transformation of $W$ such that the resulting diagram $W'$ has a propagator $p$ with the following properties:
   \begin{itemize}
-  \item $p = (i, n-1)$ for some $i$, and $p$ has no propagators inside it w.r.t the $<_i$ ordering (that is $i+2, \ldots, n-2$ do not support any propagators in $W'$).
+  \item $p = (i, n-1)$ for some $i$, and $p$ has no propagators inside it w.r.t the $<_i$ ordering \st{(that is $i+2, \ldots, n-2$ do not support any propagators in $W'$)}.
   \item Either the edge $i$ in $W'$ only supports $p$, or the edge $i$ in $W'$ supports exactly one other propagator $q = (j,i)$, with no other propagators inside $q$ in the $<_j$ ordering. 
   \end{itemize}
 \end{lem}
@@ -1663,12 +1663,12 @@ Note that since the first condition tells us that $p$ has nothing inside it, if 
 
 
 
-Combining Lemmas \ref{lem uncovered}, \ref{lem dihedral}, and \ref{lem good p}, it therefore suffices to study the Le diagrams of weakly admissible Wilson loop diagrams with $F(\emptyset)  = \emptyset$ and admitting one of the configurations described in Lemma \ref{lem good p}, with propagators $p = (n-3, n-1)$ and $q= (n-5, n-3)$ (if $q$ exists) both of length 2. See Figure~\ref{fig special p} for an illustration of the two possibilities. 
+Combining Lemmas \ref{lem uncovered}, \ref{lem dihedral}, and \ref{lem good p}, it therefore suffices to study the Le diagrams of weakly admissible Wilson loop diagrams with \st{$F(\emptyset)  = \emptyset$}{\color{violet}no non-supporting vertices} and admitting one of the configurations described in Lemma \ref{lem good p}, with propagators $p = (n-3, n-1)$ and $q= (n-5, n-3)$ (if $q$ exists) both of length 2. See Figure~\ref{fig special p} for an illustration of the two possibilities. 
 
-The next few lemmas describe how diagrams of this type are related to the corresponding diagram with propagator $p$ removed, first in terms of the Grassmann necklaces (Lemma \ref{lem I}) and then in terms of the Le diagrams (Lemmas \ref{lem shape} to Lemma \ref{lem other k}) . These technical lemmas will form the backbone of the inductive step in the main dimensionality argument.
+The next few lemmas describe how the Grassmann necklaces (Lemma \ref{lem I}) and the Le diagrams (Lemmas \ref{lem shape} to Lemma \ref{lem other k}) of Wilson loop diagrams of this type are related to the corresponding Wilson loop diagram with propagator $p$ removed. \sanote{rephrased, still clear?}
 
 \begin{lem}\label{lem I}
-Let $W$ be an admissible Wilson loop diagram with $n\geq 1$ propagators, and suppose that $W$ admits one of the configurations described in Lemma~\ref{lem good p}, with $p$ and $q$ (if $q$ exists) both of length 2. Let $V$ be $W$ with $p$ removed.  Then we can express $I_*^W$ in terms of $I_*^V$ as follows:
+Let $W$ be an admissible Wilson loop diagram with \hlfix{$k\geq 1$}{Here, as above, can we just say 'with more than one propagator?} propagators, and suppose that $W$ admits one of the configurations described in Lemma~\ref{lem good p}, with $p$ and $q$ (if $q$ exists) both of length 2. Let $V$ be $W$ with $p$ removed.  Then we can express $I_*^W$ in terms of $I_*^V$ as follows:
 
   \begin{align*}
     I_1^{W} & = I_1^{V} \cup \{n-3\} \\
@@ -1689,7 +1689,7 @@ Let $W$ be an admissible Wilson loop diagram with $n\geq 1$ propagators, and sup
   \end{align*}
 \end{lem}
 
-
+\sanote{Add exposition in this section and in intro about how this allows one to talk about what happens to a postriod cell as one adds a propagator. These results aren't enough, but a starting point, and certainly not done in this paper}
 
 \begin{proof}
 The two possible cases for $W$ are illustrated in Figure~\ref{fig special p}.
