@@ -362,7 +362,7 @@ As noted above, the sum of the Feynman integrals associated to Wilson loop diagr
 
 In Section~\ref{section general background}, we summarize the required background for Wilson loop diagrams (subsection~\ref{section WLD background}), the theory of positroids in $\Gr(k,n)$ and their characterization in terms of Grassmann necklaces and Le diagrams (subsection~\ref{sec:positroid background}), and the link between Wilson loop diagrams and positroids (subsection~\ref{sec:WLD as positroids}).
 
-In Section~\ref{sec GN algorithm} we state an algorithm for constructing the Grassmann necklace of the positroid associated to a Wilson loop diagram (Algorithm~\ref{alg:put GN on WLD}) and prove its correctness (Theorem~\ref{res:alg gives GN}). While it was already possible to construct the Grassmann necklace of a Wilson loop diagram via existing bijections between some of the various combinatorial objects that index the positroid cells, this process was convoluted and involved multiple steps; our algorithm allows us to track directly how each propagator in the Wilson loop diagram contributes to each term in the Grassmann necklace. Many of the technical lemmas required to prove Theorem~\ref{res:alg gives GN} continue to be important in subsequent sections: in particular we have Lemma~\ref{lem sian}, which identifies certain configurations of propagators that must appear in any admissible Wilson loop diagram, and Lemma~\ref{vertex cyclic int lem}, which shows that the pattern of values that a propagator contributes to each term of the Grassmann necklace is both simple and predictable.
+In Section~\ref{sec GN algorithm} we state an algorithm for constructing the Grassmann necklace of the positroid associated to a Wilson loop diagram (Algorithm~\ref{alg:put GN on WLD}) and prove its correctness (Theorem~\ref{res:alg gives GN}). While it was already possible to construct the Grassmann necklace of a Wilson loop diagram via existing bijections between some of the various combinatorial objects that index the positroid cells, this process was convoluted and involved multiple steps; our algorithm allows us to track directly how each propagator in the Wilson loop diagram contributes to each term in the Grassmann necklace. {\color{violet} Furthermore, the above algorithm allows us to determine that the positroids associated to Wilson loop better. In particular, Corrollary \ref{no coloops} shows that these positroids have no coloops, and gives an exact characterization of their loops.}Many of the technical lemmas required to prove Theorem~\ref{res:alg gives GN} continue to be important in subsequent sections: in particular we have Lemma~\ref{lem sian}, which identifies certain configurations of propagators that must appear in any admissible Wilson loop diagram, and Lemma~\ref{vertex cyclic int lem}, which shows that the pattern of values that a propagator contributes to each term of the Grassmann necklace is both simple and predictable.
 
 In Section~\ref{sec dim} we examine the dimension of positroids associated to Wilson loop diagrams, and show that the dimension is always equal to three times the number of propagators in the diagram (Theorem~\ref{thm dim}).  While this has been proved by Marcott in \cite{WLDdim} using matroidal arguments, our proof is constructive and explicitly relates the position of the plusses in the Le diagram to the propagators in the Wilson loop diagram.
 
@@ -635,7 +635,7 @@ While this paper primarily approaches proofs from a combinatorial point of view,
 
 
 
-In this section we will give an algorithm (Algorithm~\ref{alg:put GN on WLD}) to go directly from a Wilson loop diagram to the Grassmann necklace of its positroid. This is a useful result in and of itself, as it greatly simplifies the process of identifying the positroid associated to a given WLD. It also allows us to examine how the positroid changes as we make minor changes to the Wilson loop diagram; indeed, the techniques we develop in this section to verify that our algorithm produces the correct Grassmann necklace will also be used repeatedly in later sections.
+In this section we will give an algorithm (Algorithm~\ref{alg:put GN on WLD}) to go directly from a Wilson loop diagram to the Grassmann necklace of its positroid. This is a useful result in and of itself, as it greatly simplifies the process of identifying the positroid associated to a given Wilson loop diagram. {\color{violet} Furthemore, we use it to characterise the positroids associated to Wilson loop diagrams according to loops and coloops (Corrollary \ref{no coloops}).} It also allows us to examine how the positroid changes as we make minor changes to the Wilson loop diagram; indeed, the techniques we develop in this section to verify that our algorithm produces the correct Grassmann necklace will also be used repeatedly in later sections.
 
 One of the key insights is that each element of the Grassmann necklace can be viewed as a function from the propagators of the diagram to the vertices in the Grassman necklace element.  This is captured in Definition~\ref{def I_i as a function}, and used throughout the paper.
 
@@ -1583,20 +1583,17 @@ Now repeat the argument above with $p_s$ in place of $p_r$: if the other end of 
 
 
 
-
-\sanote{START HERE}
-
-We can now unambiguously refer to Algorithm~\ref{alg:put GN on WLD} as the Grassmann necklace algorithm. We close this section with a simple observation about the Grassmann necklaces of positroids associated to Wilson loop diagrams.
+We have now shown that Algorithm~\ref{alg:put GN on WLD} assoiates the correct Grassmann necklace to a Wilson Loop diagam Thereofre, we refer to Algorithm~\ref{alg:put GN on WLD} as the Grassmann necklace algorithm. We close this section with a simple observation about the Grassmann necklaces of positroids associated to Wilson loop diagrams.
 
 
 In an arbitrary Grassmann necklace, it is possible for an index $i$ to appear in no terms of the Grassmann necklace (a {\em loop}) or in all terms of the necklace (a {\em coloop}). Using Theorem~\ref{res:alg gives GN}, a characterization of the loops and coloops of the Grassmann necklace associated to a Wilson loop diagram follows easily.
 
 
-\begin{cor}\label{no coloops}\sanote{cite more prominently in frontmatter}
+\begin{cor}\label{no coloops}
 Grassmann necklaces coming from admissible Wilson loop diagrams have no coloops. A vertex $j$ is a loop if and only if $j$ supports no propagators. 
 \end{cor}
 \begin{proof}
-For any $i \in [n]$, $i-1$ is maximal with respect to the $<_{i}$ order and so by Lemma~\ref{lem no fourth vertex} there can be no propagator $p$ with $I_{i}(p) = i-1$. Thus $i-1 \not\in I_{i}$, so $i-1$ is not a coloop. Since this holds for any $i \in [n]$, the Grassmann necklace admis no coloops.
+For any $i \in [n]$, $i-1$ is maximal with respect to the $<_{i}$ order and so by Lemma~\ref{lem no fourth vertex} there can be no propagator $p$ with $I_{i}(p) = i-1$. Thus $i-1 \not\in I_{i}$, so $i-1$ is not a coloop. Since this holds for any $i \in [n]$, the Grassmann necklace admits no coloops.
 
 If $j \in [n]$ is a loop then in particular we have $j \not\in I_j$, which can only happen if there are no propagators supported on vertex $j$. Conversely, if $j$ supports no propagators, then Algorithm~\ref{alg:put GN on WLD} never assigns a propagator to $j$ and hence $j \not\in I_i$ for all $i \in [n]$.
 \end{proof}
@@ -1604,25 +1601,28 @@ If $j \in [n]$ is a loop then in particular we have $j \not\in I_j$, which can o
 
 
 
+
 \section{Dimension of the Wilson Loop cells}\label{sec dim}
 
-Our next goal is to show that the dimension of the positroid cell defined by a Wilson loop diagram $(\cP, [n])$ has dimension $3|\cP|$ (Theorem \ref{thm dim}).  The positroid cells associated to the Amplituhedron are of dimension $4|\cP|$. In \cite{non-orientable}, Agarwala and Marcott show that the dimension of the Deodhar component is 
-\[|\cP| + \text{ the dimension of associated positroid cell}.\]
-\note{What if instead of displaying this we wrote ``is the sum of $\|\cP\|$ and the dimension fo the associated positroid cell.''}
+In continuing to characterise the poistroid cells associated to Wilson loop diagrams, our next goal is to show that the dimension of the positroid cell defined by a Wilson loop diagram $(\cP, [n])$ has dimension $3|\cP|$ (Theorem \ref{thm dim}).  The positroid cells associated to the Amplituhedron are of dimension $4|\cP|$. In \cite{non-orientable}, Agarwala and Marcott show that the dimension of the Deodhar component is the sum of $\|\cP\|$ and the dimension fo the associated positroid cell.
+%\[|\cP| + \text{ the dimension of associated positroid cell}.\]
+\note{What if instead of displaying this we wrote ``is the sum of $\|\cP\|$ and the dimension fo the associated positroid cell.''}\sanote{implemented, but don't like how it no longer stands out. Thoughts?}
 In other words, the Deodhar component associated to a Wilson loop diagram is $4|\cP|$, showing that the geometry underlying the Wilson loop diagrams is consistent with the geometry underlying the Amplituhedron.
 
-Marcott in \hlfix{***cite this***}{highlighted for anyone skimming through} gives a different proof of the $3|\cP|$-dimensionality of $M(W)$ which is geometric and more elegant, but it is not easy to track the effect of a particular propagator.  Our approach is much more explicit.
+Marcott in \cite{WLDdim} gives a different proof of the $3|\cP|$-dimensionality of $M(W)$ which is geometric and more elegant, but it is not easy to track the effect of a particular propagator.  Our approach is much more explicit.
 
 Recall that the dimension of a positroid cell is equal to the number of plusses in the associated Le diagram \cite[Theorem 6.5]{Postnikov}. By combining Algorithms~\ref{alg:put GN on WLD} and \ref{alg:GN to Le} (converting from WLD to Grassmann necklace, and Grassmann necklace to Le diagram respectively) we explicitly describe the effect of adding another propagator to a Wilson loop diagram in terms of the plusses of the associated Le diagrams, and hence give a recursive proof of the $3|\cP|$-dimensionality of the cells.
 
 We start with several lemmas, of roughly increasing degree of technicality. We begin by relating non-supporting vertices to columns of zeros in the Le diagram (Lemma \ref{lem uncovered}) and verifying that performing dihedral transformations on a Wilson loop diagram does not change the dimension of of the associated Le diagram (Lemma \ref{lem dihedral}).
+
+\sanote{musing: would it be worth moving the LE diagram exposition here? Do we use it ealier? I like having exposition in front generally, but it feels a mile away.}
 
 \begin{lem}\label{lem uncovered}
 Let $W$ be an admissible Wilson loop diagram with $k$ propagators, and with a vertex $i$ that supports no propagators.  Let $V$ be $W$ with vertex $i$ removed.  Then the Le diagram of $W$ is obtained from the Le diagram of $V$ by inserting an extra column containing all $0$s in position $i$ (i.e. such that the new column has the label $i$).
 \end{lem} 
 
 \begin{proof}
-  By Algorithm~\ref{alg:put GN on WLD} the Grassmann necklace of $W$ is obtained from the Grassmann necklace of $V$ by duplicating the $i$th element of the Grassmann necklace of $V$ (shifting indices by $1$ for all indices greater than $i$), and incrementing all indices greater than $i$ by $1$ in each Grassmann necklace element\note{This is saying to increment twice in a way which I think is confusing, but presumably the parenthetical remark was put there to try to clarify something so I don't want to just remove it}.  Formally, if $I_1^{V}, \ldots, I_{n-1}^{V}$ and $I_1^{W}, \ldots, I_n^{W}$ are the Grassmann necklaces of $V$ and $W$ respectively then
+  By Algorithm~\ref{alg:put GN on WLD} the Grassmann necklace of $W$ is obtained from the Grassmann necklace of $V$ by duplicating the $i$th element of the Grassmann necklace of $V$ (shifting indices by $1$ for all indices greater than $i$), and incrementing all indices greater than $i$ by $1$ in each Grassmann necklace element\note{This is saying to increment twice in a way which I think is confusing, but presumably the parenthetical remark was put there to try to clarify something so I don't want to just remove it}.  Formally, \st{if $I_1^{V}, \ldots, I_{n-1}^{V}$ and $I_1^{W}, \ldots, I_n^{W}$ are the Grassmann necklaces of $V$ and $W$ respectively then}\sanote{in favor of removing parenthetical, we say same thing twice without it}
   \[
   I_j^{W} =
   \begin{cases}
@@ -1632,7 +1632,7 @@ Let $W$ be an admissible Wilson loop diagram with $k$ propagators, and with a ve
   \]
 
 
-By Lemma~\ref{no coloops} we know that $i \not\in I_1^W$, and so $i$ must label a horizontal edge on the boundary of the Le diagram of $W$, i.e. it must be a column label. The shapes of the Le diagram of $V$ and $W$ are the same except for the insertion of this column since $I_1^*$\note{I don't find the star very helpful here; different area's conventions maybe} is the same for $V$ and $W$ except for the incrementation of the indices $\geq i$ in the transition from the necklace for $V$ to the necklace for $W$. 
+By Corrollary~\ref{no coloops} we know that $i \not\in I_1^W$, and so $i$ must label a horizontal edge on the boundary of the Le diagram of $W$, i.e. it must be a column label. The shapes of the Le diagram of $V$ and $W$ are the same except for the insertion of this column since $I_1^*$\note{I don't find the star very helpful here; different area's conventions maybe} is the same for $V$ and $W$ except for the incrementation of the indices $\geq i$ in the transition from the necklace for $V$ to the necklace for $W$. 
 \end{proof}
 
 
