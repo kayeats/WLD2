@@ -691,7 +691,7 @@ In other words, $\ell(p)$ is the size of the smaller of the sets of vertices on 
   The following observations about configurations of propagators of short length in a weakly admissibly Wilson loop diagram $W$ are easily verified:
  \begin{enumerate}
 \item If $p = (i,i+3)$ is a propagator of length 3, then the middle vertex $i+2$ supports at most one propagator.
-\item If every vertex in $W$ supports at least one propagator, then $W$ admits at least one propagator of length 2.
+\item If every vertex in $W$ supports at least one propagator, then $W$ admits at least one propagator of length 2.  Furthermore, by the same reasoning, if $p=(i,j)$ is a propagator of $W$ and every vertex in $[i,j]$ supports at least one propagator then there is at least one propagator of length $2$ in $\mathcal{P}_{in}(p, <_i)$.
 \end{enumerate}
 \end{rmk}
 
@@ -757,7 +757,7 @@ From our existing assumptions, we know the following facts: $p_1$ is not in conf
 
 Now suppose $q_{r} = (i_r, k_r)$ exists by the induction hypothesis and is oriented $(q_r, <_{i_r})$ so that the previous $p_i$ and $q_i$ are on the outside. For the rest of this proof, we assume this orientation and drop the $<_{i_r}$ from the notation.
 
-Let \hlfix{$W_r := (\cP_{in}(q_r),[n])$}{technically has non supporting vertices. Want $(\cP_{in}(q_r),[i_r, k_r+1])$. However this is clear later. Do we care?}\note{No, we don't quite want that either because we don't want the newly shortened $q_r$ to be our propagator of length 2 -- maybe a slight change to the remark} be the subdiagram of $W$ consisting only of those propagators inside $q_r$ (including $q_r$ itself); in particular $W_r$ contains none of the previous $p_i$ or $q_i$. By the original hypotheses on $W$, every vertex in $[i_r,k_{r+1}]$ (of which there are at least 4, since $\ell(q_r) \geq 4$) must support at least one propagator. Therefore $W_r$ admits at least one propagator of length 2 (by Remark~\ref{rem:props of length 2 and 3}) and no propagators of length $3$ (by our assumption on $W$).
+Let $W_r := (\cP_{in}(q_r),[n])$ be the subdiagram of $W$ consisting only of those propagators inside $q_r$ (including $q_r$ itself); in particular $W_r$ contains none of the previous $p_i$ or $q_i$. By the original hypotheses on $W$, every vertex in $[i_r,k_{r+1}]$ (of which there are at least 4, since $\ell(q_r) \geq 4$) must support at least one propagator. Therefore $W_r$ admits at least one propagator of length 2 (by Remark~\ref{rem:props of length 2 and 3}) and no propagators of length $3$ (by our assumption on $W$).
 
 Let $p_{r+1} = (j_{r+1}, j_{r+1}+2)$ be a propagator of length 2 in $W_r$; if it forms part of configuration \ref{item big and 2} or \ref{item pair of 2s}
 %the configuration \eqref{eq:2 prop config}
