@@ -477,7 +477,7 @@ In particular, this implies that any singularities in the integrals $I(W)$ must 
 With this motivation in mind, in this paper we study the denominator $R(W)$ of the volume form $\Omega(W)$, which we define next.
 
 \begin{dfn}\label{def R(W)}
-Let $W = (\cP,V)$ be an admissible Wilson loop diagram, and fix an edge $e$. Let $\{p_1 \ldots p_r\}$ be the propagators with one end lying on edge $e$ under a counterclockwise orderin. That is, $p_1$ is closest to the vertex $e$, $p_i$ is positioned counterclockwise to $p_{i+1}$ and $p_r$ is the clockwise most propagator on this edge (closest to vertex $e+1$). Define the polynomial
+Let $W = (\cP,V)$ be an admissible Wilson loop diagram, and fix an edge $e$. Let $\{p_1 \ldots p_r\}$ be the propagators with one end lying on edge $e$ under a counterclockwise ordering. That is, $p_1$ is closest to the vertex $e$, $p_i$ is positioned counterclockwise to $p_{i+1}$ and $p_r$ is the clockwise most propagator on this edge (closest to vertex $e+1$). Define the polynomial
 \[ R_e =  x_{p_1,e+1} \prod_{j= 1}^{r-1} \left((x_{p_j,e} x_{p_{j+1},e+1} - x_{p_{j+1},e} x_{p_{j},e+1} ) \right) x_{p_r,e}\;\]
 to be the component of $R(W)$ associated to edge $e$. Note that if $r = 1$ (i.e. there is exactly one propagator lying on edge $e$) then this expression simplifies to $R_e = x_{p,e} x_{p,e+1}$. If $r=0$, set $R_e = 1$. The denominator $R(W)$ is defined to be the product of all of the $R_e$, i.e. 
 \[R(W) = \prod_{e \in V} R_e.\]
@@ -879,7 +879,7 @@ In the case that all vertices of an admissible WLD $W$ support at least two prop
 
 In this section, we give an algorithm for passing directly from the Wilson loop diagrams to its Grassmann necklace. This not only greatly simplifies the previously known process to obtain a positroid cell from a Wilson loop diagram, but will also allow us to relate the behavior of the positroid $M(W)$ directly to the configuration of progators in $W$.
 
-The fact that Algorithm~\ref{alg:put GN on WLD} does construct the required Grassmann necklace is proved in Theorem~\ref{res:alg gives GN}. An worked example of Algorithm~\ref{alg:put GN on WLD} is given in Example~\ref{eg:apply GN alg}.
+The fact that Algorithm~\ref{alg:put GN on WLD} does construct the required Grassmann necklace is proved in Theorem~\ref{res:alg gives GN}. A worked example of Algorithm~\ref{alg:put GN on WLD} is given in Example~\ref{eg:apply GN alg}.
 
 \begin{algorithm}\label{alg:put GN on WLD}
 Let $W = (\cP, [n])$ be an admissible Wilson loop diagram. In order to construct the set $I_i^W$ for $i \in [n]$, perform the following steps:
@@ -888,28 +888,25 @@ Let $W = (\cP, [n])$ be an admissible Wilson loop diagram. In order to construct
 \item Fix a vertex $i \in [n]$, the {\bf starting vertex}. Set $j:=i$ and $I_i^W = \emptyset$.
 \item While $\cP \neq \emptyset$, perform the following steps:
 \begin{enumerate}
-\item {\em Step $j$ for starting vertex $i$}: If $\Prop(j) = \emptyset$, do nothing. Else, let $p \in \Prop(j)$ be the clockwise most propagator supported on $j$. Write $I_i^W = I_i^W\cup \{j\}$, and delete propagator $p$ from the diagram.
+\item {\em Step $j$ for starting vertex $i$}: If $\Prop(j) = \emptyset$, do nothing. Else, let $p \in \Prop(j)$ be the clockwise-most propagator supported on $j$. Write $I_i^W = I_i^W\cup \{j\}$, and delete propagator $p$ from the diagram.
 \item Increment $j$ by 1 and repeat from (a).
 \end{enumerate}
 \end{enumerate}
 \end{algorithm}
 
-Informally: one starts at $i$ and moves counterclockwise around the vertices of $W$, at each step removing the clockwise-most propagator supported on that vertex (if it exists). The set $I_i$ lists the vertices at which a propagator was deleted. 
+Informally: one starts at $i$ and moves counterclockwise around the vertices of $W$, at each step removing the clockwise-most propagator supported on that vertex (if it exists). The set $I_i^W$ lists the vertices at which a propagator was deleted. 
 
 
-If the algorithm assigns vertex $j$ to propagator $p$ from starting vertex $i$, we say that $p$ \emph{contributes} $j$ to $I_i$. Notationally, we represent this by allowing the $I_i$ symbol to represent a function as well as a set, as follows:
+If the algorithm assigns vertex $j$ to propagator $p$ from starting vertex $i$, we say that $p$ \emph{contributes} $j$ to $I_i^W$. Notationally, we represent this by allowing the $I_i^W$ symbol to represent a function as well as a set, as follows:
 \begin{dfn}\label{def I_i as a function}
 Let $W = (\cP, [n])$ be an admissible Wilson loop diagram. For each $i \in [n]$, define a function $I_i^W : \cP \longrightarrow [n]$ by
 \[I_i^W(p) := \text{the vertex label that $p$ contributes to $I_i$ in Algorithm~\ref{alg:put GN on WLD},}\]
 for each $p \in \cP$. 
 \end{dfn}
 
-For both $I_i^W$ the set and the function, when the diagram $W$ is clear from context, we drop the superscript and simply write $I_i$.
+For both $I_i^W$ the set and the function, when the diagram $W$ is clear from context we drop the superscript and simply write $I_i$.
 
-% Sian deleted the propagator ordering for now: since we only use it in one proof, we can make it a local definition.
-% Obviously if we find ourselves using it elsewhere we can bring this definition back. (If so, uncomment the line in the following example as well.)
-
-%Each $I_i$ also imposes an ordering on the propagators, determined by when the propagator contributes to the sequence:
+  
 \begin{dfn} \label{proporderingdfn}
   There is an ordering on the propagators on $W = (\cP, [n])$ defined by $I_i$. This is the ordering in which they contribute to the algorithm as it constructs $I_i$.
 %  $\cP = \{p_1, \ldots p_k\}$, where 
@@ -918,7 +915,7 @@ For both $I_i^W$ the set and the function, when the diagram $W$ is clear from co
 \end{dfn}
 
 Since each propagator is removed by the algorithm after it contributes, each propagator contributed exactly once to $I_i$, making the above ordering well defined.
-Note that different $I_*$ impose different orderings on the propagators. Furthermore, Corrollary \ref{GN alg well defined} shows that this ordering respects the ordering of vertices in $I_i$. That is, $I_i(p_j) <_i I_i(p_l)$ for all $j <l$.
+Note that different $I_*$ impose different orderings on the propagators. Furthermore, Corollary \ref{GN alg well defined} shows that this ordering respects the ordering of vertices in $I_i$. That is, if $p_j$ occurs before $p_l$ in the ordering imposed by $I_i$, then we also have $I_i(p_j) <_i I_i(p_l)$.
 
 \begin{eg}\label{eg:apply GN alg}Consider the admissible Wilson loop diagram
 \[W\ =\ \begin{tikzpicture}[rotate=67.5,baseline=(current bounding box.east)]
@@ -946,10 +943,10 @@ $I_1$ viewed as a function is given by
 \[I_1: \cP \longrightarrow [n] : \quad I_1(r) = 1,\quad I_1(q) = 2, \quad I_1(p) = 3, \quad I_1(s) = 5.\]
 Applying the algorithm for all 8 starting vertices, we obtain the sets
 \[1235, 2356, 3456, 4567, 5671, 6712, 7812, 8123.\]
-The reader can easily verify that this sequence of $k$-sets satisfies the definition of a Grassmann necklace, and can (with significantly more work) also verify that this Grassmann necklace defines the positroid $M(W)$ associated to the Wilson loop diagram $W$ above, as we will prove in general shortly.
+The reader can easily verify that this sequence of $k$-sets satisfies the definition of a Grassmann necklace, and can (with significantly more work) also verify that this Grassmann necklace defines the positroid $M(W)$ associated to the Wilson loop diagram $W$ above. We will prove this in general shortly.
 \end{eg}
 
-%Notice that for each element in the Grassmann necklace, the propagators contribute in a particular order. It is sometimes useful to think of the propagators in this order. 
+%
 %\begin{dfn} \label{prop order dfn}
 %Given a set $\cP$ of $k$ propagators defining a Wilson loop diagram $(\cP, [n])$, the Grassmann necklace element $I_i$ imposes an ordering on it $\cP^i = \{p_1 \ldots p_k\}$ where $p_m$ is the $m^{th}$ propagator to contribute to $I_i$. We write $\cP_m^i = \{p_1 \ldots p_m\}$ to be the first $m$ propagators that contribute to $I_i$. We drop the superscript if the Grassman necklace element is clear.
 %\end{dfn}
@@ -972,65 +969,66 @@ With this setup, if we can find a vertex $\ell$ occurring after both $i$ and $m$
 \begin{figure}
 \[
 \begin{tikzpicture}[baseline=(current bounding box.east)]
-	\begin{scope}
-	W' = \drawWLDfragment[12]{3}{0.4} 
-	%\drawnumberspartial % use this to debug
-	\newnode[left]{1}{i}
-	\newnode[below]{4}{j}
-	\newnode{5}{}
-	\newnode{6}{}
-	\newnode{7}{}
-	\newnode{8}{}
-	\newnode{9}{}
-	\newnode{11}{}
-	\newnode[right]{12}{l+1}
-	\begin{scope}
-		\clipcenterarc(0,0)(\startpoint-10:\endpoint+10:\radius)
-		\newpropbend{6.3}{8.6}{80}
-		\node at (\zero + 7.5*\step:\radius*0.8) {\footnotesize $r$};
-		\newprop[midway,left]{5.5}{-4}{}
-		\node at (\zero + 3*\step:\radius*0.5) {\footnotesize $p$};
-		\newprop[midway]{11.5}{-4}{}
-		\node at (\zero + 12.2*\step:\radius*0.7) {\footnotesize $q$};
-	\end{scope}
+  \begin{scope}
+  W' = \drawWLDfragment[12]{3}{0.4} 
+  %\drawnumberspartial % use this to debug
+  \newnode[left]{1}{i}
+  \newnode[below]{4}{j}
+  \newnode{5}{}
+  \newnode{6}{}
+  \newnode{7}{}
+  \newnode{8}{}
+  \newnode{9}{}
+  \newnode{11}{}
+  \newnode[right]{12}{l+1}
+  \begin{scope}
+    \clipcenterarc(0,0)(\startpoint-10:\endpoint+10:\radius)
+    \newpropbend{5.3}{7.6}{80}
+    \node at (\zero + 6.5*\step:\radius*0.8) {\footnotesize $r$};
+    \newprop[midway,left]{8.5}{-4}{}
+    \node at (\zero + 8.15*\step:\radius*0.5) {\footnotesize $p$};
+    \newprop[midway]{11.5}{-4}{}
+    \node at (\zero + 12.2*\step:\radius*0.7) {\footnotesize $q$};
+  \end{scope}
 \end{scope}
 \end{tikzpicture}
 \qquad \qquad
 \begin{tikzpicture}[baseline=(current bounding box.east)]
-	V' = \begin{scope}
-	\drawWLDfragment[12]{3}{0.4} 
-	%\drawnumberspartial % use this to debug
-	\newnode[left]{2}{m}
-	\newnode[below]{4}{j}
-	\newnode{5}{}
-	\newnode{6}{}
-	\newnode{7}{}
-	\newnode{8}{}
-	\newnode{9}{}
-	\newnode{11}{}
-	\newnode[right]{12}{l+1}
-	\begin{scope}
-		\clipcenterarc(0,0)(\startpoint-10:\endpoint+10:\radius)
-		\newpropbend{6.3}{8.6}{80}
-		\node at (\zero + 7.5*\step:\radius*0.8) {\footnotesize $r$};
-		\newprop[midway,left]{5.5}{19}{}
-		\node at (\zero + 5.5*\step:\radius*0.5) {\footnotesize $s$};
-		\newprop[midway]{11.5}{21}{}
-		\node at (\zero + 11.8*\step:\radius*0.8) {\footnotesize $t$};
-	\end{scope}
+  V' = \begin{scope}
+  \drawWLDfragment[12]{3}{0.4} 
+  %\drawnumberspartial % use this to debug
+  \newnode[left]{2}{m}
+  \newnode[below]{4}{j}
+  \newnode{5}{}
+  \newnode{6}{}
+  \newnode{7}{}
+  \newnode{8}{}
+  \newnode{9}{}
+  \newnode{11}{}
+  \newnode[right]{12}{l+1}
+  \begin{scope}
+    \clipcenterarc(0,0)(\startpoint-10:\endpoint+10:\radius)
+    \newpropbend{5.3}{7.6}{80}
+    \node at (\zero + 6.5*\step:\radius*0.8) {\footnotesize $r$};
+    \newprop[midway,left]{8.5}{22}{}
+    \node at (\zero + 8.5*\step:\radius*0.5) {\footnotesize $s$};
+    \newprop[midway]{11.5}{21}{}
+    \node at (\zero + 11.8*\step:\radius*0.8) {\footnotesize $t$};
+  \end{scope}
 \end{scope}
 \end{tikzpicture}
 \]
-\caption{$W'$ and $V'$ are locally the same between $j$ and $l+1$, so we will have $I_i^W\cap [j,l] = I_m^V\cap[j,l]$ even though $p \neq s$ and $q \neq t$.}\label{fig:locally identical}
+\caption{$W'$ and $V'$ are locally the same between $j$ and $l+1$, so we will have $I_i^W\cap [j,l] = I_m^V\cap[j,l]$ even though $p \neq s$ and $q \neq t$. Note that propagators such as $r$ which have {\em both} ends inside the region of interest must be identical in both diagrams.}\label{fig:locally identical}
 \end{figure}
 
 \end{rmk}
 
-With that in mind, we are ready to begin proving properties of the algorithm. We first show that the algorithm for $I_i$ can never reach the final vertex (in the $<_i$ order) in a propagator's support without having already assigned that propagator; in particular, this guarantees that the construction of $I_i$ always terminates in fewer than $n$ steps, as shown in Corrollary \ref{GN alg well defined}.
+With that in mind, we are ready to begin proving properties of the algorithm. We first show that the algorithm for $I_i$ can never reach the final vertex (in the $<_i$ order) in a propagator's support without having already assigned that propagator; in particular, this guarantees that the construction of $I_i$ always terminates in fewer than $n$ steps.
 
 \begin{lem}\label{lem no fourth vertex}
 Let $W$ be an admissible Wilson loop diagram containing at least one propagator. For any $i \in [n]$ and for any $p \in \cP$, $I_i(p)$ is not maximal (with respect to $<_i$) amongst the vertices that support $p$.
-\end{lem} \sanote{wanted to rewrite this lemma to emphasize the fact that we are using the same properties of Alg 3.7 over and over again, and have these principals set apart in a remark}
+\end{lem} 
+\sanote{wanted to rewrite this lemma to emphasize the fact that we are using the same properties of Alg 3.7 over and over again, and have these principals set apart in a remark}
 \begin{proof}
 Suppose for contradiction that we have $i \in [n]$ and $p \in \cP$ such that $I_i(p)$ is $<_i$-maximal in $V(p)$. There are two possibilities, which are illustrated in Figure~\ref{fig:no fourth vertex}: \st{either $p = (i-1,b)$ for some $b$ (so $i$ and $I_i(p) = i-1$ are the two ends of a single edge), or $p = (a,b)$ with $i\leq_i a <_i b$ and $I_i(p) = b+1$.} {\color{violet}either $i-1 \in V(p)$, in which case it is the last vertex in the $<_i$ order and $I_i(p)= i-1$, or $i-1 \not \in V(p)$ in which case,  $p= a, b$, $i \in [b+2, a]$ and $I_i(p) = b+1$.}
 
@@ -1086,14 +1084,12 @@ Suppose for contradiction that we have $i \in [n]$ and $p \in \cP$ such that $I_
 		\end{scope}
 	\end{tikzpicture}
 \] 
-\caption{The two types of configuration in which a propagator could (in theory) contribute its $<_i$-maximal support vertex to $I_i$.}
+\caption{The two types of configuration that would (in theory) allow the propagator $p$ to contribute its $<_i$-maximal support vertex to $I_i$.}
 \label{fig:no fourth vertex}
 \end{figure}
-\note{Question: is the diagram clearer in this configuration (starting vertex $i$ matches up in both) or in the old configuration (propagator $p$ matches up)?} \sanote{I think it is fine as is}
-
 In Case 1, \st{observe that we must have another propagator $q = (c,b)$ with $c<_i b$ and $I_i(q) = b+1$, because otherwise $I_i$ would assign $p$ to $b+1$.}{\color{violet} since $b+1<_i I_i(p)$ there must be some propagator, $q$ before $p$ in $\cP^i$ such that $I_i(q) = b+1$. By remark \ref{clockwise ordering rem}, $p$ is inside $q$ in the $<_b$ order. Specifically, $q$ must also end on the $b^{th}$ edge. By non-crossing and desnity arguements of admissibility $i-1$ cannot be in $V(q)$.} Now $q$ also contributes the $<_i$-maximal vertex in its support to $I_i$ and is an instance of Case 2. Therefore it suffices to show that no admissible Wilson loop diagram admits the configuration illustrated in Case 2 of Figure~\ref{fig:no fourth vertex}. 
 
-So let $p = (a,b)$ with $a<_ib$ and $I_i(p) = b+1$, and choose $p$ such that $\big|[a+1,b]\big|$ is minimal amongst propagators of $W$ which contribute their last vertices and are in Case 2.
+So let $p = (a,b)$ with $a<_ib$ and $I_i(p) = b+1$, and choose $p$ such that $\big|[a+1,b]\big|$ is minimal amongst propagators of $W$ which contribute their last vertex and are in Case 2.
 
 Since $I_i(p) \neq b$, there must exist a propagator $q$ inside of $(p,<_i)$ with $I_i(q) = b$. The propagator $q$ cannot end on the edge $b-1$, as this would contradict the minimality of $p$, so we have $q = (d,b)$ with $a <_i d <_i b$, and $I_i(q) = b$. 
 
@@ -1101,7 +1097,7 @@ In order for $q$ to remain unassigned until vertex $b$, there must be another pr
 \end{proof}
 
 \begin{cor}\label{GN alg well defined}
-If $W$ is an admissible Wilson loop diagram with $k$ propagators and $n$ vertices. Then Algorithm~\ref{alg:put GN on WLD} assigns exactly $k$ distinct vertices to each $I_i$ in $n$ steps.
+If $W$ is an admissible Wilson loop diagram with $k$ propagators and $n$ vertices, then Algorithm~\ref{alg:put GN on WLD} assigns exactly $k$ distinct vertices to each $I_i$ in $n$ steps.
 \end{cor} 
 \begin{proof}
 Fix $i \in [n]$. It follows from the proof of Lemma~\ref{lem no fourth vertex} that in applying Algorithm~\ref{alg:put GN on WLD} to construct the set $I_i$, the algorithm can never reach the fourth vertex of a propagator's support (ordered with respect to $<_i$) without having already assigned that propagator. Therefore if the algorithm starts at vertex $i$, all propagators must have been eliminated by the time it gets to vertex $i-1$, ensuring that the algorithm is completed in less than one full circumnavigation of the diagram and that $I_i$ contains exactly $k$ distinct elements.
@@ -1345,7 +1341,7 @@ We now consider what happens as we move from $V$ to each of the three remaining 
 
 \textbf{Cases 1 and 2}: These cases behave essentially identically (except when $j$ or $j+1$ are not in the support of $p$, which can occur in Case 2 only; see below) so we handle the majority of the proof for these two cases simultaneously. Write $p=(m,m+2)$ where $m\in \{i, i+1, l\}$. Let $1\leq a\leq 3$ be the number of non-supporting vertices inside $q$ in $V$ (note that there is at least 1); so these vertices are $l, \ldots, l+a-1$.  Note that these vertices are non-supporting in $V$ but are all in the support of $p$ in $W$. 
 
-We first calculate $I^{W}_w$ for a starting vertex ${w \in [n]\backslash \{l, l+1, \ldots,j,j+1\}}$. \hlfix{Note that $p$ has no effect on other propagators for starting vertices in this range,}{By rmk \ref{rmk algorithm locally same}? If so, the entire proof depends on this fact. We should state it prominently and move on.} so if $r \neq p$, then $I_w^W(r) = I_w^V(r)$. Meanwhile, the value of $I^{W}_w(p)$ depends on which step in the algorithm the propagator $q$ contributes a vertex in the diagram $V$, i.e. on the value of $I^{V}_w(q)$. Thus, if $w\in J_q^{V}(i)$ then 
+We first calculate $I^{W}_w$ for a starting vertex ${w \in [n]\backslash \{l, l+1, \ldots,j,j+1\}}$. Note that $p$ has no effect on other propagators for starting vertices in this range \hlfix{(since $p$ will be the final propagator encountered by the algorithm)}{Sian added this: it's not really a locally-the-same argument so I'm not sure it'll help to reference Remark 3.12} so if $r \neq p$, then $I_w^W(r) = I_w^V(r)$. Meanwhile, the value of $I^{W}_w(p)$ depends on which step in the algorithm the propagator $q$ contributes a vertex in the diagram $V$, i.e. on the value of $I^{V}_w(q)$. Thus, if $w\in J_q^{V}(i)$ then 
     \[
     I_w^{W}(r) =  \begin{cases}
         \max\{i+1, m\} & \text{if } r=p \\
@@ -1498,26 +1494,40 @@ The sequence of $k$-subsets $(I_1,\dots,I_n)$ obtained by applying Algorithm~\re
 \end{thm}
 \begin{proof}
 %\note{Sian replaced ``counterclockwise'' with ``clockwise'' in a couple of places in this proof: someone please doublecheck?  Karen checked and it seems correct with Sian's changes.}
+% Thank you! Clocks are difficult.
 For each $i \in [n]$, let $I_i$ be the set of vertices assigned to the propagators of $W$ by Algorithm~\ref{alg:put GN on WLD} with starting vertex $i$. By Lemma~\ref{GN alg well defined}, we know that $|I_i| = k$ for each $i \in [n]$. We prove that $I_{i+1} \supseteq I_i \backslash \{i\}$ for all $i \in [n]$; this is equivalent to the definition of Grassmann necklace given in Definition~\ref{def:grassmann necklace}.
 
-Suppose for a contradiction that there exists an admissible diagram for which there exists an $i$ with $m\in I_i\setminus \{i\}$ and $m \not\in I_{i+1}$.  Fix $n$.  Let $W$ be such a counterexample with the minimal number of propagators.
+Fix $n$, and suppose for a contradiction that there exists an admissible diagram for which there exists an $i$ with $m\in I_i\setminus \{i\}$ and $m \not\in I_{i+1}$.  Let $W$ be such a counterexample with the minimal number of propagators.
 
-If $i \not\in I_i$, then there are no propagators supported on $i$ at all.  In this case it is clear that applying Algorithm~\ref{alg:put GN on WLD} at vertex $i$ and vertex $i+1$ produces exactly the same result, i.e. $I_{i+1} = I_i$, and so $(W, i, m)$ is not a counterexample at all.
+If $i \not\in I_i$, then there are no propagators supported on $i$ at all.  In this case it is clear that applying Algorithm~\ref{alg:put GN on WLD} at vertex $i$ and vertex $i+1$ produces exactly the same result, i.e. $I_{i+1} = I_i$, and so $W$ is not a counterexample at all.
 
 Now suppose that $i \in I_i$.  Let $p$ be the propagator which contributes $i$ to $I_i$, that is $I^W_i(p) = i$; thus one end of $p$ must lie on either edge $i-1$ or edge $i$.  In both cases let $b$ denote the edge supporting the other end of $p$, i.e. $p = (i, b)$ or $p = (i-1, b)$.
 
+\note{Sian rewrote Case 1 based on Susama's suggested edits}
+\textbf{Case I}:  Suppose $p$ has one end on edge $i-1$. By Remark~\ref{rmk algorithm locally same} the construction of $I_i^W$ and $I_{i+1}^W$ is locally the same (indeed, locally {\em identical} in this case) from vertex $i+1$ to $b-1$, so we have $I_{i+1}^W \cap [i+1,b-1] = I_{i}^W \cap [i+1,b-1]$. Note that if $b = i+1$ then this interval is empty and the equality remains true.
 
-\textbf{Case I}:  Suppose $p$ has one end on edge $i-1$.  If $p$ is not supported on $i+1$, then in building $I_{i+1}$ we will assign the same propagators as in the construction of $I_i$ from vertices $i+1$ up to $b-1$, that is \bas I_{i+1} \cap [i+1,b-1] = I_{i} \cap [i+1,b-1]\eas by Remark \ref{rmk algorithm locally same}.  If $p$ is supported on $i+1$, then $b= i+1$ and the interval $[i+1,b-1]$ is empty, so the above equality remains true, albeit vacuously.  Furthermore, by Lemma~\ref{vertex cyclic int lem} it must happen that $p$ contributes vertex $b$ to $I_{i+1}$, as otherwise $b$ would never be contributed by $p$.  Consequently, by Remark \ref{clockwise ordering rem}, in building $I_{i+1}$,  when the algorithm reaches vertex $b$ there cannot be any remaining unassigned propagators that are supported on $b$ and clockwise of $p$.  This is also true in when the algorithm constructing $I_i$ reaches $b$, \st{since the same propagators have been assigned beforehand.}\sanote{don't like same here}{\color{violet}since any propagators lying counterclockwise of $p$ on the edge $i-1$ must have their support in $[i-1, b]$. By Lemma \ref{no fourth vertex}, these propagators contribute before the algorithm reaches $b$. Furthermore, Remark  \ref{rmk algorithm locally same} implies that these propagators contribute the same vertices to both $I_i$ and $I_{i+1}$.} This also implies that $m\geq_i b+1$.
+%If $p$ is not supported on $i+1$, then in building $I_{i+1}$ we will assign the same propagators as in the construction of $I_i$ from vertices $i+1$ up to $b-1$, and in particular we have \bas I_{i+1} \cap [i+1,b-1] = I_{i} \cap [i+1,b-1]\eas by Remark \ref{rmk algorithm locally same}.  If $p$ is supported on $i+1$, then $b= i+1$ and the interval $[i+1,b-1]$ is empty, so the above equality remains true, albeit vacuously.  
 
-Let $W' = (\cP_{out}(p,<_i), [n])$, i.e. the diagram obtained from $W$ by removing both $p$ and all propagators inside of $p$.
+By Lemma~\ref{vertex cyclic int lem} it must happen that we have $I_{i+1}^W(p) = b$, as otherwise $b$ would never be contributed by $p$.  Consequently, when the construction of $I_{i+1}^W$ reaches vertex $b$ there cannot be any remaining unassigned propagators that are supported on $b$ and clockwise of $p$ (Remark~\ref{clockwise ordering rem}). It follows that the same must be true when $I_i^W$ reaches vertex $b$, since $I_i^W$ and $I_{i+1}^W$ behave identically on the interval $[i+1,b-1]$ as noted in the previous paragraph. 
 
-\st{By the above observations, if we commence Algorithm {\ref{alg:put GN on WLD}} in $W'$ from vertex $b$, then we are in the same situation with respect to unassigned propagators as if we began at $i$ in $W$ and proceeded to $b$ following the algorithm (recall that $I^W_i(p) =i$).} {\color{violet} Note that the propagators in $\cP_{out}(p,<_i)$ come first in the ordering imposed by $I_i^W$ (Definition \ref{proporderingdfn}). Therefore, the ordering and contributions of propagators defined by $I_b^{W'}$ are the same as that of $I_i^W$ after the removal of these initial propagators.} \st{The propagators contributing to $I_{i}^W$ before the vertex $b$ are exactly the ones removed in the construction of $W'$.}  Similarly, starting at $i+1$ in $W$ and moving to $b+1$ leaves us in the same situation with respect to unassigned propagators as beginning at $b+1$ in $W'$ would.  This gives the equations
+The previous two paragraphs also imply that $m \geq_i b+1$, since $I_{i+1}^W \cap [i+1,b-1] = I_{i}^W \cap [i+1,b-1]$ and $b \in I_{i+1}^W$.
+
+%This is also true in when the algorithm constructing $I_i$ reaches $b$, \st{since the same propagators have been assigned beforehand.}\sanote{don't like same here}{\color{violet}since any propagators lying counterclockwise of $p$ on the edge $i-1$ must have their support in $[i-1, b]$. By Lemma \ref{lem no fourth vertex}, these propagators contribute before the algorithm reaches $b$. Furthermore, Remark  \ref{rmk algorithm locally same} implies that these propagators contribute the same vertices to both $I_i$ and $I_{i+1}$.} This also implies that $m\geq_i b+1$.
+
+Now let $W' = (\cP_{out}(p,<_i), [n])$, i.e. the diagram obtained from $W$ by removing both $p$ and all propagators inside of $p$. $W'$ has strictly fewer propagators than $W$ did.
+
+It follows that $I_i^W$ and $I_b^{W'}$ are locally the same from vertex $b$ onwards, since by the above observations the propagators removed from $W$ to create $W'$ are exactly those that come first in the ordering defined by $I_i^W$. Similarly, $I_{i+1}^W$ and $I_{b+1}^{W'}$ are locally the same from $b+1$ onwards. By Remark~\ref{rmk algorithm locally same}, this yields the equalities
+
+%\st{By the above observations, if we commence Algorithm {\ref{alg:put GN on WLD}} in $W'$ from vertex $b$, then we are in the same situation with respect to unassigned propagators as if we began at $i$ in $W$ and proceeded to $b$ following the algorithm (recall that $I^W_i(p) =i$).} 
+
+%{\color{violet} Note that the propagators in $\cP_{out}(p,<_i)$ come first in the ordering imposed by $I_i^W$ (Definition \ref{proporderingdfn}). Therefore, the ordering and contributions of propagators defined by $I_b^{W'}$ are the same as that of $I_i^W$ after the removal of these initial propagators.} 
+
+%\st{The propagators contributing to $I_{i}^W$ before the vertex $b$ are exactly the ones removed in the construction of $W'$.}  Similarly, starting at $i+1$ in $W$ and moving to $b+1$ leaves us in the same situation with respect to unassigned propagators as beginning at $b+1$ in $W'$ would.  This gives the equations
 \begin{align*}
-  I_i^{W} \cap [b,i-1] & = I_b^{W'} \\
-  I_{i+1}^{W} \cap [b+1,i-1] & = I_{b+1}^{W'}
+  I_i^{W} \cap [b,i-1] & = I_b^{W'}, \\
+  I_{i+1}^{W} \cap [b+1,i-1] & = I_{b+1}^{W'}.
 \end{align*} 
-\st{where the diagram is indicated in the superscript.}
-Thus we have $m\in I_b^{W'}\setminus\{b\}$ and $m\not\in I_{b+1}^{W'}$, contradicting the minimality of $(W, i, m)$.\sanote{see previous question about minimality. not sure why this is true, unless minimality in $|[i,m]|$?.} 
+Since we have already noted that $m \geq_i b+1$, this implies that $m\in I_b^{W'}\setminus\{b\}$ and $m\not\in I_{b+1}^{W'}$. This contradicts the minimality of $W$.
 
 \textbf{Case II}: Suppose $p$ has one end on edge $i$.  Note that by assumption we have $I_i(p) = i$; this means that $p$ must be the clockwise-most propagator lying on edge $i$, and hence we must have $I_{i+1}(p) = i+1$ as well.  Observe also that $m\geq_i i+2$ since $i+1\in I_{i+1}$.
 
@@ -1526,15 +1536,14 @@ Let $W'$ be the diagram obtained from $W$ by removing only the propagator $p$.  
   I_i^{W} \backslash \{i\} & = I_{i+1}^{W'} \\
   I_{i+1}^{W} \backslash \{i+1\} & = I_{i+2}^{W'}
 \end{align*}
-since in both cases the algorithm in $W'$ proceeds identically to that in $W$ after assigning $p$. Since $m \neq i+1$, we have $m\in I_{i+1}^{W'}\setminus\{i+1\}$ but $m\not\in I_{i+2}^{W'}$, contradicting the minimiality of $(W, i, m)$. This completes the proof.
+since in both cases the algorithm in $W'$ proceeds identically to that in $W$ after assigning $p$. Since $m \neq i+1$, we have $m\in I_{i+1}^{W'}\setminus\{i+1\}$ but $m\not\in I_{i+2}^{W'}$, contradicting the minimiality of $W$. This completes the proof.
 \end{proof}
 
-Thus we have shown that Algorithm \ref{alg:put GN on WLD} does in fact produce a Grassmann necklace. Next we check that it produces the correct one, i.e. the Grassmann Neclace for $M(W)$. 
-
+Thus we have shown that Algorithm \ref{alg:put GN on WLD} does in fact produce a Grassmann necklace. Next we check that it produces the correct one, i.e. the Grassmann necklace that defines $M(W)$. 
+\note{Sian made minor edits to this proof: mostly removing those two numbered observations because one is now a remark and the other is only used once}
 \begin{thm}\label{res alg gives correct GN}
 The Grassmann necklace $(I_1 \ldots I_n)$ from Theorem~\ref{res:alg gives GN} is the Grassmann necklace of the positroid $M(W)$.
 \end{thm}
-\sanote{skipping reading of this for now}
 \begin{proof}
 We have shown in the previous theorem that $(I_1,\dots,I_n)$ is a Grassmann necklace; it remains to check that this Grassmann necklace corresponds to the positroid $M(W)$. Recall from the discussion following Definition~\ref{def:grassmann necklace}, and equation \eqref{basesofmatroids} in particular, that it suffices to show: 
 \begin{itemize}
@@ -1543,36 +1552,34 @@ We have shown in the previous theorem that $(I_1,\dots,I_n)$ is a Grassmann neck
 \end{itemize}
 The first point follows immediately: the algorithm assigns each propagator to a vertex in the support of that propagator, so $I_i$ is a basis for $M(W)$ by Corollary~\ref{lem basis as perm}.
 
-Now fix $i \in [n]$, and write $I_i = \{a_1 <_i a_2 <_i \dots <_i a_k\}$. This imposes an ordering on the propagators $\cP$, where we label them $p_1, p_2, \dots, p_k$ such that $I_i(p_j) = a_j$ for each $j$. Define $\cP_m: = \{p_1,p_2,\dots,p_m\}$ for each $m\geq 0$, with $\cP_0 = \emptyset$.
+Now fix $i \in [n]$, and write $I_i = \{a_1 <_i a_2 <_i \dots <_i a_k\}$. Label the propagators of $W$ according to the ordering imposed by $I_i$, i.e. so that $I_i(p_{r}) = a_{r}$ for $1 \leq r \leq k$. Define $\cP_r: = \{p_1,p_2,\dots,p_r\}$ for each $r\geq 0$, with $\cP_0 = \emptyset$.
 
-We enumerate two important observations:
-\begin{enumerate}
-\item If $a_{m-1}$ and $a_{m}$ are not consecutive vertices for some $m$, then for any intermediate vertex $a_{m-1}<_i x <_i a_{m}$ we must have $\Prop(x) \subseteq \cP_{m-1}$. This is because if any propagator supported on $x$ is still unassigned when the algorithm reaches $x$, we would have $x \in I_i$.
-\item When $p_m$ contributes $I_i(p_m) = a_m$ to the Grassmann necklace, it must be the clockwise-most propagator (amongst those not yet assigned) that is supported on $a_m$ i.e. any other propagator in $\cP \setminus \cP_{m-1}$ that is supported on $a_m$ must be inside $p_m$ in the $a_m-1$ ordering.
-\end{enumerate}
+% We enumerate two important observations:
+% \begin{enumerate}
+% \item If $a_{m-1}$ and $a_{m}$ are not consecutive vertices for some $m$, then for any intermediate vertex $a_{m-1}<_i x <_i a_{m}$ we must have $\Prop(x) \subseteq \cP_{m-1}$. This is because if any propagator supported on $x$ is still unassigned when the algorithm reaches $x$, we would have $x \in I_i$.
+% \item When $p_m$ contributes $I_i(p_m) = a_m$ to the Grassmann necklace, it must be the clockwise-most propagator (amongst those not yet assigned) that is supported on $a_m$ i.e. any other propagator in $\cP \setminus \cP_{m-1}$ that is supported on $a_m$ must be inside $p_m$ in the $a_m-1$ ordering.
+% \end{enumerate}
 
-Now, let $J = \{j_1 <_i j_2<_i \dots <_i j_k\}$ be a $k$-set, and suppose that $J<_i I_i$ in the $<_i$-lexicographic order. Let $m$ be the minimal index such that $j_m <_i a_m$, i.e. the first entry at which $J$ and $I_i$ differ. We will show that $J$ must be a dependent set.
+Let $J = \{j_1 <_i j_2<_i \dots <_i j_k\}$ be a $k$-set, and suppose that $J<_i I_i$ in the $<_i$-lexicographic order. Let $m$ be the minimal index such that $j_m <_i a_m$, i.e. the first entry at which $J$ and $I_i$ differ. We will show that $J$ must be a dependent set.
 
 If $\Prop(j_m) = \emptyset$ then $J$ is automatically dependent since the corresponding column of $C(W)$ contains only zeros, so suppose henceforth that $\Prop(j_m) \neq \emptyset$. %In particular, this implies that $m>1$, since if $m=1$ we would have $\Prop(j_1) \subseteq \cP_0 = \emptyset$.
 
 In order to exhibit a dependent subset of vertices in $J$, we first define a sequence of sets of propagators by
 \[Q_0 = \Prop(j_m), \qquad Q_{l+1} = \Prop(I_i(Q_l))\quad \forall l \geq 0.\]
-It is easily verified that this is an increasing chain of sets: indeed, if $q \in Q_l$ then $I_i(q) \in I_i(Q_l)$, and since $I_i(q)$ is one of the vertices that supports $q$ we must have $q \in \Prop(I_i(Q_l)) = Q_{l+1}$. Since $\cP$ is finite, the sequence therefore stabilizes in finitely many steps when $Q_{l+1} = Q_l$. Let $Q := \cup_{l \geq 0} Q_l$ be this set of propagators.
+It is easily verified that this is an increasing chain of sets: indeed, if $q \in Q_l$ then $I_i(q) \in I_i(Q_l)$, and since $I_i(q)$ is one of the vertices that supports $q$ we must have $q \in \Prop(I_i(Q_l)) = Q_{l+1}$. Since $\cP$ is finite, the sequence stabilizes in finitely many steps. Let $Q := \cup_{l \geq 0} Q_l$ be this set of propagators.
 
-We will show that $Q \subseteq \mathcal{P}_{m-1}$, which will imply the theorem as follows: if $Q \subseteq \cP_{m-1}$ then we have $I_i(Q)\subseteq J$, and hence $I_i(Q) \cup \{j_m\} \subseteq J$ as well. Since $I_i(Q) \cup \{j_m\}$ only supports the propagators in $Q$ but has $|Q|+1$ vertices, it is a dependent set. Thus $J$ is a dependent set as required, and the Grassmann necklace $(I_1,\dots,I_n)$ constructed from $W$ does indeed define the positroid $M(W)$.
+We will show that $Q \subseteq \mathcal{P}_{m-1}$, which will imply the theorem as follows: if $Q \subseteq \cP_{m-1}$ then we have $I_i(Q)\subseteq J$, and hence $I_i(Q) \cup \{j_m\} \subseteq J$ as well. Since $I_i(Q) \cup \{j_m\}$ only supports the propagators in $Q$ but has $|Q|+1$ vertices, it is a dependent set in $M(W)$. Thus $J$ is also a dependent set, and the Grassmann necklace $(I_1,\dots,I_n)$ constructed from $W$ does indeed define the positroid $M(W)$.
 
-All that remains is to prove $Q\subseteq \mathcal{P}_{m-1}$, which we do by inductively proving $Q_l \subseteq \mathcal{P}_{m-1}$ for all $l \geq 0$.
-%If $Q_0 = \Prop(j_m) = \emptyset$ then $Q = \emptyset$, and $I_i(Q) \cup \{j_m\}= \{j_m\}$ is a single vertex supporting no propagators, and thus a dependent set. Otherwise,
-The base case $Q_0 \subseteq \cP_{m-1}$ follows immediately from the first numbered observation above that $\Prop(j_m) \subseteq \cP_{m-1}$
+All that remains is to prove $Q\subseteq \mathcal{P}_{m-1}$, which we do by inductively proving $Q_l \subseteq \mathcal{P}_{m-1}$ for all $l \geq 0$. The base case $Q_0 \subseteq \cP_{m-1}$ is immediate: since $j_m \not\in I_i$ by construction, there cannot be any unassigned propagators supported on $j_m$ when the algorithm reaches that vertex, i.e. $\Prop(j_m) \subseteq \cP_{m-1}$.
 
-Now assume that $Q_0,\dots,Q_{l-1} \subseteq \cP_{m-1}$, and consider $Q_{l}$. If $Q_{l} \setminus Q_{l-1} = \emptyset$ then we are done, with $Q = Q_l$.  Otherwise, let $q \in Q_{l} \setminus Q_{l-1}$. By construction there is some propagator $p_r \in Q_{l-1}$ such that $p_r$ and $q$ are both supported on $I_i(p_r) = a_r$. If $q$ is clockwise of $p_r$ on vertex $a_r$ then we immediately have $q \in \cP_{m-1}$ from the second numbered observation above.  It remains to consider the case that $q$ is counter-clockwise of $p_r$ at $a_r$.
+Now assume that $Q_0,\dots,Q_{l-1} \subseteq \cP_{m-1}$, and consider $Q_{l}$. If $Q_{l} \setminus Q_{l-1} = \emptyset$ then we are done, with $Q = Q_l$.  Otherwise, let $q \in Q_{l} \setminus Q_{l-1}$. By construction there is some propagator $p_r \in Q_{l-1}$ such that $p_r$ and $q$ are both supported on $I_i(p_r) = a_r$. If $q$ is clockwise of $p_r$ on vertex $a_r$ then we immediately have $q \in \cP_{m-1}$ by Remark~\ref{clockwise ordering rem}.  It remains to consider the case that $q$ is counter-clockwise of $p_r$ at $a_r$.
 
 Note that we cannot have $a_r+ 1 = j_m$ when $q$ is counterclockwise of $p_r$, since $q \not\in \Prop(j_m)$ by assumption. If the other end of $p_r$ (i.e. the end not supported on $a_r$) lies on an edge between $a_r$ and $j_m$, then since $q$ is inside $p_r$ with respect to $<_{a_r-1}$ we must have $V(q) \subseteq [a_r-1,j_m]$, and hence $q \in \cP_{m-1}$ by Lemma~\ref{lem no fourth vertex}. In particular, if $l=1$ then $p_r \in Q_{0} = \Prop(j_m)$ and we must be in this case. 
 
 If not, then there must be some propagator $p_s \in Q_{l-2}$ such that $p_r$ and $p_s$ are both supported on $I_i(p_s) := a_s$. Since $p_r$ is clockwise of $q$, and $q$ cannot be supported on $I_i(p_s)$ since $q \not\in Q_{l-1}$, it follows that $I_i(p_s) <_i I_i(p_r)$. Therefore $q$ is inside $p_s$ with respect to $<_{a_s - 1}$ as well.
 
+\note{Sian note to self: this picture isn't right}
 \begin{figure}[h]
-
 \bas{\begin{tikzpicture}[baseline=(current bounding box.east)]
 \begin{scope}
 	\drawWLDfragment[9]{3}{0.3} % draw arc
@@ -1634,14 +1641,14 @@ If not, then there must be some propagator $p_s \in Q_{l-2}$ such that $p_r$ and
 \end{tikzpicture} }\eas
 \caption{The two cases of the induction step. Note that $I_i(p_s) <_i I_i(p_r)$}\label{fig:awkward induction step}
 \end{figure}
-Now repeat the argument above with $p_s$ in place of $p_r$: if the other end of $p_s$ lands on an edge between $q$ and $j_m$ then we have $q \in \cP_{m-1}$ as above; if not then there exists some $p_t \in Q_{l-3}$ with $p_s$ supported on $I_i(p_t)$ and $q$ on the inside of $p_t$ in the $a_t-1$ order. Therefore \hlfix{$I_i(p_t) <_i I_i(p_r)$}{$I_i(p_t) <_i I_i(p_s)<_i I_i(p_s)$? Or is the implication clear enough not to be mentioned}\note{Nope: we just need $<_i I_i(p_r)$. $I_i(p_t) <_i I_i(p_r)$ certainly isn't obvious and may not be true}. {\color{violet} May not be necessary, but I think highlighted tex follows from "Now repeat the argument...." \begin{enumerate}\item If $V(p_r) \in [a_r-1, j_m]$ (other end closer to $j_m$) then $q$ inside $p_r$ in $a_r-1$ order. \item Else, $V(p_r) \in [i, a_r+1]$ (Maybe $[i-1, a_r +1]$?). (Main point is that other end closer to $i$) Either way,  admissibility implies that $a_s < a_r$ \item Now we repeat. Either  $V(p_s) \in [a_s-1, j_m]$ then $q$ inside $p_s$ in $a_s-1$ order and we are done \item Else, $V(p_s) \in [i, a_s+1]$ (Maybe $[i-1, a_s +1]$?). Either way, admissibility implies that $a_t < a_s$ and we've already established $a_s < a_r$ \end{enumerate} We don't have to include this argument. It may be totally unnecessary. But I want to make certain that I'm not missing anything.}  Since there are finitely many steps this process can take before reaching $Q_0$, and any $p_* \in Q_0  = \Prop(j_m)$ has $j_m$ in its support by definition, this argument eventually terminates with the construction of a propagator constraining the positioning of $q$ as required. This completes the induction step, and hence the proof.\end{proof}
+Now repeat the argument above with $p_s$ in place of $p_r$: if the other end of $p_s$ lands on an edge between $q$ and $j_m$ then we have $q \in \cP_{m-1}$ as above; if not then there exists some $p_t \in Q_{l-3}$ with $p_s$ supported on $I_i(p_t)$ and $q$ on the inside of $p_t$ in the $a_t-1$ order. Therefore \hlfix{$I_i(p_t) <_i I_i(p_r)$}{$I_i(p_t) <_i I_i(p_s)<_i I_i(p_s)$? Or is the implication clear enough not to be mentioned}\note{Nope: we just need $<_i I_i(p_r)$. $I_i(p_t) <_i I_i(p_s)$ certainly isn't obvious and may not be true}. {\color{violet} May not be necessary, but I think highlighted tex follows from "Now repeat the argument...." \begin{enumerate}\item If $V(p_r) \in [a_r-1, j_m]$ (other end closer to $j_m$) then $q$ inside $p_r$ in $a_r-1$ order. \item Else, $V(p_r) \in [i, a_r+1]$ (Maybe $[i-1, a_r +1]$?). (Main point is that other end closer to $i$) Either way,  admissibility implies that $a_s < a_r$ \item Now we repeat. Either  $V(p_s) \in [a_s-1, j_m]$ then $q$ inside $p_s$ in $a_s-1$ order \hlfix{and we are done}{not quite true; same reasoning as why we're using ``the other end of the propagator'' instead of $V(p_s) \subseteq [a_s-1, j_m]$} \item Else, $V(p_s) \in [i, a_s+1]$ (Maybe $[i-1, a_s +1]$?). Either way, admissibility implies that $a_t < a_s$ and we've already established $a_s < a_r$ \end{enumerate} We don't have to include this argument. It may be totally unnecessary. But I want to make certain that I'm not missing anything.}  Since there are finitely many steps this process can take before reaching $Q_0$, and any $p_* \in Q_0  = \Prop(j_m)$ has $j_m$ in its support by definition, this argument eventually terminates with the construction of a propagator constraining the positioning of $q$ as required. This completes the induction step, and hence the proof.\end{proof}
 
 
 
-We have now shown that Algorithm~\ref{alg:put GN on WLD} assoiates the correct Grassmann necklace to a Wilson Loop diagam Thereofre, we refer to Algorithm~\ref{alg:put GN on WLD} as the Grassmann necklace algorithm. We close this section with a simple observation about the Grassmann necklaces of positroids associated to Wilson loop diagrams.
+We have now shown that Algorithm~\ref{alg:put GN on WLD} associates the correct Grassmann necklace to a Wilson loop diagam. Therefore, we refer to Algorithm~\ref{alg:put GN on WLD} as the Grassmann necklace algorithm. We close this section with a simple observation about the Grassmann necklaces of positroids associated to Wilson loop diagrams.
 
 
-In an arbitrary Grassmann necklace, it is possible for an index $i$ to appear in no terms of the Grassmann necklace (a {\em loop}) or in all terms of the necklace (a {\em coloop}). Using Theorem~\ref{res:alg gives GN}, a characterization of the loops and coloops of the Grassmann necklace associated to a Wilson loop diagram follows easily.
+In an arbitrary Grassmann necklace, it is possible for an index $i$ to appear in no terms of the Grassmann necklace (a {\em loop}) or in all terms of the necklace (a {\em coloop}). Using Theorems~\ref{res:alg gives GN} and \ref{res alg gives correct GN}, a characterization of the loops and coloops of the Grassmann necklace associated to a Wilson loop diagram follows easily.
 
 
 \begin{cor}\label{no coloops}
@@ -1725,7 +1732,7 @@ Combining Lemmas \ref{lem uncovered}, \ref{lem dihedral}, and \ref{lem good p}, 
 The next few lemmas describe how the Grassmann necklaces (Lemma \ref{lem I}) and the Le diagrams (Lemmas \ref{lem shape} to Lemma \ref{lem other k}) of Wilson loop diagrams of this type are related to the corresponding Wilson loop diagram with propagator $p$ removed. \sanote{rephrased, still clear?}
 
 \begin{lem}\label{lem I}
-Let $W$ be an admissible Wilson loop diagram with $k\geq 1$ propagators, and suppose that $W$ admits one of the configurations described in Lemma~\ref{lem good p}, with $p$ and $q$ (if $q$ exists) both of length 2. Let $V$ be $W$ with $p$ removed.  Then we can express $I_*^W$ in terms of $I_*^V$ as follows:
+Let $W$ be an admissible Wilson loop diagram with $k\geq 1$ propagators, and suppose that $W$ admits one of the configurations described in Lemma~\ref{lem good p}, with $p$ and $q$ (if $q$ exists) both of length 2. Let $V$ be $W$ with $p$ removed.  Then we can express $I_*^W$ in terms of $I_*^V$ as follows:\note{I'm not a fan of the case labels in this display: there's enough going on already without throwing in extra information}
 
   \begin{align*}
     I_1^{W} & = I_1^{V} \cup \{n-3\} \\
@@ -1800,7 +1807,7 @@ The two possible cases for $W$ are illustrated in Figure~\ref{fig special p}.
 \end{figure} \sanote{moved figure before theorem 4.4 so that we can just refer to generically}
 \begin{proof}
 
-We first consider $I_1^{W}$, i.e. the set obtained by applying the Grassmann necklace algorithm to $W$ with starting vertex 1\note{I don't find this i.e. helpful at this point, is it an old thing that can go or do others find it useful?} \sanote{agreed, i vote to cut}. Note that $n-3 \not\in I_1^{V}$: \hlfix{for Case 2 this is clear from the diagram (since Algorithm {\ref{alg:put GN on WLD}} would force $q$ to contribute no later than vertex $n-4$),}{why? isn't obvious to me without several cases, and even then} while for Case 1 it follows directly from Lemma \ref{lem no fourth vertex}. Therefore when we start at vertex 1 and apply the Grassmann necklace algorithm to $W$, $p$ is the \st{only remaining unassigned propagator when we reach vertex $n-3$}{\color{violet}last propagator to contribute}, and so we have $ I_1^{W}(p) = n-3$ and $I_1^W = I_1^V\cup \{n-3\}$.
+We first consider $I_1^{W}$, i.e. the set obtained by applying the Grassmann necklace algorithm to $W$ with starting vertex 1\note{I don't find this i.e. helpful at this point, is it an old thing that can go or do others find it useful?} \sanote{agreed, i vote to cut}. Note that $n-3 \not\in I_1^{V}$: \hlfix{for Case 2 this is clear from the diagram (since Algorithm {\ref{alg:put GN on WLD}} would force $q$ to contribute no later than vertex $n-4$),}{why? isn't obvious to me without several cases, and even then}\note{yeah, I can't see this either; cyclic intervals is probably a better argument} while for Case 1 it follows directly from Lemma \ref{lem no fourth vertex}. Therefore when we start at vertex 1 and apply the Grassmann necklace algorithm to $W$, $p$ is the \st{only remaining unassigned propagator when we reach vertex $n-3$}{\color{violet}last propagator to contribute}, and so we have $ I_1^{W}(p) = n-3$ and $I_1^W = I_1^V\cup \{n-3\}$.
 
 Next consider $I_n^{W}$. From the figure we see that in both cases we have $I_n^{W}(p) = n$. \hlfix{Therefore, the second through $k^{th}$ propagators contributing to $I_n^W$ are the same as the ordering in $I_n^V$. Since $n$ is non-supporting in $V$, $I_1^V = I_n^V$, we have $I_n^{W} = I_1^{V} \cup \{n\}$}{Alt. argument.  Can ignore.} At vertex 1 of the algorithm $I_n$, the unassigned propagators are exactly those that appear in $V$. Therefore the algorithm continues as in $I_1^{V}$ (recall Remark~\ref{rmk algorithm locally same} about locally identical propagator configurations), i.e. we have $I_n^{W} = I_1^{V} \cup \{n\}$. By a similar argument, we must have $I_{n-1}^{W} = I_n^{V} \cup \{n-1\}$.
 
@@ -1827,7 +1834,7 @@ This covers all cases and hence completes the proof.
 \begin{proof}
 See Figure~\ref{fig Le} for an illustration of the shapes described in the statement of the lemma.
 
-Recall that $I_1$ determines the shape of the Le diagram: specifically, the elements of $I_1$ label the rows of the diagram, working from top right to bottom left. By the arguments in Lemma {\ref{lem I}} we know that \st{${n,n-1,n-2, n-3 \not\in I_1^{V}}$}\sanote{Only see $n-3$ in Lemma 4.4?} {\color{violet} $ n-3 \not\in I_1^{V}$. By Lemma \ref{lem no fourth vertex}, $n, n-2 \not \in I_1^V$. Since $n-1$ is non-supporting in $V$, by Corrollary {\ref{no coloops}}, $n \not\in I_1^{V}$.} These are the leftmost four columns of the diagram for $V$.  From Lemma \ref{lem I} we know that that $I_1^{W} = I_1^{V}\cup \{n-3\}$. Therefore, the right hand boundary of the shape of $V$ is the same as the right hand boundary of the shape of $W$ except that $W$ has one additional row of 3 boxes while $V$ has an additional column in the $n-3$ position; that is, an extra column fourth from the left. 
+Recall that $I_1$ determines the shape of the Le diagram: specifically, the elements of $I_1$ label the rows of the diagram, working from top right to bottom left. By the arguments in Lemma {\ref{lem I}} we know that \st{${n,n-1,n-2, n-3 \not\in I_1^{V}}$}\sanote{Only see $n-3$ in Lemma 4.4?} \note{well yeah, that's why it says ``the arguments in Lemma 4.4'': we show that all props are assigned before $n-3$ in $I_1$. I think spelling it out in detail here is more confusing than not.}{\color{violet} $ n-3 \not\in I_1^{V}$. By Lemma \ref{lem no fourth vertex}, $n, n-2 \not \in I_1^V$. Since $n-1$ is non-supporting in $V$, by Corrollary {\ref{no coloops}}, $n \not\in I_1^{V}$.} These are the leftmost four columns of the diagram for $V$.  From Lemma \ref{lem I} we know that that $I_1^{W} = I_1^{V}\cup \{n-3\}$. Therefore, the right hand boundary of the shape of $V$ is the same as the right hand boundary of the shape of $W$ except that $W$ has one additional row of 3 boxes while $V$ has an additional column in the $n-3$ position; that is, an extra column fourth from the left. 
 \end{proof}
 \begin{figure}
   \[\includegraphics{Le_diagrams}\]
@@ -1858,7 +1865,7 @@ and so by Algorithm~\ref{alg:GN to Le} we have a plus in the $(n-3) \rightarrow 
 
 Also by Lemma~\ref{lem I} we have $I_{n-1}^{W} = I_n^{V} \cup \{n-1\}$. Recall from the proof of Lemma \st{{\ref{lem I}}} {\color{violet} {\ref{lem shape}} }\sanote{change back if actually in 4.4} that $n-3,n-2,n-1,n \not\in I_1^V$; therefore $I_1^W\setminus I_{n-1}^W = (I_1^V \setminus I_n^V) \cup\{n-3\}$, and $n-3$ is maximal in this set. Similarly, 
 \[I_{n-1}^W \setminus I_1^W = (I_n^V \setminus I_1^V) \cup \{n-1\} \subseteq \{n-1,n\},\]
-where the final inclusion follows from the definition of Grassmann necklace\sanote{why only $\{n-1,n\}$? I'd believe an inclusion the other way}. In particular, $n-1$ is minimal in this set, so Algorithm~\ref{alg:GN to Le} yields a plus in the $(n-3) \rightarrow (n-1)$ position (i.e. the second box in the bottom row of the Le diagram of $W$) \hlfix{along with any plusses yielded by $I_n^V$.}{display seems to imply that there is exactly one such other $+$. Is this correct?}
+where the final inclusion follows from the definition of Grassmann necklace\sanote{why only $\{n-1,n\}$? I'd believe an inclusion the other way}\note{Definition of GN: $I_1 = (I_n\setminus\{n\})\cup\{\text{something}\}$}. In particular, $n-1$ is minimal in this set, so Algorithm~\ref{alg:GN to Le} yields a plus in the $(n-3) \rightarrow (n-1)$ position (i.e. the second box in the bottom row of the Le diagram of $W$) \hlfix{along with any plusses yielded by $I_n^V$.}{display seems to imply that there is exactly one such other $+$. Is this correct?}\note{Display implies there's at most one, but if we apply no coloops I think that becomes exactly one.}
 \end{proof} 
 
 
@@ -1868,7 +1875,7 @@ where the final inclusion follows from the definition of Grassmann necklace\sano
 \end{lem}
 
 \begin{proof}
-If $n-2\not\in I_{n-2}^{V}$ then $I_{n-1}^{V}=I_{n-2}^{V}$ by definition, and by Lemma~\ref{lem I} we have the equality ${I_{n-2}^{W} = I_{n-1}^{V} \cup \{n-2\}}$.  Note that $n-3\not\in I_{n-2}^{V}$ by Lemma~\ref{lem no fourth vertex}.  Therefore the \st{paths controlling the} plusses contributed by $I_{n-2}^{W}$ are exactly the \st{paths for}{\color{violet} plusses from}\sanote{isn't this from Alg.\ref{alg:GN to Le} which says nothing about paths?}  $I_{n-1}^{V}$ along with the $(n-3)\rightarrow (n-2)$ path.  This gives the statement of the lemma.
+If $n-2\not\in I_{n-2}^{V}$ then $I_{n-1}^{V}=I_{n-2}^{V}$ by definition, and by Lemma~\ref{lem I} we have the equality ${I_{n-2}^{W} = I_{n-1}^{V} \cup \{n-2\}}$.  Note that $n-3\not\in I_{n-2}^{V}$ by Lemma~\ref{lem no fourth vertex}.  Therefore the \st{paths controlling the} plusses contributed by $I_{n-2}^{W}$ are exactly the \st{paths for}{\color{violet} plusses from}\sanote{isn't this from Alg.\ref{alg:GN to Le} which says nothing about paths?} \note{see bolded stuff before previous lemma} $I_{n-1}^{V}$ along with the $(n-3)\rightarrow (n-2)$ path.  This gives the statement of the lemma.
 \end{proof}
 
 
@@ -1884,7 +1891,7 @@ Let $V$ and $W$ be as in Lemma~\ref{lem I}, and suppose that $n-2,n-1 \in I_{n-2
 \end{lem}
 
 \begin{proof}
-  By Lemma~\ref{lem I} we have $I_{n-2}^{W}= (I_{n}^{V} \setminus \{n-5\})\cup \{n-1,n-2\}$ and $I_1^W = I_1^V\cup \{n-3\}$. Furthermore, we are necessarily case 2 of Figure~\ref{fig special p}, with a further propagator $r$ ending on the edge $n-1$, satisfying $I_{n-2}^V(r) = n-1$ (that is, $r$ is the clockwise most on this edge). \st{We can see from the location of $q$ that $n-2\not\in I_{n-3}^{V}$} and that $n-5$ is the label of the last row in $\mathcal{B}$.\sanote{is there an easy way to see these? Why can't $I_1^V(q) = n-4$, which would make this the last row of $\mathcal{B}$} {\color{violet}From the figure we see that $I_{n-3}^V = n-3$. In particular, this means that $n-2 \not \in I_{n-3}^V$. } \st{Also note that by Lemma {\ref{vertex cyclic int lem}} and Corollary {\ref{no coloops}} we must have } {\color{violet} Since $r$ is the clockwise most propagator on edge $n-1$, $I_n^V(q) = n$, i.e.} $n\in I_n^V$.Thus this section of the Grassmann necklace of $V$ looks like
+  By Lemma~\ref{lem I} we have $I_{n-2}^{W}= (I_{n}^{V} \setminus \{n-5\})\cup \{n-1,n-2\}$ and $I_1^W = I_1^V\cup \{n-3\}$. Furthermore, we are necessarily case 2 of Figure~\ref{fig special p}, with a further propagator $r$ ending on the edge $n-1$, satisfying $I_{n-2}^V(r) = n-1$ (that is, $r$ is the clockwise most on this edge). \st{We can see from the location of $q$ that $n-2\not\in I_{n-3}^{V}$} and that $n-5$ is the label of the last row in $\mathcal{B}$.\sanote{is there an easy way to see these? Why can't $I_1^V(q) = n-4$, which would make this the last row of $\mathcal{B}$}\note{This is a good point; what if that propagator $r$ went from edge $n-1$ to edge $n-5$? Karen, do you remember why this can't happen?} {\color{violet}From the figure we see that $I_{n-3}^V = n-3$. In particular, this means that $n-2 \not \in I_{n-3}^V$. } \st{Also note that by Lemma {\ref{vertex cyclic int lem}} and Corollary {\ref{no coloops}} we must have } {\color{violet} Since $r$ is the clockwise most propagator on edge $n-1$, $I_n^V(q) = n$, i.e.} $n\in I_n^V$.Thus this section of the Grassmann necklace of $V$ looks like
 
   \begin{equation}\label{eq necklace}
   I_{n-3}^{V} \xrightarrow[\substack{n-3\text{ out}\\n-2\text{ in}}]{} I_{n-2}^{V} \xrightarrow[\substack{n-2\text{ out}\\n-5\text{ in}}]{} I_{n-1}^{V} \xrightarrow[\substack{n-1\text{ out}\\\text{something in}}]{} I_{n}^{V}  \xrightarrow[\substack{n \text{ out}\\\text{something in}}]{} I_1^{V}
