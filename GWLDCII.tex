@@ -374,7 +374,7 @@ In Section~\ref{section general background}, we summarize the required backgroun
 
 In Section~\ref{sec GN algorithm} we state an algorithm for constructing the Grassmann necklace of the positroid associated to a Wilson loop diagram (Algorithm~\ref{alg:put GN on WLD}) and prove its correctness (Theorem~\ref{res:alg gives GN}). While it was already possible to construct the Grassmann necklace of a Wilson loop diagram via existing bijections between some of the various combinatorial objects that index the positroid cells, this process was convoluted and involved multiple steps; our algorithm allows us to track directly how each propagator in the Wilson loop diagram contributes to each term in the Grassmann necklace. Furthermore, the above algorithm allows us to understand the positroids associated to Wilson loop better. In particular, Corollary \ref{no coloops} shows that these positroids have no coloops, and gives an exact characterization of their loops. Many of the technical lemmas required to prove Theorem~\ref{res:alg gives GN} continue to be important in subsequent sections: in particular we have Lemma~\ref{lem sian}, which identifies certain configurations of propagators that must appear in any admissible Wilson loop diagram, and Lemma~\ref{vertex cyclic int lem}, which shows that the pattern of values that a propagator contributes to each term of the Grassmann necklace is both simple and predictable.
 
-In Section~\ref{sec dim} we examine the dimension of positroids associated to Wilson loop diagrams, and show that the dimension is always equal to three times the number of propagators in the diagram (Theorem~\ref{thm dim}).  While this has been proved by Marcott in \cite{WLDdim} using matroidal arguments, our proof is constructive and explicitly relates the position of the plusses in the Le diagram to the propagators in the Wilson loop diagram. {\color{violet} This proof and the methods used therein are a first step towards understanding how the positroid cell assocaited to a Wilson loop diagram changes as one adds propagators in certain positions.}
+In Section~\ref{sec dim} we examine the dimension of positroids associated to Wilson loop diagrams, and show that the dimension is always equal to three times the number of propagators in the diagram (Theorem~\ref{thm dim}).  While this has been proved by Marcott in \cite{WLDdim} using matroidal arguments, our proof is constructive and explicitly relates the position of the plusses in the Le diagram to the propagators in the Wilson loop diagram. This proof and the methods used therein are a first step towards understanding how the positroid cell associated to a Wilson loop diagram changes as one adds propagators in certain positions.
 
 Finally in Section~\ref{sec poles} we characterize the denominator of the integral of a Wilson loop diagram in terms of how propagators contribute to the Grassmann necklace.  This characterization is given explicitly by Algorithm~\ref{alg WLD to denom via GN} and Theorem~\ref{thm denom}.
 
@@ -645,7 +645,7 @@ While this paper primarily approaches proofs from a combinatorial point of view,
 
 
 
-In this section we will give an algorithm (Algorithm~\ref{alg:put GN on WLD}) to go directly from a Wilson loop diagram to the Grassmann necklace of its positroid. This is a useful result in and of itself, as it greatly simplifies the process of identifying the positroid associated to a given Wilson loop diagram. Furthemore, we use it to characterize loops and coloops in the positroid associated to a Wilson loop diagram (Corrollary \ref{no coloops}). \hlfix{It also allows us to examine how the positroid changes as we make minor changes to the Wilson loop diagram;}{what does this mean?} {\color{violet} It allows us to see how the Le diagram assoicated to a Wilson loop diagram changes as one adds propagators in certain positions (Theorem \ref{thm dim}).} Indeed, the techniques we develop in this section to verify that our algorithm produces the correct Grassmann necklace will also be used repeatedly in later sections {\color{violet} to calculate the dimension of the associated positroid cell (section \ref{sec dim}) and to study the structure of the poles of the associated integral $I(W)$ (section \ref{sec poles}).}
+In this section we will give an algorithm (Algorithm~\ref{alg:put GN on WLD}) to go directly from a Wilson loop diagram to the Grassmann necklace of its positroid. This is a useful result in and of itself, as it greatly simplifies the process of identifying the positroid associated to a given Wilson loop diagram. Furthemore, we use it to characterize loops and coloops in the positroid associated to a Wilson loop diagram (Corrollary \ref{no coloops}). It allows us to see how the Le diagram assoicated to a Wilson loop diagram changes as one adds propagators in certain positions (Theorem \ref{thm dim}). Indeed, the techniques we develop in this section to verify that our algorithm produces the correct Grassmann necklace will also be used repeatedly in later sections to calculate the dimension of the associated positroid cell (section \ref{sec dim}) and to study the structure of the poles of the associated integral $I(W)$ (section \ref{sec poles}).
 
 One of the key insights is that each element of the Grassmann necklace can be viewed as a function from the propagators of the diagram to the vertices in the Grassman necklace element.  This is captured in Definition~\ref{def I_i as a function}, and used throughout the paper.
 
@@ -897,7 +897,7 @@ Let $W = (\cP, [n])$ be an admissible Wilson loop diagram. In order to construct
 Informally: one starts at $i$ and moves counterclockwise around the vertices of $W$, at each step removing the clockwise-most propagator supported on that vertex (if it exists). The set $I_i^W$ lists the vertices at which a propagator was deleted. 
 
 
-If the algorithm assigns vertex $j$ to propagator $p$ from starting vertex $i$, we say that $p$ \emph{contributes} $j$ to $I_i^W$. Notationally, we represent this by allowing the $I_i^W$ symbol to represent a function as well as a set, as follows:
+If the algorithm assigns vertex $j$ to propagator $p$ from starting vertex $i$, we say that $p$ \textbf{contributes} $j$ to $I_i^W$. Notationally, we represent this by allowing the $I_i^W$ symbol to represent a function as well as a set, as follows:
 \begin{dfn}\label{def I_i as a function}
 Let $W = (\cP, [n])$ be an admissible Wilson loop diagram. For each $i \in [n]$, define a function $I_i^W : \cP \longrightarrow [n]$ by
 \[I_i^W(p) := \text{the vertex label that $p$ contributes to $I_i$ in Algorithm~\ref{alg:put GN on WLD},}\]
@@ -960,11 +960,9 @@ When $p$ contributes $I_i(p) = a$, it must be the clockwise-most propagator supp
 \begin{rmk}\label{rmk algorithm locally same}
 The following observation about the local behavior of the algorithm will be very useful in many of the arguments below.
 
- \note{Remember to keep an eye out when proofreading: do we just need the vertices appearing in the GN element to be the same, or do we actually need the functions to match up} \sanote{need functions to match in 4.4}\note{That's ok though because this remark does give the function matching in that region.}
-
 Suppose we are going through the algorithm to construct $I_i^W$ for some $i$, and we are currently at step $j$ of the loop. Consider the diagram $W'$ formed by removing from $W$ all propagators that have already contributed to $I_i^W$. (This just replicates the behavior of the algorithm, which removes each propagator once it contibutes to $I_i^W$.)  Now suppose for some other diagram $V$ on the same vertex set we are constructing $I_m^V$ for some $m$, and we are at step $j$ of the loop, for the same $j$ as above.  Again obtain $V'$ from $V$ by removing all propagators assigned so far.
 
-With this setup, if we can find a vertex $\ell$ occurring after both $i$ and $m$ such that the \emph{configuration}\note{Why is configuration italicized?} of propagators ending in the interval $[j-1, \ell+1]$ is identical in both $W'$ and $V'$, then the vertices contributed to $I_i^W$ and $I_m^V$ are the same from step $j$ to step $\ell$ (inclusive). See Figure~\ref{fig:locally identical} for an illustration of this.
+With this setup, if we can find a vertex $\ell$ occurring after both $i$ and $m$ such that the \emph{configuration} of propagators ending in the interval $[j-1, \ell+1]$ is identical in both $W'$ and $V'$, then the vertices contributed to $I_i^W$ and $I_m^V$ are the same from step $j$ to step $\ell$ (inclusive). See Figure~\ref{fig:locally identical} for an illustration of this.
 
 Furthermore, if the propagators of $W'$ and $V'$ ending in the interval $[j-1, \ell+1]$ are also identically labelled, then $I_i^W$ and $I_m^V$ are the same as functions when restricted to those propagators.
 
@@ -1032,7 +1030,7 @@ Let $W$ be an admissible Wilson loop diagram containing at least one propagator.
 \end{lem} 
 \sanote{wanted to rewrite this lemma to emphasize the fact that we are using the same properties of Alg 3.7 over and over again, and have these principals set apart in a remark}
 \begin{proof}
-Suppose for contradiction that we have $i \in [n]$ and $p \in \cP$ such that $I_i(p)$ is $<_i$-maximal in $V(p)$. There are two possibilities, which are illustrated in Figure~\ref{fig:no fourth vertex}: \st{either $p = (i-1,b)$ for some $b$ (so $i$ and $I_i(p) = i-1$ are the two ends of a single edge), or $p = (a,b)$ with $i\leq_i a <_i b$ and $I_i(p) = b+1$.} {\color{violet}either $i-1 \in V(p)$, in which case it is the last vertex in the $<_i$ order and $I_i(p)= i-1$, or $i-1 \not \in V(p)$ in which case,  $p= a, b$, $i \in [b+2, a]$ and $I_i(p) = b+1$.}
+Suppose for contradiction that we have $i \in [n]$ and $p \in \cP$ such that $I_i(p)$ is $<_i$-maximal in $V(p)$. There are two possibilities, which are illustrated in Figure~\ref{fig:no fourth vertex}: either $p = (i-1,b)$ for some $b$ (so $i$ and $I_i(p) = i-1$ are the two ends of a single edge), or $p = (a,b)$ with $i\leq_i a <_i b$ and $I_i(p) = b+1$. 
 
 \begin{figure}
 
@@ -1089,7 +1087,7 @@ Suppose for contradiction that we have $i \in [n]$ and $p \in \cP$ such that $I_
 \caption{The two types of configuration that would (in theory) allow the propagator $p$ to contribute its $<_i$-maximal support vertex to $I_i$.}
 \label{fig:no fourth vertex}
 \end{figure}
-In Case 1, \st{observe that we must have another propagator $q = (c,b)$ with $c<_i b$ and $I_i(q) = b+1$, because otherwise $I_i$ would assign $p$ to $b+1$.}{\color{violet} since $b+1<_i I_i(p)$ there must be some propagator, $q$ before $p$ in $\cP^i$ such that $I_i(q) = b+1$. By remark \ref{clockwise ordering rem}, $p$ is inside $q$ in the $<_b$ order. Specifically, $q$ must also end on the $b^{th}$ edge. By non-crossing and desnity arguements of admissibility $i-1$ cannot be in $V(q)$.} Now $q$ also contributes the $<_i$-maximal vertex in its support to $I_i$ and is an instance of Case 2. Therefore it suffices to show that no admissible Wilson loop diagram admits the configuration illustrated in Case 2 of Figure~\ref{fig:no fourth vertex}. 
+In Case 1, observe that we must have another propagator $q = (c,b)$ with $c<_i b$ and $I_i(q) = b+1$, because otherwise $I_i$ would assign $p$ to $b+1$. Now $q$ also contributes the $<_i$-maximal vertex in its support to $I_i$ and is an instance of Case 2. Therefore it suffices to show that no admissible Wilson loop diagram admits the configuration illustrated in Case 2 of Figure~\ref{fig:no fourth vertex}. 
 
 So let $p = (a,b)$ with $a<_ib$ and $I_i(p) = b+1$, and choose $p$ such that $\big|[a+1,b]\big|$ is minimal amongst propagators of $W$ which contribute their last vertex and are in Case 2.
 
@@ -1343,7 +1341,7 @@ We now consider what happens as we move from $V$ to each of the three remaining 
 
 \textbf{Cases 1 and 2}: These cases behave essentially identically (except when $j$ or $j+1$ are not in the support of $p$, which can occur in Case 2 only; see below) so we handle the majority of the proof for these two cases simultaneously. Write $p=(m,m+2)$ where $m\in \{i, i+1, l\}$. Let $1\leq a\leq 3$ be the number of non-supporting vertices inside $q$ in $V$ (note that there is at least 1); so these vertices are $l, \ldots, l+a-1$.  Note that these vertices are non-supporting in $V$ but are all in the support of $p$ in $W$. 
 
-We first calculate $I^{W}_w$ for a starting vertex ${w \in [n]\backslash \{l, l+1, \ldots,j,j+1\}}$. Note that $p$ has no effect on other propagators for starting vertices in this range \hlfix{(since $p$ will be the final propagator encountered by the algorithm)}{Sian added this: it's not really a locally-the-same argument so I'm not sure it'll help to reference Remark 3.12} so if $r \neq p$, then $I_w^W(r) = I_w^V(r)$. Meanwhile, the value of $I^{W}_w(p)$ depends on which step in the algorithm the propagator $q$ contributes a vertex in the diagram $V$, i.e. on the value of $I^{V}_w(q)$. Thus, if $w\in J_q^{V}(i)$ then 
+We first calculate $I^{W}_w$ for a starting vertex ${w \in [n]\backslash \{l, l+1, \ldots,j,j+1\}}$. Note that $p$ has no effect on other propagators for starting vertices in this range (since $p$ will be the final propagator encountered by the algorithm) so if $r \neq p$, then $I_w^W(r) = I_w^V(r)$. Meanwhile, the value of $I^{W}_w(p)$ depends on which step in the algorithm the propagator $q$ contributes a vertex in the diagram $V$, i.e. on the value of $I^{V}_w(q)$. Thus, if $w\in J_q^{V}(i)$ then 
     \[
     I_w^{W}(r) =  \begin{cases}
         \max\{i+1, m\} & \text{if } r=p \\
@@ -1542,7 +1540,6 @@ since in both cases the algorithm in $W'$ proceeds identically to that in $W$ af
 \end{proof}
 
 Thus we have shown that Algorithm \ref{alg:put GN on WLD} does in fact produce a Grassmann necklace. Next we check that it produces the correct one, i.e. the Grassmann necklace that defines $M(W)$. 
-\note{Sian made minor edits to this proof: mostly removing those two numbered observations because one is now a remark and the other is only used once}
 \begin{thm}\label{res alg gives correct GN}
 The Grassmann necklace $(I_1 \ldots I_n)$ from Theorem~\ref{res:alg gives GN} is the Grassmann necklace of the positroid $M(W)$.
 \end{thm}
@@ -1643,7 +1640,9 @@ If not, then there must be some propagator $p_s \in Q_{l-2}$ such that $p_r$ and
 \end{tikzpicture} }\eas
 \caption{The two cases of the induction step. Note that $I_i(p_s) <_i I_i(p_r)$}\label{fig:awkward induction step}
 \end{figure}
-Now repeat the argument above with $p_s$ in place of $p_r$: if the other end of $p_s$ lands on an edge between $q$ and $j_m$ then we have $q \in \cP_{m-1}$ as above; if not then there exists some $p_t \in Q_{l-3}$ with $p_s$ supported on $I_i(p_t)$ and $q$ on the inside of $p_t$ in the $a_t-1$ order. Therefore \hlfix{$I_i(p_t) <_i I_i(p_r)$}{$I_i(p_t) <_i I_i(p_s)<_i I_i(p_s)$? Or is the implication clear enough not to be mentioned}\note{Nope: we just need $<_i I_i(p_r)$. $I_i(p_t) <_i I_i(p_s)$ certainly isn't obvious and may not be true}. {\color{violet} May not be necessary, but I think highlighted tex follows from "Now repeat the argument...." \begin{enumerate}\item If $V(p_r) \in [a_r-1, j_m]$ (other end closer to $j_m$) then $q$ inside $p_r$ in $a_r-1$ order. \item Else, $V(p_r) \in [i, a_r+1]$ (Maybe $[i-1, a_r +1]$?). (Main point is that other end closer to $i$) Either way,  admissibility implies that $a_s < a_r$ \item Now we repeat. Either  $V(p_s) \in [a_s-1, j_m]$ then $q$ inside $p_s$ in $a_s-1$ order \hlfix{and we are done}{not quite true; same reasoning as why we're using ``the other end of the propagator'' instead of $V(p_s) \subseteq [a_s-1, j_m]$} \item Else, $V(p_s) \in [i, a_s+1]$ (Maybe $[i-1, a_s +1]$?). Either way, admissibility implies that $a_t < a_s$ and we've already established $a_s < a_r$ \end{enumerate} We don't have to include this argument. It may be totally unnecessary. But I want to make certain that I'm not missing anything.}  Since there are finitely many steps this process can take before reaching $Q_0$, and any $p_* \in Q_0  = \Prop(j_m)$ has $j_m$ in its support by definition, this argument eventually terminates with the construction of a propagator constraining the positioning of $q$ as required. This completes the induction step, and hence the proof.\end{proof}
+Now repeat the argument above with $p_s$ in place of $p_r$: if the other end of $p_s$ lands on an edge between $q$ and $j_m$ then we have $q \in \cP_{m-1}$ as above; if not then there exists some $p_t \in Q_{l-3}$ with $p_s$ supported on $I_i(p_t)$ and $q$ on the inside of $p_t$ in the $a_t-1$ order. Therefore $I_i(p_t) <_i I_i(p_r)$
+%{\color{violet} May not be necessary, but I think highlighted tex follows from "Now repeat the argument...." \begin{enumerate}\item If $V(p_r) \in [a_r-1, j_m]$ (other end closer to $j_m$) then $q$ inside $p_r$ in $a_r-1$ order. \item Else, $V(p_r) \in [i, a_r+1]$ (Maybe $[i-1, a_r +1]$?). (Main point is that other end closer to $i$) Either way,  admissibility implies that $a_s < a_r$ \item Now we repeat. Either  $V(p_s) \in [a_s-1, j_m]$ then $q$ inside $p_s$ in $a_s-1$ order \hlfix{and we are done}{not quite true; same reasoning as why we're using ``the other end of the propagator'' instead of $V(p_s) \subseteq [a_s-1, j_m]$} \item Else, $V(p_s) \in [i, a_s+1]$ (Maybe $[i-1, a_s +1]$?). Either way, admissibility implies that $a_t < a_s$ and we've already established $a_s < a_r$ \end{enumerate} We don't have to include this argument. It may be totally unnecessary. But I want to make certain that I'm not missing anything.}
+Since there are finitely many steps this process can take before reaching $Q_0$, and any $p_* \in Q_0  = \Prop(j_m)$ has $j_m$ in its support by definition, this argument eventually terminates with the construction of a propagator constraining the positioning of $q$ as required. This completes the induction step, and hence the proof.\end{proof}
 
 
 
@@ -1670,25 +1669,22 @@ If $j \in [n]$ is a loop then in particular we have $j \not\in I_j$, which can o
 
 In continuing to characterise the poistroid cells associated to Wilson loop diagrams, our next goal is to show that the dimension of the positroid cell defined by a Wilson loop diagram $(\cP, [n])$ has dimension $3|\cP|$ (Theorem \ref{thm dim}).  The positroid cells associated to the Amplituhedron are of dimension $4|\cP|$. In \cite{non-orientable}, Agarwala and Marcott show that the dimension of the Deodhar component is the sum of $|\cP|$ and the dimension of the associated positroid cell.
 %\[|\cP| + \text{ the dimension of associated positroid cell}.\]
-\note{What if instead of displaying this we wrote ``is the sum of $\|\cP\|$ and the dimension fo the associated positroid cell.''}\sanote{implemented, but don't like how it no longer stands out. Thoughts?}
 In other words, the Deodhar component associated to a Wilson loop diagram is $4|\cP|$, showing that the geometry underlying the Wilson loop diagrams is consistent with the geometry underlying the Amplituhedron.
 
 Marcott in \cite{WLDdim} gives a different proof of the $3|\cP|$-dimensionality of $M(W)$ which is geometric and more elegant, but it is not easy to track the effect of a particular propagator.  Our approach is much more explicit.
 
 Recall that the dimension of a positroid cell is equal to the number of plusses in the associated Le diagram \cite[Theorem 6.5]{Postnikov}. By combining Algorithms~\ref{alg:put GN on WLD} and \ref{alg:GN to Le} (converting from WLD to Grassmann necklace, and Grassmann necklace to Le diagram respectively) we explicitly describe the effect of adding another propagator to a Wilson loop diagram in terms of the plusses of the associated Le diagrams, and hence give a recursive proof of the $3|\cP|$-dimensionality of the cells.
 
-{\color{violet}More than just a dimensionality result, the lemmas below are a first step towards undertanding how the adding an extra propagator changes the associated positroid cell. }
+More than just a dimensionality result, the lemmas below are a first step towards undertanding how the adding an extra propagator changes the associated positroid cell. 
 
 We start with several lemmas, of roughly increasing degree of technicality. We begin by relating non-supporting vertices to columns of zeros in the Le diagram (Lemma \ref{lem uncovered}) and verifying that performing dihedral transformations on a Wilson loop diagram does not change the dimension of of the associated Le diagram (Lemma \ref{lem dihedral}).
-
-\sanote{musing: would it be worth moving the LE diagram exposition here? Do we use it ealier? I like having exposition in front generally, but it feels a mile away.}
 
 \begin{lem}\label{lem uncovered}
 Let $W$ be an admissible Wilson loop diagram with $k$ propagators, and with a vertex $i$ that supports no propagators.  Let $V$ be $W$ with vertex $i$ removed.  Then the Le diagram of $W$ is obtained from the Le diagram of $V$ by inserting an extra column containing all $0$s in position $i$ (i.e. such that the new column has the label $i$).
 \end{lem} 
 
 \begin{proof}
-  By Algorithm~\ref{alg:put GN on WLD} the Grassmann necklace of $W$ is obtained from the Grassmann necklace of $V$ by duplicating the $i$th element of the Grassmann necklace of $V$ (shifting indices by $1$ for all indices greater than $i$), and incrementing all indices greater than $i$ by $1$ in each Grassmann necklace element\note{This is saying to increment twice in a way which I think is confusing, but presumably the parenthetical remark was put there to try to clarify something so I don't want to just remove it}.  Formally, \st{if $I_1^{V}, \ldots, I_{n-1}^{V}$ and $I_1^{W}, \ldots, I_n^{W}$ are the Grassmann necklaces of $V$ and $W$ respectively then}\sanote{in favor of removing parenthetical, we say same thing twice without it}
+  By Algorithm~\ref{alg:put GN on WLD} the Grassmann necklace of $W$ is obtained from the Grassmann necklace of $V$ by duplicating the $i$th element of the Grassmann necklace of $V$, and incrementing all indices greater than $i$ by $1$ in each Grassmann necklace element.  Formally, 
   \[
   I_j^{W} =
   \begin{cases}
@@ -1698,7 +1694,7 @@ Let $W$ be an admissible Wilson loop diagram with $k$ propagators, and with a ve
   \]
 
 
-By Corrollary~\ref{no coloops} we know that $i \not\in I_1^W$, and so $i$ must label a horizontal edge on the boundary of the Le diagram of $W$, i.e. it must be a column label. The shapes of the Le diagram of $V$ and $W$ are the same except for the insertion of this column since $I_1^*$\note{I don't find the star very helpful here; different area's conventions maybe} is the same for $V$ and $W$ except for the incrementation of the indices $\geq i$ in the transition from the necklace for $V$ to the necklace for $W$. 
+By Corrollary~\ref{no coloops} we know that $i \not\in I_1^W$, and so $i$ must label a horizontal edge on the boundary of the Le diagram of $W$, i.e. it must be a column label. The shapes of the Le diagram of $V$ and $W$ are the same except for the insertion of this column since $I_1$ is the same for $V$ and $W$ except for the incrementation of the indices $\geq i$ in the transition from the necklace for $V$ to the necklace for $W$. 
 \end{proof}
 
 
@@ -1715,7 +1711,7 @@ It can easily be seen from \cite[Section 17]{Postnikov} and Algorithm \ref{alg:p
 \begin{lem}\label{lem good p}
   Let $W$ be an admissible Wilson loop diagram with $k \geq 1$ propagators.  Then there is some dihedral transformation of $W$ such that the resulting diagram $W'$ has a propagator $p$ with the following properties:
   \begin{itemize}
-  \item $p = (i, n-1)$ for some $i$, and $p$ has no propagators inside it w.r.t the $<_i$ ordering \st{(that is $i+2, \ldots, n-2$ do not support any propagators in $W'$)}.
+  \item $p = (i, n-1)$ for some $i$, and $p$ has no propagators inside it w.r.t the $<_i$ ordering.
   \item Either the edge $i$ in $W'$ only supports $p$, or the edge $i$ in $W'$ supports exactly one other propagator $q = (j,i)$, with no other propagators inside $q$ in the $<_j$ ordering. 
   \end{itemize}
 \end{lem}
@@ -1734,7 +1730,7 @@ Combining Lemmas \ref{lem uncovered}, \ref{lem dihedral}, and \ref{lem good p}, 
 The next few lemmas describe how the Grassmann necklaces (Lemma \ref{lem I}) and the Le diagrams (Lemmas \ref{lem shape} to Lemma \ref{lem other k}) of Wilson loop diagrams of this type are related to the corresponding Wilson loop diagram with propagator $p$ removed. \sanote{rephrased, still clear?}
 
 \begin{lem}\label{lem I}
-Let $W$ be an admissible Wilson loop diagram with $k\geq 1$ propagators, and suppose that $W$ admits one of the configurations described in Lemma~\ref{lem good p}, with $p$ and $q$ (if $q$ exists) both of length 2. Let $V$ be $W$ with $p$ removed.  Then we can express $I_*^W$ in terms of $I_*^V$ as follows:\note{I'm not a fan of the case labels in this display: there's enough going on already without throwing in extra information}
+Let $W$ be an admissible Wilson loop diagram with $k\geq 1$ propagators, and suppose that $W$ admits one of the configurations described in Lemma~\ref{lem good p}, with $p$ and $q$ (if $q$ exists) both of length 2. Let $V$ be $W$ with $p$ removed.  Then we can express $I_*^W$ in terms of $I_*^V$ as follows:
 
   \begin{align*}
     I_1^{W} & = I_1^{V} \cup \{n-3\} \\
@@ -1742,21 +1738,19 @@ Let $W$ be an admissible Wilson loop diagram with $k\geq 1$ propagators, and sup
     I_{n-1}^{W} & = I_n^{V} \cup \{n-1\} \\
     I_{n-2}^{W} & =
     \begin{cases}
-      I_{n-2}^{V}\cup \{n-2\} & \text{if $n-2\not\in I_{n-2}^{V}$ (Case 1)} \\
+      I_{n-2}^{V}\cup \{n-2\} & \text{if $n-2\not\in I_{n-2}^{V}$} \\
       I_{n-2}^{V}\cup \{n-1\} & \text{if $n-2\in I_{n-2}^{V}$, $n-1\not\in I_{n-2}^{V}$} \\
       (I_{n}^{V} - \{n-5\})\cup \{n-1,n-2\} & \text{if $n-1, n-2\in I_{n-2}^{V}$}
     \end{cases} \\
     I_{k}^{W} & =
     \begin{cases}
-      I_k^{V}\cup \{n-3\} & \qquad \qquad \qquad \qquad \text{if $n-3 \not\in I_k^{V}$ (Case 1)}\\
-      I_k^{V}\cup\{n-2\} & \qquad \qquad \qquad \qquad \text{if $n-3\in I_k^{V}$ (Case 2)}
+      I_k^{V}\cup \{n-3\} & \qquad \qquad \qquad \qquad \text{if $n-3 \not\in I_k^{V}$}\\
+      I_k^{V}\cup\{n-2\} & \qquad \qquad \qquad \qquad \text{if $n-3\in I_k^{V}$}
     \end{cases} \\
     & \text{for $1<k<n-2$}
   \end{align*}
 \end{lem}
 
-
-The two possible cases for $W$ are illustrated in Figure~\ref{fig special p}.
 
 \begin{figure}
 \[
@@ -1806,10 +1800,12 @@ The two possible cases for $W$ are illustrated in Figure~\ref{fig special p}.
 \] 
   \caption{The two cases for $W$ and $p$.  No other propagators can end in the red sections.  Other segments may have additional propagators ending in them.}\label{fig special p}
 
-\end{figure} \sanote{moved figure before theorem 4.4 so that we can just refer to generically}
-\begin{proof}
+\end{figure}
 
-We first consider $I_1^{W}$, i.e. the set obtained by applying the Grassmann necklace algorithm to $W$ with starting vertex 1\note{I don't find this i.e. helpful at this point, is it an old thing that can go or do others find it useful?} \sanote{agreed, i vote to cut}. Note that $n-3 \not\in I_1^{V}$: \hlfix{for Case 2 this is clear from the diagram (since Algorithm {\ref{alg:put GN on WLD}} would force $q$ to contribute no later than vertex $n-4$),}{why? isn't obvious to me without several cases, and even then}\note{yeah, I can't see this either; cyclic intervals is probably a better argument} while for Case 1 it follows directly from Lemma \ref{lem no fourth vertex}. Therefore when we start at vertex 1 and apply the Grassmann necklace algorithm to $W$, $p$ is the \st{only remaining unassigned propagator when we reach vertex $n-3$}{\color{violet}last propagator to contribute}, and so we have $ I_1^{W}(p) = n-3$ and $I_1^W = I_1^V\cup \{n-3\}$.
+\begin{proof}
+The two possible cases for $W$ are illustrated in Figure~\ref{fig special p}.
+
+We first consider $I_1^{W}$. Note that $n-3 \not\in I_1^{V}$: \hlfix{for Case 2 this is clear from the diagram (since Algorithm {\ref{alg:put GN on WLD}} would force $q$ to contribute no later than vertex $n-4$),}{why? isn't obvious to me without several cases, and even then}\note{yeah, I can't see this either; cyclic intervals is probably a better argument} while for Case 1 it follows directly from Lemma \ref{lem no fourth vertex}. Therefore when we start at vertex 1 and apply the Grassmann necklace algorithm to $W$, $p$ is the \st{only remaining unassigned propagator when we reach vertex $n-3$}{\color{violet}last propagator to contribute}, and so we have $ I_1^{W}(p) = n-3$ and $I_1^W = I_1^V\cup \{n-3\}$.
 
 Next consider $I_n^{W}$. From the figure we see that in both cases we have $I_n^{W}(p) = n$. \hlfix{Therefore, the second through $k^{th}$ propagators contributing to $I_n^W$ are the same as the ordering in $I_n^V$. Since $n$ is non-supporting in $V$, $I_1^V = I_n^V$, we have $I_n^{W} = I_1^{V} \cup \{n\}$}{Alt. argument.  Can ignore.} At vertex 1 of the algorithm $I_n$, the unassigned propagators are exactly those that appear in $V$. Therefore the algorithm continues as in $I_1^{V}$ (recall Remark~\ref{rmk algorithm locally same} about locally identical propagator configurations), i.e. we have $I_n^{W} = I_1^{V} \cup \{n\}$. By a similar argument, we must have $I_{n-1}^{W} = I_n^{V} \cup \{n-1\}$.
 
