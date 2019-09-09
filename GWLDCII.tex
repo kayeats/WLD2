@@ -964,7 +964,9 @@ The following observation about the local behavior of the algorithm will be very
 
 Suppose we are going through the algorithm to construct $I_i^W$ for some $i$, and we are currently at step $j$ of the loop. Consider the diagram $W'$ formed by removing from $W$ all propagators that have already contributed to $I_i^W$. (This just replicates the behavior of the algorithm, which removes each propagator once it contibutes to $I_i^W$.)  Now suppose for some other diagram $V$ on the same vertex set we are constructing $I_m^V$ for some $m$, and we are at step $j$ of the loop, for the same $j$ as above.  Again obtain $V'$ from $V$ by removing all propagators assigned so far.
 
-With this setup, if we can find a vertex $\ell$ occurring after both $i$ and $m$ such that the \emph{configuration} of propagators ending in the interval $[j-1, \ell+1]$ is identical in both $W'$ and $V'$, then the vertices contributed to $I_i^W$ and $I_m^V$ are the same from step $j$ to step $\ell$ (inclusive). See Figure~\ref{fig:locally identical} for an illustration of this. 
+With this setup, if we can find a vertex $\ell$ occurring after both $i$ and $m$ such that the \emph{configuration}\note{Why is configuration italicized?} of propagators ending in the interval $[j-1, \ell+1]$ is identical in both $W'$ and $V'$, then the vertices contributed to $I_i^W$ and $I_m^V$ are the same from step $j$ to step $\ell$ (inclusive). See Figure~\ref{fig:locally identical} for an illustration of this.
+
+Furthermore, if the propagators of $W'$ and $V'$ ending in the interval $[j-1, \ell+1]$ are also identically labelled, then $I_i^W$ and $I_m^V$ are the same as functions when restricted to those propagators.
 
 \begin{figure}
 \[
