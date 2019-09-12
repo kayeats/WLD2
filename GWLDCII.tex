@@ -1729,6 +1729,58 @@ Combining Lemmas \ref{lem uncovered}, \ref{lem dihedral}, and \ref{lem good p}, 
 
 The next few lemmas describe how the Grassmann necklaces (Lemma \ref{lem I}) and the Le diagrams (Lemmas \ref{lem shape} to Lemma \ref{lem other k}) of Wilson loop diagrams of this type are related to the corresponding Wilson loop diagram with propagator $p$ removed. \sanote{rephrased, still clear?}
 
+
+\begin{figure}
+\[
+\begin{tikzpicture}[rotate = 150,baseline=(current bounding box.east),label distance = -2mm]
+\begin{scope}
+  \drawWLDfragment[6]{3}{0.3}
+  %\drawnumbers % use this to debug
+  \begin{scope}
+    \clipcenterarc(0,0)(\startpoint:\endpoint:\radius)
+    \draw[smallpropagator] (\zero+2.4*\step:\radius*1.1) to [bend left = 55] (\zero + 4.6*\step:\radius*1.1); 
+    \node at (\zero + 3.5*\step:\radius*0.75){\footnotesize $p$};
+  \end{scope}
+  \centerarc[red,line width = 2pt,line cap = round](0,0)(\zero + 2*\step:\zero+4.45*\step:\radius)
+  \newbetternode[{[label distance=-3mm]above right}]{1}{n-4}
+  \newbetternode[{[label distance=-3mm]above right}]{2}{n-3}
+  \newbetternode[{[label distance=-3mm]above right}]{3}{n-2}
+  \newbetternode[{[label distance=-3mm]above right}]{4}{n-1}
+  \newnode[above]{5}{n}
+  \newnode[above]{6}{1}
+  \node at (180-60:\radius*0.1){\em Case 1};
+\end{scope}
+\end{tikzpicture}
+\qquad 
+\qquad 
+\begin{tikzpicture}[rotate=150, baseline=(current bounding box.east)]
+\begin{scope}
+  \drawWLDfragment[7]{3}{0.3}
+  %\drawnumbers % use this to debug
+  \begin{scope}
+    \clipcenterarc(0,0)(\startpoint:\endpoint:\radius)
+    \draw[smallpropagator] (\zero+1.4*\step:\radius*1.1) to [bend left = 60] (\zero + 3.5*\step:\radius*1.1); 
+    \draw[smallpropagator] (\zero+3.5*\step:\radius*1.1) to [bend left = 60] (\zero + 5.6*\step:\radius*1.1); 
+    \node at (\zero + 2.4*\step:\radius*0.8){\footnotesize $q$};
+    \node at (\zero + 4.5*\step:\radius*0.8){\footnotesize $p$};
+  \end{scope}
+  \centerarc[red,line width = 2pt,line cap = round](0,0)(\zero + 1.6*\step:\zero+5.5*\step:\radius)
+  \newbetternode[{[label distance=-3mm]above right}]{1}{n-5}
+  \newbetternode[{[label distance=-3mm]above right}]{2}{n-4}
+  \newbetternode[{[label distance=-3mm]above right}]{3}{n-3}
+  \newbetternode[{[label distance=-3mm]above right}]{4}{n-2}
+  \newbetternode[{[label distance=-3mm]above right}]{5}{n-1}
+  \newnode[above]{6}{n}
+  \newnode[above]{7}{1}
+  \node at (180-60:\radius*0.1){\em Case 2};
+\end{scope}
+\end{tikzpicture}
+\] 
+  \caption{The two cases for $W$ and $p$.  No other propagators can end in the red sections.  Other segments may have additional propagators ending in them.}\label{fig special p}
+
+\end{figure}
+
+
 \begin{lem}\label{lem I}
 Let $W$ be an admissible Wilson loop diagram with $k\geq 1$ propagators, and suppose that $W$ admits one of the configurations described in Lemma~\ref{lem good p}, with $p$ and $q$ (if $q$ exists) both of length 2. Let $V$ be $W$ with $p$ removed.  Then we can express $I_*^W$ in terms of $I_*^V$ as follows:
 
@@ -1740,7 +1792,7 @@ Let $W$ be an admissible Wilson loop diagram with $k\geq 1$ propagators, and sup
     \begin{cases}
       I_{n-2}^{V}\cup \{n-2\} & \text{if $n-2\not\in I_{n-2}^{V}$} \\
       I_{n-2}^{V}\cup \{n-1\} & \text{if $n-2\in I_{n-2}^{V}$, $n-1\not\in I_{n-2}^{V}$} \\
-      (I_{n}^{V} - \{n-5\})\cup \{n-1,n-2\} & \text{if $n-1, n-2\in I_{n-2}^{V}$}
+      (I_{n}^{V} \setminus \{n-5\})\cup \{n-1,n-2\} & \text{if $n-1, n-2\in I_{n-2}^{V}$}
     \end{cases} \\
     I_{k}^{W} & =
     \begin{cases}
@@ -1752,60 +1804,18 @@ Let $W$ be an admissible Wilson loop diagram with $k\geq 1$ propagators, and sup
 \end{lem}
 
 
-\begin{figure}
-\[
-\begin{tikzpicture}[rotate = 150,baseline=(current bounding box.east),label distance = -2mm]
-\begin{scope}
-	\drawWLDfragment[6]{3}{0.3}
-	%\drawnumbers % use this to debug
-	\begin{scope}
-		\clipcenterarc(0,0)(\startpoint:\endpoint:\radius)
-		\draw[smallpropagator] (\zero+2.4*\step:\radius*1.1) to [bend left = 55] (\zero + 4.6*\step:\radius*1.1); 
-		\node at (\zero + 3.5*\step:\radius*0.75){\footnotesize $p$};
-	\end{scope}
-	\centerarc[red,line width = 2pt,line cap = round](0,0)(\zero + 2*\step:\zero+4.45*\step:\radius)
-	\newbetternode[{[label distance=-3mm]above right}]{1}{n-4}
-	\newbetternode[{[label distance=-3mm]above right}]{2}{n-3}
-	\newbetternode[{[label distance=-3mm]above right}]{3}{n-2}
-	\newbetternode[{[label distance=-3mm]above right}]{4}{n-1}
-	\newnode[above]{5}{n}
-	\newnode[above]{6}{1}
-	\node at (180-60:\radius*0.1){\em Case 1};
-\end{scope}
-\end{tikzpicture}
-\qquad 
-\qquad 
-\begin{tikzpicture}[rotate=150, baseline=(current bounding box.east)]
-\begin{scope}
-	\drawWLDfragment[7]{3}{0.3}
-	%\drawnumbers % use this to debug
-	\begin{scope}
-		\clipcenterarc(0,0)(\startpoint:\endpoint:\radius)
-		\draw[smallpropagator] (\zero+1.4*\step:\radius*1.1) to [bend left = 60] (\zero + 3.5*\step:\radius*1.1); 
-		\draw[smallpropagator] (\zero+3.5*\step:\radius*1.1) to [bend left = 60] (\zero + 5.6*\step:\radius*1.1); 
-		\node at (\zero + 2.4*\step:\radius*0.8){\footnotesize $q$};
-		\node at (\zero + 4.5*\step:\radius*0.8){\footnotesize $p$};
-	\end{scope}
-	\centerarc[red,line width = 2pt,line cap = round](0,0)(\zero + 1.6*\step:\zero+5.5*\step:\radius)
-	\newbetternode[{[label distance=-3mm]above right}]{1}{n-5}
-	\newbetternode[{[label distance=-3mm]above right}]{2}{n-4}
-	\newbetternode[{[label distance=-3mm]above right}]{3}{n-3}
-	\newbetternode[{[label distance=-3mm]above right}]{4}{n-2}
-	\newbetternode[{[label distance=-3mm]above right}]{5}{n-1}
-	\newnode[above]{6}{n}
-	\newnode[above]{7}{1}
-	\node at (180-60:\radius*0.1){\em Case 2};
-\end{scope}
-\end{tikzpicture}
-\] 
-  \caption{The two cases for $W$ and $p$.  No other propagators can end in the red sections.  Other segments may have additional propagators ending in them.}\label{fig special p}
-
-\end{figure}
-
 \begin{proof}
-The two possible cases for $W$ are illustrated in Figure~\ref{fig special p}.
+The two possible cases for $W$ are illustrated in Figure~\ref{fig special p}. 
 
-We first consider $I_1^{W}$. Note that $n-3 \not\in I_1^{V}$: \hlfix{for Case 2 this is clear from the diagram (since Algorithm {\ref{alg:put GN on WLD}} would force $q$ to contribute no later than vertex $n-4$),}{why? isn't obvious to me without several cases, and even then}\note{yeah, I can't see this either; cyclic intervals is probably a better argument} while for Case 1 it follows directly from Lemma \ref{lem no fourth vertex}. Therefore when we start at vertex 1 and apply the Grassmann necklace algorithm to $W$, $p$ is the \st{only remaining unassigned propagator when we reach vertex $n-3$}{\color{violet}last propagator to contribute}, and so we have $ I_1^{W}(p) = n-3$ and $I_1^W = I_1^V\cup \{n-3\}$.
+\note{Following two paragraphs added to replace the sentence ``clearly $n-3 \not\in I_1^V$''}
+We first show that $n-3 \not\in I_1^V$. In Case 1, the only way we could have $n-3 \in I_1^V$ is if $V$ admits some propagator $r$ with $I_1(r) = n-3$; from the figure, one end of $r$ would have to lie on edge $n-4$, and by Lemma~\ref{lem no fourth vertex} the other end would have to lie on edge $n-1$ or $n$. However, if $r = (n-4,n-1)$ then by [remark following cyclic intervals lemma] we would have $I_1^V(r) = n-4$, while if $r = (n-4,n)$ then $r$ is the clockwise-most propagator supported on vertex 1 and we would have $I_1^V(r) = 1$. Either way, we have $I_1^V(r) \neq n-3$.
+
+In Case 2 the only propagator supported on vertex $n-3$ in $V$ is $q$, and by [cyclic intervals remark] we have $I_{n-1}^V(q) = n-5$. Further, it must also be the case that $I_n^V(q) = n - 5$: if $n-1$ is non-supporting in $V$ then this is immediate, while if there exists a propagator $r$ in $V$ with $I_{n-1}^V(r) = n-1$ then $r$ lies on edge $n-1$ and is the clockwise-most propagator supported on vertex $n$, so $I_n^V(r) = n$ and the remainder of $I_n^V$ proceeds identically to $I_{n-1}^V$. Thus $I_n^V(q) = n-5$, so by [cyclic intervals lemma or remark] we have $I_1^V(q) \in \{n-5,n-4\}$; in particular, $I_1^V(q)\neq n-3$.
+
+We note for future reference that the arguments of the previous two paragraphs also imply that $n-2,n-1,n \not\in I_1^V$.
+
+We can now describe $I_1^W$ in terms of $I_1^V$: when we start at vertex 1 in $W$ and apply the Grassmann necklace algorithm, $p$ is the \st{only remaining unassigned propagator when we reach vertex $n-3$}{\color{violet}last propagator to contribute}, and so we have $ I_1^{W}(p) = n-3$ and $I_1^W = I_1^V\cup \{n-3\}$. 
+
 
 Next consider $I_n^{W}$. From the figure we see that in both cases we have $I_n^{W}(p) = n$. \hlfix{Therefore, the second through $k^{th}$ propagators contributing to $I_n^W$ are the same as the ordering in $I_n^V$. Since $n$ is non-supporting in $V$, $I_1^V = I_n^V$, we have $I_n^{W} = I_1^{V} \cup \{n\}$}{Alt. argument.  Can ignore.} At vertex 1 of the algorithm $I_n$, the unassigned propagators are exactly those that appear in $V$. Therefore the algorithm continues as in $I_1^{V}$ (recall Remark~\ref{rmk algorithm locally same} about locally identical propagator configurations), i.e. we have $I_n^{W} = I_1^{V} \cup \{n\}$. By a similar argument, we must have $I_{n-1}^{W} = I_n^{V} \cup \{n-1\}$.
 
@@ -1822,7 +1832,6 @@ This covers all cases and hence completes the proof.
 \end{proof}
 
 
-\note{When doing the final formatting, try to ensure that Figure \ref{fig Le} and Lemma \ref{lem shape} are on the same page}
 \begin{lem}\label{lem shape}
   Let $V$ and $W$ be as in Lemma~\ref{lem I}.
   The shape of the Le diagram of $V$ can be built from left to right of the following blocks: a rectangle which is 3 columns wide, one more column of the same height, and a partition shape with at most as many rows as the rectangle.
@@ -1863,7 +1872,10 @@ and so by Algorithm~\ref{alg:GN to Le} we have a plus in the $(n-3) \rightarrow 
 
 Also by Lemma~\ref{lem I} we have $I_{n-1}^{W} = I_n^{V} \cup \{n-1\}$. Recall from the proof of Lemma \st{{\ref{lem I}}} {\color{violet} {\ref{lem shape}} }\sanote{change back if actually in 4.4} that $n-3,n-2,n-1,n \not\in I_1^V$; therefore $I_1^W\setminus I_{n-1}^W = (I_1^V \setminus I_n^V) \cup\{n-3\}$, and $n-3$ is maximal in this set. Similarly, 
 \[I_{n-1}^W \setminus I_1^W = (I_n^V \setminus I_1^V) \cup \{n-1\} \subseteq \{n-1,n\},\]
-where the final inclusion follows from the definition of Grassmann necklace\sanote{why only $\{n-1,n\}$? I'd believe an inclusion the other way}\note{Definition of GN: $I_1 = (I_n\setminus\{n\})\cup\{\text{something}\}$}. In particular, $n-1$ is minimal in this set, so Algorithm~\ref{alg:GN to Le} yields a plus in the $(n-3) \rightarrow (n-1)$ position (i.e. the second box in the bottom row of the Le diagram of $W$) \hlfix{along with any plusses yielded by $I_n^V$.}{display seems to imply that there is exactly one such other $+$. Is this correct?}\note{Display implies there's at most one, but if we apply no coloops I think that becomes exactly one.}
+where the final inclusion follows from the definition of Grassmann necklace.
+\sanote{why only $\{n-1,n\}$? I'd believe an inclusion the other way}
+\note{Definition of GN: $I_1 = (I_n\setminus\{n\})\cup\{\text{something}\}$}
+In particular, $n-1$ is minimal in this set, so Algorithm~\ref{alg:GN to Le} yields a plus in the $(n-3) \rightarrow (n-1)$ position (i.e. the second box in the bottom row of the Le diagram of $W$) \hlfix{along with any plusses yielded by $I_n^V$.}{display seems to imply that there is exactly one such other $+$. Is this correct?}\note{If $n$ is non-supporting then $I_n^V \setminus I_1^V = \emptyset$ and we only get the $(n-3) \rightarrow (n-1)$ plus.}
 \end{proof} 
 
 
@@ -1956,12 +1968,13 @@ Let $W = (\cP, [n])$ be an admissible Wilson loop diagram.  The number of plusse
 \begin{proof}
   The proof is by induction on the number of propagators.
 
-  First note that a Wilson loop diagram $W$ with one propagator supported on vertices $i<i+1<j<j+1$ has a Le diagram consisting of a single row with $n-i$ boxes. The columns are labeled from left to right by $n, \ldots, i+1$. By Algorithm~\ref{alg:GN to Le} there are plusses in the $i+1$, $j$, and $j_1$ positions. \sanote{changed for grammar and notational consistency. check}
+  First note that a Wilson loop diagram $W$ with one propagator supported on vertices $i<i+1<j<j+1$ has a Le diagram consisting of a single row with $n-i$ boxes. The columns are labeled from left to right by $n, \ldots, i+1$. By Algorithm~\ref{alg:GN to Le} there are plusses in the $i+1$, $j$, and $j+1$ positions. \sanote{changed for grammar and notational consistency. check}
 
-  Now consider Wilson loop diagrams with $k>1$ propagators.  By Lemma~\ref{lem uncovered} it suffices to prove the result for weakly admissible Wilson loop diagrams with $k$ propagators and no non-supporting vertices.  By Lemma~\ref{lem dihedral} it suffices to prove the result for at least one Wilson loop diagram from each dihedral orbit. In particular, consider $W$, which after possible dihedral transformation, has a propagator $p$ with the properties in Lemma~\ref{lem good p}.  
+  Now consider Wilson loop diagrams with $k>1$ propagators.  By Lemma~\ref{lem uncovered} it suffices to prove the result for weakly admissible Wilson loop diagrams with $k$ propagators and no non-supporting vertices.  By Lemma~\ref{lem dihedral} it suffices to prove the result for at least one Wilson loop diagram from each dihedral orbit. In particular, we can restrict our attention to diagrams $W$ which have a propagator $p$ with the properties in Lemma~\ref{lem good p}.  
 
-  We make one further simplification: if our $W$ is in Case 2 of Figure~\ref{fig special p} and $n-1$ supports only $p$ but $n-2$ supports at least one other propagator\sanote{?? see para below}, then flip $W$ on the line perpendicular to the $(n-2){th}$ edge to obtain a diagram with the configuration of Case 1. This eliminates the possibility that we could have $n-2 \in I_{n-2}^W$ but $n-1 \not\in I_{n-2}^W$. 
+We make one further simplification in order to eliminate the possibility that $n-2 \in I_{n-2}^V$ but $n-1 \not\in I_{n-2}^V$, which can only occur if our $W$ is in Case 2 of Figure~\ref{fig special p} and $n-1$ supports no propagators other than $p$. In this situation, flip $W$ on the line perpendicular to the $(n-2){th}$ edge to obtain a diagram with the configuration of Case 1.
 
+\note{Sian rewrote above paragraph because their original version was wrong in multiple ways. Better?}
 {\color{violet} I'm very confused about the previous paragraph. I thought that by constuction, in case 2, there can be exactly 2 propagators ending on edge $n-3$, $p$ and $q$. I also thought the distinguising feature between the two subcases of Figure 10 case 2 in Lemma 4.4 $I_{n-2}^W$ was the presence or absense of a propagator $r$ ending on edge $n-1$. If $r$ exists, $n-1 \in I_{n-2}^V$ and if  $r$ doesn't exist, $n-1 \not \in I_{n-2}^V$.}
 
 
