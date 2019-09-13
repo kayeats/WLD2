@@ -1123,6 +1123,12 @@ The following lemma establishes that these sets behave in a simple and predictab
 Let $W = (\cP,[n])$ be an admissible Wilson loop diagram.  For every $p = (i,j) \in \cP$, the sets $J_p^{W}(i)$, $J_p^{W}(i+1)$, $J_p^{W}(j)$, and $J_p^{W}(j+1)$ are each non-empty cyclic intervals which partition $[n]$ and occur in the given cyclic order.
 \end{lem}
 
+\begin{rmk}\label{rmk cyclic}
+  Before the proof, let us observe that one of the main ways that the above lemma will be used is in observations like the following.  Suppose $p=(i,j)$ is a propagator and $I_{j+1}(p) = j+1$.  Consider $I_{j+2}(p)$.  Since $j+1$ is the last vertex in the $j+2$ order, $p$ can not contribute $j+1$ to $I_{j+2}$.  But the the fact that the invervals of the lemma are nonempty and occur in their cyclic order implies that $I_{j+2}(p)=i$.  More generally, whenever we know that a propagator stops contributing a particular vertex, then we know that it must contribute its cyclically next vertex.  This little observation is surprisingly useful, to the point that the details which appear in the proof of Lemma~\ref{vertex cyclic int lem} are never needed again, the mere fact of non-empty intervals in the correct order suffices.
+\end{rmk}
+  
+Now we proceed to the proof of Lemma~\ref{vertex cyclic int lem}.
+
 \begin{proof}
 We will prove the result by induction on the number of propagators.  If $W$ has one propagator then the result is immediate.  Now suppose $W$ has more than one propagator.  Since non-supporting vertices have no effect on Algorithm~\ref{alg:put GN on WLD}, it suffices to prove the result for $W$  (possibly weakly admissible) with no non-supporting vertices.  Then by Lemma~\ref{lem sian}, $W$ has at least one of the four situations illustrated in Figure~\ref{fig 3 cases}.
 
@@ -1726,7 +1732,7 @@ Note that since the first condition tells us that $p$ has nothing inside it, if 
 
 Combining Lemmas \ref{lem uncovered}, \ref{lem dihedral}, and \ref{lem good p}, it therefore suffices to study the Le diagrams of weakly admissible Wilson loop diagrams with no non-supporting vertices and admitting one of the configurations described in Lemma \ref{lem good p}, with propagators $p = (n-3, n-1)$ and $q= (n-5, n-3)$ (if $q$ exists) both of length 2. See Figure~\ref{fig special p} for an illustration of the two possibilities. 
 
-The next few lemmas describe how the Grassmann necklaces (Lemma \ref{lem I}) and the Le diagrams (Lemmas \ref{lem shape} to Lemma \ref{lem other k}) of Wilson loop diagrams of this type are related to the corresponding Wilson loop diagram with propagator $p$ removed. \sanote{rephrased, still clear?}
+With the above restrictions in place, the next few lemmas describe how the Grassmann necklaces (Lemma \ref{lem I}) and the Le diagrams (Lemmas \ref{lem shape} to Lemma \ref{lem other k}) change upon the removal of $p$ from the Wilson loop diagram.  This gives us the inductive lever we need to prove the main theorem (Theorem \ref{thm dim}).
 
 
 \begin{figure}
