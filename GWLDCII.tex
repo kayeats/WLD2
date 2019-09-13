@@ -1819,16 +1819,16 @@ In Case 2 the only propagator supported on vertex $n-3$ in $V$ is $q$, and by [c
 
 We note for future reference that the arguments of the previous two paragraphs also imply that $n-2,n-1,n \not\in I_1^V$.
 
-We can now describe $I_1^W$ in terms of $I_1^V$: when we start at vertex 1 in $W$ and apply the Grassmann necklace algorithm, $p$ is the \st{only remaining unassigned propagator when we reach vertex $n-3$}{\color{violet}last propagator to contribute}, and so we have $ I_1^{W}(p) = n-3$ and $I_1^W = I_1^V\cup \{n-3\}$. 
+We can now describe $I_1^W$ in terms of $I_1^V$: when we start at vertex 1 in $W$ and apply the Grassmann necklace algorithm, $p$ is the only remaining unassigned propagator when we reach vertex $n-3$, and so we have $ I_1^{W}(p) = n-3$ and $I_1^W = I_1^V\cup \{n-3\}$. 
 
 
-Next consider $I_n^{W}$. From the figure we see that in both cases we have $I_n^{W}(p) = n$. \hlfix{Therefore, the second through $k^{th}$ propagators contributing to $I_n^W$ are the same as the ordering in $I_n^V$. Since $n$ is non-supporting in $V$, $I_1^V = I_n^V$, we have $I_n^{W} = I_1^{V} \cup \{n\}$}{Alt. argument.  Can ignore.} At vertex 1 of the algorithm $I_n$, the unassigned propagators are exactly those that appear in $V$. Therefore the algorithm continues as in $I_1^{V}$ (recall Remark~\ref{rmk algorithm locally same} about locally identical propagator configurations), i.e. we have $I_n^{W} = I_1^{V} \cup \{n\}$. By a similar argument, we must have $I_{n-1}^{W} = I_n^{V} \cup \{n-1\}$.
+Next consider $I_n^{W}$. From the figure we see that in both cases we have $I_n^{W}(p) = n$.  At vertex 1 of the algorithm $I_n$, the unassigned propagators are exactly those that appear in $V$. Therefore the algorithm continues as in $I_1^{V}$ (recall Remark~\ref{rmk algorithm locally same} about locally identical propagator configurations), i.e. we have $I_n^{W} = I_1^{V} \cup \{n\}$. By a similar argument, we must have $I_{n-1}^{W} = I_n^{V} \cup \{n-1\}$.
 
-Now consider $I_{n-2}^{W}$. If $n-2\not\in I_{n-2}^{V}$ \hlfix{by Corrollary {\ref{no coloops}}  $n-2$ is non-supporting in $V$. Thus we are in Case 1, with ${I_{n-2}^W(p) = n-2}$. By the arguments above ${I_{n-2}^{W} = I_{n-2}^{V}\cup \{n-2\}}$}{Alt. Argument. Can ignore} (i.e. the vertex $n-2$ supports no propagators in $V$), then ${I_{n-2}^W(p) = n-2}$ and this assignment of $p$ does not affect the rest of the construction of $I_{n-2}^{V}$, so we obtain ${I_{n-2}^{W} = I_{n-2}^{V}\cup \{n-2\}}$ as above.
+Now consider $I_{n-2}^{W}$. If $n-2\not\in I_{n-2}^{V}$ then the vertex $n-2$ is non-supporting (see also Corrollary~\ref{no coloops}.)  Thus we are in Case 1, with ${I_{n-2}^W(p) = n-2}$ and this assignment of $p$ does not affect the rest of the construction of $I_{n-2}^{V}$, so we obtain ${I_{n-2}^{W} = I_{n-2}^{V}\cup \{n-2\}}$ as above.
 
-On the other hand, if $n-2\in I_{n-2}^{V}$ then we must be in Case 2 of Figure~\ref{fig special p} and $I_{n-2}^V(q) = I_{n-2}^W(q) = n-2$ \st{(since $q$ is always the clockwise-most propagator supported on vertex $n-2$; see Figure {\ref{fig special p}})}. If $n-1 \not\in I_{n-2}^{V}$, then $I_{n-2}^W(p) = n-1$ and then the algorithm proceeds identically to $I_{n-2}^{V}$ for the remainder of its steps; thus $I_{n-2}^{W} = I_{n-2}^{V}\cup \{n-1\}$ in this case.
+On the other hand, if $n-2\in I_{n-2}^{V}$ then we must be in Case 2 of Figure~\ref{fig special p} and $I_{n-2}^V(q) = I_{n-2}^W(q) = n-2$ (since $q$ is always the clockwise-most propagator supported on vertex $n-2$. If $n-1 \not\in I_{n-2}^{V}$, then $I_{n-2}^W(p) = n-1$ and then the algorithm proceeds identically to $I_{n-2}^{V}$ for the remainder of its steps; thus $I_{n-2}^{W} = I_{n-2}^{V}\cup \{n-1\}$ in this case.
 
-Finally, if $n-2,n-1 \in I_{n-2}^{V}$ then $I_{n-2}^W(q) = n-2$ and $I_{n-2}^W(p) = n-1$ as above, but \st{this is different to what occured in $I_{n-2}^{V}$}{\color{violet}but some other propagator must contribute $n-1$ to $I_{n-2}^{V}$} so we cannot use the same argument as above. When the algorithm $I_{n-2}^W$ reaches vertex $n$, only the propagators $p$ and $q$ have contributed; thus we proceed as in the construction of $I_n^{V}$ but without propagator $q$ by Remark \ref{rmk algorithm locally same}. By Lemma~\ref{vertex cyclic int lem} we know that $I_n^V(q) = n-5$ \sanote{it would be nice if this were easier to read from lemma without digging through proof}\note{The point is, at $n-2$ $q$ must contribute $n-2$ (because nothing else is supported on $n-2$), and so by the intervals being cyclic, nonempty, and never getting the last vertex, at $n-1$ (and identically at $n$ since $n-1$ doesn't support anything) $q$ contributes $n-5$.}, and from \st{the diagram }{\color{violet} Remark \ref{clockwise ordering rem} } we see that the only way this could occur is if $q$ was the last to contribute to $I_{n-2}^V$. %all other propagators in $V$ had already been assigned when we reached vertex $n-5$; thus $q$ was the final propagator contributing to $I_n^{V}$. 
+Finally, if $n-2,n-1 \in I_{n-2}^{V}$ then $I_{n-2}^W(q) = n-2$ and $I_{n-2}^W(p) = n-1$ as above, but but some other propagator must have contributed $n-1$ to $I_{n-2}^{V}$ so we cannot use the same argument as above. When the algorithm $I_{n-2}^W$ reaches vertex $n$, only the propagators $p$ and $q$ have contributed; thus we proceed as in the construction of $I_n^{V}$ but without propagator $q$ by Remark \ref{rmk algorithm locally same}. By Lemma~\ref{vertex cyclic int lem} we know that $I_n^V(q) = n-5$, and from Remark \ref{clockwise ordering rem} we see that the only way this could occur is if $q$ was the last to contribute to $I_{n-2}^V$. %all other propagators in $V$ had already been assigned when we reached vertex $n-5$; thus $q$ was the final propagator contributing to $I_n^{V}$. 
 Therefore $I_{n-2}^{W} = (I_{n}^{V} \setminus \{n-5\}) \cup \{n-1, n-2\}$ in this case. This completes all cases for $I_{n-2}^{W}$.
 
 The arguments for $I_k^{W}$ ($1< k < n-2$) proceed analagously to those of $I_{n-2}^{W}$, with one simplification: we cannot have both $n-3$ and $n-2$ in $I_k^{V}$ since $q$ is the only propagator that could be assigned to either of them, and it cannot be assigned to both.
@@ -1846,7 +1846,7 @@ This covers all cases and hence completes the proof.
 \begin{proof}
 See Figure~\ref{fig Le} for an illustration of the shapes described in the statement of the lemma.
 
-Recall that $I_1$ determines the shape of the Le diagram: specifically, the elements of $I_1$ label the rows of the diagram, working from top right to bottom left. By the arguments in Lemma {\ref{lem I}} we know that \st{${n,n-1,n-2, n-3 \not\in I_1^{V}}$}\sanote{Only see $n-3$ in Lemma 4.4?} \note{well yeah, that's why it says ``the arguments in Lemma 4.4'': we show that all props are assigned before $n-3$ in $I_1$. I think spelling it out in detail here is more confusing than not.}{\color{violet} $ n-3 \not\in I_1^{V}$. By Lemma \ref{lem no fourth vertex}, $n, n-2 \not \in I_1^V$. Since $n-1$ is non-supporting in $V$, by Corrollary {\ref{no coloops}}, $n \not\in I_1^{V}$.} These are the leftmost four columns of the diagram for $V$.  From Lemma \ref{lem I} we know that that $I_1^{W} = I_1^{V}\cup \{n-3\}$. Therefore, the right hand boundary of the shape of $V$ is the same as the right hand boundary of the shape of $W$ except that $W$ has one additional row of 3 boxes while $V$ has an additional column in the $n-3$ position; that is, an extra column fourth from the left. 
+Recall that $I_1$ determines the shape of the Le diagram: specifically, the elements of $I_1$ label the rows of the diagram, working from top right to bottom left. By the arguments in Lemma {\ref{lem I}} we know that ${n,n-1,n-2, n-3 \not\in I_1^{V}}$.  These are the leftmost four columns of the diagram for $V$.  From Lemma \ref{lem I} we know that that $I_1^{W} = I_1^{V}\cup \{n-3\}$. Therefore, the right hand boundary of the shape of $V$ is the same as the right hand boundary of the shape of $W$ except that $W$ has one additional row of 3 boxes while $V$ has an additional column in the $n-3$ position; that is, an extra column fourth from the left. 
 \end{proof}
 \begin{figure}
   \[\includegraphics{Le_diagrams}\]
@@ -1875,12 +1875,14 @@ By Lemma~\ref{lem I} we have $I_n^{W}= I_1^{V} \cup \{n\}$ and $I_1^{W} = I_1^{V
 \[I_1^{W} \setminus I_n^{W} = \{n-3\}, \qquad \qquad I_n^{W} \setminus I_1^{W} = \{n\},\]
 and so by Algorithm~\ref{alg:GN to Le} we have a plus in the $(n-3) \rightarrow n$ position, i.e. in the leftmost box of the bottom row. 
 
-Also by Lemma~\ref{lem I} we have $I_{n-1}^{W} = I_n^{V} \cup \{n-1\}$. Recall from the proof of Lemma \st{{\ref{lem I}}} {\color{violet} {\ref{lem shape}} }\sanote{change back if actually in 4.4} that $n-3,n-2,n-1,n \not\in I_1^V$; therefore $I_1^W\setminus I_{n-1}^W = (I_1^V \setminus I_n^V) \cup\{n-3\}$, and $n-3$ is maximal in this set. Similarly, 
-\[I_{n-1}^W \setminus I_1^W = (I_n^V \setminus I_1^V) \cup \{n-1\} \subseteq \{n-1,n\},\]
-where the final inclusion follows from the definition of Grassmann necklace.
-\sanote{why only $\{n-1,n\}$? I'd believe an inclusion the other way}
-\note{Definition of GN: $I_1 = (I_n\setminus\{n\})\cup\{\text{something}\}$}
-In particular, $n-1$ is minimal in this set, so Algorithm~\ref{alg:GN to Le} yields a plus in the $(n-3) \rightarrow (n-1)$ position (i.e. the second box in the bottom row of the Le diagram of $W$) \hlfix{along with any plusses yielded by $I_n^V$.}{display seems to imply that there is exactly one such other $+$. Is this correct?}\note{If $n$ is non-supporting then $I_n^V \setminus I_1^V = \emptyset$ and we only get the $(n-3) \rightarrow (n-1)$ plus.}
+Also by Lemma~\ref{lem I} we have $I_{n-1}^{W} = I_n^{V} \cup \{n-1\}$. Recall from the proof of Lemma~\ref{lem I} that $n-3,n-2,n-1,n \not\in I_1^V$; therefore
+\[
+I_1^W\setminus I_{n-1}^W = (I_1^V \setminus I_n^V) \cup\{n-3\},
+\]
+and $n-3$ is maximal in this set. Similarly, 
+\[I_{n-1}^W \setminus I_1^W = (I_n^V \setminus I_1^V) \cup \{n-1\}.
+\]
+Also $(I_n^V \setminus I_1^V) \cup \{n-1\}\subseteq \{n-1,n\}$ from the definition of Grassmann necklace and so in particular, $n-1$ is minimal in this set, so Algorithm~\ref{alg:GN to Le} yields a plus in the $(n-3) \rightarrow (n-1)$ position (i.e. the second box in the bottom row of the Le diagram of $W$) along with any plusses yielded by $I_n^V$.
 \end{proof} 
 
 
@@ -1890,7 +1892,7 @@ In particular, $n-1$ is minimal in this set, so Algorithm~\ref{alg:GN to Le} yie
 \end{lem}
 
 \begin{proof}
-If $n-2\not\in I_{n-2}^{V}$ then $I_{n-1}^{V}=I_{n-2}^{V}$ by definition, and by Lemma~\ref{lem I} we have the equality ${I_{n-2}^{W} = I_{n-1}^{V} \cup \{n-2\}}$.  Note that $n-3\not\in I_{n-2}^{V}$ by Lemma~\ref{lem no fourth vertex}.  Therefore the \st{paths controlling the} plusses contributed by $I_{n-2}^{W}$ are exactly the \st{paths for}{\color{violet} plusses from}\sanote{isn't this from Alg.\ref{alg:GN to Le} which says nothing about paths?} \note{see bolded stuff before previous lemma} $I_{n-1}^{V}$ along with the $(n-3)\rightarrow (n-2)$ path.  This gives the statement of the lemma.
+If $n-2\not\in I_{n-2}^{V}$ then $I_{n-1}^{V}=I_{n-2}^{V}$ by definition, and by Lemma~\ref{lem I} we have the equality ${I_{n-2}^{W} = I_{n-1}^{V} \cup \{n-2\}}$.  Note that $n-3\not\in I_{n-2}^{V}$ by Lemma~\ref{lem no fourth vertex}.  Therefore the plusses contributed by $I_{n-2}^{W}$ are exactly the  plusses from $I_{n-1}^{V}$ along with the $(n-3)\rightarrow (n-2)$ plus.  This gives the statement of the lemma.
 \end{proof}
 
 
