@@ -1124,7 +1124,7 @@ Let $W = (\cP,[n])$ be an admissible Wilson loop diagram.  For every $p = (i,j) 
 \end{lem}
 
 \begin{rmk}\label{rmk cyclic}
-  Before the proof, let us observe that one of the main ways that the above lemma will be used is in observations like the following.  Suppose $p=(i,j)$ is a propagator and $I_{j+1}(p) = j+1$.  Consider $I_{j+2}(p)$.  Since $j+1$ is the last vertex in the $j+2$ order, $p$ can not contribute $j+1$ to $I_{j+2}$.  But the the fact that the invervals of the lemma are nonempty and occur in their cyclic order implies that $I_{j+2}(p)=i$.  More generally, whenever we know that a propagator stops contributing a particular vertex, then we know that it must contribute its cyclically next vertex.  This little observation is surprisingly useful, to the point that the details which appear in the proof of Lemma~\ref{vertex cyclic int lem} are never needed again, the mere fact of non-empty intervals in the correct order suffices.
+  Before the proof, let us observe that one of the main ways that the above lemma will be used is in observations like the following.  Suppose $p=(i,j)$ is a propagator and $I_{j+1}(p) = j+1$.  Consider $I_{j+2}(p)$.  Since $j+1$ is the last vertex in the $j+2$ order, $p$ can not contribute $j+1$ to $I_{j+2}$, so the fact that the invervals in the statement of the lemma are non-empty and occur in their cyclic order implies that $I_{j+2}(p)=i$.  More generally, whenever we know that a propagator stops contributing a particular vertex, then we know that it must contribute its cyclically next vertex.  This little observation is surprisingly useful, to the point that the details which appear in the proof of Lemma~\ref{vertex cyclic int lem} are never needed again: the mere fact of non-empty intervals in the correct order suffices.
 \end{rmk}
   
 Now we proceed to the proof of Lemma~\ref{vertex cyclic int lem}.
@@ -1891,40 +1891,49 @@ If $n-2\not\in I_{n-2}^{V}$ then $I_{n-1}^{V}=I_{n-2}^{V}$ by definition, and by
 
 Next we need an observation about how the Grassman necklace for $V$ changes over the indices near $n$ under the hypotheses that $n-2, n-1\in I_{n-2}^V$.
 
-Specifically with $V$ and $W$ as in Lemma~\ref{lem I} and with $n-2, n-1\in I_{n-2}^V$, we have
+Specifically with $V$ and $W$ as in Lemma~\ref{lem I} and with $n-2, n-1\in I_{n-2}^V$ (so we are necessarily in Case 2 and $n-1$ supports at least one additional propagator not shown in the figure) we have
   \begin{equation}\label{eq necklace}
-  I_{n-3}^{V} \xrightarrow[\substack{n-3\text{ out}\\n-2\text{ in}}]{} I_{n-2}^{V} \xrightarrow[\substack{n-2\text{ out}\\n-5\text{ in}}]{} I_{n-1}^{V} \xrightarrow[\substack{n-1\text{ out}\\\text{something in}}]{} I_{n}^{V}  \xrightarrow[\substack{\text{no change or }\\n \text{ out}\\\text{something in}}]{} I_1^{V}
+  I_{n-3}^{V} \xrightarrow[\substack{n-3\text{ out}\\n-2\text{ in}}]{} I_{n-2}^{V} \xrightarrow[\substack{n-2\text{ out}\\n-5\text{ in}}]{} I_{n-1}^{V} \xrightarrow[\substack{n-1\text{ out}\\\text{something in}}]{} I_{n}^{V}  \xrightarrow[\substack{n \text{ out}\\\text{something in}}]{} I_1^{V}
   \end{equation}
-  where the first two transitions follow by cyclic intervals ***cite it properly*** along with the fact that $n-3$ is supporting in $V$.  The third transition is true by the fact that $n-1\in I_{n-2}^V$ by hypothesis.  The ``something'' could be $n$ or some element of $I_1^V$.  However, this ``something'' cannot be $n-4$ because the only thing that could contribute $n-4$ is $q$ but if $I_n^V(q)=n-4$ then the equation for $I_{n-2}^W$ from Lemma~\ref{lem I} would tell us that $n-4\in I_{n-2}^W$ but this is impossible as $I_{n-2}^W(q)=n-2$ but no other propagator than $q$ can contribute $n-4$. The last transition of \eqref{eq necklace} then is simply a consequence of the general definition of Grassman necklaces, but it will be useful later to observe that the second ``something'', if it exists, could be $n-4$.
+  \note{Check: if we no longer need the $a,b$ in Figure \ref{fig messy}, we can probably rename these ``somethings'' to $a,b$ here.}
+  where the first two transitions follow by Remark~\ref{rmk cyclic} along with the fact that $n-3$ is a supporting vertex in $V$.  The third transition follows from the definition of Grassmann necklaces and the fact that $n-1\in I_{n-2}^V$ by hypothesis.  The ``something'' could be $n$ or some element of $I_1^V$.  
+
+  
+
+  {\note{converge following two fragments into a coherent thought} \color{blue} However, this ``something'' cannot be $n-1$, $n-2$, or $n-3$, because as noted in Lemma~\ref{lem I} these elements do not belong to $I_1^V$, and it also cannot be $n-4$: we saw that $I_{n-1}(q) = n-5$ by Remark~\ref{rmk cyclic}, and
+
+   because the only thing that could contribute $n-4$ is $q$ but if $I_n^V(q)=n-4$ then the equation for $I_{n-2}^W$ from Lemma~\ref{lem I} would tell us that $n-4\in I_{n-2}^W$ but this is impossible as $I_{n-2}^W(q)=n-2$ but no other propagator than $q$ can contribute $n-4$. }
+
+  We cannot have $I_1^V = I_n^V$, since the $n-2,n-1 \in I_{n-2}^V$ hypothesis ensures that the $(n-1)$th edge supports at least one propagator even in $V$.  The last transition of \eqref{eq necklace} is then simply a consequence of the general definition of Grassman necklaces, but it will be useful later to observe that the second ``something'' could be $n-4$.
 
   \begin{lem}\label{lem n-2 bad part 1}
 Let $V$ and $W$ be as in Lemma~\ref{lem I}, and suppose that $n-2,n-1 \in I_{n-2}^{V}$. Then:
   \begin{enumerate}
-  \item If $n-4 \not\in I_1^V\setminus I_n^V$, then $I_{n-2}^W$ contributes an $(n-3)\rightarrow (n-2)$ plus and an $(n-5)\rightarrow (n-1)$ plus, along with any plusses contributed by $I_n^V$.
+  \item If $n-4 \not\in I_1^V\setminus I_n^V$, then $I_{n-2}^W$ contributes an $(n-3)\rightarrow (n-2)$ plus and an $(n-5)\rightarrow (n-1)$ plus, along with the one plus contributed by $I_n^V$.
   \item If $n-4 \in I_1^V\setminus I_n^V$, then $I_{n-2}^W$ contributes an $(n-3)\rightarrow (n-2)$ plus, an $(n-4)\rightarrow (n-1)$ plus and a $(n-5)\rightarrow (n)$ plus while $I_n^V$ contributed an $(n-4)\rightarrow (n)$ plus.
   \end{enumerate}
   \end{lem}
 
   \begin{proof}
-    This proof is a scratchy one and needs editing.
+[See Figure \ref{fig new le diagrams}]
 
-      First note that by Lemma~\ref{lem I} $I_1^W = I_1^V\cup \{n-3\}$.
-
+By Lemma~\ref{lem I} we have $I_1^W = I_1^V\cup \{n-3\}$ and $I_{n-2}^W = (I_n^V \setminus \{n-5\}) \cup \{n-1,n-2\}$. By equation \eqref{eq necklace} we have $n-5 \in I_1^V$, and by the following discussion we have $n-1,n-2,n-3 \not\in I_n^V,I_1^V$. It follows that the symmetric difference of $I_1^W$ and $I_{n-2}^W$ is:
+    \begin{gather*}
+    I_1^W \setminus I_{n-2}^W = (I_1^V\cup\{n-3\}) \setminus \big((I_n^V\setminus \{n-5\})\cup \{n-1, n-2\}\big) = (I_1^V\setminus I_n^V) \cup \{n-3, n-5\}. \\
+    I_{n-2}^W \setminus I_1^W = \big((I_n^V\setminus \{n-5\})\cup \{n-1, n-2\}\big) \setminus(I_1^V\cup\{n-3\}) = (I_n^V\setminus I_1^V) \cup \{n-1, n-2\}.
+\end{gather*}
+As per the discussion following equation \eqref{eq necklace} above, we also have $I_n^V\setminus I_1^V = \{n\}$ and $I_1^V\setminus I_n^V = \{a\}$, where $a$ is the second ``something'' in equation \eqref{eq necklace}. If $a \neq n-4$ then the path from $I_n^V$ lies above the paths from $\{n-3, n-5\}$ and $\{n-2, n-1\}$ and we obtain point 1.
     
-Next note that $n-5\in I_1^V$.  This is because when you get to $n-5$, $q$ isn't taken yet, so either $q$ contributes $n-5$ or something else does (in which case $q$ contributes $n-4$), so in either case $n-5 \in I_1^V$.  Also note that $n-1, n-2, n-3\not\in I_n^V$ (this must have been said before because it is in the shape of the Le diagram).  This together with Lemma~\ref{lem I} gives
-    \[
-    I_1^W \setminus I_{n-2}^W = (I_1^V\cup\{n-3\}) \setminus ((I_n^V\setminus \{n-3\})\cup \{n-1, n-2\}) = (I_1^V\setminus I_n^V) \cup \{n-3, n-5\}.
-    \]
-    Since we also have $n-1, n-2\not\in I_1^V$ we get
-    \[
-    I_{n-2}^W \setminus I_1^W = ((I_n^V\setminus \{n-3\})\cup \{n-1, n-2\}) \setminus(I_1^V\cup\{n-3\}) = (I_n^V\setminus I_1^V) \cup \{n-1, n-2\}.
-    \]
-    The statement follows from the above if $n-4\not\in I_1^V\setminus I_{n}^V$ as the path from $I_n^V$ (if any) lies above all paths between $\{n-3, n-5\}$ and $\{n-2, n-1\}$, so we just take the noncrossing paths to get the statement.
-    
-    Now suppose $n-4\in I_1^V\setminus I_{n}^V$.  Then want three noncrossing paths starting from $\{n-3, n-4, n-5\}$, and hence by necessity of shape, going to $\{n, n-1, n-2\}$.  Comparing this to the above we see that $I_n^V$ contributed the plus from the path $(n-4)\rightarrow (n)$, while $I_{n-2}^W$ contributes the plusses $(n-3)\rightarrow (n-2)$, $(n-4)\rightarrow (n-1)$ and $(n-5)\rightarrow (n)$.
+Now suppose $n-4\in I_1^V\setminus I_{n}^V$; in this case $I_{n-2}^W$ contributes plusses defined by the noncrossing paths starting from $\{n-3, n-4, n-5\}$ and ending at $\{n, n-1, n-2\}$.  Comparing this to the above we see that $I_n^V$ contributed the plus from the path $(n-4)\rightarrow (n)$, while $I_{n-2}^W$ contributes the plusses $(n-3)\rightarrow (n-2)$, $(n-4)\rightarrow (n-1)$ and $(n-5)\rightarrow (n)$.
   \end{proof}
   
-  
+  \begin{figure}
+\includegraphics[width = 12cm]{new_le_diagrams.jpg}
+\caption{Included for reference while we figure out the details; Lemma \ref{lem n-2 bad part 1}}\label{fig new le diagrams}
+  \end{figure}
+
+
+
   \begin{lem}\label{lem n-2 bad part 2}
     Let $V$ and $W$ be as in Lemma~\ref{lem I}, and suppose that $n-2,n-1 \in I_{n-2}^{V}$. Let $c$ be the largest element of $I_1^V$.  Then:
     \begin{enumerate}
@@ -1937,17 +1946,17 @@ Next note that $n-5\in I_1^V$.  This is because when you get to $n-5$, $q$ isn't
 \end{lem}
 
 \begin{proof}
-
-  First note that by Lemma~\ref{lem I} $I_1^W = I_1^V\cup \{n-3\}$.  Now, let's take the items in turn.
-
 \begin{enumerate}  
-  \item By Lemma~\ref{lem I} we have that $I_{n-3}^W = I_{n-3}^V \cup \{n-2\}$ (since $n-3\in I_{n-3}^V$ as something (namely $q$) is supported at $n-3$ in $V$.  So removing $I_{n-3}^W$ from $I_{1}^W$  is the same as removing $I_{n-3}^V$ from $I_1^V$ and removing $I_1^W$ from $I_{n-3}^W$ does the same as removing $I_{1}^V$ from $I_{n-3}^V$ except that the $n-3$ gets replaced by $n-2$.    
-  \item Equation \eqref{eq necklace} tells us that the pair of sets $(I_{n-2}^V\setminus I_1^V, I_1^V\setminus I_{n-2}^V)$ is one of the following $(\{n-2, n-1, n\}, \{n-5, i_1, i_2\})$, $(\{n-2, n-2\}, \{n-5, i_1\})$, $(\{n-2, n-1\}, \{n-5, i_2\}$
-  where $i_1$ and $i_2$ are the first and second ``something''s. 
 
-    If $i_2\neq n-4$ then in all three cases $I_{n-2}^V$ contributes an $(n-5)\rightarrow (n-2)$ plus. On the other hand if $i_2=n-4$ then the two possible cases above give an $(n-4)\rightarrow (n-2)$ plus and an $(n-5)\rightarrow (n-1)$ plus.  Note also that if $i_2=n-4$ iff $n-4 \in I_1^V\setminus I_n^V$ iff $n-4\in I_1^V\setminus I_{n-2}^V$ iff $c=n-4$.
+\item As in Lemma~\ref{lem n-2 bad part 2}, we have $n,n-1,n-2,n-3 \not\in I_1^V$; the claim follows immediately.
 
-    No other plusses appear in the $n-2$ column because $n-2$ enters the Grassman necklace for $V$ at $I_{n-2}^V$ and leave immediately after.
+\item By Lemma~\ref{lem I} we have that $I_{n-3}^W = I_{n-3}^V \cup \{n-2\}$, so $I_{1}^W \setminus I_{n-3}^W = I_1^V \setminus I_{n-3}^V$ and $I_{n-3}^W \setminus I_1^W$ is obtained from $I_{n-3}^V \setminus I_{1}^V$ by replacing the $n-3$ with $n-2$.    
+
+\item From \eqref{eq necklace} the pair of sets $(I_{n-2}^V\setminus I_1^V, I_1^V\setminus I_{n-2}^V)$ is either $(\{n-2, n-1, n\}, \{n-5, i_1, i_2\})$ (if $n \in I_{n-2}^V$) or $(\{n-2, n-1\}, \{n-5, i_2\})$ (if $n \not\in I_{n-2}^V$, i.e. $i_1 = n$), where $i_1$ and $i_2$ are the first and second ``something''s. 
+
+Recall that $n-4 \not\in I_n^V$, so that $c = n-4$ iff $i_2 = n-4$ iff $n-4 \in I_1^V\setminus I_n^V$ iff $n-4 \in I_1^V \setminus I_{n-2}^V$. Thus we get a $c \rightarrow (n-2)$ plus in the Le diagram for $V$ in either case, and this becomes the $c \rightarrow (n-1)$ plus in the Le diagram for $W$ (refer back to previous lemma; ``becomes'' might not be the clearest phrasing).
+
+No other plusses appear in the $n-2$ column because $n-2$ enters the Grassman necklace for $V$ at $I_{n-2}^V$ and leave immediately after.
   \item 
     The third point is also a consequence of \eqref{eq necklace}.  Let's take the possibilities in turn, first suppose $I_{n-2}^V$ contrbuted an $(n-5)\rightarrow (n-2)$ plus.  In this case, going from $I_{n-2}^V$ to $I_{n-1}^V$ takes out the $n-2$ and puts in the $n-5$, so  nothing else changes, while going from $I_{n-3}^V$ to $I_{n-2}^V$ swapped the $n-3$ for the $n-2$, but $n-3\in I_1^V$, so nothing changes from $I_{n-3}^V$ to $I_{n-2}^V$ except changing a $(n-5)\rightarrow (n-3)$ path to $(n-5)\rightarrow (n-2)$.
 
