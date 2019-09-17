@@ -1508,7 +1508,7 @@ If $i \not\in I_i$, then there are no propagators supported on $i$ at all.  In t
 
 Now suppose that $i \in I_i$.  Let $p$ be the propagator which contributes $i$ to $I_i$, that is $I^W_i(p) = i$; thus one end of $p$ must lie on either edge $i-1$ or edge $i$.  In both cases let $b$ denote the edge supporting the other end of $p$, i.e. $p = (i, b)$ or $p = (i-1, b)$.
 
-\note{Sian rewrote Case 1 based on Susama's suggested edits}
+
 \textbf{Case I}:  Suppose $p$ has one end on edge $i-1$. By Remark~\ref{rmk algorithm locally same} the construction of $I_i^W$ and $I_{i+1}^W$ is locally the same (indeed, locally {\em identical} in this case) from vertex $i+1$ to $b-1$, so we have $I_{i+1}^W \cap [i+1,b-1] = I_{i}^W \cap [i+1,b-1]$. Note that if $b = i+1$ then this interval is empty and the equality remains true.
 
 %If $p$ is not supported on $i+1$, then in building $I_{i+1}$ we will assign the same propagators as in the construction of $I_i$ from vertices $i+1$ up to $b-1$, and in particular we have \bas I_{i+1} \cap [i+1,b-1] = I_{i} \cap [i+1,b-1]\eas by Remark \ref{rmk algorithm locally same}.  If $p$ is supported on $i+1$, then $b= i+1$ and the interval $[i+1,b-1]$ is empty, so the above equality remains true, albeit vacuously.  
@@ -1812,17 +1812,11 @@ Let $W$ be an admissible Wilson loop diagram with $k\geq 1$ propagators, and sup
 \begin{proof}
 The two possible cases for $W$ are illustrated in Figure~\ref{fig special p}. 
 
-\note{Following two paragraphs added to replace the sentence ``clearly $n-3 \not\in I_1^V$''}\note{No, the argument is much simpler, by cyclic intervals $I_{1}^W(p) = n-3$, but $p$ is the last thing that can contribute at $n-3$, so for this to happen we must have $n-3\not\in I_1^V$.}
-We first show that $n-3 \not\in I_1^V$. In Case 1, the only way we could have $n-3 \in I_1^V$ is if $V$ admits some propagator $r$ with $I_1(r) = n-3$; from the figure, one end of $r$ would have to lie on edge $n-4$, and by Lemma~\ref{lem no fourth vertex} the other end would have to lie on edge $n-1$ or $n$. However, if $r = (n-4,n-1)$ then by [remark following cyclic intervals lemma] \hlfix{we would have $I_1^V(r) = n-4$}{because if it contributed $n-3$ it would never be able to contribute $n-4$?}, while if $r = (n-4,n)$ then $r$ is the clockwise-most propagator supported on vertex 1 and we would have $I_1^V(r) = 1$. Either way, we have $I_1^V(r) \neq n-3$.
-
-In Case 2 the only propagator supported on vertex $n-3$ in $V$ is $q$, and by [cyclic intervals remark] we \hlfix{have $I_{n-1}^V(q) = n-5$}{Because $I_{n-2}^V(q) = n-2$ and Lemma \ref{lem no vourht vertex} prevents $I_{n-1}^V(q) = n-2$?}. Further, it must also be the case that $I_n^V(q) = n - 5$: if $n-1$ is non-supporting in $V$ then this is immediate, while if there exists a propagator $r$ in $V$ with $I_{n-1}^V(r) = n-1$ then $r$ lies on edge $n-1$ and is the clockwise-most propagator supported on vertex $n$, so $I_n^V(r) = n$ and the remainder of $I_n^V$ proceeds identically to $I_{n-1}^V$. Thus $I_n^V(q) = n-5$, so by [cyclic intervals lemma or remark] we have $I_1^V(q) \in \{n-5,n-4\}$; in particular, $I_1^V(q)\neq n-3$.
+We begin with $I_1$, and first observe that by Remark~\ref{rmk cyclic} we must have $I_1^W(p) = n-3$. Since $p$ is the final propagator to be assigned by $I_1^W$, it follows that $I_1^W$ and $I_1^V$ behaved identically on all earlier propagators (recall Remark~\ref{rmk algorithm locally same} about locally identical propagator configurations), which implies in particular that $n-3 \not\in I_1^V$. Thus $I_1^W = I_1^V\cup\{n-3\}$.
 
 We note for future reference that the arguments of the previous two paragraphs also imply that $n-2,n-1,n \not\in I_1^V$.
 
-We can now describe $I_1^W$ in terms of $I_1^V$: when we start at vertex 1 in $W$ and apply the Grassmann necklace algorithm, $p$ is the only remaining unassigned propagator when we reach vertex $n-3$, and so we have $ I_1^{W}(p) = n-3$ and $I_1^W = I_1^V\cup \{n-3\}$. 
-
-
-Next consider $I_n^{W}$. From the figure we see that in both cases we have $I_n^{W}(p) = n$.  At vertex 1 of the algorithm $I_n$, the unassigned propagators are exactly those that appear in $V$. Therefore the algorithm continues as in $I_1^{V}$ (recall Remark~\ref{rmk algorithm locally same} about locally identical propagator configurations), i.e. we have $I_n^{W} = I_1^{V} \cup \{n\}$. By a similar argument, we must have $I_{n-1}^{W} = I_n^{V} \cup \{n-1\}$.
+Next consider $I_n^{W}$. From the figure we see that in both cases we have $I_n^{W}(p) = n$.  At vertex 1 of the algorithm $I_n$, the unassigned propagators are exactly those that appear in $V$. Therefore the algorithm continues as in $I_1^{V}$, i.e. we have $I_n^{W} = I_1^{V} \cup \{n\}$. By a similar argument, we must have $I_{n-1}^{W} = I_n^{V} \cup \{n-1\}$.
 
 Now consider $I_{n-2}^{W}$. If $n-2\not\in I_{n-2}^{V}$ then the vertex $n-2$ is non-supporting (see also Corrollary~\ref{no coloops}.)  Thus we are in Case 1, with ${I_{n-2}^W(p) = n-2}$ and this assignment of $p$ does not affect the rest of the construction of $I_{n-2}^{V}$, so we obtain ${I_{n-2}^{W} = I_{n-2}^{V}\cup \{n-2\}}$ as above.
 
@@ -2034,13 +2028,9 @@ Let $W = (\cP, [n])$ be an admissible Wilson loop diagram.  The number of plusse
 
   Now consider Wilson loop diagrams with $k>1$ propagators.  By Lemma~\ref{lem uncovered} it suffices to prove the result for weakly admissible Wilson loop diagrams with $k$ propagators and no non-supporting vertices.  By Lemma~\ref{lem dihedral} it suffices to prove the result for at least one Wilson loop diagram from each dihedral orbit. In particular, we can restrict our attention to diagrams $W$ which have a propagator $p$ with the properties in Lemma~\ref{lem good p}.  
 
-We make one further simplification in order to eliminate the possibility that $n-2 \in I_{n-2}^V$ but $n-1 \not\in I_{n-2}^V$, which can only occur if our $W$ is in Case 2 of Figure~\ref{fig special p} and $n-1$ supports no propagators other than $p$. In this situation, flip $W$ on the line perpendicular to the $(n-2){th}$ edge to obtain a diagram with the configuration of Case 1.
+We make one further simplification in order to eliminate the possibility that $n-2 \in I_{n-2}^V$ but $n-1 \not\in I_{n-2}^V$, which can only occur if our $W$ is in Case 2 of Figure~\ref{fig special p} and $n-1$ supports no propagators other than $p$. In this situation, apply the dihedral transformation that reflects $W$ along the line perpendicular to the $(n-2){th}$ edge, so that $p$ is unchanged but $q = (n-1,1)$ in the new diagram. The new diagram is an example of Case 1.
 
-\note{Sian rewrote above paragraph because their original version was wrong in multiple ways. Better?}
-{\color{violet} I'm very confused about the previous paragraph. I thought that by constuction, in case 2, there can be exactly 2 propagators ending on edge $n-3$, $p$ and $q$. I also thought the distinguising feature between the two subcases of Figure 10 case 2 in Lemma 4.4 $I_{n-2}^W$ was the presence or absense of a propagator $r$ ending on edge $n-1$. If $r$ exists, $n-1 \in I_{n-2}^V$ and if  $r$ doesn't exist, $n-1 \not \in I_{n-2}^V$.}
-
-
-  This diagram will be our $W$ for the remainder of the proof. Let $V$ be $W$ with $p$ removed. 
+In summary, $W$ is a diagram with one of the two configurations depicted in Figure~\ref{fig special p}, and if $n-2 \in I_{n-2}^V$ then $n-1 \in I_{n-1}^V$ as well. Let $V$ be $W$ with $p$ removed. 
 
   From Lemma~\ref{lem shape} we know how the shapes of the Le diagrams of $V$ and $W$ are related; let $\mathcal{A}$ and $\mathcal{B}$ be as described in that lLmma and subsequent discussion.  Lemmas~\ref{lem n and n-1}, \ref{lem n-2 good}, and \ref{lem n-2 bad} tell us that the three boxes of the bottom row of the Le diagram of $W$ each have a plus.  Lemmas~\ref{lem n and n-1} through \ref{lem other k} show that there is a bijection between the plusses of the Le diagram of $V$ and the plusses of the Le diagram of $W$ that are not in the bottom row.  This bijection can be described as follows:
   \begin{itemize}
