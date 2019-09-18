@@ -1893,18 +1893,18 @@ Next we need an observation about how the Grassman necklace for $V$ changes over
 
 Specifically with $V$ and $W$ as in Lemma~\ref{lem I} and with $n-2, n-1\in I_{n-2}^V$ (so we are necessarily in Case 2 and $n-1$ supports at least one additional propagator not shown in the figure) we have
   \begin{equation}\label{eq necklace}
-  I_{n-3}^{V} \xrightarrow[\substack{n-3\text{ out}\\n-2\text{ in}}]{} I_{n-2}^{V} \xrightarrow[\substack{n-2\text{ out}\\n-5\text{ in}}]{} I_{n-1}^{V} \xrightarrow[\substack{n-1\text{ out}\\\text{something in}}]{} I_{n}^{V}  \xrightarrow[\substack{n \text{ out}\\\text{something in}}]{} I_1^{V}
+  I_{n-3}^{V} \xrightarrow[\substack{n-3\text{ out}\\n-2\text{ in}}]{} I_{n-2}^{V} \xrightarrow[\substack{n-2\text{ out}\\n-5\text{ in}}]{} I_{n-1}^{V} \xrightarrow[\substack{n-1\text{ out}\\ u \text{ in}}]{} I_{n}^{V}  \xrightarrow[\substack{n \text{ out}\\v \text{ in}}]{} I_1^{V}
   \end{equation}
   \note{Check: if we no longer need the $a,b$ in Figure \ref{fig messy}, we can probably rename these ``somethings'' to $a,b$ here.}
-  where the first two transitions follow by Remark~\ref{rmk cyclic} along with the fact that $n-3$ is a supporting vertex in $V$.  The third transition follows from the definition of Grassmann necklaces and the fact that $n-1\in I_{n-2}^V$ by hypothesis.  The ``something'' could be $n$ or some element of $I_1^V$.  
+  where the first two transitions follow by Remark~\ref{rmk cyclic} along with the fact that $n-3$ is a supporting vertex in $V$.  The third transition follows from the definition of Grassmann necklaces and the fact that $n-1\in I_{n-2}^V$ by hypothesis.  The vertex $u$ could be $n$ or some element of $I_1^V$.  
 
   
 
-  {\note{converge following two fragments into a coherent thought} \color{blue} However, this ``something'' cannot be $n-1$, $n-2$, or $n-3$, because as noted in Lemma~\ref{lem I} these elements do not belong to $I_1^V$, and it also cannot be $n-4$: we saw that $I_{n-1}(q) = n-5$ by Remark~\ref{rmk cyclic}, and
+ \note{converge following two fragments into a coherent thought} {\color{blue} However, $u$ \st{cannot be $n-1$, $n-2$, or $n-3$, because as noted in Lemma {\ref{lem I}} these elements do not belong to $I_1^V$}\sanote{why does $I_1^V$ inform $I_n^V$?}\emph{cannot be $n-1$ because the vertex is non-supporting in $V$, it cannot be $n-2$ because this vertex only supports $q$, but $I_n^V(q) \neq n-2$ because it is the last vertex in the support (Lemma {\ref{lem no fourth vertex}}), and it cannot be $n-3$ by Remark {\ref{rmk cyclic}}.} Furthermore, it $u$ also cannot be $n-4$: we saw that $I_{n}(q) = n-5$ by Remark~{\ref{rmk cyclic}}.
 
-   because the only thing that could contribute $n-4$ is $q$ but if $I_n^V(q)=n-4$ then the equation for $I_{n-2}^W$ from Lemma~\ref{lem I} would tell us that $n-4\in I_{n-2}^W$ but this is impossible as $I_{n-2}^W(q)=n-2$ but no other propagator than $q$ can contribute $n-4$. }
+because the only thing that could contribute $n-4$ is $q$ but if $I_n^V(q)=n-4$ then the equation for $I_{n-2}^W$ from Lemma {~\ref{lem I}} would tell us that $n-4\in I_{n-2}^W$ but this is impossible as $I_{n-2}^W(q)=n-2$ but no other propagator than $q$ can contribute $n-4$. } \sanote{not sure what this paragraph contributes}
 
-  We cannot have $I_1^V = I_n^V$, since the $n-2,n-1 \in I_{n-2}^V$ hypothesis ensures that the $(n-1)$th edge supports at least one propagator even in $V$.  The last transition of \eqref{eq necklace} is then simply a consequence of the general definition of Grassman necklaces, but it will be useful later to observe that the second ``something'' could be $n-4$.
+  We cannot have $I_1^V = I_n^V$, since the $n-2,n-1 \in I_{n-2}^V$ hypothesis ensures that the $(n-1)$th edge supports at least one propagator even in $V$.  The last transition of \eqref{eq necklace} is then simply a consequence of the general definition of Grassman necklaces. The vertex $v$ cannot be $n-1$, $n-2$ or $n-2$ by Lemma \ref{lem I}, however, in this transition, it could be $n-4$.
 
   \begin{lem}\label{lem n-2 bad part 1}
 Let $V$ and $W$ be as in Lemma~\ref{lem I}, and suppose that $n-2,n-1 \in I_{n-2}^{V}$. Then:
