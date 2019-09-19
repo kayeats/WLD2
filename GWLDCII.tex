@@ -1895,36 +1895,15 @@ Specifically with $V$ and $W$ as in Lemma~\ref{lem I} and with $n-2, n-1\in I_{n
   \begin{equation}\label{eq necklace}
   I_{n-3}^{V} \xrightarrow[\substack{n-3\text{ out}\\n-2\text{ in}}]{} I_{n-2}^{V} \xrightarrow[\substack{n-2\text{ out}\\n-5\text{ in}}]{} I_{n-1}^{V} \xrightarrow[\substack{n-1\text{ out}\\ u \text{ in}}]{} I_{n}^{V}  \xrightarrow[\substack{n \text{ out}\\v \text{ in}}]{} I_1^{V}
   \end{equation}
-  \note{Check: if we no longer need the $a,b$ in Figure \ref{fig messy}, we can probably rename these ``somethings'' to $a,b$ here.}
-<<<<<<< HEAD
-  where the first two transitions follow by Remark~\ref{rmk cyclic} along with the fact that $n-3$ is a supporting vertex in $V$.  The third transition follows from the definition of Grassmann necklaces and the fact that $n-1\in I_{n-2}^V$ by hypothesis.  The vertex $u$ could be $n$ or some element of $I_1^V$.  
+where $u$ and $v$ are two vertices; we will derive some properties of them below.
 
-=======
+The first two transitions follow by the cyclic intervals property highlighted in Remark~\ref{rmk cyclic} along with the fact that $n-3$ is a supporting vertex in $V$.  The third transition follows from the definition of Grassmann necklaces and the fact that $n-1\in I_{n-2}^V$ by hypothesis, while the final transition follows from the fact that $n-1$ supports an additional propagator so we are guaranteed $n \in I_n^V$.
 
-  where the first two transitions follow by the cyclic intervals property highlighted in Remark~\ref{rmk cyclic} along with the fact that $n-3$ is a supporting vertex in $V$.  The third transition follows from the definition of Grassmann necklaces and the fact that $n-1\in I_{n-2}^V$ by hypothesis, while the final transition follows from the fact that $n-1$ supports an additional propagator so we are guaranteed $n \in I_n^V$.
+Note that neither $u$ nor $v$ can be $n-1$, $n-2$, or $n-3$, because as noted in Lemma~\ref{lem I} these elements do not belong to $I_1^V$ and $I_n^V = (I_1^V\setminus \{v\}) \cup \{n\}$. However, $u$ could be $n$.  
 
->>>>>>> 5f61d155fd8e27a3d056d2ac8859c23dc755a33d
+Also $u$ cannot be $n-4$, for the following reason. By Remark~\ref{rmk cyclic} we know that $I_{n-1}^W(q) = n-5$, leaving no propagators supported on $n-4$ for $I_{n-1}^W$ to assign. Thus $n-4 \not\in I_{n-1}^W$, and since $I_{n-1}^W = I_n^V\cup\{n-1\}$ by Lemma~\ref{lem I}, we cannot have $n-4$ in $I_n^V$ either.
 
-Note that neither ``something'' can be $n-1$, $n-2$, or $n-3$, because as noted in Lemma~\ref{lem I} these elements do not belong to $I_1^V$. 
-
-<<<<<<< HEAD
-
- \note{converge following two fragments into a coherent thought} {\color{blue} However, $u$ \st{cannot be $n-1$, $n-2$, or $n-3$, because as noted in Lemma {\ref{lem I}} these elements do not belong to $I_1^V$}\sanote{why does $I_1^V$ inform $I_n^V$?}\emph{cannot be $n-1$ because the vertex is non-supporting in $V$, it cannot be $n-2$ because this vertex only supports $q$, but $I_n^V(q) \neq n-2$ because it is the last vertex in the support (Lemma {\ref{lem no fourth vertex}}), and it cannot be $n-3$ by Remark {\ref{rmk cyclic}}.} Furthermore, it $u$ also cannot be $n-4$: we saw that $I_{n}(q) = n-5$ by Remark~{\ref{rmk cyclic}}.
-
-because the only thing that could contribute $n-4$ is $q$ but if $I_n^V(q)=n-4$ then the equation for $I_{n-2}^W$ from Lemma {~\ref{lem I}} would tell us that $n-4\in I_{n-2}^W$ but this is impossible as $I_{n-2}^W(q)=n-2$ but no other propagator than $q$ can contribute $n-4$. } \sanote{not sure what this paragraph contributes}
-
-  We cannot have $I_1^V = I_n^V$, since the $n-2,n-1 \in I_{n-2}^V$ hypothesis ensures that the $(n-1)$th edge supports at least one propagator even in $V$.  The last transition of \eqref{eq necklace} is then simply a consequence of the general definition of Grassman necklaces. The vertex $v$ cannot be $n-1$, $n-2$ or $n-2$ by Lemma \ref{lem I}, however, in this transition, it could be $n-4$.
-
-=======
-
-\note{Two versions of the same argument follow:}
-The first ``something'' also cannot be $n-4$, for the following reason. By Remark~\ref{rmk cyclic} we know that $I_{n-1}^W(q) = n-5$, leaving no propagators supported on $n-4$ for $I_{n-1}^W$ to assign. Thus $n-4 \not\in I_{n-1}^W$, and since $I_{n-1}^W = I_n^V\cup\{n-1\}$ by Lemma~\ref{lem I}, we cannot have $n-4$ in $I_n^V$ either.
-
-The first ``something'' also cannot be $n-4$, for the following reason. By Remark~\ref{rmk cyclic} we know that $I_{n-1}$ assigns $q$ to $n-5$ in both $V$ and $W$, so the only way we could have $n-4 \in I_n^V$ is if $I_n^V(q) = n-4$. By Lemma~\ref{lem I} this would imply $n-4 \in I_{n-1}^W$ as well, but since $I_{n-1}^W(q) = n-5$ there can be no propagators remaining when the algorithm reaches $n-4$.
-
-However, it will be important later to observe that the second ``something'' could be $n-4$.
-
->>>>>>> 5f61d155fd8e27a3d056d2ac8859c23dc755a33d
+However, it will be important later to observe that $v$ could be $n-4$.
 
   \begin{lem}\label{lem n-2 bad part 1}
 Let $V$ and $W$ be as in Lemma~\ref{lem I}, and suppose that $n-2,n-1 \in I_{n-2}^{V}$. Then:
