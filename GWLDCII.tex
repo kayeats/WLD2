@@ -1937,31 +1937,38 @@ Now suppose $n-4\in I_1^V\setminus I_{n}^V$; in this case $I_{n-2}^W$ contribute
   \begin{lem}\label{lem n-2 bad part 2}
     Let $V$ and $W$ be as in Lemma~\ref{lem I}, and suppose that $n-2,n-1 \in I_{n-2}^{V}$. Let $c$ be the largest element of $I_1^V$.  Then:
     \begin{enumerate}
-  \item $c=n-4$ if $n-4\in I_1^V\setminus I_n^V$ and $c=n-5$ otherwise.
+  \item $c=n-4$ if $n-4\in I_1^V\setminus I_n^V$ and $c=n-5$ otherwise. If $c = n-4$ then we have $v = n-4$ in equation \eqref{eq necklace}.
   \item $I_{n-3}^W$ contributes the same plusses as $I_{n-3}^V$, except that the plus in the $n-3$ column (which necessarily exists) is shifted one square left into the $n-2$ column.
-  \item In the Le diagram of $V$, $I_{n-2}^{V}$ contributes a $c\rightarrow (n-2)$ plus and no other term in the Grassmann necklace of $V$ gives a plus in this column.  $I_{n-2}^W$ does not contribute this $+$ but yields the $c\rightarrow (n-1)$ plus from Lemma~\ref{lem n-2 bad part 1}
-  \item All other plusses from $I_{n-2}^{V}$ and all plusses from $I_{n-1}^V$ were already contributed by $I_{n-3}^V$, so they yield no new information.
-  \item The Grassmann necklace of $V$ contributes a $c\rightarrow (n-1)$ plus if and only if $n-4\in I_1^V\setminus I_n^V$.
+  \item $I_{n-2}^W$ contributes an $(n-3) \rightarrow (n-2)$ plus, a $c \rightarrow (n-1)$ plus, and one other plus. If $c = n-5$ then this third plus is the one contributed by $I_n^V$, while if $c = n-4$ then the third plus is $(n-5) \rightarrow n$ (whereas $I_n^V$ contributed $(n-4) \rightarrow n$).
+  \item In the Le diagram of $V$, $I_{n-2}^{V}$ contributes a $c\rightarrow (n-2)$ plus and no other term in the Grassmann necklace of $V$ gives a plus in this column. All other plusses from $I_{n-2}^{V}$ were already contributed by $I_{n-3}^V$.
+  \item If $c = n-4$ then $I_{n-1}^V$ contributes a $(n-4) \rightarrow (n-1)$ plus; all other plusses contributed by $I_{n-1}^V$ were already contributed by $I_{n-3}^V$, regardless of the value of $c$.
+  \item The Grassmann necklace of $V$ contributes a $c\rightarrow (n-1)$ plus if and only if $c = n-4$. No term in the Grassmann necklace of $V$ contributes a $(n-5) \rightarrow n$ plus.
   \end{enumerate} 
 \end{lem}
 
 \begin{proof}
 \begin{enumerate}  
 
-\item As in Lemma~\ref{lem n-2 bad part 2}, we have $n,n-1,n-2,n-3 \not\in I_1^V$; the claim follows immediately.
+\item As in Lemma~\ref{lem I} we have $n,n-1,n-2,n-3 \not\in I_1^V$, which implies the first part of the claim. The second part is a consequence of the discussion following \eqref{eq necklace}, which shows that $n-4 \not\in I_n^V$.
 
 \item By Lemma~\ref{lem I} we have that $I_{n-3}^W = I_{n-3}^V \cup \{n-2\}$, so $I_{1}^W \setminus I_{n-3}^W = I_1^V \setminus I_{n-3}^V$ and $I_{n-3}^W \setminus I_1^W$ is obtained from $I_{n-3}^V \setminus I_{1}^V$ by replacing the $n-3$ with $n-2$.    
 
-\item From \eqref{eq necklace} the pair of sets $(I_{n-2}^V\setminus I_1^V, I_1^V\setminus I_{n-2}^V)$ is either $(\{n-2, n-1, n\}, \{n-5, i_1, i_2\})$ (if $n \in I_{n-2}^V$) or $(\{n-2, n-1\}, \{n-5, i_2\})$ (if $n \not\in I_{n-2}^V$, i.e. $i_1 = n$), where $i_1$ and $i_2$ are the first and second ``something''s. 
+\item This is just the statement of the previous lemma folded back into this one; if we decide to move it back here then we can just copy the proof over.
 
-Recall that $n-4 \not\in I_n^V$, so that $c = n-4$ iff $i_2 = n-4$ iff $n-4 \in I_1^V\setminus I_n^V$ iff $n-4 \in I_1^V \setminus I_{n-2}^V$. Thus we get a $c \rightarrow (n-2)$ plus in the Le diagram for $V$ in either case, and this becomes the $c \rightarrow (n-1)$ plus in the Le diagram for $W$ (refer back to previous lemma; ``becomes'' might not be the clearest phrasing).
+\item From equation \eqref{eq necklace} the pair of sets $(I_{n-2}^V\setminus I_1^V, I_1^V\setminus I_{n-2}^V)$ is either $(\{n-2, n-1, n\}, \{n-5, u, v\})$ (if $n \in I_{n-2}^V$) or $(\{n-2, n-1\}, \{n-5, v\})$ (if $n \not\in I_{n-2}^V$, i.e. $u = n$).
 
-No other plusses appear in the $n-2$ column because $n-2$ enters the Grassman necklace for $V$ at $I_{n-2}^V$ and leave immediately after.
-  \item 
-    The third point is also a consequence of \eqref{eq necklace}.  Let's take the possibilities in turn, first suppose $I_{n-2}^V$ contrbuted an $(n-5)\rightarrow (n-2)$ plus.  In this case, going from $I_{n-2}^V$ to $I_{n-1}^V$ takes out the $n-2$ and puts in the $n-5$, so  nothing else changes, while going from $I_{n-3}^V$ to $I_{n-2}^V$ swapped the $n-3$ for the $n-2$, but $n-3\in I_1^V$, so nothing changes from $I_{n-3}^V$ to $I_{n-2}^V$ except changing a $(n-5)\rightarrow (n-3)$ path to $(n-5)\rightarrow (n-2)$.
+Recall that we cannot have $u = n-4$ (since $n-4 \notin I_n^V$) so either $u = n$ or $u < n-5$, and either way $n-2$ is minimal in $I_{n-2}^V\setminus I_1^V$ and $c$ is maximal in $I_1^V \setminus I_{n-2}^V$, yielding a $c \rightarrow (n-2)$ plus. 
 
-  Now in the case that $I_{n-2}^V$ contribued an $(n-4)\rightarrow (n-2)$ plus, then going from $I_{n-2}^V$ to $I_{n-1}^V$ takes out the $n-2$ and puts in the $n-5$, so instead of the $(n-4)\rightarrow (n-2)$ plus and the $(n-5)\rightarrow (n-1)$ plus we have an $(n-4)\rightarrow (n-1)$ plus, but the rest stays the same.  Also, in going from $I_{n-3}^V$ to $I_{n-2}^V$, $n-3$ comes out and $n-2$ goes in so all that changes is a $(n-4)\rightarrow (n-3)$ path becomes an $(n-4)\rightarrow (n-2)$ path.
-\item The only elements which could contribute an $(n-5)$ path are those without an $n-5$.  From \eqref{eq necklace} the only ones without an $n-5$ are $I_{n-2}^V$, $I_{n-3}^V$, and $I_{n-4}^V$.  \note{find the right pluss or lack thereof}.
+Since $I_{n-2}^V$ is the only term in the Grassmann necklace for $V$ that contains $n-2$, no other term can contribute a plus in column $n-2$. Additionally, since $I_{n-2}^V$ only differs from $I_{n-3}^V$ in that the $n-3$ was replaced by an $n-2$, all other plusses must agree with those contributed by $I_{n-3}^V$. 
+
+\item Combining equation \eqref{eq necklace} with the previous point, the pair $(I_{n-1}^V \setminus I_1^V, I_1^V \setminus I_{n-1}^V)$ is either $(\{n-1, n\}, \{u, v\})$ or $(\{n-1\}, \{v\})$. Per point 1, $c = n-4$ if and only if $v = n -4$, in which case we get a $(n-4) \rightarrow (n-1)$ plus and the $u \rightarrow n$ plus (if it exists) has already been contributed by $I_{n-2}^V$ and $I_{n-3}^V$. If $c = n-5$ then $v < n-5$ and we are in the same situation as $I_{n-2}^V$. 
+
+%The third point is also a consequence of \eqref{eq necklace}.  Let's take the possibilities in turn, first suppose $I_{n-2}^V$ contrbuted an $(n-5)\rightarrow (n-2)$ plus.  In this case, going from $I_{n-2}^V$ to $I_{n-1}^V$ takes out the $n-2$ and puts in the $n-5$, so  nothing else changes, while going from $I_{n-3}^V$ to $I_{n-2}^V$ swapped the $n-3$ for the $n-2$, but $n-3\in I_1^V$, so nothing changes from $I_{n-3}^V$ to $I_{n-2}^V$ except changing a $(n-5)\rightarrow (n-3)$ path to $(n-5)\rightarrow (n-2)$.
+
+%Now in the case that $I_{n-2}^V$ contribued an $(n-4)\rightarrow (n-2)$ plus, then going from $I_{n-2}^V$ to $I_{n-1}^V$ takes out the $n-2$ and puts in the $n-5$, so instead of the $(n-4)\rightarrow (n-2)$ plus and the $(n-5)\rightarrow (n-1)$ plus we have an $(n-4)\rightarrow (n-1)$ plus, but the rest stays the same.  Also, in going from $I_{n-3}^V$ to $I_{n-2}^V$, $n-3$ comes out and $n-2$ goes in so all that changes is a $(n-4)\rightarrow (n-3)$ path becomes an $(n-4)\rightarrow (n-2)$ path.
+\item A Grassmann necklace term $I_i^V$ can only contribute a path beginning at $c$ when $c \not\in I_i^V$. Further, since $c$ will always be maximal in $I_1^V\setminus I_i^V$ by point 1, a path from $c$ must end at the minimal element of $I_i^V \setminus I_1^V$. From \eqref{eq necklace}, the only way we can have $c \not\in I_i^V$ and $n-1$ minimal in $I_i^V \setminus I_1^V$ is if $c = n-4$ and $i = n-1$.
+
+Similarly, the only terms that can contribute an $(n-5) \rightarrow n$ plus are those with $n-5 \in I_i^V$, i.e. when $i \in \{n-2,n-3,n-4\}$. However, $n-5$ is always the largest or second-largest element in $I_1\setminus I_i^V$, while if $n \in I_i^V \setminus I_1^V$ for $i \in \{n-2,n-3,n-4\}$ then $|I_i^V \setminus I_1^V| \geq 3$ and so $n$ cannot be the smallest or second-smallest in this set. Thus there can be no path $(n-5) \rightarrow n$.
   \end{enumerate}
 \end{proof}
 
@@ -2041,18 +2048,14 @@ We make one further simplification in order to eliminate the possibility that $n
 
 In summary, $W$ is a diagram with one of the two configurations depicted in Figure~\ref{fig special p}, and if $n-2 \in I_{n-2}^V$ then $n-1 \in I_{n-1}^V$ as well. Let $V$ be $W$ with $p$ removed. 
 
-  From Lemma~\ref{lem shape} we know how the shapes of the Le diagrams of $V$ and $W$ are related; let $\mathcal{A}$ and $\mathcal{B}$ be as described in that lLmma and subsequent discussion.  Lemmas~\ref{lem n and n-1}, \ref{lem n-2 good}, and \ref{lem n-2 bad} tell us that the three boxes of the bottom row of the Le diagram of $W$ each have a plus.  Lemmas~\ref{lem n and n-1} through \ref{lem other k} show that there is a bijection between the plusses of the Le diagram of $V$ and the plusses of the Le diagram of $W$ that are not in the bottom row.  This bijection can be described as follows:\note{In the case $n-4\in I_1^V \setminus I_n^V$ then the $ (n-4)\rightarrow (n-1)$ plus is not new in $W$ but instead there is an $(n-5)\rightarrow (n)$ plus in $W$ which gives the third new plus.  This needs to be added to the proof and the rest adjusted for the bad $n-4$ possiblity.}
+  From Lemma~\ref{lem shape} we know how the shapes of the Le diagrams of $V$ and $W$ are related; let $\mathcal{A}$ and $\mathcal{B}$ be as described in that lemma and subsequent discussion.  Lemmas~\ref{lem n and n-1}, \ref{lem n-2 good}, and \ref{lem n-2 bad} tell us that the three boxes of the bottom row of the Le diagram of $W$ each have a plus.  We will use Lemmas~\ref{lem n and n-1} through \ref{lem other k} to construct a bijection between the plusses of the Le diagram of $V$ and the plusses of the Le diagram of $W$ that are not in the bottom row.  This bijection is defined as follows:
   \begin{itemize}
   \item All plusses from $\mathcal{B}$ for $V$ maintain their positions in $\mathcal{B}$ for $W$.
   \item All plusses from the leftmost two columns (the $n$ and the $n-1$ columns) of $\mathcal{A}$ for $V$ maintain their positions in $\mathcal{A}$ for $W$.
-  \item If there is a plus in the $n-2$ column of $\mathcal{A}$ in $V$ then Lemma~\ref{lem n-2 bad} applies, so there is exactly one such plus.  This plus is mapped to the $(n-5)\rightarrow (n-1)$ plus for $W$.
+  \item If there is a plus in the $n-2$ column of $\mathcal{A}$ in $V$ then Lemma~\ref{lem n-2 bad} applies, so there is exactly one such plus.  If $n-4 \not\in I_1^V$ then map this plus to the $(n-5)\rightarrow (n-1)$ plus in $W$, whereas if $n-4 \in I_1^V$ then map it to the $(n-5) \rightarrow n$ plus in $W$.
   \item All plusses in the $n-3$ column for $V$ are shifted one square to the left in $\mathcal{A}$ for $W$, i.e. into the $n-2$ column.
   \end{itemize}
-  Note that this map is reversible and hence bijective. Indeed, the only possible ambiguity is at the $(n-5)\rightarrow (n-1)$ plus in $W$ (if it exists), which could have come from either of the first or third bullet points. However, if the third bullet point applies then by Lemma~\ref{lem n-2 bad} there is no $(n-5)\rightarrow (n-1)$ plus in $V$, i.e. the first bullet point does not apply. 
-
-
-
-  % If the Le diagram for $V$ has a plus in the $n-2$ column then Lemma~\ref{lem n-2 bad} applies. By the final part of Lemma~\ref{lem n-2 bad} there is no $n-5\rightarrow n-1$ plus in the Le diagram of $V$, and so the $n-5\rightarrow n-1$ plus of $W$ can be uniquely mapped to the plus in the $n-2$ column of the Le diagram of $V$.  If the Le diagram for $V$ has no plus in the $n-2$ column, then leave the $n-5\rightarrow n-1$ plus where it is in moving back to $V$.  This reverses the map.
+The majority of these points are clearly reversible and hence bijective; the only possible ambiguity is the third bullet point. In this case we are in the setting of Lemma~\ref{lem n-2 bad}. If $n-4 \not\in I_1^V$ there is no plus in the $(n-5) \rightarrow (n-1)$ position in $V$, whereas if $n-4 \in I_1^V$ then there is a plus in this position but no plus in the $(n-5)\rightarrow n$ position. In either case, per Lemma~\ref{lem n-2 bad} this is the only new plus in region $\mathcal{A}$ for $W$, so all plusses are accounted for and paired up uniquely with plusses in $V$.
 
 Therefore the Le diagram of $W$ contains $3(k-1)$ plusses in bijection with the plusses from the Le diagram of $V$ and 3 new plusses in the bottom row, yielding $3k$ in total. Applying induction completes the proof.
 \end{proof}
