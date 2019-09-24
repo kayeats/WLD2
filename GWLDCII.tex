@@ -1908,7 +1908,7 @@ However, it will be important later to observe that $v$ could be $n-4$.
   \begin{lem}\label{lem n-2 bad part 1}
 Let $V$ and $W$ be as in Lemma~\ref{lem I}, and suppose that $n-2,n-1 \in I_{n-2}^{V}$. Then:
   \begin{enumerate}
-  \item If $n-4 \not\in I_1^V\setminus I_n^V$, then $I_{n-2}^W$ contributes an $(n-3)\rightarrow (n-2)$ plus and an $(n-5)\rightarrow (n-1)$ plus, along with the one plus contributed by $I_n^V$.
+  \item If $n-4 \not\in I_1^V\setminus I_n^V$, then $I_{n-2}^W$ contributes an $(n-3)\rightarrow (n-2)$ plus and an $(n-5)\rightarrow (n-1)$ plus, along with \hlfix{the one}{check wording: 'the one' claims that $I_n^V$ only contributes one plus while 'one' claims that $I_{n-2}^W$ contributes one of the $I_n^V$ pluses} plus contributed by $I_n^V$.
   \item If $n-4 \in I_1^V\setminus I_n^V$, then $I_{n-2}^W$ contributes an $(n-3)\rightarrow (n-2)$ plus, an $(n-4)\rightarrow (n-1)$ plus and a $(n-5)\rightarrow (n)$ plus while $I_n^V$ contributed an $(n-4)\rightarrow (n)$ plus.
   \end{enumerate}
   \end{lem}
@@ -2044,7 +2044,7 @@ Let $W = (\cP, [n])$ be an admissible Wilson loop diagram.  The number of plusse
 
   Now consider Wilson loop diagrams with $k>1$ propagators.  By Lemma~\ref{lem uncovered} it suffices to prove the result for weakly admissible Wilson loop diagrams with $k$ propagators and no non-supporting vertices.  By Lemma~\ref{lem dihedral} it suffices to prove the result for at least one Wilson loop diagram from each dihedral orbit. In particular, we can restrict our attention to diagrams $W$ which have a propagator $p$ with the properties in Lemma~\ref{lem good p}.  
 
-We make one further simplification in order to eliminate the possibility that $n-2 \in I_{n-2}^V$ but $n-1 \not\in I_{n-2}^V$, which can only occur if our $W$ is in Case 2 of Figure~\ref{fig special p} and $n-1$ supports no propagators other than $p$. In this situation, apply the dihedral transformation that reflects $W$ along the line perpendicular to the $(n-2){th}$ edge, so that $p$ is unchanged but $q = (n-1,1)$ in the new diagram. The new diagram is an example of Case 1.
+We make one further simplification in order to eliminate the possibility that $n-2 \in I_{n-2}^V$ but $n-1 \not\in I_{n-2}^V$, which can only occur if our $W$ is in Case 2 of Figure~\ref{fig special p} and $n-1$ supports no propagators other than $p$. In this situation, apply the dihedral transformation that reflects $W$ along the line perpendicular to the $(n-2){th}$ edge, so that $p$ is unchanged but $q = (n-1,1)$ in the new diagram. The new diagram is an example of Case 1, {\color{violet} i.e. satisfying $n-2 \not \in I_{n-2}^V$}. \sanote{pull this simplification out ealier (before 4.10), so that when I'm counting cases, I'm not confused as to why this one hasn't been covered.}
 
 In summary, $W$ is a diagram with one of the two configurations depicted in Figure~\ref{fig special p}, and if $n-2 \in I_{n-2}^V$ then $n-1 \in I_{n-1}^V$ as well. Let $V$ be $W$ with $p$ removed. 
 
@@ -2055,7 +2055,7 @@ In summary, $W$ is a diagram with one of the two configurations depicted in Figu
   \item If there is a plus in the $n-2$ column of $\mathcal{A}$ in $V$ then Lemma~\ref{lem n-2 bad} applies, so there is exactly one such plus.  If $n-4 \not\in I_1^V$ then map this plus to the $(n-5)\rightarrow (n-1)$ plus in $W$, whereas if $n-4 \in I_1^V$ then map it to the $(n-5) \rightarrow n$ plus in $W$.
   \item All plusses in the $n-3$ column for $V$ are shifted one square to the left in $\mathcal{A}$ for $W$, i.e. into the $n-2$ column.
   \end{itemize}
-The majority of these points are clearly reversible and hence bijective; the only possible ambiguity is the third bullet point. In this case we are in the setting of Lemma~\ref{lem n-2 bad}. If $n-4 \not\in I_1^V$ there is no plus in the $(n-5) \rightarrow (n-1)$ position in $V$, whereas if $n-4 \in I_1^V$ then there is a plus in this position but no plus in the $(n-5)\rightarrow n$ position. In either case, per Lemma~\ref{lem n-2 bad} this is the only new plus in region $\mathcal{A}$ for $W$, so all plusses are accounted for and paired up uniquely with plusses in $V$.
+The majority of these points are clearly reversible and hence bijective; the only possible ambiguity is the third bullet point. In this case we are in the setting of Lemma~\ref{lem n-2 bad}. If $n-4 \not\in I_1^V$ there is no plus in the $(n-5) \rightarrow (n-1)$ position in $V$, whereas if $n-4 \in I_1^V$ then there is a plus in this position but no plus in the $(n-5)\rightarrow n$ position. {\color{red} what about the arrow $(n-4)\rightarrow (n-1)$?} In either case, per Lemma~\ref{lem n-2 bad} this is the only new plus in region $\mathcal{A}$ for $W${\color{red} what about the arrows $(n-3)\rightarrow (n-2)$?}, so all plusses are accounted for and paired up uniquely with plusses in $V$.
 
 Therefore the Le diagram of $W$ contains $3(k-1)$ plusses in bijection with the plusses from the Le diagram of $V$ and 3 new plusses in the bottom row, yielding $3k$ in total. Applying induction completes the proof.
 \end{proof}
