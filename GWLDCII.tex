@@ -1886,11 +1886,11 @@ Also $(I_n^V \setminus I_1^V) \cup \{n-1\}\subseteq \{n-1,n\}$ from the definiti
 
 In the next two lemmas, we consider the plusses contributed to the Le diagram of $W$ by $I_{n-2}^W$. 
 
-\begin{rmk}\label{rem n-2 case} Note that we need not consider the case when $n-2 \in I_{n-2}^V$ but $n-1 \not\in I_{n-2}^V$ even though this possibility appears in Lemma \ref{lem I}. This case can only occur if our $W$ is in Case 2 of Figure~\ref{fig special p} and $n-1$ supports no propagators other than $p$. In this situation, apply the dihedral transformation that reflects $W$ along the line perpendicular to the $(n-2)^{th}$ edge, so that $p$ is unchanged but $q = (n-1,1)$ in the new diagram. The new diagram is an example of Case 1, i.e. satisfying $n-2 \not \in I_{n-2}^V$. Therefore, for the rest of this section, we only consider the situation where if $n-2 \in I_{n-2}^V$ then $n-1 \in I_{n-1}^V$. \note{But then immediately in the next lemma we don't...}
+\begin{rmk}\label{rem n-2 case} Consider the case when $n-2 \in I_{n-2}^V$ but $n-1 \not\in I_{n-2}^V$. This case can only occur if our $W$ is in Case 2 of Figure~\ref{fig special p} and $n-1$ supports no propagators other than $p$. In this situation, apply the dihedral transformation that reflects $W$ along the line perpendicular to the $(n-2)^{th}$ edge, so that $p$ is unchanged but $q = (n-1,1)$ in the new diagram. The new diagram is an example of Case 1, i.e. satisfying $n-2 \not \in I_{n-2}^V$. Therefore we do not need to consider the case where $n-2\in I_{n-2}^V$ but $n-1\not\in I_{n-2}^V$.
 \end{rmk}
 
 \begin{lem}\label{lem n-2 good}
-  Let $V$ and $W$ be as in Lemma~\ref{lem I}, and suppose that $n-2 \not\in I_{n-2}^{V}$. Then $I_{n-2}^{W}$ contributes all of the same plusses as $I_{n-1}^{V}=I_{n-2}^{V}$, along with a new $(n-3)\rightarrow (n-2)$ plus.\note{Has this been rephrased?  Could we discuss?}
+  Let $V$ and $W$ be as in Lemma~\ref{lem I}, and suppose that $n-2 \not\in I_{n-2}^{V}$. Then $I_{n-2}^{W}$ contributes all of the same plusses as $I_{n-1}^{V}$ (which is the same as $I_{n-2}^{V}$) along with a new $(n-3)\rightarrow (n-2)$ plus.
 \end{lem}
 
 
@@ -1916,15 +1916,15 @@ However, it is important to observe that $v$ could be $n-4$, as we see in the ne
 
 
   \begin{lem}\label{lem n-2 bad}
-    Let $V$ and $W$ be as in Lemma~\ref{lem I}, and suppose that $n-2,n-1 \in I_{n-2}^{V}$. Let $c$ be the largest element of $I_1^V$.  Then:\note{This is a small grammar problem}
+    Let $V$ and $W$ be as in Lemma~\ref{lem I}, and suppose that $n-2,n-1 \in I_{n-2}^{V}$. Let $c$ be the largest element of $I_1^V$.  Then the following are true.
     \begin{enumerate}
   \item $c=n-4$ if $n-4\in I_1^V\setminus I_n^V$ and $c=n-5$ otherwise. If $c = n-4$ then we have $v = n-4$ in equation \eqref{eq necklace}.
   \item $I_{n-3}^W$ contributes the same plusses as $I_{n-3}^V$, except that the plus in the $n-3$ column (which necessarily exists) is shifted one square left into the $n-2$ column.
   \item In the Le diagram of $V$, $I_{n-2}^{V}$ contributes a $(c)\rightarrow (n-2)$ plus and no other term in the Grassmann necklace of $V$ gives a plus in this column. All other plusses from $I_{n-2}^{V}$ were already contributed by $I_{n-3}^V$.
   \item $I_{n-2}^W$ contributes an $(n-3) \rightarrow (n-2)$ plus, a $(c) \rightarrow (n-1)$ plus, and one other plus. If $c = n-5$ then this third plus is the one contributed by $I_n^V$, while if $c = n-4$ then the third plus is $(n-5) \rightarrow n$.
   \item If $c = n-4$ then $I_{n-1}^V$ contributes a $(n-4) \rightarrow (n-1)$ plus; all other plusses contributed by $I_{n-1}^V$ were already contributed by $I_{n-3}^V$, regardless of the value of $c$.
-  \item The Grassmann necklace of $V$ contributes a $(c)\rightarrow (n-1)$ plus if and only if $c = n-4$. No term in the Grassmann necklace of $V$ contributes a $(n-5) \rightarrow n$ plus.\note{Could we briefly discuss these potentially spurious parens I added}
-  \end{enumerate} 
+  \item The Grassmann necklace of $V$ contributes a $(c)\rightarrow (n-1)$ plus if and only if $c = n-4$. No term in the Grassmann necklace of $V$ contributes a $(n-5) \rightarrow n$ plus.
+    \end{enumerate} 
 \end{lem}
 
 \begin{proof}
@@ -1959,7 +1959,7 @@ Similarly, the only terms that can contribute an $(n-5) \rightarrow n$ plus are 
 
 
 \begin{lem}\label{lem other k}
-  Let $V$ and $W$ be as in Lemma~\ref{lem I}, and suppose that if $n-2\in I_{n-2}^{V}$ then $n-1\in I_{n-2}^{V}$ also. Then for each $k$ in the range $1<k<n-2$, $I_k^{W}$ contributes the same plusses as $I_{k}^{V}$, except that if $I_{k}^{V}$ contributed a plus in the $n-3$ column of the Le diagram of $V$ then this plus is shifted one square left in the Le diagram of $W$, and no plus was already in that location in the Le diagram of $W$.\note{should that last $W$ be a $V$?}
+  Let $V$ and $W$ be as in Lemma~\ref{lem I}, and suppose that if $n-2\in I_{n-2}^{V}$ then $n-1\in I_{n-2}^{V}$ also. Then for each $k$ in the range $1<k<n-2$, $I_k^{W}$ contributes the same plusses as $I_{k}^{V}$, except that if $I_{k}^{V}$ contributed a plus in the $n-3$ column of the Le diagram of $V$ then this plus is shifted one square left in the Le diagram of $W$.
 \end{lem}
 
 \begin{proof}
@@ -1967,11 +1967,11 @@ Recall that $I_1^W = I_1^V\cup \{n-3\}$ and that $n-2,n-1,n \not\in I_1^W$.
 
   If $n-3\not\in I_{k}^{V}$ then by Lemma~\ref{lem I} we have $I_{k}^{W} = I_k^{V}\cup \{n-3\}$.  Then since $n-3$ is the largest element of $I_1^{W}$ this transformation leaves the disjoint paths unchanged and so the plusses carry over from $V$ to $W$ directly.
 
-  If $n-3\in I_{k}^{V}$ then $I_k^V$ must contribute a plus in the $n-3$ column of the Le diagram of $V$, and by Lemma~\ref{lem I} we have $I_{k}^{W} = I_k^{V}\cup \{n-2\}$. If $n-2$ supports no propagators in $V$ then certainly no plusses appear in the $n-2$ column of the Le diagram of $V$. If $n-2$ supports at least one propagator in $V$ then $n-2 \in I_{n-2}^V$ and so by hypothesis $n-1 \in I_{n-2}^V$ as well. By Lemma~\ref{lem n-2 bad}, the only necklace element of $V$ containing $n-2$ is $I_{n-2}^{V}$ and the corresponding plus is not contributed to the Le diagram of $W$ by $I_{n-2}^{W}$.
+  If $n-3\in I_{k}^{V}$ then $I_k^V$ must contribute a plus in the $n-3$ column of the Le diagram of $V$, and by Lemma~\ref{lem I} we have $I_{k}^{W} = I_k^{V}\cup \{n-2\}$. If $n-2$ supports no propagators in $V$ then certainly no plusses appear in the $n-2$ column of the Le diagram of $V$. If $n-2$ supports at least one propagator in $V$ then $n-2 \in I_{n-2}^V$ and so by hypothesis $n-1 \in I_{n-2}^V$ as well. By Lemma~\ref{lem n-2 bad} item 3, the only necklace element of $V$ containing $n-2$ is $I_{n-2}^{V}$ and further with item 4, the plusses in column $n-2$ from $I_{n-2}^V$ and $I_{n-2}^W$ are different.
 
-  Since $n-3 \in I_k^V \setminus I_1^V$, we must have a path in the Le diagram of $V$ from some vertical edge $i$ to the bottom edge $n-3$.  In the Le diagram of $W$, the index $n-3$ labels a vertical edge with no path starting at it (since $n-3$ belongs to both $I_1^W$ and $I_k^W$), and there must be a path leading to $n-2$ since $n-2 \in I_k^W \setminus I_1^W$.  By the previous paragraph no other path from $I_k^V$ could end at $n-2$, and since the paths cannot cross we conclude that the $i\rightarrow (n-3)$ path in the Le diagram of $V$ must become a $i\rightarrow (n-2)$ path in the Le diagram of $W$. All other paths are unchanged.
+  Since $n-3 \in I_k^V \setminus I_1^V$, we must have a path in the Le diagram of $V$ from some vertical edge $i$ to the bottom edge $n-3$.  In the Le diagram of $W$, the index $n-3$ labels a vertical edge with no path from $I_k^W$ starting at it (since $n-3$ belongs to both $I_1^W$ and $I_k^W$), and there must be a path leading to $n-2$ since $n-2 \in I_k^W \setminus I_1^W$.  By the previous paragraph no other path from $I_k^V$ could end at $n-2$, and since the paths cannot cross we conclude that the $i\rightarrow (n-3)$ path in the Le diagram of $V$ must become a $i\rightarrow (n-2)$ path in the Le diagram of $W$. All other paths are unchanged.
 
-   Thus the plus contributed by $I_k^V$ in the $n-3$ column of the Le diagram of $V$ is shifted into the $n-2$ column in the Le diagram for $W$, where there was no plus before, and no other plusses are changed.
+%   Thus the plus contributed by $I_k^V$ in the $n-3$ column of the Le diagram of $V$ is shifted into the $n-2$ column in the Le diagram for $W$, where there was no plus before, and no other plusses are changed.
 \end{proof}
 
 We are now ready to prove the main result of this section, showing that the dimension of the positroid cell associated to each Wilson loop diagram is $3|\cP|$. 
@@ -1983,7 +1983,7 @@ Let $W = (\cP, [n])$ be an admissible Wilson loop diagram.  The number of plusse
 \begin{proof}
   The proof is by induction on the number of propagators.
 
-  First note that a Wilson loop diagram $W$ with one propagator supported on vertices $i<i+1<j<j+1$ has a Le diagram consisting of a single row with $n-i$ boxes. The columns are labeled from left to right by $n, \ldots, i+1$. By Algorithm~\ref{alg:GN to Le} there are plusses in the $i+1$, $j$, and $j+1$ positions. \sanote{changed for grammar and notational consistency. check}
+  First note that a Wilson loop diagram $W$ with one propagator supported on vertices $i<i+1<j<j+1$ has a Le diagram consisting of a single row with $n-i$ boxes. The columns are labeled from left to right by $n, \ldots, i+1$. By Algorithm~\ref{alg:GN to Le} there are plusses in the $i+1$, $j$, and $j+1$ positions. 
 
   Now consider Wilson loop diagrams with $k>1$ propagators.  By Lemma~\ref{lem uncovered} it suffices to prove the result for weakly admissible Wilson loop diagrams with $k$ propagators and no non-supporting vertices.  By Lemma~\ref{lem dihedral} it suffices to prove the result for at least one Wilson loop diagram from each dihedral orbit. In particular, we can restrict our attention to diagrams $W$ which have a propagator $p$ with the properties in Lemma~\ref{lem good p}.  
 
@@ -2019,7 +2019,7 @@ Therefore the Le diagram of $W$ contains $3(k-1)$ plusses in bijection with the 
 
 In this section, we investigate the poles of the integrand for $I(W)$, that is $R(W)$ as defined in Definition~\ref{def R(W)}. Since SYM $N=4$ is a finite theory \cite{Alday:2007hr, ParkeTaylorids}, the scattering amplitudes (and thus the holomorphic Wilson loops $\,\mathfrak{W}_{k,n}$) are finite. That is, for a fixed set of external particles $\cZ$, \bas \sum_{W \text{ s.t. } |\cP| = k} I(W)(\cZ) <\infty \;.\eas In otherwords, all poles of the intergrands must cancel. As a step towards this, in this section, we prove some results about the structure of the denominator of the integrand, $R(W)$.
 
-The results of Section~\ref{sec GN algorithm} allow us to relate the \hlfix{position of propagators}{ending edges?} in a Wilson loop diagram $W$ to minors of $C(W)$, $R(W)$. \sanote{Do we need to fix an ordering of rows of $C(W)$, or does that come out in the wash?}
+The results of Section~\ref{sec GN algorithm} allow us to relate the configuration of propagators in a Wilson loop diagram $W$ to minors of $C(W)$, $R(W)$.  In this section fix an arbitrary ordering of the propagators, equivalently the rows of $C(W)$.
 
 The main result of this section is Theorem~\ref{thm denom}, which expresses the denominator $R(W)$ in terms of the Grassmann necklace of $W$. \sanote{Put something about this in the motivation for why WLD $\rightarrow$ GN algorithm is useful}This simplifies the computation of $R(W)$ and allows us to directly relate the poles of the integral to the combinatorics of the diagram.
 
@@ -2035,7 +2035,7 @@ Let $W = (\cP,[n])$ be a Wilson loop diagram, and let $C(W)$ be the matrix of $W
       %\item Use Algorithm~\ref{alg:put GN on WLD} to obtain a bijection between the propagators and the $i$th Grassmann necklace element, $I_{i}$.  Write $I_{i}(p)$ for the vertex associated to propagator $p$ under this bijection.
       \item Let $S_i = \{p \in \cP \ | \ I_{i-1}(p) \neq I_i(p)\}$. (By convention, set $I_{0} = I_n$.)
 	  %\item Write $\Delta_{I_i}$ for the determinant of the $k \times k$ minor of $C(W)$ with columns indexed by $I_i$.
-      \item Let $r_i$ be the determinant of the $|S_i|\times |S_i|$ minor of $C(W)$ with rows indexed by $S_i$ and columns indexed by $I_i(S_i)$.  {\color{violet} If $S_i = \emptyset$, set $r_i = 1$}\sanote{a version of this was commented out, put back in}%$\Delta_{I_i}$ with all variables from rows associated to $p\not\in S_i$ set to $1$.
+      \item Let $r_i$ be the determinant of the $|S_i|\times |S_i|$ minor of $C(W)$ with rows indexed by $S_i$ and columns indexed by $I_i(S_i)$.  If $S_i = \emptyset$, set $r_i = 1$. %$\Delta_{I_i}$ with all variables from rows associated to $p\not\in S_i$ set to $1$.
     \end{itemize}
   \item Define $R = \prod_{i=1}^n r_i$.
 \end{itemize}
@@ -2044,9 +2044,9 @@ Let $W = (\cP,[n])$ be a Wilson loop diagram, and let $C(W)$ be the matrix of $W
 That is, each $r_i$ is the determinant of the minor determined by the propagators (rows) that contribute different values (columns) to the $i^{th}$ element of the Grassmann necklace than they did to the $i-1^{st}$.
 
 
-As we discuss the algorithm it will also be useful to have the notation $\Delta_{I_i}$ for the determinant of the $k\times k$ minor of $C(W)$ with columns indexed by $I_i$. {\color{violet} In particular, one summand of this determinant is given by $\prod_{p \in \cP}x_{p, I_i(p)}$. The other summands are (up to sign) given by other bijections between the propagator set $\cP$ and the vertex set $I_i$.}
+As we discuss the algorithm it will also be useful to have the notation $\Delta_{I_i}$ for the determinant of the $k\times k$ minor of $C(W)$ with columns indexed by $I_i$. In particular, one summand of this determinant is given by $\prod_{p \in \cP}x_{p, I_i(p)}$. The other summands are (up to sign) given by other bijections between the propagator set $\cP$ and the vertex set $I_i$.
 
-As we take each $r_i$ to simply be the determinant of a particular submatrix of $C(W)$, the sign of each $r_i$ is well-defined {\color{violet} (after an ordering on the propagators have been fixed)}.  Before proving the main results of this section, we given an illustrative example. Below, we show that $R$ is equal to the denominator of the Wilson loop diagram as defined in Definition~\ref{def R(W)}, and is the radical of the product $\prod_{i=1}^n \Delta_{I_i}$.
+As we take each $r_i$ to simply be the determinant of a particular submatrix of $C(W)$, the sign of each $r_i$ is well-defined (since an ordering on the propagators has been fixed).  Before proving the main results of this section, we given an illustrative example. Below, we show that $R$ is equal to the denominator of the Wilson loop diagram as defined in Definition~\ref{def R(W)}, and is the radical of the product $\prod_{i=1}^n \Delta_{I_i}$.
 %  However, we will not be interested in these signs as they only contribute an overall sign to $R$ and our main theorem in this section (Theorem~\ref{thm denom}) will simply be to show that $R$ is equal up to a $\mathbb{Q}$-multiple to the denominator of the Wilson loop diagram (see Definition~\ref{def R(W)}). 
 
 
@@ -2161,13 +2161,13 @@ C(W) = \begin{bmatrix} a & b & 0 & 0 & 0 & c & d \\ e & f & 0 & 0 & g & h & 0 \\
 \]
 The Grassmann necklace of this diagram is 
 \begin{gather*}I_1 = \{1,2,4\}, I_2 = \{2,4,5\}, I_3 = \{4,5,6\}, I_4=\{4,5,6\},\\ I_5=\{5,6,7\}, I_6 = \{6,7,1\}, I_7=\{7,1,2\}. \end{gather*}  
-Figure~\ref{fig R eg} indicates \st{the pairings between propagators and vertices for each }{\color{violet} indicates which vertex is contributed to $I_i$ by each propagator for each} $i \in [1,7]$.  
+Figure~\ref{fig R eg} indicates indicates which vertex is contributed to $I_i$ by each propagator for each $i \in [1,7]$.  
 
 From $I_1$ to $I_2$, the propagators $p$ and $q$ change which vertices they contribute. That is $I_1(p) = 1$, $I_1(q)= 2$ while $I_2(p) = 2$, $I_2(q)= 5$. However, $r$ contributes  4 to both $I_1$ and $I_2$, so $S_2 = \{p,q\}$.  Then
 \[
 \Delta_{I_2}=\det\begin{bmatrix} b & 0 & 0 \\ f & 0 & g \\ j & k & l \end{bmatrix} = kgb, \qquad r_2 = \det\begin{bmatrix} b & 0 \\ f & g \end{bmatrix} = gb.
 \] 
-Continuing likewise, we get $r_3 = c$, $r_4=1$ \sanote{see bit added to Alg 5.1 above}(since $I_4 = I_3$), $r_5 = lhd$, and $r_6 = i$.
+Continuing likewise, we get $r_3 = c$, $r_4=1$ (since $I_4 = I_3$), $r_5 = lhd$, and $r_6 = i$.
 
 At $I_7$ we see for the first time an irreducible quadratic factor: we have $S_7 = \{q,s\}$ with $I_7(S_7) = \{ 1,2\}$, $\Delta_{I_7} = d(ej-fi)$ and $r_7 = ej-fi$. 
 
@@ -2204,13 +2204,13 @@ The first claim is that the minor of $C(W)$ associated to $\mathcal{P}'$ and $J$
 
 {\em Proof of claim}: By the structure of determinants we know that $\Delta_{I_i} = fg$, where $g$ involves only variables associated to propagators not in $\mathcal{P}'$ and associated to vertices not in $J$.
 
-Expanding out $fg$ yields a signed sum of monomials. Since there is no cancellation between terms, this means that the full expansion over permutations of $\Delta_{I_i}$ contains no other nonzero terms and hence no other variables.  Therefore $\Delta_{I_i}$ is equal to the determinant of the matrix obtained by taking the submatrix of $C(W)$ with columns indexed by $I_i$ and setting any variables not appearing in $\Delta_{I_i}$ to $0$.  This new matrix is, up to permutations of rows and columns, a block matrix with one block for $\mathcal{P}'$ and $J$ and the other block for the complements.  Thus its determinant, and hence also $\Delta_{I_i}$, is the product of the minors for these two blocks.  By considering which variables appear, these two factors must also be $f$ and $g$, and so in particular $f$ is the minor of $C(W)$ associated to $\mathcal{P}'$ and $J$.  This proves the claim. \sanote{I know there was some contention over this paragraph. Having read it carefully, I want to iterate that I like this now.}
+Expanding out $fg$ yields a signed sum of monomials. Since there is no cancellation between terms, this means that the full expansion over permutations of $\Delta_{I_i}$ contains no other nonzero terms and hence no other variables.  Therefore $\Delta_{I_i}$ is equal to the determinant of the matrix obtained by taking the submatrix of $C(W)$ with columns indexed by $I_i$ and setting any variables not appearing in $\Delta_{I_i}$ to $0$.  This new matrix is, up to permutations of rows and columns, a block matrix with one block for $\mathcal{P}'$ and $J$ and the other block for the complements.  Thus its determinant, and hence also $\Delta_{I_i}$, is the product of the minors for these two blocks.  By considering which variables appear, these two factors must also be $f$ and $g$, and so in particular $f$ is the minor of $C(W)$ associated to $\mathcal{P}'$ and $J$.  This proves the claim.
 
 A consequence of this claim is that every linear factor of $\Delta_{I_i}$ is a $1\times 1$ minor of $C(W)$, hence is a single variable, and every irreducible quadratic factor of $\Delta_{I_i}$ is a $2\times 2$ minor of $C(W)$, hence is a $2\times 2$ determinant of single variables.
 
-All that remains is to prove that $\Delta_{I_i}$ has no irreducible factors of degree 3 or more.  Suppose for a contradiction that $f$ is a factor of $\Delta_{I_i}$ of degree $\geq 3$. Without loss of generality\footnote{This is without loss of generality as by removing the propagators which come before those contributing to $f$ in the order given by $I_i$ and changing $i$ to be the first vertex which contributes to $f$, we obtain an admissible diagram for which $f$ still divides $\Delta_{I_i}$ but also $i\in I_i$ and
-$i$ contributes to $f$, and this diagram can be used in place of $W$.} we may assume $i\in I_i$ and $i$ contributes to $f$.
-Finally, we can suppose that $W$ is minimal in number of propagators with an irreducible factor of degree $\geq 3$. \sanote{can we break footnote inot a couple sentences?}
+All that remains is to prove that $\Delta_{I_i}$ has no irreducible factors of degree 3 or more.  Suppose for a contradiction that $f$ is a factor of $\Delta_{I_i}$ of degree $\geq 3$. Without loss of generality\footnote{This is without loss of generality for the following reason.  By removing the propagators which come before those contributing to $f$ in the order given by $I_i$ and changing $i$ to be the first vertex which contributes to $f$, we obtain an admissible diagram.  In this diagram $f$ still divides $\Delta_{I_i}$ and also $i\in I_i$ and
+$i$ contributes to $f$.  Thus this diagram can be used in place of $W$.} we may assume $i\in I_i$ and $i$ contributes to $f$.
+Finally, we can suppose that $W$ is minimal in number of propagators with an irreducible factor of degree $\geq 3$. 
 
 Let $p$ be the propagator such that $I_i(p) = i$. There are two cases to consider, when $p$ is supported on the edge $i-1$ or the edge $i$.  These are illustrated in Figure~\ref{fig no big factors}
 
@@ -2264,13 +2264,13 @@ Let $p$ be the propagator such that $I_i(p) = i$. There are two cases to conside
   \caption{The two cases in the proof that no factors of $\Delta_{I_i}$ have degree 3 or more.{\color{violet}First picture: I thought $I_i(p) = i$. Doesn't the arrow say that $I_i(p) = i-1$?}}\label{fig no big factors}
 \end{figure}
 
-\textbf{Case 1}: Suppose $p = (i-1, m)$. Then $p$ has one end on $i-1^{th}$ edge and $I_{i+1}(p) = m$ by Lemma~\ref{vertex cyclic int lem}.  \sanote{again, it would be nice if this could be read off from a statement of a result somehwere}.
+\textbf{Case 1}: Suppose $p = (i-1, m)$. Then $p$ has one end on $i-1^{th}$ edge and $I_{i+1}(p) = m$ by Remark~\ref{rmk cyclic}.
 
-Let $S = \cP_{in}(p)$ be the set of propagators inside $p$ in the $<_i$ order. {\color{violet} By Remark \ref{rmk algorithm locally same},} $I_i$ and $I_{i+1}$ can only differ once $p$ contributes to $I_{i+1}$, so $I_i(q) = I_{i+1}(q)$ for each $q \in S \backslash \{p\}$. Thus if a propagator contributes $m$ in $I_i$ then it must lie outside $p$.
+Let $S = \cP_{in}(p)$ be the set of propagators inside $p$ in the $<_i$ order.
+By Remark \ref{rmk algorithm locally same}, $I_i$ and $I_{i+1}$ can only differ once $p$ contributes to $I_{i+1}$, so $I_i(q) = I_{i+1}(q)$ for each $q \in S \backslash \{p\}$. Thus if a propagator contributes $m$ in $I_i$ then it must lie outside $p$.
 
-\hlfix{By Remark {\ref{clockwise ordering rem}}, if $I_i(q) = m$, then it must be the clockwise most propagator supported on $m$ that has not yet contributed to $I_i$, i.e. is lies in $\cP_{out}(p, <_i)$.}{more direct than above para. Alt. only. Don't need to adopt. (keep dfn of $S$.)}
 
-If neither $m$ nor $m+1$ appear in $I_i$ then by Corollary~\ref{no coloops} $V(p) \cap I_i = \{i\}$, and so the row of $p$ in the matrix of $\Delta_{I_i}$ has only one nonzero entry; hence $\Delta_{I_i}$ has a linear factor contributed by $p$ and $i$, which is a contradiction to the fact that $i$ contributes to $f$.  So we must have at least one of $m$ and $m+1$ in $I_i$.  However, all propagators in $S$ contribute to $I_{i}$ strictly before $m$ {\color{violet} by Corrollary \ref{GN alg well defined}}, so the matrix giving $\Delta_{I_i}$ {\color{violet} where the rows appear in the order defined by $I_i$?} has the form
+If neither $m$ nor $m+1$ appear in $I_i$ then by Corollary~\ref{no coloops} $V(p) \cap I_i = \{i\}$, and so the row of $p$ in the matrix of $\Delta_{I_i}$ has only one nonzero entry; hence $\Delta_{I_i}$ has a linear factor contributed by $p$ and $i$, which is a contradiction to the fact that $i$ contributes to $f$.  So we must have at least one of $m$ and $m+1$ in $I_i$.  However, all propagators in $S$ contribute to $I_{i}$ strictly before $m$ by the previous paragraph, so permuting rows and columns as needed, the matrix giving $\Delta_{I_i}$ has the form
 \[
 \begin{bmatrix} A & B \\ 0 & C\end{bmatrix}
 \]
