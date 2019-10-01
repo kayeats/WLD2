@@ -1830,9 +1830,9 @@ The arguments for $I_k^{W}$ ($1< k < n-2$) proceed analagously to those of $I_{n
 This covers all cases and hence completes the proof.
 \end{proof}
 
-The next several lemmas assume $V$ and $W$ to be as above. They discuss how the shape of the Le diagram changes from $V$ to $W$ and how the plusses in $V$ shift to become plusses in $W$. In particular, the Le diagram for $W$ has an extra row, labeled by $n-3$, with three columns (see Figure \ref{fig Le} and Lemma \ref{lem shape}). This last row contains three (new) plusses. All other plusses in the Le diagram of $V$ shift in a predictable manner to become plusses in the Le diagram of $W$. (See Lemmas \ref{lem n and n-1} to Theorem \ref{thm dim}.
+The next several lemmas assume $V$ and $W$ to be as above. They discuss how the shape of the Le diagram changes from $V$ to $W$ and how the plusses in $V$ shift to become plusses in $W$. In particular, the Le diagram for $W$ has an extra row, labeled by $n-3$, with three columns (see Figure~\ref{fig Le} and Lemma~\ref{lem shape}). This last row contains three (new) plusses. All other plusses in the Le diagram of $V$ shift in a predictable manner to become plusses in the Le diagram of $W$; this is described in Lemmas~\ref{lem n and n-1} to Theorem~\ref{thm dim}.
 
-We proceed to address the cases laid out in \ref{lem I}, getting the shape of the Le diagram of $W$ from the relation $I_n^W= I_n^V \cup {n-3}$. 
+We proceed to address the cases laid out in Lemma~\ref{lem I}, getting the shape of the Le diagram of $W$ from the relation $I_1^W= I_1^V \cup \{n-3\}$. 
 
 \begin{lem}\label{lem shape}
   Let $V$ and $W$ be as in Lemma~\ref{lem I}.
@@ -1947,7 +1947,7 @@ Since $I_{n-2}^V$ is the only term in the Grassmann necklace for $V$ that contai
 \end{gather*}
 As per the discussion following equation \eqref{eq necklace} above, we also have $I_n^V\setminus I_1^V = \{n\}$ and $I_1^V\setminus I_n^V = \{v\}$. If $c = n-5$ then the path $v \rightarrow n$ from $I_n^V$ does not intersect with the paths from $\{n-3, n-5\}$ to $\{n-2, n-1\}$ and we obtain the plusses as stated.
     
-Now suppose $c = v= n-4$; in this case $I_{n-2}^W$ contributes plusses defined by the noncrossing paths starting from $\{n-3, n-4, n-5\}$ and ending at $\{n, n-1, n-2\}$.  Thus $I_n^V$ contributed the plus from the path $(n-4)\rightarrow (n)$, while $I_{n-2}^W$ contributes the plusses $(n-3)\rightarrow (n-2)$, $(n-4)\rightarrow (n-1)$ and $(n-5)\rightarrow (n)$.
+Now suppose $c = v= n-4$; in this case $I_{n-2}^W$ contributes plusses defined by the noncrossing paths starting from $\{n-3, n-4, n-5\}$ and ending at $\{n, n-1, n-2\}$, namely the plusses in positions $(n-3)\rightarrow (n-2)$, $(n-4)\rightarrow (n-1)$ and $(n-5)\rightarrow (n)$.
 
 \item Combining equation \eqref{eq necklace} with point 3 of this proof, the pair $(I_{n-1}^V \setminus I_1^V, I_1^V \setminus I_{n-1}^V)$ is either $(\{n-1, n\}, \{u, v\})$ or $(\{n-1\}, \{v\})$. Per point 1, $c = n-4$ if and only if $v = n -4$, in which case we get a $(n-4) \rightarrow (n-1)$ plus and the $u \rightarrow n$ plus (if it exists) has already been contributed by $I_{n-2}^V$ and $I_{n-3}^V$. If $c = n-5$ then $v < n-5$ and we are in the same situation as $I_{n-2}^V$. 
 
@@ -1989,7 +1989,7 @@ Let $W = (\cP, [n])$ be an admissible Wilson loop diagram.  The number of plusse
 
 %We make one further simplification in order to eliminate the possibility that $n-2 \in I_{n-2}^V$ but $n-1 \not\in I_{n-2}^V$, which can only occur if our $W$ is in Case 2 of Figure~\ref{fig special p} and $n-1$ supports no propagators other than $p$. In this situation, apply the dihedral transformation that reflects $W$ along the line perpendicular to the $(n-2){th}$ edge, so that $p$ is unchanged but $q = (n-1,1)$ in the new diagram. The new diagram is an example of Case 1, {\color{violet} i.e. satisfying $n-2 \not \in I_{n-2}^V$}. \sanote{pull this simplification out ealier (before 4.10), so that when I'm counting cases, I'm not confused as to why this one hasn't been covered.}
 
-Note that by Remark \ref{rem n-2 case}, we only need to consider when $W$ is a diagram with one of the two configurations depicted in Figure~\ref{fig special p}, and if $n-2 \in I_{n-2}^V$ then $n-1 \in I_{n-1}^V$ as well. Let $V$ be $W$ with $p$ removed. 
+Thus $W$ has one of the two configurations depicted in Figure~\ref{fig special p}, and by Remark~\ref{rem n-2 case} we can further assume that if $n-2 \in I_{n-2}^V$ then $n-1 \in I_{n-1}^V$ as well. Let $V$ be $W$ with $p$ removed. 
 
   From Lemma~\ref{lem shape} we know how the shapes of the Le diagrams of $V$ and $W$ are related; let $\mathcal{A}$ and $\mathcal{B}$ be as described in that lemma and subsequent discussion.  
 
@@ -2003,7 +2003,9 @@ Note that by Remark \ref{rem n-2 case}, we only need to consider when $W$ is a d
   \item If there is a plus in the $n-2$ column of $\mathcal{A}$ in $V$ then Lemma~\ref{lem n-2 bad} applies, so there is exactly one such plus in this column. If $n-4 \not\in I_1^V$ then pair this plus with the $(n-5)\rightarrow (n-1)$ plus in $W$, whereas if $n-4 \in I_1^V$ then pair it with the $(n-5) \rightarrow n$ plus in $W$.
 
   \end{itemize}
-The first three points follow immediately from Lemmas \ref{lem n and n-1} through \ref{lem other k}. If $n-2 \not\in I_{n-2}^V$ by Lemma~\ref{lem n-2 good} there are no plusses in column $n-2$ of the diagram of $V$, and all plusses have been accounted for. If $n-2 \in I_{n-2}^V$ then we are in the setting of Lemma~\ref{lem n-2 bad}, and there is exactly one plus in column $n-2$ of the diagram of $V$; it is paired with the one plus in $W$ yet unaccounted for: namely those in positions $(n-5) \rightarrow n$ or $(n-5) \rightarrow (n-1)$, as described in points 4 and 6 of that lemma.
+The first two points follow from Lemmas \ref{lem n and n-1} through \ref{lem n-2 bad}. The third point follows from Lemma~\ref{lem other k}, which tells us that the $n-3$ column of $V$ is identical to the $n-2$ column of $W$ (excluding the last row).
+
+Finally, if $n-2 \not\in I_{n-2}^V$ by Lemma~\ref{lem n-2 good} there are no plusses in column $n-2$ of the diagram of $V$, and all plusses have been accounted for. On the other hand, if $n-2 \in I_{n-2}^V$ then we are in the setting of Lemma~\ref{lem n-2 bad}, and there is exactly one plus in column $n-2$ of the diagram of $V$. This plus is paired with the one plus in $W$ yet unaccounted for, namely the one in position $(n-5) \rightarrow n$ or $(n-5) \rightarrow (n-1)$, as described in points 4 and 6 of that lemma.
 
 Therefore the Le diagram of $W$ contains $3(k-1)$ plusses in bijection with the plusses from the Le diagram of $V$ and 3 new plusses in the bottom row, yielding $3k$ in total. Applying induction completes the proof.
 \end{proof}
