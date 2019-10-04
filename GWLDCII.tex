@@ -47,8 +47,13 @@
 %*****************
 %%% WLD drawing 
 
-\usetikzlibrary{decorations.pathmorphing,calc}
-\usetikzlibrary{intersections}
+\usetikzlibrary{calc} 
+\usetikzlibrary{decorations.pathmorphing} % to get the wiggly propagator lines
+\usetikzlibrary{bending} % to fix the arrow tips on bent lines
+\usetikzlibrary{patterns} % for shading the Le diagrams in section 4
+
+\newcommand{\leplus}{\Large $+$}
+\newcommand{\lezero}{\Large $0$}
 
 
 \definecolor{light-gray}{gray}{0.6}
@@ -65,7 +70,7 @@
 \tikzstyle{seconddash}=[dashed,line cap=round, dash pattern=on 0.5pt off 1pt]
 
  % used for showing which propagator assigns to which vertex in the last section
-\pgfmathsetmacro{\arrowangle}{75}
+\pgfmathsetmacro{\arrowangle}{90}
 \tikzstyle{propassignment} = [->,shorten >=2pt,thick]
 
 
@@ -1846,7 +1851,26 @@ See Figure~\ref{fig Le} for an illustration of the shapes described in the state
 Recall that $I_1$ determines the shape of the Le diagram: specifically, the elements of $I_1$ label the rows of the diagram, working from top right to bottom left. By the arguments in Lemma {\ref{lem I}} we know that ${n,n-1,n-2, n-3 \not\in I_1^{V}}$.  These are the leftmost four columns of the diagram for $V$.  From Lemma \ref{lem I} we know that that $I_1^{W} = I_1^{V}\cup \{n-3\}$. Therefore, the right hand boundary of the shape of $V$ is the same as the right hand boundary of the shape of $W$ except that $W$ has one additional row of 3 boxes while $V$ has an additional column in the $n-3$ position; that is, an extra column fourth from the left. 
 \end{proof}
 \begin{figure}
-  \[\includegraphics{Le_diagrams}\]
+  \[\begin{tikzpicture}[scale = 1.5]
+\node at (1.5,2.5) {\Large $V$};
+\draw (0,0) rectangle (1,2);
+\draw (1,0) rectangle (1.3,2);
+\begin{scope}[shift = {(-2.7,-2)}]
+\draw (4,2) .. controls (5.3,2.2) and (4.7,3) .. (5.5,3.2) .. controls (6.3,3.5) .. (6.5,4) -- (4,4);
+\end{scope}
+\node at (0.5,1) {\large$\mathcal{A}$};
+\node at (1.8,1) {\large$\mathcal{B}$};
+\begin{scope}[shift = {(5,0)}]
+\node at (1.5,2.5) {\Large $W$};
+\draw (0,-0.3) rectangle (1,0);
+\draw (0,0) rectangle (1,2);
+\begin{scope}[shift = {(-3,-2)}]
+\draw (4,2) .. controls (5.3,2.2) and (4.7,3) .. (5.5,3.2) .. controls (6.3,3.5) .. (6.5,4) -- (4,4);
+\end{scope}
+\node at (0.5,1) {\large$\mathcal{A}$};
+\node at (1.5,1) {\large$\mathcal{B}$};
+\end{scope}
+\end{tikzpicture}\]
   \caption{Le diagrams for $V$ (left) and $W$ (right).}\label{fig Le}
 \end{figure}
 
@@ -2011,7 +2035,122 @@ Therefore the Le diagram of $W$ contains $3(k-1)$ plusses in bijection with the 
 \end{proof}
 
 \begin{figure}
-\includegraphics[width=12cm]{new_le_diagrams.jpg}
+\[
+\begin{tikzpicture}[scale = 0.85]
+\node at (2.5,5) {\Large $V$};
+\node at (12.5,5) {\Large $W$};
+\node at (-2,2.5) {\large $n-4 \in I_1^V$};
+\node at (-2,-4.5) {\large $n-4 \not\in I_1^V$};
+\node at (7.5,2.5) {\Large $\longrightarrow$};
+\node at (8,-4.5) {\Large $\longrightarrow$};
+% n-4 \in I_1, V
+\begin{scope}
+\draw[pattern color = gray,pattern = north east lines] (0,4) -- (0,2) -- (2,2) -- (2,4);
+\draw[pattern color = gray,pattern = north west lines] (3,4) -- (3,0) -- (4,0) -- (4,4);
+\draw (0,0) grid (4,2);
+\foreach \x in {0,1,2,3,4} {
+  \draw (\x,2) -- (\x,4);
+  };
+\foreach \c in {(0.5,0.5),(1.5,0.5),(1.5,1.5)} {
+  \node at \c {\leplus};
+}
+\foreach \c in {(0.5,1.5),(2.5,1.5),(2.5,2.5)} {
+  \node at \c {\lezero};
+}
+\node[red] at (2.5,0.5) {\leplus};
+\node at (2.5,3.5) {$\vdots$};
+\begin{scope}
+\fill[pattern color = gray,pattern = horizontal lines] (4,2) .. controls (5.3,2.2) and (4.7,3) .. (5.5,3.2) .. controls (6.3,3.5) .. (6.5,4) -- (4,4) -- (4,2);
+\draw (4,2) .. controls (5.3,2.2) and (4.7,3) .. (5.5,3.2) .. controls (6.3,3.5) .. (6.5,4);
+\end{scope}
+%\fill[color = white,path fading = south] (0,2) rectangle (6.5,4.1);
+\node[below] at (0.5,0) {\tiny $n\vphantom{1}$};
+\node[below] at (1.5,0) {\tiny $n-1$};
+\node[below] at (2.5,0) {\tiny $n-2$};
+\node[below] at (3.5,0) {\tiny $n-3$};
+\node[right] at (4,0.5) {\tiny $n-4$};
+\node[right] at (4,1.5) {\tiny $n-5$};
+\end{scope}
+
+% n-4 \in I_1, W
+\begin{scope}[shift = {(9,0)}]
+\draw[pattern color = gray,pattern = north east lines] (0,4) -- (0,2) -- (2,2) -- (2,4);
+\draw[pattern color = gray,pattern = north west lines] (2,4) -- (2,0) -- (3,0) -- (3,4);
+\draw (0,-1) grid (3,2);
+\foreach \x in {0,1,2,3} {
+  \draw (\x,2) -- (\x,4);
+  };
+\foreach \c in {(0.5,0.5),(1.5,0.5),(1.5,1.5)} {
+  \node at \c {\leplus};
+}
+\node[red] at (0.5,1.5) {\leplus};
+\foreach \c in {(0.5,-0.5),(1.5,-0.5),(2.5,-0.5)} {
+  \node[blue] at \c {\leplus};
+}
+\begin{scope}[shift = {(-1,0)}]
+\fill[pattern color = gray,pattern = horizontal lines] (4,2) .. controls (5.3,2.2) and (4.7,3) .. (5.5,3.2) .. controls (6.3,3.5) .. (6.5,4) -- (4,4) -- (4,2);
+\draw (4,2) .. controls (5.3,2.2) and (4.7,3) .. (5.5,3.2) .. controls (6.3,3.5) .. (6.5,4);
+\end{scope}
+\node[below] at (0.5,-1) {\tiny $n\vphantom{1}$};
+\node[below] at (1.5,-1) {\tiny $n-1$};
+\node[below] at (2.5,-1) {\tiny $n-2$};
+\node[right] at (3,-0.5) {\tiny $n-3$};
+\node[right] at (3,0.5) {\tiny $n-4$};
+\node[right] at (3,1.5) {\tiny $n-5$};
+\end{scope}
+
+% n-4 \not\in I_1, V
+\begin{scope}[shift = {(0,-6)}]
+\draw[pattern color = gray,pattern = north east lines] (0,3) -- (0,1) -- (2,1) -- (2,3);
+\draw[pattern color = gray,pattern = north west lines] (3,3) -- (3,0) -- (4,0) -- (4,3);
+\draw (0,0) grid (4,1);
+\foreach \x in {0,1,2,3,4} {
+  \draw (\x,1) -- (\x,3);
+  };
+\foreach \c in {(0.5,0.5),(1.5,0.5),(2.5,1.5)} {
+  \node at \c {\lezero};
+}
+\node at (2.5,2.5) {$\vdots$};
+\node[red] at (2.5,0.5) {\leplus};
+\begin{scope}[shift = {(1,-1)}]
+\fill[pattern color = gray,pattern = horizontal lines] (3,1) -- (4,1) -- (4,2) .. controls (5.3,2.2) and (4.7,3) .. (5.5,3.2) .. controls (6.3,3.5) .. (6.5,4) -- (3,4) -- (3,1);
+\draw (3,1) -- (4,1) -- (4,2) .. controls (5.3,2.2) and (4.7,3) .. (5.5,3.2) .. controls (6.3,3.5) .. (6.5,4);
+\end{scope}
+
+\node[below] at (0.5,0) {\tiny $n\vphantom{1}$};
+\node[below] at (1.5,0) {\tiny $n-1$};
+\node[below] at (2.5,0) {\tiny $n-2$};
+\node[below] at (3.5,0) {\tiny $n-3$};
+\node[below] at (4.5,0) {\tiny $n-4$};
+\node[right] at (5,0.5) {\tiny $n-5$};
+\end{scope}
+
+% n-4 \not\in I_1, W
+\begin{scope}[shift = {(9,-6)}]
+\draw[pattern color = gray,pattern = north east lines] (0,3) -- (0,1) -- (2,1) -- (2,3);
+\draw[pattern color = gray,pattern = north west lines] (2,3) -- (2,0) -- (3,0) -- (3,3);
+\draw (0,-1) grid (3,1);
+\foreach \x in {0,1,2,3} {
+  \draw (\x,1) -- (\x,3);
+  };
+\node at (0.5,0.5) {\lezero};
+\node[red] at (1.5,0.5) {\leplus};
+\foreach \c in {(0.5,-0.5),(1.5,-0.5),(2.5,-0.5)} {
+  \node[blue] at \c {\leplus};
+}
+\begin{scope}[shift = {(0,-1)}]
+\fill[pattern color = gray,pattern = horizontal lines] (3,1) -- (4,1) -- (4,2) .. controls (5.3,2.2) and (4.7,3) .. (5.5,3.2) .. controls (6.3,3.5) .. (6.5,4) -- (3,4) -- (3,1);
+\draw (3,1) -- (4,1) -- (4,2) .. controls (5.3,2.2) and (4.7,3) .. (5.5,3.2) .. controls (6.3,3.5) .. (6.5,4);
+\end{scope}
+\node[below] at (0.5,-1) {\tiny $n\vphantom{1}$};
+\node[below] at (1.5,-1) {\tiny $n-1$};
+\node[below] at (2.5,-1) {\tiny $n-2$};
+\node at (3.5,-0.7) {\tiny $n-3$};
+\node at (3.7,-0.2) {\tiny $n-4$};
+\node[right] at (4,0.5) {\tiny $n-5$};
+\end{scope}
+\end{tikzpicture}
+\]
 \caption{The Le diagrams for $V$ and $W$ in the setting of Theorem~\ref{thm dim}. The shaded regions indicate where the plusses match up perfectly, the red plusses exist if and only if $n-2 \in I_{n-2}^V$, and the blue plusses are the three new plusses coming from the induction step.}\label{fig:le diagrams bijection}
 \end{figure}
 
@@ -2214,55 +2353,65 @@ Finally, we can suppose that $W$ is minimal in number of propagators with an irr
 
 Let $p$ be the propagator such that $I_i(p) = i$. There are two cases to consider, when $p$ is supported on the edge $i-1$ or the edge $i$.  These are illustrated in Figure~\ref{fig no big factors}
 
+
+
+
 \begin{figure}
 \[
-\begin{tikzpicture}[baseline=(current bounding box.east),rotate=-20]
+\begin{tikzpicture}[baseline=(current bounding box.east),rotate=-20,scale = 0.95]
 \begin{scope}
-	\drawWLDfragment[8]{3}{0.4} 
-	%\drawnumberspartial % use this to debug
-	\newnode[left]{1}{i-1}
-	\newnode[below]{2}{i}
-	\newnode[below]{7}{m}
-	\begin{scope}
-		\clipcenterarc(0,0)(\startpoint-10:\endpoint+10:\radius)
-		\newpropbend{1.7}{7.2}{60}
-		\draw[smallpropagator,blue] (\zero+7.8*\step:\radius*1.1) to[bend left = 55] (\zero + 10*\step:\radius*1.1);
-		\node at (\zero + 1.2*\step:\radius*0.5) {\footnotesize $p$};
-	\end{scope}
-	\node[align = center,black] at (\zero + \step*4.5:\radius*0.65) {\em \footnotesize propagators \\ \footnotesize \em inside $p$};
-	\draw[propassignment,gray] (\zero + 1.6*\step:\radius) to[bend left = \arrowangle] (\zero + 1*\step:\radius); %p
-	\draw[propassignment,gray] (\zero + 7.9*\step:\radius) to[bend left = \arrowangle] (\zero + 7*\step:\radius); 
-	\node[align = center,black] at (\zero + 6.8*\step:1.5*\radius) {\em \footnotesize If $m \in I_i$ then \\ \em \footnotesize it was contributed by \\ \em \footnotesize the blue propagator};
+  \drawWLDfragment[8]{3}{0.4} 
+  %\drawnumberspartial % use this to debug
+  \newnode[left]{1}{i-1}
+  \newnode[below]{2.5}{i}
+  \newnode[below]{7}{m}
+  \begin{scope}
+    \clipcenterarc(0,0)(\startpoint-10:\endpoint+10:\radius)
+    \newpropbend{1.9}{7.2}{60}
+    \draw[smallpropagator,gray] (\zero+7.8*\step:\radius*1.1) to[bend left = 55] (\zero + 10*\step:\radius*1.1);
+    \node at (\zero + 1.5*\step:\radius*0.5) {\footnotesize $p$};
+  \end{scope}
+  \node[align = center,black] at (\zero + \step*4.5:\radius*0.65) {\em \footnotesize propagators \\ \footnotesize \em inside $p$};
+  \draw[propassignment,gray] (\zero + 1.81*\step:\radius) to[bend right = \arrowangle] (\zero + 2.5*\step:\radius); %p
+  \draw[propassignment,gray] (\zero + 7.9*\step:\radius) to[bend left = \arrowangle] (\zero + 7*\step:\radius); 
+  \node[align = center,black] at (\zero + 6.8*\step:1.5*\radius) {\em \footnotesize If $m \in I_i$ then it was \\ \em \footnotesize contributed by a propagator \\ \em \footnotesize outside of $p$};
+  \node[align = center,black] at (110:\radius*0.5) {\em Case 1: $p = (i-1,m)$};
 \end{scope}
 \end{tikzpicture}
-\qquad 
-\begin{tikzpicture}[baseline=(current bounding box.east),rotate=-20]
-	\begin{scope}
-	\drawWLDfragment[8]{3}{0.4}  
-	%\drawnumberspartial % use this to debug
-	\newnode[left]{1}{i}
-	\newnode[below]{2}{i+1}
-	\newnode[below]{7}{j}
-	\centerarc[red,line width = 2pt,line cap = round](0,0)(\zero + 1.5*\step:\zero+1.56*\step:\radius);
-	\draw[propassignment,gray] (\zero + 1.45*\step:\radius) to[bend left = \arrowangle] (\zero + 1*\step:\radius); %p
-	\draw[propassignment,gray] (\zero + 1.61*\step:\radius) to[bend right = \arrowangle] (\zero + 2*\step:\radius); %q 
-	\draw[propassignment,gray] (\zero + 7.7*\step:\radius) to[bend left = \arrowangle] (\zero + 7*\step:\radius); %blue
-	\begin{scope}
-		\clipcenterarc(0,0)(\startpoint-10:\endpoint+10:\radius)
-		\newpropbend{1.6}{7.2}{40} % q
-		\draw[smallpropagator] (\zero+1.5*\step:\radius*1.1) to[bend right = 40] (\zero  - 3*\step:\radius*1.1); % p
-		\draw[smallpropagator,blue] (\zero+7.6*\step:\radius*1.1) to[bend left = 55] (\zero + 10*\step:\radius*1.1);
-		\node at (\zero + 5*\step:\radius*0.3) {\footnotesize $q$};
-		\node at (\zero + 1*\step:\radius*0.6) {\footnotesize $p$};
-	\end{scope}
-	\node[align = center,black] at (\zero + \step*4.5:\radius*0.75) {\em \footnotesize propagators \\ \footnotesize \em inside $q$};
-	\node[align = center] at (\zero + 1.5*\step:\radius*1.5) {\footnotesize \em No \\ \footnotesize \em propagators \\ \footnotesize \em between \\ \footnotesize \em $p$ and $q$ \\ \footnotesize \em here};
-	\node[align = center,black] at (\zero + 6.8*\step:1.5*\radius) {\em \footnotesize If $j \in I_i$ then \\ \em \footnotesize it was contributed by \\ \em \footnotesize the blue propagator};
+\qquad  
+\begin{tikzpicture}[baseline=(current bounding box.east),rotate=-20,scale = 0.95]
+  \begin{scope}
+  \drawWLDfragment[8]{3}{0.4}  
+  %\drawnumberspartial % use this to debug
+  \newnode[left]{1}{i}
+  \newnode[below]{2.5}{i+1\ \ \ }
+  \newnode[below]{7}{j}
+  \centerarc[red,line width = 2pt,line cap = round](0,0)(\zero + 1.61*\step:\zero+1.88*\step:\radius);
+  \draw[propassignment,gray] (\zero + 1.55*\step:\radius) to[bend left = \arrowangle] (\zero + 1*\step:\radius); %p
+  \draw[propassignment,gray] (\zero + 1.93*\step:\radius) to[bend right = \arrowangle] (\zero + 2.5*\step:\radius); %q 
+  \draw[propassignment,gray] (\zero + 7.7*\step:\radius) to[bend left = \arrowangle] (\zero + 7*\step:\radius); % other prop
+  \begin{scope}
+    \clipcenterarc(0,0)(\startpoint-10:\endpoint+10:\radius)
+    \newpropbend{1.9}{7.2}{40} % q
+    \draw[smallpropagator] (\zero+1.6*\step:\radius*1.1) to[bend right = 40] (\zero  - 3*\step:\radius*1.1); % p
+    \draw[smallpropagator,gray] (\zero+7.6*\step:\radius*1.1) to[bend left = 55] (\zero + 10*\step:\radius*1.1);
+    \node at (\zero + 5*\step:\radius*0.32) {\footnotesize $q$};
+    \node at (\zero + 1.1*\step:\radius*0.6) {\footnotesize $p$};
+  \end{scope}
+  \node[align = center,black] at (\zero + \step*4.5:\radius*0.72) {\em \footnotesize propagators \\ \footnotesize \em inside $q$};
+  \node[align = center] at (\zero + 1.8*\step:\radius*1.5) {\footnotesize \em No \\ \footnotesize \em propagators \\ \footnotesize \em between \\ \footnotesize \em $p$ and $q$ \\ \footnotesize \em here};
+  \node[align = center,black] at (\zero + 6.8*\step:1.5*\radius) {\em \footnotesize If $j \in I_i$ then it was \\ \em \footnotesize contributed by a propagator \\ \em \footnotesize outside of $q$};
+    \node[align = center,black] at (110:\radius*0.5) {\em Case 2: $p = (i,j)$};
+
 \end{scope}
 \end{tikzpicture}
 \]
-  \caption{The two cases in the proof that no factors of $\Delta_{I_i}$ have degree 3 or more.{\color{violet}First picture: I thought $I_i(p) = i$. Doesn't the arrow say that $I_i(p) = i-1$?}}\label{fig no big factors}
+  \caption{The two cases in the proof that no factors of $\Delta_{I_i}$ have degree 3 or more.}\label{fig no big factors}
 \end{figure}
+
+
+
+
 
 \textbf{Case 1}: Suppose $p = (i-1, m)$. Then $p$ has one end on $i-1^{th}$ edge and $I_{i+1}(p) = m$ by Remark~\ref{rmk cyclic}.
 
