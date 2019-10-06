@@ -68,6 +68,8 @@
 % these two for drawing partial propagators
 \tikzstyle{firstdash}=[dashed,line cap=round, dash pattern=on 2pt off 1pt]
 \tikzstyle{seconddash}=[dashed,line cap=round, dash pattern=on 0.5pt off 1pt]
+\tikzstyle{smalldash}=[dashed,line cap=round, dash pattern=on 1.5pt off 2pt]
+
 
  % used for showing which propagator assigns to which vertex in the last section
 \pgfmathsetmacro{\arrowangle}{90}
@@ -2037,48 +2039,51 @@ Therefore the Le diagram of $W$ contains $3(k-1)$ plusses in bijection with the 
 \begin{figure}
 \[
 \begin{tikzpicture}[scale = 0.85]
-\node at (2.5,5) {\Large $V$};
-\node at (12.5,5) {\Large $W$};
+\node at (2.5,5.5) {\Large $V$};
+\node at (12.5,5.5) {\Large $W$};
 \node at (-2,2.5) {\large $n-4 \in I_1^V$};
 \node at (-2,-4.5) {\large $n-4 \not\in I_1^V$};
 \node at (7.5,2.5) {\Large $\longrightarrow$};
 \node at (8,-4.5) {\Large $\longrightarrow$};
 % n-4 \in I_1, V
 \begin{scope}
-\draw[pattern color = gray,pattern = north east lines] (0,4) -- (0,2) -- (2,2) -- (2,4);
-\draw[pattern color = gray,pattern = north west lines] (3,4) -- (3,0) -- (4,0) -- (4,4);
+\fill[pattern color = gray,pattern = north east lines] (0,4.5) -- (0,2) -- (2,2) -- (2,4.5);
+\fill[pattern color = gray,pattern = north west lines] (3,4.5) -- (3,0) -- (4,0) -- (4,4.5);
 \draw (0,0) grid (4,2);
 \foreach \x in {0,1,2,3,4} {
   \draw (\x,2) -- (\x,4);
+  \draw[smalldash] (\x,4) -- (\x,4.5);
   };
 \foreach \c in {(0.5,0.5),(1.5,0.5),(1.5,1.5)} {
   \node at \c {\leplus};
 }
-\foreach \c in {(0.5,1.5),(2.5,1.5),(2.5,2.5)} {
+\foreach \c in {(0.5,1.5),(2.5,1.5),(2.5,2.5),(2.5,3.3)} {
   \node at \c {\lezero};
 }
 \node[red] at (2.5,0.5) {\leplus};
-\node at (2.5,3.5) {$\vdots$};
+\node at (2.5,4.2) {$\vdots$};
 \begin{scope}
-\fill[pattern color = gray,pattern = horizontal lines] (4,2) .. controls (5.3,2.2) and (4.7,3) .. (5.5,3.2) .. controls (6.3,3.5) .. (6.5,4) -- (4,4) -- (4,2);
+\fill[pattern color = gray,pattern = horizontal lines] (4,2) .. controls (5.3,2.2) and (4.7,3) .. (5.5,3.2) .. controls (6.3,3.5) .. (6.5,4) -- (6.6,4.5) -- (4,4.5) -- (4,2);
 \draw (4,2) .. controls (5.3,2.2) and (4.7,3) .. (5.5,3.2) .. controls (6.3,3.5) .. (6.5,4);
+\draw[smalldash] (6.5,4) -- (6.6,4.5);
 \end{scope}
 %\fill[color = white,path fading = south] (0,2) rectangle (6.5,4.1);
-\node[below] at (0.5,0) {\tiny $n\vphantom{1}$};
-\node[below] at (1.5,0) {\tiny $n-1$};
-\node[below] at (2.5,0) {\tiny $n-2$};
-\node[below] at (3.5,0) {\tiny $n-3$};
-\node[right] at (4,0.5) {\tiny $n-4$};
-\node[right] at (4,1.5) {\tiny $n-5$};
+\node[below] at (0.5,0) {\scriptsize $n\vphantom{1}$};
+\node[below] at (1.5,0) {\scriptsize $n-1$};
+\node[below] at (2.5,0) {\scriptsize $n-2$};
+\node[below] at (3.5,0) {\scriptsize $n-3$};
+\node[right] at (4,0.5) {\scriptsize $n-4$};
+\node[right] at (4,1.5) {\scriptsize $n-5$};
 \end{scope}
 
 % n-4 \in I_1, W
 \begin{scope}[shift = {(9,0)}]
-\draw[pattern color = gray,pattern = north east lines] (0,4) -- (0,2) -- (2,2) -- (2,4);
-\draw[pattern color = gray,pattern = north west lines] (2,4) -- (2,0) -- (3,0) -- (3,4);
+\fill[pattern color = gray,pattern = north east lines] (0,4.5) -- (0,2) -- (2,2) -- (2,4.5);
+\fill[pattern color = gray,pattern = north west lines] (2,4.5) -- (2,0) -- (3,0) -- (3,4.5);
 \draw (0,-1) grid (3,2);
 \foreach \x in {0,1,2,3} {
   \draw (\x,2) -- (\x,4);
+  \draw[smalldash] (\x,4) -- (\x,4.5);
   };
 \foreach \c in {(0.5,0.5),(1.5,0.5),(1.5,1.5)} {
   \node at \c {\leplus};
@@ -2088,50 +2093,54 @@ Therefore the Le diagram of $W$ contains $3(k-1)$ plusses in bijection with the 
   \node[blue] at \c {\leplus};
 }
 \begin{scope}[shift = {(-1,0)}]
-\fill[pattern color = gray,pattern = horizontal lines] (4,2) .. controls (5.3,2.2) and (4.7,3) .. (5.5,3.2) .. controls (6.3,3.5) .. (6.5,4) -- (4,4) -- (4,2);
+\fill[pattern color = gray,pattern = horizontal lines] (4,2) .. controls (5.3,2.2) and (4.7,3) .. (5.5,3.2) .. controls (6.3,3.5) .. (6.5,4) -- (6.6,4.5) -- (4,4.5) -- (4,2);
 \draw (4,2) .. controls (5.3,2.2) and (4.7,3) .. (5.5,3.2) .. controls (6.3,3.5) .. (6.5,4);
+\draw[smalldash] (6.5,4) -- (6.6,4.5);
 \end{scope}
-\node[below] at (0.5,-1) {\tiny $n\vphantom{1}$};
-\node[below] at (1.5,-1) {\tiny $n-1$};
-\node[below] at (2.5,-1) {\tiny $n-2$};
-\node[right] at (3,-0.5) {\tiny $n-3$};
-\node[right] at (3,0.5) {\tiny $n-4$};
-\node[right] at (3,1.5) {\tiny $n-5$};
+\node[below] at (0.5,-1) {\scriptsize $n\vphantom{1}$};
+\node[below] at (1.5,-1) {\scriptsize $n-1$};
+\node[below] at (2.5,-1) {\scriptsize $n-2$};
+\node[right] at (3,-0.5) {\scriptsize $n-3$};
+\node[right] at (3,0.5) {\scriptsize $n-4$};
+\node[right] at (3,1.5) {\scriptsize $n-5$};
 \end{scope}
 
 % n-4 \not\in I_1, V
 \begin{scope}[shift = {(0,-6)}]
-\draw[pattern color = gray,pattern = north east lines] (0,3) -- (0,1) -- (2,1) -- (2,3);
-\draw[pattern color = gray,pattern = north west lines] (3,3) -- (3,0) -- (4,0) -- (4,3);
+\fill[pattern color = gray,pattern = north east lines] (0,3.5) -- (0,1) -- (2,1) -- (2,3.5);
+\fill[pattern color = gray,pattern = north west lines] (3,3.5) -- (3,0) -- (4,0) -- (4,3.5);
 \draw (0,0) grid (4,1);
 \foreach \x in {0,1,2,3,4} {
   \draw (\x,1) -- (\x,3);
+    \draw[smalldash] (\x,3) -- (\x,3.5);
   };
-\foreach \c in {(0.5,0.5),(1.5,0.5),(2.5,1.5)} {
+\foreach \c in {(0.5,0.5),(1.5,0.5),(2.5,1.5),(2.5,2.3)} {
   \node at \c {\lezero};
 }
-\node at (2.5,2.5) {$\vdots$};
 \node[red] at (2.5,0.5) {\leplus};
+\node at (2.5,3.2) {$\vdots$};
 \begin{scope}[shift = {(1,-1)}]
-\fill[pattern color = gray,pattern = horizontal lines] (3,1) -- (4,1) -- (4,2) .. controls (5.3,2.2) and (4.7,3) .. (5.5,3.2) .. controls (6.3,3.5) .. (6.5,4) -- (3,4) -- (3,1);
+\fill[pattern color = gray,pattern = horizontal lines] (3,1) -- (4,1) -- (4,2) .. controls (5.3,2.2) and (4.7,3) .. (5.5,3.2) .. controls (6.3,3.5) .. (6.5,4)-- (6.6,4.5) -- (3,4.5) -- (3,1);
 \draw (3,1) -- (4,1) -- (4,2) .. controls (5.3,2.2) and (4.7,3) .. (5.5,3.2) .. controls (6.3,3.5) .. (6.5,4);
+\draw[smalldash] (6.5,4) -- (6.6,4.5);
 \end{scope}
 
-\node[below] at (0.5,0) {\tiny $n\vphantom{1}$};
-\node[below] at (1.5,0) {\tiny $n-1$};
-\node[below] at (2.5,0) {\tiny $n-2$};
-\node[below] at (3.5,0) {\tiny $n-3$};
-\node[below] at (4.5,0) {\tiny $n-4$};
-\node[right] at (5,0.5) {\tiny $n-5$};
+\node[below] at (0.5,0) {\scriptsize $n\vphantom{1}$};
+\node[below] at (1.5,0) {\scriptsize $n-1$};
+\node[below] at (2.5,0) {\scriptsize $n-2$};
+\node[below] at (3.5,0) {\scriptsize $n-3$};
+\node[below] at (4.5,0) {\scriptsize $n-4$};
+\node[right] at (5,0.5) {\scriptsize $n-5$};
 \end{scope}
 
 % n-4 \not\in I_1, W
 \begin{scope}[shift = {(9,-6)}]
-\draw[pattern color = gray,pattern = north east lines] (0,3) -- (0,1) -- (2,1) -- (2,3);
-\draw[pattern color = gray,pattern = north west lines] (2,3) -- (2,0) -- (3,0) -- (3,3);
+\fill[pattern color = gray,pattern = north east lines] (0,3.5) -- (0,1) -- (2,1) -- (2,3.5);
+\fill[pattern color = gray,pattern = north west lines] (2,3.5) -- (2,0) -- (3,0) -- (3,3.5);
 \draw (0,-1) grid (3,1);
 \foreach \x in {0,1,2,3} {
   \draw (\x,1) -- (\x,3);
+  \draw[smalldash] (\x,3) -- (\x,3.5);
   };
 \node at (0.5,0.5) {\lezero};
 \node[red] at (1.5,0.5) {\leplus};
@@ -2139,19 +2148,20 @@ Therefore the Le diagram of $W$ contains $3(k-1)$ plusses in bijection with the 
   \node[blue] at \c {\leplus};
 }
 \begin{scope}[shift = {(0,-1)}]
-\fill[pattern color = gray,pattern = horizontal lines] (3,1) -- (4,1) -- (4,2) .. controls (5.3,2.2) and (4.7,3) .. (5.5,3.2) .. controls (6.3,3.5) .. (6.5,4) -- (3,4) -- (3,1);
+\fill[pattern color = gray,pattern = horizontal lines] (3,1) -- (4,1) -- (4,2) .. controls (5.3,2.2) and (4.7,3) .. (5.5,3.2) .. controls (6.3,3.5) .. (6.5,4)-- (6.6,4.5) -- (3,4.5) -- (3,1);
 \draw (3,1) -- (4,1) -- (4,2) .. controls (5.3,2.2) and (4.7,3) .. (5.5,3.2) .. controls (6.3,3.5) .. (6.5,4);
+\draw[smalldash] (6.5,4) -- (6.6,4.5);
 \end{scope}
-\node[below] at (0.5,-1) {\tiny $n\vphantom{1}$};
-\node[below] at (1.5,-1) {\tiny $n-1$};
-\node[below] at (2.5,-1) {\tiny $n-2$};
-\node at (3.5,-0.7) {\tiny $n-3$};
-\node at (3.7,-0.2) {\tiny $n-4$};
-\node[right] at (4,0.5) {\tiny $n-5$};
+\node[below] at (0.5,-1) {\scriptsize $n\vphantom{1}$};
+\node[below] at (1.5,-1) {\scriptsize $n-1$};
+\node[below] at (2.5,-1) {\scriptsize $n-2$};
+\node at (3.5,-0.7) {\scriptsize $n-3$};
+\node at (3.7,-0.2) {\scriptsize $n-4$};
+\node[right] at (4,0.5) {\scriptsize $n-5$};
 \end{scope}
 \end{tikzpicture}
 \]
-\caption{The Le diagrams for $V$ and $W$ in the setting of Theorem~\ref{thm dim}. The shaded regions indicate where the plusses match up perfectly, the red plusses exist if and only if $n-2 \in I_{n-2}^V$, and the blue plusses are the three new plusses coming from the induction step.}\label{fig:le diagrams bijection}
+\caption{The Le diagrams for $V$ and $W$ in the setting of Theorem~\ref{thm dim}. The shaded regions indicate where the plusses match up perfectly from $V$ to $W$, the red plusses exist if and only if $n-2 \in I_{n-2}^V$, and the blue plusses are the three new plusses coming from the induction step.}\label{fig:le diagrams bijection}
 \end{figure}
 
 \section{Poles of Wilson Loop Integrals}\label{sec poles} 
