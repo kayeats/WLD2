@@ -55,6 +55,10 @@
 \newcommand{\leplus}{\Large $+$}
 \newcommand{\lezero}{\Large $0$}
 
+\newcommand{\leplusbold}[1][black]{%
+  \tikz\draw[#1,line width=1.5pt,scale = 0.35,line cap = round] (0,0) -- (1,0)(0.5,0.5) -- (0.5,-0.5);
+}
+
 
 \definecolor{light-gray}{gray}{0.6}
 
@@ -1585,72 +1589,82 @@ All that remains is to prove $Q\subseteq \mathcal{P}_{m-1}$, which we do by indu
 
 Now assume that $Q_0,\dots,Q_{l-1} \subseteq \cP_{m-1}$, and consider $Q_{l}$. If $Q_{l} \setminus Q_{l-1} = \emptyset$ then we are done, with $Q = Q_l$.  Otherwise, let $q \in Q_{l} \setminus Q_{l-1}$. By construction there is some propagator $p_r \in Q_{l-1}$ such that $p_r$ and $q$ are both supported on $I_i(p_r) = a_r$. If $q$ is clockwise of $p_r$ on vertex $a_r$ then we immediately have $q \in \cP_{m-1}$ by Remark~\ref{clockwise ordering rem}.  It remains to consider the case that $q$ is counter-clockwise of $p_r$ at $a_r$.
 
-Note that we cannot have $a_r+ 1 = j_m$ when $q$ is counterclockwise of $p_r$, since $q \not\in \Prop(j_m)$ by assumption. If the other end of $p_r$ (i.e. the end not supported on $a_r$) lies on an edge between $a_r$ and $j_m$, then since $q$ is inside $p_r$ with respect to $<_{a_r-1}$ we must have $V(q) \subseteq [a_r-1,j_m]$, and hence $q \in \cP_{m-1}$ by Lemma~\ref{lem no fourth vertex}. In particular, if $l=1$ then $p_r \in Q_{0} = \Prop(j_m)$ and we must be in this case. 
+Note that we cannot have $a_r+ 1 = j_m$ when $q$ is counterclockwise of $p_r$, since $q \not\in \Prop(j_m)$ by assumption. If the other end of $p_r$ (i.e. the end not supported on $a_r$) lies on an edge between $a_r$ and $j_m$, then since $q$ is inside $p_r$ with respect to $<_{a_r-1}$ we must have $V(q) \subseteq [a_r-1,j_m]$, and hence $q \in \cP_{m-1}$ by Lemma~\ref{lem no fourth vertex}; this is illustrated in Figure~\ref{fig gn proof induction 1}. In particular, if $l=1$ then $p_r \in Q_{0} = \Prop(j_m)$ and we must be in this case. 
 
-If not, then there must be some propagator $p_s \in Q_{l-2}$ such that $p_r$ and $p_s$ are both supported on $I_i(p_s) := a_s$. Since $p_r$ is clockwise of $q$, and $q$ cannot be supported on $I_i(p_s)$ since $q \not\in Q_{l-1}$, it follows that $I_i(p_s) <_i I_i(p_r)$. Therefore $q$ is inside $p_s$ with respect to $<_{a_s - 1}$ as well.
+If not, then there must be some propagator $p_s \in Q_{l-2}$ such that $p_r$ and $p_s$ are both supported on $I_i(p_s) := a_s$; see Figure~\ref{fig gn proof induction 2}. Since $p_r$ is clockwise of $q$, and $q$ cannot be supported on $I_i(p_s)$ since $q \not\in Q_{l-1}$, it follows that $I_i(p_s) <_i I_i(p_r)$. Therefore $q$ is inside $p_s$ with respect to $<_{a_s - 1}$ as well.
 
-\note{Sian note to self: this picture isn't right}
-\begin{figure}[h]
-\bas{\begin{tikzpicture}[baseline=(current bounding box.east)]
-\begin{scope}
-	\drawWLDfragment[9]{3}{0.3} % draw arc
-	%\drawnumbers % use this to debug
-	% highlight region
-	%\centerarc[linehighlight](0,0)(\zero + 3.6*\step:\zero + 5.4*\step:\radius)
-	% region label
-	%\node[align = center] at (\zero + 4.5*\step:\radius*1.3) {\em \footnotesize 0, 1, or 2 vertices \\[3pt]\em \footnotesize in this region};
-	% scope to draw props and their labels
-	\begin{scope}
-		\clipcenterarc(0,0)(\startpoint-20:\endpoint+20:\radius)
-		%p_r
-		\draw[smallpropagator] (\zero+2.3*\step:\radius*1.1) to [bend left = 55] (\zero + 6.7*\step:\radius*1.1); 
-		%q
-		\draw[smallpropagator] (\zero+2.4*\step:\radius*1.1) to [bend left = 55] (\zero + 5.3*\step:\radius*1.1); 
-		%\draw[smallpropagator,light-gray] (\zero+7.5*\step:\radius*1.1) -- (0:\radius*0.25);  
-		\node at (\zero + 2.8*\step:\radius*0.8){\footnotesize $p_r$};
-		\node at (\zero + 4.7*\step:\radius*.84){\footnotesize $q$};
-	\end{scope}
-	% draw nodes
-	\newnode[left]{1}{i}
-	\newnode[below]{2}{a_r}
-	\newnode[below]{3}{}
-	\newnode[right]{9}{j_m}
-	% case label
-	\node at (270:\radius*0.1) {\em all vertices of $p_r$ lie between $a_r-1$ and $j_m$};
+
+\begin{figure}
+\[
+\begin{tikzpicture}[baseline=(current bounding box.east)]
+  \begin{scope}
+  \drawWLDfragment[10]{4}{0.4} 
+  %\drawnumberspartial % use this to debug
+  \centerarc[linehighlight](0,0)(\zero + 2.6*\step:\zero + 3.9*\step:\radius)
+  \newnode{1}{i}
+  \newnode[right]{10}{j_m}
+  \begin{scope}
+\clipcenterarc(0,0)(\startpoint:\endpoint:\radius)
+\newpropbend{3}{8.5}{50}
+\newpropbend{3.3}{7}{40}
 \end{scope}
-\end{tikzpicture} \qquad \qquad \begin{tikzpicture}[baseline=(current bounding box.east)]
-\begin{scope}
-	\drawWLDfragment[10]{3}{0.3} % draw arc
-	%\drawnumbers % use this to debug
-	% highlight region
-		% scope to draw props and their labels
-	\begin{scope}
-		\clipcenterarc(0,0)(\startpoint-20:\endpoint+20:\radius)
-		%random prop preventing p_s from contributing a_s-1
-		\draw[smallpropagator,gray] (\zero+2.3*\step:\radius) -- (\zero + 16.5*\step:\radius) ;
-		%p_s
-		\draw[smallpropagator] (\zero+2.4*\step:\radius*1.1) to [bend left = 55] (\zero + 7.5*\step:\radius*1.1); 
-		%p_r
-		\draw[smallpropagator] (\zero+2.5*\step:\radius*1.1) to [bend left = 90] (\zero + 4.5*\step:\radius*1.1); 
-		%q
-		\draw[smallpropagator] (\zero+4.55*\step:\radius*1.1) to [bend left = 70] (\zero + 6.7*\step:\radius*1.1); 
-		\node at (\zero + 4.5*\step:\radius*0.55){\footnotesize $p_s$};
-		\node at (\zero + 3.5*\step:\radius*0.84){\footnotesize $p_r$};
-		\node at (\zero + 6.2*\step:\radius*0.85){\footnotesize $q$};
-	\end{scope}
-	% draw nodes
-	\newnode[left]{1}{i}
-	\newnode[below]{2}{}
-	\newnode[below]{3}{a_s}
-	\newnode[below]{4}{a_r}
-	\newnode[below]{5}{}
-	\newnode[below]{8}{}
-	\newnode[right]{9}{j_m}
-	% case label
-	\node at (270:\radius*0.1) {\em all vertices of $p_r$ do not lie between $a_r-1$ and $j_m$};
-\end{scope} 
-\end{tikzpicture} }\eas
-\caption{The two cases of the induction step. Note that $I_i(p_s) <_i I_i(p_r)$}\label{fig:awkward induction step}
+\node at (\zero+5*\step:\radius*0.46) {\scriptsize $p_r$};
+\node at (\zero + 6*\step:\radius*0.75) {\scriptsize $q$};
+\node at (\zero + 3.2*\step:\radius*1.1) {\scriptsize $a_r$};
+\end{scope}
+\end{tikzpicture}
+\]
+\caption{If $q$ is counterclockwise of $p_r$ and the other end of $p_r$ lies on an edge between $a_r$ and $j_m$, then $V(q) \subseteq [a_{r-1},j_m]$. The vertex $a_r$ lies somewhere within the (blue) highlighted region.}\label{fig gn proof induction 1}
+\end{figure}
+
+\begin{figure}
+\[
+\begin{tikzpicture}[baseline=(current bounding box.east)]
+  \begin{scope}
+  \drawWLDfragment[10]{4}{0.3} 
+  %\drawnumberspartial % use this to debug
+  \centerarc[linehighlight](0,0)(\zero + 4.5*\step:\zero + 5.3*\step:\radius)
+  \newnode{1}{i}
+  \newnode[below]{6}{a_r}
+  \newnode[right]{10}{j_m}
+  \begin{scope}
+\clipcenterarc(0,0)(\startpoint:\endpoint:\radius)
+\clip (\zero + 5.5*\step:\radius*1.5) circle (\radius*0.85);
+\newpropbend{5}{18}{30} %p_s
+\newpropbend{5.5}{15}{30} %p_r
+\newpropbend{6}{12}{30} %q
+\end{scope}
+\node at (\zero+5.7*\step:\radius*0.72) {\scriptsize $p_r$};
+\node at (\zero+4.15*\step:\radius*0.71) {\scriptsize $p_s$};
+\node at (\zero + 6.8*\step:\radius*0.83) {\scriptsize $q$};
+\node at (\zero + 5*\step:\radius*1.07) {\scriptsize $a_s$};
+\end{scope}
+\end{tikzpicture}
+\qquad \qquad
+\begin{tikzpicture}[baseline=(current bounding box.east)]
+  \begin{scope}
+  \drawWLDfragment[10]{4}{0.3} 
+  %\drawnumberspartial % use this to debug
+  \centerarc[linehighlight](0,0)(\zero + 2.5*\step:\zero + 3.7*\step:\radius)
+  \centerarc[linehighlight](0,0)(\zero + 6.3*\step:\zero + 7.5*\step:\radius)
+  \newnode{1}{i}
+  \newnode[right]{10}{j_m}
+  \begin{scope}
+\clipcenterarc(0,0)(\startpoint:\endpoint-\step:\radius)
+%\clip (\zero + 5.5*\step:\radius*1.5) circle (\radius*0.85);
+\newpropbend{2.9}{15}{30} %p_s
+\newpropbend{3}{6.8}{45} %p_r
+\newpropbend{7}{15}{30} %q
+\end{scope}
+\node at (\zero+5.3*\step:\radius*0.78) {\scriptsize $p_r$};
+\node at (\zero+2.3*\step:\radius*0.8) {\scriptsize $p_s$};
+\node at (\zero + 7.4*\step:\radius*0.8) {\scriptsize $q$};
+\node at (\zero + 3*\step:\radius*1.07) {\scriptsize $a_s$};
+\node at (\zero + 7*\step:\radius*1.07) {\scriptsize $a_r$};
+\end{scope}
+\end{tikzpicture}
+\]
+\caption{If the other end of $p_r$ does not lie on an edge between $a_r$ and $j_m$, then we must have a propagator $p_s \in Q_{l-2}$ in one of the depicted configurations. The (blue) highlighted regions indicate the approximate position of a vertex whose precise position is unknown. Cut-off propagators indicate that the location of the propagator's other end is unknown; in particular, no meaning should be ascribed to the angle at which these propagators are drawn.}\label{fig gn proof induction 2}
 \end{figure}
 Now repeat the argument above with $p_s$ in place of $p_r$: if the other end of $p_s$ lands on an edge between $q$ and $j_m$ then we have $q \in \cP_{m-1}$ as above; if not then there exists some $p_t \in Q_{l-3}$ with $p_s$ supported on $I_i(p_t)$ and $q$ on the inside of $p_t$ in the $a_t-1$ order. Therefore $I_i(p_t) <_i I_i(p_r)$
 %{\color{violet} May not be necessary, but I think highlighted tex follows from "Now repeat the argument...." \begin{enumerate}\item If $V(p_r) \in [a_r-1, j_m]$ (other end closer to $j_m$) then $q$ inside $p_r$ in $a_r-1$ order. \item Else, $V(p_r) \in [i, a_r+1]$ (Maybe $[i-1, a_r +1]$?). (Main point is that other end closer to $i$) Either way,  admissibility implies that $a_s < a_r$ \item Now we repeat. Either  $V(p_s) \in [a_s-1, j_m]$ then $q$ inside $p_s$ in $a_s-1$ order \hlfix{and we are done}{not quite true; same reasoning as why we're using ``the other end of the propagator'' instead of $V(p_s) \subseteq [a_s-1, j_m]$} \item Else, $V(p_s) \in [i, a_s+1]$ (Maybe $[i-1, a_s +1]$?). Either way, admissibility implies that $a_t < a_s$ and we've already established $a_s < a_r$ \end{enumerate} We don't have to include this argument. It may be totally unnecessary. But I want to make certain that I'm not missing anything.}
@@ -1788,7 +1802,7 @@ With the above restrictions in place, the next few lemmas describe how the Grass
 \end{scope}
 \end{tikzpicture}
 \] 
-  \caption{The two cases for $W$ and $p$.  No other propagators can end in the red sections.  Other segments may have additional propagators ending in them.}\label{fig special p}
+  \caption{The two cases for $W$ and $p$.  No other propagators can end in the bolded (red) sections.  Other segments may have additional propagators ending in them.}\label{fig special p}
 
 \end{figure}
 
@@ -2060,7 +2074,7 @@ Therefore the Le diagram of $W$ contains $3(k-1)$ plusses in bijection with the 
 \foreach \c in {(0.5,1.5),(2.5,1.5),(2.5,2.5),(2.5,3.3)} {
   \node at \c {\lezero};
 }
-\node[red] at (2.5,0.5) {\leplus};
+\node[red] at (2.5,0.5) {\leplusbold[red]};
 \node at (2.5,4.2) {$\vdots$};
 \begin{scope}
 \fill[pattern color = gray,pattern = horizontal lines] (4,2) .. controls (5.3,2.2) and (4.7,3) .. (5.5,3.2) .. controls (6.3,3.5) .. (6.5,4) -- (6.6,4.5) -- (4,4.5) -- (4,2);
@@ -2088,7 +2102,7 @@ Therefore the Le diagram of $W$ contains $3(k-1)$ plusses in bijection with the 
 \foreach \c in {(0.5,0.5),(1.5,0.5),(1.5,1.5)} {
   \node at \c {\leplus};
 }
-\node[red] at (0.5,1.5) {\leplus};
+\node[red] at (0.5,1.5) {\leplusbold[red]};
 \foreach \c in {(0.5,-0.5),(1.5,-0.5),(2.5,-0.5)} {
   \node[blue] at \c {\leplus};
 }
@@ -2117,7 +2131,7 @@ Therefore the Le diagram of $W$ contains $3(k-1)$ plusses in bijection with the 
 \foreach \c in {(0.5,0.5),(1.5,0.5),(2.5,1.5),(2.5,2.3)} {
   \node at \c {\lezero};
 }
-\node[red] at (2.5,0.5) {\leplus};
+\node[red] at (2.5,0.5) {\leplusbold[red]};
 \node at (2.5,3.2) {$\vdots$};
 \begin{scope}[shift = {(1,-1)}]
 \fill[pattern color = gray,pattern = horizontal lines] (3,1) -- (4,1) -- (4,2) .. controls (5.3,2.2) and (4.7,3) .. (5.5,3.2) .. controls (6.3,3.5) .. (6.5,4)-- (6.6,4.5) -- (3,4.5) -- (3,1);
@@ -2143,7 +2157,7 @@ Therefore the Le diagram of $W$ contains $3(k-1)$ plusses in bijection with the 
   \draw[smalldash] (\x,3) -- (\x,3.5);
   };
 \node at (0.5,0.5) {\lezero};
-\node[red] at (1.5,0.5) {\leplus};
+\node[red] at (1.5,0.5) {\leplusbold[red]};
 \foreach \c in {(0.5,-0.5),(1.5,-0.5),(2.5,-0.5)} {
   \node[blue] at \c {\leplus};
 }
@@ -2161,7 +2175,7 @@ Therefore the Le diagram of $W$ contains $3(k-1)$ plusses in bijection with the 
 \end{scope}
 \end{tikzpicture}
 \]
-\caption{The Le diagrams for $V$ and $W$ in the setting of Theorem~\ref{thm dim}. The shaded regions indicate where the plusses match up perfectly from $V$ to $W$, the red plusses exist if and only if $n-2 \in I_{n-2}^V$, and the blue plusses are the three new plusses coming from the induction step.}\label{fig:le diagrams bijection}
+\caption{The Le diagrams for $V$ and $W$ in the setting of Theorem~\ref{thm dim}. The shaded regions indicate where the plusses match up perfectly from $V$ to $W$, the bold (red) plusses exist if and only if $n-2 \in I_{n-2}^V$, and the (blue) plusses in the bottom row of the $W$ diagrams are the three new plusses coming from the induction step.}\label{fig:le diagrams bijection}
 \end{figure}
 
 \section{Poles of Wilson Loop Integrals}\label{sec poles} 
@@ -2412,7 +2426,7 @@ Let $p$ be the propagator such that $I_i(p) = i$. There are two cases to conside
   \node[align = center,black] at (\zero + \step*4.5:\radius*0.72) {\em \footnotesize propagators \\ \footnotesize \em inside $q$};
   \node[align = center] at (\zero + 1.8*\step:\radius*1.5) {\footnotesize \em No \\ \footnotesize \em propagators \\ \footnotesize \em between \\ \footnotesize \em $p$ and $q$ \\ \footnotesize \em here};
   \node[align = center,black] at (\zero + 6.8*\step:1.5*\radius) {\em \footnotesize If $j \in I_i$ then it was \\ \em \footnotesize contributed by a propagator \\ \em \footnotesize outside of $q$};
-    \node[align = center,black] at (110:\radius*0.5) {\em Case 2: $p = (i,j)$};
+    \node[align = center,black] at (110:\radius*0.5) {\em Case 2: $p = (i,m)$};
 
 \end{scope}
 \end{tikzpicture}
