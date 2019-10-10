@@ -473,7 +473,7 @@ A $|\cP| \times n$ matrix $C(W)$ represents the (tree level) particle interactio
 
 The entries $x_{p,q}$ are non-zero real variables. Thus the zero entries in row $p$ correspond to the external particles that the propagator $p$ does not interact with. See Example~\ref{integraldetails} for an example of a diagram $W$ and its associated matrix.
 
-The matrix $C(W)$ defines a positroid cell associated to $W$ in the positive Grassmannian $\Gr(n, |\cP|)$, which we denote by $\Sigma(W)$ \cite{wilsonloop}. Marcott \cite{WLDdim} shows that  the matrix $C(W)$ parametrizes a space whose \hlfix{close}{closure?} is exactly the closure of $\Sigma(W)$. That is, the space defined by $C(W)$ and the cell $\Sigma(W)$ agree up to a set of measure $0$. Most of the work in this paper and in the previous paper in the series \cite{generalcombinatoricsI} focuses on characterizing the positroid cell associated to each Wilson loop diagram $W$. 
+The matrix $C(W)$ defines a positroid cell associated to $W$ in the positive Grassmannian $\Gr(n, |\cP|)$, which we denote by $\Sigma(W)$ \cite{wilsonloop}. Marcott \cite{WLDdim} shows that  the matrix $C(W)$ parametrizes a space whose closure is exactly the closure of $\Sigma(W)$. That is, the space defined by $C(W)$ and the cell $\Sigma(W)$ agree up to a set of measure $0$. Most of the work in this paper and in the previous paper in the series \cite{generalcombinatoricsI} focuses on characterizing the positroid cell associated to each Wilson loop diagram $W$. 
 
 Note that since there is no ordering on the propagators of $W$, $C(W)$ is only defined up to rearrangement of the rows. When needed, we will impose various different orders on these rows to suit the task at hand. The choice of ordering does not affect $\Sigma(W)$.
 
@@ -2449,25 +2449,25 @@ Let $p$ be the propagator such that $I_i(p) = i$. There are two cases to conside
 
 \textbf{Case 1}: Suppose $p = (i-1, m)$. Then $p$ has one end on the $i-1^{th}$ edge, and $I_{i+1}(p) = m$ by Remark~\ref{rmk cyclic}.
 
-Let $S = \cP_{in}(p)$ be the set of propagators inside $p$ in the $<_i$ order.
-By Remark \ref{rmk algorithm locally same}, $I_i$ and $I_{i+1}$ can only differ once $p$ contributes to $I_{i+1}$, so $I_i(q) = I_{i+1}(q)$ for each $q \in S \backslash \{p\}$. Thus every propagator inside $p$ contributes before $m$ and if a propagator contributes $m$ in $I_i$ then it must lie outside $p$.
+Let $T = \cP_{in}(p)$ be the set of propagators inside $p$ in the $<_i$ order.
+By Remark \ref{rmk algorithm locally same}, $I_i$ and $I_{i+1}$ can only differ once $p$ contributes to $I_{i+1}$, so $I_i(q) = I_{i+1}(q)$ for each $q \in T \backslash \{p\}$. Thus every propagator inside $p$ contributes before $m$ and if a propagator contributes $m$ in $I_i$ then it must lie outside $p$.
 
-If neither $m$ nor $m+1$ appear in $I_i$ then by Corollary~\ref{no coloops} we have $V(p) \cap I_i = \{i\}$, and so the row of $p$ in the matrix of $\Delta_{I_i}$ has only one nonzero entry; hence $\Delta_{I_i}$ has a linear factor contributed by $p$ and $i$, which is a contradiction to the fact that $i$ contributes to $f$.  So we must have at least one of $m$ and $m+1$ in $I_i$. However, all propagators in $S$ contribute to $I_{i}$ strictly before $m$ by the previous paragraph so, after permuting rows and columns as needed, the matrix giving $\Delta_{I_i}$ has the form
+If neither $m$ nor $m+1$ appear in $I_i$ then by Corollary~\ref{no coloops} we have $V(p) \cap I_i = \{i\}$, and so the row of $p$ in the matrix of $\Delta_{I_i}$ has only one nonzero entry; hence $\Delta_{I_i}$ has a linear factor contributed by $p$ and $i$, which is a contradiction to the fact that $i$ contributes to $f$.  So we must have at least one of $m$ and $m+1$ in $I_i$. However, all propagators in $T$ contribute to $I_{i}$ strictly before $m$ by the previous paragraph so, after permuting rows and columns as needed, the matrix giving $\Delta_{I_i}$ has the form
 \[
 \begin{bmatrix} A & B \\ 0 & C\end{bmatrix}
 \]
-where $A$ is the $|S|\times |S|$ matrix indexed by the propagators in $S$ and the vertices in $I_i(S)$. No other propagators can be supported on these vertices since all other propagators are outside of $p$, and $p$ is the first propagator supported at $i$; this explains the zero block.  Therefore $\Delta_{I_i} = \pm \det A \det C$, and both factors are nontrivial since at least one of $m$ and $m+1$ appear in $I_i$.  Since $p\in \cP_{in}(p)$ we have $f|\det A$ and if we remove a propagator outside of $p$ that contributes either $m$ or $m+1$, we get a diagram $W'$ with fewer propagators for which $\det A | \Delta_{I^{W'}_i}$ still holds, hence $f|\Delta_{I^{W'}_i}$.  This contradicts the minimality of our choices. 
+where $A$ is the $|T|\times |T|$ matrix indexed by the propagators in $T$ and the vertices in $I_i(T)$. No other propagators can be supported on these vertices since all other propagators are outside of $p$, and $p$ is the first propagator supported at $i$; this explains the zero block.  Therefore $\Delta_{I_i} = \pm \det A \det C$, and both factors are nontrivial since at least one of $m$ and $m+1$ appear in $I_i$.  Since $p\in \cP_{in}(p)$ we have $f|\det A$ and if we remove a propagator outside of $p$ that contributes either $m$ or $m+1$, we get a diagram $W'$ with fewer propagators for which $\det A | \Delta_{I^{W'}_i}$ still holds, hence $f|\Delta_{I^{W'}_i}$.  This contradicts the minimality of our choices. 
 
 \textbf{Case 2}: Suppose $p = (i, m)$, i.e. $p$ has an end on the $i^{th}$ edge. If no other propagators are supported on the vertex $i$ then the corresponding column of $C(W)$ has only one nonzero entry in it, and so $\Delta_{I_i}$ has a linear factor contributed by $p$ and $i$; as above, this is a contradiction.
 Since $p$ is the first propagator in the ordering imposed by $I_i$, it is the clockwise-most propagator supported on $i$ (by Remark {\ref{clockwise ordering rem}}). Since there are multiple propagators supported on $i$, there must be a $q$ ending on edge $i$, such that $I_i(q) = i+1$, that is second clockwise-most propagators supported by $i$ (see Figure~\ref{fig no big factors}).
 Write $q = (i, j)$ for the support of $q$.  The situation for $q$ is very similar to case 1: in particular, we have $I_{i+1}(q) = j$ by Lemma {\ref{vertex cyclic int lem}} and so if $j\in I_i$ then the propagator which contributes $j$ is outside of $q$.
     %\color{violet}if we have $r$ such that $I_i(r) = j$, as above, $r$ lies outside $q$: $r \in \cP_{out}(q, <_i)$.
 
-Similarly to Case 1, let $S = \cP_{in}(q) \cup \{p\}$ in the $<_i$ order. Then all propagators in $S$ contribute to $I_i$ strictly before $j$ and no other propagators are supported on vertices strictly before $j$.  Thus after permuting rows and columns as needed the matrix giving $\Delta_{I_i}$ has the form 
+Similarly to Case 1, let $T = \cP_{in}(q) \cup \{p\}$ in the $<_i$ order. Then all propagators in $T$ contribute to $I_i$ strictly before $j$ and no other propagators are supported on vertices strictly before $j$.  Thus after permuting rows and columns as needed the matrix giving $\Delta_{I_i}$ has the form 
 \[
 \begin{bmatrix} A & B \\ 0 & C\end{bmatrix}
 \]
-where $A$ is the submatrix indexed by the propagators in $S$ and the vertices in $I_i(S)$. Again two things can now happen.  If some vertex $j$ or larger (with respect to $<_i$) belongs to $I_i$ then $B$ and $C$ are at least one column wide, and so the block form of the matrix gives a nontrivial factorization of $\Delta_{I_i}=\pm\det A\det C$.  This yields a contradiction as in Case 1: $f|\det A$ and removing a propagator not in $S$ gives a smaller diagram with a factor of degree $\geq 3$, which contradicts our minimality assumption.
+where $A$ is the submatrix indexed by the propagators in $T$ and the vertices in $I_i(T)$. Again two things can now happen.  If some vertex $j$ or larger (with respect to $<_i$) belongs to $I_i$ then $B$ and $C$ are at least one column wide, and so the block form of the matrix gives a nontrivial factorization of $\Delta_{I_i}=\pm\det A\det C$.  This yields a contradiction as in Case 1: $f|\det A$ and removing a propagator not in $T$ gives a smaller diagram with a factor of degree $\geq 3$, which contradicts our minimality assumption.
 
 On the other hand, if no vertex $\geq_i j$ is in $I_i$ then we have $\Delta_{I_i} = \det A$.  Looking in more detail into $A$, note that the only vertices that support both $p$ and $q$ and also belong to $I_i$ are $i$ and $i+1$. Hence
 \[
@@ -2483,49 +2483,50 @@ Now let $f$ be a quadratic factor of $\Delta_{I_i}$.  By part (2) we know that $
 
 As in the proof of part (2), make a new admissible diagram by removing the propagators which come before those contributing to $f$ in the order imposed by $I_i$.  Then without loss of generality we may assume $i=a$. The cases in the proof of part (2) show how $\Delta_{I_i}$ factors: in particular the vertices supporting the other end of $p$ either do not appear in $I_i$, or they contribute to a different factor of $\Delta_{I_i}$ than $p$ and $a$ do.  By assumption $b$ contributes to the same factor as $a$.  Therefore $(a,b)$ is an edge defining an end of $p$, that is, $b = a+1$.
 
-\item If \hlfix{$S_i = \emptyset$}{Should we recall the definition of $S_i$ here? Not used since 5.1} then $r_i = 1$ and we immediately have $r_i | \Delta_{I_i}$; otherwise, let $p\in S_i$. Note that $\Delta_{I_i}$ is homogeneous linear in the variables of the row corresponding to $p$.  By part (2), either exactly one variable in the row corresponding to $p$ appears in $\Delta_{I_i}$ and this variable is a factor of $\Delta_{I_i}$, or exactly two variables from the row corresponding to $p$ appear in $\Delta_{I_i}$ and they appear as part of a quadratic factor.  In the first case let the variable be $x$. Then $x$ is a factor of $\Delta_{I_i}$. {\color{violet} Therefore, $x$ must correspond to entry in the row of $p$ and column of $I_i(p)$, i.e. $x = x_{p, I_i(p)}$.} \st{and so in particular the monomial in $\Delta_{I_i}$ corresponding to the bijection between propagators and vertices of $I_i$ associates the column of $x$ to $p$. Thus $x$ also appears in $r_i$ and s} Since the matrix for $r_i$ is a minor of the matrix for $\Delta_{I_i}$ \st{and every term in $\Delta_{I_i}$ involves $x$,} we also have that \st{every term in $r_i$ involves $x$ so}{\color{violet}$x$ is a factor of $r_i$.} \st{$x$ is a factor of both $r_i$ and $\Delta_{I_i}$ and is the only variable from this row in either polynomial.}
+\item If $S_i = \emptyset$ then $r_i = 1$ and we immediately have $r_i | \Delta_{I_i}$; otherwise, let $p\in S_i$. Note that $\Delta_{I_i}$ is homogeneous linear in the variables of the row corresponding to $p$.  By part (2), either exactly one variable in the row corresponding to $p$ appears in $\Delta_{I_i}$ and this variable is a factor of $\Delta_{I_i}$, or exactly two variables from the row corresponding to $p$ appear in $\Delta_{I_i}$ and they appear as part of a quadratic factor.  In the first case let the variable be $x$. Then $x$ is a factor of $\Delta_{I_i}$. Therefore, $x$ must correspond to entry in the row of $p$ and column of $I_i(p)$, i.e. $x = x_{p, I_i(p)}$. Thus $x$ also appears in $r_i$. Since the matrix for $r_i$ is a minor of the matrix for $\Delta_{I_i}$ and every term in $\Delta_{I_i}$ involves $x$, we also have that every term in $r_i$ involves $x$ so $x$ is a factor of both $r_i$ and $\Delta_{I_i}$ and is the only variable from this row in either polynomial.
 
-Now suppose two variables from the row $p$ appear in a quadratic factor $f$ of $\Delta_{I_i}$.  By part (3), there is another propagator $q$ and an edge $a$ such that $f$ is the $2\times 2$ minor coming from $p, q$ and $a, a+1$, with \st{$I_i(p)=a$, $I_i(q)=b$}.  {\color{violet}There are two situations which can occur, either $I_i(p)=a$ and $I_i(q)=a+1$, or $I_i(q)=a$ and $I_i(p)=a+1$. These are} illustrated in Figure~\ref{fig quadratic}; we show that in both cases it follows that $q \in S_i$ as well.
+  Now suppose two variables from the row $p$ appear in a quadratic factor $f$ of $\Delta_{I_i}$.  By part (3), there is another propagator $q$ and an edge $a$ such that $f$ is the $2\times 2$ minor coming from $p, q$ and $a, a+1$.  There are two situations which can occur, either $I_i(p)=a$ and $I_i(q)=a+1$, or $I_i(q)=a$ and $I_i(p)=a+1$. 
+    We show that in both cases it follows that $q \in S_i$ as well.
 
-\begin{figure}
-\[
-\begin{tikzpicture}[baseline=(current bounding box.east)]
-	\begin{scope}
-	\drawWLDfragment[2]{4}{0.1} 
-	%\drawnumberspartial % use this to debug
-	\newnode[below]{1}{a}
-	\newnode[below]{2}{a+1}
-	\begin{scope}
-	\clipcenterarc(0,0)(\zero - 1.5*\step:\zero + 4.5*\step:\radius)
-	\newprop[midway,left]{1.33}{-7}{\footnotesize $p$}
-	\newprop[midway,right]{1.66}{10}{\footnotesize $q$}
-	\end{scope}
-	\node at (\zero + 0.6*\step:\radius*0.7) {\footnotesize $p$};
-	\node at (\zero + 2.4*\step:\radius*0.7) {\footnotesize $q$};
-\end{scope}
-\end{tikzpicture}
-\begin{tikzpicture}[baseline=(current bounding box.east)]
-	\begin{scope}
-	\drawWLDfragment[2]{4}{0.1} 
-	%\drawnumberspartial % use this to debug
-	\newnode[below]{1}{a}
-	\newnode[below]{2}{a+1}
-	\begin{scope}
-	\clipcenterarc(0,0)(\zero - 1.5*\step:\zero + 4.5*\step:\radius)
-	\newprop[midway,left]{1.33}{-7}{\footnotesize $q$}
-	\newprop[midway,right]{1.66}{10}{\footnotesize $p$}
-	\end{scope}
-	\node at (\zero + 0.6*\step:\radius*0.7) {\footnotesize $q$};
-	\node at (\zero + 2.4*\step:\radius*0.7) {\footnotesize $p$};
-\end{scope}
-\end{tikzpicture}
-\]
-  \caption{The situations giving a quadratic factor with variables appearing in $r_i$. }\label{fig quadratic}
-\end{figure}\note{I'm not sure we really need this figure? (Figure~\ref{fig quadratic})}
+%\begin{figure}
+%\[
+%\begin{tikzpicture}[baseline=(current bounding box.east)]
+%	\begin{scope}
+%	\drawWLDfragment[2]{4}{0.1} 
+%	%\drawnumberspartial % use this to debug
+%	\newnode[below]{1}{a}
+%	\newnode[below]{2}{a+1}
+%	\begin{scope}
+%	\clipcenterarc(0,0)(\zero - 1.5*\step:\zero + 4.5*\step:\radius)
+%	\newprop[midway,left]{1.33}{-7}{\footnotesize $p$}
+%	\newprop[midway,right]{1.66}{10}{\footnotesize $q$}
+%	\end{scope}
+%	\node at (\zero + 0.6*\step:\radius*0.7) {\footnotesize $p$};
+%	\node at (\zero + 2.4*\step:\radius*0.7) {\footnotesize $q$};
+%\end{scope}
+%\end{tikzpicture}
+%\begin{tikzpicture}[baseline=(current bounding box.east)]
+%	\begin{scope}
+%	\drawWLDfragment[2]{4}{0.1} 
+%	%\drawnumberspartial % use this to debug
+%	\newnode[below]{1}{a}
+%	\newnode[below]{2}{a+1}
+%	\begin{scope}
+%	\clipcenterarc(0,0)(\zero - 1.5*\step:\zero + 4.5*\step:\radius)
+%	\newprop[midway,left]{1.33}{-7}{\footnotesize $q$}
+%	\newprop[midway,right]{1.66}{10}{\footnotesize $p$}
+%	\end{scope}
+%	\node at (\zero + 0.6*\step:\radius*0.7) {\footnotesize $q$};
+%	\node at (\zero + 2.4*\step:\radius*0.7) {\footnotesize $p$};
+%\end{scope}
+%\end{tikzpicture}
+%\]
+%  \caption{The situations giving a quadratic factor with variables appearing in $r_i$. }\label{fig quadratic}
+%\end{figure}\note{I'm not sure we really need this figure? (Figure~\ref{fig quadratic})}
 
-In both cases, since $I_{i-1}(p)\neq I_{i}(p)$ by assumption it follows from Lemma~\ref{vertex cyclic int lem} that $I_{i-1}(p) <_{i-1} I_{i}(p)$ and no other vertex supporting $p$ lies between $I_{i-1}(p)$ and $I_{i}(p)$. \st{In the case that $b<_i a$ and $q$ is assigned before $p$ in $I_i$,}{\color{violet} If $q$ lies clockwise of $p$, $I_i(q) = a$ and $q$ contributes before $p$ in $I_i$.} This means that $I_{i-1}(p)=a$ and so $I_{i-1}(q)\neq a$. Thus $q\in S_i$ and so $f$ is a factor of $r_i$.
+In both cases, since $I_{i-1}(p)\neq I_{i}(p)$ by assumption it follows from Lemma~\ref{vertex cyclic int lem} that $I_{i-1}(p) <_{i-1} I_{i}(p)$ and no other vertex supporting $p$ lies between $I_{i-1}(p)$ and $I_{i}(p)$. If $I_i(q)=a$ then $q$ lies clockwise of $p$ and $q$ contributes before $p$ in $I_i$. This means that $I_{i-1}(p)=a$ and so $I_{i-1}(q)\neq a$. Thus $q\in S_i$ and so $f$ is a factor of $r_i$.
 
-Now consider the case where \st{$a<_i b$}{\color{violet}$I_i(q) = a+1$}, and suppose for contradiction that $q \not\in S_i$, i.e. that $I_{i-1}(q) = a+1$. Since $I_{i-1}(p) \neq a$, there must be some other propagator $s$ with $I_{i-1}(s) = a$ (else $q$ contributes $a$ to $I_{i-1}$). This propagator cannot lie on edge $a$, because then Remark~\ref{rmk cyclic} would imply that $I_i(s) \in \{a, a+1\}$, contradicting the fact that $I_i(p) = a$ and $I_i(q) = a+1$; thus $s$ has an end on edge $(a-1)$ and is inside $p$ in the $<_k$ order where $p=(k,a)$.
+Now consider the case where $I_i(q) = a+1$, and suppose for contradiction that $q \not\in S_i$, i.e. that $I_{i-1}(q) = a+1$. Since $I_{i-1}(p) \neq a$, there must be some other propagator $s$ with $I_{i-1}(s) = a$ (else $q$ contributes $a$ to $I_{i-1}$). This propagator cannot lie on edge $a$, because then Remark~\ref{rmk cyclic} would imply that $I_i(s) \in \{a, a+1\}$, contradicting the fact that $I_i(p) = a$ and $I_i(q) = a+1$; thus $s$ has an end on edge $(a-1)$ and is inside $p$ in the $<_k$ order where $p=(k,a)$.
 
 Say $s = (j,a-1)$ with $i-1 \leq_{i-1} k+1 \leq_{i-1} j+1$. But by Lemma~\ref{lem no fourth vertex}, if $I_{i-1}(s) = a$ then $a$ cannot be maximal in the support of $s$ with respect to $<_{i-1}$; thus we must have $i-1 = j+1$, and we are in the situation in Figure~\ref{fig part 4}.
 
@@ -2555,7 +2556,7 @@ Say $s = (j,a-1)$ with $i-1 \leq_{i-1} k+1 \leq_{i-1} j+1$. But by Lemma~\ref{le
   \caption{In order to obtain $I_{i-1}(s) = a$, propagators $s$ and $p$ must each have an end on edge $(i-2)$.}\label{fig part 4}
 \end{figure}
 
-Since $p$ changed its association from $I_{i-1}$ to $I_i$, we have $I_{i-1}(p) = i-1$ by Lemma~\ref{vertex cyclic int lem}. From Figure~\ref{fig part 4} {\color{violet} and Remark \ref{rmk algorithm locally same}}, $p$ contributes first to  $I_{i-1}$ and  then proceeds identically to $I_i$ for all vertices inside $p$ in the $<_{i-1}$ ordering, implying that $I_{i-1}(s) = I_i(s)$. Since $I_{i-1}(s) = a$ and $I_i(s) \neq a$, this is a contradiction. 
+Since $p$ changed its association from $I_{i-1}$ to $I_i$, we have $I_{i-1}(p) = i-1$ by Lemma~\ref{vertex cyclic int lem}. From Figure~\ref{fig part 4} and Remark \ref{rmk algorithm locally same}, $p$ contributes first to  $I_{i-1}$ and  then proceeds identically to $I_i$ for all vertices inside $p$ in the $<_{i-1}$ ordering, implying that $I_{i-1}(s) = I_i(s)$. Since $I_{i-1}(s) = a$ and $I_i(s) \neq a$, this is a contradiction. 
 
 Thus $q\in S_i$ after all, and so $f$ is a factor of $r_i$ as required.
 
@@ -2569,9 +2570,9 @@ Thus $q\in S_i$ after all, and so $f$ is a factor of $r_i$ as required.
 % \]
 % \note{Is this known to be impossible by the proof sketch of Lemma~\ref{lem susama} that you emailed or something similar.  I'm thinking this proof is already too long and the fact that this is impossible would be better as a lemma.}
 
-\item If $W$ has zero propagators then all $I_i=\emptyset$ and both $R$ and $\prod_{i=1}^n \Delta_{I_i}$ are equal to $1$, so the result holds in this case.  Now assume $W$ has at least one propagator. \sanote{we never say this, but diagrams without propagators aren't really a thing.... at least they aren't tree level scatterings}
+\item If $W$ has zero propagators then all $I_i=\emptyset$ and both $R$ and $\prod_{i=1}^n \Delta_{I_i}$ are equal to $1$, so the result holds in this case.  Now assume $W$ has at least one propagator.
 
-First we show that every factor of $\prod_{i=1}^n \Delta_{I_i}$ divides $R$.  Take an irreducible factor $f$ of $\prod_{i=1}^n \Delta_{I_i}$. There exists some $i$ such that $f|\Delta_{I_i}$ but $f\!\!\nmid\!\! \Delta_{I_{i-1}}$, since otherwise the variables corresponding to the propagators contributing to $f$ which do not themselves appear in $f$ could never appear, contradicting Lemma~\ref{vertex cyclic int lem}.  If $f$ is a linear factor, say from associating propagator $p$ to vertex $a$, then $I_{i}(p)=a$ and $I_{i-1}(p)\neq a$ so this factor appears in $r_i$.  If $f$ is a quadratic factor, \st{say from associating} {\color{violet} without loss of generality, associate} propagators $p$ and $q$ to vertices $a$ and $a+1$ respectively, then again we cannot have both $I_{i-1}(p) = a$ and $I_{i-1}(q) = a+1$, else $f$ divides $\Delta_{i-1}$. However, by the proof of part (4), if one of $p,q$ belongs to $S_i$ then the other does as well.  Thus $f$ divides $r_i$.
+First we show that every factor of $\prod_{i=1}^n \Delta_{I_i}$ divides $R$.  Take an irreducible factor $f$ of $\prod_{i=1}^n \Delta_{I_i}$. There exists some $i$ such that $f|\Delta_{I_i}$ but $f\!\!\nmid\!\! \Delta_{I_{i-1}}$, since otherwise the variables corresponding to the propagators contributing to $f$ which do not themselves appear in $f$ could never appear, contradicting Lemma~\ref{vertex cyclic int lem}.  If $f$ is a linear factor, say from associating propagator $p$ to vertex $a$, then $I_{i}(p)=a$ and $I_{i-1}(p)\neq a$ so this factor appears in $r_i$.  If $f$ is a quadratic factor, say from associating propagators $p$ and $q$ to vertices $a$ and $a+1$ respectively, then again we cannot have both $I_{i-1}(p) = a$ and $I_{i-1}(q) = a+1$, else $f$ divides $\Delta_{i-1}$. However, by the proof of part (4), if one of $p,q$ belongs to $S_i$ then the other does as well.  Thus $f$ divides $r_i$.
 
 Next we need to show that $R$ is square-free.  Suppose $f^2|R$.  If $f$ is a linear factor, say from associating propagator $p$ to vertex $a$, then there must be two distinct points in the Grassmann necklace algorithm where $p$ changes from not being associated to vertex $a$ to being associated to vertex $a$.  This contradicts Lemma~\ref{vertex cyclic int lem}.  Now suppose $f$ is a quadratic factor, say from propagators $p$ and $q$ supported on edge $a$ with $p$ clockwise to $q$ on the edge.  In this case it is not possible for any $I_i$ to associate $p$ to $a+1$ and $q$ to $a$.  Furthermore, we know by part (4) that $p$ changes from not being associated to $a$ to being associated to $a$ if and only if $q$ changes from not being associated to $a+1$ to being associated to $a+1$.  Thus $f^2|R$ implies that twice in the Grassmann necklace $p$ must change from not being associated to vertex $a$ to being associated to vertex $a$. This is again a contradiction, and so $R$ is square-free.
 
@@ -2588,15 +2589,15 @@ We are now ready to prove the main theorem of this section. We use the facts abo
 \begin{proof}
 The equivalence of the ideal generated by $R$ and the radical of the ideal generated by $\prod_{i=1}^n \Delta_{I_i}$ is due to Proposition~\ref{prop alg gives rad}.  It remains to prove that $R(W)$ is the $R$ of Algorithm~\ref{alg WLD to denom via GN}.
 
-To this end, first note that $R(W)$ and $R$ both have total degree $4|\mathcal{P}|$; the degree of $R(W)$ is immediate from the definition while that of $R$ \hlfix{follows from Lemma {\ref{vertex cyclic int lem}}}{one sentence explanation?}.  By Proposition~\ref{prop alg gives rad} every factor of $R$ is either a quadratic factor coming from two propagators supported on a common edge or a single variable coming from a support vertex of a propagator not appearing in a quadratic factor.  The factors of each $R_e$ making up $R(W)$ in the notation of Definition~\ref{def R(W)} are all of this form and every such factor occurs.  Hence every factor of $R$ divides $R(W)$.
+To this end, first note that $R(W)$ and $R$ both have total degree $4|\mathcal{P}|$; the degree of $R(W)$ is immediate from the definition while that of $R$ follows from Remark \ref{rmk cyclic}.  By Proposition~\ref{prop alg gives rad} every factor of $R$ is either a quadratic factor coming from two propagators supported on a common edge or a single variable coming from a support vertex of a propagator not appearing in a quadratic factor.  The factors of each $R_e$ making up $R(W)$ in the notation of Definition~\ref{def R(W)} are all of this form and every such factor occurs.  Hence every factor of $R$ divides $R(W)$.
 Finally, since $R$ is square-free, this implies that $R(W)$ is a scalar multiple of $R$.
 
 Finally then we need to check the scalar.  By Definition~\ref{def R(W)} each linear factor appears with coefficient $1$ and each $2\times 2$ determinant factor appears with the same sign as the determinant of the corresponding minor in $C(W)$.  Therefore $R=R(W)$.
 \end{proof}
 
-Thus we have shown a deep relationship between the physically derived poles of the integrals $I(W)$ and the geometry and combinatorics associated to the diagrams $W$. At the very least, this is yet another piece of \hlfix{circumstantial}{can we find a better word for this?} evidence indicating that the positroid representation of Wilson loop diagrams is the correct geometric object to be considering when considering the Wilson loop amplitudes geometrically. 
+Thus we have shown a deep relationship between the physically derived poles of the integrals $I(W)$ and the geometry and combinatorics associated to the diagrams $W$. This is yet another piece of substantial evidence indicating that the positroid representation of Wilson loop diagrams is the correct geometric object to be considering when considering the Wilson loop amplitudes geometrically. 
 
-While the authors cannot yet offer a proof that the appropriate sum of the Wilson loop diagrams are, in fact, finite, as expected from \cite{Alday:2007hr, ParkeTaylorids}, we do hope that this relationship to the Grassmann necklace elements will provide a different avenue for answering that and related questions. \note{Can we rephrase this paragraph to be a bit more positive?}
+%While the authors cannot yet offer a proof that the appropriate sum of the Wilson loop diagrams are, in fact, finite, as expected from \cite{Alday:2007hr, ParkeTaylorids}, we do hope that this relationship to the Grassmann necklace elements will provide a different avenue for answering that and related questions. \note{Can we rephrase this paragraph to be a bit more positive?}
 
 \bibliographystyle{abbrv}
 \bibliography{WLDbib}
