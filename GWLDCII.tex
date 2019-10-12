@@ -354,7 +354,7 @@
 \maketitle
 
 \begin{abstract}
-  Wilson loop diagrams are an important tool in studying scattering amplitudes of SYM $N=4$ theory and are known by previous work to be associated to positroids. In this paper we study the structure of the associated positroids, as well as the structure of the denominator of the integral defined by each diagram. We give an algorithm to derive the Grassmann necklace of the associated positroid directly from the Wilson loop diagram, and a recursive proof that the dimension of these cells is thrice the number of propagators in the diagram. We also show that the denominator in the integral is the radical of the product of minors defined by the elements of the Grassmann necklace.
+  Wilson loop diagrams are an important tool in studying scattering amplitudes of SYM $N=4$ theory and are known by previous work to be associated to positroids. In this paper we study the structure of the associated positroids, as well as the structure of the denominator of the integrand defined by each diagram. We give an algorithm to derive the Grassmann necklace of the associated positroid directly from the Wilson loop diagram, and a recursive proof that the dimension of these cells is thrice the number of propagators in the diagram. We also show that the denominator in the integrand is the radical of the product of minors defined by the elements of the Grassmann necklace.
 \end{abstract}
 \section{Introduction}
 
@@ -375,7 +375,7 @@ In the above work and elsewhere, it is clear that while the space filled by the 
 
 This paper continues this work by identifying which positroid cells are associated to which Wilson loop diagram: specifically, we give an algorithm to read off the Grassmann necklace of the associated positroid cell from the Wilson loop diagram. We also show that the positroid cells associated to Wilson loop diagrams are all $3k$-dimensional, where $k$ is the number of propagators in the diagram; by contrast, the BCFW cells are all $4k$-dimensional \cite{Arkani-Hamed:2013jha}. Again, this is not too alarming, as it was shown in \cite{non-orientable} that the actual geometric space defined by the Wilson loop diagrams is a non-orientable $k$-dimensional bundle over this $3k$ dimensional manifold in $\Gr(k,n)$.
 
-As noted above, the sum of the Feynman integrals associated to Wilson loop diagrams gives the volume of a convex polytope; if this volume is to be finite, then any singularities appearing in individual integrals must cancel out in the overall sum. This has been conjectured in general \cite{Hodges2013} and verified explicitly in a few cases \cite{casestudy, HeslopStewart}, but it is hard to prove in general due to the fact that the relationship between Wilson loop diagrams and $3k$-dimensional positroid cells of $\Gr(k,n)$ is neither one-to-one nor onto. In this paper, we give a characterization of the factors appearing in the denominator of these Feynman integrals in terms of the Grassmann necklace of the associated positroid, thus providing a much simpler and more tractable link between the singularities and the diagrams. 
+As noted above, the sum of the Feynman integrals associated to Wilson loop diagrams gives the volume of a convex polytope. if the singularities appearing in individual integrals cancel out in the overall sum, then the overall volume is finite. This cancellation has been conjectured in general \cite{Hodges2013} and verified explicitly in a few cases \cite{casestudy, HeslopStewart}, but it is hard to prove in general due to the fact that the relationship between Wilson loop diagrams and $3k$-dimensional positroid cells of $\Gr(k,n)$ is neither one-to-one nor onto. In this paper, we give a characterization of the factors appearing in the denominator of these Feynman integrals in terms of the Grassmann necklace of the associated positroid, thus providing a much simpler and more tractable link between the singularities and the diagrams. 
 
 % when computing a finite volume to a geometric object defined by the Wilson loop diagrams, one must ensure that any singularities cancel. This has been verified explicitly in a few cases \cite{casestudy, HeslopStewart}, but it has been hard to prove in general due to the fact that the relationship between Wilson loop diagrams and $3k$ dimensional positroid cells of $\Gr(k,n)$ is neither one-to-one nor onto. In this paper, we give a characterisation of the denominator of the Feynman integral defined by a Wilson loop diagram in terms of the algorithm that associated the same diagram to a Grassman Necklace.
 
@@ -387,7 +387,7 @@ In Section~\ref{sec GN algorithm} we state an algorithm for constructing the Gra
 
 In Section~\ref{sec dim} we examine the dimension of positroids associated to Wilson loop diagrams, and show that the dimension is always equal to three times the number of propagators in the diagram (Theorem~\ref{thm dim}).  While this has been proved by Marcott in \cite{WLDdim} using matroidal arguments, our proof is constructive and explicitly relates the position of the plusses in the Le diagram to the propagators in the Wilson loop diagram. This proof and the methods used therein are a first step towards understanding how the positroid cell associated to a Wilson loop diagram changes as one adds propagators in certain positions.
 
-Finally in Section~\ref{sec poles} we characterize the denominator of the integral of a Wilson loop diagram in terms of how propagators contribute to the Grassmann necklace.  This characterization is given explicitly by Algorithm~\ref{alg WLD to denom via GN} and Theorem~\ref{thm denom}.
+Finally in Section~\ref{sec poles} we characterize the denominator of the integrand of a Wilson loop diagram in terms of how propagators contribute to the Grassmann necklace.  This characterization is given explicitly by Algorithm~\ref{alg WLD to denom via GN} and Theorem~\ref{thm denom}.
 
 
 \section{Background}\label{section general background}
@@ -423,7 +423,7 @@ Generally speaking the propagators in a Wilson loop diagram are undirected, so $
 
 We also impose the convention that all vertices should always be interpreted in terms of the cyclic order on $V$.  So, for any $i\in V$ we will use $i+1$ to denote the successor of $i$ in $V$.   In particular, if $V = [n]$ then $(n,n+3)$ means the propagator connecting edges $3$ and $n$. This viewpoint is beneficial for us since many of our proofs rely on restricting our attention to a region of the diagram bounded by a given propagator, or to short propagators such as $(i,i+2)$, and these behave the same regardless of whether we cross the ``first'' vertex or not. However, we emphasize that this is different to the standard convention in the physics literature, where propagators are written $(i,j)$ with $1 \leq i<j \leq n$.
 
-
+We note that in this paper, we allow for the propagator set $\cP$ to be empty. This is for mathematical convenience, even though these diagrams are do not correspond to tree level scattering amplitudes.
 
 \begin{dfn} \label{VPropdfn}
 Let $W = (\cP, V)$ be a Wilson loop diagram.
@@ -483,7 +483,7 @@ where the denominator $R(W)$ is given in Definition~\ref{def R(W)} below. The in
 For a fixed number of propagators and particles, the tree level amplitude of the Wilson loop diagrams is computed as the sum of the $I(W)$ for all $W$ of the correct size. By \cite{Adamo:2011pv,Adamo:2012xe,Arkani-Hamed:2013jha} this sum is finite for all sets of external particles, i.e. we have 
 \bas \mathcal{A}_{k, n}^{tree} = \sum_{\substack{W = (\cP, [n]), \\ |\cP| = k}} I(W) <\infty. \eas
 
-This implies that any singularities in the integrals $I(W)$ must cancel out in the sum; in particular, all poles arising from $R(W)$ must cancel. Specifically, these poles must cancel on the boundaries of the positroid cells $\Sigma(W)$, analogous to the analysis in \cite{Arkani-Hamed:2013jha}. This has been checked for particular classes of examples (e.g. \cite{casestudy, Amplituhedronsquared, HeslopStewart}) but has not been proven in general.
+This would certainly hold if  the singularities in the integrands $\Omega(W)$ cancel out in the sum; in particular, all poles arising from $R(W)$ must cancel. Specifically, it is conjectured that these poles cancel on the boundaries of the positroid cells $\Sigma(W)$, analogous to the analysis in \cite{Arkani-Hamed:2013jha}. This has been checked for particular classes of examples (e.g. \cite{casestudy, Amplituhedronsquared, HeslopStewart}) but has not been proven in general.
 
 With this motivation in mind, in Section~\ref{sec poles} of this paper we study the denominator $R(W)$ of the volume form $\Omega(W)$. The definition of $R(W)$ is as follows.
 
@@ -660,7 +660,7 @@ In this section we will give an algorithm (Algorithm~\ref{alg:put GN on WLD}) to
 
 This is a useful result in and of itself, as it greatly simplifies the process of identifying the positroid associated to a given Wilson loop diagram. We also use it to characterize loops and coloops in the positroid associated to a Wilson loop diagram (Corollary \ref{no coloops}); the characterization of the coloops, in particular, was not at all clear from the definition of Wilson loop diagrams but is an easy corollary of the algorithm.
 
-Furthermore, the algorithm allows us to see how the Le diagram associated to a Wilson loop diagram changes as one adds propagators in certain positions (Theorem \ref{thm dim}). Indeed, the techniques we develop in this section to verify that our algorithm produces the correct Grassmann necklace will also be used repeatedly in later sections to calculate the dimension of the associated positroid cell (Section \ref{sec dim}) and to study the structure of the poles of the associated integral $I(W)$ (Section \ref{sec poles}).
+Furthermore, the algorithm allows us to see how the Le diagram associated to a Wilson loop diagram changes as one adds propagators in certain positions (Theorem \ref{thm dim}). Indeed, the techniques we develop in this section to verify that our algorithm produces the correct Grassmann necklace will also be used repeatedly in later sections to calculate the dimension of the associated positroid cell (Section \ref{sec dim}) and to study the structure of the poles of the associated integrand $\Omega(W)$ (Section \ref{sec poles}).
 
 One of the key insights is that each element of the Grassmann necklace can be viewed as a function from the propagators of the diagram to the vertices in the Grassmann necklace element.  This is captured in Definition~\ref{def I_i as a function}, and used throughout the paper.
 
@@ -891,7 +891,7 @@ In the case that all vertices of an admissible WLD $W$ support at least two prop
 
 \subsection{From Wilson loop diagrams to Grassmann necklaces}\label{sec:GN alg}
 
-In this section, we give an algorithm for passing directly from the Wilson loop diagrams to its Grassmann necklace. This not only greatly simplifies the previously known process to obtain a positroid cell from a Wilson loop diagram, but will also allow us to relate the behavior of the positroid $M(W)$ directly to the configuration of propagators in $W$. In section \ref{sec poles} we see that the denominator, $R(W)$, of the integrand associated to a Wilson loop diagram, $I(W)$, can be written in terms of the Grassmann necklace of a diagram. 
+In this section, we give an algorithm for passing directly from the Wilson loop diagrams to its Grassmann necklace. This not only greatly simplifies the previously known process to obtain a positroid cell from a Wilson loop diagram, but will also allow us to relate the behavior of the positroid $M(W)$ directly to the configuration of propagators in $W$. In section \ref{sec poles} we see that the denominator, $R(W)$, of the integrand associated to a Wilson loop diagram, $\Omega(W)$, can be written in terms of the Grassmann necklace of a diagram. 
 
 The fact that Algorithm~\ref{alg:put GN on WLD} does construct the required Grassmann necklace is proved in Theorem~\ref{res:alg gives GN} and Theorem~\ref{res alg gives correct GN}. A worked example of Algorithm~\ref{alg:put GN on WLD} is given in Example~\ref{eg:apply GN alg}.
 
@@ -2191,13 +2191,13 @@ Therefore the Le diagram of $W$ contains $3(k-1)$ plusses in bijection with the 
 
 In this section we investigate the poles of the integrand for $I(W)$. Since SYM $N=4$ is a finite theory \cite{Alday:2007hr, ParkeTaylorids}, the scattering amplitudes (and thus the holomorphic Wilson loops $\,\mathfrak{W}_{k,n}$) are finite. That is, for a fixed set of external particles $\cZ$, we must have
 \bas \sum_{W \text{ s.t. } |\cP| = k} I(W)(\cZ) <\infty \;.\eas
-In other words, all poles of the integrands must cancel. As a step towards this, in this section we prove some results about the structure of the denominator $R(W)$ of the integrand, as defined in Definition~\ref{def R(W)}.
+This holds if all poles of the integrands cancel. As a step towards this, in this section we prove some results about the structure of the denominator $R(W)$ of the integrand, as defined in Definition~\ref{def R(W)}.
 
 The results of Section~\ref{sec GN algorithm} allow us to relate the configuration of propagators in a Wilson loop diagram $W$ to minors of $C(W)$ that contribute to $R(W)$.
 
 In this section, we fix an arbitrary ordering on the propagators of W, i.e we impose an ordering on the rows of $C(W)$.
 
-The main result of this section is Theorem~\ref{thm denom}, which expresses the denominator $R(W)$ in terms of the Grassmann necklace of $W$. This simplifies the computation of $R(W)$ and allows us to directly relate the poles of the integral to the combinatorics of the diagram.
+The main result of this section is Theorem~\ref{thm denom}, which expresses the denominator $R(W)$ in terms of the Grassmann necklace of $W$. This simplifies the computation of $R(W)$ and allows us to directly relate the poles of the integrand to the combinatorics of the diagram.
 
 We first give an algorithm which extracts the required minors of $C(W)$ from the Grassmann necklace. 
 
@@ -2595,7 +2595,7 @@ Finally, since $R$ is square-free, this implies that $R(W)$ is a scalar multiple
 Finally then we need to check the scalar.  By Definition~\ref{def R(W)} each linear factor appears with coefficient $1$ and each $2\times 2$ determinant factor appears with the same sign as the determinant of the corresponding minor in $C(W)$.  Therefore $R=R(W)$.
 \end{proof}
 
-Thus we have shown a deep relationship between the physically derived poles of the integrals $I(W)$ and the geometry and combinatorics associated to the diagrams $W$. This is yet another piece of substantial evidence indicating that the positroid representation of Wilson loop diagrams is the correct geometric object to be considering when considering the Wilson loop amplitudes geometrically. 
+Thus we have shown a deep relationship between the physically derived poles of the integrand $\Omega(W)$ and the geometry and combinatorics associated to the diagrams $W$. This is yet another piece of substantial evidence indicating that the positroid representation of Wilson loop diagrams is the correct geometric object to be considering when considering the Wilson loop amplitudes geometrically. 
 
 %While the authors cannot yet offer a proof that the appropriate sum of the Wilson loop diagrams are, in fact, finite, as expected from \cite{Alday:2007hr, ParkeTaylorids}, we do hope that this relationship to the Grassmann necklace elements will provide a different avenue for answering that and related questions. \note{Can we rephrase this paragraph to be a bit more positive?}
 
