@@ -365,7 +365,7 @@ This paper is the second in a two part series investigating the combinatorics an
 
 % In this paper, we give an algorithm to identify which cell corresponds to which diagram, via Grassmann Necklaces. Using the Le diagram representation of positroid cells, we prove results about the dimensions of these cells. Finally, we state some results about the structures of the volume forms defined on these positroid cells by the Wilson loop diagrams.
 
-In contrast, the first paper in this series focuses on combinatorial and matroidal properties of the Wilson loop diagrams. The main focus of that paper is to enumerate the positroid cells that are associated to Wilson loop diagrams with a fixed number of vertices and propagators, as well as counting the number of Wilson loop diagrams that map to the same positroid.
+In contrast, the first paper in this series focuses on combinatorial and matroidal properties of the Wilson loop diagrams. The main focus of that paper is enumerating the positroid cells that are associated to Wilson loop diagrams with a fixed number of vertices and propagators, as well as counting the number of Wilson loop diagrams that map to the same positroid.
 
 In recent years, there has been significant interest in understanding the geometry and combinatorics underlying the field theory SYM $N=4$ \cite{wilsonloop, Arkani-Hamed:2013jha, Amplituhedronsquared, galashinlam, AmplituhedronDecomposition}. This started with the observation that BCFW diagrams, which represent the on shell interactions of this theory, correspond to plabic graphs \cite{GrassmannAmplitudebook}. Plabic graphs were introduced by Postnikov in \cite{Postnikov}, and provide one of the many equivalent ways to classify the positroid cells of the positive real Grassmannian $\Gr(k,n)$. This led to the representation of the on shell integrals associated to this theory in terms of a geometric space (the Amplituhedron) embedded in $\Gr(k,n)$ \cite{Arkani-Hamed:2013kca,Arkani-Hamed:2013jha}. Moreover, integrals associated to the BCFW diagrams define a volume form on the Amplituhedron. This gives a novel and elegant interpretation of scattering amplitudes for this theory, as well as a means of greatly simplifying the calculations involved in traditional Feynman diagram approaches. Since then, there has been significant work to understand the volume form and its physical implications \cite{UnwindingAmplituhedron,galashinlam}.
 
@@ -421,9 +421,9 @@ Let $[n]$ denote the set of integers $\{1,\dots,n\}$ with the obvious cyclic and
 
 Generally speaking the propagators in a Wilson loop diagram are undirected, so $(i,j)$ and $(j,i)$ represent the same propagator. If we need to impose a direction on a propagator $p = (i,j)$, for example in order to consider the region ``inside'' or ``outside'' of $p$, we write $(p,<_i)$ to indicate that $p$ is directed from edge $i$ to edge $j$, and $(p,<_j)$ for the opposite direction. 
 
-We also impose the convention that all vertices should always be interpreted in terms of the cyclic order on $V$.  So, for any $i\in V$ we will use $i+1$ to denote the successor of $i$ in $V$.   In particular, if $V = [n]$ then $(n,n+3)$ means the propagator connecting edges $3$ and $n$. This viewpoint is beneficial for us since many of our proofs rely on restricting our attention to a region of the diagram bounded by a given propagator, or to short propagators such as $(i,i+2)$, and these behave the same regardless of whether we cross the ``first'' vertex or not. However, we emphasize that this is different to the standard convention in the physics literature, where propagators are written $(i,j)$ with $1 \leq i<j \leq n$.
+We also impose the convention that all vertices should always be interpreted in terms of the cyclic order on $V$.  So, for any $i\in V$ we will use $i+1$ to denote the successor of $i$ in $V$.   In particular, if $V = [n]$ then $(n,n+3)$ means the propagator connecting edges $3$ and $n$. This viewpoint is beneficial for us since many of our proofs rely on restricting our attention to a region of the diagram bounded by a given propagator, or to short propagators such as $(i,i+2)$, and these behave the same way regardless of whether we cross the ``first'' vertex or not. However, we emphasize that this is different to the standard convention in the physics literature, where propagators are written $(i,j)$ with $1 \leq i<j \leq n$.
 
-We note that in this paper, we allow for the propagator set $\cP$ to be empty. This is for mathematical convenience, even though these diagrams are do not correspond to tree level scattering amplitudes.
+We note that in this paper, we allow for the propagator set $\cP$ to be empty. This is for mathematical convenience, even though these diagrams do not correspond to tree level scattering amplitudes.
 
 \begin{dfn} \label{VPropdfn}
 Let $W = (\cP, V)$ be a Wilson loop diagram.
@@ -463,7 +463,7 @@ These conditions are imposed by the physical interpretation of Wilson loop diagr
 
 Note that a subdiagram $(Q,U)$ of an admissible Wilson loop diagram need not be admissible itself: it inherits conditions 2 and 3 automatically, but we could have $|U| = |Q| + 3$. If a Wilson loop diagrams satisfies conditions 2 and 3 of Definition~\ref{admisdfn}, we call it {\bf weakly admissible}.
 
-These diagrams correspond to (tree level) amplitudes of SYM $N=4$ theory in twistor space. As such, a diagram associates a real value to $n$ particles, one for each vertex. Each particle is represented as a section of a $|\cP|$-vector bundle over twistor space, projected onto a real subspace in a process called bosonization \cite{Arkani-Hamed:2013jha}. In other words, each Wilson loop diagram defines a functional on external particles. This is represented as an integral $I(W)$, which is the equivalent of a Feynman integral in this setting. This integral is comprised of two main components: an interaction matrix $C(W)$, and a volume form $\Omega(W)$. These are described next.
+These diagrams correspond to (tree level) amplitudes of SYM $N=4$ theory in twistor space. As such, a diagram associates a real value to $n$ particles, one for each vertex. Each particle is represented as a section of a $|\cP|$-vector bundle over twistor space, projected onto a real subspace in a process called bosonization \cite{Arkani-Hamed:2013jha}. In other words, each Wilson loop diagram defines a functional on external particles. This is represented as an integral $I(W)$, which is the equivalent of a Feynman integral in this setting. This integral is built from two main components: an interaction matrix $C(W)$, and a volume form $\Omega(W)$. These are described next.
 
 A $|\cP| \times n$ matrix $C(W)$ represents the (tree level) particle interactions. Each row of $C(W)$ corresponds to an internal propagator, and each column to an external particle (i.e. a vertex). $C(W)$ is defined as follows:
 
@@ -641,7 +641,7 @@ In particular, this corollary says that a subset $J$ of $[n]$ is a basis of $M(W
 
 By relating the behavior of the propagators in $W$ to the matroidal properties of $M(W)$, Agarwala and Marin-Amat also showed that $M(W)$ is in fact a positroid whenever $W$ is admissible \cite[Corollary 3.39]{wilsonloop}.
 
-However, to go from the Wilson loop diagram $W$ to the positroid cell, one had to go through the matroid explicitly realized via $C(W)$, then make a list of all its non-zero $k\times k$ minors and extract the Le diagram or Grassmann necklace via the methods described in Section~\ref{sec:positroid background}. In \cite{casestudy}, Agarwala and Fryer apply this process in the smallest non-trivial case: admissible Wilson loop diagrams with two propagators on six vertices. Even in this simple case, we see that the mapping from admissible WLD to positroid cells is neither one-to-one nor onto, and the process described above makes it almost impossible to track the relationship between the original Wilson loop diagram and the resulting positroid.
+However, to go from the Wilson loop diagram $W$ to the positroid cell, one had to go through the matroid explicitly realized via $C(W)$, then make a list of all its non-zero $k\times k$ minors and extract the Le diagram or Grassmann necklace via the methods described in Section~\ref{sec:positroid background}. In \cite{casestudy}, Agarwala and Fryer apply this process in the smallest non-trivial case: admissible Wilson loop diagrams with two propagators on six vertices. Even in this simple case, we see that the mapping from admissible Wilson loop diagram to positroid cells is neither one-to-one nor onto, and the process described above makes it almost impossible to track the relationship between the original Wilson loop diagram and the resulting positroid.
 
 Our first goal is therefore to find a better method of obtaining the positroid associated to a given Wilson loop diagram; this is the focus of the next section.
 
@@ -738,7 +738,7 @@ In other words, $\ell(p)$ is the size of the smaller of the sets of vertices on 
   \newpropbend{1.3}{6.7}{20}
   \newpropbend{2.9}{5.1}{45}
   \end{scope}
-  \node[align=center] at (\zero + 4*\step:\radius*1.43) {\footnotesize \em $\leq 6$ vertices in the \\ \footnotesize \em highlighted region};
+  \node[align=center] at (\zero + 4*\step:\radius*1.43) {\footnotesize \em $\leq 6$ vertices in the highlighted \\ \footnotesize \em region and no other propagators\\ \footnotesize \em in the highlighted region};
 \end{scope}
 \end{tikzpicture}
 \qquad \qquad \qquad
@@ -769,7 +769,7 @@ In other words, $\ell(p)$ is the size of the smaller of the sets of vertices on 
 The following lemma establishes certain configurations of propagators that must exist in any admissible diagram with no non-supporting vertices. We make use of this result in several induction proofs below. 
 
 \begin{lem}\label{lem sian}
-  Let $W$ be a weakly admissible WLD with at least 5 vertices and in which each vertex supports at least one propagator.  Then at least one of the following two things occurs:
+  Let $W$ be a weakly admissible Wilson loop diagram with at least 5 vertices and in which each vertex supports at least one propagator.  Then at least one of the following two things occurs:
   \begin{enumerate}
     \item $W$ has a propagator of length $\leq 6$ with a propagator of length 2 on one side of it and nothing else on that side.\label{item big and 2}
     \item There exists a pair of propagators of length $2$ with the property that the first propagator is $(i, i+2)$, the second is $(j, j+2)$, no other propagator ends between vertices $i+2$ and $j+1$, and $j\in\{i+2, i+3, i+4\}$.\label{item pair of 2s}
@@ -829,7 +829,7 @@ Now suppose $q_{r} = (i_r, k_r)$ exists by the induction hypothesis and is orien
 
 Let $W_r := (\cP_{in}(q_r),[n])$ be the subdiagram of $W$ consisting only of those propagators inside $q_r$ (including $q_r$ itself); in particular $W_r$ contains none of the previous $p_i$ or $q_i$. By the original hypotheses on $W$, every vertex in $[i_r,k_{r+1}]$ (of which there are at least 4, since $\ell(q_r) \geq 4$) must support at least one propagator. Therefore $W_r$ admits at least one propagator of length 2 (by Remark~\ref{rem:props of length 2 and 3}) and no propagators of length $3$ (by our assumption on $W$).
 
-Let $p_{r+1} = (j_{r+1}, j_{r+1}+2)$ be a propagator of length 2 in $W_r$; if it forms part of configuration \ref{item big and 2} or \ref{item pair of 2s}
+Let $p_{r+1} = (j_{r+1}, j_{r+1}+2)$ be a propagator of length 2 in $W_r$.  If it forms part of configuration \ref{item big and 2} or \ref{item pair of 2s}
 %the configuration \eqref{eq:2 prop config}
 then we are done, so assume otherwise. 
 
@@ -885,7 +885,7 @@ The overall result then follows by induction.
 
 
 \begin{rmk}
-In the case that all vertices of an admissible WLD $W$ support at least two propagators, then Lemma~\ref{lem sian} substantially simplifies.  By Remark~\ref{rem:props of length 2 and 3}, $W$ has no propagators of length $3$.  Configuration \ref{item big and 2} necessarily entails vertices with support $1$ as does configuration \ref{item pair of 2s} unless $j=i+2$.  So in the case that $W$ has all vertices with support at least two then $W$ must contain a pair of propagators of length $2$  with the property that the first propagator is $(i, i+2)$, the second is $(i+2, i+4)$ and no other propagator ends on the edge $i+2$.
+In the case that all vertices of an admissible Wilson loop diagram $W$ support at least two propagators, then Lemma~\ref{lem sian} substantially simplifies.  By Remark~\ref{rem:props of length 2 and 3}, $W$ has no propagators of length $3$.  Configuration \ref{item big and 2} necessarily entails vertices with support $1$ as does configuration \ref{item pair of 2s} unless $j=i+2$.  So in the case that $W$ has all vertices with support at least two then $W$ must contain a pair of propagators of length $2$  with the property that the first propagator is $(i, i+2)$, the second is $(i+2, i+4)$ and no other propagator ends on the edge $i+2$.
 \end{rmk}
 
 
@@ -1110,10 +1110,10 @@ In order for $q$ to remain unassigned until vertex $b$, there must be another pr
 \end{proof}
 
 \begin{cor}\label{GN alg well defined}
-If $W$ is an admissible Wilson loop diagram with $k$ propagators and $n$ vertices, then Algorithm~\ref{alg:put GN on WLD} assigns exactly $k$ distinct vertices to each $I_i$ in $n$ steps.
+If $W$ is an admissible Wilson loop diagram with $k$ propagators and $n$ vertices, then Algorithm~\ref{alg:put GN on WLD} assigns exactly $k$ distinct vertices to each $I_i$ in at most $n$ steps.
 \end{cor} 
 \begin{proof}
-Fix $i \in [n]$. It follows from the proof of Lemma~\ref{lem no fourth vertex} that in applying Algorithm~\ref{alg:put GN on WLD} to construct the set $I_i$, the algorithm can never reach the fourth vertex of a propagator's support (ordered with respect to $<_i$) without having already assigned that propagator. Therefore if the algorithm starts at vertex $i$, all propagators must have been eliminated by the time it gets to vertex $i-1$, ensuring that the algorithm is completed in less than one full circumnavigation of the diagram and that $I_i$ contains exactly $k$ distinct elements.
+Fix $i \in [n]$. It follows from the proof of Lemma~\ref{lem no fourth vertex} that in applying Algorithm~\ref{alg:put GN on WLD} to construct the set $I_i$, the algorithm can never reach the fourth vertex of a propagator's support (ordered with respect to $<_i$) without having already assigned that propagator. Therefore if the algorithm starts at vertex $i$, all propagators must have been eliminated by the time it gets to vertex $i-1$, ensuring that the algorithm is completed in at most one full circumnavigation of the diagram and that $I_i$ contains exactly $k$ distinct elements.
 \end{proof}
 
 We now reverse our perspective and ask: given a propagator $p$ and a vertex $i$ in the support of $p$, for which set of starting vertices does the algorithm assign $p$ to $i$? 
@@ -1304,7 +1304,7 @@ We will prove the result by induction on the number of propagators.  If $W$ has 
 \end{scope}
 \end{tikzpicture}
 \end{tabular}
-    \caption{Four cases for admissible WLDs with no non-supporting vertices. The gray half-propagators illustrate where propagators may occur, but are not required to exist.}\label{fig 3 cases}
+    \caption{Four cases for admissible Wilson loop diagrams with no non-supporting vertices. The gray half-propagators illustrate where propagators may occur, but are not required to exist.}\label{fig 3 cases}
   \end{figure}
 
 
@@ -2324,7 +2324,7 @@ Below, we show that the polynomial $R$ associated to Wilson loop diagram $W$ is 
 \end{tikzpicture}
 \\
 \end{tabular}
-\caption{Example WLD for illustrating Algorithm~\ref{alg WLD to denom via GN} and bijections between propagators and vertices for each Grassmann necklace element.}\label{fig R eg}
+\caption{Example Wilson loop diagram for illustrating Algorithm~\ref{alg WLD to denom via GN} and bijections between propagators and vertices for each Grassmann necklace element.}\label{fig R eg}
 \end{figure}
 
 \begin{eg}
