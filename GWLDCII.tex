@@ -375,7 +375,7 @@ In the above work and elsewhere, it is clear that while the space filled by the 
 
 This paper continues this work by identifying which positroid cells are associated to which Wilson loop diagram: specifically, we give an algorithm to read off the Grassmann necklace of the associated positroid cell from the Wilson loop diagram. We also show that the positroid cells associated to Wilson loop diagrams are all $3k$-dimensional, where $k$ is the number of propagators in the diagram; by contrast, the BCFW cells are all $4k$-dimensional \cite{Arkani-Hamed:2013jha}. Again, this is not too alarming, as it was shown in \cite{non-orientable} that the actual geometric space defined by the Wilson loop diagrams is a non-orientable $k$-dimensional bundle over this $3k$ dimensional manifold in $\Gr(k,n)$.
 
-As noted above, the sum of the Feynman integrals associated to Wilson loop diagrams gives the volume of a convex polytope. if the singularities appearing in individual integrals cancel out in the overall sum, then the overall volume is finite. This cancellation has been conjectured in general \cite{Hodges2013} and verified explicitly in a few cases \cite{casestudy, HeslopStewart}, but it is hard to prove in general due to the fact that the relationship between Wilson loop diagrams and $3k$-dimensional positroid cells of $\Gr(k,n)$ is neither one-to-one nor onto. In this paper, we give a characterization of the factors appearing in the denominator of these Feynman integrals in terms of the Grassmann necklace of the associated positroid, thus providing a much simpler and more tractable link between the singularities and the diagrams. 
+As noted above, the sum of the Feynman integrals associated to Wilson loop diagrams gives the volume of a convex polytope. If the singularities appearing in individual integrals cancel out in the overall sum, then the overall volume is finite. This cancellation has been conjectured in general \cite{Hodges2013} and verified explicitly in a few cases \cite{casestudy, HeslopStewart}, but it is hard to prove in general due to the fact that the relationship between Wilson loop diagrams and $3k$-dimensional positroid cells of $\Gr(k,n)$ is neither one-to-one nor onto. In this paper, we give a characterization of the factors appearing in the denominator of these Feynman integrals in terms of the Grassmann necklace of the associated positroid, thus providing a much simpler and more tractable link between the singularities and the diagrams. 
 
 % when computing a finite volume to a geometric object defined by the Wilson loop diagrams, one must ensure that any singularities cancel. This has been verified explicitly in a few cases \cite{casestudy, HeslopStewart}, but it has been hard to prove in general due to the fact that the relationship between Wilson loop diagrams and $3k$ dimensional positroid cells of $\Gr(k,n)$ is neither one-to-one nor onto. In this paper, we give a characterisation of the denominator of the Feynman integral defined by a Wilson loop diagram in terms of the algorithm that associated the same diagram to a Grassman Necklace.
 
@@ -891,7 +891,7 @@ In the case that all vertices of an admissible Wilson loop diagram $W$ support a
 
 \subsection{From Wilson loop diagrams to Grassmann necklaces}\label{sec:GN alg}
 
-In this section, we give an algorithm for passing directly from the Wilson loop diagrams to its Grassmann necklace. This not only greatly simplifies the previously known process to obtain a positroid cell from a Wilson loop diagram, but will also allow us to relate the behavior of the positroid $M(W)$ directly to the configuration of propagators in $W$. In section \ref{sec poles} we see that the denominator, $R(W)$, of the integrand associated to a Wilson loop diagram, $\Omega(W)$, can be written in terms of the Grassmann necklace of a diagram. 
+In this section, we give an algorithm for passing directly from the Wilson loop diagrams to its Grassmann necklace. This not only greatly simplifies the previously known process to obtain a positroid cell from a Wilson loop diagram, but will also allow us to relate the behavior of the positroid $M(W)$ directly to the configuration of propagators in $W$. In section \ref{sec poles} we use these results to show that the denominator $R(W)$ of the integrand associated to a Wilson loop diagram can be written in terms of the Grassmann necklace of a diagram. 
 
 The fact that Algorithm~\ref{alg:put GN on WLD} does construct the required Grassmann necklace is proved in Theorem~\ref{res:alg gives GN} and Theorem~\ref{res alg gives correct GN}. A worked example of Algorithm~\ref{alg:put GN on WLD} is given in Example~\ref{eg:apply GN alg}.
 
@@ -1735,9 +1735,9 @@ By Corollary~\ref{no coloops} we know that $i \not\in I_1^W$, and so $i$ must la
 If two Wilson loop diagrams differ by a dihedral transformation then their Le diagrams have same number of plusses.
 \end{lem}
 \begin{proof}
-By \cite[Proposition 17.10]{Postnikov}, the dimension of a positroid (and hence the number of plusses in its Le diagram) is $k(n-k) - A(\pi_W)$, where $A(\pi_W)$ denotes the number of alignments of the decorated permutation $\pi_W$ of the positroid associated to $W$. (See \cite[Figure 17.1]{Postnikov} and preceding discussion.)
+Recall that the number of plusses in a Le diagram is given by the dimension of the corresponding positroid. By \cite[Proposition 17.10]{Postnikov}, the dimension of a positroid $M$ is $k(n-k) - A(\pi_M)$, where $A(\pi_M)$ denotes the number of alignments of the decorated permutation $\pi_M$ of $M$. The alignments of a decorated permutation are defined in terms of its chord diagram representation, where an alignment is any pair of non-crossing chords that share the same orientation. See \cite[Figure 17.1]{Postnikov} and preceding discussion for definitions and more details.
 
-It can easily be seen from \cite[Section 17]{Postnikov} and Algorithm \ref{alg:put GN on WLD} that dihedral transformations of a Wilson loop diagram $W$ correspond to dihedral transformations of the chord diagram representation of $\pi_W$. Since the number of alignments in a chord diagram is preserved under dihedral transformations, the result follows.
+With the help of Algorithm \ref{alg:put GN on WLD}, it is now easy to trace the effect of a dihedral transformation on a Wilson loop diagram through its Grassmann necklace to its decorated permutation to its chord diagram, and see that dihedral transformations of a Wilson loop diagram $W$ correspond to dihedral transformations of the chord diagram representation of $\pi_{M(W)}$. Since the number of alignments in a chord diagram is clearly preserved under dihedral transformations, the result follows.
 \end{proof}
 
 
@@ -2189,15 +2189,15 @@ Therefore the Le diagram of $W$ contains $3(k-1)$ plusses in bijection with the 
 
 \section{Poles of Wilson loop Integrals}\label{sec poles} 
 
-In this section we investigate the poles of the integrand for $I(W)$. Since SYM $N=4$ is a finite theory \cite{Alday:2007hr, ParkeTaylorids}, the scattering amplitudes (and thus the holomorphic Wilson loops $\,\mathfrak{W}_{k,n}$) are finite. That is, for a fixed set of external particles $\cZ$, we must have
+Recall from Section~\ref{section WLD background} that each Wilson loop diagram defines a functional $I(W)$, which associates a volume to the positroid cell $\Sigma(W)$. In this section we investigate the poles of the integrand of $I(W)$. 
+
+Since SYM $N=4$ is a finite theory \cite{Alday:2007hr, ParkeTaylorids}, the scattering amplitudes (and thus the holomorphic Wilson loops $\,\mathfrak{W}_{k,n}$) are finite. That is, for a fixed set of external particles $\cZ$ we must have
 \bas \sum_{W \text{ s.t. } |\cP| = k} I(W)(\cZ) <\infty \;.\eas
 This holds if all poles of the integrands cancel. As a step towards this, in this section we prove some results about the structure of the denominator $R(W)$ of the integrand, as defined in Definition~\ref{def R(W)}.
 
-The results of Section~\ref{sec GN algorithm} allow us to relate the configuration of propagators in a Wilson loop diagram $W$ to minors of $C(W)$ that contribute to $R(W)$.
+The results of Section~\ref{sec GN algorithm} allow us to relate the configuration of propagators in a Wilson loop diagram $W$ to minors of $C(W)$ that contribute to $R(W)$. The main result of this section is Theorem~\ref{thm denom}, which expresses the denominator $R(W)$ in terms of the Grassmann necklace of $W$. This simplifies the computation of $R(W)$ and allows us to directly relate the poles of the integrand to the combinatorics of the diagram.
 
-In this section, we fix an arbitrary ordering on the propagators of W, i.e we impose an ordering on the rows of $C(W)$.
-
-The main result of this section is Theorem~\ref{thm denom}, which expresses the denominator $R(W)$ in terms of the Grassmann necklace of $W$. This simplifies the computation of $R(W)$ and allows us to directly relate the poles of the integrand to the combinatorics of the diagram.
+For the duration of this section, fix an arbitrary ordering on the propagators of $W$. This imposes an ordering on the rows of $C(W)$.
 
 We first give an algorithm which extracts the required minors of $C(W)$ from the Grassmann necklace. 
 
@@ -2217,11 +2217,11 @@ Let $W = (\cP, [n])$ be a Wilson loop diagram and $C(W)$ be its associated matri
 \end{itemize}
 \end{algorithm}
 
-That is, each $r_i$ is the determinant of the minor determined by the propagators (rows) that contribute different values (columns) to the $i^{th}$ element of the Grassmann necklace than they did to the $i-1^{st}$. Since each $r_i$ is simply the determinant of a particular submatrix of $C(W)$ and an ordering on the propagators has been fixed, the sign of each $r_i$ is well-defined.
+That is, each $r_i$ is the determinant of the minor determined by the propagators (rows) that contribute different values (columns) to the $i^{th}$ element of the Grassmann necklace than they did to the $(i-1)^{th}$. Since each $r_i$ is simply the determinant of a particular submatrix of $C(W)$ and an ordering on the propagators has been fixed, the sign of each $r_i$ is well-defined.
 
 We also introduce the notation $\Delta_{I_i}$ to represent the determinant of the $k\times k$ minor of $C(W)$ with columns indexed by $I_i$. Note that one summand of this determinant is given by $\prod_{p \in \cP}x_{p, I_i(p)}$; the other summands are (up to sign) given by other bijections between the propagator set $\cP$ and the vertex set $I_i$.
 
-Below, we show that the polynomial $R$ associated to Wilson loop diagram $W$ is equal to the denominator $R(W)$ from Definition~\ref{def R(W)}, and is the radical of the product $\prod_{i=1}^n \Delta_{I_i}$. First, however, we give a worked example of Algorithm~\ref{alg WLD to denom via GN}.
+Below, we show that the polynomial $R$ associated to $W$ by Algorithm~\ref{alg WLD to denom via GN} is equal to the denominator $R(W)$ from Definition~\ref{def R(W)}, and is the radical\note{radical} of the product $\prod_{i=1}^n \Delta_{I_i}$. First, however, we give a worked example of Algorithm~\ref{alg WLD to denom via GN}.
 
 \begin{figure}
 \begin{tabular}{rrrrr}
@@ -2330,10 +2330,10 @@ Below, we show that the polynomial $R$ associated to Wilson loop diagram $W$ is 
 \begin{eg}
 Consider the Wilson loop diagram in Figure~\ref{fig R eg}. Assigning propagators $p$, $q$, $r$ to rows $1,2,3$ respectively, we obtain the matrix
 \[
-C(W) = \begin{bmatrix} a & b & 0 & 0 & 0 & c & d \\ e & f & 0 & 0 & g & h & 0 \\ i & j & 0 & k & l & 0 & 0 \end{bmatrix}
+C(W) = \begin{bmatrix} a & b & 0 & 0 & 0 & c & d \\ e & f & 0 & 0 & g & h & 0 \\ i & j & 0 & k & l & 0 & 0 \end{bmatrix}.
 \]
 The Grassmann necklace of this diagram is 
-\begin{gather*}I_1 = \{1,2,4\}, I_2 = \{2,4,5\}, I_3 = \{4,5,6\}, I_4=\{4,5,6\},\\ I_5=\{5,6,7\}, I_6 = \{6,7,1\}, I_7=\{7,1,2\}. \end{gather*}  
+\begin{gather*}I_1 = \{1,2,4\},\ I_2 = \{2,4,5\},\ I_3 = \{4,5,6\},\ I_4=\{4,5,6\},\\ I_5=\{5,6,7\},\ I_6 = \{6,7,1\},\ I_7=\{7,1,2\}. \end{gather*}  
 Figure~\ref{fig R eg} indicates indicates which vertex is contributed to $I_i$ by each propagator, for each $i \in [1,7]$.  
 
 From $I_1$ to $I_2$, the propagators $p$ and $q$ change which vertices they contribute to; specifically, we have $I_1(p) = 1$ and $I_1(q)= 2$, while $I_2(p) = 2$ and $I_2(q)= 5$. On the other hand, $r$ contributes  4 to both $I_1$ and $I_2$. We therefore have $S_2 = \{p,q\}$.  The associated minors $\Delta_{I_2}$ and $r_2$ are therefore
@@ -2383,7 +2383,7 @@ A consequence of this claim is that every linear factor of $\Delta_{I_i}$ is a $
 
 All that remains is to prove that $\Delta_{I_i}$ has no irreducible factors of degree 3 or more.  Suppose for a contradiction that $f$ is a factor of $\Delta_{I_i}$ of degree $\geq 3$. Without loss of generality\footnote{This is without loss of generality for the following reason.  By removing the propagators which come before those contributing to $f$ (in the order given by $I_i$) and changing $i$ to be the first vertex which contributes to $f$, we obtain an admissible diagram.  In this diagram, $f$ still divides $\Delta_{I_i}$ and we also have $i\in I_i$ and that 
 $i$ contributes to $f$.  Thus this diagram can be used in place of $W$.} we may assume $i\in I_i$ and that $i$ contributes to $f$.
-Finally, we can suppose that $W$ is minimal in number of propagators with an irreducible factor of degree $\geq 3$. 
+Finally, we can suppose that $W$ is minimal with respect to number of propagators amongst diagrams with an irreducible factor of degree $\geq 3$. 
 
 Let $p$ be the propagator such that $I_i(p) = i$. There are two cases to consider: when $p$ is supported on the edge $i-1$ or the edge $i$.  These are illustrated in Figure~\ref{fig no big factors}.
 
@@ -2460,7 +2460,7 @@ where $A$ is the $|T|\times |T|$ matrix indexed by the propagators in $T$ and th
 
 \textbf{Case 2}: Suppose $p = (i, m)$, i.e. $p$ has an end on the $i^{th}$ edge. If no other propagators are supported on the vertex $i$ then the corresponding column of $C(W)$ has only one nonzero entry in it, and so $\Delta_{I_i}$ has a linear factor contributed by $p$ and $i$; as above, this is a contradiction.
 Since $p$ is the first propagator in the ordering imposed by $I_i$, it is the clockwise-most propagator supported on $i$ (by Remark {\ref{clockwise ordering rem}}). Since there are multiple propagators supported on $i$, there must be a $q$ ending on edge $i$, such that $I_i(q) = i+1$, that is second clockwise-most propagators supported by $i$ (see Figure~\ref{fig no big factors}).
-Write $q = (i, j)$ for the support of $q$.  The situation for $q$ is very similar to case 1: in particular, we have $I_{i+1}(q) = j$ by Lemma {\ref{vertex cyclic int lem}} and so if $j\in I_i$ then the propagator which contributes $j$ is outside of $q$.
+Write $q = (i, j)$ for the support of $q$.  The situation for $q$ is very similar to Case 1: in particular, we have $I_{i+1}(q) = j$ by Lemma {\ref{vertex cyclic int lem}} and so if $j\in I_i$ then the propagator which contributes $j$ is outside of $q$.
     %\color{violet}if we have $r$ such that $I_i(r) = j$, as above, $r$ lies outside $q$: $r \in \cP_{out}(q, <_i)$.
 
 Similarly to Case 1, let $T = \cP_{in}(q) \cup \{p\}$ in the $<_i$ order. Then all propagators in $T$ contribute to $I_i$ strictly before $j$ and no other propagators are supported on vertices strictly before $j$.  Thus after permuting rows and columns as needed the matrix giving $\Delta_{I_i}$ has the form 
@@ -2477,7 +2477,7 @@ where $D$ is the $2\times 2$ matrix indexed by the propagators $p$ and $q$ and t
 
 All cases have now been covered and so $\Delta_{I_i}$ has only irreducible factors of degree $2$ or less.
 
-\item Suppose propagators $p$ and $q$ are supported on a common edge  $a$, with $I_i(p)=a$ and $I_i(q)=a+1$.  Let $x_{p,a},x_{p,a+1},x_{q,a},x_{q,a+1}$ be the associated variables in $C(W)$. For any fixed bijection $\sigma$ from $\cP\setminus\{p,q\}$ to $I_i \setminus\{a,a+1\}$ for which each propagator is supported on its image under the bijection, we can extend $\sigma$ to a bijection from propagators to $I_i$ in two ways: either $p\mapsto a$ and $q\mapsto a+1$ or $p\mapsto a+1$ and $q\mapsto a$.  The sum of the contributions of all these bijections to $\Delta_{I_i}$ is therefore the product of $(x_{p,a}x_{q,a+1}-x_{p,a+1}x_{q,a})$  with the minor coming from $\cP\setminus\{p, q\}$ and $I_i \setminus \{a,a+1\}$.  Since there is no cancellation of terms in the expansion of $\Delta_{I_i}$, if any other terms appear then they will cause a factor which is not in the form described at the beginning of the proof of part (2).  Therefore no such terms exist and $(x_{p,a}x_{q,a+1}-x_{p,a+1}x_{q,a})$ is a factor of $\Delta_{I_i}$. 
+\item Suppose propagators $p$ and $q$ are supported on a common edge  $a$, with $I_i(p)=a$ and ${I_i(q)=a+1}$.  Let $x_{p,a},x_{p,a+1},x_{q,a},x_{q,a+1}$ be the associated variables in $C(W)$. For any fixed bijection $\sigma$ from $\cP\setminus\{p,q\}$ to $I_i \setminus\{a,a+1\}$ for which each propagator is supported on its image under the bijection, we can extend $\sigma$ to a bijection from propagators to $I_i$ in two ways: either $p\mapsto a$ and $q\mapsto a+1$ or $p\mapsto a+1$ and $q\mapsto a$.  The sum of the contributions of all these bijections to $\Delta_{I_i}$ is therefore the product of $(x_{p,a}x_{q,a+1}-x_{p,a+1}x_{q,a})$  with the minor coming from $\cP\setminus\{p, q\}$ and $I_i \setminus \{a,a+1\}$.  Since there is no cancellation of terms in the expansion of $\Delta_{I_i}$, if any other terms appear then they will cause a factor which is not in the form described at the beginning of the proof of part (2).  Therefore no such terms exist and $(x_{p,a}x_{q,a+1}-x_{p,a+1}x_{q,a})$ is a factor of $\Delta_{I_i}$. 
 
 Now let $f$ be a quadratic factor of $\Delta_{I_i}$.  By part (2) we know that $f$ is a $2\times 2$ minor coming from two propagators, call them $p$ and $q$, and two vertices, call them $a <_i b$.  It remains to show that $b = a+1$.  From this we can conclude that $p$ and $q$ each have one end on edge $a$. 
 
@@ -2576,7 +2576,7 @@ First we show that every factor of $\prod_{i=1}^n \Delta_{I_i}$ divides $R$.  Ta
 
 Next we need to show that $R$ is square-free.  Suppose $f^2|R$.  If $f$ is a linear factor, say from associating propagator $p$ to vertex $a$, then there must be two distinct points in the Grassmann necklace algorithm where $p$ changes from not being associated to vertex $a$ to being associated to vertex $a$.  This contradicts Lemma~\ref{vertex cyclic int lem}.  Now suppose $f$ is a quadratic factor, say from propagators $p$ and $q$ supported on edge $a$ with $p$ clockwise to $q$ on the edge.  In this case it is not possible for any $I_i$ to associate $p$ to $a+1$ and $q$ to $a$.  Furthermore, we know by part (4) that $p$ changes from not being associated to $a$ to being associated to $a$ if and only if $q$ changes from not being associated to $a+1$ to being associated to $a+1$.  Thus $f^2|R$ implies that twice in the Grassmann necklace $p$ must change from not being associated to vertex $a$ to being associated to vertex $a$. This is again a contradiction, and so $R$ is square-free.
 
-Taking everything together we have that $R|\prod_{i=1}^n \Delta_{I_i}$, $R$ contains all factors of $\prod_{i=1}^n \Delta_{I_i}$ and $R$ is square-free.  Therefore the ideal generated by $R$ is the radical of the ideal generated by $\prod_{i=1}^n \Delta_{I_i}$.
+Taking everything together we have that $R|\prod_{i=1}^n \Delta_{I_i}$ (from part (4)), $R$ contains all factors of $\prod_{i=1}^n \Delta_{I_i}$, and $R$ is square-free.  Therefore the ideal generated by $R$ is the radical of the ideal generated by $\prod_{i=1}^n \Delta_{I_i}$.
   \end{enumerate}
 \end{proof}
 
@@ -2595,7 +2595,7 @@ Finally, since $R$ is square-free, this implies that $R(W)$ is a scalar multiple
 Finally then we need to check the scalar.  By Definition~\ref{def R(W)} each linear factor appears with coefficient $1$ and each $2\times 2$ determinant factor appears with the same sign as the determinant of the corresponding minor in $C(W)$.  Therefore $R=R(W)$.
 \end{proof}
 
-Thus we have shown a deep relationship between the physically derived poles of the integrand $\Omega(W)$ and the geometry and combinatorics associated to the diagrams $W$. This is yet another piece of substantial evidence indicating that the positroid representation of Wilson loop diagrams is the correct geometric object to be considering when considering the Wilson loop amplitudes geometrically. 
+Thus we have shown a deep relationship between the physically derived poles of the integrand $\Omega(W)$ and the geometry and combinatorics associated to the diagrams $W$. This is yet another piece of substantial evidence indicating that the positroid representation of Wilson loop diagrams is the correct geometric object to use when considering the Wilson loop amplitudes geometrically. 
 
 %While the authors cannot yet offer a proof that the appropriate sum of the Wilson loop diagrams are, in fact, finite, as expected from \cite{Alday:2007hr, ParkeTaylorids}, we do hope that this relationship to the Grassmann necklace elements will provide a different avenue for answering that and related questions. \note{Can we rephrase this paragraph to be a bit more positive?}
 
