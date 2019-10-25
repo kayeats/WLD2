@@ -77,6 +77,7 @@
 
  % used for showing which propagator assigns to which vertex in the last section
 \pgfmathsetmacro{\arrowangle}{90}
+\pgfmathsetmacro{\diagramscale}{1.3}
 \tikzstyle{propassignment} = [->,shorten >=2pt,thick]
 
 
@@ -346,7 +347,7 @@
 
 \title{Combinatorics of the geometry of Wilson loop diagrams II: Grassmann necklaces, dimensions, and denominators}
 \author{Susama Agarwala\thanks{SA was partially supported by an Office of Naval Research grant.}, Si\^an Fryer, and Karen Yeats\thanks{KY is supported by an NSERC Discovery grant, by the Canada Research Chair program, and though some the time this work was developed also by a Humboldt Fellowship from the Alexander von Humboldt foundation.}}
-%\date{}
+\date{}
 
 
 
@@ -415,7 +416,7 @@ A Wilson loop diagram is depicted as a circle, with the vertices $V$ arranged al
 \begin{figure}[h]
 \[W\ =\ \begin{tikzpicture}[rotate=67.5,baseline=(current bounding box.east)]
 	\begin{scope}
-	\drawWLD{8}{1.5}
+	\drawWLD{8}{2}
 	\drawnumbers
 	\drawprop{1}{0}{4}{0}
 	\drawprop{2}{0}{4}{-1}
@@ -464,7 +465,7 @@ A Wilson loop diagram $W = (\cP, V)$ is called {\bf admissible} if:
 \begin{enumerate}
 \item $|V| \geq |\cP| + 4$.
 \item There does not exist a non-empty set of propagators $Q \subseteq \cP$ such that $|V(Q)| < |Q| + 3$.
-\item There does not exist a pair of crossing propagators: that is, there does not exist ${\{(i,j),(k,l)\} \subseteq \cP}$ such that $i < k < j < l$.
+\item There are no crossing propagators: that is, there does not exist ${\{(i,j),(k,l)\} \subseteq \cP}$ such that $i < k < j < l$.
 \end{enumerate}
  \end{dfn}
 
@@ -566,8 +567,10 @@ By \cite[Theorem 6.5]{Postnikov}, the set of all Le diagrams that fit within a $
 
 The rows and columns of a Le diagram are labelled as follows: given a Le diagram fitting inside a $k\times (n-k)$ box, arrange the numbers $1,2, \dots, n$ along its southeast border, starting from the top-right corner. See Figure \ref{fig:row column numbering} for examples.
 
-\begin{figure}[h!]
-\[\begin{tikzpicture}[baseline=(current bounding box.east),scale=0.75]
+\begin{figure}
+\[\begin{tikzpicture}
+\node at (0,3.5) {}; % purely for spacing reasons
+\node at (0,-0.5) {}; % purely for spacing reasons
 \draw (1,0) grid (2,3);
 \draw (2,1) grid (4,3);
 \draw (4,2) grid (5,3);
@@ -581,9 +584,8 @@ The rows and columns of a Le diagram are labelled as follows: given a Le diagram
 \node at (2.15,0.5) {\footnotesize$6$};
 \node at (1.5,-0.15) {\footnotesize$7$};
 %\node at (0.5,-0.15) {\footnotesize$8$};
-\end{tikzpicture}
-\qquad \qquad
-\begin{tikzpicture}[baseline=(current bounding box.east),scale=0.75]
+
+\begin{scope}[shift = {(7,0)}]
 \draw (1,0) grid (2,3);
 \draw (2,1) grid (4,3);
 \draw (4,2) grid (5,3);
@@ -598,6 +600,7 @@ The rows and columns of a Le diagram are labelled as follows: given a Le diagram
 \node at (2.15,0.5) {\footnotesize$7$};
 \node at (1.5,-0.15) {\footnotesize$8$};
 %\node at (0.5,-0.15) {\footnotesize$9$};
+\end{scope}
 \end{tikzpicture}
 \]
 \caption{Row and column numbering for a Young diagram with $k = 3$, $n = 7$ (left) and $k = 3$, $n = 8$ (right). The top left box has coordinates $(1,7)$ in the left diagram, and $(2,8)$ in the right diagram.}
@@ -703,7 +706,7 @@ Note that we have $p\in \cP_{in}(p, <_i)$ and so $\cP_{in}(p, <_i) = \cP_{out}(p
 \begin{eg}
 Let $W$ be the Wilson loop diagram from Figure \ref{fig:ex of WLD}, reproduced here for convenience.  \[W\ =\ \begin{tikzpicture}[rotate=67.5,baseline=(current bounding box.east)]
 	\begin{scope}
-	\drawWLD{8}{1.5}
+	\drawWLD{8}{2}
 	\drawnumbers
 	\drawlabeledprop{1}{0}{4}{0}{\footnotesize \qquad \ $p$}
 	\drawprop{2}{0}{4}{-1}
@@ -712,7 +715,9 @@ Let $W$ be the Wilson loop diagram from Figure \ref{fig:ex of WLD}, reproduced h
 		\end{scope}
 	\end{tikzpicture}\]
 
-Let $p$ be the propagator $p = (1, 4)$. Then $\cP_{in}(p, <_4) = \{(1,4), (5, 8), (5, 7) \}$ and $\cP_{out}(p, <_4) = \{(2,4) \}$
+Let $p$ be the propagator $p = (1, 4)$. Then $(p,<_4)$ indicates that we are viewing $p$ as being directed from 4 to 1, and we have
+\begin{gather*}\cP_{in}(p, <_4) = \{(1,4), (5, 8), (5, 7) \};\\
+\cP_{out}(p, <_4) = \{(2,4) \}. \end{gather*}
 \end{eg}
 
 \begin{dfn}
@@ -724,6 +729,7 @@ In other words, $\ell(p)$ is the size of the smaller of the sets of vertices on 
 
 \begin{rmk}\label{rem:props of length 2 and 3} 
   The following observations about configurations of propagators of short length in a weakly admissibly Wilson loop diagram $W$ are easily verified:
+  \vspace{-0.5em}
  \begin{enumerate}
 \item If $p = (i,i+3)$ is a propagator of length 3, then the middle vertex $i+2$ supports at most one propagator.
 \item If every vertex in $W$ supports at least one propagator, then $W$ admits at least one propagator of length 2.  By the same reasoning, if $p=(i,j)$ is a propagator of $W$ and every vertex in the interval $[i,j]$ supports at least one propagator, then there is at least one propagator of length $2$ in $\mathcal{P}_{in}(p, <_i)$.
@@ -732,13 +738,13 @@ In other words, $\ell(p)$ is the size of the smaller of the sets of vertices on 
 
 
 
-\begin{figure}[h]
+\begin{figure}
 \[
-\begin{tikzpicture}[baseline=(current bounding box.north)]
+\begin{tikzpicture}[scale = 0.8,baseline=(current bounding box.north)]
   \begin{scope}
   \drawWLDfragment[7]{3}{0.4} 
   %\drawnumberspartial % use this to debug
-  \centerarc[linehighlight](0,0)(\zero + 1.43*\step:\zero+6.6*\step:\radius)
+  \centerarc[linehighlight](0,0)(\zero + 1.48*\step:\zero+6.64*\step:\radius)
   \newnode{1}{}
   \newnode{3.55}{}
   \newnode{4.45}{}
@@ -750,13 +756,11 @@ In other words, $\ell(p)$ is the size of the smaller of the sets of vertices on 
   \end{scope}
   \node[align=center] at (\zero + 4*\step:\radius*1.43) {\footnotesize \em $\leq 6$ vertices in the highlighted \\ \footnotesize \em region and no other propagators\\ \footnotesize \em in the highlighted region};
 \end{scope}
-\end{tikzpicture}
-\qquad \qquad \qquad
-\begin{tikzpicture}[baseline=(current bounding box.north)]
-  \begin{scope}
+
+  \begin{scope}[shift = {(9,0)}]
   \drawWLDfragment[7]{3}{0.4} 
   %\drawnumberspartial % use this to debug
-  \centerarc[linehighlight](0,0)(\zero + 3.67*\step:\zero+4.43*\step:\radius)
+  \centerarc[linehighlight](0,0)(\zero + 3.67*\step:\zero+4.47*\step:\radius)
   \newnode{1}{i}
   \newnode[below]{2}{i+1\ \ \ }
   \newnode[below]{3}{i+2}
@@ -780,6 +784,7 @@ The following lemma establishes certain configurations of propagators that must 
 
 \begin{lem}\label{lem sian}
   Let $W$ be a weakly admissible Wilson loop diagram with at least 5 vertices and in which each vertex supports at least one propagator.  Then at least one of the following two things occurs:
+  \vspace{-0.5em}
   \begin{enumerate}
     \item $W$ has a propagator of length $\leq 6$ with a propagator of length 2 on one side of it and nothing else on that side.\label{item big and 2}
     \item There exists a pair of propagators of length $2$ with the property that the first propagator is $(i, i+2)$, the second is $(j, j+2)$, no other propagator ends between vertices $i+2$ and $j+1$, and $j\in\{i+2, i+3, i+4\}$.\label{item pair of 2s}
@@ -800,25 +805,34 @@ We will inductively construct a sequence of propagators $p_r$ and $q_r$, with $\
 \item there is a propagator $q_r$ satisfying $\ell(q_r) \geq 4$, and $\{p_1, \ldots, p_r, q_1, \ldots, q_{r-1}\}$ are all on the same side of $q_r$.  
 \end{itemize}
 
-\begin{figure}
+We can then choose the orientation of $q_r$ so that the previous $p_i$ and $q_i$ are all on the outside of $q_r$, and restrict our attention to the subdiagram $(\cP_{in}(q_r),[n])$. By the finiteness of $W$ this must eventually terminate in one of the desired configurations. %a configuration of the form \eqref{eq:2 prop config}.
+
+
+Start by choosing a propagator $p_1 = (j_1,j_1+2)$ of length 2 in $W$ (which exists by Remark~\ref{rem:props of length 2 and 3}).  If it is part of one of the configurations we are looking for then we are done, 
+%a configuration \eqref{eq:2 prop config} we are done,
+so suppose otherwise. 
+
+From our existing assumptions, we know the following facts: $p_1$ is not in configuration \ref{item pair of 2s}, there are no propagators of length $3$, and every vertex supports at least one propagator.  Therefore there must be a propagator of length $\geq 4$ with one end on edge $j_1$ or on edge $j_1-1$ or on edge $j_1-2$.  Let $q_1 = (i_1, k_1)$ be this propagator, oriented such that $p_1 \in \cP_{out}(q_1,<_{i_1})$; see Figure~\ref{fig base case lem sian}. This completes the base case.
+
+\begin{figure}[h]
 \[
 \begin{tikzpicture}[baseline=(current bounding box.east),rotate=-20]
-	\begin{scope}
-	\drawWLDfragment[10]{3}{0.4} 
-	%\drawnumberspartial % use this to debug
-	\centerarc[linehighlight](0,0)(\zero + 1.5*\step:\zero + 2.35*\step:\radius)
-	\newnode{1}{}
-	\newnode{3}{}
-	\newnode{4}{}
-	\newnode{5}{}
-	\newnode[below]{9}{i_1}
-	\newnode{10}{}
-	\newprop[midway,above]{1.4}{9.5}{\footnotesize $q_1$}
-	\begin{scope}
-		\clipcenterarc(0,0)(\startpoint:\endpoint:\radius)
-		\newpropbend{2.3}{4.7}{60}
-		\node at (\zero + 3.5*\step:\radius*0.78) {\footnotesize $p_1$};
-	\end{scope}
+  \begin{scope}
+  \drawWLDfragment[10]{3}{0.4} 
+  %\drawnumberspartial % use this to debug
+  \centerarc[linehighlight](0,0)(\zero + 1.5*\step:\zero + 2.35*\step:\radius)
+  \newnode{1}{}
+  \newnode{3}{}
+  \newnode{4}{}
+  \newnode{5}{}
+  \newnode[below]{9}{i_1}
+  \newnode{10}{}
+  \newprop[midway,above]{1.4}{9.5}{\footnotesize $q_1$}
+  \begin{scope}
+    \clipcenterarc(0,0)(\startpoint:\endpoint:\radius)
+    \newpropbend{2.3}{4.7}{60}
+    \node at (\zero + 3.5*\step:\radius*0.78) {\footnotesize $p_1$};
+  \end{scope}
 \node[align = center] at (\zero +1.7*\step:\radius*1.4) {\footnotesize \em 0, 1, or 2 \\ \footnotesize \em vertices in \\ \footnotesize \em this region};
 \node[gray] at (\zero + 10*\step:\radius*0.4) {\footnotesize$\cP_{in}(q_1,<_{i_1})$};
 \node[gray] at (\zero + 6.5*\step:\radius*0.8) {\footnotesize $\cP_{out}(q_1,<_{i_1})$};
@@ -827,13 +841,6 @@ We will inductively construct a sequence of propagators $p_r$ and $q_r$, with $\
 \]
 \caption{The base case of the induction in Lemma~\ref{lem sian}.}\label{fig base case lem sian} \end{figure}
 
-We can then choose the orientation of $q_r$ so that the previous $p_i$ and $q_i$ are all on the outside of $q_r$, and restrict our attention to the subdiagram $(\cP_{in}(q_r),[n])$. By the finiteness of $W$ this must eventually terminate in one of the desired configurations. %a configuration of the form \eqref{eq:2 prop config}.
-
-Start by choosing a propagator $p_1 = (j_1,j_1+2)$ of length 2 in $W$ (which exists by Remark~\ref{rem:props of length 2 and 3}).  If it is part of one of the configurations we are looking for then we are done, 
-%a configuration \eqref{eq:2 prop config} we are done,
-so suppose otherwise. 
-
-From our existing assumptions, we know the following facts: $p_1$ is not in configuration \ref{item pair of 2s}, there are no propagators of length $3$, and every vertex supports at least one propagator.  Therefore there must be a propagator of length $\geq 4$ with one end on edge $j_1$ or on edge $j_1-1$ or on edge $j_1-2$.  Let $q_1 = (i_1, k_1)$ be this propagator, oriented such that $p_1 \in \cP_{out}(q_1,<_{i_1})$; see Figure~\ref{fig base case lem sian}. This completes the base case.
 
 Now suppose $q_{r} = (i_r, k_r)$ exists by the induction hypothesis and is oriented $(q_r, <_{i_r})$ so that the previous $p_i$ and $q_i$ are on the outside. For the rest of this proof, we assume this orientation and drop the $<_{i_r}$ from the notation.
 
@@ -990,12 +997,13 @@ With this setup, if we can find a vertex $\ell$ occurring after both $i$ and $m$
 
 Furthermore, if the propagators of $W'$ and $V'$ ending in the interval $[j-1, \ell+1]$ are also identically labelled, then $I_i^W$ and $I_m^V$ are the same as functions when restricted to those propagators.
 
-\begin{figure}
+\begin{figure}[h]
 \[
-\begin{tikzpicture}[baseline=(current bounding box.east)]
+\begin{tikzpicture}[scale = 0.9,baseline=(current bounding box.east)]
   \begin{scope}
-  W' = \drawWLDfragment[12]{3}{0.4} 
+  \drawWLDfragment[12]{3}{0.4} 
   %\drawnumberspartial % use this to debug
+  \node at (0:0) {}; % purely for spacing purposes
   \newnode[left]{1}{i}
   \newnode[below]{4}{j}
   \newnode{5}{}
@@ -1005,6 +1013,7 @@ Furthermore, if the propagators of $W'$ and $V'$ ending in the interval $[j-1, \
   \newnode{9}{}
   \newnode{11}{}
   \newnode[right]{12}{l+1}
+  \node at (\zero + 3*\step:\radius*0.65) {\Large $W'$};
   \begin{scope}
     \clipcenterarc(0,0)(\startpoint-10:\endpoint+10:\radius)
     \newpropbend{5.3}{7.6}{80}
@@ -1015,10 +1024,8 @@ Furthermore, if the propagators of $W'$ and $V'$ ending in the interval $[j-1, \
     \node at (\zero + 12.2*\step:\radius*0.7) {\footnotesize $q$};
   \end{scope}
 \end{scope}
-\end{tikzpicture}
-\qquad \qquad
-\begin{tikzpicture}[baseline=(current bounding box.east)]
-  V' = \begin{scope}
+
+  \begin{scope}[shift = {(9,0)}]
   \drawWLDfragment[12]{3}{0.4} 
   %\drawnumberspartial % use this to debug
   \newnode[left]{2}{m}
@@ -1030,6 +1037,7 @@ Furthermore, if the propagators of $W'$ and $V'$ ending in the interval $[j-1, \
   \newnode{9}{}
   \newnode{11}{}
   \newnode[right]{12}{l+1}
+  \node at (\zero + 4*\step:\radius*0.5) {\Large $V'$};
   \begin{scope}
     \clipcenterarc(0,0)(\startpoint-10:\endpoint+10:\radius)
     \newpropbend{5.3}{7.6}{80}
@@ -1049,67 +1057,13 @@ Furthermore, if the propagators of $W'$ and $V'$ ending in the interval $[j-1, \
 
 With that in mind, we are ready to begin proving properties of the algorithm. We first show that the algorithm for $I_i$ can never reach the final vertex in a propagator's support (in the $<_i$ order) without having already assigned that propagator; in particular, this guarantees that the construction of $I_i$ always terminates in fewer than $n$ steps.
 
+
 \begin{lem}\label{lem no fourth vertex}
 Let $W$ be an admissible Wilson loop diagram containing at least one propagator. For any $i \in [n]$ and for any $p \in \cP$, $I_i(p)$ is not maximal (with respect to $<_i$) amongst the vertices that support $p$.
 \end{lem} 
 \begin{proof}
 Suppose for contradiction that we have $i \in [n]$ and $p \in \cP$ such that $I_i(p)$ is $<_i$-maximal in $V(p)$. There are two possibilities, which are illustrated in Figure~\ref{fig:no fourth vertex}: either $p = (i-1,b)$ for some $b$ (so $i$ and $I_i(p) = i-1$ are the two ends of a single edge), or $p = (a,b)$ with $i\leq_i a <_i b$ and $I_i(p) = b+1$. 
 
-\begin{figure}
-
-\[
-\begin{tikzpicture}[baseline=(current bounding box.east),rotate = -18]
-	\begin{scope}
-	\drawWLDfragment[20]{2}{1}
-	%\drawnumbers % use this to debug
-	\newnode[left]{4}{I_i(p) = i-1}
-	\newnode[left]{5}{i}
-	\newnode[left]{7}{c}
-	\newnode[left]{8}{}
-	\newnode[right]{15}{b}
-	\newnode[right]{16}{b+1}
-	\newprop[midway,above]{4.7}{15.7}{\scriptsize $p$}
-	\newprop[midway,below]{7.5}{15.3}{\scriptsize $q$}
-      \draw[smallpropagator,light-gray] (\zero +\step *4.3:\radius*1) -- (90:\radius*0.5); 
-	\node at (270+18:\radius*1.5) {\em Case 1};
-	% \begin{scope}
-	% \clip (\zero + 5*\step:\radius*1.1) rectangle (90:\radius*0.8);
-	% \draw[smallpropagator,color=gray] (\zero+4.5*\step:\radius) -- (\zero + 19*\step:\radius);
-	% \end{scope}
-		\end{scope}
-	\end{tikzpicture}
-\qquad \qquad 
-	\begin{tikzpicture}[baseline=(current bounding box.east),rotate = 36]
-	\begin{scope}
-	\drawWLDfragment[20]{2}{1}
-	%\drawnumbers % use this to debug
-	\newnode[left]{4}{a}
-	\newnode[left]{5}{}
-	\newnode[left]{7}{}
-	\newnode[left]{8}{}
-	\newnode[right]{15}{b}
-	\newnode[right]{16}{b+1 = I_i(p)}
-	\newnode[right]{11}{d}
-	\newnode[below]{12}{}
-	\newnode[left]{2}{i}
-	\newprop[midway,above]{4.5}{15.7}{\scriptsize $p$}
-		\node at (270-36:\radius*1.5) {\em Case 2};
-	\begin{scope}
-	\clip (0,0) circle (\radius);
-	%q
-	\draw[smallpropagator] (\zero+11.5*\step:\radius*1.2) to [bend left = 45] (\zero + 15.5*\step:\radius*1.2); 
-	\node at (\zero + 13.5*\step:\radius*0.55) {\scriptsize $q$};
-	%r
-	\draw[smallpropagator] (\zero+7.5*\step:\radius*1.2) to [bend left = 45] (\zero + 11.4*\step:\radius*1.2);
-	\node at (\zero + 9.5*\step:\radius*0.55) {\scriptsize $r$};
-
-	\end{scope}
-		\end{scope}
-	\end{tikzpicture}
-\] 
-\caption{The two types of configuration that would (in theory) allow the propagator $p$ to contribute its $<_i$-maximal support vertex to $I_i$.}
-\label{fig:no fourth vertex}
-\end{figure}
 In Case 1, observe that we must have another propagator $q = (c,b)$ with $c<_i b$ and $I_i(q) = b+1$, because otherwise $I_i$ would assign $p$ to $b+1$. Now $q$ also contributes the $<_i$-maximal vertex in its support to $I_i$ and is an instance of Case 2. Therefore it suffices to show that no admissible Wilson loop diagram admits the configuration illustrated in Case 2 of Figure~\ref{fig:no fourth vertex}. 
 
 So let $p = (a,b)$ with $a<_ib$ and $I_i(p) = b+1$, and choose $p$ such that $\big|[a+1,b]\big|$ is minimal amongst propagators of $W$ which contribute their last vertex and are in Case 2.
@@ -1118,6 +1072,62 @@ Since $I_i(p) \neq b$, there must exist a propagator $q$ inside of $(p,<_i)$ wit
 
 In order for $q$ to remain unassigned until vertex $b$, there must be another propagator $r$ with an end on edge $d$ and $I_i(r) = d+1$; the only way this can occur is if $r$ is outside of $(q,<_i)$ but inside $(p,<_i)$. But now $r$ contributes its fourth vertex to $I_i$, again contradicting the minimality of $p$.
 \end{proof}
+
+\begin{figure}[h]
+\[
+\begin{tikzpicture}[baseline=(current bounding box.east),rotate = -18]
+  \begin{scope}
+  \drawWLDfragment[20]{2.2}{1}
+  %\drawnumbers % use this to debug
+  \node at (108:\radius*1.2) {}; % spacing
+  \newnode[left]{4}{I_i(p) = i-1}
+  \newnode[left]{5}{i}
+  \newnode[left]{7}{c}
+  \newnode[left]{8}{}
+  \newnode[right]{15}{b}
+  \newnode[right]{16}{b+1}
+  \newprop[midway,above]{4.7}{15.7}{\scriptsize $p$}
+  \newprop[midway,below]{7.5}{15.3}{\scriptsize $q$}
+      %\draw[smallpropagator,light-gray] (\zero +\step *4.3:\radius*1) -- (90:\radius*0.5); 
+  \node at (270+18:\radius*1.5) {\em Case 1};
+  % \begin{scope}
+  % \clip (\zero + 5*\step:\radius*1.1) rectangle (90:\radius*0.8);
+  % \draw[smallpropagator,color=gray] (\zero+4.5*\step:\radius) -- (\zero + 19*\step:\radius);
+  % \end{scope}
+    \end{scope}
+  \end{tikzpicture}
+\qquad \qquad 
+  \begin{tikzpicture}[baseline=(current bounding box.east),rotate = 36]
+  \begin{scope}
+  \drawWLDfragment[20]{2.2}{1}
+  %\drawnumbers % use this to debug
+  \newnode[left]{4}{a}
+  \newnode[left]{5}{}
+  \newnode[left]{7}{}
+  \newnode[left]{8}{}
+  \newnode[right]{15}{b}
+  \newnode[right]{16}{b+1 = I_i(p)}
+  \newnode[right]{11}{d}
+  \newnode[below]{12}{}
+  \newnode[left]{2}{i}
+  \newprop[midway,above]{4.5}{15.7}{\scriptsize $p$}
+    \node at (270-36:\radius*1.5) {\em Case 2};
+  \begin{scope}
+  \clip (0,0) circle (\radius);
+  %q
+  \draw[smallpropagator] (\zero+11.5*\step:\radius*1.2) to [bend left = 45] (\zero + 15.5*\step:\radius*1.2); 
+  \node at (\zero + 13.5*\step:\radius*0.55) {\scriptsize $q$};
+  %r
+  \draw[smallpropagator] (\zero+7.5*\step:\radius*1.2) to [bend left = 45] (\zero + 11.4*\step:\radius*1.2);
+  \node at (\zero + 9.5*\step:\radius*0.55) {\scriptsize $r$};
+
+  \end{scope}
+    \end{scope}
+  \end{tikzpicture}
+\] 
+\caption{The two types of configuration that would (in theory) allow the propagator $p$ to contribute its $<_i$-maximal support vertex to $I_i$.}
+\label{fig:no fourth vertex}
+\end{figure}
 
 \begin{cor}\label{GN alg well defined}
 If $W$ is an admissible Wilson loop diagram with $k$ propagators and $n$ vertices, then Algorithm~\ref{alg:put GN on WLD} assigns exactly $k$ distinct vertices to each $I_i$ in at most $n$ steps.
@@ -1139,8 +1149,9 @@ i.e. the set of starting vertices $m$ such that $I_m^{W}$ assigns $p$ to $i$.
 
 The following lemma establishes that these sets behave in a simple and predictable manner, a fact which we will repeatedly use in subsequent proofs.
 
-
-
+% there's some big multiline displayed equations in this proof, so we temporarily enable \allowdisplaybreaks
+\begingroup
+\allowdisplaybreaks
 
 \begin{lem} \label{vertex cyclic int lem}
   
@@ -1157,9 +1168,8 @@ Now we proceed to the proof of Lemma~\ref{vertex cyclic int lem}.
 We will prove the result by induction on the number of propagators.  If $W$ has one propagator then the result is immediate.  Now suppose $W$ has more than one propagator.  Since non-supporting vertices have no effect on Algorithm~\ref{alg:put GN on WLD}, it suffices to prove the result for $W$  (possibly weakly admissible) with no non-supporting vertices.  Then by Lemma~\ref{lem sian}, $W$ has at least one of the four situations illustrated in Figure~\ref{fig 3 cases}.
 
 \begin{figure}
-\begin{tabular}{lll}
+\[\begin{tikzpicture}[baseline=(current bounding box.east)]
 % case 1
-\begin{tikzpicture}[baseline=(current bounding box.east)]
 	\begin{scope}
 	\drawWLDfragment[8]{3}{0.3} % draws the arc and sets up the parameters
 	%\drawnumbers % use this to debug
@@ -1190,17 +1200,9 @@ We will prove the result by induction on the number of propagators.  If $W$ has 
 % case label
 \node at (270:\radius*0.2) {\em Case 1};
 \end{scope}
-\end{tikzpicture}
-%
-%
-%
-& \qquad \qquad &
-%
-%
-%
+
 % case 2
-\begin{tikzpicture}[baseline=(current bounding box.east)]
-\begin{scope}
+\begin{scope}[shift = {(8.5,0)}]
 	\drawWLDfragment[8]{3}{0.3} % draw arc
 	%\drawnumbers % use this to debug
 	% highlighted regions
@@ -1231,18 +1233,9 @@ We will prove the result by induction on the number of propagators.  If $W$ has 
 	% case label
 	\node at (270:\radius*0.2) {\em Case 2};
 \end{scope}
-\end{tikzpicture}
-%
-%
-%
-\\
-\ & \ & \ \\
-%
-%
-%
+
 % case 3
-\begin{tikzpicture}[baseline=(current bounding box.east)]
-\begin{scope}
+\begin{scope}[shift = {(0,-5)}]
 	\drawWLDfragment[8]{3}{0.3} % draw arc
 	%\drawnumbers % use this to debug
 	% highlight region
@@ -1273,17 +1266,9 @@ We will prove the result by induction on the number of propagators.  If $W$ has 
 	% case label
 	\node at (270:\radius*0.2) {\em Case 3};
 \end{scope}
-\end{tikzpicture}
-%
-%
-%
-& \qquad \qquad & \qquad
-%
-%
-%
+
 % case 4
-\begin{tikzpicture}[baseline=(current bounding box.east)]
-	\begin{scope}
+\begin{scope}[shift = {(8.5,-5)}]
 	\drawWLDfragment[8]{3}{0.3} % draw arc
 	%\drawnumbers % use this to debug
 	%scope to draw props and their labels
@@ -1312,9 +1297,8 @@ We will prove the result by induction on the number of propagators.  If $W$ has 
 	% case label
 	\node at (270:\radius*0.2) {\em Case 4};
 \end{scope}
-\end{tikzpicture}
-\end{tabular}
-    \caption{Four cases for admissible Wilson loop diagrams with no non-supporting vertices. The gray half-propagators illustrate where propagators may occur, but are not required to exist.}\label{fig 3 cases}
+\end{tikzpicture}\]
+\caption{Four cases for admissible Wilson loop diagrams with no non-supporting vertices. The gray half-propagators illustrate where propagators may occur, but are not required to exist.}\label{fig 3 cases}
   \end{figure}
 
 
@@ -1335,7 +1319,7 @@ and all intervals are non-empty.
 We now consider what happens as we move from $V$ to each of the three remaining cases for $W$. We need to consider both $J^{W}_p$ and $J^{W}_r$ for $r \neq p$, since the addition of $p$ can have a knock-on effect on later steps in the algorithm.
 
 
-\begin{figure}[h]
+\begin{figure}
 \[
 \begin{tikzpicture}[baseline=(current bounding box.east)]
 	\begin{scope}
@@ -1455,7 +1439,7 @@ We can now describe the intervals $J^{W}_r(*)$ for Cases 1 and 2 of Figure~\ref{
     which are again as required.
     \end{itemize}
 
-\textbf{Case 3}: In this case there are no non-supporting vertices $l, l+1, \ldots$ inside $q$.  Again write $p=(m, m+2)$ where $m\in \{j, j+1, j+2\}$. We proceed as in the previous cases, by computing $I^{W}_w$ for vertices $w$ in roughly increasing order of difficulty.
+\textbf{Case 3}: In this case there are no non-supporting vertices $l, l+1, \ldots$ inside $q$.  Again write ${p=(m, m+2)}$ where $m\in \{j, j+1, j+2\}$. We proceed as in the previous cases, by computing $I^{W}_w$ for vertices $w$ in roughly increasing order of difficulty.
 
 For $w \in [n]\backslash\{j+1,m,m+1,m+2,m+3\}$: if $w\in J_q^{V}(i)$ or $w\in J_q^{V}(i+1)$ then
     \[
@@ -1473,7 +1457,6 @@ For $w \in [n]\backslash\{j+1,m,m+1,m+2,m+3\}$: if $w\in J_q^{V}(i)$ or $w\in J_
     \]
 
 Finally, for $j+1$ and the vertices in the support of $p$, we have
-
 \begin{align*}
   I_{j+1}^{W}(r) &= \begin{cases}
     j+1 & \text{if } r=q\\
@@ -1513,7 +1496,7 @@ Recall that $e$ was defined in equation \eqref{deeqs}.
 \end{itemize}
 The result now follows by induction.
 \end{proof}
-
+\endgroup % this ends the \allowdisplaybreaks from the start of this proof.
 
 
 We are now ready to prove that Algorithm~\ref{alg:put GN on WLD} does in fact give the Grassmann necklace of the positroid associated to $W$. We do this in two parts: Theorem~\ref{res:alg gives GN} verifies that the sets $(I_1,\dots,I_n)$ obtained from the algorithm do form a Grassmann necklace, and Theorem~\ref{res alg gives correct GN} proves that this Grassmann necklace defines the positroid $M(W)$.
@@ -1546,12 +1529,6 @@ The previous two paragraphs also imply that $m \geq_i b+1$, since $I_{i+1}^W \ca
 Now let $W' = (\cP_{out}(p,<_i), [n])$, i.e. the diagram obtained from $W$ by removing both $p$ and all propagators inside of $p$. $W'$ has strictly fewer propagators than $W$ did.
 
 Observe that $I_i^W$ and $I_b^{W'}$ are locally the same from vertex $b$ onwards, since by the above observations the propagators removed from $W$ to create $W'$ are exactly those that come first in the ordering defined by $I_i^W$. Similarly, $I_{i+1}^W$ and $I_{b+1}^{W'}$ are locally the same from $b+1$ onwards. By Remark~\ref{rmk algorithm locally same}, this yields the equalities
-
-%\st{By the above observations, if we commence Algorithm {\ref{alg:put GN on WLD}} in $W'$ from vertex $b$, then we are in the same situation with respect to unassigned propagators as if we began at $i$ in $W$ and proceeded to $b$ following the algorithm (recall that $I^W_i(p) =i$).} 
-
-%{\color{violet} Note that the propagators in $\cP_{out}(p,<_i)$ come first in the ordering imposed by $I_i^W$ (Definition \ref{proporderingdfn}). Therefore, the ordering and contributions of propagators defined by $I_b^{W'}$ are the same as that of $I_i^W$ after the removal of these initial propagators.} 
-
-%\st{The propagators contributing to $I_{i}^W$ before the vertex $b$ are exactly the ones removed in the construction of $W'$.}  Similarly, starting at $i+1$ in $W$ and moving to $b+1$ leaves us in the same situation with respect to unassigned propagators as beginning at $b+1$ in $W'$ would.  This gives the equations
 \begin{align*}
   I_i^{W} \cap [b,i-1] & = I_b^{W'}, \\
   I_{i+1}^{W} \cap [b+1,i-1] & = I_{b+1}^{W'}.
@@ -1613,7 +1590,9 @@ If not, then there must be some propagator $p_s \in Q_{l-2}$ such that $p_r$ and
   \begin{scope}
   \drawWLDfragment[10]{4}{0.4} 
   %\drawnumberspartial % use this to debug
-  \centerarc[linehighlight](0,0)(\zero + 2.6*\step:\zero + 3.9*\step:\radius)
+  \node at (270:\radius*0.2) {}; %spacing
+  \node at (270:\radius*1.2) {}; %spacing
+  \centerarc[linehighlight](0,0)(\zero + 2.7*\step:\zero + 3.9*\step:\radius)
   \newnode{1}{i}
   \newnode[right]{10}{j_m}
   \begin{scope}
@@ -1621,7 +1600,7 @@ If not, then there must be some propagator $p_s \in Q_{l-2}$ such that $p_r$ and
 \newpropbend{3}{8.5}{40}
 \newpropbend{3.3}{7}{40}
 \end{scope}
-\node at (\zero+5*\step:\radius*0.50) {\scriptsize $p_r$};
+\node at (\zero+5*\step:\radius*0.52) {\scriptsize $p_r$};
 \node at (\zero + 6*\step:\radius*0.75) {\scriptsize $q$};
 \node at (\zero + 3.2*\step:\radius*1.1) {\scriptsize $a_r$};
 \end{scope}
@@ -1634,32 +1613,32 @@ If not, then there must be some propagator $p_s \in Q_{l-2}$ such that $p_r$ and
 \[
 \begin{tikzpicture}[baseline=(current bounding box.east)]
   \begin{scope}
-  \drawWLDfragment[10]{4}{0.3} 
+  \drawWLDfragment[10]{4}{0.35} 
   %\drawnumberspartial % use this to debug
-  \centerarc[linehighlight](0,0)(\zero + 4.5*\step:\zero + 5.3*\step:\radius)
+  \node at (270:\radius*0.3) {}; %spacing
+  \node at (270:\radius*1.2) {}; % spacing
+  \centerarc[linehighlight](0,0)(\zero + 4.4*\step:\zero + 5.2*\step:\radius)
   \newnode{1}{i}
   \newnode[below]{6}{a_r}
   \newnode[right]{10}{j_m}
   \begin{scope}
 \clipcenterarc(0,0)(\startpoint:\endpoint:\radius)
-\clip (\zero + 5.5*\step:\radius*1.5) circle (\radius*0.85);
+\clip (\zero + 5.5*\step:\radius*1.5) circle (\radius);
 \newpropbend{5}{18}{30} %p_s
 \newpropbend{5.5}{15}{30} %p_r
-\newpropbend{6}{12}{30} %q
+\newpropbend{6.3}{12}{30} %q
 \end{scope}
-\node at (\zero+5.7*\step:\radius*0.72) {\scriptsize $p_r$};
-\node at (\zero+4.15*\step:\radius*0.71) {\scriptsize $p_s$};
-\node at (\zero + 6.8*\step:\radius*0.83) {\scriptsize $q$};
-\node at (\zero + 5*\step:\radius*1.07) {\scriptsize $a_s$};
+\node at (\zero+5.4*\step:\radius*0.65) {\scriptsize $p_r$};
+\node at (\zero+3.7*\step:\radius*0.71) {\scriptsize $p_s$};
+\node at (\zero + 7.3*\step:\radius*0.75) {\scriptsize $q$};
+\node at (\zero + 4.8*\step:\radius*1.07) {\scriptsize $a_s$};
 \end{scope}
-\end{tikzpicture}
-\qquad \qquad
-\begin{tikzpicture}[baseline=(current bounding box.east)]
-  \begin{scope}
-  \drawWLDfragment[10]{4}{0.3} 
+% start second diagram
+  \begin{scope}[shift = {(8.5,0)}]
+  \drawWLDfragment[10]{4}{0.35} 
   %\drawnumberspartial % use this to debug
-  \centerarc[linehighlight](0,0)(\zero + 2.5*\step:\zero + 3.7*\step:\radius)
-  \centerarc[linehighlight](0,0)(\zero + 6.3*\step:\zero + 7.5*\step:\radius)
+  \centerarc[linehighlight](0,0)(\zero + 2.3*\step:\zero + 3.7*\step:\radius)
+  \centerarc[linehighlight](0,0)(\zero + 6.1*\step:\zero + 7.5*\step:\radius)
   \newnode{1}{i}
   \newnode[right]{10}{j_m}
   \begin{scope}
@@ -1669,9 +1648,9 @@ If not, then there must be some propagator $p_s \in Q_{l-2}$ such that $p_r$ and
 \newpropbend{3}{6.8}{45} %p_r
 \newpropbend{7}{15}{30} %q
 \end{scope}
-\node at (\zero+5.3*\step:\radius*0.78) {\scriptsize $p_r$};
-\node at (\zero+2.3*\step:\radius*0.8) {\scriptsize $p_s$};
-\node at (\zero + 7.4*\step:\radius*0.8) {\scriptsize $q$};
+\node at (\zero+5.3*\step:\radius*0.75) {\scriptsize $p_r$};
+\node at (\zero+2.1*\step:\radius*0.8) {\scriptsize $p_s$};
+\node at (\zero + 7.7*\step:\radius*0.8) {\scriptsize $q$};
 \node at (\zero + 3*\step:\radius*1.07) {\scriptsize $a_s$};
 \node at (\zero + 7*\step:\radius*1.07) {\scriptsize $a_r$};
 \end{scope}
@@ -1688,7 +1667,7 @@ Since there are finitely many steps this process can take before reaching $Q_0$,
 We have now shown that Algorithm~\ref{alg:put GN on WLD} associates the correct Grassmann necklace to a Wilson loop diagram. Therefore, we refer to Algorithm~\ref{alg:put GN on WLD} as the Grassmann necklace algorithm. We close this section with a simple observation about the Grassmann necklaces of positroids associated to Wilson loop diagrams.
 
 
-In an arbitrary Grassmann necklace, it is possible for an index $i$ to appear in no terms of the Grassmann necklace (a {\em loop}) or in all terms of the necklace (a {\em coloop}). Using Theorems~\ref{res:alg gives GN} and \ref{res alg gives correct GN}, a characterization of the loops and coloops of the Grassmann necklace associated to a Wilson loop diagram follows easily.
+In an arbitrary Grassmann necklace, it is possible for an index $i$ to appear in no terms of the Grassmann necklace (a {\bf loop}) or in all terms of the necklace (a {\bf coloop}). Using Theorems~\ref{res:alg gives GN} and \ref{res alg gives correct GN}, a characterization of the loops and coloops of the Grassmann necklace associated to a Wilson loop diagram follows easily.
 
 
 \begin{cor}\label{no coloops}
@@ -1720,8 +1699,11 @@ Our approach is much more explicit. By combining Algorithms~\ref{alg:put GN on W
 
 %More than just a dimensionality result, these lemmas are a first step towards understanding how the adding an extra propagator changes the associated positroid cell. 
 
-In order to prove our main theorem of this section, we first require several lemmas. We begin by relating non-supporting vertices to columns of zeros in the Le diagram (Lemma \ref{lem uncovered}) and verifying that performing dihedral transformations on a Wilson loop diagram does not change the dimension of the associated Le diagram (Lemma \ref{lem dihedral}). This allows us to restrict our attention to a particular subset of admissible Wilson loop diagrams (Lemma~\ref{lem good p}) whose Grassmann necklaces can be more easily described. 
+In order to prove our main theorem of this section, we first require several lemmas. 
 
+We begin by relating non-supporting vertices to columns of zeros in the Le diagram (Lemma \ref{lem uncovered}) and verifying that performing dihedral transformations on a Wilson loop diagram does not change the dimension of the associated Le diagram (Lemma \ref{lem dihedral}). This allows us to restrict our attention to a particular subset of admissible Wilson loop diagrams (Lemma~\ref{lem good p}) whose Grassmann necklaces can be more easily described. 
+
+\vspace{0.5em} % this and following two vspaces purely for formatting / pagebreak reasons
 \begin{lem}\label{lem uncovered}
 Let $W$ be an admissible Wilson loop diagram with $k$ propagators, and with a vertex $i$ that supports no propagators.  Let $V$ be $W$ with vertex $i$ removed.  Then the Le diagram of $W$ is obtained from the Le diagram of $V$ by inserting an extra column containing all $0$s in position $i$ (i.e. such that the new column has the label $i$).
 \end{lem} 
@@ -1737,9 +1719,9 @@ Let $W$ be an admissible Wilson loop diagram with $k$ propagators, and with a ve
   \]
 
 
-By Corollary~\ref{no coloops} we know that $i \not\in I_1^W$, and so $i$ must label a horizontal edge on the boundary of the Le diagram of $W$, i.e. it must be a column label. The shapes of the Le diagram of $V$ and $W$ are the same except for the insertion of this column since $I_1$ is the same for $V$ and $W$ except for the incrementation of the indices $\geq i$ in the transition from the necklace for $V$ to the necklace for $W$. 
+By Corollary~\ref{no coloops} we know that $i \not\in I_1^W$, and so $i$ must label a horizontal edge on the boundary of the Le diagram of $W$, i.e. it must be a column label. The shapes of the Le diagram of $V$ and $W$ are the same except for the insertion of this column, since $I_1$ is the same for $V$ and $W$ except for the incrementation of the indices $\geq i$ in the transition from the necklace for $V$ to the necklace for $W$. 
 \end{proof}
-
+\vspace{0.5em}
 
 \begin{lem}\label{lem dihedral}
 If two Wilson loop diagrams differ by a dihedral transformation then their Le diagrams have same number of plusses.
@@ -1747,8 +1729,12 @@ If two Wilson loop diagrams differ by a dihedral transformation then their Le di
 \begin{proof}
 Recall that the number of plusses in a Le diagram is given by the dimension of the corresponding positroid. By \cite[Proposition 17.10]{Postnikov}, the dimension of a positroid $M$ is $k(n-k) - A(\pi_M)$, where $A(\pi_M)$ denotes the number of alignments of the decorated permutation $\pi_M$ of $M$. The alignments of a decorated permutation are defined in terms of its chord diagram representation, where an alignment is any pair of non-crossing chords that share the same orientation. See \cite[Figure 17.1]{Postnikov} and preceding discussion for definitions and more details.
 
-With the help of Algorithm \ref{alg:put GN on WLD}, it is now easy to trace the effect of a dihedral transformation on a Wilson loop diagram through its Grassmann necklace to its decorated permutation to its chord diagram, and see that dihedral transformations of a Wilson loop diagram $W$ correspond to dihedral transformations of the chord diagram representation of $\pi_{M(W)}$. Since the number of alignments in a chord diagram is clearly preserved under dihedral transformations, the result follows.
+With the help of Algorithm \ref{alg:put GN on WLD}, it is now easy to trace the effect of a dihedral transformation on a Wilson loop diagram through its Grassmann necklace to its decorated permutation to its chord diagram, and see that dihedral transformations of a Wilson loop diagram $W$ correspond to dihedral transformations of the chord diagram representation of $\pi_{M(W)}$. 
+
+Since the number of alignments in a chord diagram is clearly preserved under dihedral transformations, the result follows.
 \end{proof}
+
+\vspace{0.5em}
 
 
 \begin{lem}\label{lem good p}
@@ -1819,7 +1805,7 @@ With the above restrictions in place, the next few lemmas describe how the Grass
 \end{scope}
 \end{tikzpicture}
 \] 
-  \caption{The two cases for $W$ and $p$.  No other propagators can end in the bolded (red) sections.  Other segments may have additional propagators ending in them.}\label{fig special p}
+  \caption{The two cases for $W$ and $p$ following Lemma~\ref{lem good p}.  No other propagators can end in the bolded (red) sections.  Other segments may have additional propagators ending in them.}\label{fig special p}
 
 \end{figure}
 
@@ -1858,7 +1844,7 @@ Next consider $I_n^{W}$. From the figure we see that in both cases we have $I_n^
 
 Now consider $I_{n-2}^{W}$. If $n-2\not\in I_{n-2}^{V}$ then the vertex $n-2$ is non-supporting (see also Corollary~\ref{no coloops}.)  Thus we are in Case 1, with ${I_{n-2}^W(p) = n-2}$ and this assignment of $p$ does not affect the rest of the construction of $I_{n-2}^{V}$, so we obtain ${I_{n-2}^{W} = I_{n-2}^{V}\cup \{n-2\}}$ as above.
 
-On the other hand, if $n-2\in I_{n-2}^{V}$ then we must be in Case 2 of Figure~\ref{fig special p} and ${I_{n-2}^V(q) = I_{n-2}^W(q) = n-2}$ (since $q$ is always the clockwise-most propagator supported on vertex $n-2$. If $n-1 \not\in I_{n-2}^{V}$, then $I_{n-2}^W(p) = n-1$ and then the algorithm proceeds identically to $I_{n-2}^{V}$ for the remainder of its steps; thus $I_{n-2}^{W} = I_{n-2}^{V}\cup \{n-1\}$ in this case.
+On the other hand, if $n-2\in I_{n-2}^{V}$ then we must be in Case 2 of Figure~\ref{fig special p} and we must have ${I_{n-2}^V(q) = I_{n-2}^W(q) = n-2}$ (since $q$ is always the clockwise-most propagator supported on vertex $n-2$). If $n-1 \not\in I_{n-2}^{V}$, then $I_{n-2}^W(p) = n-1$ and then the algorithm proceeds identically to $I_{n-2}^{V}$ for the remainder of its steps; thus $I_{n-2}^{W} = I_{n-2}^{V}\cup \{n-1\}$ in this case.
 
 Finally, if $n-2,n-1 \in I_{n-2}^{V}$ then $I_{n-2}^W(q) = n-2$ and $I_{n-2}^W(p) = n-1$ as above, but but some other propagator must have contributed $n-1$ to $I_{n-2}^{V}$ so we cannot use the same argument as above. When the algorithm $I_{n-2}^W$ reaches vertex $n$, only the propagators $p$ and $q$ have contributed; thus we proceed as in the construction of $I_n^{V}$ but without propagator $q$ by Remark \ref{rmk algorithm locally same}. By Lemma~\ref{vertex cyclic int lem} we know that $I_n^V(q) = n-5$, and from Remark \ref{clockwise ordering rem} we see that the only way this could occur is if $q$ was the last to contribute to $I_{n-2}^V$. %all other propagators in $V$ had already been assigned when we reached vertex $n-5$; thus $q$ was the final propagator contributing to $I_n^{V}$. 
 Therefore $I_{n-2}^{W} = (I_{n}^{V} \setminus \{n-5\}) \cup \{n-1, n-2\}$ in this case. This completes all cases for $I_{n-2}^{W}$.
@@ -1970,7 +1956,7 @@ The first two transitions follow by the cyclic intervals property highlighted in
 
 Note that neither $u$ nor $v$ can be $n-1$, $n-2$, or $n-3$, because as noted in Lemma~\ref{lem I}, these elements do not belong to $I_1^V$ and $I_n^V = (I_1^V\setminus \{v\}) \cup \{n\}$. However, $u$ could be $n$.  
 
-Also $u$ cannot be $n-4$, for the following reason. By Remark~\ref{rmk cyclic} we know that $I_{n-1}^W(q) = n-5$, leaving no propagators supported on $n-4$ for $I_{n-1}^W$ to assign. Thus $n-4 \not\in I_{n-1}^W$. Since ${I_{n-1}^W = I_n^V\cup\{n-1\}}$ by Lemma~\ref{lem I}, we cannot have $n-4$ in $I_n^V$ either.
+Also $u$ cannot be $n-4$, for the following reason. By Remark~\ref{rmk cyclic} we know that ${I_{n-1}^W(q) = n-5}$, leaving no propagators supported on $n-4$ for $I_{n-1}^W$ to assign. Thus $n-4 \not\in I_{n-1}^W$. Since ${I_{n-1}^W = I_n^V\cup\{n-1\}}$ by Lemma~\ref{lem I}, we cannot have $n-4$ in $I_n^V$ either.
 
 However, it is important to observe that $v$ could be $n-4$, as we see in the next result. 
 
@@ -2005,7 +1991,7 @@ Since $I_{n-2}^V$ is the only term in the Grassmann necklace for $V$ that contai
     I_1^W \setminus I_{n-2}^W  = (I_1^V\setminus I_n^V) \cup \{n-3, n-5\}. \\
     I_{n-2}^W \setminus I_1^W  = (I_n^V\setminus I_1^V) \cup \{n-1, n-2\}.
 \end{gather*}
-As per the discussion following equation \eqref{eq necklace} above, we also have $I_n^V\setminus I_1^V = \{n\}$ and ${I_1^V\setminus I_n^V = \{v\}}$. If $c = n-5$ then the path $v \rightarrow n$ from $I_n^V$ does not intersect with the paths from $\{n-3, n-5\}$ to $\{n-2, n-1\}$ and we obtain the plusses as stated.
+As per the discussion following equation \eqref{eq necklace} above, we must also have $I_n^V\setminus I_1^V = \{n\}$ and ${I_1^V\setminus I_n^V = \{v\}}$. If $c = n-5$ then the path $v \rightarrow n$ from $I_n^V$ does not intersect with the paths from $\{n-3, n-5\}$ to $\{n-2, n-1\}$ and we obtain the plusses as stated.
     
 Now suppose $c = v= n-4$; in this case $I_{n-2}^W$ contributes plusses defined by the noncrossing paths starting from $\{n-3, n-4, n-5\}$ and ending at $\{n, n-1, n-2\}$, namely the plusses in positions $(n-3)\rightarrow (n-2)$, $(n-4)\rightarrow (n-1)$ and $(n-5)\rightarrow (n)$.
 
@@ -2042,7 +2028,7 @@ Let $W = (\cP, [n])$ be an admissible Wilson loop diagram.  The number of plusse
 \begin{proof}
   The proof is by induction on the number of propagators.
 
-  First note that a Wilson loop diagram $W$ with one propagator supported on vertices $i<i+1<j<j+1$ has a Le diagram consisting of a single row with $n-i$ boxes. The columns are labeled from left to right by $n, \ldots, i+1$. By Algorithm~\ref{alg:GN to Le} there are plusses in the $i+1$, $j$, and $j+1$ positions. 
+  First note that a Wilson loop diagram $W$ with one propagator supported on vertices \[{i<i+1<j<j+1}\] has a Le diagram consisting of a single row with $n-i$ boxes. The columns are labeled from left to right by $n, \ldots, i+1$. By Algorithm~\ref{alg:GN to Le} there are plusses in the $i+1$, $j$, and $j+1$ positions. 
 
   Now consider Wilson loop diagrams with $k>1$ propagators.  By Lemma~\ref{lem uncovered} it suffices to prove the result for weakly admissible Wilson loop diagrams with $k$ propagators and no non-supporting vertices.  By Lemma~\ref{lem dihedral} it suffices to prove the result for at least one Wilson loop diagram from each dihedral orbit. In particular, we can restrict our attention to diagrams $W$ which have a propagator $p$ with the properties in Lemma~\ref{lem good p}.  
 
@@ -2235,10 +2221,10 @@ Below, we show that the polynomial $R$ associated to $W$ by Algorithm~\ref{alg W
 
 \begin{figure}
 \begin{tabular}{rrrrr}
-% \arrowangle is defined globally in the preamble for easy tweaking
+% \arrowangle and \diagramscale are defined globally in the preamble for easy tweaking
 \begin{tikzpicture}[rotate=67.5,baseline=(current bounding box.east)]
   \begin{scope}
-  \drawWLD{7}{1.5}
+  \drawWLD{7}{\diagramscale}
   \drawnumbers
   \drawlabeledprop{1}{-1}{6}{0}{\footnotesize   $p$}
   \drawlabeledprop{1}{0}{5}{0}{\footnotesize   $q$}
@@ -2254,7 +2240,7 @@ Below, we show that the polynomial $R$ associated to $W$ by Algorithm~\ref{alg W
   & \quad \quad  &
 \begin{tikzpicture}[rotate=67.5,baseline=(current bounding box.east)]
   \begin{scope}
-  \drawWLD{7}{1.5}
+  \drawWLD{7}{\diagramscale}
   \drawnumbers
   \drawlabeledprop{1}{-1}{6}{0}{\footnotesize   $p$}
   \drawlabeledprop{1}{0}{5}{0}{\footnotesize   $q$}
@@ -2270,7 +2256,7 @@ Below, we show that the polynomial $R$ associated to $W$ by Algorithm~\ref{alg W
 & \quad & 
 \begin{tikzpicture}[rotate=67.5,baseline=(current bounding box.east)]
   \begin{scope}
-  \drawWLD{7}{1.5}
+  \drawWLD{7}{\diagramscale}
   \drawnumbers
   \drawlabeledprop{1}{-1}{6}{0}{\footnotesize   $p$}
   \drawlabeledprop{1}{0}{5}{0}{\footnotesize   $q$}
@@ -2287,7 +2273,7 @@ Below, we show that the polynomial $R$ associated to $W$ by Algorithm~\ref{alg W
  & & & &  \\
  \begin{tikzpicture}[rotate=67.5,baseline=(current bounding box.east)]
   \begin{scope}
-  \drawWLD{7}{1.5}
+  \drawWLD{7}{\diagramscale}
   \drawnumbers
   \drawlabeledprop{1}{-1}{6}{0}{\footnotesize   $p$}
   \drawlabeledprop{1}{0}{5}{0}{\footnotesize   $q$}
@@ -2303,7 +2289,7 @@ Below, we show that the polynomial $R$ associated to $W$ by Algorithm~\ref{alg W
 & \quad & 
 \begin{tikzpicture}[rotate=67.5,baseline=(current bounding box.east)]
   \begin{scope}
-  \drawWLD{7}{1.5}
+  \drawWLD{7}{\diagramscale}
   \drawnumbers
   \drawlabeledprop{1}{-1}{6}{0}{\footnotesize   $p$}
   \drawlabeledprop{1}{0}{5}{0}{\footnotesize   $q$}
@@ -2319,7 +2305,7 @@ Below, we show that the polynomial $R$ associated to $W$ by Algorithm~\ref{alg W
 & \quad &
 \begin{tikzpicture}[rotate=67.5,baseline=(current bounding box.east)]
   \begin{scope}
-  \drawWLD{7}{1.5}
+  \drawWLD{7}{\diagramscale}
   \drawnumbers
   \drawlabeledprop{1}{-1}{6}{0}{\footnotesize   $p$}
   \drawlabeledprop{1}{0}{5}{0}{\footnotesize   $q$}
@@ -2466,7 +2452,9 @@ If neither $m$ nor $m+1$ appear in $I_i$ then by Corollary~\ref{no coloops} we h
 \[
 \begin{bmatrix} A & B \\ 0 & C\end{bmatrix}
 \]
-where $A$ is the $|T|\times |T|$ matrix indexed by the propagators in $T$ and the vertices in $I_i(T)$. No other propagators can be supported on these vertices since all other propagators are outside of $p$, and $p$ is the first propagator supported at $i$; this explains the zero block.  Therefore $\Delta_{I_i} = \pm \det A \det C$, and both factors are nontrivial since at least one of $m$ and $m+1$ appear in $I_i$.  Since $p\in \cP_{in}(p)$ we have $f|\det A$ and if we remove a propagator outside of $p$ that contributes either $m$ or $m+1$, we get a diagram $W'$ with fewer propagators for which $\det A | \Delta_{I^{W'}_i}$ still holds, hence $f|\Delta_{I^{W'}_i}$.  This contradicts the minimality of our choices. 
+where $A$ is the $|T|\times |T|$ matrix indexed by the propagators in $T$ and the vertices in $I_i(T)$. No other propagators can be supported on these vertices since all other propagators are outside of $p$, and $p$ is the first propagator supported at $i$; this explains the zero block.  Therefore $\Delta_{I_i} = \pm \det A \det C$, and both factors are nontrivial since at least one of $m$ and $m+1$ appear in $I_i$.  
+
+Since $p\in \cP_{in}(p)$ we have $f|\det A$, and if we remove a propagator outside of $p$ that contributes either $m$ or $m+1$, we get a diagram $W'$ with fewer propagators for which $\det A | \Delta_{I^{W'}_i}$ still holds, hence $f|\Delta_{I^{W'}_i}$.  This contradicts the minimality of our choices. 
 
 \textbf{Case 2}: Suppose $p = (i, m)$, i.e. $p$ has an end on the $i^{th}$ edge. If no other propagators are supported on the vertex $i$ then the corresponding column of $C(W)$ has only one nonzero entry in it, and so $\Delta_{I_i}$ has a linear factor contributed by $p$ and $i$; as above, this is a contradiction.
 Since $p$ is the first propagator in the ordering imposed by $I_i$, it is the clockwise-most propagator supported on $i$ (by Remark {\ref{clockwise ordering rem}}). Since there are multiple propagators supported on $i$, there must be a $q$ ending on edge $i$, such that $I_i(q) = i+1$, that is second clockwise-most propagators supported by $i$ (see Figure~\ref{fig no big factors}).
@@ -2493,7 +2481,9 @@ Now let $f$ be a quadratic factor of $\Delta_{I_i}$.  By part (2) we know that $
 
 As in the proof of part (2), make a new admissible diagram by removing the propagators which come before those contributing to $f$ in the order imposed by $I_i$.  Then without loss of generality we may assume $i=a$. The cases in the proof of part (2) show how $\Delta_{I_i}$ factors: in particular the vertices supporting the other end of $p$ either do not appear in $I_i$, or they contribute to a different factor of $\Delta_{I_i}$ than $p$ and $a$ do.  By assumption $b$ contributes to the same factor as $a$.  Therefore $(a,b)$ is an edge defining an end of $p$, that is, $b = a+1$.
 
-\item If $S_i = \emptyset$ then $r_i = 1$ and we immediately have $r_i | \Delta_{I_i}$; otherwise, let $p\in S_i$. Note that $\Delta_{I_i}$ is homogeneous linear in the variables of the row corresponding to $p$.  By part (2), either exactly one variable in the row corresponding to $p$ appears in $\Delta_{I_i}$ and this variable is a factor of $\Delta_{I_i}$, or exactly two variables from the row corresponding to $p$ appear in $\Delta_{I_i}$ and they appear as part of a quadratic factor.  In the first case let the variable be $x$. Then $x$ is a factor of $\Delta_{I_i}$. Therefore, $x$ must correspond to entry in the row of $p$ and column of $I_i(p)$, i.e. $x = x_{p, I_i(p)}$. Thus $x$ also appears in $r_i$. Since the matrix for $r_i$ is a minor of the matrix for $\Delta_{I_i}$ and every term in $\Delta_{I_i}$ involves $x$, we also have that every term in $r_i$ involves $x$ so $x$ is a factor of both $r_i$ and $\Delta_{I_i}$ and is the only variable from this row in either polynomial.
+\item If $S_i = \emptyset$ then $r_i = 1$ and we immediately have $r_i | \Delta_{I_i}$; otherwise, let $p\in S_i$. 
+
+Note that $\Delta_{I_i}$ is homogeneous linear in the variables of the row corresponding to $p$.  By part (2), either exactly one variable in the row corresponding to $p$ appears in $\Delta_{I_i}$ and this variable is a factor of $\Delta_{I_i}$, or exactly two variables from the row corresponding to $p$ appear in $\Delta_{I_i}$ and they appear as part of a quadratic factor.  In the first case let the variable be $x$. Then $x$ is a factor of $\Delta_{I_i}$. Therefore, $x$ must correspond to entry in the row of $p$ and column of $I_i(p)$, i.e. $x = x_{p, I_i(p)}$. Thus $x$ also appears in $r_i$. Since the matrix for $r_i$ is a minor of the matrix for $\Delta_{I_i}$ and every term in $\Delta_{I_i}$ involves $x$, we also have that every term in $r_i$ involves $x$ so $x$ is a factor of both $r_i$ and $\Delta_{I_i}$ and is the only variable from this row in either polynomial.
 
   Now suppose two variables from the row $p$ appear in a quadratic factor $f$ of $\Delta_{I_i}$.  By part (3), there is another propagator $q$ and an edge $a$ such that $f$ is the $2\times 2$ minor coming from $p, q$ and $a, a+1$.  There are two situations which can occur, either $I_i(p)=a$ and $I_i(q)=a+1$, or $I_i(q)=a$ and $I_i(p)=a+1$. 
     We show that in both cases it follows that $q \in S_i$ as well.
@@ -2534,7 +2524,7 @@ As in the proof of part (2), make a new admissible diagram by removing the propa
 %  \caption{The situations giving a quadratic factor with variables appearing in $r_i$. }\label{fig quadratic}
 %\end{figure}\note{I'm not sure we really need this figure? (Figure~\ref{fig quadratic})}
 
-In both cases, since $I_{i-1}(p)\neq I_{i}(p)$ by assumption it follows from Lemma~\ref{vertex cyclic int lem} that $I_{i-1}(p) <_{i-1} I_{i}(p)$ and no other vertex supporting $p$ lies between $I_{i-1}(p)$ and $I_{i}(p)$. If $I_i(q)=a$ then $q$ lies clockwise of $p$ and $q$ contributes before $p$ in $I_i$. This means that $I_{i-1}(p)=a$ and so $I_{i-1}(q)\neq a$. Thus $q\in S_i$ and so $f$ is a factor of $r_i$.
+In both cases, since we have $I_{i-1}(p)\neq I_{i}(p)$ by assumption it follows from Lemma~\ref{vertex cyclic int lem} that ${I_{i-1}(p) <_{i-1} I_{i}(p)}$ and no other vertex supporting $p$ lies between $I_{i-1}(p)$ and $I_{i}(p)$. If $I_i(q)=a$ then $q$ lies clockwise of $p$ and $q$ contributes before $p$ in $I_i$. This means that $I_{i-1}(p)=a$ and so $I_{i-1}(q)\neq a$. Thus $q\in S_i$ and so $f$ is a factor of $r_i$.
 
 Now consider the case where $I_i(q) = a+1$, and suppose for contradiction that $q \not\in S_i$, i.e. that $I_{i-1}(q) = a+1$. Since $I_{i-1}(p) \neq a$, there must be some other propagator $s$ with $I_{i-1}(s) = a$ (else $q$ contributes $a$ to $I_{i-1}$). This propagator cannot lie on edge $a$, because then Remark~\ref{rmk cyclic} would imply that $I_i(s) \in \{a, a+1\}$, contradicting the fact that $I_i(p) = a$ and $I_i(q) = a+1$; thus $s$ has an end on edge $(a-1)$ and is inside $p$ in the $<_k$ order where $p=(k,a)$.
 
