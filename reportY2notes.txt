@@ -8,5 +8,6 @@ report Y
 1 & 4) We do not have a connection to Plabic graphs. Infact, I suspect that what we are looking at are different from the cells defined by plabic graphs. We may be able to mention the plabic graph literature in the intro, and leave it at that.
 
 4) Ask Cameron might know more about what this parametrization by boundary measurement thing is?
+Cameron: Something in big Postnikov paper. "WLD almost do this, aside from a set of measure 0." 
 
 1) question for another day.
