@@ -305,7 +305,7 @@
 
 
 \title{Combinatorics of the geometry of Wilson loop diagrams I: equivalence classes via matroids and polytopes}
-\author{Susama Agarwala\thanks{SA was partially supported by an Office of Naval Research grant.}, Si\^an Fryer, and Karen Yeats\thanks{KY is supported by an NSERC Discovery grant, by the Canada Research Chair program, and though some the time this work was developed also by a Humboldt Fellowship from the Alexander von Humboldt foundation.}}
+\author{Susama Agarwala\thanks{SA was partially supported by an Office of Naval Research grant.}, Si\^an Fryer, and Karen Yeats\thanks{KY is supported by an NSERC Discovery grant, by the Canada Research Chair program, though some of this work was developed also by a Humboldt Fellowship from the Alexander von Humboldt foundation.}}
 %\date{}
 
 \begin{document}
@@ -392,7 +392,7 @@ We introduce some notation to speak of vertices supporting a propagator, and the
 
 
 \begin{dfn} \label{VPropdfn}
-Let $W = (\cP, [n])$.
+Let $W = (\cP, [n])$. In this definition and in the sequel, for any $P \subseteq \cP$ or $U \subseteq [n]$, we denote $P^c = \cP \setminus P$ and $U^c = [n] \setminus U$.
 \begin{enumerate}
 \item For $p = (i,j) \in \cP$, define $V(p) = \{i, i+1, j, j+1\}$ to be the set of vertices supporting $p$. Similarly, for $P \subseteq \cP$ we define the set $V(P) = \cup_{p \in P} V(p)$ to be the vertex support of $P$.
 \item For $U \subseteq [n]$, write $\Prop(U) = \{ p \in \cP  \ | \ V(p) \cap U \neq \emptyset \} $ to denote the set of propagators which are at least partially supported on $U$.
@@ -413,7 +413,7 @@ We now define the notion of an admissible diagram, which imposes certain density
 \begin{dfn}\label{admisdfn}
 A Wilson loop diagram $W = (\cP,V)$ is {\em admissible} if it satisfies the following three conditions: \begin{enumerate}
 \item $|V| \geq |\cP| + 4.$
-\item There does not exist a (non-empty) set of propagators $Q \subseteq \cP$ such that $|V(Q)| < |Q| + 3$.
+\item For any non-empty set of propagators, $Q \subseteq \cP$, $Q \neq \emptyset$, one has $|V(Q)| \geq |Q| + 3$.
 \item There does not exist a pair of propagators $(i_p,j_p),(i_q,j_q) \in \cP$ such that $i_p < i_q < j_p <j_q$.
 \end{enumerate}
 A Wilson loop diagram is called {\em weakly admissible} if the second and third conditions hold.
@@ -421,7 +421,7 @@ A Wilson loop diagram is called {\em weakly admissible} if the second and third 
 
 The first condition restricts the overall density of propagators in the diagram, while the second imposes an upper bound on how densely the propagators can be fitted into any portion of the diagram. The third ensures that ensures that no propagators cross in the interior of the diagram. 
 
-There are a few things to note here.  First, what we call weakly admissible here is called admissible in \cite{wilsonloop}.  Many of the results below still apply when the hypothesis of admissibility is changed to weak admissibility.
+There are a few things to note here.  First, what we call weakly admissible here is called admissible in \cite{wilsonloop}.  \hlfix{Many of the results below still apply when the hypothesis of admissibility is changed to weak admissibility.}{Propagate "weakly" through document}
 
 Note also that if two propagators have the same pair of supporting edges, or if a propagator is supported on two adjacent edges, then the Wilson loop diagram is not admissible or even weakly admissible.
 
@@ -541,17 +541,17 @@ A subset $A \subseteq E$ is called {\em independent} in $M$ if $A \subseteq B$ f
 
 A {\em circuit} in $M$ is a minimally dependent set. That is, it is a set $C \subseteq E$ such that $C$ is dependent but $C \setminus \{e\}$ is independent for any $e \in C$. A union of circuits is called a {\em cycle}. On the other hand, a {\em flat} is a maximally dependent set, i.e. a set $F \subseteq E$ such that $\rk(F \cup \{e\}) = \rk(F) + 1$ for any $e \in E \setminus F$. Unsurprisingly, a {\em cyclic flat} is a set which is both a flat and a cycle. The set of circuits in a matroid uniquely defines that matroid, as does the set of flats; thus one could specify a matroid by listing either its independent sets, its bases, its circuits, or its flats.
 
-Finally, we describe several important types of matroids. A matroid of rank $k$ with a ground set of size $n$ is called {\em realizable} if there exists some $A$ in the $k\times n$ real Grassmannian $\mathbb{G}_{\mathbb{R}}(k,n)$ whose non-zero $k\times k$ minors are exactly those with columns indexed by an element of $\cB$. If all the maximal minors of the matrix are nonnegative then the matroid realized by this matrix is called a {\em positroid}.  In other words a positroid is a matroid\footnote{Note that matroid isomorphism allows arbitrary permutations of the ground set, while positroid isomorphism only allows cyclic permutations in order to preserve the nonnegativity of the minors.  In particular, the property of being a positroid is not preserved under matroid isomorphism.} that is realized by an element of the totally nonnegative Grassmannian $\Gr(k,n)$. Finally, a {\em uniform matroid} of rank $r$ is a matroid in which any set of size $\leq r$ is independent.
+Finally, we describe several important types of matroids. A matroid of rank $k$ with a ground set of size $n$ is called {\em realizable} if there exists some matrix $A$ in the $k\times n$ real Grassmannian $\mathbb{G}_{\mathbb{R}}(k,n)$ whose non-zero $k\times k$ minors are exactly those with columns indexed by an element of $\cB$. If all the maximal minors of the matrix are nonnegative then the matroid realized by this matrix is called a {\em positroid}.  In other words a positroid is a matroid\footnote{Note that matroid isomorphism allows arbitrary permutations of the ground set, while positroid isomorphism only allows cyclic permutations in order to preserve the nonnegativity of the minors.  In particular, the property of being a positroid is not preserved under matroid isomorphism.} that is realized by an element of the totally nonnegative Grassmannian $\Gr(k,n)$. Finally, a {\em uniform matroid} of rank $r$ is a matroid in which any set of size $\leq r$ is independent.
 
 Matroid theory relates to the study of Wilson loop diagrams as follows. In \cite{wilsonloop}, Agarwala and Marin-Amat show that every weakly admissible Wilson loop diagram $W$ with $k$ propagators defines a positroid $M(W)$ of rank $k$ on a base set of size $n$. Combined with Postnikov's work in \cite{Postnikov}, this shows that each admissible Wilson loop diagram corresponds to a convex subset of $\Gr(k,n)$, thus connecting the geometry of Wilson loop diagrams with the geometry underlying the Amplituhedron. 
 
 The independent sets of $M(W)$ can be read directly from the diagram:
 
-\begin{thm} \label{thm WLD defines matroid} \cite[Theorem 3.6]{wilsonloop} Any admissible Wilson loop diagram $W =(\cP, [n])$ defines a matroid $M(W)$ with ground set $[n]$. The independent sets are exactly those subsets $V \subseteq [n]$ such that $\nexists U\subseteq V$ satisfying $|\Prop(U)| < |U|$. \label{thm:WLDmatroid}\end{thm}
+\begin{thm} \label{thm WLD defines matroid} \cite[Theorem 3.6]{wilsonloop} Any admissible Wilson loop diagram $W =(\cP, [n])$ defines a matroid $M(W)$ with ground set $[n]$. The independent sets are exactly those subsets $V \subseteq [n]$ such that for every subset of vertices, $U\subseteq V$, supports at least as many propagators as vertices in the set, $|\Prop(U)| \geq |U|$. \label{thm:WLDmatroid}\end{thm}
 In other words, the independent sets of $M(W)$ correspond to the sets of vertices in $W$ with ``enough propagators sufficiently well distributed'' on them: not only should $V$ itself support at least as many propagators as the number of vertices it contains, but the same should be true of any subset of $V$ as well.
 
-Throughout, we take the {\em matroid defined by $W$} to be the matroid $M(W)$ of Theorem \ref{thm WLD defines matroid}. Note from Definition~\ref{def:CWmatrix} that the vertices of the diagram $W$ correspond to columns of the associated matrix $C(W)$. Therefore, for any subset of vertices $V \subseteq [n]$ we can consider the restriction $C(W)|_V$ of $C(W)$, which consists of the columns corresponding to $V$. Since the non-zero entries of $C(W)$ are independent real variables, if $C(W)|_V$ has fewer than $|V|$ rows of non-zero entries then it does not have full rank. This is equivalent to saying that if $V$ is a set of columns of $C(W)$ with $|\Prop(V)| < |V|$, then $V$ is a dependent set. Any set of columns containing such a $V$ cannot be independent. Comparing this to Theorem \ref{thm:WLDmatroid}, we see that $M(W)$ is also the matroid realized by $C(W)$. 
-
+Throughout, we take the {\em matroid defined by $W$} to be the matroid $M(W)$ of Theorem \ref{thm WLD defines matroid}. Note from Definition~\ref{def:CWmatrix} that the vertices of the diagram $W$ correspond to columns of the associated matrix $C(W)$. Therefore, for any subset of vertices $V \subseteq [n]$ we can consider the restriction $C(W)|_V$ of $C(W)$, which consists of the columns corresponding to $V$. Since the non-zero entries of $C(W)$ are independent real variables, if $C(W)|_V$ has fewer than $|V|$ rows of non-zero entries then it does not have full rank. This is equivalent to saying that if $V$ is a set of columns of $C(W)$ with $|\Prop(V)| < |V|$, then $V$ is a dependent set. Any set of columns containing such a $V$ cannot be independent. Comparing this to Theorem \ref{thm:WLDmatroid}, we see that $M(W)$ is also the matroid realized by $C(W)$. As mentioned above, Theorem [3.38] of \cite{wilsonloops} shows that the matroids $M(W)$ is a positroid. Furthermore, Theorem 5.1 \cite{basisshapeloci} shows that the space parametrized by the matrices $C(W)$ matches the positroid cells defined by $M(W)$, up to a set of measure $0$. Note, this does not imply that every possible specializaton of $C(W)$ to a real valued matrix leads to a postroid, only that the set of values that do define a positroid is volume filling in $\R^{4k}$. \todo{What is [6] referred to by reviewer M?}
+ 
 
 % The identification of Theorem \ref{thm WLD defines matroid} is not 1-1: by \cite[Theorem 1.18]{wilsonloop}, if two admissible Wilson loop diagrams are equivalent (as in Definition~\ref{equivdfn}) then they define the same matroid. 
 
@@ -585,14 +585,14 @@ Thus $\rk(F(P) \cup\{v\}) = \rk F(P) + 1$, as required.
 By point (4) of Lemma~\ref{lem facts about WLD matroids}, the set $F(\emptyset)$ of non-supporting vertices in $W$ is a flat; indeed, it is the unique flat of rank 0 in $M(W)$. Every element of $F(\emptyset)$ defines a circuit of size 1, and all other circuits of $M(W)$ must contain at least two elements.
 \end{rmk}
 
+\todo{Need to address the summary comment to 3.1 in review M}
 
 
-
-\section{Matroids, triangulations, and equivalence classes of Wilson loop diagrams}\label{sec equiv}
+\section{Matroids, triangulations, and equivalence classes of Wilson loop diagrams\label{sec equiv}} \todo{rephrase in terms of weakly.}
 
 This section explores the correspondence between Wilson loop diagrams and positroids that was established in \cite[Theorem 3.38]{wilsonloop}. In that paper, the authors show that admissible Wilson loop diagrams define matroids that are also positroids. Furthermore, they show that if two Wilson loop diagrams are equivalent, then they define the same matroid \cite[Theorems 1.18 and 3.41]{wilsonloop}.
 
-In this section we develop this analysis further, showing the converse of this result from loc. cit. (see Theorem \ref{same matroid iff equiv}). We also enumerate the number of diagrams that map to a particular matroid in Corollary \ref{number of equiv diagrams}. To do this, we establish a connection between Wilson loop diagrams and polygon dissections in subsection \ref{sec: polygon partitions}, and uncover some matroidal properties of exact subdiagrams in subsection \ref{sec: exact diagram matroidal props}. This includes the fact that exact subdiagrams correspond to uniform matroids (Theorem \ref{exactuniformthm}), and that the associated matroid of an exact subdiagram can be written as as a contraction by the complementary propagator flat (Theorem \ref{exact diagrams contractions}).
+In this section we develop this analysis further, showing the converse of this result from loc. cit. (see Theorem \ref{same matroid iff equiv}). We also enumerate the number of diagrams that map to a particular matroid in Corollary \ref{number of equiv diagrams}. To do this, we establish a connection between Wilson loop diagrams and polygon dissections in subsection \ref{sec: polygon partitions}, and uncover some matroidal properties of exact subdiagrams in subsection \ref{sec: exact diagram matroidal props}. This includes the fact that exact subdiagrams correspond to uniform matroids (Theorem \ref{exactuniformthm}), and that the associated matroid of an exact subdiagram can be written as a contraction by the complementary propagator flat (Theorem \ref{exact diagrams contractions}).
 
 
 \subsection{Polygon dissections of Wilson loop diagrams\label{sec: polygon partitions}}
@@ -938,7 +938,7 @@ This follows from the definition of equivalent Wilson loop diagrams (Definition 
 
 Since Corollary \ref{uniqueproppartitioncor} allows us to decompose any admissible Wilson loop diagram into a collection of maximal exact subdiagrams, we are motivated to examine the matroid properties of exact subdiagrams more closely. In this section, we prove two main results:
 \begin{enumerate}
-\item The matroid assoicated to an exact subdiagram of $W$ can be written as a contraction of the matroid $M(W)$ by the complementary propagator flat (Theorem \ref{exact diagrams contractions}). 
+\item The matroid associated to an exact subdiagram of $W$ can be written as a contraction of the matroid $M(W)$ by the complementary propagator flat (Theorem \ref{exact diagrams contractions}). 
 \item The matroid associated to an exact subdiagram is uniform (Theorem \ref{exactuniformthm}).
 \end{enumerate}
 
@@ -1006,7 +1006,7 @@ Next we examine properties of propagator flats associated to the complement of W
 Let $W = (\cP, [n])$ be an admissible Wilson loop diagram, and $P \subseteq \cP$. Then: \begin{enumerate}
 \item If $(P,V(P))$ is an exact subdiagram of $W$, then $F(P^c)$ is a dependent flat in $W$.
 \item If $(P,V(P))$ is a maximal exact subdiagram of $W$, then $F(P^c)$ is a cyclic flat in $W$.
-\item If $(P,V(P))$ is an exact subdiagram in $W$, then $\rk(F(P^c)) = |P^c|$.
+\item If $(P,V(P))$ is an exact subdiagram of $W$, then $\rk(F(P^c)) = |P^c|$.
 \end{enumerate} 
 \end{lem}
 
@@ -1098,7 +1098,7 @@ Let $W = (\cP, [n])$ be an admissible Wilson loop diagram and $P \subseteq \cP$.
 Putting all of this together, we obtain our first major theorem of this section:
 
 \begin{thm} \label{exact diagrams contractions}
-If $(P, V(P))$ is an exact subdiagram of of $W$, the matroid of $(P,V(P))$ is the contraction of $M(W)$ by the propagator flat $F(P^c)$, i.e. \bas M\big((P, V(P))\big) = M(W)  / F(P^c) \;.\eas 
+If $(P, V(P))$ is an exact subdiagram of $W$, the matroid of $(P,V(P))$ is the contraction of $M(W)$ by the propagator flat $F(P^c)$, i.e. \bas M\big((P, V(P))\big) = M(W)  / F(P^c) \;.\eas 
 \end{thm}
 
 \begin{proof}
@@ -1152,7 +1152,7 @@ Since $W'$ is weakly admissible, by Theorem \ref{thm WLD defines matroid} the as
 Now we are ready to prove the main result of this section, namely that two Wilson loop diagrams define the same matroid (positroid) if and only if they are equivalent (Theorem \ref{same matroid iff equiv}). We also give a formula for the number of Wilson loop diagrams in a given equivalence class (Corollary \ref{number of equiv diagrams}), completing the characterization of the correspondence between Wilson loop diagrams and positroids starting in \cite{wilsonloop}.
 
 \begin{thm}\label{same matroid iff equiv}
-Let $W= (\cP, [n])$ and $W'= (\cP', [n])$ be two Wilson loop diagrams. They define the same matroid (positroid) if and only if $W \sim W'$.
+Let $W= (\cP, [n])$ and $W'= (\cP', [n])$ be two weakly admissible Wilson loop diagrams. They define the same matroid (positroid) if and only if $W \sim W'$.
 \end{thm}
 
 \begin{proof}One direction has been proved in \cite[Theorem 1.18]{wilsonloop}, but we give a different proof here to be consistent with the method of this paper. 
@@ -1210,13 +1210,13 @@ Finally, two polytopes are \emph{combinatorially equivalent} if there is a bijec
 
 As with many of the interesting and well-studied polytopes in combinatorics, the associahedron can be characterized in many different ways; here is one definition.
 
-\begin{dfn}\label{def:associahedron}
+\begin{dfn}\label{def:associahedron} \todo{Karen, see note bottom of page 2 in report M}
 Fix $n$ and consider dissections of a convex $n$-gon.  The $n-1$ {\em associahedron} can be defined in terms of the dissections of this $n$-gon: the vertices of the associahedron are the triangulations of the $n$-gon, while the $k$-dimensional faces are the dissections which are $k$ diagonals away from being a triangulation.  One face is included in another if the first dissection is a refinement of the second. 
 \end{dfn}
 
 It turns out that this defines a class of combinatorially equivalent polytopes, which can be proved by giving a realization.  There are many interesting realizations of the associahedron \cite{CSZinequivalent}; the following realization will be the one that we use.  
 
-\begin{dfn}\label{def:secondary polytope}
+\begin{dfn}\label{def:secondary polytope} \todo{Karen, see note bottom of page 2 in report M}
   Let $x_1, \ldots, x_n$ be the corners of a convex $n$-gon in $\mathbb{R}^2$, and let $T$ be the set of triangulations of this $n$-gon.  For each $t\in T$, define $s_t$ to be the point in $\mathbb{R}^n$ whose $i$th coordinate is the sum of the areas of all triangles of $t$ which are incident to $x_i$.  Let $A_n$ be the convex hull of the $s_t$; then $A_n$ is a realization of the $n-1$ associahedron (\cite[Example 9.11]{Ziegler}).
 \end{dfn}
 Note that this construction works for any convex $n$-gon, but these realizations are all equally good for our purposes, and so we fix $x_1, \ldots, x_n$ defining a particular convex $n$-gon from now on.
@@ -1286,7 +1286,7 @@ The situation described in the lemma is illustrated in Figure~\ref{configs}.
 
 
 \begin{proof}
-  Since $D_1$ and $D_2$ do not have the same set of non-triangle faces, there must be some diagonal $d$ of $D_1$ that crosses through a non-triangle face $f$ of $D_2$.  If that face of $D_2$ has degree at least 5 then it must contain four vertices in the configuration described in the statement.
+\hlfix{Since $D_1$ and $D_2$ do not have the same set of non-triangle faces, but the vertices of the non-triangles faces are the same, $V_{>3}(D_1) = V_{>3}(D_2)$, there must be some diagonal $d$ of $D_1$ that crosses through a non-triangle face $f$ of $D_2$.  If that face of $D_2$ has degree at least 5 then it must contain four vertices in the configuration described in the statement.}{Karen, I'm leaving the rest of the last comment of report M to you.}
 
 Suppose this never occurs.  Then all the non-triangle faces of $D_2$ which are crossed by a diagonal of $D_1$ must be quadrilaterals and likewise for $D_1$.  This means that any non-triangle and non-quadrilateral faces must be common between $D_1$ and $D_2$.  These common faces are irrelevant for the statement as none of them can be the face containing $x_i, x_j, x_k, x_l$, and so by triangulating any common non-triangle faces, we may assume that $D_1$ and $D_2$ have only quadrilateral and triangle faces.
 
