@@ -1,13 +1,35 @@
 
 report Y
 
-2) We are focusing on the structures that allow for these calculations (mathematician's approach). However, it is not a far leap from the analysis done in 2,6 paper to getting to the types of numerical results found in Amplituhedron squared.
+2) We are focusing on the structures that allow for these calculations
+(mathematician's approach). However, it is not a far leap from the
+analysis done in 2,6 paper to getting to the types of numerical
+results found in Amplituhedron squared.
 
-3) Here we talk about a section of the line bundle over Gr+(k,n) defined by the the Wilson loop diagrams. These are 3k dimentional. Non-orientability paper shows that these are actually 4k dimensional spaces. The connection 4k dimensional cells of the Amplituhedron is still aspirational (e.g. Amplituhedron squared and Heslop-Stewart, possilby domino-basis paper?)
+3) Here we talk about a section of the line bundle over Gr+(k,n)
+defined by the the Wilson loop diagrams. These are 3k
+dimentional. Non-orientability paper shows that these are actually 4k
+dimensional spaces. The connection 4k dimensional cells of the
+Amplituhedron is still aspirational (e.g. Amplituhedron squared and
+Heslop-Stewart, possilby domino-basis paper?)
 
-1 & 4) We do not have a connection to Plabic graphs. Infact, I suspect that what we are looking at are different from the cells defined by plabic graphs. We may be able to mention the plabic graph literature in the intro, and leave it at that.
+1 & 4) We do not have a connection to Plabic graphs. Infact, I suspect
+that what we are looking at are different from the cells defined by
+plabic graphs. We may be able to mention the plabic graph literature
+in the intro, and leave it at that.
 
-4) Ask Cameron might know more about what this parametrization by boundary measurement thing is?
-Cameron: Something in big Postnikov paper. "WLD almost do this, aside from a set of measure 0." 
+4) Ask Cameron might know more about what this parametrization by
+boundary measurement thing is?  Cameron: Something in big Postnikov
+paper. "WLD almost do this, aside from a set of measure 0."
 
 1) question for another day.
+
+Cameron's take on 1 & 4:
+1) square moves on plabic graphs are a
+reparametrization of the positroid cell. We have a reparametrization
+as well: the exact subdiagrams. However, these are likely not the same
+changes of coordinates, nor do they correspond to the smae objects
+
+4) The boundary measure map is puts weights on vertices of of a plabic
+graph and uses it to compute plucker coordinates. In our case, we go
+from WLDs to matrices. Just plug in and compute the coordinates.
