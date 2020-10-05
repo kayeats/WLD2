@@ -32,4 +32,5 @@ changes of coordinates, nor do they correspond to the smae objects
 
 4) The boundary measure map is puts weights on vertices of of a plabic
 graph and uses it to compute plucker coordinates. In our case, we go
-from WLDs to matrices. Just plug in and compute the coordinates.
+from WLDs to matrices. Just plug in and compute the coordinates. In fact, 
+the WLDs ARE a parametrization.
