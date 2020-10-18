@@ -1,0 +1,133 @@
+\begin{thebibliography}{10}
+
+\bibitem{Adamo:2011pv}
+T.~Adamo, M.~Bullimore, L.~Mason, and D.~Skinner.
+\newblock Scattering amplitudes and {W}ilson loops in twistor space.
+\newblock {\em J. Phys. A}, 44(45):454008, 48, 2011.
+\newblock \url{arXiv:1104.2890}.
+
+\bibitem{Adamo:2012xe}
+T.~Adamo and L.~Mason.
+\newblock Twistor-strings and gravity tree amplitudes.
+\newblock {\em Classical Quantum Gravity}, 30(7):075020, 27, 2013.
+\newblock \url{arXiv:1207.3602}.
+
+\bibitem{casestudy}
+S.~Agarwala and S.~Fryer.
+\newblock A study in $\textrm{Gr}_{\geq 0}(2,6)$: from the geometric case book
+  of {W}ilson loop diagrams and {SYM $N=4$}.
+\newblock \url{arXiv:1803.00958}.
+
+\bibitem{generalcombinatoricsII}
+S.~Agarwala, S.~Fryer, and K.~Yeats.
+\newblock Combinatorics of the geometry of {W}ilson loop diagrams {II}:
+  {G}rassmann necklaces, dimensions, and denominators.
+\newblock {\em In preparation.}
+
+\bibitem{non-orientable}
+S.~Agarwala and C.~Marcott.
+\newblock Wilson loops in {SYM $N=4$} do not parametrize an orientable space.
+\newblock \url{arXiv:1807.05397}.
+
+\bibitem{wilsonloop}
+S.~Agarwala and E.~Marin-Amat.
+\newblock Wilson loop diagrams and positroids.
+\newblock {\em Comm. Math. Phys.}, 350(2):569--601, 2017.
+\newblock \url{arXiv:1509.06150}.
+
+\bibitem{arkani:2012nw}
+N.~Arkani-Hamed, J.~L. Bourjaily, F.~Cachazo, A.~B. Goncharov, A.~Postnikov,
+  and J.~Trnka.
+\newblock Scattering amplitudes and the positive {G}rassmannian.
+\newblock \url{arXiv:1212.5605}.
+
+\bibitem{Arkani-Hamed:2013kca}
+N.~Arkani-Hamed and J.~Trnka.
+\newblock {Into the Amplituhedron}.
+\newblock {\em J. High Energy Phys.}, 12:182, 2014.
+\newblock \url{arXiv:1312.7878}.
+
+\bibitem{Arkani-Hamed:2013jha}
+N.~Arkani-Hamed and J.~Trnka.
+\newblock {The Amplituhedron}.
+\newblock {\em J. High Energy Phys.}, 10:030, 2014.
+\newblock \url{arXiv:1312.2007}.
+
+\bibitem{Britto:2005fq}
+R.~Britto, F.~Cachazo, B.~Feng, and E.~Witten.
+\newblock Direct proof of the tree-level scattering amplitude recursion
+  relation in {Y}ang-{M}ills theory.
+\newblock {\em Phys. Rev. Lett.}, 94(18):181602, 4, 2005.
+\newblock \url{arXiv:hep-th/0501052}.
+
+\bibitem{Cachazo:2004kj}
+F.~Cachazo, P.~Svrcek, and E.~Witten.
+\newblock M{HV} vertices and tree amplitudes in gauge theory.
+\newblock {\em J. High Energy Phys.}, (9):006, 21, 2004.
+\newblock \url{arXiv:hep-th/0403047}.
+
+\bibitem{CSZinequivalent}
+C.~Ceballos, F.~Santos, and G.~M. Ziegler.
+\newblock Many non-equivalent realizations of the associahedron.
+\newblock {\em Combinatorica}, 35(5):513--551, 2015.
+\newblock \url{arXiv:1109.5544}.
+
+\bibitem{Amplituhedronsquared}
+B.~Eden, P.~Heslop, and L.~Mason.
+\newblock The correlahedron.
+\newblock {\em J. High Energy Phys.}, (9):156, front matter+40, 2017.
+\newblock \url{arXiv:1701.00453}.
+
+\bibitem{galashinlam}
+P.~Galashin and T.~Lam.
+\newblock Parity duality for the amplituhedron.
+\newblock \url{arXiv:1805.00600}.
+
+\bibitem{HeslopStewart}
+P.~Heslop and A.~Stewart.
+\newblock The twistor {W}ilson loop and the amplituhedron.
+\newblock {\em J. High Energy Phys.}, (10):142, front matter+18, 2018.
+\newblock \url{arXiv:1807.05921}.
+
+\bibitem{AmplituhedronDecomposition}
+S.~N. Karp, L.~Williams, and Y.~X. Zhang.
+\newblock Decompostions of amplituhedra.
+\newblock \url{arXiv:1708.09525}.
+
+\bibitem{WLDdim}
+C.~Marcott.
+\newblock Basis shape loci and the positive grassmannian.
+\newblock \url{arXiv:1904.13361}.
+
+\bibitem{OxleyMatroidBook}
+J.~Oxley.
+\newblock {\em Matroid theory}, volume~21 of {\em Oxford Graduate Texts in
+  Mathematics}.
+\newblock Oxford University Press, Oxford, second edition, 2011.
+
+\bibitem{Postnikov}
+A.~Postnikov.
+\newblock Total positivity, {G}rassmannians, and networks.
+\newblock \url{arXiv:math/0609764}.
+
+\bibitem{PSpolygon}
+J.~H. Przytycki and A.~S. Sikora.
+\newblock Polygon dissections and {E}uler, {F}uss, {K}irkman, and {C}ayley
+  numbers.
+\newblock {\em J. Combin. Theory Ser. A}, 92(1):68--76, 2000.
+\newblock \url{arXiv:math/9811086}.
+
+\bibitem{Stanley}
+R.~P. Stanley.
+\newblock {\em Enumerative combinatorics. {V}ol. 2}, volume~62 of {\em
+  Cambridge Studies in Advanced Mathematics}.
+\newblock Cambridge University Press, Cambridge, 1999.
+\newblock With a foreword by Gian-Carlo Rota and appendix 1 by Sergey Fomin.
+
+\bibitem{Ziegler}
+G.~M. Ziegler.
+\newblock {\em Lectures on polytopes}, volume 152 of {\em Graduate Texts in
+  Mathematics}.
+\newblock Springer-Verlag, New York, 1995.
+
+\end{thebibliography}
