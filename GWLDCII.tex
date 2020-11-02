@@ -1549,7 +1549,7 @@ since in both cases the algorithm in $W'$ proceeds identically to that in $W$ af
 \end{proof}
 
 Thus we have shown that Algorithm \ref{alg:put GN on WLD} does in fact produce a Grassmann necklace. Next we check that it produces the correct one, i.e. the Grassmann necklace that defines $M(W)$. 
-\begin{thm}\label{res alg gives correct GN} \todo{fix mixing words and notation (M.28, M.47)} 
+\begin{thm}\label{res alg gives correct GN} 
 The Grassmann necklace $(I_1 \ldots I_n)$ from Theorem~\ref{res:alg gives GN} is the Grassmann necklace of the positroid $M(W)$.
 \end{thm}
 \begin{proof}
@@ -1722,7 +1722,7 @@ Let $W$ be an admissible Wilson loop diagram with $k$ propagators, and with a ve
   \]
 
 
-By Corollary~\ref{no coloops} we know that $i \not\in I_1^W$, and so $i$ must label a horizontal edge on the boundary of the Le diagram of $W$, i.e. it must be a column label. The shapes of the Le diagram of $V$ and $W$ are the same except for the insertion of this column, since $I_1$ is the same for $V$ and $W$ except for the incrementation of the indices $\geq i$ in the transition from the necklace for $V$ to the necklace for $W$. 
+By Corollary~\ref{no coloops} we know that $i \not\in I_1^W$, and so $i$ must label a horizontal edge on the boundary of the Le diagram of $W$, i.e. it must be a column label. The shapes of the Le diagram of $V$ and $W$ are the same except for the insertion of this column, since $I_1$ is the same for $V$ and $W$ except for the incrementation of the indices  greater than or equal to $i$ in the transition from the necklace for $V$ to the necklace for $W$.  \todo{fix mixing words and notation (M.28, M.49) throughout, esp wrt <, > $\geq$ etc.} 
 \end{proof}
 \vspace{0.5em}
 
@@ -1921,7 +1921,7 @@ By Lemma~\ref{lem I} we have $I_n^{W}= I_1^{V} \cup \{n\}$ and $I_1^{W} = I_1^{V
 \[I_1^{W} \setminus I_n^{W} = \{n-3\}, \qquad \qquad I_n^{W} \setminus I_1^{W} = \{n\},\]
 and so by Algorithm~\ref{alg:GN to Le} we have a plus in the $(n-3) \rightarrow n$ position, i.e. in the leftmost box of the bottom row. 
 
-Also by Lemma~\ref{lem I} we have $I_{n-1}^{W} = I_n^{V} \cup \{n-1\}$. Recall from the proof of Lemma~\ref{lem I} that \hlfix{$n-3,n-2,n-1,n \not\in I_1^V$}{M doesn't like this notation M.58}; therefore
+Also by Lemma~\ref{lem I} we have $I_{n-1}^{W} = I_n^{V} \cup \{n-1\}$. Recall from the proof of Lemma~\ref{lem I} that none of $n-3,\;n-2,\;n-1$ or $n$ are in $I_1^V$; therefore
 \[
 I_1^W\setminus I_{n-1}^W = (I_1^V \setminus I_n^V) \cup\{n-3\},
 \]
@@ -1936,7 +1936,7 @@ We next consider the plusses contributed to the Le diagram of $W$ by $I_{n-2}^W$
 \begin{rmk}\label{rem n-2 case} Consider the case when $n-2 \in I_{n-2}^V$ but $n-1 \not\in I_{n-2}^V$. This case can only occur if our $W$ is in Case 2 of Figure~\ref{fig special p} and $n-1$ supports no propagators other than $p$. In this situation, apply the dihedral transformation that reflects $W$ along the line perpendicular to the $(n-2)^{th}$ edge, so that $p$ is unchanged but $q = (n-1,1)$ in the new diagram. The new diagram is an example of Case 1, i.e. it satisfies $n-2 \not \in I_{n-2}^V$. Therefore we do not need to separately consider the case where $n-2\in I_{n-2}^V$ but $n-1\not\in I_{n-2}^V$, as it will be subsumed into Case 1 in the main theorem.
 \end{rmk}
 
-We can now describe the plusses contributed by $I_{n-2}^W$ in the remaining two cases: when $n-2 \not\in I_{n-2}^V$, and when $n-2,n-1 \in I_{n-2}^V$.
+We can now describe the plusses contributed by $I_{n-2}^W$ in the remaining two cases: when $n-2 \not\in I_{n-2}^V$, and when both $n-2$ and $n-1$ are not in $I_{n-2}^V$.
 
 \begin{lem}\label{lem n-2 good}
   Let $V$ and $W$ be as in Lemma~\ref{lem I}, and suppose that $n-2 \not\in I_{n-2}^{V}$. Then $I_{n-2}^{W}$ contributes all of the same plusses as $I_{n-1}^{V}$ (which is the same as $I_{n-2}^{V}$) along with a new ${(n-3)\rightarrow (n-2)}$ plus.
@@ -1944,7 +1944,7 @@ We can now describe the plusses contributed by $I_{n-2}^W$ in the remaining two 
 
 
 \begin{proof}
-If $n-2\not\in I_{n-2}^{V}$ then $I_{n-1}^{V}=I_{n-2}^{V}$ by definition, and by Lemma~\ref{lem I} we have the equality ${I_{n-2}^{W} = I_{n-1}^{V} \cup \{n-2\}}$.  Note that $n-3\not\in I_{n-2}^{V}$ by Lemma~\ref{lem no fourth vertex}.  Therefore the plusses contributed by $I_{n-2}^{W}$ are exactly the  plusses from $I_{n-1}^{V}$ along with the $(n-3)\rightarrow (n-2)$ plus.  This gives the statement of the lemma.
+If $n-2\not\in I_{n-2}^{V}$ then $I_{n-1}^{V}=I_{n-2}^{V}$ by definition, and by Lemma~\ref{lem I} we have the equality ${I_{n-2}^{W} = I_{n-1}^{V} \cup \{n-2\}}$.  Note that $n-3\not\in I_{n-2}^{V}$ by Lemma~\ref{lem no fourth vertex}.  Therefore the plusses contributed by $I_{n-2}^{W}$ are exactly the  plusses from $I_{n-1}^{V}$ along with the $(n-3)\rightarrow (n-2)$ plus.  This gives the statement of the lemma. 
 \end{proof}
 
 Next we need an observation about how the Grassmann necklace for $V$ changes over the indices near $n$ under the hypotheses that $n-2, n-1\in I_{n-2}^V$.
@@ -1979,7 +1979,7 @@ However, it is important to observe that $v$ could be $n-4$, as we see in the ne
 \begin{proof}
 \begin{enumerate}  
 
-\item As in Lemma~\ref{lem I} we have $n,n-1,n-2,n-3 \not\in I_1^V$, which implies the first part of the claim. The second part is a consequence of the discussion following equation \eqref{eq necklace}, which shows that $n-4 \not\in I_n^V$.
+\item As in Lemma~\ref{lem I} we have that none of $n,\; n-1, \; n-2$ and $n-3$ are in $I_1^V$, which implies the first part of the claim. The second part is a consequence of the discussion following equation \eqref{eq necklace}, which shows that $n-4 \not\in I_n^V$. \todo{propagate M.58 when it appears inline}
 
 \item By Lemma~\ref{lem I} we have that $I_{n-3}^W = I_{n-3}^V \cup \{n-2\}$, so $I_{1}^W \setminus I_{n-3}^W = I_1^V \setminus I_{n-3}^V$ and $I_{n-3}^W \setminus I_1^W$ is obtained from $I_{n-3}^V \setminus I_{1}^V$ by replacing the $n-3$ with $n-2$.    
 
@@ -1989,7 +1989,7 @@ Recall that we cannot have $u = n-4$ (since $n-4 \notin I_n^V$) so either $u = n
 
 Since $I_{n-2}^V$ is the only term in the Grassmann necklace for $V$ that contains $n-2$, no other term can contribute a plus in column $n-2$. Additionally, since $I_{n-2}^V$ only differs from $I_{n-3}^V$ in that the $n-3$ was replaced by an $n-2$, all other plusses must agree with those contributed by $I_{n-3}^V$. 
 
-\item By Lemma~\ref{lem I} we have $I_1^W = I_1^V\cup \{n-3\}$ and $I_{n-2}^W = (I_n^V \setminus \{n-5\}) \cup \{n-1,n-2\}$. By equation \eqref{eq necklace} we have $n-5 \in I_1^V$, and by the following discussion we have $n-1,n-2,n-3 \not\in I_n^V,I_1^V$. It follows that the symmetric difference of $I_1^W$ and $I_{n-2}^W$ is
+\item By Lemma~\ref{lem I} we have $I_1^W = I_1^V\cup \{n-3\}$ and $I_{n-2}^W = (I_n^V \setminus \{n-5\}) \cup \{n-1,n-2\}$. By equation \eqref{eq necklace} we have $n-5 \in I_1^V$, and by the following discussion we have that none of $n-1,\;n-2$ and $n-3$ are not in either $I_n^V$ or $I_1^V$. It follows that the symmetric difference of $I_1^W$ and $I_{n-2}^W$ is
     \begin{gather*}
     I_1^W \setminus I_{n-2}^W  = (I_1^V\setminus I_n^V) \cup \{n-3, n-5\}. \\
     I_{n-2}^W \setminus I_1^W  = (I_n^V\setminus I_1^V) \cup \{n-1, n-2\}.
@@ -2216,7 +2216,7 @@ Let $W = (\cP, [n])$ be a Wilson loop diagram and $C(W)$ be its associated matri
 \end{itemize}
 \end{algorithm}
 
-Each $r_i$ is the determinant of a minor determined by certian propagators of $W$: specifically, $p$ plays a role in defining $r_i$ if if contributs one set of values (columns) $i^{th}$ element of the Grassmann necklace and a different set to the $(i-1)^{th}$ element. \sanote{major rewrite of this sentence (due to M.62) Karen, look over}. 
+Each $r_i$ is the determinant of a minor determined by certain propagators of $W$. In particular, if a propagator $p$ contributes one value to the $i^{th}$ element of the Grassmann necklace and a different value to the $(i-1)^{th}$ element, then $p$ is one of the propagators contibuting to the minor. Specifically, the row associated to $p$ and the column associated to the value that $p$ contributes to the $i^{th}$ Grassmann Necklace element appear in the minor.
 %That is, each $r_i$ is the determinant of the minor determined by the propagators (rows) that contribute different values (columns) to the $i^{th}$ element of the Grassmann necklace than they did to the $(i-1)^{th}$. 
 Since each $r_i$ is simply the determinant of a particular submatrix of $C(W)$ and an ordering on the propagators has been fixed, the sign of each $r_i$ is well defined.
 
@@ -2579,7 +2579,7 @@ Thus $q\in S_i$ after all, and so $f$ is a factor of $r_i$ as required.
 
 First we show that every factor of $\prod_{i=1}^n \Delta_{I_i}$ divides $R$.  Take an irreducible factor $f$ of $\prod_{i=1}^n \Delta_{I_i}$. There exists some $i$ such that $f|\Delta_{I_i}$ but $f\!\!\nmid\!\! \Delta_{I_{i-1}}$, since otherwise the variables corresponding to the propagators contributing to $f$ which do not themselves appear in $f$ could never appear, contradicting Lemma~\ref{vertex cyclic int lem}.  If $f$ is a linear factor, say from associating propagator $p$ to vertex $a$, then $I_{i}(p)=a$ and $I_{i-1}(p)\neq a$ so this factor appears in $r_i$.  If $f$ is a quadratic factor, say from associating propagators $p$ and $q$ to vertices $a$ and $a+1$ respectively, then again we cannot have both $I_{i-1}(p) = a$ and $I_{i-1}(q) = a+1$, else $f$ divides $\Delta_{i-1}$. However, by the proof of part (4), if one of $p,q$ belongs to $S_i$ then the other does as well.  Thus $f$ divides $r_i$.
 
-Next we need to show that $R$ is square-free.  Suppose $f^2|R$.  If $f$ is a linear factor, say from associating propagator $p$ to vertex $a$, then there must be two distinct points in the Grassmann necklace algorithm where $p$ changes from not being associated to vertex $a$ to being associated to vertex $a$.  This contradicts Lemma~\ref{vertex cyclic int lem}.  Now suppose $f$ is a quadratic factor, say from propagators $p$ and $q$ supported on edge $a$ with $p$ clockwise to $q$ on the edge.  In this case it is not possible for any $I_i$ to associate $p$ to $a+1$ and $q$ to $a$.  Furthermore, we know by part (4) that $p$ changes from not being associated to $a$ to being associated to $a$ if and only if $q$ changes from not being associated to $a+1$ to being associated to $a+1$.  Thus $f^2|R$ implies that \hlfix{twice}{Not sure what to do M.72} in the Grassmann necklace $p$ must change from not being associated to vertex $a$ to being associated to vertex $a$. This is again a contradiction, and so $R$ is square-free.
+Next we need to show that $R$ is square-free.  Suppose $f^2|R$.  If $f$ is a linear factor, say from associating propagator $p$ to vertex $a$, then there must be two distinct points in the Grassmann necklace algorithm where $p$ changes from not being associated to vertex $a$ to being associated to vertex $a$.  This contradicts Lemma~\ref{vertex cyclic int lem}.  Now suppose $f$ is a quadratic factor, say from propagators $p$ and $q$ supported on edge $a$ with $p$ clockwise to $q$ on the edge.  In this case it is not possible for any $I_i$ to associate $p$ to $a+1$ and $q$ to $a$.  Furthermore, we know by part (4) that $p$ changes from not being associated to $a$ to being associated to $a$ if and only if $q$ changes from not being associated to $a+1$ to being associated to $a+1$.  Thus $f^2|R$ implies that  in the Grassmann necklace $p$ must change twice from not being associated to vertex $a$ to being associated to vertex $a$. This is again a contradiction, and so $R$ is square-free.
 
 Taking everything together we have that $R|\prod_{i=1}^n \Delta_{I_i}$ (from part (4)), $R$ contains all factors of $\prod_{i=1}^n \Delta_{I_i}$, and $R$ is square-free.  Therefore the ideal generated by $R$ is the radical of the ideal generated by $\prod_{i=1}^n \Delta_{I_i}$.
   \end{enumerate}
