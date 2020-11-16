@@ -599,7 +599,6 @@ In this section we develop this analysis further, showing the converse of this r
 
 The equivalence relation on Wilson loop diagrams (Definition \ref{equivdfn}) is defined in terms of exact subdiagrams. Thus in order to understand the equivalence, we need a way to extract and compare exact subdiagrams. We do this via the notion of a polygon dissection of $W$.
 
-\todo{Need to address the second comment about section 3.1 from report M} 
 \begin{dfn}\label{WLDtriangulationdfn}
   Let $W = (\cP, [n])$ be a weakly admissible Wilson loop diagram.  The \emph{polygon dissection} associated to $W$, denoted $\tau(W)$, is defined as follows.
   \begin{itemize}
@@ -611,6 +610,7 @@ The equivalence relation on Wilson loop diagrams (Definition \ref{equivdfn}) is 
 
 \emph{Polygon dissection} is a common term in combinatorics for a decomposition of a convex polygon into smaller polygons by means of noncrossing diagonals; see for example \cite{PSpolygon}.  Each $\tau(W)$ is such an object.
 
+
 \begin{lem}\label{tausimpleplanarlem}
 If $W = (\cP, [n])$ is a weakly admissible Wilson loop diagram, then $\tau(W)$ is a simple planar graph whose outer face is a cycle. It inherits an embedding from $W$ such that the vertices all lie on this infinite face\footnote{That is, it is an \emph{outerplanar} graph}. These vertices are cyclically ordered, with a choice of first vertex giving it an additional compatible linear order.
 \end{lem}
@@ -618,6 +618,15 @@ If $W = (\cP, [n])$ is a weakly admissible Wilson loop diagram, then $\tau(W)$ i
 \begin{proof}
 Since the vertices of $\tau(W)$ are labeled by the edges of $W$, which are cyclically ordered, this gives an ordering to the vertices and the outer face of $\tau(W)$ is a cycle.  Since $W$ does not admit any propagators of the form $p = (i, i+1)$ due to its admissibility, there is exactly one edge connecting any two adjacent edges of $\tau(W)$. Similarly, there does not exist two propagators $p,q$ such that both $p$ and $q$ start at edge $i$ and end at edge $j$. Therefore, no two vertices of $\tau(W)$ can be connected by more than one edge, and so $\tau(W)$ is a simple graph. Finally, the embedding of $\tau(W)$ is induced from the embedding of the graph $W$, and since $W$ is weakly admissible we know that no pair of propagators can cross. Therefore, it is a planar embedding. 
  \end{proof}
+
+
+\begin{rmk}
+The previous lemma shows that $\tau$ does map into polygon dissections.  In fact $\tau$ is a bijection from weakly admissible Wilson loop diagrams to polygon dissections.  To see the inverse map, and hence obtain bijectivity, we need only reverse the construction above.  The only part which is nontrivial is that if diagonals of the dissection meet at a common vertex, we need to order the propagators associated to these diagonals along the edge associated to the vertex of the dissection, but using the noncrossing property of propagators this can be done uniquely.
+
+The $\tau$ bijection will be useful, as is typical in bijective combinatorics, because some features are more visible on the dissection side.  In particular the exact subdiagrams are visible as triangulated pieces and equivalence comes down to retriangulation.  All of these notions are defined and explained below.
+
+As a final note before we begin laying out the results we need on $\tau$, if a Wilson loop diagram $W$ is weakly admissible but not admissible, then the same equality that would give exactness in a subdiagram holds, and so for the same reasons as described below for exact subdiagrams $\tau(W)$ will have all triangle internal faces and this is the only way that $\tau(W)$ can have all triangle internal faces.  Therefore, $\tau$ also gives a bijection between admissible Wilson loop diagrams and polygon dissections with at least one non-triangle internal face.
+\end{rmk}
 
 \begin{eg}\label{WLDtopolygonpartition}
 In this example we return to two of the Wilson loop diagrams in Example \ref{eg:equivdiags}. We can pair diagrams with their polygon dissections as follows:
