@@ -1219,13 +1219,15 @@ Finally, two polytopes are \emph{combinatorially equivalent} if there is a bijec
 
 As with many of the interesting and well-studied polytopes in combinatorics, the associahedron can be characterized in many different ways. Here is one definition.
 
-\begin{dfn}\label{def:associahedron} \todo{Karen, see note bottom of page 2 in report M}
+\begin{dfn}\label{def:associahedron} 
 Fix $n$ and consider dissections of a convex $n$-gon.  The $n-1$ {\em associahedron} can be defined in terms of the dissections of this $n$-gon: the vertices of the associahedron are the triangulations of the $n$-gon, while the $k$-dimensional faces are the dissections which are $k$ diagonals away from being a triangulation.  One face is included in another if the first dissection is a refinement of the second. 
 \end{dfn}
 
+The associahedron coming from dissections on an $n$-gon is known as the $n-1$ associahedron because this is the associahedron for which the vertices correspond to the ways to bracket a list of length $n-1$.  It is an $n-3$ dimensional polytope.
+
 It turns out that this defines a class of combinatorially equivalent polytopes, which can be proved by giving a realization.  There are many interesting realizations of the associahedron \cite{CSZinequivalent}. The following realization will be the one that we use.  
 
-\begin{dfn}\label{def:secondary polytope} \todo{Karen, see note bottom of page 2 in report M}
+\begin{dfn}\label{def:secondary polytope} 
   Let $x_1, \ldots, x_n$ be the corners of a convex $n$-gon in $\mathbb{R}^2$, and let $T$ be the set of triangulations of this $n$-gon.  For each $t\in T$, define $s_t$ to be the point in $\mathbb{R}^n$ whose $i$th coordinate is the sum of the areas of all triangles of $t$ which are incident to $x_i$.  Let $A_n$ be the convex hull of the $s_t$. Then $A_n$ is a realization of the $n-1$ associahedron (\cite[Example 9.11]{Ziegler}).
 \end{dfn}
 Note that this construction works for any convex $n$-gon, but these realizations are all equally good for our purposes, and so we fix $x_1, \ldots, x_n$ defining a particular convex $n$-gon from now on.
@@ -1295,11 +1297,16 @@ The situation described in the lemma is illustrated in Figure~\ref{configs}.
 
 
 \begin{proof}
-\hlfix{Since $D_1$ and $D_2$ do not have the same set of non-triangle faces, but the vertices of the non-triangles faces are the same, $V_{>3}(D_1) = V_{>3}(D_2)$, there must be some diagonal $d$ of $D_1$ that crosses through a non-triangle face $f$ of $D_2$.  If that face of $D_2$ has degree at least 5 then it must contain four vertices in the configuration described in the statement.}{Karen, I'm leaving the rest of the last comment of report M to you.}
+  Since $V_{>3}(D_1) = V_{>3}(D_2)$, the vertices of the non-triangle faces of $D_1$ and $D_2$ are the same, but $D_1$ and $D_2$ do not have the same set of non-triangle faces.
+  Suppose that no diagonal of $D_1$ crosses through a non-triangle face of $D_2$.  Then all non-triangle faces of $D_2$ must lie strictly within faces of $D_1$.  Since the non-trangles faces of the two dissections are different at least one of these containments must be proper, and so some diagonal bounding one of the non-triangle faces of $D_2$ must cross through a non-triangle face of $D_2$.  Therefore, swapping $D_1$ and $D_2$ if necessary,  
+  %Since $D_1$ and $D_2$ do not have the same set of non-triangle faces, but the vertices of the non-triangles faces are the same, $V_{>3}(D_1) = V_{>3}(D_2)$,
+  there must be some diagonal $d$ of $D_1$ that crosses through a non-triangle face $f$ of $D_2$.
+  If $f$ has degree at least 5 then it must contain four vertices in the configuration described in the statement.
 
-Suppose this never occurs.  Then all the non-triangle faces of $D_2$ which are crossed by a diagonal of $D_1$ must be quadrilaterals and likewise for $D_1$.  This means that any non-triangle and non-quadrilateral faces must be common between $D_1$ and $D_2$.  These common faces are irrelevant for the statement as none of them can be the face containing $x_i, x_j, x_k, x_l$, and so by triangulating any common non-triangle faces, we may assume that $D_1$ and $D_2$ have only quadrilateral and triangle faces.
 
-Assume for a contradiction that no quadrilateral as in the statement exists, and let $d$ be a diagonal in $D_1$ crossing the unique non-triangle face $f$ of $D_2$. Then $f$ must have two vertices strictly on each side of $d$. We name the vertices on one side of $d$ as $x_i$ and $x_j$, and those on the other side as $x_k$, $x_l$ (and in that order; see Figure~\ref{inductive_step}).  Let $g$ be the face in $D_1$ that is incident to $d$ on the $x_i, x_j$ side of $d$.
+Suppose no $f$ of degree at least 5 crossed by a diagonal of the other dissection occurs in either $D_1$ or $D_2$.  Then all the non-triangle faces of $D_2$ which are crossed by a diagonal of $D_1$ must be quadrilaterals and likewise for $D_1$.  This means that any non-triangle and non-quadrilateral faces must be common between $D_1$ and $D_2$.  These common faces are irrelevant for the statement as none of them can be the face containing $x_i, x_j, x_k, x_l$, and so by triangulating any common non-triangle faces, we may assume that $D_1$ and $D_2$ have only quadrilateral and triangle faces.
+
+Assume for a contradiction that no quadrilateral as in the statement exists, and let $d$ continue to be a diagonal in $D_1$ crossing a non-triangle face $f$ of $D_2$. Then $f$ must have two vertices strictly on each side of $d$. We name the vertices on one side of $d$ as $x_i$ and $x_j$, and those on the other side as $x_k$, $x_l$ in that order; see Figure~\ref{inductive_step}.  Let $g$ be the face in $D_1$ that is incident to $d$ on the $x_i, x_j$ side of $d$.
 
 We first show that none of the vertices defining $g$ can lie in the cyclic interval $[x_i,x_j]$. Indeed, if $g$ is a triangle then we immediately see that its third vertex cannot lie in the interval $[x_i,x_j]$, as we could obtain a configuration as described in the statement by replacing $d$ with one of the other edges of $g$.
 
