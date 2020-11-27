@@ -4,4 +4,7 @@
 *.blg
 *.sublime-project*
 *.sublime-workspace
-.DS_Store
+*.DS_Store
+*.pdf
+*.bbl
+
