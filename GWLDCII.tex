@@ -490,7 +490,7 @@ Note that since there is no ordering on the propagators of $W$, $C(W)$ is only d
 
 One may also interpret the functional $I(W)$ as associating a volume to each cell $\Sigma(W)$ \cite{wilsonloop, Amplituhedronsquared, HeslopStewart}, where the volume is determined by the external particles involved. Specifically, the integrand is written in terms of the elements of $C(W)$ as  \begin{equation} \label{eq:omega(W) def}\Omega(W) = \frac{\prod_{r=1}^{|\cP|} \prod_{v \in V(p_r)} \textrm{d}x_{p_r}}{R(W)} \;, \end{equation} multiplied by a $\delta$ function that evaluates the matrix $C(W)$ on the external particles. The denominator $R(W)$ is given in Definition~\ref{def R(W)} below. For the purposes of this paper, we restrict our attention to $\Omega(W)$ only, and ignore the $\delta$ function in the integrand of $I(W)$. The interested reader is referred to \cite{Adamo:2012xe,HeslopStewart,LipsteinMason} for more information about the integrand of $I(W)$. \sanote{not putting sections here, but I'd like a second thought}
 
-For a fixed number of propagators and particles, the tree level amplitude of the Wilson loop diagrams is computed as the sum of the $I(W)$ for all $W$ of the correct size. \hlfix{By {\cite{Adamo:2011pv,Adamo:2012xe,Arkani-Hamed:2013jha}} this sum is finite for all sets of external particles,}{fix this citation} i.e.
+For a fixed number of propagators and particles, the tree level amplitude of the Wilson loop diagrams is computed as the sum of the $I(W)$ for all $W$ of the correct size. By {\cite{Adamo:2011pv,Adamo:2012xe,Arkani-Hamed:2013jha}} this sum is finite for all sets of external particles,\sanote{fix this citation} i.e.
 \bas \mathcal{A}_{k, n}^{tree} = \sum_{\substack{W = (\cP, [n]), \\ |\cP| = k}} I(W) <\infty. \eas
 
 This would certainly hold if  the singularities in the integrands $\Omega(W)$ cancel out in the sum; in particular, all poles arising from $R(W)$ must cancel. Specifically, it is conjectured that these poles cancel on the boundaries of the positroid cells $\Sigma(W)$, analogous to the analysis in \cite{Arkani-Hamed:2013jha}. This has been checked for particular classes of examples (e.g. \cite{casestudy, Amplituhedronsquared, HeslopStewart}) but has not been proven in general.
@@ -2188,7 +2188,7 @@ Therefore the Le diagram of $W$ contains $3(k-1)$ plusses in bijection with the 
 
 Recall from Section~\ref{section WLD background} that each Wilson loop diagram defines a functional $I(W)$, which associates a volume to the positroid cell $\Sigma(W)$. In this section we investigate the poles of the integrand of $I(W)$. 
 
-\hlfix{Since SYM $N=4$ is a finite theory {\cite{Alday:2007hr, ParkeTaylorids}}, the scattering amplitudes (and thus the holomorphic Wilson loops $\,\mathfrak{W}_{k,n}$) are finite.}{Fix citations} That is, for a fixed set of external particles $\cZ$ we must have
+Since SYM $N=4$ is a finite theory {\cite{Alday:2007hr, ParkeTaylorids}}, the scattering amplitudes (and thus the holomorphic Wilson loops $\,\mathfrak{W}_{k,n}$) are finite.\sanote{Fix citations} That is, for a fixed set of external particles $\cZ$ we must have
 \bas \sum_{W \text{ s.t. } |\cP| = k} I(W)(\cZ) <\infty \;.\eas
 This holds if all poles of the integrands cancel. As a step towards this, in this section we prove some results about the structure of the denominator $R(W)$ of the integrand, as defined in Definition~\ref{def R(W)}.
 
