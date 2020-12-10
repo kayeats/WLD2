@@ -6,12 +6,6 @@ T.~Adamo, M.~Bullimore, L.~Mason, and D.~Skinner.
 \newblock {\em J. Phys. A}, 44(45):454008, 48, 2011.
 \newblock \url{arXiv:1104.2890}.
 
-\bibitem{Adamo:2012xe}
-T.~Adamo and L.~Mason.
-\newblock Twistor-strings and gravity tree amplitudes.
-\newblock {\em Classical Quantum Gravity}, 30(7):075020, 27, 2013.
-\newblock \url{arXiv:1207.3602}.
-
 \bibitem{casestudy}
 S.~Agarwala and S.~Fryer.
 \newblock A study in $\textrm{Gr}_{\geq 0}(2,6)$: from the geometric case book
@@ -22,7 +16,7 @@ S.~Agarwala and S.~Fryer.
 S.~Agarwala, S.~Fryer, and K.~Yeats.
 \newblock Combinatorics of the geometry of {W}ilson loop diagrams {II}:
   {G}rassmann necklaces, dimensions, and denominators.
-\newblock {\em In preparation.}
+\newblock \url{arXiv:1910.12158}.
 
 \bibitem{non-orientable}
 S.~Agarwala and C.~Marcott.
@@ -94,10 +88,22 @@ S.~N. Karp, L.~Williams, and Y.~X. Zhang.
 \newblock Decompostions of amplituhedra.
 \newblock \url{arXiv:1708.09525}.
 
+\bibitem{LMN}
+R.~Laskar, H.~M. Mulder, and B.~Novick.
+\newblock Maximal outerplanar graphs as chordal graphs, path-neighborhood
+  graphs, and triangle graphs.
+\newblock {\em Australasian Journal of Combinatorics}, 52:185--195, 2012.
+
 \bibitem{WLDdim}
 C.~Marcott.
 \newblock Basis shape loci and the positive grassmannian.
 \newblock \url{arXiv:1904.13361}.
+
+\bibitem{MPhD}
+S.~Mitchell.
+\newblock {\em Algorithms on trees and maximal outerplanar graphs:
+  design,complexity analysis and data structures study}.
+\newblock PhD thesis, University of Virginia, 1977.
 
 \bibitem{OxleyMatroidBook}
 J.~Oxley.

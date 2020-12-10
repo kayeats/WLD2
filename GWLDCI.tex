@@ -305,14 +305,14 @@
 
 
 \title{Combinatorics of the geometry of Wilson loop diagrams I: equivalence classes via matroids and polytopes}
-\author{Susama Agarwala\thanks{SA was partially supported by an Office of Naval Research grant.}, Si\^an Fryer, and Karen Yeats\thanks{KY is supported by an NSERC Discovery grant, by the Canada Research Chair program, though some of this work was developed also by a Humboldt Fellowship from the Alexander von Humboldt foundation.}}
+\author{Susama Agarwala\thanks{SA was partially supported by an Office of Naval Research grant.}, Si\^an Fryer, and Karen Yeats\thanks{KY is supported by an NSERC Discovery grant, by the Canada Research Chair program, and also, over some of the time this work was developed, by a Humboldt Fellowship from the Alexander von Humboldt foundation.}}
 %\date{}
 
 \begin{document}
 \maketitle
 
 \begin{abstract}
-  Wilson loop diagrams are an important tool in studying scattering amplitudes of SYM $N=4$ theory and are known by previous work to be associated to positroids. We characterize the conditions under which two Wilson loop diagrams give the same positroid, prove that an important subclass of subdiagrams (exact subdiagrams) correspond to uniform matroids, and enumerate the number of different Wilson loop diagrams that correspond to each positroid cell.  We also give a correspondence between those positroids which can arise from Wilson loop diagrams and directions in associahedra.
+  Wilson loop diagrams are an important tool in studying scattering amplitudes of SYM $N=4$ theory and are known by previous work to be associated to positroids. We characterize the conditions under which two Wilson loop diagrams give the same positroid, prove that an important subclass of subdiagrams (exact subdiagrams) corresponds to uniform matroids, and enumerate the number of different Wilson loop diagrams that correspond to each positroid cell.  We also give a correspondence between those positroids which can arise from Wilson loop diagrams and directions in associahedra.
 \end{abstract}
 
 
@@ -321,7 +321,7 @@
 
 This paper is the first in a two part series investigating the combinatorics and geometry underlying SYM $N=4$ theory. The series lays out several results about the relationship between Wilson loop diagrams and the positroid cells that give a CW-complex structure to the positive Grassmannian $\Gr(k,n)$. Understanding the precise nature of this relationship is crucial in the study of scattering amplitudes in SYM $N=4$, as described below.
 
-In \cite{wilsonloop} Agarwala and Marin-Amat showed that every weakly admissible Wilson loop diagrams can be identified with a type of matroid called a positroid, and observed that this mapping is neither one-to-one nor onto. Each such positroid corresponds to a positroid cell in the appropriate positive Grassmannian $\Gr(k,n)$ \cite{Postnikov}. In this paper we give a simple characterization of this lack of injectivity in terms of an equivalence relation on the Wilson loop diagrams, and enumerate the number of different Wilson loop diagrams that correspond to each positroid cell. We also study the lack of surjectivity, and show that the number of distinct positroid cells associated to Wilson loop diagrams of a given size is given by counting the directions in an associahedron. 
+In \cite{wilsonloop} Agarwala and Marin-Amat showed that every weakly admissible Wilson loop diagram can be identified with a type of matroid called a positroid, and observed that this mapping is neither one-to-one nor onto. Each such positroid corresponds to a positroid cell in the appropriate positive Grassmannian $\Gr(k,n)$ \cite{Postnikov}. In this paper we give a simple characterization of this lack of injectivity in terms of an equivalence relation on the Wilson loop diagrams, and enumerate the number of different Wilson loop diagrams that correspond to each positroid cell. We also study the lack of surjectivity, and show that the number of distinct positroid cells associated to Wilson loop diagrams of a given size is given by counting the faces up to paralellism in an associahedron. 
 
 The second paper \cite{generalcombinatoricsII} in this series identifies precisely which positroid cell is associated to a given Wilson loop diagram, by giving an algorithm for passing from a Wilson loop diagram to the Grassmann necklace of the associated positroid cell. In this manner we give a direct path from a Wilson loop diagram to a positroid cell, circumventing the painstaking process of examining sets of bases. With this identification in hand, we also prove that any Wilson loop diagram with $k$ propagators corresponds to a $3k$ dimensional positroid cell, and characterize the volume forms that Wilson loop diagrams associate to each positroid cell. The results of the first paper are not prerequisite for the second paper in this series.
 
@@ -341,11 +341,11 @@ In this paper we focus on the correspondence between Wilson loop diagrams and po
 
 \subsection{Roadmap}
 
-Section~\ref{section overall background} summarizes the required background, with definitions for Wilson loop diagrams given in subsection~\ref{section WLD background} and matroids in subsection~\ref{sec matroid background}. Key definitions include {\em admissible} Wilson loop diagrams (Definition~\ref{admisdfn}), {\em exact} subdiagrams (Definition~\ref{def:exact diagram}), and an equivalence relation on admissible Wilson loop diagrams (Definition~\ref{equivdfn}).  The connection between matroids and Wilson loop diagrams is stated precisely in Theorem \ref{thm WLD defines matroid}.
+Section~\ref{section overall background} summarizes the required background, with definitions for Wilson loop diagrams given in Subsection~\ref{section WLD background} and matroids in Subsection~\ref{sec matroid background}. Key definitions include {\em admissible} Wilson loop diagrams (Definition~\ref{admisdfn}), {\em exact} subdiagrams (Definition~\ref{def:exact diagram}), and an equivalence relation on admissible Wilson loop diagrams (Definition~\ref{equivdfn}).  The connection between matroids and Wilson loop diagrams is stated precisely in Theorem \ref{thm WLD defines matroid}.
 
-The main result of Section~\ref{sec equiv} is Theorem~\ref{same matroid iff equiv}, which says that two Wilson loop diagrams define the same matroid (positroid) if and only if they are equivalent.  In subsection~\ref{sec: polygon partitions} we relate exact subdiagrams of Wilson loop diagrams to triangulations of polygons, and hence show that every Wilson loop diagram can be uniquely decomposed as a collection of exact subdiagrams (Corollary~\ref{uniqueproppartitioncor}). In subsection~\ref{sec: exact diagram matroidal props} we examine the matroidal properties of the exact subdiagrams, and prove that a subdiagram of a Wilson loop diagram defines a uniform matroid if and only if the subdiagram is exact (Theorem \ref{exactuniformthm}). This uniform matroid is in fact equal to the dual matroid restricted to the exact subdiagram (Remark \ref{remark exact dual restiction}).  Finally, subsection~\ref{sec: matroids and equivalence} is devoted to the proof of Theorem~\ref{same matroid iff equiv}, along with an easy corollary which gives a formula for the size of each equivalence class (Corollary~\ref{number of equiv diagrams}).
+The main result of Section~\ref{sec equiv} is Theorem~\ref{same matroid iff equiv}, which says that two Wilson loop diagrams define the same matroid (positroid) if and only if they are equivalent.  In Subsection~\ref{sec: polygon partitions} we relate exact subdiagrams of Wilson loop diagrams to triangulations of polygons, and hence show that every Wilson loop diagram can be uniquely decomposed as a collection of exact subdiagrams (Corollary~\ref{uniqueproppartitioncor}). In Subsection~\ref{sec: exact diagram matroidal props} we examine the matroidal properties of the exact subdiagrams, and prove that a subdiagram of a Wilson loop diagram defines a uniform matroid if and only if the subdiagram is exact (Theorem \ref{exactuniformthm}). This uniform matroid is in fact equal to the dual matroid restricted to the exact subdiagram (Remark \ref{remark exact dual restiction}).  Finally, Subsection~\ref{sec: matroids and equivalence} is devoted to the proof of Theorem~\ref{same matroid iff equiv}, along with an easy corollary which gives a formula for the size of each equivalence class (Corollary~\ref{number of equiv diagrams}).
 
-Having identified the equivalence classes and their sizes, the next natural question is to identify the number of inequivalent diagrams under this equivalence relation.  The main result of Section~\ref{sec associahedron} is Theorem \ref{thm:count inequiv diagrams}, which shows that the set of admissible Wilson loop diagrams (up to equivalence) is in bijection with the set of faces in the associahedron (up to parallelism).  Towards this result we go over some relevant background on polytopes in subsection~\ref{sec polytope background}, and then prove the main result in subsection~\ref{sec associahedron results} in the form of two propositions: Proposition~\ref{prop easy way} and Proposition~\ref{prop hard way}.
+Having identified the equivalence classes and their sizes, the next natural question is to identify the number of inequivalent diagrams under this equivalence relation.  The main result of Section~\ref{sec associahedron} is Theorem \ref{thm:count inequiv diagrams}, which shows that the set of admissible Wilson loop diagrams (up to equivalence) is in bijection with the set of faces in the associahedron (up to parallelism).  Towards this result we go over some relevant background on polytopes in Subsection~\ref{sec polytope background}, and then prove the main result in Subsection~\ref{sec associahedron results} in the form of two propositions: Proposition~\ref{prop easy way} and Proposition~\ref{prop hard way}.
 
 \section{Background}\label{section overall background}
 
@@ -547,7 +547,7 @@ Matroid theory relates to the study of Wilson loop diagrams as follows. In \cite
 
 The independent sets of $M(W)$ can be read directly from the diagram:
 
-\begin{thm} \label{thm WLD defines matroid} \cite[Theorem 3.6]{wilsonloop} Any Wilson loop diagram $W =(\cP, [n])$ defines a matroid $M(W)$ with ground set $[n]$. The independent sets are exactly those subsets $V \subseteq [n]$ such that for every subset of vertices, $U\subseteq V$, supports at least as many propagators as vertices in the set, $|\Prop(U)| \geq |U|$. \label{thm:WLDmatroid}\end{thm}
+\begin{thm} \label{thm WLD defines matroid} \cite[Theorem 3.6]{wilsonloop} Any Wilson loop diagram $W =(\cP, [n])$ defines a matroid $M(W)$ with ground set $[n]$. The independent sets are exactly those subsets $V \subseteq [n]$ \hlfix{such that for every subset of vertices, $U\subseteq V$, supports at least as many propagators as vertices in the set, $|\Prop(U)| \geq |U|$}{This edit isn't grammatically correct and is more complicated than what the referee asked for, could you fix it?}. \label{thm:WLDmatroid}\end{thm}
 In other words, the independent sets of $M(W)$ correspond to the sets of vertices in $W$ with ``enough propagators sufficiently well distributed'' on them: not only should $V$ itself support at least as many propagators as the number of vertices it contains, but the same should be true of any subset of $V$ as well.
 
 Throughout, we take the {\em matroid defined by $W$} to be the matroid $M(W)$ of Theorem \ref{thm WLD defines matroid}. Note from Definition~\ref{def:CWmatrix} that the vertices of the diagram $W$ correspond to columns of the associated matrix $C(W)$. Therefore, for any subset of vertices $V \subseteq [n]$ we can consider the restriction $C(W)|_V$ of $C(W)$, which consists of the columns corresponding to $V$. Since the non-zero entries of $C(W)$ are independent real variables, if $C(W)|_V$ has fewer than $|V|$ rows of non-zero entries then it does not have full rank. This is equivalent to saying that if $V$ is a set of columns of $C(W)$ with $|\Prop(V)| < |V|$, then $V$ is a dependent set. Any set of columns containing such a $V$ cannot be independent. Comparing this to Theorem \ref{thm:WLDmatroid}, we see that $M(W)$ is also the matroid realized by $C(W)$. As mentioned above, Theorem [3.38] of \cite{wilsonloop} shows that if $W$ is weakly admissible, the matroid $M(W)$ is a positroid. Furthermore, Theorem 5.1 \cite{WLDdim} shows that the space parametrized by the matrices $C(W)$ matches the positroid cells defined by $M(W)$, up to a set of measure $0$. Note, this does not imply that every possible specializaton of $C(W)$ to a real valued matrix leads to a postroid, only that the set of values that do define a positroid is volume filling in $\R^{4k}$.  
@@ -608,7 +608,7 @@ The equivalence relation on Wilson loop diagrams (Definition \ref{equivdfn}) is 
   \end{itemize}
 \end{dfn}
 
-\emph{Polygon dissection} is a common term in combinatorics for a decomposition of a convex polygon into smaller polygons by means of noncrossing diagonals; \hlfix{see for example {\cite{PSpolygon}}}{Karen, can you specify the citation?}.  Each $\tau(W)$ is such an object.
+\emph{Polygon dissection} is a common term in combinatorics for a decomposition of a convex polygon into smaller polygons by means of noncrossing diagonals; see for example the introduction of {\cite{PSpolygon}}.  Each $\tau(W)$ is such an object.
 
 
 \begin{lem}\label{tausimpleplanarlem}
@@ -887,7 +887,7 @@ The key point to note is that the subgraph $t$ depends on how the propagators of
 \end{lem}
 
 \begin{proof}
-Let us first record a few elementary facts about polygon triangulations (that is, about triangulations with all vertices on the outer face).  If such a triangulation has $n$ vertices then it has $n$ edges on the polygon (that is, on the outer face) and $n-3$ edges which are not.  No planar simple graph with the same vertices and the same outer face can have more edges than a triangulation, and every such simple graph with $n-3$ edges off the outer face is a triangulation.\sanote{Karen, can you specify citation in footnote?} \footnote{The last sentence is the statement that maximal outerplanar graphs are exactly polygon triangulations \cite{MPhD}, then the earlier facts follow from Euler's formula for planar graphs.}
+Let us first record a few elementary facts about polygon triangulations (that is, about triangulations with all vertices on the outer face).  If such a triangulation has $n$ vertices then it has $n$ edges on the polygon (that is, on the outer face) and $n-3$ edges which are not.  No planar simple graph with the same vertices and the same outer face can have more edges than a triangulation, and every such simple graph with $n-3$ edges off the outer face is a triangulation.\footnote{The last sentence is the statement that maximal outerplanar graphs are exactly polygon triangulations (a standard fact that possibly was first written down in \cite{MPhD}, see Theorem 1 of \cite{LMN}), then the earlier facts follow from Euler's formula for planar graphs.}
 
 Since $W$ is weakly admissible, by Lemma \ref{tausimpleplanarlem} $\tau(W)$ is a simple graph. Let $t$ be a triangulated piece of the decomposition of $\tau(W)$ given in Lemma \ref{decompositionlem}.  Note that $t$ cannot be equal to $\tau(W)$ by the definition of admissible diagrams.
 
@@ -1098,7 +1098,7 @@ Let $M = (E,\cB)$ be a matroid, and $S \subseteq E$. The {\em contraction} of $M
 \[\cB / S = \{B \setminus S \ \big| \ |B\cap S | \text{ is maximal amongst all }B \in \cB\}.\]
 \end{dfn}
 
-In \cite{wilsonloop}, Agarwala and Marin-Amat show that certain subdiagrams of $W$ can be realized as contractions of $M(W)$, \hlfix{which we rephrase using the notation of this paper}{citation was correct, but notation was different. Karen: is this clearer?}:
+In \cite{wilsonloop}, Agarwala and Marin-Amat show that certain subdiagrams of $W$ can be realized as contractions of $M(W)$, which we rephrase using the notation of this paper:
 
 \begin{lem} \label{contractsubdiaglem} \cite[Corollary 3.33]{wilsonloop} 
 Let $W = (\cP, [n])$ be a Wilson loop diagram and $P \subseteq \cP$. The set $V(P)^c$ has rank $|P^c|$ (i.e. $F(P^c)$ is a propagator flat of maximal rank), if and only if the matroid defined by the subdiagram $(P, V(P))$ is equal to the contraction $M(W)/V(P)^c$.
@@ -1191,7 +1191,7 @@ which implies that $(P,V(P)) = (R,V(R))$ by the maximality of $(P,V(P))$, and he
 Since there is a unique way to decompose $W$ into maximal exact subdiagrams, it is logical to ask how many diagrams there are in an equivalence class. It is a classical fact (see for instance Chapter 6 of \cite{Stanley}) that the number of triangulations of a convex $n$-gon is the $n-2$ Catalan number, namely $\frac{1}{n-1}\binom{2(n-2)}{n-2}$.  Thus we can count the number of equivalent diagrams.
 
 \begin{cor}\label{number of equiv diagrams}
-  Let $W$ be a weakly admissible Wilson loop diagram where the sizes of the supports of the nontrivial maximal exact subdiagrams are $n_1, n_2, \ldots, n_j$.  Then the number of weakly admissible Wilson loop diagrams equivalent to $W$ (including $W$ itself) is \todo{Karen: This really is weakly admissible, correct?}
+  Let $W$ be a weakly admissible Wilson loop diagram where the sizes of the supports of the nontrivial maximal exact subdiagrams are $n_1, n_2, \ldots, n_j$.  Then the number of weakly admissible Wilson loop diagrams equivalent to $W$ (including $W$ itself) is
   \[
   \prod_{i=1}^{j} \frac{1}{n_i-1}\binom{2(n_i-2)}{n_i-2}
   \]
@@ -1225,7 +1225,7 @@ Fix $n$ and consider dissections of a convex $n$-gon.  The $n-1$ {\em associahed
 
 The associahedron coming from dissections on an $n$-gon is known as the $n-1$ associahedron because this is the associahedron for which the vertices correspond to the ways to bracket a list of length $n-1$.  It is an $n-3$ dimensional polytope.
 
-It turns out that this defines a class of combinatorially equivalent polytopes, which can be proved by giving a realization.  \hlfix{There are many interesting realizations of the associahedron {\cite{CSZinequivalent}}}{Karen, can you specify the citation?}. The following realization will be the one that we use.  
+It turns out that this defines a class of combinatorially equivalent polytopes, which can be proved by giving a realization. There are many interesting realizations of the associahedron {\cite{CSZinequivalent}}. The following realization will be the one that we use.  
 
 \begin{dfn}\label{def:secondary polytope} 
   Let $x_1, \ldots, x_n$ be the corners of a convex $n$-gon in $\mathbb{R}^2$, and let $T$ be the set of triangulations of this $n$-gon.  For each $t\in T$, define $s_t$ to be the point in $\mathbb{R}^n$ whose $i$th coordinate is the sum of the areas of all triangles of $t$ which are incident to $x_i$.  Let $A_n$ be the convex hull of the $s_t$. Then $A_n$ is a realization of the $n-1$ associahedron (\cite[Example 9.11]{Ziegler}).
@@ -1338,7 +1338,7 @@ As observed in the proof of Proposition~\ref{prop easy way}, any non-zero vector
     \[
     \omega^+_d(i) = \begin{cases} \text{dist}(x_i, d) & \text{if $x$ is on the positive side of $d$,}\\ 0 & \text{otherwise.} \end{cases}
     \]
-    \hlfix{We have from {\cite{CSZinequivalent}}}{specify citation} that $\omega^+_d$ is a normal vector for any face with $d$ as a diagonal.  However we can also check this fact in a completely elementary way using the shoelace formula for the area of a triangle.  The shoelace formula says that if $(x_1, y_1), (x_2, y_2), (x_3, y_3)$ are the coordinates of the corners of a triangle in counterclockwise order then the area of the triangle is \[\textstyle\frac{1}{2}(x_1y_2 - x_1y_3 + x_2y_3 - x_2y_1 + x_3y_1 - x_3y_2).\]
+    We have from \cite{CSZinequivalent} (see the proof of Proposition 3.5 therein) that $\omega^+_d$ is a normal vector for any face with $d$ as a diagonal.  However we can also check this fact in a completely elementary way using the shoelace formula for the area of a triangle.  The shoelace formula says that if $(x_1, y_1), (x_2, y_2), (x_3, y_3)$ are the coordinates of the corners of a triangle in counterclockwise order then the area of the triangle is \[\textstyle\frac{1}{2}(x_1y_2 - x_1y_3 + x_2y_3 - x_2y_1 + x_3y_1 - x_3y_2).\]
 
     We now check that $\omega^+_d$ is a normal vector for any face associated to a dissection including $d$, which we accomplish by showing it is normal to every edge bounding the face.  To do so, choose the coordinate system for the polygon so that $d$ is along the $x$-axis.  Let $(a_i, h_i)$, $i\in \{1,2,3,4\}$ be the coordinates of the vertices of a quadrilateral in counterclockwise order and which corresponds to an edge bounding the face.  Since the dissection includes $d$, either all four points are on the negative side of $d$ and so the dot product of $\omega^+_d$ with the direction vector for the quadrilateral is immediately $0$, or, by the formula in equation \eqref{eq:direction vector for quadrilateral} and the shoelace formula, the dot product of $\omega^+_d$ with the vector associated to the quadrilateral is
    \begin{align*}
@@ -1359,7 +1359,10 @@ Propositions~\ref{prop easy way} and \ref{prop hard way} together imply the main
 \end{thm} 
 
 
-\todo{Referee Y wants a concluding sentence or paragraph, perhaps pointing towards paper 2, or perhaps an acknowledgements section}
+\section{Conclusion}
+
+In summary, using matroids and polygon dissections we have counted Wilson Loop diagrams that are equivalent in the sense of having the same positroid, and characterized Wilson Loop diagrams that are inequivalent in terms of faces of the associahedron $A_n$ up to paralellism.  The second paper in this series calculates the dimension of the positroid cell associated to a Wilson loop diagram in a very concrete way by counting plusses in a Le diagram, and looks at the denominator of the integrand of the Wilson Loop diagram.  All of these results are interesting mathematics while also serving to better understand the physics of scattering amplitudes.
+
 
 \bibliographystyle{abbrv}
 \bibliography{WLDbib}
