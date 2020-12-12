@@ -1693,7 +1693,7 @@ If $j \in [n]$ is a loop then in particular we have $j \not\in I_j$, which can o
 
 \section{Dimension of the Wilson loop cells}\label{sec dim}
 
-In continuing to characterize the positroid cells associated to Wilson loop diagrams, our next goal is to show that the dimension of the positroid cell defined by a Wilson loop diagram $(\cP, [n])$ has dimension $3|\cP|$; this is achieved in Theorem \ref{thm dim}.  
+In continuing to characterize the positroid cells associated to Wilson loop diagrams, our next goal is to show that the dimension of the positroid cell defined by a Wilson loop diagram $(\cP, [n])$ is $3|\cP|$.  This is achieved in Theorem \ref{thm dim}.  
 
 Note that the positroid cells associated to the Amplituhedron are of dimension $4|\cP|$. In \cite[section 2]{non-orientable}, Agarwala and Marcott associate a Deodhar component\footnote{Since Deodhar components play no role in this paper, the interested reader is referred to \cite{non-orientable} for more details on this.} to each Wilson loop diagram, and show that the dimension of this Deodhar component is the sum of $|\cP|$ and the dimension of the associated positroid cell.
 %\[|\cP| + \text{ the dimension of associated positroid cell}.\]
@@ -1701,7 +1701,7 @@ Combining this with Theorem~\ref{thm dim}, we see that the Deodhar component ass
 
 Marcott in \cite[Theorem 8.4]{WLDdim} gives a different proof of the $3|\cP|$-dimensionality of $M(W)$ which is geometric and more elegant, but it is not easy to track the effect of a particular propagator.  It is worth noting that while the Amplituhedon is also defined by a projection of a set of $4|\cP|$ dimensional positroid cells, there is no evidence to suggest that the $3|\cP|$ dimensional cells of $\Gr(|\cP|, n)$ defiining the Wilson loop diagrams are related to the $4|\cP|$ dimensional cells defining the Amplituhedron.  \sanote{This para adresses point 3 of report Y. Should there be a similar paragraph in the intro? Should it be moved?}
 
-Our approach is much more explicit. By combining Algorithms~\ref{alg:put GN on WLD} and \ref{alg:GN to Le} (converting from Wilson loop diagram to Grassmann necklace, and Grassmann necklace to Le diagram respectively) we explicitly describe the effect of adding another propagator to a Wilson loop diagram in terms of the plusses of the associated Le diagrams. Recall that the dimension of a positroid cell is equal to the number of plusses in its associated Le diagram \cite[Theorem 6.5]{Postnikov}; thus understanding the effect of adding another propagator is sufficient to give a recursive proof of the $3|\cP|$-dimensionality of the cells.
+\hlfix{Our approach is}{The transition between these paragraphs has been messed up a bit} much more explicit. By combining Algorithms~\ref{alg:put GN on WLD} and \ref{alg:GN to Le} (converting from Wilson loop diagram to Grassmann necklace, and Grassmann necklace to Le diagram respectively) we explicitly describe the effect of adding another propagator to a Wilson loop diagram in terms of the plusses of the associated Le diagrams. Recall that the dimension of a positroid cell is equal to the number of plusses in its associated Le diagram \cite[Theorem 6.5]{Postnikov}.  Thus understanding the effect of adding another propagator is sufficient to give a recursive proof of the $3|\cP|$-dimensionality of the cells.
 
 
 
@@ -1748,7 +1748,7 @@ Since the number of alignments in a chord diagram is clearly preserved under dih
 \begin{lem}\label{lem good p}
   Let $W$ be an admissible Wilson loop diagram with $k \geq 1$ propagators.  Then there is some dihedral transformation of $W$ such that the resulting diagram $W'$ has a propagator $p$ with the following properties:
   \begin{itemize}
-  \item $p = (i, n-1)$ for some $i$, and $p$ has no propagators inside it with regard to the $<_i$ ordering.
+  \item $p = (i, n-1)$ for some $i$, and $p$ has no propagators inside it with respect to the $<_i$ ordering.
   \item Either the edge $i$ in $W'$ only supports $p$, or the edge $i$ in $W'$ supports exactly one other propagator $q = (j,i)$, with no other propagators inside $q$ in the $<_j$ ordering. 
   \end{itemize}
 \end{lem}
@@ -1819,7 +1819,7 @@ With the above restrictions in place, the next few lemmas describe how the Grass
 
 
 \begin{lem}\label{lem I}
-Let $W$ be an admissible Wilson loop diagram with $k\geq 1$ propagators, and suppose that $W$ admits one of the configurations described in Lemma~\ref{lem good p}, with $p$ and $q$ (if $q$ exists) both of length 2. Let $V$ be $W$ with $p$ removed.  We can express $I_*^W$ in terms of $I_*^V$ as indicated below:
+Let $W$ be an admissible Wilson loop diagram with $k\geq 1$ propagators, and suppose $W$ admits one of the configurations described in Lemma~\ref{lem good p}, with $p$ and $q$ (if $q$ exists) both of length 2. Let $V$ be $W$ with $p$ removed.  We can express $I_*^W$ in terms of $I_*^V$ as indicated below:
 
   \begin{align*}
     I_1^{W} & = I_1^{V} \cup \{n-3\} \\
@@ -1846,15 +1846,15 @@ The two possible cases for $W$ are illustrated in Figure~\ref{fig special p}.
 
 We begin with $I_1$, and first observe that by Remark~\ref{rmk cyclic} we must have $I_1^W(p) = n-3$. Since $p$ is the final propagator to be assigned by $I_1^W$, it follows that $I_1^W$ and $I_1^V$ behaved identically on all earlier propagators (recall Remark~\ref{rmk algorithm locally same} about locally identical propagator configurations), which implies in particular that $n-3 \not\in I_1^V$. Thus $I_1^W = I_1^V\cup\{n-3\}$.
 
-We note for future reference that the arguments of the previous two paragraphs also imply that $n-2,n-1,n \not\in I_1^V$.
+We note for future reference that the arguments of the previous two paragraphs also imply that $n-2$, $n-1$, and $n$ are not in $I_1^V$.
 
-Next consider $I_n^{W}$. From Figure \ref{fig special p} we see that in both cases we have $I_n^{W}(p) = n$; thus from vertex 1 onwards the unassigned propagators are exactly those that appear in $V$. Therefore, the algorithm continues as in $I_1^{V}$, i.e. we have $I_n^{W} = I_1^{V} \cup \{n\}$. By a similar argument, we must have $I_{n-1}^{W} = I_n^{V} \cup \{n-1\}$.
+Next consider $I_n^{W}$. From Figure \ref{fig special p} we see that in both cases we have $I_n^{W}(p) = n$. Thus from vertex 1 onwards the unassigned propagators are exactly those that appear in $V$. Therefore, the algorithm continues as in $I_1^{V}$, i.e. we have $I_n^{W} = I_1^{V} \cup \{n\}$. By a similar argument, we must have $I_{n-1}^{W} = I_n^{V} \cup \{n-1\}$.
 
 Now consider $I_{n-2}^{W}$. If $n-2\not\in I_{n-2}^{V}$ then the vertex $n-2$ is non-supporting (see also Corollary~\ref{no coloops}).  Thus we are in Case 1, with ${I_{n-2}^W(p) = n-2}$ and this assignment of $p$ does not affect the rest of the construction of $I_{n-2}^{V}$, so we obtain ${I_{n-2}^{W} = I_{n-2}^{V}\cup \{n-2\}}$ as above.
 
 On the other hand, if $n-2\in I_{n-2}^{V}$ then we must be in Case 2 of Figure~\ref{fig special p} and we must have ${I_{n-2}^V(q) = I_{n-2}^W(q) = n-2}$ (since $q$ is always the clockwise-most propagator supported on vertex $n-2$). If $n-1 \not\in I_{n-2}^{V}$, then $I_{n-2}^W(p) = n-1$ and the algorithm proceeds identically to $I_{n-2}^{V}$ for the remainder of its steps; thus $I_{n-2}^{W} = I_{n-2}^{V}\cup \{n-1\}$ in this case.
 
-Finally, if $n-2,n-1 \in I_{n-2}^{V}$ then $I_{n-2}^W(q) = n-2$ and $I_{n-2}^W(p) = n-1$ as above, but some other propagator must have contributed $n-1$ to $I_{n-2}^{V}$ so we cannot use the same argument as above. \hlfix{When the algorithm $I_{n-2}^W$}{M.54 wants "When in the algorthm". I disagree.} reaches vertex $n$, only the propagators $p$ and $q$ have contributed; thus we proceed as in the construction of $I_n^{V}$ but without propagator $q$ by Remark \ref{rmk algorithm locally same}. By Lemma~\ref{vertex cyclic int lem} we know that $I_n^V(q) = n-5$, and from Remark \ref{clockwise ordering rem} we see that the only way this could occur is if $q$ was the last to contribute to $I_{n-2}^V$. %all other propagators in $V$ had already been assigned when we reached vertex $n-5$; thus $q$ was the final propagator contributing to $I_n^{V}$. 
+Finally, if $n-2$ and$ n-1$ are in $I_{n-2}^{V}$ then $I_{n-2}^W(q) = n-2$ and $I_{n-2}^W(p) = n-1$ as above, but some other propagator must have contributed $n-1$ to $I_{n-2}^{V}$ so we cannot use the same argument as above. \hlfix{When, in the algorithm, the construction of $I_{n-2}^W$ reaches vertex $n$,}{M.54 wants "When in the algorthm". I disagree. -- how about this compromise} only the propagators $p$ and $q$ have contributed; thus we proceed as in the construction of $I_n^{V}$ but without propagator $q$ by Remark \ref{rmk algorithm locally same}. By Lemma~\ref{vertex cyclic int lem} we know that $I_n^V(q) = n-5$, and from Remark \ref{clockwise ordering rem} we see that the only way this could occur is if $q$ was the last to contribute to $I_{n-2}^V$. %all other propagators in $V$ had already been assigned when we reached vertex $n-5$; thus $q$ was the final propagator contributing to $I_n^{V}$. 
 Therefore, $I_{n-2}^{W} = (I_{n}^{V} \setminus \{n-5\}) \cup \{n-1, n-2\}$ in this case. This completes all cases for $I_{n-2}^{W}$.
 
 The arguments for $I_k^{W}$ ($1< k < n-2$) proceed analogously to those of $I_{n-2}^{W}$, with one simplification: we cannot have both $n-3$ and $n-2$ in $I_k^{V}$ since $q$ is the only propagator that could be assigned to either of them, and it cannot be assigned to both.
@@ -1875,7 +1875,7 @@ We proceed to address the cases laid out in Lemma~\ref{lem I}, getting the shape
 \begin{proof}
 See Figure~\ref{fig Le} for an illustration of the shapes described in the statement of the lemma.
 
-Recall that $I_1$ determines the shape of the Le diagram: specifically, the elements of $I_1$ label the rows of the diagram, working from top right to bottom left. By the arguments in Lemma {\ref{lem I}} we know that ${n,n-1,n-2, n-3 \not\in I_1^{V}}$.  These are the leftmost four columns of the diagram for $V$.  From Lemma \ref{lem I} we know that that $I_1^{W} = I_1^{V}\cup \{n-3\}$. Therefore, the right hand boundary of the shape of $V$ is the same as the right hand boundary of the shape of $W$ except that $W$ has one additional row of 3 boxes while $V$ has an additional column in the $n-3$ position; that is, an extra column fourth from the left. 
+Recall that $I_1$ determines the shape of the Le diagram: specifically, the elements of $I_1$ label the rows of the diagram, working from top right to bottom left. By the arguments in Lemma {\ref{lem I}} we know that none of $n$, $n-1$, $n-2$, and $n-3$ are in $I_1^{V}$.  These are the leftmost four columns of the diagram for $V$.  From Lemma \ref{lem I} we know that that $I_1^{W} = I_1^{V}\cup \{n-3\}$. Therefore, the right hand boundary of the shape of $V$ is the same as the right hand boundary of the shape of $W$ except that $W$ has one additional row of 3 boxes while $V$ has an additional column in the $n-3$ position; that is, an extra column fourth from the left. 
 \end{proof}
 \begin{figure}
   \[\begin{tikzpicture}[scale = 1.5]
@@ -1958,7 +1958,7 @@ Specifically with $V$ and $W$ as in Lemma~\ref{lem I} and with $n-2, n-1\in I_{n
   \begin{equation}\label{eq necklace}
   I_{n-3}^{V} \xrightarrow[\substack{n-3\text{ out}\\n-2\text{ in}}]{} I_{n-2}^{V} \xrightarrow[\substack{n-2\text{ out}\\n-5\text{ in}}]{} I_{n-1}^{V} \xrightarrow[\substack{n-1\text{ out}\\ u \text{ in}}]{} I_{n}^{V}  \xrightarrow[\substack{n \text{ out}\\v \text{ in}}]{} I_1^{V}
   \end{equation}
-where $u$ and $v$ are two vertices; we will derive some properties of them below.
+where $u$ and $v$ are two vertices. We will derive some properties of $u$ and $v$ below.
 
 The first two transitions follow by the cyclic intervals property highlighted in Remark~\ref{rmk cyclic} along with the fact that $n-3$ is a supporting vertex in $V$.  The third transition follows from the definition of Grassmann necklaces and the fact that $n-1\in I_{n-2}^V$ by hypothesis, while the final transition follows from the fact that $n-1$ supports an additional propagator so we are guaranteed $n \in I_n^V$.
 
