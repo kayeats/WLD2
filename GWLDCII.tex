@@ -667,7 +667,7 @@ Let $W = (\cP,[n])$ be an admissible Wilson loop diagram and let $M(W)$ be its a
 In particular, this corollary says that a subset $J$ of $[n]$ is a basis of $M(W)$ if and only if there is a set bijection between $J$ and $\cP$ with the property that for each $j\in J$ the propagator associated to $j$ under the bijection is supported on vertex $j$.
 
 
-By relating the behavior of the propagators in $W$ to the matroidal properties of $M(W)$, Agarwala and Marin-Amat also show that $M(W)$ is in fact a positroid whenever $W$ is admissible \cite[Corollary 3.39]{wilsonloop}. \todo{check tenses throughout (M.24) -- maybe past is better, see the ``had'' at the beginning of the next paragraph, can we discuss?}
+By relating the behavior of the propagators in $W$ to the matroidal properties of $M(W)$, Agarwala and Marin-Amat also show that $M(W)$ is a positroid whenever $W$ is admissible \cite[Corollary 3.39]{wilsonloop}. \todo{check tenses throughout (M.24) -- maybe past is better, see the ``had'' at the beginning of the next paragraph, can we discuss?}
 
 However, to go from the Wilson loop diagram $W$ to the positroid cell, one had to go through the matroid explicitly realized via $C(W)$, then make a list of all its nonzero $k\times k$ minors and extract the Le diagram or Grassmann necklace via the methods described in Section~\ref{sec:positroid background}. In \cite[section 4]{casestudy}, Agarwala and Fryer apply this process in the smallest non-trivial case: admissible Wilson loop diagrams with two propagators on six vertices. Even in this simple case, we see that the mapping from admissible Wilson loop diagrams to positroid cells is neither one-to-one nor onto, and the process described above makes it almost impossible to track the relationship between the original Wilson loop diagram and the resulting positroid.
 
@@ -1564,7 +1564,7 @@ Let $W'$ be the diagram obtained from $W$ by removing the propagator $p$.  We ha
 since in both cases the algorithm in $W'$ proceeds identically to that in $W$ after assigning $p$. Since $m \neq i+1$, we have $m\in I_{i+1}^{W'}\setminus\{i+1\}$ but $m\not\in I_{i+2}^{W'}$, contradicting the minimality of $W$. This completes the proof.
 \end{proof}
 
-Thus we have shown that Algorithm \ref{alg:put GN on WLD} does in fact produce a Grassmann necklace. Next we check that it produces the correct one, i.e. the Grassmann necklace that defines $M(W)$. 
+Thus we have shown that Algorithm \ref{alg:put GN on WLD} does produce a Grassmann necklace. Next we check that it produces the correct one, i.e. the Grassmann necklace that defines $M(W)$. 
 \begin{thm}\label{res alg gives correct GN} 
 The Grassmann necklace $(I_1 \ldots I_n)$ from Theorem~\ref{res:alg gives GN} is the Grassmann necklace of the positroid $M(W)$.
 \end{thm}
@@ -1861,7 +1861,7 @@ Next consider $I_n^{W}$. From Figure \ref{fig special p} we see that in both cas
 
 Now consider $I_{n-2}^{W}$. If $n-2\not\in I_{n-2}^{V}$ then the vertex $n-2$ is non-supporting (see also Corollary~\ref{no coloops}).  Thus we are in Case 1, with ${I_{n-2}^W(p) = n-2}$ and this assignment of $p$ does not affect the rest of the construction of $I_{n-2}^{V}$, so we obtain ${I_{n-2}^{W} = I_{n-2}^{V}\cup \{n-2\}}$ as above.
 
-On the other hand, if $n-2\in I_{n-2}^{V}$ then we must be in Case 2 of Figure~\ref{fig special p} and we must have ${I_{n-2}^V(q) = I_{n-2}^W(q) = n-2}$ (since $q$ is always the clockwise-most propagator supported on vertex $n-2$). If $n-1 \not\in I_{n-2}^{V}$, then $I_{n-2}^W(p) = n-1$ and the algorithm proceeds identically to $I_{n-2}^{V}$ for the remainder of its steps; thus $I_{n-2}^{W} = I_{n-2}^{V}\cup \{n-1\}$ in this case.
+On the other hand, if $n-2\in I_{n-2}^{V}$ then we must be in Case 2 of Figure~\ref{fig special p} and we must have ${I_{n-2}^V(q) = I_{n-2}^W(q) = n-2}$ since $q$ is always the clockwise-most propagator supported on vertex $n-2$. If $n-1 \not\in I_{n-2}^{V}$, then $I_{n-2}^W(p) = n-1$ and the algorithm proceeds identically to $I_{n-2}^{V}$ for the remainder of its steps; thus $I_{n-2}^{W} = I_{n-2}^{V}\cup \{n-1\}$ in this case.
 
 Finally, if $n-2$ and$ n-1$ are in $I_{n-2}^{V}$ then $I_{n-2}^W(q) = n-2$ and $I_{n-2}^W(p) = n-1$ as above, but some other propagator must have contributed $n-1$ to $I_{n-2}^{V}$ so we cannot use the same argument as above. \hlfix{When, in the algorithm, the construction of $I_{n-2}^W$ reaches vertex $n$,}{M.54 wants "When in the algorthm". I disagree. -- how about this compromise} only the propagators $p$ and $q$ have contributed; thus we proceed as in the construction of $I_n^{V}$ but without propagator $q$ by Remark \ref{rmk algorithm locally same}. By Lemma~\ref{vertex cyclic int lem} we know that $I_n^V(q) = n-5$, and from Remark \ref{clockwise ordering rem} we see that the only way this could occur is if $q$ was the last to contribute to $I_{n-2}^V$. %all other propagators in $V$ had already been assigned when we reached vertex $n-5$; thus $q$ was the final propagator contributing to $I_n^{V}$. 
 Therefore, $I_{n-2}^{W} = (I_{n}^{V} \setminus \{n-5\}) \cup \{n-1, n-2\}$ in this case. This completes all cases for $I_{n-2}^{W}$.
@@ -1871,7 +1871,7 @@ The arguments for $I_k^{W}$ ($1< k < n-2$) proceed analogously to those of $I_{n
 This covers all cases and hence completes the proof.
 \end{proof}
 
-The next several lemmas assume $V$ and $W$ to be as above. These lemmas discuss how the shape of the Le diagram changes from $V$ to $W$ and how the plusses in $V$ shift to become plusses in $W$. In particular, the Le diagram for $W$ has an extra row, labeled by $n-3$, with three columns (see Figure~\ref{fig Le} and Lemma~\ref{lem shape}). This last row contains three (new) plusses. All other plusses in the Le diagram of $V$ shift in a predictable manner to become plusses in the Le diagram of $W$; this is described in Lemma ~\ref{lem n and n-1} to Theorem~\ref{thm dim}.
+The next several lemmas assume $V$ and $W$ to be as above. These lemmas discuss how the shape of the Le diagram changes from $V$ to $W$ and how the plusses in $V$ shift to become plusses in $W$. In particular, the Le diagram for $W$ has an extra row, labeled by $n-3$, with three columns (see Figure~\ref{fig Le} and Lemma~\ref{lem shape}). This last row contains three (new) plusses. All other plusses in the Le diagram of $V$ shift in a predictable manner to become plusses in the Le diagram of $W$; this is described in Lemma~\ref{lem n and n-1} to Theorem~\ref{thm dim}.
 
 We proceed to address the cases laid out in Lemma~\ref{lem I}, getting the shape of the Le diagram of $W$ from the relation $I_1^W= I_1^V \cup \{n-3\}$. 
 
@@ -2026,7 +2026,7 @@ Similarly, the only terms that can contribute an $(n-5) \rightarrow n$ plus are 
 \end{lem}
 
 \begin{proof}
-Recall that $I_1^W = I_1^V\cup \{n-3\}$ and that $n-2,n-1,n \not\in I_1^W$.
+Recall that $I_1^W = I_1^V\cup \{n-3\}$ and that $n-2$, $n-1$, and $n$ are not in $I_1^W$.
 
   If $n-3\not\in I_{k}^{V}$ then by Lemma~\ref{lem I} we have $I_{k}^{W} = I_k^{V}\cup \{n-3\}$.  Since $n-3$ is the largest element of $I_1^{W}$ this transformation leaves the disjoint paths unchanged and so the plusses carry over from $V$ to $W$ directly.
 
@@ -2060,7 +2060,7 @@ Thus $W$ has one of the two configurations depicted in Figure~\ref{fig special p
  The pairing is defined as follows:
   \begin{itemize}
   \item The plusses in the $\mathcal{B}$ region of both Le diagrams are identical, so each plus in this region is paired with itself.
-  \item Every square containing a plus in the leftmost two columns (the $n^{th}$ and the $(n-1)^{th}$ columns) \todo{generally turn $n$ to $n^{th}$ throughout M.60} of $\mathcal{A}$ for $V$ also contains a plus in $W$, so these plusses are also paired with themselves.
+  \item Every square containing a plus in the leftmost two columns (the $n^{th}$ and the $(n-1)^{th}$ columns) \todo{generally turn $n$ to $n^{th}$ throughout M.60 -- I disagree and for reasons I can articulate} of $\mathcal{A}$ for $V$ also contains a plus in $W$, so these plusses are also paired with themselves.
   \item The plusses in the $n-3$ column for $V$ are paired with the corresponding plusses in the $n-2$ column for $W$.
   \item If there is a plus in the $n-2$ column of $\mathcal{A}$ in $V$ then Lemma~\ref{lem n-2 bad} applies, so there is exactly one such plus in this column. If $n-4 \not\in I_1^V$ then pair this plus with the $(n-5)\rightarrow (n-1)$ plus in $W$, whereas if $n-4 \in I_1^V$ then pair it with the $(n-5) \rightarrow n$ plus in $W$.
 
@@ -2347,7 +2347,7 @@ Consider the Wilson loop diagram in Figure~\ref{fig R eg}. Assigning propagators
 \[
 C(W) = \begin{bmatrix} a & b & 0 & 0 & 0 & c & d \\ e & f & 0 & 0 & g & h & 0 \\ i & j & 0 & k & l & 0 & 0 \end{bmatrix}.
 \]
-The Grassmann necklace of this diagram \hlfix{is}{M.65 wants to replace with "consists of". I disagree} 
+The Grassmann necklace of this diagram \hlfix{is}{M.65 wants to replace with "consists of". I disagree -- let's discuss} 
 \begin{gather*}I_1 = \{1,2,4\},\ I_2 = \{2,4,5\},\ I_3 = \{4,5,6\},\ I_4=\{4,5,6\},\\ I_5=\{5,6,7\},\ I_6 = \{6,7,1\},\ I_7=\{7,1,2\}. \end{gather*}  
 Figure~\ref{fig R eg} indicates which vertex is contributed to $I_i$ by each propagator, for each $i \in [1,7]$.  
 
