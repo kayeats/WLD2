@@ -360,7 +360,7 @@
 \section{Introduction}
 
 
-This paper is the second in a two part series investigating the combinatorics and geometry underlying Wilson loop diagrams in SYM $N=4$ theory. This series lays out several results about the relationship between Wilson loop diagrams and the positroid cells that give a CW complex structure to the positive Grassmanian. This paper is concerned with identifying which positroid cells correspond to which Wilson loop diagrams, and how this translates to a geometric tiling of a subspace of the positive Grassmannians. 
+This paper is the second in a two part series investigating the combinatorics and geometry underlying Wilson loop diagrams in SYM $N=4$ theory. This series lays out several results about the relationship between Wilson loop diagrams and the positroid cells that give a CW complex structure to the positive Grassmannian. This paper is concerned with identifying which positroid cells correspond to which Wilson loop diagrams, and how this translates to a geometric tiling of a subspace of the positive Grassmannians. 
 
 % Wilson loop diagrams associate a volume form to a positroid cell. 
 
@@ -376,7 +376,7 @@ In \cite{wilsonloop}, Agarwala and Marin-Amat uncovered a connection between the
 
 In the above work and elsewhere, it is clear that while the space \hlfix{parametreized by}{``filled by'' vs ``parameterized by'' in the previous paragraph} the Wilson loop diagrams is related to the Amplituhedron, they are not the same space. For instance, it is conjectured that the Amplituhedron is orientable, whereas Agarwala and Marcott show in \cite{non-orientable} that the space parametrized by the Wilson loop diagrams as a subspace of $\Gr(k, n+1)$ can be seen as a non-orientable vector bundle over some submanifold of $\Gr(k,n)$. Furthermore, the cells associated to the Wilson loop diagrams are different from the cells associated to BCFW diagrams, which can be seen by comparing the results of \cite{AmplituhedronDecomposition} and \cite{casestudy}. This is an intriguing observation, as it is conjectured that the space parametrized by the Wilson loop diagrams will project down to something close to the Amplituhedron \cite{wilsonloop, Amplituhedronsquared}. 
 
-It is worth noting at this point that the \hlfix{combinatorics of the Wilson loop diagrams are different from the combinatorics of the Amplituhedron}{I think we should discuss this paragraph -- it may be misleading in a bad way}, just as the the volume forms associated to the BCFW diagrams are different from those associated to the Wilson Loop diagrams. For instance, the BCFW are most readily related to the geometry of a postive Grassmanian via plabic graphs. Meanwhile, the Wilson loop diagrams correspond to matrices with variable valued entries (see section \ref{section WLD background}) and Grassmann Necklaces (see Algorithm \ref{alg:put GN on WLD}).  These two combinatorial representations of the positive Grassmannians have different strengths and weaknesses, and it is not possible to give a one to one translation of the combinatorial tools used for the Amplituhedron and BCFW diagrams, and the combinatorial tools used for the Wilson loop diagrams, associated matrices and Grassmann Necklaces. For instance, square moves and merge-expand moves give different graphical representations of the same positroid cell. There is no equivalent diagramatical equivalence for Wilson loop diagrams, though it has been shown (see \cite{wilsonloop, generalcombinatoricsI}) that certain classes of diagrams parametrize the same positroid cells. On the other hand, in order to get a parametrization of the associated positroid cell from the plabic graphs, one must assign weights to the vertices and used them to compute Pl\"{u}cker coordinates \cite[Section 11]{Postnikov}, while the Wilson loop diagrams \emph{are} a parametrization of the associated positroid. That is, one can compute the Pl\"{u}cker coordinates directly from the associated matrices.  \sanote{This para is in answer to 1 and 4 of report Y. Should it be moved (in a modified form) to the begining of section 3? Should it be in both places?}
+It is worth noting at this point that the \hlfix{combinatorics of the Wilson loop diagrams are different from the combinatorics of the Amplituhedron}{I think we should discuss this paragraph -- it may be misleading in a bad way}, just as the the volume forms associated to the BCFW diagrams are different from those associated to the Wilson Loop diagrams. For instance, the BCFW are most readily related to the geometry of a postive Grassmannian via plabic graphs. Meanwhile, the Wilson loop diagrams correspond to matrices with variable valued entries (see section \ref{section WLD background}) and Grassmann Necklaces (see Algorithm \ref{alg:put GN on WLD}).  These two combinatorial representations of the positive Grassmannians have different strengths and weaknesses, and it is not possible to give a one to one translation of the combinatorial tools used for the Amplituhedron and BCFW diagrams, and the combinatorial tools used for the Wilson loop diagrams, associated matrices and Grassmann Necklaces. For instance, square moves and merge-expand moves give different graphical representations of the same positroid cell. There is no equivalent diagramatical equivalence for Wilson loop diagrams, though it has been shown (see \cite{wilsonloop, generalcombinatoricsI}) that certain classes of diagrams parametrize the same positroid cells. On the other hand, in order to get a parametrization of the associated positroid cell from the plabic graphs, one must assign weights to the vertices and used them to compute Pl\"{u}cker coordinates \cite[Section 11]{Postnikov}, while the Wilson loop diagrams \emph{are} a parametrization of the associated positroid. That is, one can compute the Pl\"{u}cker coordinates directly from the associated matrices.  \sanote{This para is in answer to 1 and 4 of report Y. Should it be moved (in a modified form) to the begining of section 3? Should it be in both places?}
 
 This paper continues this body of work by establishing concrete connections between the combinatorics of the Wilson loop diagram as determined by the physics, and the combinatorics of the associated positroid cell as identified in \cite{wilsonloop}. In this paper, we give an algorithm to read the Grassmann necklace, one of the standard combinatorial characterizations of the positroid cell, directly off the Wilson loop diagram. We also show that the positroid cells associated to Wilson loop diagrams are all $3k$-dimensional, where $k$ is the number of propagators in the diagram; by contrast, the BCFW cells are all $4k$-dimensional \cite{Arkani-Hamed:2013jha}. In \cite{non-orientable} the authors note that the Wilson loop diagrams only correspond to positroid cells when the gauge vector is ignored. Including the gauge vector defines a $4k$ dimensional subspace of $\mathbb{G}r_\R(k,n+1)$.\st{This apparent contradiction}\todo{I think we should say more in view of reviewer Y's comment 3 and we can probably phrase it more positively too} \st{is resolved by the non-orientability result of {\cite{non-orientable}}.}
 
@@ -451,7 +451,7 @@ Let $W = (\cP, V)$ be a Wilson loop diagram.
 to be the {\bf vertex support} of $P$.
 \item For $U \subseteq V$, the set of {\bf propagators supported on $U$} is denoted by
 \[\Prop(U) = \{ p \in \cP\ |\ V(p) \cap U \neq \emptyset \}.\]
-Note that a propagator in $\Prop(U)$ may not have its entire support contained in $U$. 
+Note that a propagator in $\Prop(U)$ does not necessarily have its entire support contained in $U$. 
 \item Vertices of $W$ that do not support any propagators are called {\bf non-supporting}.
 \end{enumerate}
 \end{dfn}
@@ -467,11 +467,11 @@ Let $W = (\cP, V)$ be a Wilson loop diagram. Then $W' = (Q,U)$ is a {\bf subdiag
 With these definitions in hand, we can impose some conditions on the density and behavior of the propagators of Wilson loop diagrams.
 
 \begin{dfn}\label{admisdfn}
-A Wilson loop diagram $W = (\cP, V)$ is called {\bf admissible} if the following conditions hold:
+A Wilson loop diagram $W = (\cP, V)$ is called {\bf admissible} if the following conditions hold.
 \begin{enumerate}
 \item $|V| \geq |\cP| + 4$.
 \item For each non-empty subset of propagators, $Q \subseteq \cP$, we have $|V(Q)|\geq |Q| + 3$.
-\item There are no crossing propagators: that is, there does not exist ${\{(i,j),(k,l)\} \subseteq \cP}$ such that $i < k < j < l$.
+\item There are no crossing propagators. That is, there does not exist ${\{(i,j),(k,l)\} \subseteq \cP}$ such that $i < k < j < l$.
 \end{enumerate}
  \end{dfn}
 
@@ -480,7 +480,7 @@ The first condition bounds the total number of propagators in the diagram, while
 All three of these conditions arise from the physical interpretation of Wilson loop diagrams.  The first condition comes from the fact that these diagrams represent $N^k$MHV interctions, where $k +4 <n$, see for instance the explanation in the introduction of \cite{adamo:2011pr}.  The second condition can be derived from the integrals associated to the diagrams, as in \cite[Theorem 1.13]{wilsonloop}. Note that the second condition prohibits propagators that connect two adjacent edges. In our definition, $\cP$ is a set so we may not have two propagators starting and ending on the same pair of edges, but we have lost nothing of physical value by not allowing multiple propagators ending on the same pair of edges since these would also fail the second condition. The third condition comes from the fact that these Wilson loop diagrams are a representation of planar Feynman diagrams of $N=4$ SYM theory. For a description of the relationship between planar Feynman diagram and planar Wilson loops, see the discussion in \cite[section 3]{LipsteinMason}.
 \hlfix{}{I changed the previous 2 paragraphs quite a bit, to separate the math intuition from the physical reasoning.}  \sanote{fixed cittation issues. Like the  rewrite}
 
-Note that a subdiagram $(Q,U)$ of an admissible Wilson loop diagram need not be admissible itself: it inherits conditions 2 and 3 automatically, but we could have $|U| = |Q| + 3$. If a Wilson loop diagram satisfies conditions 2 and 3 of Definition~\ref{admisdfn}, we call it {\bf weakly admissible}.
+Note that a subdiagram $(Q,U)$ of an admissible Wilson loop diagram need not be admissible itself.  It inherits conditions 2 and 3 automatically, but we could have $|U| = |Q| + 3$. If a Wilson loop diagram satisfies conditions 2 and 3 of Definition~\ref{admisdfn}, we call it {\bf weakly admissible}.
 
 These diagrams correspond to (tree level) amplitudes of SYM $N=4$ theory in twistor space. As such, a diagram associates a real value to $n$ particles, one for each vertex. Each particle is represented as a section of a $|\cP|$-vector bundle over twistor space, projected onto a real subspace in a process called bosonization \cite[section 2]{Amplituhedronsquared}. In other words, each Wilson loop diagram defines a functional on external particles. This is represented as an integral $I(W)$, which is the equivalent of a Feynman integral in this setting. This integral is built from two main components: an interaction matrix $C(W)$, and a volume form $\Omega(W)$. These are described next.
 
@@ -508,7 +508,7 @@ This would certainly hold if the singularities in the integrands $\Omega(W)$ can
 %(the spurious poles of the theory) cancel out in the sum; in particular, if all poles arising from $R(W)$ must cancel.
 Specifically, it is conjectured that these poles cancel on the boundaries of the positroid cells $\Sigma(W)$, analogous to the analysis in \cite{Arkani-Hamed:2013jha}. This has been checked for particular classes of examples (e.g. \cite{casestudy, Amplituhedronsquared, HeslopStewart}) but has not been proven in general.
 
-With this motivation in mind, in Section~\ref{sec poles} of this paper we study the denominator $R(W)$ of $\Omega(W)$. The definition of $R(W)$ is as follows.
+With this motivation in mind, in Section~\ref{sec poles} of this paper we study the denominator $R(W)$ of $\Omega(W)$. The definition of $R(W)$ is as follows:
 
 \begin{dfn}\label{def R(W)}
 Let $W = (\cP,V)$ be an admissible Wilson loop diagram, and fix an edge $e$. Let $\{p_1 \ldots p_r\}$ be the propagators with one end lying on edge $e$ under a counterclockwise ordering. Define the polynomial
@@ -547,7 +547,7 @@ We summarize here only the portion of positroid theory that we require in this p
 
 Let $\binom{[n]}{k}$ denote the set of all $k$-subsets of $[n]$.  
 
-For our purposes, a {\bf positroid} is\footnote{Note that matroid isomorphism allows arbitrary permutations of the ground set but positroid isomorphism allows only cyclic permutations, so the property of being a positroid is not in general preserved by matroid isomorphism.} a matroid $M$ (with ground set $[n]$ and bases set $\cB \subseteq \binom{[n]}{k}$) which can be represented by an element of the positive Grassmannian $\Gr(k,n)$. In other words, there exists a full-rank $k\times n$ real matrix whose $k\times k$ minors are all nonnegative and such that the minor comprised of the columns indicated by the set $J$ 
+For our purposes, a {\bf positroid} is\footnote{Note that matroid isomorphism allows arbitrary permutations of the ground set but positroid isomorphism allows only cyclic permutations, so the property of being a positroid is not in general preserved by matroid isomorphism.} a matroid $M$ (with ground set $[n]$ and set of bases $\cB \subseteq \binom{[n]}{k}$) which can be represented by an element of the positive Grassmannian $\Gr(k,n)$. In other words, there exists a full-rank $k\times n$ real matrix whose $k\times k$ minors are all nonnegative and such that the minor comprised of the columns indexed by elements of $J$ 
 is positive if and only if $J \in \cB$.
 
 Postnikov shows in \cite{Postnikov} that the positroids of $\Gr(k,n)$ are indexed by many different collections of objects, each with their own advantages and disadvantages. The two most suited to our purposes are Grassmann necklaces \cite[section 16]{Postnikov} and Le diagrams \cite[section 6]{Postnikov}, which we discuss. In order to do so, we first need some preliminary definitions.
@@ -561,10 +561,10 @@ For example, in $\binom{[6]}{3}$ we have $\{2,5,6\}\gale{2} \{2,6,1\}$ but $\{2,
 
 
 \begin{dfn}\label{def:grassmann necklace}
-A {\bf Grassmann necklace} of type $(k,n)$ is a sequence $(I_1, \dots, I_n)$ of $n$ sets $I_i \in \binom{[n]}{k}$ such that for each $i \in [n]$ the following statements are true:
+A {\bf Grassmann necklace} of type $(k,n)$ is a sequence $(I_1, \dots, I_n)$ of $n$ sets $I_i \in \binom{[n]}{k}$ such that for each $i \in [n]$ the following statements are true.
 \begin{itemize}
-\item if $i \in I_i$, then $I_{i+1} = \big(I_i \backslash \{i\}\big) \cup \{j\}$ for some $j \in[n]$.
-\item if $i \not\in I_i$, then $I_{i+1} = I_i$.
+\item If $i \in I_i$, then $I_{i+1} = \big(I_i \backslash \{i\}\big) \cup \{j\}$ for some $j \in[n]$.
+\item If $i \not\in I_i$, then $I_{i+1} = I_i$.
 \end{itemize}
 By convention, we set $I_{n+1} = I_1$.
 \end{dfn}
@@ -580,7 +580,7 @@ A {\bf Le diagram} is a Young diagram in which every square contains either a $+
 
 By \cite[Theorem 6.5]{Postnikov}, the set of all Le diagrams that fit within a $k\times(n-k)$ rectangle is in 1-1 correspondence with the positroid cells of $\Gr(k,n)$. Le diagrams are particularly useful for comparing dimensions of positroids, since the dimension of a positroid is equal to the number of $+$ squares in its Le diagram \cite[Theorem 6.5]{Postnikov}.
 
-The rows and columns of a Le diagram are labelled as follow: given a Le diagram fitting inside a $k\times (n-k)$ box, arrange the numbers $1,2, \dots, n$ along its southeast border, starting from the top-right corner. See Figure \ref{fig:row column numbering} for examples.
+The rows and columns of a Le diagram are labelled as follows:  given a Le diagram fitting inside a $k\times (n-k)$ box, arrange the numbers $1,2, \dots, n$ along its southeast border, starting from the top-right corner. See Figure \ref{fig:row column numbering} for examples.
 
 \begin{figure}
 \[\begin{tikzpicture}
@@ -624,11 +624,11 @@ The rows and columns of a Le diagram are labelled as follow: given a Le diagram 
 
 Specifying a $k$-subset $J \subseteq [n]$ therefore uniquely determines the shape of the Le diagram, by taking the elements of $J$ to be the row indices of the diagram.
 
-An algorithm for constructing the Le diagram associated to a Grassmann necklace was given by Agarwala and Fryer in \cite{reversingOh}. Since we will make use of this algorithm in Section~\ref{sec dim} below, we summarize the process here.
+An algorithm for constructing the Le diagram associated to a Grassmann necklace was given by Agarwala and Fryer in \cite{reversingOh}. Since we will make use of this algorithm in Section~\ref{sec dim}, we summarize the process here.
 \begin{algorithm}\label{alg:GN to Le} \ \cite[Algorithm 2]{reversingOh}
 Let $(I_1,\dots,I_n)$ be a Grassmann necklace of type $(k,n)$. Within a $k \times(n-k)$ square, draw the Young diagram whose rows are labelled by $I_1$ (as per the convention above).
 
-For each $i$, $2 \leq i \leq n$ perform the following steps:
+For each $i$, $2 \leq i \leq n$ perform the following steps.
 \begin{itemize}
 \item Write \[I_1 \setminus I_i = \{a_1 > a_2 > \dots > a_r\}, \quad I_i \setminus I_1 = \{b_1 < b_2 < \dots < b_r\},\]
 where the inequalities denote the $<_1$ order (subscripts suppressed for clarity).
@@ -646,7 +646,7 @@ An algorithm for constructing the Grassmann necklace of a Le diagram also exists
 
 Let $W = (\cP,[n])$ be an admissible Wilson loop diagram with $k$ propagators, and $C(W)$ the associated matrix defined in equation~\eqref{C(W) dfn}. Let $M(W)$ be the matroid realized by $C(W)$, i.e. the matroid with ground set $[n]$ whose independent sets are exactly those sets $V \subseteq [n]$ such that the columns of $C(W)$ indexed by $V$ are linearly independent.
 
-In \cite{wilsonloop}, Agarwala and Marin-Amat show that $M(W)$ can also be read directly from the Wilson loop diagram itself:
+In \cite{wilsonloop}, Agarwala and Marin-Amat show that $M(W)$ can also be read directly from the Wilson loop diagram itself.
 
 \begin{thm} \label{thm WLD defines matroid} \cite[Theorem 3.6]{wilsonloop} The independent sets of the matroid $M(W)$ associated to an admissible Wilson loop diagram $W = (\cP,[n])$ and realized by $C(W)$ are exactly those subsets $V \subseteq [n]$ such that there is no subset $U \subseteq V$ satisfying $|\Prop(U)| < |U|$. \end{thm}
 In other words, the independent sets of $M(W)$ correspond to sets of vertices in $W$ in which no subset supports fewer propagators than the vertices it contains.
@@ -661,7 +661,7 @@ Let $W = (\cP,[n])$ be an admissible Wilson loop diagram and let $M(W)$ be its a
 
   Alternatively we can simply think about the condition of linear independence in the matrix $C(W)$, and so the corollary can also be proved directly by linear algebra and the definition of $C(W)$ as follows.
 
-  Because the nonzero entries of $C(W)$ are independent indeterminants, $J$ is an independent set if and only if there is some choice of $|J|$ nonzero entries of $C(W)$ one in each row associated to an element of $J$ and each in different columns. Each entry in $C(W)$ identifies a propagator by the row of the entry and a vertex by the column of the entry.  The entry is nonzero if and only if the propagator is supported on that vertex.  \hlfix{Consequently, take a choice of $|J|$ nonzero entries of $C(W)$, one in each row associated to an element of $J$ and each in different columns;  each such choice is equivalent to an assignment of the propagators of $J$ to supporting vertices so that no two are assigned to the same vertex.}{Added parenthetical commas according to M.23. better?  I did a bit more, we can discuss}  Such an assignment of the propagators of $J$ to supporting vertices is exactly a map $f$ as described in the statement, hence proving the result.
+  Because the nonzero entries of $C(W)$ are independent indeterminants, $J$ is an independent set if and only if there is some choice of $|J|$ nonzero entries of $C(W)$ one in each row associated to an element of $J$ and each in different columns. Each entry in $C(W)$ identifies a propagator by the row of the entry and a vertex by the column of the entry.  The entry is nonzero if and only if the propagator is supported on that vertex.  \hlfix{Consequently, take a choice of $|J|$ nonzero entries of $C(W)$, one in each row associated to an element of $J$ and each in different columns.  Each such choice is equivalent to an assignment of the propagators of $J$ to supporting vertices so that no two are assigned to the same vertex.}{Added parenthetical commas according to M.23. better?  I did a bit more, we can discuss}  Such an assignment of the propagators of $J$ to supporting vertices is exactly a map $f$ as described in the statement, hence proving the result.
 \end{proof}
 
 In particular, this corollary says that a subset $J$ of $[n]$ is a basis of $M(W)$ if and only if there is a set bijection between $J$ and $\cP$ with the property that for each $j\in J$ the propagator associated to $j$ under the bijection is supported on vertex $j$.
@@ -691,6 +691,9 @@ This is a useful result in and of itself, as it greatly simplifies the process o
 Furthermore, the algorithm allows us to see how the Le diagram associated to a Wilson loop diagram changes as one adds propagators in certain positions (Theorem \ref{thm dim}). Indeed, the techniques we develop in this section to verify that our algorithm produces the correct Grassmann necklace will also be used repeatedly in later sections to calculate the dimension of the associated positroid cell (Section \ref{sec dim}) and to study the structure of the poles of the associated integrand $\Omega(W)$ (Section \ref{sec poles}).
 
 One of the key insights is that each element of the Grassmann necklace can be viewed as a function from the propagators of the diagram to the vertices in the Grassmann necklace element.  This is captured in Definition~\ref{def I_i as a function}, and used throughout the paper.
+
+The flavour of the calculations is similar to \cite{CGdyck}\footnote{Thanks to a referee for pointing this paper out.} as in both cases the bijections are very explicit with a similar iterative flavour using Le diagrams and Grassmann necklaces related to another class of objects, for us Wilson loop diagrams and for them unit interval orders.  For them, as us, the Le diagrams are particularly useful for understanding the dimensions of positroid cells since the dimension becomes the count of the number of plusses.  The ubiquitous Catalan numbers arise for them, as for us in \cite{generalcombinatoricsI}.  The specific subclasses of positroids we work with are, however, different.  This basic methodology of gaining insight from bijections is very common in combinatorics.
+
 
 %\note{Sian thinks that a section roadmap here would be overkill: we gave a roadmap in section 1, each subsection has its own little intro roadmap, and I've added a ref to the algorithm above so that people can skip straight to it if they want}
 
@@ -743,7 +746,7 @@ In other words, $\ell(p)$ is the size of the smaller of the sets of vertices on 
 
 
 \begin{rmk}\label{rem:props of length 2 and 3} 
-  The following observations about configurations of propagators of short length in a weakly admissibly Wilson loop diagram $W$ are easily verified:
+  The following observations about configurations of propagators of short length in a weakly admissibly Wilson loop diagram $W$ are easily verified.
   \vspace{-0.5em}
  \begin{enumerate}
 \item If $p = (i,i+3)$ is a propagator of length 3, then the middle vertex $i+2$ supports at most one propagator.\item If every vertex in $W$ supports at least one propagator, then $W$ admits at least one propagator of length 2.  By the same reasoning, if $p=(i,j)$ is a propagator of $W$ and every vertex in the interval $[i,j]$ supports at least one propagator, then there is at least one propagator of length $2$ in $\mathcal{P}_{in}(p, <_i)$.
@@ -797,7 +800,7 @@ In other words, $\ell(p)$ is the size of the smaller of the sets of vertices on 
 The following lemma establishes certain configurations of propagators that must exist in any admissible diagram with no non-supporting vertices. We make use of this result in several induction proofs below. 
 
 \begin{lem}\label{lem sian}
-  Let $W$ be a weakly admissible Wilson loop diagram with at least 5 vertices and in which each vertex supports at least one propagator.  Then at least one of the following two conditions holds:
+  Let $W$ be a weakly admissible Wilson loop diagram with at least 5 vertices and in which each vertex supports at least one propagator.  Then at least one of the following two conditions holds.
   \vspace{-0.5em}
   \begin{enumerate}
     \item $W$ has a propagator of length at most 6 with a propagator of length 2 on one side of it and nothing else on that side.\label{item big and 2} \todo{M.28 may need to be propagated}
@@ -811,9 +814,9 @@ Suppose first that $W$ has a propagator of length $3$, say $p=(i, i+3)$.  By Rem
 
 Now suppose $W$ has no propagators of length $3$.
   
-We will inductively construct sequences of propagators $\{p_r\}$ and $\{q_r\}$, with $\ell(p_r) = 2$ for each $r$ and such that either of the following are true:
+We will inductively construct sequences of propagators $(p_r)$ and $(q_r)$, with $\ell(p_r) = 2$ for each $r$ and such that either of the following are true:
 \begin{itemize}
-\item $p_r$ forms part of configuration \ref{item big and 2} or \ref{item pair of 2s} from the statement, at which point the induction terminates, 
+\item the propagator $p_r$ forms part of configuration \ref{item big and 2} or \ref{item pair of 2s} from the statement, at which point the induction terminates, 
   %a configuration \eqref{eq:2 prop config} in $D$
 {\em or} 
 \item there is a propagator $q_r$ satisfying $\ell(q_r) \geq 4$, and $\{p_1, \ldots, p_r, q_1, \ldots, q_{r-1}\}$ are all on the same side of $q_r$.  
@@ -826,7 +829,7 @@ Start by choosing a propagator $p_1 = (j_1,j_1+2)$ of length 2 in $W$ (which exi
 %a configuration \eqref{eq:2 prop config} we are done,
 so suppose otherwise. 
 
-From our existing assumptions, we know the following facts: $p_1$ is not in configuration \ref{item pair of 2s}, there are no propagators of length $3$, and every vertex supports at least one propagator.  Therefore, there must be a propagator of length $\geq 4$ with one end on edge $j_1$ or on edge $j_1-1$ or on edge $j_1-2$.  Let $q_1 = (i_1, k_1)$ be this propagator, oriented such that $p_1 \in \cP_{out}(q_1,<_{i_1})$; see Figure~\ref{fig base case lem sian}. This completes the base case.
+From our existing assumptions, we know the following facts: $p_1$ is not in configuration \ref{item pair of 2s}, there are no propagators of length $3$, and every vertex supports at least one propagator.  Therefore, there must be a propagator of length at least 4 with one end on edge $j_1$ or on edge $j_1-1$ or on edge $j_1-2$.  Let $q_1 = (i_1, k_1)$ be this propagator, oriented such that $p_1 \in \cP_{out}(q_1,<_{i_1})$; see Figure~\ref{fig base case lem sian}. This completes the base case.
 
 \begin{figure}[h]
 \[
@@ -858,7 +861,7 @@ From our existing assumptions, we know the following facts: $p_1$ is not in conf
 
 Now suppose $q_{r} = (i_r, k_r)$ exists by the induction hypothesis and is oriented $(q_r, <_{i_r})$ so that the previous $p_i$ and $q_i$ are on the outside. For the rest of this proof, we assume this orientation and drop the $<_{i_r}$ from the notation.
 
-Let $W_r := (\cP_{in}(q_r),[n])$ be the subdiagram of $W$ consisting only of those propagators inside $q_r$ (including $q_r$ itself); in particular $W_r$ contains none of the previous $p_i$ or $q_i$. By the original hypotheses on $W$, every vertex in $[i_r,k_{r+1}]$ (of which there are at least 4, since $\ell(q_r) \geq 4$) must support at least one propagator. Therefore, $W_r$ admits at least one propagator of length 2 (by Remark~\ref{rem:props of length 2 and 3}) and no propagators of length $3$ (by our assumption on $W$).
+Let $W_r := (\cP_{in}(q_r),[n])$ be the subdiagram of $W$ consisting of those propagators inside $q_r$ (including $q_r$ itself); in particular $W_r$ contains none of the previous $p_i$ or $q_i$. By the original hypotheses on $W$, every vertex in $[i_r,k_{r+1}]$ (of which there are at least 4, since $\ell(q_r) \geq 4$) must support at least one propagator. Therefore, $W_r$ admits at least one propagator of length 2 (by Remark~\ref{rem:props of length 2 and 3}) and no propagators of length $3$ (by our assumption on $W$).
 
 Let $p_{r+1} = (j_{r+1}, j_{r+1}+2)$ be a propagator of length 2 in $W_r$.  If it forms part of configuration \ref{item big and 2} or \ref{item pair of 2s}
 %the configuration \eqref{eq:2 prop config}
@@ -898,7 +901,7 @@ Note that we could replace $q_r$ by another propagator $q'_{r}$ in $W_r = (\cP_{
 
 There are two cases to consider.
 
-The first case is that $i_r \leq j_{r+1} \leq i_r+2$ and $k_r-2 \leq j_{r+1}+2 \leq k_{r}$ (so $p_{r+1}$ has one end before $i_{r} + 3$ and the other after $k_{r} - 2$, i.e. there are at most two vertices between an endpoint of $p_{r+1}$ and an endpoint of $q_r$).  Since $p_{r+1}$ has length 2, it must be that $(i_r+3)+1 \geq k_r-2$ and so $q_r$ has length $\leq 6$.  By the minimality assumption on $q_r$, no propagator in $W_r$ has $q_r$ on one side and $p_{r+1}$ on the other side. Therefore, any propagator in $W_r$ other than $q_r$ and $p_{r+1}$ must be of the form $(i,j)$ with $i_r\leq i < j\leq i_r+2$ or $k_r-2 \leq i < j\leq k_r$. Both of these require that $(i,j)$ has length 2, and so we have configuration \ref{item pair of 2s} which we have already assumed does not occur.  Consequently, $W_r$ contains only the two propagators $q_r$ and $p_{r+1}$, yielding configuration \ref{item big and 2} from the lemma statement and again contradicting our assumption. Therefore, this first case cannot occur.
+The first case is that $i_r \leq j_{r+1} \leq i_r+2$ and $k_r-2 \leq j_{r+1}+2 \leq k_{r}$ (so $p_{r+1}$ has one end before $i_{r} + 3$ and the other after $k_{r} - 2$, i.e. there are at most two vertices between an endpoint of $p_{r+1}$ and an endpoint of $q_r$).  Since $p_{r+1}$ has length 2, it must be that $(i_r+3)+1 \geq k_r-2$ and so $q_r$ has length at most 6.  By the minimality assumption on $q_r$, no propagator in $W_r$ has $q_r$ on one side and $p_{r+1}$ on the other side. Therefore, any propagator in $W_r$ other than $q_r$ and $p_{r+1}$ must be of the form $(i,j)$ with $i_r\leq i < j\leq i_r+2$ or $k_r-2 \leq i < j\leq k_r$. Both of these require that $(i,j)$ has length 2, and so we have configuration \ref{item pair of 2s} which we have already assumed does not occur.  Consequently, $W_r$ contains only the two propagators $q_r$ and $p_{r+1}$, yielding configuration \ref{item big and 2} from the lemma statement and again contradicting our assumption. Therefore, this first case cannot occur.
 
 The second case is that there are at least $3$ vertices between one endpoint of $p_{r+1}$ and the nearest endpoint of $q_r$. In other words, at least one of the following four statements are true:
 \begin{itemize} 
@@ -927,11 +930,11 @@ In this section, we give an algorithm for passing directly from a Wilson loop di
 The fact that Algorithm~\ref{alg:put GN on WLD} does construct the required Grassmann necklace is proved in Theorem~\ref{res:alg gives GN} and Theorem~\ref{res alg gives correct GN}. A worked example of Algorithm~\ref{alg:put GN on WLD} is given in Example~\ref{eg:apply GN alg}.
 
 \begin{algorithm}\label{alg:put GN on WLD}
-Let $W = (\cP, [n])$ be an admissible Wilson loop diagram. In order to construct the set $I_i^W$ for $i \in [n]$, perform the following steps:
+Let $W = (\cP, [n])$ be an admissible Wilson loop diagram. In order to construct the set $I_i^W$ for $i \in [n]$, perform the following steps.
 
 \begin{enumerate}
 \item Fix a vertex $i \in [n]$, the {\bf starting vertex}. Set $j:=i$ and $I_i^W = \emptyset$.
-\item While $\cP \neq \emptyset$, perform the following steps:
+\item While $\cP \neq \emptyset$, perform the following steps.
 \begin{enumerate}
 \item {\em Step $j$ for starting vertex $i$}: If $\Prop(j) = \emptyset$, do nothing. Else, let $p \in \Prop(j)$ be the clockwise-most propagator supported on $j$. Write $I_i^W = I_i^W\cup \{j\}$, and delete propagator $p$ from the diagram.
 \item Increment $j$ by 1 and repeat from (a).
@@ -1084,9 +1087,9 @@ When the firt possibility occurs, observe that we must have another propagator $
 
 So let $p = (a,b)$ with $a<_ib$ and $I_i(p) = b+1$, and choose $p$ such that $\big|[a+1,b]\big|$ is minimal amongst propagators of $W$ which contribute their last vertex and are in Case 2.
 
-Since $I_i(p) \neq b$, there must exist a propagator $q$ inside of $(p,<_i)$ with $I_i(q) = b$. The propagator $q$ cannot end on the edge $b-1$, as this would contradict the minimality of $p$, so we have $q = (d,b)$ with $a <_i d <_i b$, and $I_i(q) = b$. 
+Since $I_i(p) \neq b$, there must exist a propagator $q$ inside $(p,<_i)$ with $I_i(q) = b$. The propagator $q$ cannot end on the edge $b-1$, as this would contradict the minimality of $p$, so we have $q = (d,b)$ with $a <_i d <_i b$, and $I_i(q) = b$. 
 
-In order for $q$ to remain unassigned until the algorithm reaches vertex $b$, there must be another propagator $r$ with an end on edge $d$ and $I_i(r) = d+1$; the only way this can occur is if $r$ is outside of $(q,<_i)$ but inside $(p,<_i)$. But now $r$ contributes its fourth vertex to $I_i$, again contradicting the minimality of $p$.
+In order for $q$ to remain unassigned until the algorithm reaches vertex $b$, there must be another propagator $r$ with an end on edge $d$ and $I_i(r) = d+1$; the only way this can occur is if $r$ is outside $(q,<_i)$ but inside $(p,<_i)$. But now $r$ contributes its fourth vertex to $I_i$, again contradicting the minimality of $p$.
 \end{proof}
 
 \begin{figure}[h]
@@ -1318,7 +1321,7 @@ We will prove the result by induction on the number of propagators.  If $W$ has 
   \end{figure}
 
 
-In each of the four cases, when we remove the propagator labelled $p$ we obtain a diagram which satisfies the statement of the theorem by the induction hypothesis, and contains a propagator ${q = (i,j)}$ with no other propagators inside it (with respect to the $<_i$ orientation). Note that this region may or may not contain non-supporting vertices, which we will call $l, l+1, \ldots$ as necessary. Let $V$ be the diagram obtained by removing the propagator $p$ from $W$ (Figure \ref{fig V diagram}). The diagram $V$ is guaranteed to be an admissible diagram, since it was formed by removing a propagator from a diagram that was at least weakly admissible. \todo{Make certain we don't start sentences with simbols}
+In each of the four cases, when we remove the propagator labelled $p$ we obtain a diagram which satisfies the statement of the theorem by the induction hypothesis, and contains a propagator ${q = (i,j)}$ with no other propagators inside it (with respect to the $<_i$ orientation). Note that this region may or may not contain non-supporting vertices, which we will call $l, l+1, \ldots$ as necessary. Let $V$ be the diagram obtained by removing the propagator $p$ from $W$ (Figure \ref{fig V diagram}). The diagram $V$ is guaranteed to be admissible, since it was formed by removing a propagator from a diagram that was at least weakly admissible. \todo{Make certain we don't start sentences with simbols}
 
 Consider Case 4 of Figure~\ref{fig 3 cases} first, as it is the easiest.  In this case, the vertices ${\{l,l+1,l+2,l+3\}}$ which support $p$ in $W$ are non-supporting in $V$, so for every propagator $r$ in $V$ (including $q$) we have $J_r^{V} = J_r^{W}$; these are non-empty cyclic intervals in the correct order by the induction hypothesis.  Additionally, it is clear from Figure~\ref{fig 3 cases} that $J_p^{W}(l+a) = \{l+a\}$ for $a\in\{1,2,3\}$ and $J_p^{W}(l) = [n] \backslash \{l+1, l+2, l+3\}$. The result therefore holds in this case.
 
@@ -1391,7 +1394,7 @@ of these vertices, we use the following observation: if $p$ is the first propaga
     \[
     I_{l+b}^{W}(r) = \begin{cases}
       l+b & \text{if } r=p\\
-      I_{l+b+1}^{V}(r) & \text{if } r\neq p
+      I_{l+b+1}^{V}(r) & \text{if } r\neq p\;.
     \end{cases}
     \]
 Similarly, if $j$ is in the support of $p$, then we have
@@ -1500,7 +1503,7 @@ Finally, for $j+1$ and the vertices in the support of $p$, we have
 \end{align*}
 Note that $I_{m+2}^{V}(r) = I_{m+3}^{V}(r)$ for all propagators $r$ in $V$, and that if $j+1\not\in\{m, m+1, m+2, m+3\}$ then $j+2$ and $j+3$ are non-supporting vertices in $V$, so in that case $I_{j+2}^{V}(r) = I_{j+3}^{V}(r) = I_{j+4}^{V}(r)$ for $r$ in $V$. 
 
-Therefore, once again we can see that the $J_r^{W}(*)$ are cyclic for all $r\neq p$ in $W$.  Assembling the intervals for $p$ we have the following statements:
+Therefore, once again we can see that the $J_r^{W}(*)$ are cyclic for all $r\neq p$ in $W$.  Assembling the intervals for $p$ we have the following statements.
 \begin{itemize}
 \item If $m=j$ then
 \begin{gather*}J_p^{W}(m) = [m+4,e-1], \qquad  J_p^{W}(m+1) = [e,m], \\  J_p^{W}(m+2) = [m+1,m+2], \qquad  J_p^{W}(m+3) = \{m+3\}\;.\end{gather*}
@@ -1525,7 +1528,7 @@ The sequence of $k$-subsets $(I_1,\dots,I_n)$ obtained by applying Algorithm~\re
 % Thank you! Clocks are difficult.
 For each $i \in [n]$, let $I_i$ be the set of vertices assigned to the propagators of $W$ by Algorithm~\ref{alg:put GN on WLD} with starting vertex $i$. By Lemma~\ref{GN alg well defined}, we know that $|I_i| = k$ for each $i \in [n]$. We prove that $I_{i+1} \supseteq I_i \backslash \{i\}$ for all $i \in [n]$; this is equivalent to the definition of Grassmann necklace given in Definition~\ref{def:grassmann necklace}.
 
-Fix $n$, and suppose for a contradiction that there exists an admissible diagram for which there exists an $i$ with $m\in I_i\setminus \{i\}$ and $m \not\in I_{i+1}$.  Let $W$ be such a counterexample with the minimal number of propagators.
+Fix $n$, and suppose, by way of contradiction that there exists an admissible diagram for which there exists an $i$ with $m\in I_i\setminus \{i\}$ and $m \not\in I_{i+1}$.  Let $W$ be such a counterexample with the minimal number of propagators.
 
 If $i \not\in I_i$, then there are no propagators supported on $i$ at all.  In this case it is clear that applying Algorithm~\ref{alg:put GN on WLD} at vertex $i$ and vertex $i+1$ produces exactly the same result, i.e. $I_{i+1} = I_i$, contradicting that $W$ is a counterexample.
 
@@ -1542,7 +1545,7 @@ The previous two paragraphs also imply that $m \geq_i b+1$, since $I_{i+1}^W \ca
 
 %This is also true in when the algorithm constructing $I_i$ reaches $b$, \st{since the same propagators have been assigned beforehand.}\sanote{don't like same here}{\color{violet}since any propagators lying counterclockwise of $p$ on the edge $i-1$ must have their support in $[i-1, b]$. By Lemma \ref{lem no fourth vertex}, these propagators contribute before the algorithm reaches $b$. Furthermore, Remark  \ref{rmk algorithm locally same} implies that these propagators contribute the same vertices to both $I_i$ and $I_{i+1}$.} This also implies that $m\geq_i b+1$.
 
-Now let $W' = (\cP_{out}(p,<_i), [n])$, i.e. the diagram obtained from $W$ by removing both $p$ and all propagators inside of $p$. The diagram $W'$ has strictly fewer propagators than $W$ did.
+Now let $W' = (\cP_{out}(p,<_i), [n])$, i.e. the diagram obtained from $W$ by removing both $p$ and all propagators inside $p$. The diagram $W'$ has strictly fewer propagators than $W$ did.
 
 Observe that $I_i^W$ and $I_b^{W'}$ are locally the same from vertex $b$ onwards, since by the above observations the propagators removed from $W$ to create $W'$ are exactly those that come first in the ordering defined by $I_i^W$. Similarly, $I_{i+1}^W$ and $I_{b+1}^{W'}$ are locally the same from $b+1$ onwards. By Remark~\ref{rmk algorithm locally same}, this yields the equalities
 \begin{align*}
@@ -1553,7 +1556,7 @@ Since we have already noted that $m \geq_i b+1$, this implies that $m\in I_b^{W'
 
 \textbf{Case II}: Suppose $p$ has one end on edge $i$.  Note that by assumption we have $I_i(p) = i$; this means that $p$ must be the clockwise-most propagator lying on edge $i$, and hence we must have $I_{i+1}(p) = i+1$ as well.  Observe also that $m\geq_i i+2$ since $i+1\in I_{i+1}$.
 
-Let $W'$ be the diagram obtained from $W$ by removing only the propagator $p$.  We have
+Let $W'$ be the diagram obtained from $W$ by removing the propagator $p$.  We have
 \begin{align*}
   I_i^{W} \backslash \{i\} & = I_{i+1}^{W'} \\
   I_{i+1}^{W} \backslash \{i+1\} & = I_{i+2}^{W'}
@@ -1566,12 +1569,12 @@ Thus we have shown that Algorithm \ref{alg:put GN on WLD} does in fact produce a
 The Grassmann necklace $(I_1 \ldots I_n)$ from Theorem~\ref{res:alg gives GN} is the Grassmann necklace of the positroid $M(W)$.
 \end{thm}
 \begin{proof}
-We have shown in the previous theorem that $(I_1,\dots,I_n)$ is a Grassmann necklace; it remains to check that this Grassmann necklace corresponds to the positroid $M(W)$. Recall from the discussion following Definition~\ref{def:grassmann necklace}, and equation \eqref{basesofmatroids} in particular, that it suffices to show the following points:
+We have shown in the previous theorem that $(I_1,\dots,I_n)$ is a Grassmann necklace; it remains to check that this Grassmann necklace corresponds to the positroid $M(W)$. Recall from the discussion following Definition~\ref{def:grassmann necklace}, and equation \eqref{basesofmatroids} in particular, that it suffices to show the following points.
 \begin{itemize}
 \item For each $i \in [n]$, $I_i$ is a basis for $M(W)$.
 \item If $J$ is lexicographically smaller than $I_i$ with respect to $<_i$ (for any $i \in [n]$) then $J$ is not a basis for $M(W)$. 
 \end{itemize}
-The first point follows immediately: the algorithm assigns each propagator to a vertex in the support of that propagator, so $I_i$ is a basis for $M(W)$ by Corollary~\ref{lem basis as perm}.
+The first point follows immediately.  The algorithm assigns each propagator to a vertex in the support of that propagator, so $I_i$ is a basis for $M(W)$ by Corollary~\ref{lem basis as perm}.
 
 Now fix $i \in [n]$, and write $I_i = \{a_1 <_i a_2 <_i \dots <_i a_k\}$. Label the propagators of $W$ according to the ordering imposed by $I_i$, i.e. so that $I_i(p_{r}) = a_{r}$ for $1 \leq r \leq k$. Define $\cP_r: = \{p_1,p_2,\dots,p_r\}$ for each $r\geq 0$, with $\cP_0 = \emptyset$.
 
@@ -1587,11 +1590,11 @@ If $\Prop(j_m) = \emptyset$ then $J$ is automatically dependent since the corres
 
 In order to exhibit a dependent subset of vertices in $J$, we first define a sequence of sets of propagators by
 \[Q_0 = \Prop(j_m), \qquad Q_{l+1} = \Prop(I_i(Q_l))\quad \forall l \geq 0.\]
-It is easily verified that this is an increasing chain of sets: indeed, if $q \in Q_l$ then $I_i(q) \in I_i(Q_l)$, and since $I_i(q)$ is one of the vertices that supports $q$ we must have $q \in \Prop(I_i(Q_l)) = Q_{l+1}$. Since $\cP$ is finite, the sequence stabilizes in finitely many steps. Let $Q := \bigcup_{l \geq 0} Q_l$ be this set of propagators.
+It is easily verified that this is an increasing chain of sets.  Indeed, if $q \in Q_l$ then $I_i(q) \in I_i(Q_l)$, and since $I_i(q)$ is one of the vertices that supports $q$ we must have $q \in \Prop(I_i(Q_l)) = Q_{l+1}$. Since $\cP$ is finite, the sequence stabilizes in finitely many steps. Let $Q := \bigcup_{l \geq 0} Q_l$ be this set of propagators.
 
-We will show that $Q \subseteq \mathcal{P}_{m-1}$, which will imply the theorem by the following argument: if $Q \subseteq \cP_{m-1}$ then we have $I_i(Q)\subseteq J$, and hence $I_i(Q) \cup \{j_m\} \subseteq J$ as well. Since $I_i(Q) \cup \{j_m\}$ only supports the propagators in $Q$ but has $|Q|+1$ vertices, it is a dependent set in $M(W)$. Thus $J$ is also a dependent set, and the Grassmann necklace $(I_1,\dots,I_n)$ constructed from $W$ does indeed define the positroid $M(W)$.
+We will show that $Q \subseteq \mathcal{P}_{m-1}$, which will imply the theorem by the following argument.  If $Q \subseteq \cP_{m-1}$ then we have $I_i(Q)\subseteq J$, and hence $I_i(Q) \cup \{j_m\} \subseteq J$ as well. Since $I_i(Q) \cup \{j_m\}$ only supports the propagators in $Q$ but has $|Q|+1$ vertices, it is a dependent set in $M(W)$. Thus $J$ is also a dependent set, and the Grassmann necklace $(I_1,\dots,I_n)$ constructed from $W$ does indeed define the positroid $M(W)$.
 
-All that remains is to prove $Q\subseteq \mathcal{P}_{m-1}$, which we do by inductively proving $Q_l \subseteq \mathcal{P}_{m-1}$ for all $l \geq 0$. The base case $Q_0 \subseteq \cP_{m-1}$ is immediate: since $j_m \not\in I_i$ by construction, there cannot be any unassigned propagators supported on $j_m$ when the algorithm reaches that vertex, i.e. ${\Prop(j_m) \subseteq \cP_{m-1}}$.
+All that remains is to prove $Q\subseteq \mathcal{P}_{m-1}$, which we do by inductively proving $Q_l \subseteq \mathcal{P}_{m-1}$ for all $l \geq 0$. The base case $Q_0 \subseteq \cP_{m-1}$ is immediate; since $j_m \not\in I_i$ by construction, there cannot be any unassigned propagators supported on $j_m$ when the algorithm reaches that vertex, i.e. ${\Prop(j_m) \subseteq \cP_{m-1}}$.
 
 Now assume that $Q_0,\dots,Q_{l-1} \subseteq \cP_{m-1}$, and consider $Q_{l}$. If $Q_{l} \setminus Q_{l-1} = \emptyset$ then we are done, with $Q = Q_l$.  Otherwise, let $q \in Q_{l} \setminus Q_{l-1}$. By construction there is some propagator $p_r \in Q_{l-1}$ such that $p_r$ and $q$ are both supported on $I_i(p_r) = a_r$. If $q$ is clockwise of $p_r$ on vertex $a_r$ then we immediately have $q \in \cP_{m-1}$ by Remark~\ref{clockwise ordering rem}.  It remains to consider the case that $q$ is counterclockwise of $p_r$ at $a_r$.
 
@@ -1674,7 +1677,7 @@ If not, then there must be some propagator $p_s \in Q_{l-2}$ such that $p_r$ and
 \]
 \caption{If the other end of $p_r$ does not lie on an edge between $a_r$ and $j_m$, then we must have a propagator $p_s \in Q_{l-2}$ in one of the depicted configurations. The (blue) highlighted regions indicate the approximate position of a vertex whose precise position is unknown. Cut-off propagators indicate that the location of the propagator's other end is unknown; in particular, no meaning should be ascribed to the angle at which these propagators are drawn.}\label{fig gn proof induction 2}
 \end{figure}
-Now repeat the argument above with $p_s$ in place of $p_r$: if the other end of $p_s$ lands on an edge between $q$ and $j_m$ then we have $q \in \cP_{m-1}$ as above; if not then there exists some $p_t \in Q_{l-3}$ with $p_s$ supported on $I_i(p_t)$ and $q$ on the inside of $p_t$ in the $a_t-1$ order. Therefore, $I_i(p_t) <_i I_i(p_r)$.
+Now repeat the argument above with $p_s$ in place of $p_r$.  If the other end of $p_s$ lands on an edge between $q$ and $j_m$ then we have $q \in \cP_{m-1}$ as above; if not then there exists some $p_t \in Q_{l-3}$ with $p_s$ supported on $I_i(p_t)$ and $q$ on the inside of $p_t$ in the $a_t-1$ order. Therefore, $I_i(p_t) <_i I_i(p_r)$.
 %{\color{violet} May not be necessary, but I think highlighted tex follows from "Now repeat the argument...." \begin{enumerate}\item If $V(p_r) \in [a_r-1, j_m]$ (other end closer to $j_m$) then $q$ inside $p_r$ in $a_r-1$ order. \item Else, $V(p_r) \in [i, a_r+1]$ (Maybe $[i-1, a_r +1]$?). (Main point is that other end closer to $i$) Either way,  admissibility implies that $a_s < a_r$ \item Now we repeat. Either  $V(p_s) \in [a_s-1, j_m]$ then $q$ inside $p_s$ in $a_s-1$ order \hlfix{and we are done}{not quite true; same reasoning as why we're using ``the other end of the propagator'' instead of $V(p_s) \subseteq [a_s-1, j_m]$} \item Else, $V(p_s) \in [i, a_s+1]$ (Maybe $[i-1, a_s +1]$?). Either way, admissibility implies that $a_t < a_s$ and we've already established $a_s < a_r$ \end{enumerate} We don't have to include this argument. It may be totally unnecessary. But I want to make certain that I'm not missing anything.}
 Since there are finitely many steps this process can take before reaching $Q_0$, and any $p_* \in Q_0  = \Prop(j_m)$ has $j_m$ in its support by definition, this argument eventually terminates with the construction of a propagator constraining the positioning of $q$ as required. This completes the induction step, and hence the proof.\end{proof}
 
@@ -1752,9 +1755,9 @@ Since the number of alignments in a chord diagram is clearly preserved under dih
 
 
 \begin{lem}\label{lem good p}
-  Let $W$ be an admissible Wilson loop diagram with $k \geq 1$ propagators.  Then there is some dihedral transformation of $W$ such that the resulting diagram $W'$ has a propagator $p$ with the following properties:
+  Let $W$ be an admissible Wilson loop diagram with $k \geq 1$ propagators.  Then there is some dihedral transformation of $W$ such that the resulting diagram $W'$ has a propagator $p$ with the following properties.
   \begin{itemize}
-  \item $p = (i, n-1)$ for some $i$, and $p$ has no propagators inside it with respect to the $<_i$ ordering.
+  \item The propagator $p = (i, n-1)$ for some $i$, and $p$ has no propagators inside it with respect to the $<_i$ ordering.
   \item Either the edge $i$ in $W'$ only supports $p$, or the edge $i$ in $W'$ supports exactly one other propagator $q = (j,i)$, with no other propagators inside $q$ in the $<_j$ ordering. 
   \end{itemize}
 \end{lem}
@@ -1825,7 +1828,7 @@ With the above restrictions in place, the next few lemmas describe how the Grass
 
 
 \begin{lem}\label{lem I}
-Let $W$ be an admissible Wilson loop diagram with $k\geq 1$ propagators, and suppose $W$ admits one of the configurations described in Lemma~\ref{lem good p}, with $p$ and $q$ (if $q$ exists) both of length 2. Let $V$ be $W$ with $p$ removed.  We can express $I_*^W$ in terms of $I_*^V$ as indicated below:
+Let $W$ be an admissible Wilson loop diagram with $k\geq 1$ propagators, and suppose $W$ admits one of the configurations described in Lemma~\ref{lem good p}, with $p$ and $q$ (if $q$ exists) both of length 2. Let $V$ be $W$ with $p$ removed.  We can express $I_*^W$ in terms of $I_*^V$ as indicated below.
 
   \begin{align*}
     I_1^{W} & = I_1^{V} \cup \{n-3\} \\
@@ -1881,7 +1884,7 @@ We proceed to address the cases laid out in Lemma~\ref{lem I}, getting the shape
 \begin{proof}
 See Figure~\ref{fig Le} for an illustration of the shapes described in the statement of the lemma.
 
-Recall that $I_1$ determines the shape of the Le diagram: specifically, the elements of $I_1$ label the rows of the diagram, working from top right to bottom left. By the arguments in Lemma {\ref{lem I}} we know that none of $n$, $n-1$, $n-2$, and $n-3$ are in $I_1^{V}$.  These are the leftmost four columns of the diagram for $V$.  From Lemma \ref{lem I} we know that that $I_1^{W} = I_1^{V}\cup \{n-3\}$. Therefore, the right hand boundary of the shape of $V$ is the same as the right hand boundary of the shape of $W$ except that $W$ has one additional row of 3 boxes while $V$ has an additional column in the $n-3$ position; that is, an extra column fourth from the left. 
+Recall that $I_1$ determines the shape of the Le diagram.  Specifically, the elements of $I_1$ label the rows of the diagram, working from top right to bottom left. By the arguments in Lemma {\ref{lem I}} we know that none of $n$, $n-1$, $n-2$, and $n-3$ are in $I_1^{V}$.  These are the leftmost four columns of the diagram for $V$.  From Lemma \ref{lem I} we know that that $I_1^{W} = I_1^{V}\cup \{n-3\}$. Therefore, the right hand boundary of the shape of $V$ is the same as the right hand boundary of the shape of $W$ except that $W$ has one additional row of 3 boxes while $V$ has an additional column in the $n-3$ position; that is, an extra column fourth from the left. 
 \end{proof}
 \begin{figure}
   \[\begin{tikzpicture}[scale = 1.5]
@@ -1909,7 +1912,7 @@ Recall that $I_1$ determines the shape of the Le diagram: specifically, the elem
 
 As illustrated in Figure~\ref{fig Le}, the pieces of the Le diagrams of $V$ and $W$ will be called $\mathcal{A}$ and $\mathcal{B}$ respectively, in what follows. Explicitly, $\mathcal{B}$ is the set of columns with labels $v < n-3$ and $\mathcal{A}$ is the set of columns labeled by $n$, $n-1$ and $n-2$ in $V$. In $W$ we see that $\mathcal{A}$ consists of these same three columns, but does not include the last row. Over the course of the next few lemmas we will prove that the plusses in the $\mathcal{B}$ parts of each diagram are identical, and that the relationship between the plusses in the two $\mathcal{A}$ regions can be described explicitly.
 
-We do this by applying Algorithm~\ref{alg:GN to Le}, which constructs the Le diagram associated to the Grassmann necklaces of $V$ and $W$. As described in Section~\ref{sec:positroid background}, if Algorithm~\ref{alg:GN to Le} places a $+$ in the box with row index $i$ and column index $j$, we say that this plus is {\bf in the $i \rightarrow j$ position}, and refer to it as {\bf the plus defined by ``the (hook) path from $i$ to $j$''}. Note that the collection of paths contributed by a single Grassmann necklace term must be non-crossing: this follows immediately from the Le condition.
+We do this by applying Algorithm~\ref{alg:GN to Le}, which constructs the Le diagram associated to the Grassmann necklaces of $V$ and $W$. As described in Section~\ref{sec:positroid background}, if Algorithm~\ref{alg:GN to Le} places a $+$ in the box with row index $i$ and column index $j$, we say that this plus is {\bf in the $i \rightarrow j$ position}, and refer to it as {\bf the plus defined by ``the (hook) path from $i$ to $j$''}. Note that the collection of paths contributed by a single Grassmann necklace term must be non-crossing.  This follows immediately from the Le condition.
 
 
 %Finally, we also note that when we speak of a plus in the Le diagram of $V$ being the same as in $W$ or vice versa, we mean that the position of the plus in $\mathcal{A}$ or $\mathcal{B}$ is the same
@@ -1932,7 +1935,7 @@ By Lemma~\ref{lem I} we have $I_n^{W}= I_1^{V} \cup \{n\}$ and $I_1^{W} = I_1^{V
 \[I_1^{W} \setminus I_n^{W} = \{n-3\}, \qquad \qquad I_n^{W} \setminus I_1^{W} = \{n\},\]
 and so by Algorithm~\ref{alg:GN to Le} we have a plus in the $(n-3) \rightarrow n$ position, i.e. in the leftmost box of the bottom row. 
 
-Also by Lemma~\ref{lem I} we have $I_{n-1}^{W} = I_n^{V} \cup \{n-1\}$. Recall from the proof of Lemma~\ref{lem I} that none of $n-3,\;n-2,\;n-1$ or $n$ are in $I_1^V$; therefore
+Also by Lemma~\ref{lem I} we have $I_{n-1}^{W} = I_n^{V} \cup \{n-1\}$. Recall from the proof of Lemma~\ref{lem I} that none of $n-3,\;n-2,\;n-1$ or $n$ are in $I_1^V$; therefore,
 \[
 I_1^W\setminus I_{n-1}^W = (I_1^V \setminus I_n^V) \cup\{n-3\},
 \]
@@ -2354,11 +2357,11 @@ From $I_1$ to $I_2$, the propagators $p$ and $q$ change which vertices they cont
 \] 
 Continuing likewise, we get $r_3 = c$, $r_4=1$ (since $I_4 = I_3$), $r_5 = lhd$, and $r_6 = i$.
 
-At $I_7$ we see for the first time an irreducible quadratic factor: we have $S_7 = \{q,s\}$ with ${I_7(S_7) = \{ 1,2\}}$, $\Delta_{I_7} = d(ej-fi)$ and $r_7 = ej-fi$. 
+At $I_7$ we see for the first time an irreducible quadratic factor.  We have $S_7 = \{q,s\}$ with ${I_7(S_7) = \{ 1,2\}}$, $\Delta_{I_7} = d(ej-fi)$ and $r_7 = ej-fi$. 
 
 The irreducible quadratic factor corresponds to the fact that $q$ and $s$ share an edge {\em and} contribute both endpoints of that edge to $I_7$; see Proposition~\ref{prop alg gives rad} below.  
 
-Finally, we have $r_1 = (af-be)k$.  Putting everything together, we obtain
+Finally, we have $r_1 = (af-be)k$.  Putting the previous calculations together, we obtain
 \[
 R = (af-be)kgbclhdi(ej-fi)
 \]
@@ -2393,7 +2396,7 @@ Expanding out $fg$ yields a signed sum of monomials. Since there is no cancellat
 
 A consequence of this claim is that every linear factor of $\Delta_{I_i}$ is a $1\times 1$ minor of $C(W)$, hence is a single variable, and every irreducible quadratic factor of $\Delta_{I_i}$ is a $2\times 2$ minor of $C(W)$, hence is a $2\times 2$ determinant of single variables.
 
-All that remains is to prove that $\Delta_{I_i}$ has no irreducible factors of degree 3 or more.  Suppose for a contradiction that $f$ is a factor of $\Delta_{I_i}$ of degree $\geq 3$. Without loss of generality\footnote{This is without loss of generality for the following reason.  By removing the propagators which come before those contributing to $f$ (in the order given by $I_i$) and changing $i$ to be the first vertex which contributes to $f$, we obtain an admissible diagram.  In this diagram, $f$ still divides $\Delta_{I_i}$ and we also have $i\in I_i$ and that 
+All that remains is to prove that $\Delta_{I_i}$ has no irreducible factors of degree 3 or more.  Suppose, by way of contradiction that $f$ is a factor of $\Delta_{I_i}$ of degree $\geq 3$. Without loss of generality\footnote{This is without loss of generality for the following reason.  By removing the propagators which come before those contributing to $f$ (in the order given by $I_i$) and changing $i$ to be the first vertex which contributes to $f$, we obtain an admissible diagram.  In this diagram, $f$ still divides $\Delta_{I_i}$ and we also have $i\in I_i$ and that 
 $i$ contributes to $f$.  Thus this diagram can be used in place of $W$.} we may assume $i\in I_i$ and that $i$ contributes to $f$.
 Finally, we can suppose that $W$ is minimal with respect to the number of propagators amongst diagrams with an irreducible factor of degree $\geq 3$. 
 
@@ -2420,7 +2423,7 @@ Let $p$ be the propagator such that $I_i(p) = i$. There are two cases to conside
   \node[align = center,black] at (\zero + \step*4.5:\radius*0.65) {\em \footnotesize propagators \\ \footnotesize \em inside $p$};
   \draw[propassignment,gray] (\zero + 1.81*\step:\radius) to[bend right = \arrowangle] (\zero + 2.5*\step:\radius); %p
   \draw[propassignment,gray] (\zero + 7.9*\step:\radius) to[bend left = \arrowangle] (\zero + 7*\step:\radius); 
-  \node[align = center,black] at (\zero + 6.8*\step:1.5*\radius) {\em \footnotesize If $m \in I_i$ then it was \\ \em \footnotesize contributed by a propagator \\ \em \footnotesize outside of $p$};
+  \node[align = center,black] at (\zero + 6.8*\step:1.5*\radius) {\em \footnotesize If $m \in I_i$ then it was \\ \em \footnotesize contributed by a propagator \\ \em \footnotesize outside $p$};
   \node[align = center,black] at (110:\radius*0.5) {\em Case 1: $p = (i-1,m)$};
 \end{scope}
 \end{tikzpicture}
@@ -2446,7 +2449,7 @@ Let $p$ be the propagator such that $I_i(p) = i$. There are two cases to conside
   \end{scope}
   \node[align = center,black] at (\zero + \step*4.5:\radius*0.72) {\em \footnotesize propagators \\ \footnotesize \em inside $q$};
   \node[align = center] at (\zero + 1.8*\step:\radius*1.5) {\footnotesize \em No \\ \footnotesize \em propagators \\ \footnotesize \em between \\ \footnotesize \em $p$ and $q$ \\ \footnotesize \em here};
-  \node[align = center,black] at (\zero + 6.8*\step:1.5*\radius) {\em \footnotesize If $j \in I_i$ then it was \\ \em \footnotesize contributed by a propagator \\ \em \footnotesize outside of $q$};
+  \node[align = center,black] at (\zero + 6.8*\step:1.5*\radius) {\em \footnotesize If $j \in I_i$ then it was \\ \em \footnotesize contributed by a propagator \\ \em \footnotesize outside $q$};
     \node[align = center,black] at (110:\radius*0.5) {\em Case 2: $p = (i,m)$};
 
 \end{scope}
@@ -2468,13 +2471,13 @@ If neither $m$ nor $m+1$ appear in $I_i$ then by Corollary~\ref{no coloops} we h
 \[
 \begin{bmatrix} A & B \\ 0 & C\end{bmatrix}
 \]
-where $A$ is the $|T|\times |T|$ matrix indexed by the propagators in $T$ and the vertices in $I_i(T)$. No other propagators can be supported on these vertices since all other propagators are outside of $p$, and $p$ is the first propagator supported at $i$; this explains the zero block.  Therefore, $\Delta_{I_i} = \pm \det A \det C$, and both factors are nontrivial since at least one of $m$ and $m+1$ appears in $I_i$.  
+where $A$ is the $|T|\times |T|$ matrix indexed by the propagators in $T$ and the vertices in $I_i(T)$. No other propagators can be supported on these vertices since all other propagators are outside $p$, and $p$ is the first propagator supported at $i$; this explains the zero block.  Therefore, $\Delta_{I_i} = \pm \det A \det C$, and both factors are nontrivial since at least one of $m$ and $m+1$ appears in $I_i$.  
 
-Since $p\in \cP_{in}(p)$ we have $f|\det A$, and if we remove a propagator outside of $p$ that contributes either $m$ or $m+1$, we get a diagram $W'$ with fewer propagators for which $\det A | \Delta_{I^{W'}_i}$ still holds, hence $f|\Delta_{I^{W'}_i}$.  This contradicts the minimality of our choices. 
+Since $p\in \cP_{in}(p)$ we have $f|\det A$, and if we remove a propagator outside $p$ that contributes either $m$ or $m+1$, we get a diagram $W'$ with fewer propagators for which $\det A | \Delta_{I^{W'}_i}$ still holds, hence $f|\Delta_{I^{W'}_i}$.  This contradicts the minimality of our choices. 
 
 \textbf{Case 2}: Suppose $p = (i, m)$, i.e. $p$ has an end on the $i^{th}$ edge. If no other propagators are supported on the vertex $i$ then the corresponding column of $C(W)$ has only one nonzero entry in it, and so $\Delta_{I_i}$ has a linear factor contributed by $p$ and $i$; as above, this is a contradiction.
 Since $p$ is the first propagator in the ordering imposed by $I_i$, it is the clockwise-most propagator supported on $i$ (by Remark {\ref{clockwise ordering rem}}). Since there are multiple propagators supported on $i$, there must be a $q$ ending on edge $i$, such that $I_i(q) = i+1$, that is second clockwise-most propagators supported by $i$ (see Figure~\ref{fig no big factors}).
-Write $q = (i, j)$ for the support of $q$.  The situation for $q$ is very similar to Case 1: in particular, we have $I_{i+1}(q) = j$ by Lemma {\ref{vertex cyclic int lem}} and so if $j\in I_i$ then the propagator which contributes $j$ is outside of $q$.
+Write $q = (i, j)$ for the support of $q$.  The situation for $q$ is very similar to Case 1: in particular, we have $I_{i+1}(q) = j$ by Lemma {\ref{vertex cyclic int lem}} and so if $j\in I_i$ then the propagator which contributes $j$ is outside $q$.
     %\color{violet}if we have $r$ such that $I_i(r) = j$, as above, $r$ lies outside $q$: $r \in \cP_{out}(q, <_i)$.
 
 Similarly to Case 1, let $T = \cP_{in}(q) \cup \{p\}$ in the $<_i$ order. All propagators in $T$ contribute to $I_i$ strictly before $j$ and no other propagators are supported on vertices strictly before $j$.  Thus after permuting rows and columns as needed the matrix giving $\Delta_{I_i}$ has the form 
@@ -2495,7 +2498,7 @@ All cases have now been covered and so $\Delta_{I_i}$ has only irreducible facto
 
 Now let $f$ be a quadratic factor of $\Delta_{I_i}$.  By part (2) we know that $f$ is a $2\times 2$ minor coming from two propagators, call them $p$ and $q$, and two vertices, call them $a$ and $b$, and assume that $a <_i b$.  It remains to show that $b = a+1$.  From this we can conclude that $p$ and $q$ each have one end on edge $a$. 
 
-As in the proof of part (2), make a new admissible diagram by removing the propagators which come before those contributing to $f$ in the order imposed by $I_i$.  Without loss of generality we may assume $i=a$. The cases in the proof of part (2) show how $\Delta_{I_i}$ factors: in particular the vertices supporting the other end of $p$ either do not appear in $I_i$, or they contribute to a different factor of $\Delta_{I_i}$ than $p$ and $a$ do.  By assumption $b$ contributes to the same factor as $a$.  Therefore, $(a,b)$ is an edge defining an end of $p$, that is, $b = a+1$.
+As in the proof of part (2), make a new admissible diagram by removing the propagators which come before those contributing to $f$ in the order imposed by $I_i$.  Without loss of generality we may assume $i=a$. The cases in the proof of part (2) show how $\Delta_{I_i}$ factors. In particular the vertices supporting the other end of $p$ either do not appear in $I_i$, or they contribute to a different factor of $\Delta_{I_i}$ than $p$ and $a$ do.  By assumption $b$ contributes to the same factor as $a$.  Therefore, $(a,b)$ is an edge defining an end of $p$, that is, $b = a+1$.
 
 \item If $S_i = \emptyset$ then $r_i = 1$ and we immediately have $r_i | \Delta_{I_i}$; otherwise, let $p\in S_i$. 
 
@@ -2592,7 +2595,7 @@ First we show that every factor of $\prod_{i=1}^n \Delta_{I_i}$ divides $R$.  Ta
 
 Next we need to show that $R$ is square-free.  Suppose $f^2|R$.  If $f$ is a linear factor, say from associating propagator $p$ to vertex $a$, then there must be two distinct points in the Grassmann necklace algorithm where $p$ changes from not being associated to vertex $a$ to being associated to vertex $a$.  This contradicts Lemma~\ref{vertex cyclic int lem}.  Now suppose $f$ is a quadratic factor, say from propagators $p$ and $q$ supported on edge $a$ with $p$ clockwise to $q$ on the edge.  In this case it is not possible for any $I_i$ to associate $p$ to $a+1$ and $q$ to $a$.  Furthermore, we know by part (4) that $p$ changes from not being associated to $a$ to being associated to $a$ if and only if $q$ changes from not being associated to $a+1$ to being associated to $a+1$.  Thus $f^2|R$ implies that  in the Grassmann necklace $p$ must change twice from not being associated to vertex $a$ to being associated to vertex $a$. This is again a contradiction, and so $R$ is square-free.
 
-Taking everything together we have that $R|\prod_{i=1}^n \Delta_{I_i}$ (from part (4)), $R$ contains all factors of $\prod_{i=1}^n \Delta_{I_i}$, and $R$ is square-free.  Therefore, the ideal generated by $R$ is the radical of the ideal generated by $\prod_{i=1}^n \Delta_{I_i}$.
+{}From the arguments above, we have that $R|\prod_{i=1}^n \Delta_{I_i}$ (from part (4)), $R$ contains all factors of $\prod_{i=1}^n \Delta_{I_i}$, and $R$ is square-free.  Therefore, the ideal generated by $R$ is the radical of the ideal generated by $\prod_{i=1}^n \Delta_{I_i}$.
   \end{enumerate}
 \end{proof}
 
