@@ -365,7 +365,7 @@ A Wilson loop diagram can also be represented visually, which provides useful in
 To simplify language, we let the edges inherit a cyclic ordering from the vertices:
 
 \begin{dfn}\label{def:edges}
-The $i$th edge of $W$ is the arc that lies between the vertices $i$ and $i+1$.
+The $i^{th}$ edge of $W$ is the arc that lies between the vertices $i$ and $i+1$.
 \end{dfn}
 
 Thus we may speak of a propagator $p = (i, j)$ as being supported by the $i$th and $j$th edges.
@@ -383,7 +383,7 @@ Often we take $V$ to be the cyclically ordered set of integers $\{1, \ldots, n\}
 	\drawprop{2}{0}{4}{-1}
 \drawprop{5}{0}{8}{0}
 		\end{scope}
-	\end{tikzpicture}  \eas 
+	\end{tikzpicture} \; . \eas 
 \end{eg}
 
 \medskip
@@ -412,9 +412,9 @@ We now define the notion of an admissible diagram, which imposes certain density
 
 \begin{dfn}\label{admisdfn}
 A Wilson loop diagram $W = (\cP,V)$ is {\em admissible} if it satisfies the following three conditions: \begin{enumerate}
-\item $|V| \geq |\cP| + 4.$
-\item For any non-empty set of propagators, $Q \subseteq \cP$, $Q \neq \emptyset$, one has $|V(Q)| \geq |Q| + 3$.
-\item There does not exist a pair of propagators $(i_p,j_p),(i_q,j_q) \in \cP$ such that $i_p < i_q < j_p <j_q$.
+\item $|V| \geq |\cP| + 4,$
+\item for any non-empty set of propagators, $Q \subseteq \cP$, $Q \neq \emptyset$, one has $|V(Q)| \geq |Q| + 3$.\,
+\item there does not exist a pair of propagators $(i_p,j_p),(i_q,j_q) \in \cP$ such that $i_p < i_q < j_p <j_q$.
 \end{enumerate}
 A Wilson loop diagram is called {\em weakly admissible} if the second and third conditions hold.
  \end{dfn}
@@ -451,8 +451,8 @@ The exact subdiagrams define an equivalence relation amongst Wilson loop diagram
 \begin{dfn}\label{equivdfn} 
 Let $W = (\cP,[n])$ and $W' = (\cP',[n])$ be two weakly admissible subdiagrams. Let $\sim$ denote the transitive closure of the following relation: $W$ and $W'$ are related if
 \begin{enumerate}
-\item There exist exact subdiagrams $(P, V(P)) \subseteq W$ and $(P', V(P')) \subseteq W'$ with the same number of propagators and supported on the same vertices, i.e. $|P| = |P'|$ and  $V(P) =  V(P')$.
-\item The complementary subdiagrams (i.e. all other propagators and vertices) are identical, i.e. $(\cP \setminus P, [n]) = (\cP' \setminus P', [n])$.
+\item there exist exact subdiagrams $(P, V(P)) \subseteq W$ and $(P', V(P')) \subseteq W'$ with the same number of propagators and supported on the same vertices, i.e. $|P| = |P'|$ and  $V(P) =  V(P')$.
+\item the complementary subdiagrams (i.e. all other propagators and vertices) are identical, i.e. $(\cP \setminus P, [n]) = (\cP' \setminus P', [n])$.
 \end{enumerate}
 The relation $\sim$ is an equivalence relation on the set of all weakly admissible Wilson loop diagrams with vertex set $[n]$.
 \end{dfn}
@@ -558,7 +558,7 @@ Let $W = (\cP,[n])$ be a weakly admissible Wilson loop diagram, and $M(W)$ its a
 In particular, this allows us to prove results about $M(W)$ by considering the behavior of propagators in $W$. We record a few facts about the ranks of cycles and flats in $M(W)$ as an example of this.
 
 \begin{lem}\label{lem facts about WLD matroids}
-Let $W = (\cP,[n])$ be a weakly admissible Wilson loop diagram. Then:
+Let $W = (\cP,[n])$ be a weakly admissible Wilson loop diagram. The following are true.
 \begin{enumerate}
 \item The rank of a set $V \subseteq [n]$ is bounded above by $\min\{|V|,|\Prop(V)|\}$, with $\rk(V) = |V|$ if and only if $V$ is an independent set.
 %\item Let $v \in [n]$ and $q \in \Prop(v)$. Then for any $V \subset [n]$ such that $q \not \in \Prop(V)$, we have $\rk(V \cup \{v\}) = \rk(V) +1$, i.e. adding a vertex that supports a new propagator to a set increases the rank of the set.
@@ -800,7 +800,7 @@ More casually this definition says that the maximal triangulated pieces of $\tau
    
 We are now in a position to relate the triangulated pieces of $\tau(W)$ to exact subdiagrams of $W$.
 
-For a weakly admissible Wilson loop diagram $W$, every triangulated piece $t$ of $\tau(W)$ corresponds to a subdiagram of $W$ obtained by taking the set of propagators $P$ corresponding to edges of $t$ and then taking the subdiagram $(P, V(P))$.  Conversely, given a subdiagram $(P, V(P))$ of $W$ we can obtain a subgraph of $\tau(W)$, called $t$, as follows:
+For a weakly admissible Wilson loop diagram $W$, every triangulated piece $t$ of $\tau(W)$ corresponds to a subdiagram of $W$ obtained by taking the set of propagators $P$ corresponding to edges of $t$ and then taking the subdiagram $(P, V(P))$.  Conversely, given a subdiagram $(P, V(P))$ of $W$ we can obtain a subgraph of $\tau(W)$, called $t$, following the algorithm below.
 \begin{itemize}
 \item The vertex set of the subgraph $t$ is
   \begin{itemize}
@@ -945,17 +945,17 @@ This follows from the definition of equivalent Wilson loop diagrams (Definition 
 
 \subsection{Matroidal properties of exact subdiagrams \label{sec: exact diagram matroidal props}}
 
-Since Corollary \ref{uniqueproppartitioncor} allows us to decompose any admissible Wilson loop diagram into a collection of maximal exact subdiagrams, we are motivated to examine the matroid properties of exact subdiagrams more closely. In this section, we prove two main results:
+Since Corollary \ref{uniqueproppartitioncor} allows us to decompose any admissible Wilson loop diagram into a collection of maximal exact subdiagrams, we are motivated to examine the matroid properties of exact subdiagrams more closely. In this section, we prove two main results.
 \begin{enumerate}
-\item The matroid associated to an exact subdiagram of $W$ can be written as a contraction of the matroid $M(W)$ by the complementary propagator flat (Theorem \ref{exact diagrams contractions}). 
-\item The matroid associated to an exact subdiagram is uniform (Theorem \ref{exactuniformthm}).
+\item the matroid associated to an exact subdiagram of $W$ can be written as a contraction of the matroid $M(W)$ by the complementary propagator flat (Theorem \ref{exact diagrams contractions}),
+\item the matroid associated to an exact subdiagram is uniform (Theorem \ref{exactuniformthm}).
 \end{enumerate}
 
 We begin by proving some useful facts about propagator flats, and flats of matroids associated to admissible Wilson loop diagrams more generally. Recall from Definition~\ref{VPropdfn} that the propagator flat $F(P)$ of $P \subseteq \cP$ denotes the set $V(P^c)^c$ of vertices that only support propagators in $P$ or are non-supporting.
 
 \begin{lem} \label{lem decompose flat}Let $F$ be a flat in $M(W)$, and let $C \subseteq F$ be the union of all circuits contained in $F$. Then the following are true:
 \begin{enumerate}
-\item $C = F(\Prop (C))$, i.e. $C$ is a propagator flat.
+\item $C = F(\Prop (C))$, i.e. $C$ is a propagator flat,
 \item $F \setminus C$ is an independent set. Furthermore, $F\setminus C$ is an independent flat if and only if $F(\emptyset) = \emptyset$, that is, $W$ has no non-supporting vertices.  
 \end{enumerate}
 \end{lem}
@@ -1012,10 +1012,10 @@ Next we examine properties of propagator flats associated to the complement of W
 
 
 \begin{lem} \label{maxexactcomplementrank}
-Let $W = (\cP, [n])$ be an admissible Wilson loop diagram, and $P \subseteq \cP$. Then: \begin{enumerate}
-\item If $(P,V(P))$ is an exact subdiagram of $W$, then $F(P^c)$ is a dependent flat in $W$.
-\item If $(P,V(P))$ is a maximal exact subdiagram of $W$, then $F(P^c)$ is a cyclic flat in $W$.
-\item If $(P,V(P))$ is an exact subdiagram of $W$, then $\rk(F(P^c)) = |P^c|$.
+Let $W = (\cP, [n])$ be an admissible Wilson loop diagram, and $P \subseteq \cP$. Then, \begin{enumerate}
+\item if $(P,V(P))$ is an exact subdiagram of $W$, then $F(P^c)$ is a dependent flat in $W$,
+\item if $(P,V(P))$ is a maximal exact subdiagram of $W$, then $F(P^c)$ is a cyclic flat in $W$,
+\item if $(P,V(P))$ is an exact subdiagram of $W$, then $\rk(F(P^c)) = |P^c|$.
 \end{enumerate} 
 \end{lem}
 
@@ -1167,7 +1167,7 @@ Let $W= (\cP, [n])$ and $W'= (\cP', [n])$ be two weakly admissible Wilson loop d
 \begin{proof}One direction has been proved in \cite[Theorem 1.18]{wilsonloop}, but we give a different proof here to be consistent with the method of this paper. 
 
 For the if direction, it suffices to prove the result for two equivalent diagrams that differ in exactly one exact subdiagram. Let $W$ and $W'$ be equivalent Wilson loop diagrams which can be decomposed as
-\[W = (P \sqcup R, [n]), \qquad W' = (P \sqcup R', [n]),\]
+\[W = (P \sqcup R, [n]) \qquad \textrm{and} \qquad W' = (P \sqcup R', [n]),\]
 where $(R,V(R))$ and $(R',V(R'))$ are different maximal exact subdiagrams of $W$ and $W'$ respectively, and $V(R) = V(R')$. 
 
 By Theorem \ref{exactuniformthm}, $M(R, V(R))$ and $M(R',V(R'))$ are both uniform matroids of rank $|R| = |R'|$. In particular, this means that any subset of $V(R)$ is independent in both $M(W)$ and $M(W')$.
@@ -1193,7 +1193,7 @@ Since there is a unique way to decompose $W$ into maximal exact subdiagrams, it 
 \begin{cor}\label{number of equiv diagrams}
   Let $W$ be a weakly admissible Wilson loop diagram where the sizes of the supports of the nontrivial maximal exact subdiagrams are $n_1, n_2, \ldots, n_j$.  Then the number of weakly admissible Wilson loop diagrams equivalent to $W$ (including $W$ itself) is
   \[
-  \prod_{i=1}^{j} \frac{1}{n_i-1}\binom{2(n_i-2)}{n_i-2}
+  \prod_{i=1}^{j} \frac{1}{n_i-1}\binom{2(n_i-2)}{n_i-2} \;.
   \]
 \end{cor}
 
@@ -1284,7 +1284,7 @@ In order to prove the converse of Proposition~\ref{prop easy way}, we first requ
 We also need the following notation: given a polygon dissection $D$ of an $n$-gon, let $V_{>3}(D)$ be the set of vertices of the polygon which are on at least one non-triangle face of $D$.  (Note that $D$ may have many non-triangle faces and so $V_{>3}(D)$ will be the union of the vertices of each non-triangle face.) For the purposes of this proof, we also write $[x_i,x_j]$ for the set of vertices from $x_i$ to $x_j$ including the endpoints, and $(x_i,x_j)$ for the same set but excluding the endpoints. 
 
 \begin{lem}\label{lem good quads}
-Let $D_1$ and $D_2$ be two dissections of a convex $n$-gon defined by the vertices $x_1, \ldots, x_n$.  Suppose that $V_{>3}(D_1) = V_{>3}(D_2)$, but that the $D_1$ and $D_2$ do not have the same set of non-triangle faces.  Then there are four vertices $x_i$, $x_j$, $x_k$, $x_l$ satisfying the following conditions:\begin{enumerate} \item In either $D_1$ or $D_2$ all four vertices are on the same non-triangle face. \item In the other dissection, there is a diagonal of the dissection such that exactly one of $\{x_i, x_j, x_k, x_l\}$ lies on one side of the diagonal (so the others are either end points of this diagonal or strictly on the other side). \end{enumerate}
+Let $D_1$ and $D_2$ be two dissections of a convex $n$-gon defined by the vertices $x_1, \ldots, x_n$.  Suppose that $V_{>3}(D_1) = V_{>3}(D_2)$, but that the $D_1$ and $D_2$ do not have the same set of non-triangle faces.  Then there are four vertices $x_i$, $x_j$, $x_k$, $x_l$ satisfying the following conditions:\begin{enumerate} \item in either $D_1$ or $D_2$ all four vertices are on the same non-triangle face. \item in the other dissection, there is a diagonal of the dissection such that exactly one of $\{x_i, x_j, x_k, x_l\}$ lies on one side of the diagonal (so the others are either end points of this diagonal or strictly on the other side). \end{enumerate}
 \end{lem} 
 
 The situation described in the lemma is illustrated in Figure~\ref{configs}.
