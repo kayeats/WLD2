@@ -1884,6 +1884,8 @@ This covers all cases and hence completes the proof.
 
 The next several lemmas assume $V$ and $W$ to be as above. These lemmas discuss how the shape of the Le diagram changes from $V$ to $W$ and how the plusses in $V$ shift to become plusses in $W$. In particular, the Le diagram for $W$ has an extra row, labeled by $n-3$, with three columns (see Figure~\ref{fig Le} and Lemma~\ref{lem shape}). This last row contains three (new) plusses. All other plusses in the Le diagram of $V$ shift in a predictable manner to become plusses in the Le diagram of $W$; this is described in Lemma~\ref{lem n and n-1} to Theorem~\ref{thm dim}.
 
+To avoid wordiness, we will refer to the row indexed by $i$ in the Le diagram as row $i$ or the $i$ row, and similarly for columns.  Note that the $i$ row in this sense is not the $i^{th}$ row since the indexing for Le diagrams does not label the rows sequentially starting at $1$, and so to avoid confusion we will not refer to the $i^{th}$ row.
+
 We proceed to address the cases laid out in Lemma~\ref{lem I}, getting the shape of the Le diagram of $W$ from the relation $I_1^W= I_1^V \cup \{n-3\}$. 
 
 \begin{lem}\label{lem shape}
@@ -1993,7 +1995,7 @@ However, it is important to observe that $v$ could be $n-4$, as we see in the ne
     Let $V$ and $W$ be as in Lemma~\ref{lem I}, and suppose that $n-2,n-1 \in I_{n-2}^{V}$. Let $c$ be the largest element of $I_1^V$.  Then the following are true.
     \begin{enumerate}
   \item $c=n-4$ if $n-4\in I_1^V\setminus I_n^V$ and $c=n-5$ otherwise. If $c = n-4$ then we have $v = n-4$ in equation \eqref{eq necklace}.
-  \item $I_{n-3}^W$ contributes the same plusses as $I_{n-3}^V$, except that the plus in the $n-3$ column (which necessarily exists) is shifted one square left into the $n-2$ column.
+  \item $I_{n-3}^W$ contributes the same plusses as $I_{n-3}^V$, except that the plus in column $n-3$ (which necessarily exists) is shifted one square left into column $n-2$.
   \item In the Le diagram of $V$, $I_{n-2}^{V}$ contributes a $(c)\rightarrow (n-2)$ plus and no other term in the Grassmann necklace of $V$ gives a plus in this column. All other plusses from $I_{n-2}^{V}$ were already contributed by $I_{n-3}^V$.
   \item $I_{n-2}^W$ contributes an $(n-3) \rightarrow (n-2)$ plus, a $(c) \rightarrow (n-1)$ plus, and one other plus. If $c = n-5$ then this third plus is the one contributed by $I_n^V$, while if $c = n-4$ then the third plus is $(n-5) \rightarrow n$.
   \item If $c = n-4$ then $I_{n-1}^V$ contributes a $(n-4) \rightarrow (n-1)$ plus; all other plusses contributed by $I_{n-1}^V$ were already contributed by $I_{n-3}^V$, regardless of the value of $c$.
@@ -2041,7 +2043,7 @@ Recall that $I_1^W = I_1^V\cup \{n-3\}$ and that $n-2$, $n-1$, and $n$ are not i
 
   If $n-3\not\in I_{k}^{V}$ then by Lemma~\ref{lem I} we have $I_{k}^{W} = I_k^{V}\cup \{n-3\}$.  Since $n-3$ is the largest element of $I_1^{W}$ this transformation leaves the disjoint paths unchanged and so the plusses carry over from $V$ to $W$ directly.
 
-  If $n-3\in I_{k}^{V}$ then $I_k^V$ must contribute a plus in the $n-3$ column of the Le diagram of $V$, and by Lemma~\ref{lem I} we have $I_{k}^{W} = I_k^{V}\cup \{n-2\}$. If $n-2$ supports no propagators in $V$ then certainly no plusses appear in the $n-2$ column of the Le diagram of $V$. If $n-2$ supports at least one propagator in $V$ then $n-2 \in I_{n-2}^V$ and so by hypothesis $n-1 \in I_{n-2}^V$ as well. By Lemma~\ref{lem n-2 bad} item 3, the only necklace element of $V$ containing $n-2$ is $I_{n-2}^{V}$ and further with item 4, the plusses in column $n-2$ from $I_{n-2}^V$ and $I_{n-2}^W$ are different.
+  If $n-3\in I_{k}^{V}$ then $I_k^V$ must contribute a plus in column $n-3$ of the Le diagram of $V$, and by Lemma~\ref{lem I} we have $I_{k}^{W} = I_k^{V}\cup \{n-2\}$. If $n-2$ supports no propagators in $V$ then certainly no plusses appear in column $n-2$ of the Le diagram of $V$. If $n-2$ supports at least one propagator in $V$ then $n-2 \in I_{n-2}^V$ and so by hypothesis $n-1 \in I_{n-2}^V$ as well. By Lemma~\ref{lem n-2 bad} item 3, the only necklace element of $V$ containing $n-2$ is $I_{n-2}^{V}$ and further with item 4, the plusses in column $n-2$ from $I_{n-2}^V$ and $I_{n-2}^W$ are different.
 
   Since $n-3 \in I_k^V \setminus I_1^V$, we must have a path in the Le diagram of $V$ from some vertical edge $i$ to the bottom edge $n-3$.  In the Le diagram of $W$, the index $n-3$ labels a vertical edge with no path from $I_k^W$ starting at it (since $n-3$ belongs to both $I_1^W$ and $I_k^W$), and there must be a path leading to $n-2$ since $n-2 \in I_k^W \setminus I_1^W$.  By the previous paragraph no other path from $I_k^V$ could end at $n-2$, and since the paths cannot cross we conclude that the $i\rightarrow (n-3)$ path in the Le diagram of $V$ must become a $i\rightarrow (n-2)$ path in the Le diagram of $W$. All other paths are unchanged.
 %   Thus the plus contributed by $I_k^V$ in the $n-3$ column of the Le diagram of $V$ is shifted into the $n-2$ column in the Le diagram for $W$, where there was no plus before, and no other plusses are changed.
@@ -2071,12 +2073,12 @@ Thus $W$ has one of the two configurations depicted in Figure~\ref{fig special p
  The pairing is defined as follows:
   \begin{itemize}
   \item The plusses in the $\mathcal{B}$ region of both Le diagrams are identical, so each plus in this region is paired with itself.
-  \item Every square containing a plus in the leftmost two columns (the $n^{th}$ and the $(n-1)^{th}$ columns) \todo{Put note in paper and response to referee --- generally turn $n$ to $n^{th}$ throughout M.60 -- I disagree and for reasons I can articulate} of $\mathcal{A}$ for $V$ also contains a plus in $W$, so these plusses are also paired with themselves.
-  \item The plusses in the $n-3$ column for $V$ are paired with the corresponding plusses in the $n-2$ column for $W$.
-  \item If there is a plus in the $n-2$ column of $\mathcal{A}$ in $V$ then Lemma~\ref{lem n-2 bad} applies, so there is exactly one such plus in this column. If $n-4 \not\in I_1^V$ then pair this plus with the $(n-5)\rightarrow (n-1)$ plus in $W$, whereas if $n-4 \in I_1^V$ then pair it with the $(n-5) \rightarrow n$ plus in $W$.
+  \item Every square containing a plus in the leftmost two columns (columns $n$ and $(n-1)$) of $\mathcal{A}$ for $V$ also contains a plus in $W$, so these plusses are also paired with themselves.
+  \item The plusses in column $n-3$ for $V$ are paired with the corresponding plusses in column $n-2$ for $W$.
+  \item If there is a plus in column $n-2$ of $\mathcal{A}$ in $V$ then Lemma~\ref{lem n-2 bad} applies, so there is exactly one such plus in this column. If $n-4 \not\in I_1^V$ then pair this plus with the $(n-5)\rightarrow (n-1)$ plus in $W$, whereas if $n-4 \in I_1^V$ then pair it with the $(n-5) \rightarrow n$ plus in $W$.
 
   \end{itemize}
-The first two points follow from Lemmas \ref{lem n and n-1} through \ref{lem n-2 bad}. The third point follows from Lemma~\ref{lem other k}, which tells us that the $n-3$ column of $V$ is identical to the $n-2$ column of $W$ (excluding the last row).
+The first two points follow from Lemmas \ref{lem n and n-1} through \ref{lem n-2 bad}. The third point follows from Lemma~\ref{lem other k}, which tells us that column $n-3$ of $V$ is identical to column $n-2$ of $W$ (excluding the last row).
 
 Finally, if $n-2 \not\in I_{n-2}^V$ by Lemma~\ref{lem n-2 good} there are no plusses in column $n-2$ of the diagram of $V$, and all plusses have been accounted for. On the other hand, if $n-2 \in I_{n-2}^V$ then we are in the setting of Lemma~\ref{lem n-2 bad}, and there is exactly one plus in column $n-2$ of the diagram of $V$. This plus is paired with the one plus in $W$ yet unaccounted for, namely the one in position $(n-5) \rightarrow n$ or $(n-5) \rightarrow (n-1)$, as described in points 4 and 6 of that lemma.
 
