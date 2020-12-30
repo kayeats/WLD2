@@ -370,10 +370,10 @@ In contrast, the first paper in this series focuses on combinatorial and matroid
 
 In recent years, there has been significant interest in understanding the geometry and combinatorics underlying the field theory SYM $N=4$ \cite{wilsonloop, Arkani-Hamed:2013jha, Amplituhedronsquared, galashinlam, AmplituhedronDecomposition}. This started with the observation that BCFW diagrams, which represent the on shell interactions of this theory, correspond to plabic graphs \cite{GrassmannAmplitudebook}. Plabic graphs were introduced by Postnikov in \cite[section 11]{Postnikov}, and provide one of the many equivalent ways to classify the positroid cells of the positive real Grassmannian $\Gr(k,n)$. This led to the representation of the on shell integrals associated to this theory in terms of a geometric space (the Amplituhedron) embedded in $\Gr(k,n)$ \cite{Arkani-Hamed:2013kca,Arkani-Hamed:2013jha}. Moreover, integrands associated to the BCFW diagrams define a volume form on the Amplituhedron. This gives a novel and elegant interpretation of scattering amplitudes for this theory, as well as a means of greatly simplifying the calculations involved in traditional Feynman diagram approaches. Since then, there has been significant work devoted to understanding the volume form and its physical implications \cite{UnwindingAmplituhedron,galashinlam}.
 
-Meanwhile, a different body of work has studied SYM $N=4$ theory from the point of view of Feynman integrals in twistor space \cite{Adamo:2011pv,Adamo:2012xe,  Boels:2007qn, Bullimore:2010pj}. These integrals are calculated via holomorphic Wilson loops. As with the Amplituhedron, each Wilson loop represents the sum of a family of $N^kMHV$ Feynman diagrams, and adding up the corresponding sums of Feynman integrands associates a volume form to a convex space different from those in the decomposition the Amplituhedron \cite{CachazoSvrcekWitten, Hodges2013}.
+Meanwhile, a different body of work has studied SYM $N=4$ theory from the point of view of Feynman integrals in twistor space \cite{Adamo:2011pv,Adamo:2012xe,  Boels:2007qn, Bullimore:2010pj}. These integrals are calculated via holomorphic Wilson loops. As with the Amplituhedron, each Wilson loop represents the sum of a family of $N^kMHV$ Feynman diagrams. Each of the Feynman integrands in this sum associates a volume form to a convex space, parallell to the Amplituhedron \cite{CachazoSvrcekWitten, Hodges2013}. However, the geometric objects decomposing the Wilson loops are different from the geometric object decomposing the Amplituhedron.
 
 Wilson loop diagrams, as we will study them, are objects given by a perturbative expansion of the holomorphic Wilson loop in twistor space.
-Classically, the interactions of the theory were studied as maximal helicity violating diagrams ($MHV$ diagrams), next-to-maximal helicity violating diagrams and so on ($N^kMHV$ diagrams) in momentum space. Adamo and Mason, in \cite{Adamo:2011pr}, gave an elegant formulation for the $N^kMHV$ diagrams in twistor space. The Wilson loop diagram perspective of this paper is dual to this twistor representation of $N^kMHV$ diagrams.
+Classically, the interactions of the theory were studied as maximal helicity violating diagrams ($MHV$ diagrams), next-to-maximal helicity violating diagrams, and so on, ($N^kMHV$ diagrams) in momentum space. Adamo and Mason, in \cite{Adamo:2011pr}, gave an elegant formulation for the $N^kMHV$ diagrams in twistor space. The Wilson loop diagram perspective of this paper is dual to this twistor representation of $N^kMHV$ diagrams.
 The objects are closely related and carry the same information.  We choose to emphasize the dual perspective by our focus on the Wilson loop diagrams.
 
 %\hlfix{The Wilson loop diagrams discussed in this paper are, loosely speaking, dual graphs of the $N^kMHV$ diagrams. While the Wilson loop diagrams contain the exact same information as the $N^kMHV$ diagrams for the purposes of understanding $N=4 SYM$ theory, this dual perspective is better suited to understanding the combinatorics and geometry associated to the theory.}{added to address request (3) of report M -- let's discuss, I don't think this makes sense as written} Therefore, \hlfix{we part with the notation in the physics literature, and name these dual graphs}{I'm not sure that's true} of $N^kMHV$ diagrams Wilson loop diagrams in order to emphasize the combinatorial and geometric significane of these object. 
@@ -389,6 +389,7 @@ The deeper combinatorial and geometric connection between the Amplituhedron and 
 
 This paper continues the program of establishing concrete connections between the combinatorics of the Wilson loop diagram as determined by the physics, and the combinatorics of the associated positroid cell as identified in \cite{wilsonloop}. In this paper, we give an algorithm to read the Grassmann necklace, one of the standard combinatorial characterizations of the positroid cell, directly off the Wilson loop diagram. We also show that the positroid cells associated to Wilson loop diagrams are all $3k$-dimensional, where $k$ is the number of propagators in the diagram; by contrast, the BCFW cells are all $4k$-dimensional \cite{Arkani-Hamed:2013jha}. In \cite{non-orientable} the authors noted that the Wilson loop diagrams only correspond to positroid cells when the gauge vector is ignored. Including the gauge vector defines a $4k$ dimensional subspace of $\mathbb{G}_\R(k,n+1)$.
 
+%%%%PARAGRAPH TO POTENTIALLY MOVE%%%%%%
 As described above, each integrand associated to a Wilson loop diagram gives the volume of a convex polytope. However, each individual tree level integral has singularities. These singularities are of two types: physical and spurious.  The physical singularities come from special kinematical points and we will not consider them in this paper.  The spurious singularities come from zeros of the denominator of the integral, and hence are accessible to our combinatorial techniques.  SYM $N=4$ is a finite theory so we only expect to see the physical singularites in the overall amplitude.  Consequently, the spurious singularities are artifacts of how the integrals are represented and must cancel in the calculation of a tree level scattering amplitude, though the details of how the cancellations come about remain unclear. The cancellation has been conjectured in general \cite{Hodges2013} and verified explicitly in a few cases \cite{casestudy, HeslopStewart}, but it is hard to prove in general due to the fact that the relationship between Wilson loop diagrams and $3k$-dimensional positroid cells of $\Gr(k,n)$ is neither one-to-one nor onto \cite{generalcombinatoricsI}.
 
 %SYM $N=4$ is a finite theory.  which come from the factors in the denominator of the integrands.  However at tree level, the integrals used to calculate the amplitudes of the theory have singularities upon evaluation \cite{Adamo:2011pv,Adamo:2012xe,Arkani-Hamed:2013jha}. These singularities are classified as spurious and physical in the literature, and the spurious poles must all cancel in the calculation of a tree level scattering amplitude,\sanote{Does this address the reviewer's concern properly?} though how this works out mathematically is unclear. The cancellation has been conjectured in general \cite{Hodges2013} and verified explicitly in a few cases \cite{casestudy, HeslopStewart}, but it is hard to prove in general due to the fact that the relationship between Wilson loop diagrams and $3k$-dimensional positroid cells of $\Gr(k,n)$ is neither one-to-one nor onto \cite{generalcombinatoricsI}.
@@ -505,6 +506,10 @@ The matrix $C(W)$ defines a positroid cell associated to $W$ in the positive Gra
 
 Note that since there is no ordering on the propagators of $W$, $C(W)$ is only defined up to rearrangement of the rows. When needed, we will impose various different orders on these rows to suit the task at hand. The choice of ordering does not affect $\Sigma(W)$.
 
+%%%%%POTENTIALLY MOVE PARAGRAPH HERE %%%%%
+%As described above, each integrand associated to a Wilson loop diagram gives the volume of a convex polytope. However, each individual tree level integral has singularities. These singularities are of two types: physical and spurious.  The physical singularities come from special kinematical points and we will not consider them in this paper.  The spurious singularities come from zeros of the denominator of the integral, and hence are accessible to our combinatorial techniques.  SYM $N=4$ is a finite theory so we only expect to see the physical singularites in the overall amplitude.  Consequently, the spurious singularities are artifacts of how the integrals are represented and must cancel in the calculation of a tree level scattering amplitude, though the details of how the cancellations come about remain unclear. The cancellation has been conjectured in general \cite{Hodges2013} and verified explicitly in a few cases \cite{casestudy, HeslopStewart}, but it is hard to prove in general due to the fact that the relationship between Wilson loop diagrams and $3k$-dimensional positroid cells of $\Gr(k,n)$ is neither one-to-one nor onto \cite{generalcombinatoricsI}.
+
+%To see the spurious poles explicitly, 
 One may also interpret the functional $I(W)$ as associating a volume to each cell $\Sigma(W)$ \cite{wilsonloop, Amplituhedronsquared, HeslopStewart}, where the volume is determined by the external particles involved. Specifically, the integrand is written in terms of the elements of $C(W)$ as  \begin{equation} \label{eq:omega(W) def}\Omega(W) = \frac{\prod_{r=1}^{|\cP|} \prod_{v \in V(p_r)} \textrm{d}x_{p_r}}{R(W)} \;, \end{equation} multiplied by a $\delta$ function that evaluates the matrix $C(W)$ on the external particles. The denominator $R(W)$ is given in Definition~\ref{def R(W)} below.
 
 The differential form $\Omega(W)$ is playing a similar role to that of volume forms in the Amplituhedron literature.
@@ -812,7 +817,7 @@ The following lemma establishes certain configurations of propagators that must 
   Let $W$ be a weakly admissible Wilson loop diagram with at least 5 vertices and in which each vertex supports at least one propagator.  Then at least one of the following two conditions holds.
   \vspace{-0.5em}
   \begin{enumerate}
-    \item $W$ has a propagator of length at most 6 with a propagator of length 2 on one side of it and nothing else on that side.\label{item big and 2}
+    \item The diagram $W$ has a propagator of length at most 6 with a propagator of length 2 on one side of it and nothing else on that side.\label{item big and 2}
     \item There exists a pair of propagators of length $2$ with the property that the first propagator is $(i, i+2)$, the second is $(j, j+2)$, no other propagator has an end between vertices $i+2$ and $j+1$, and $j\in\{i+2, i+3, i+4\}$.\label{item pair of 2s}
   \end{enumerate}
 See Figure~\ref{fig: small configs} for an illustration of the two configurations.
@@ -971,7 +976,7 @@ Given $W=(\cP, [n])$ and $i\in [n]$, the order in which the propagators contribu
 % \[I_i = \{I_i(p_1) <_i I_i(p_2) <_i \ldots <_i I_i(p_k)\}.\]
 % (The superscript $W$ is omitted here to simplify the notation.)\note{Sian tweaked this slightly to emphasise the $<_i$ order, because standard convention in most papers is to write all GN terms in the 1-order.}
 
-Since each propagator is removed by the algorithm after it contributes, each propagator contributed exactly once to $I_i$, making the above ordering well defined.
+Since each propagator is removed by the algorithm after it contributes, each propagator contributes exactly once to $I_i$, making the above ordering well defined.
 Note that different $I_*$ impose different orderings on the propagators. Furthermore, we will see below that this ordering respects the ordering of vertices in $I_i$, i.e. if $p_j$ occurs before $p_l$ in the ordering imposed by $I_i$, then we also have $I_i(p_j) <_i I_i(p_l)$. This will follow directly from Corollary \ref{GN alg well defined}.
 \end{rmk}
 
@@ -988,13 +993,13 @@ Note that different $I_*$ impose different orderings on the propagators. Further
 		\end{scope}
 	\end{tikzpicture}\]
 
-To construct $I_1$ we start at vertex 1, so we set $i=1$, $j = 1$, and $I_1 = \emptyset$. 
+To construct $I_1$ we start at vertex 1, so we set $i=1$  and $I_1 = \emptyset$.
 \begin{itemize}
-\item $j = 1$: Since $\Prop(1) = \{q,r\}$ and $r$ is the clockwise-most of these propagators, $r$ contributes at this step. We let $I_1 = \{1\}$ and remove propagator $r$ from the diagram. 
-\item $j = 2$: $\Prop(2) = \{p,q\}$, with $q$ being the clockwise-most of these propagators, so $q$ contributes at this step. We now have $I_1 = \{1,2\}$ and propagator $q$ is removed.
-\item $j = 3$: $\Prop(3) = \{p\}$, so we have $I_1 = \{1,2,3\}$ and we remove propagator $p$. The only remaining propagator in the diagram is $s$.
-\item $j = 4$: Since $p$ and $q$ were removed in earlier steps, we now have $\Prop(4) = \emptyset$.
-\item $j = 5$: $\Prop(5) = \{s\}$, and we have $I_1 = \{1,2,3,5\}$.
+\item Begin at $j = 1$. Since $\Prop(1) = \{q,r\}$ and $r$ is the clockwise-most of these propagators, $r$ contributes at this step. We let $I_1 = \{1\}$ and remove propagator $r$ from the diagram. 
+\item Set $j = 2$. $\Prop(2) = \{p,q\}$, with $q$ being the clockwise-most of these propagators, so $q$ contributes at this step. We now have $I_1 = \{1,2\}$ and propagator $q$ is removed.
+\item Set $j = 3$. $\Prop(3) = \{p\}$, so we have $I_1 = \{1,2,3\}$ and we remove propagator $p$. The only remaining propagator in the diagram is $s$.
+\item Set $j = 4$. Since $p$ and $q$ were removed in earlier steps, we now have $\Prop(4) = \emptyset$.
+\item Set $j = 5$. $\Prop(5) = \{s\}$, and we have $I_1 = \{1,2,3,5\}$.
 \end{itemize}
 There are no propagators left in the diagram, so the algorithm terminates and we have ${I_1 = \{1,2,3,5\}}$, which we write more compactly as $1235$. 
 %So the propagators are ordered $r,q,p,s$ with respect to $I_1$, and 
@@ -1374,7 +1379,7 @@ We now consider what happens as we move from $V$ to each of the three remaining 
 \end{scope}
 \end{tikzpicture}
 \]
-\caption{Diagram $V$ is $W$ with $p$ removed; there are no propagators inside $q = (i,j)$, though there may be up to 4 non-supporting vertices labelled $l, l+1, \ldots$.}
+\caption{Diagram $V$ is $W$ with $p$ removed; there are no propagators inside $q = (i,j)$, though there may be up to 4 non-supporting vertices labelled $l, l+1, \ldots l+3$.}
 \label{fig V diagram}
 \end{figure}
 
@@ -1386,7 +1391,7 @@ We first calculate $I^{W}_w$ for a starting vertex ${w \in [n]\backslash \{l, l+
     \[
     I_w^{W}(r) =  \begin{cases}
         \max\{i+1, m\} & \text{if } r=p \\
-        I_{w}^{V}(r) & \text{if } r\neq p
+        I_{w}^{V}(r) & \text{if } r\neq p\;,
       \end{cases} 
     \]
     while if $w\in J_q^{V}(i+1)$ or $w\in J_q^{V}(j)$ then
@@ -1473,7 +1478,7 @@ For $w \in [n]\backslash\{j+1,m,m+1,m+2,m+3\}$, if $w\in J_q^{V}(i)$ or $w\in J_
     \[
     I_w^{W}(r) =  \begin{cases}
         m & \text{if } r=p \\
-        I_{w}^{V}(r) & \text{if } r\neq p
+        I_{w}^{V}(r) & \text{if } r\neq p \;,
       \end{cases} 
     \]
     while if $w\in J_q^{V}(j)$ then
@@ -1568,7 +1573,7 @@ Since we have already noted that $m \geq_i b+1$, this implies that $m\in I_b^{W'
 Let $W'$ be the diagram obtained from $W$ by removing the propagator $p$.  We have
 \begin{align*}
   I_i^{W} \backslash \{i\} & = I_{i+1}^{W'} \\
-  I_{i+1}^{W} \backslash \{i+1\} & = I_{i+2}^{W'}
+  I_{i+1}^{W} \backslash \{i+1\} & = I_{i+2}^{W'}\;,
 \end{align*}
 since in both cases the algorithm in $W'$ proceeds identically to that in $W$ after assigning $p$. Since $m \neq i+1$, we have $m\in I_{i+1}^{W'}\setminus\{i+1\}$ but $m\not\in I_{i+2}^{W'}$, contradicting the minimality of $W$. This completes the proof.
 \end{proof}
@@ -1717,8 +1722,8 @@ In continuing to characterize the positroid cells associated to Wilson loop diag
 
 Note that the positroid cells associated to the Amplituhedron are of dimension $4|\cP|$. In \cite[section 2]{non-orientable}, Agarwala and Marcott associated a Deodhar component\footnote{Since Deodhar components play no role in this paper, the interested reader is referred to \cite{non-orientable} for more details on this.} to each Wilson loop diagram, and showed that the dimension of this Deodhar component is the sum of $|\cP|$ and the dimension of the associated positroid cell.
 %\[|\cP| + \text{ the dimension of associated positroid cell}.\]
-Combining this with Theorem~\ref{thm dim}, we see that the Deodhar component associated to a Wilson loop diagram is $4|\cP|$-dimensional, showing that the geometry underlying the Wilson loop diagrams is consistent with the geometry underlying the Amplituhedron. It is worth noting that the Amplituhedon is defined by a projection of a set of $4|\cP|$ dimensional positroid cells, while the $3|\cP|$-dimensional cells of the Wilson loop diagram lie in $\mathbb{G}_\R$.
-While it is conjectured that the geometry of the Amplituhedron is related to the geometry of the Wilson loop diagrams, in part due to their common physical origin, the $3 |\cP|$ dimensional positroid cells defined by the Wilson loop diagrams do not seem to bear any geometric relationship to the $4|\cP|$ dimensional cells parametrized by the Amplituhedron.
+Combining this with Theorem~\ref{thm dim}, we see that the Deodhar component associated to a Wilson loop diagram is $4|\cP|$-dimensional, showing that the geometry underlying the Wilson loop diagrams is consistent with the geometry underlying the Amplituhedron. It is worth noting that the Amplituhedon is defined by a projection of a set of $4|\cP|$ dimensional positroid cells (i.e. subspaces of $\Gr(k,n)$), while the corresponding $4|\cP|$-dimensional cells of the Wilson loop diagram lie in $\mathbb{G}_\R(k,n+1)$.
+While it is conjectured that the geometry of the Amplituhedron is related to the geometry of the Wilson loop diagrams, in part due to their common physical origin, the $3 |\cP|$ dimensional positroid cells defined by the Wilson loop diagrams do not seem to bear any geometric relationship to the $4|\cP|$ dimensional positroid cells parametrized by the Amplituhedron.
 %To  date, there is no evidence to suggest that the $3|\cP|$ dimensional positive cells of $\Gr(|\cP|, n)$ defining the Wilson loop diagrams are related to the $4|\cP|$ dimensional positive cells defining the Amplituhedron.  \sanote{This para adresses point 3 of report Y. Should there be a similar paragraph in the intro? Should it be moved?} \sanote{futzed some  more}
 
 Marcott in \cite[Theorem 8.4]{WLDdim} also gave a proof of the $3|\cP|$-dimensionality of $M(W)$ which is much more geometric. However, it is not easy to track the effect of a particular propagator in that proof. By contrast, our approach is much more constructive, and elucidates how each additional propagator contributes to tthe dimension. By combining Algorithms~\ref{alg:put GN on WLD} and \ref{alg:GN to Le} (converting from Wilson loop diagram to Grassmann necklace, and Grassmann necklace to Le diagram respectively) we explicitly describe the effect of adding another propagator to a Wilson loop diagram in terms of the plusses of the associated Le diagrams. Recall that the dimension of a positroid cell is equal to the number of plusses in its associated Le diagram \cite[Theorem 6.5]{Postnikov}.  Thus understanding the effect of adding another propagator is sufficient to give a recursive proof of the $3|\cP|$-dimensionality of the cells.
@@ -1839,7 +1844,7 @@ With the above restrictions in place, the next few lemmas describe how the Grass
 
 
 \begin{lem}\label{lem I}
-Let $W$ be an admissible Wilson loop diagram with $k\geq 1$ propagators, and suppose $W$ admits one of the configurations described in Lemma~\ref{lem good p}, with $p$ and $q$ (if $q$ exists) both of length 2. Let $V$ be $W$ with $p$ removed.  We can express $I_*^W$ in terms of $I_*^V$ as indicated below.
+Let $W$ be an admissible Wilson loop diagram with $k\geq 1$ propagators, and suppose $W$ admits one of the configurations described in Lemma~\ref{lem good p}, with $p$ and $q$ (if $q$ exists) both of length 2. Let $V$ be $W$ with $p$ removed.  We can express $I_*^W$ in terms of $I_*^V$ as indicated below. If $k \in \{1, n-1, n-2, n\}$, 
 
   \begin{align*}
     I_1^{W} & = I_1^{V} \cup \{n-3\} \\
@@ -1850,13 +1855,14 @@ Let $W$ be an admissible Wilson loop diagram with $k\geq 1$ propagators, and sup
       I_{n-2}^{V}\cup \{n-2\} & \text{if $n-2\not\in I_{n-2}^{V}$} \\
       I_{n-2}^{V}\cup \{n-1\} & \text{if $n-2\in I_{n-2}^{V}$, $n-1\not\in I_{n-2}^{V}$} \\
       (I_{n}^{V} \setminus \{n-5\})\cup \{n-1,n-2\} & \text{if $n-1, n-2\in I_{n-2}^{V}$}
-    \end{cases} \\
+    \end{cases} \;. \end{align*}
+For all other $k$, i.e. $1<k<n-2$,
+   \begin{align*}
     I_{k}^{W} & =
     \begin{cases}
       I_k^{V}\cup \{n-3\} & \qquad \qquad \qquad \qquad \text{if $n-3 \not\in I_k^{V}$}\\
       I_k^{V}\cup\{n-2\} & \qquad \qquad \qquad \qquad \text{if $n-3\in I_k^{V}$}
-    \end{cases} \\
-    & \text{for $1<k<n-2$}
+    \end{cases}
   \end{align*}
 \end{lem}
 
@@ -1874,7 +1880,7 @@ Now consider $I_{n-2}^{W}$. If $n-2\not\in I_{n-2}^{V}$ then the vertex $n-2$ is
 
 On the other hand, if $n-2\in I_{n-2}^{V}$ then we must be in Case 2 of Figure~\ref{fig special p} and we must have ${I_{n-2}^V(q) = I_{n-2}^W(q) = n-2}$ since $q$ is always the clockwise-most propagator supported on vertex $n-2$. If $n-1 \not\in I_{n-2}^{V}$, then $I_{n-2}^W(p) = n-1$ and the algorithm proceeds identically to $I_{n-2}^{V}$ for the remainder of its steps; thus $I_{n-2}^{W} = I_{n-2}^{V}\cup \{n-1\}$ in this case.
 
-Finally, if $n-2$ and$ n-1$ are in $I_{n-2}^{V}$ then $I_{n-2}^W(q) = n-2$ and $I_{n-2}^W(p) = n-1$ as above, but some other propagator must have contributed $n-1$ to $I_{n-2}^{V}$ so we cannot use the same argument as above.  When, in the algorithm, the construction of $I_{n-2}^W$ reaches vertex $n$, only the propagators $p$ and $q$ have contributed; thus we proceed as in the construction of $I_n^{V}$ but without propagator $q$ by Remark \ref{rmk algorithm locally same}. By Lemma~\ref{vertex cyclic int lem} we know that $I_n^V(q) = n-5$, and from Remark \ref{clockwise ordering rem} we see that the only way this could occur is if $q$ was the last to contribute to $I_{n-2}^V$. %all other propagators in $V$ had already been assigned when we reached vertex $n-5$; thus $q$ was the final propagator contributing to $I_n^{V}$. 
+Finally, if $n-2$ and $ n-1$ are in $I_{n-2}^{V}$ then $I_{n-2}^W(q) = n-2$ and $I_{n-2}^W(p) = n-1$ as above, but some other propagator must have contributed $n-1$ to $I_{n-2}^{V}$ so we cannot use the same argument as above.  When, in the algorithm, the construction of $I_{n-2}^W$ reaches vertex $n$, only the propagators $p$ and $q$ have contributed; thus we proceed as in the construction of $I_n^{V}$ but without propagator $q$ by Remark \ref{rmk algorithm locally same}. By Lemma~\ref{vertex cyclic int lem} we know that $I_n^V(q) = n-5$, and from Remark \ref{clockwise ordering rem} we see that the only way this could occur is if $q$ was the last to contribute to $I_{n-2}^V$. %all other propagators in $V$ had already been assigned when we reached vertex $n-5$; thus $q$ was the final propagator contributing to $I_n^{V}$. 
 Therefore, $I_{n-2}^{W} = (I_{n}^{V} \setminus \{n-5\}) \cup \{n-1, n-2\}$ in this case. This completes all cases for $I_{n-2}^{W}$.
 
 The arguments for $I_k^{W}$ ($1< k < n-2$) proceed analogously to those of $I_{n-2}^{W}$, with one simplification: we cannot have both $n-3$ and $n-2$ in $I_k^{V}$ since $q$ is the only propagator that could be assigned to either of them, and it cannot be assigned to both.
@@ -1884,7 +1890,7 @@ This covers all cases and hence completes the proof.
 
 The next several lemmas assume $V$ and $W$ to be as above. These lemmas discuss how the shape of the Le diagram changes from $V$ to $W$ and how the plusses in $V$ shift to become plusses in $W$. In particular, the Le diagram for $W$ has an extra row, labeled by $n-3$, with three columns (see Figure~\ref{fig Le} and Lemma~\ref{lem shape}). This last row contains three (new) plusses. All other plusses in the Le diagram of $V$ shift in a predictable manner to become plusses in the Le diagram of $W$; this is described in Lemma~\ref{lem n and n-1} to Theorem~\ref{thm dim}.
 
-To avoid wordiness, we will refer to the row indexed by $i$ in the Le diagram as row $i$ or the $i$ row, and similarly for columns.  Note that the $i$ row in this sense is not the $i^{th}$ row since the indexing for Le diagrams does not label the rows sequentially starting at $1$, and so to avoid confusion we will not refer to the $i^{th}$ row.
+\begin{rmk}To avoid wordiness, we will refer to the row indexed by $i$ in the Le diagram as row $i$ or the $i$ row, and similarly for columns.  Note that the $i$ row in this sense is not the $i^{th}$ row since the indexing for Le diagrams does not label the rows sequentially starting at $1$, and so to avoid confusion we will not refer to the $i^{th}$ row. \end{rmk}
 
 We proceed to address the cases laid out in Lemma~\ref{lem I}, getting the shape of the Le diagram of $W$ from the relation $I_1^W= I_1^V \cup \{n-3\}$. 
 
@@ -1992,12 +1998,12 @@ However, it is important to observe that $v$ could be $n-4$, as we see in the ne
 
 
   \begin{lem}\label{lem n-2 bad}
-    Let $V$ and $W$ be as in Lemma~\ref{lem I}, and suppose that $n-2,n-1 \in I_{n-2}^{V}$. Let $c$ be the largest element of $I_1^V$.  Then the following are true.
+    Let $V$ and $W$ be as in Lemma~\ref{lem I}, and suppose that $n-2,n-1 \in I_{n-2}^{V}$. Let $c$ be the largest element of $I_1^V$.  Then the following statements are true.
     \begin{enumerate}
-  \item $c=n-4$ if $n-4\in I_1^V\setminus I_n^V$ and $c=n-5$ otherwise. If $c = n-4$ then we have $v = n-4$ in equation \eqref{eq necklace}.
-  \item $I_{n-3}^W$ contributes the same plusses as $I_{n-3}^V$, except that the plus in column $n-3$ (which necessarily exists) is shifted one square left into column $n-2$.
+  \item If $n-4\in I_1^V\setminus I_n^V$ then $c=n-4$. Otherwise, $c=n-5$ otherwise. If $c = n-4$ then we have $v = n-4$ in equation \eqref{eq necklace}.
+  \item The function $I_{n-3}^W$ contributes the same plusses as $I_{n-3}^V$, except that the plus in column $n-3$ (which necessarily exists) is shifted one square left into column $n-2$.
   \item In the Le diagram of $V$, $I_{n-2}^{V}$ contributes a $(c)\rightarrow (n-2)$ plus and no other term in the Grassmann necklace of $V$ gives a plus in this column. All other plusses from $I_{n-2}^{V}$ were already contributed by $I_{n-3}^V$.
-  \item $I_{n-2}^W$ contributes an $(n-3) \rightarrow (n-2)$ plus, a $(c) \rightarrow (n-1)$ plus, and one other plus. If $c = n-5$ then this third plus is the one contributed by $I_n^V$, while if $c = n-4$ then the third plus is $(n-5) \rightarrow n$.
+  \item The function $I_{n-2}^W$ contributes an $(n-3) \rightarrow (n-2)$ plus, a $(c) \rightarrow (n-1)$ plus, and one other plus. If $c = n-5$ then this third plus is the one contributed by $I_n^V$, while if $c = n-4$ then the third plus is $(n-5) \rightarrow n$.
   \item If $c = n-4$ then $I_{n-1}^V$ contributes a $(n-4) \rightarrow (n-1)$ plus; all other plusses contributed by $I_{n-1}^V$ were already contributed by $I_{n-3}^V$, regardless of the value of $c$.
   \item The Grassmann necklace of $V$ contributes a $(c)\rightarrow (n-1)$ plus if and only if $c = n-4$. No term in the Grassmann necklace of $V$ contributes a $(n-5) \rightarrow n$ plus.
     \end{enumerate} 
@@ -2361,7 +2367,7 @@ Consider the Wilson loop diagram in Figure~\ref{fig R eg}. Assigning propagators
 C(W) = \begin{bmatrix} a & b & 0 & 0 & 0 & c & d \\ e & f & 0 & 0 & g & h & 0 \\ i & j & 0 & k & l & 0 & 0 \end{bmatrix}.
 \]
 The Grassmann necklace of this diagram is
-\begin{gather*}(I_1 = \{1,2,4\},\ I_2 = \{2,4,5\},\ I_3 = \{4,5,6\},\ I_4=\{4,5,6\},\\ I_5=\{5,6,7\},\ I_6 = \{6,7,1\},\ I_7=\{7,1,2\}). \end{gather*}  
+\begin{eqnarray*}\Big(I_1 = \{1,2,4\},\ I_2 = \{2,4,5\},\ I_3 = \{4,5,6\},\ I_4=\{4,5,6\},\\ I_5=\{5,6,7\},\ I_6 = \{6,7,1\},\ I_7=\{7,1,2\}\Big). \end{eqnarray*}  
 Figure~\ref{fig R eg} indicates which vertex is contributed to $I_i$ by each propagator, for each $i \in [1,7]$.  
 
 From $I_1$ to $I_2$, the propagators $p$ and $q$ change which vertices they contribute to; specifically, we have $I_1(p) = 1$ and $I_1(q)= 2$, while $I_2(p) = 2$ and $I_2(q)= 5$. On the other hand, $r$ contributes  4 to both $I_1$ and $I_2$. We therefore have $S_2 = \{p,q\}$. The associated minors $\Delta_{I_2}$ and $r_2$ are therefore
@@ -2376,7 +2382,7 @@ The irreducible quadratic factor corresponds to the fact that $q$ and $s$ share 
 
 Finally, we have $r_1 = (af-be)k$.  Putting the previous calculations together, we obtain
 \[
-R = (af-be)kgbclhdi(ej-fi)
+R = (af-be)kgbclhdi(ej-fi) \;,
 \]
 which is square-free and contains all factors of $\prod_{i=1}^{n}\Delta_{I_i}$. If one were to construct the denominator $R(W)$ associated to this Wilson loop diagram as per Definition~\ref{def R(W)}, we would find that we have $R(W) = R$.
 \end{eg}
@@ -2384,12 +2390,12 @@ which is square-free and contains all factors of $\prod_{i=1}^{n}\Delta_{I_i}$. 
 We are now ready to begin proving the main result of this section. We begin with a proposition stating several facts about $\Delta_{I_i}$ and their relationship to $r_i$.
 
 \begin{prop}\label{prop alg gives rad}
-  With notation as in Algorithm~\ref{alg WLD to denom via GN} the following statements hold:
+  With notation as in Algorithm~\ref{alg WLD to denom via GN} the following statements hold.
   \begin{enumerate}
     \item Each $\Delta_{I_i}$ is homogeneous, as is each $r_i$.
     \item Each $\Delta_{I_i}$ splits into linear and quadratic factors.  All linear factors of  $\Delta_{I_i}$ are single variables and all irreducible quadratic factors are $2\times 2$ determinants of single variables.
     \item Quadratic factors in $\Delta_{I_i}$ arise precisely when propagators $p$ and $q$ are supported on a common edge $a$ with $I_i(p)=a$ and $I_i(q)=a+1$.
-    \item $r_i$ divides $\Delta_{I_i}$.
+    \item The factor $r_i$ divides $\Delta_{I_i}$.
     \item The ideal generated by $R$ is the radical of the ideal generated by $\prod_{i=1}^{n}\Delta_{I_i}$.
   \end{enumerate}
 \end{prop}
@@ -2495,13 +2501,13 @@ Write $q = (i, j)$ for the support of $q$.  The situation for $q$ is very simila
 
 Similarly to Case 1, let $T = \cP_{in}(q) \cup \{p\}$ in the $<_i$ order. All propagators in $T$ contribute to $I_i$ strictly before $j$ and no other propagators are supported on vertices strictly before $j$.  Thus after permuting rows and columns as needed the matrix giving $\Delta_{I_i}$ has the form 
 \[
-\begin{bmatrix} A & B \\ 0 & C\end{bmatrix}
+\begin{bmatrix} A & B \\ 0 & C\end{bmatrix} \;,
 \]
 where $A$ is the submatrix indexed by the propagators in $T$ and the vertices in $I_i(T)$. Again there are two cases to consider.  If some vertex $j$ or larger (with respect to $<_i$) belongs to $I_i$ then $B$ and $C$ are at least one column wide, and so the block form of the matrix gives a nontrivial factorization of $\Delta_{I_i}=\pm\det A\det C$.  This yields a contradiction as in Case 1: $f|\det A$ and removing a propagator not in $T$ gives a smaller diagram with a factor of degree $\geq 3$, which contradicts our minimality assumption.
 
 On the other hand, if no vertex $\geq_i j$ is in $I_i$ then we have $\Delta_{I_i} = \det A$.  Looking in more detail into $A$, note that the only vertices that support both $p$ and $q$ and also belong to $I_i$ are $i$ and $i+1$. Hence
 \[
-A = \begin{bmatrix} D & 0 \\ E & F\end{bmatrix}
+A = \begin{bmatrix} D & 0 \\ E & F\end{bmatrix}\; ,
 \]
 where $D$ is the $2\times 2$ matrix indexed by the propagators $p$ and $q$ and the vertices $i$ and $i+1$.  Thus $p$ and $i$ contribute to a quadratic factor of $\Delta_{I_i}$, once again contradicting our assumptions.
 
